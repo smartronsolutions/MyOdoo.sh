@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="pricing" name="Pricing">
+    <t t-call="s_odoo_saas_master.portal_pricing_page"/>
+  </template>
+
+  <template id="domain_picking" name="Domain Picking">
+    <div class="openerp_enterprise_pricing_step_body odoo_domain_picking d-flex align-items-stretch form-inline">
+      <input class="openerp_enterprise_pricing_sub_domain form-control border text-right pr-2" id="sub_domain" name="sub_domain"
+             type="text" required="required" style="max-width: 200px;" placeholder="your-subdomain"/>
+      <label class="px-2">.</label>
+      <select class="openerp_enterprise_pricing_domain form-control border" id="domain" name="domain">
+        <t t-foreach="domains" t-as="domain">
+          <option t-att-value="domain.id"><t t-esc="domain.name"/></option>
+        </t>
+      </select>
+      <div class="odoo_domain_picking_error w-100"></div>
+    </div>
+  </template>
+
+  <template id="users_pricing" name="Workers Pricing">
+    <t t-set="user" t-value="data['user']"/>
+    <div class="openerp_enterprise_pricing_step_body d-flex align-items-stretch form-inline">
+      <input class="openerp_enterprise_pricing_users form-control border text-right pr-2" id="users" name="num_users"
+             type="number" style="max-width: 100px;" min="1" value="1" t-attf-data-app_id="{{ user['id'] }}"/>
+      <label class="p-2 mr-1 mb-0 bg-200 border-top border-start border-end border-bottom">Workers</label>
+      <label class="p-2">
+        <b class="openerp_enterprise_user_pricing_monthly d-none">
+          <span class="openerp_enterprise_pricing_user_amount_monthly">0.00</span>
+          <small class="fw_semibold">/worker/month</small>
+        </b>
+        <b class="openerp_enterprise_user_pricing_yearly">
+          <span class="openerp_enterprise_pricing_user_amount_yearly">0.00</span>
+          <small class="fw_semibold">/worker/month</small>
+        </b>
+      </label>
+    </div>
+  </template>
+
+  <template id="apps_pricing" name="Apps Pricing">
+    <div class="openerp_enterprise_pricing_step_body mb24">
+      <t t-foreach="data['categs']" t-as="cate">
+        <h4 class="mt16 mb8">
+          <t t-esc="cate['name']"/>
+        </h4>
+        <div class="row">
+          <t t-foreach="cate['apps']" t-as="app">
+            <div class="col-12 col-sm-6 col-lg-4">
+              <label class="card d-flex flex-row p-2 mb-2 align-items-stretch openerp_enterprise_pricing_app"
+                     t-attf-for="app_{{ app['tech_name'] }}" t-attf-data-app_id="{{ app['id'] }}">
+                <div class="openerp_enterprise_pricing_app_icon pr-2 flex-shrink-0 flex-grow-0" style="max-width: 50px">
+                  <img class="img-fluid" t-att-src="app['image']"
+                       alt="CRM" loading="lazy"/>
+                </div>
+                <div class="d-flex flex-column flex-grow-1 flex-shrink-0 w-50 justify-content-between openerp_enterprise_pricing_app_name">
+                  <div class="openerp_enterprise_pricing_app_real_name text-truncate">
+                    <t t-esc="app['name']"/>
+                  </div>
+                  <div class="openerp_enterprise_pricing_app_price small d-none hide_monthly_apps">
+                    <b>
+                      <span class="amount_to_localize_monthly">
+                        <t t-esc="app['monthly_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                      </span>
+                    </b>
+                    / month
+                  </div>
+                  <div class="openerp_enterprise_pricing_app_price small hide_yearly_apps">
+                    <b>
+                      <span class="amount_to_localize_yearly">
+                        <t t-esc="app['yearly_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                      </span>
+                    </b>
+                    / month
+                  </div>
+                </div>
+                <div class="d-flex flex-column justify-content-between align-items-center">
+                  <input type="checkbox" class="openerp_enterprise_pricing_app_checkbox d-none"
+                         t-attf-name="app_{{ app['id'] }}"
+                         t-attf-id="app_{{ app['id'] }}" t-attf-data-app_id="{{ app['id'] }}"/>
+                  <span class="fa fa-check text-primary text-center d-none"></span>
+                </div>
+              </label>
+            </div>
+          </t>
+        </div>
+      </t>
+    </div>
+  </template>
+
+    <template id="pricing_board" name="Pricing Board">      
+        <input type="radio" id="monthly_by" name="price_by" value="monthly" style="display:none;"/>
+        <input type="radio" id="yearly_by" name="price_by" value="yearly" style="display:none;" checked="True"/>
+        <div class="card border odoo_pricing_board position-sticky">
+          <div class="card-header border-bottom bg-200 pt-0">
+            <ul class="nav nav-tabs card-header-tabs" style="">
+              <li class="nav-item" data-type="yearly">
+                <a data-toggle="tab" data-bs-toggle="tab" href="#yearly" data-bs-target="#yearly" class="nav-link px-3 active border-top-0 rounded-0 fw_bold">Annually</a>
+              </li>
+              <li data-type="monthly" class="nav-item">
+                <a data-toggle="tab" data-bs-toggle="tab" href="#monthly" data-bs-target="#monthly" class="nav-link px-2 border-top-0 rounded-0 fw_bold">Monthly</a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="tab-content mb-3 mb-lg-0" style="">
+              <div class="tab-pane fade tab-pane-monthly" id="monthly">
+                <table id="o_monthly_table" class="table openerp_enterprise_pricing_table_recurrent">
+                  <tr>
+                    <td class="border-top-0">
+                      <b><span class="openerp_enterprise_pricing_users_num">x</span></b>
+                      <a href="#users_anchor">Workers</a>
+                    </td>
+                    <td class="text-right border-top-0">
+                      <b class="openerp_enterprise_pricing_users_price_monthly">xx</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b><span class="openerp_enterprise_pricing_apps_num">x</span></b>
+                      <a href="#apps_anchor">Apps</a>
+                    </td>
+                    <td class="text-right">
+                      <b class="openerp_enterprise_pricing_apps_price_monthly">xx</b>
+                    </td>
+                  </tr>
+                  <tr class="active">
+                    <td><b>Total</b> / month </td>
+                    <td class="text-right">
+                      <b class="openerp_enterprise_pricing_price_monthly">xxx</b>
+                    </td>
+                  </tr>
+                </table>
+                </div>
+              <div class="tab-pane fade tab-pane-yearly active show in" id="yearly">
+                <table id="o_yearly_table" class="table mb-1">
+                  <tr>
+                    <td class="border-top-0">
+                      <b><span class="openerp_enterprise_pricing_users_num">x</span></b>
+                      <a href="#users_anchor">Workers</a>
+                    </td>
+                    <td class="text-right border-top-0">
+                      <b class="openerp_enterprise_pricing_users_price_yearly">xxx</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b><span class="openerp_enterprise_pricing_apps_num">x</span></b>
+                      <a href="#apps_anchor">Apps</a>
+                    </td>
+                    <td class="text-right">
+                      <b class="openerp_enterprise_pricing_apps_price_yearly">xxx</b>
+                    </td>
+                  </tr>
+                  <tr class="active">
+                    <td><b>Total / month</b></td>
+                    <td class="text-right">
+                      <b class="openerp_enterprise_pricing_price_yearly">xxx</b>
+                    </td>
+                  </tr>
+                  <tr class="active bg-200">
+                    <td><b>Billed annually</b></td>
+                    <td class="text-right">
+                      <b class="openerp_enterprise_pricing_price_yearly_in_year">xxx</b>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="openerp_enterprise_pricing_is_not_free_trial">
+              <div class="d-grid gap-2 openerp_enterprise_pricing_form_button">
+                <a class="btn btn-primary openerp_enterprise_pricing_trial" href="#">TRY NOW
+                    <br class="d-none d-md-inline-block"/>
+                    <span class="d-md-none px-1">-</span>
+                    <small class="text-white-75 fw_bold">15 days Free trial</small>
+                </a>
+                <a class="btn btn-success openerp_enterprise_pricing_buy_now" href="#">BUY NOW</a>
+                <div class="mt16 alert alert-danger openerp_enterprise_pricing_error_no_apps d-none"> Please select at least one App. </div>
+              </div>
+            </div>
+<!--            <div class="openerp_enterprise_pricing_is_free_trial d-none">-->
+<!--              <p>Those apps are <b>free</b> as long as you don't need more apps or hosting options.</p>-->
+<!--              <a href="#" class="btn btn-primary btn-lg btn-block mt24 openerp_enterprise_pricing_start_trial_with_app">Start Now</a>-->
+<!--            </div>-->
+<!--            <div class="alert alert-danger p1 d-none openerp_enterprise_pricing_monthly_not_allowed">-->
+<!--              The monthly plan is only available to cloud hosting options (standard or Odoo.sh)-->
+<!--            </div>-->
+<!--            <p class="mt16 mb0 mobile-hidden">-->
+<!--              <small class="fw_semibold">-->
+<!--                <sup>(1)</sup> New customers get a discount on the initial number of users purchased.-->
+<!--                <span class="openerp_enterprise_user_pricing_yearly">(<span class="openerp_enterprise_pricing_user_amount_yearly">XX</span><span class="openerp_enterprise_pricing_currency">USD</span> instead of <span class="openerp_enterprise_pricing_user_amount_yearly_full">XX</span><span class="openerp_enterprise_pricing_currency">USD</span>).</span>-->
+<!--                <span class="openerp_enterprise_user_pricing_monthly">(<span class="openerp_enterprise_pricing_user_amount_monthly">XX</span><span class="openerp_enterprise_pricing_currency">USD</span> instead of <span class="openerp_enterprise_pricing_user_amount_monthly_full">XX</span><span class="openerp_enterprise_pricing_currency">USD</span>).</span>-->
+<!--              </small>-->
+<!--            </p>-->
+          </div>
+        </div>
+    </template>
+
+</odoo>

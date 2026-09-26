@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_quotation_tree_with_onboarding" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+        	<field name="name" position="after">
+        		<field name="instance_id"/>
+        		<field name="subscription_type"/>
+        	</field>
+        </field>
+    </record>
+	
+	<record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+        	<field name="partner_shipping_id" position="after">
+        		<field name="instance_id" invisible="1"/>
+        		<field name="is_saas_trial" invisible="1"/>
+            	<field name="is_saas_order" readonly="state not in ['draft', 'sent'] or saas_order_type != 'buy_new'"/>
+            	<field name="saas_order_type" invisible="not is_saas_order"/>
+                <field name="subscription_type" widget="radio"
+                	readonly="state not in ['draft', 'sent'] or (saas_order_type != 'buy_new' and not is_saas_trial)"
+                	invisible="not is_saas_order"/>
+                <field name="instance_id"
+                	groups="s_odoo_saas_master.group_odoo_saas_user"
+                	domain="[('state', '=', 'deploy')]"
+                	readonly="state not in ['draft', 'sent'] or saas_order_type != 'buy_new'"
+                	invisible="not is_saas_order"/>
+                <field name="subdomain"
+                	readonly="state not in ['draft', 'sent'] or saas_order_type != 'buy_new'"
+                	invisible="not is_saas_order or instance_id"/>
+                <field name="based_domain_id"
+                	groups="s_odoo_saas_master.group_odoo_saas_user"
+                	readonly="state not in ['draft', 'sent'] or saas_order_type != 'buy_new'"
+                	invisible="not is_saas_order or instance_id"/>
+                <field name="buy_now_from_pricing" invisible="1"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.inherit.view.search</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+        	<field name="name" position="after">
+        		<field name="instance_id"/>
+        	</field>
+        	<filter name="activities_overdue" position="before">
+        		<separator/>
+        		<filter string="Subscription Type: Monthly" domain="[('subscription_type', '=', 'monthly')]" name="ftr_subscription_type_monthly"/>
+        		<filter string="Subscription Type: Yearly" domain="[('subscription_type', '=', 'yearly')]" name="ftr_subscription_type_yearly"/>
+        		<separator/>
+        	</filter>
+        	<filter name="customer" position="after">
+        		<filter name="grb_instance" string="Odoo Instance" domain="[]" context="{'group_by': 'instance_id'}"/>
+        		<filter name="grb_subscription_type" string="Subscription Type" domain="[]" context="{'group_by': 'subscription_type'}"/>
+        	</filter>
+        </field>
+    </record>
+
+</odoo>

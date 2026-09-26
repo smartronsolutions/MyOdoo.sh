@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_blocked_domain_view_tree" model="ir.ui.view">
+        <field name="name">saas.blocked.domain.view.tree</field>
+        <field name="model">saas.blocked.domain</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Blocked Domain">
+                <field name="name"/>
+                <field name="based_domain_id"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_blocked_domain_view_form" model="ir.ui.view">
+        <field name="name">saas.blocked.domain.view.form</field>
+        <field name="model">saas.blocked.domain</field>
+        <field name="arch" type="xml">
+            <form string="Blocked Domain">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>                    
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" options="{'line_breaks': False}" widget="text" />
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                    	<group>
+                    		<field name="based_domain_id"/>
+                    	</group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_blocked_domain_view_search" model="ir.ui.view">
+        <field name="name">saas.blocked.domain.view.search</field>
+        <field name="model">saas.blocked.domain</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="based_domain_id"/>
+                <separator/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_based_domain" string="Based Domain" context="{'group_by':'based_domain_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_blocked_domain_action" model="ir.actions.act_window">
+        <field name="name">Blocked Domains</field>
+        <field name="res_model">saas.blocked.domain</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_blocked_domain_menu" action="saas_blocked_domain_action" parent="saas_config_domain_menu" sequence="20"/>
+
+</odoo>

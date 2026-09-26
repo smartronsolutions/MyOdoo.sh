@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_view_tree" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.view.tree</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Odoo Instance">
+                <field name="name"/>
+                <field name="based_domain_id"/>
+                <field name="partner_id"/>
+                <field name="odoo_version_id"/>
+                <field name="trial"/>
+                <field name="noindex"/>
+                <field name="state"/>
+                <field name="operation_state"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>                
+                <button icon="fa-refresh" title="Restart" type="object" name="action_restart" invisible="operation_state != 'run'"/>
+ 				<button icon="fa-stop-circle" title="Stop" type="object" name="action_stop" invisible="operation_state != 'run'"/>
+ 				<button icon="fa-play-circle" title="Start" type="object" name="action_start" invisible="operation_state != 'stop'"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_view_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.view.form</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="arch" type="xml">
+            <form string="SaaS Odoo Instance">
+                <header>
+                	<button string="Deploy" type="object" name="action_deploy" class="btn-primary"
+                		invisible="state != 'draft'"/>
+                	<button string="Set to Draft" type="object" name="action_draft" class="btn-primary"
+                		invisible="state != 'cancel'"/>
+                	<button string="Renew" type="object" name="action_renew" class="btn-primary"
+                		groups="sales_team.group_sale_salesman"
+                		invisible="state != 'deploy' or not partner_id or not expiration_date"/>
+                	<button string="Buy Extra" type="object" name="action_buy_extra" class="btn-primary"
+                		groups="sales_team.group_sale_salesman"
+                		invisible="state != 'deploy' or not partner_id or not expiration_date or not has_extra"/>
+                	<button string="Backup" type="object" name="action_backup" invisible="operation_state != 'run' or state != 'deploy'"/>
+            		<button string="Duplicate" type="object" name="action_duplicate_wizard" class="btn-secondary"/>
+            		<button string="Update/Install Module" type="object" name="action_open_upgrade_module_wizard" invisible="operation_state != 'run' or state != 'deploy'"/>
+                	<button string="Delete" type="object" name="action_cancel" invisible="state in ['draft', 'cancel']" class="btn-danger"/>
+                	<field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                	<div name="button_box" position="inside">
+                		<button class="oe_stat_button" type="object"
+                            name="action_restart"
+                            invisible="operation_state != 'run'"
+                            icon="fa-refresh">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Restart
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_stop"
+                            invisible="operation_state != 'run'"
+                            icon="fa-stop">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Stop
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_start"
+                            invisible="operation_state != 'stop'"
+                            icon="fa-play">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Start
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_suspend"
+                            invisible="state != 'deploy'"
+                            icon="fa-pause">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Suspend
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_open_redeploy_wizard"
+                            invisible="state != 'deploy'"
+                            icon="fa-recycle">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Redeploy
+                                </span>
+                            </div>
+                        </button>
+                		<button class="oe_stat_button" type="object"
+                            name="action_view_sale_order"
+                            invisible="not sale_order_count"
+                            icon="fa-usd">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="sale_order_count"/>
+                                </span>
+                                <span class="o_stat_text">
+                                    Sales
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_view_account_move"
+                            invisible="not account_move_count"
+                            icon="fa-pencil-square-o">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="account_move_count"/>
+                                </span>
+                                <span class="o_stat_text">
+                                    Invoiced
+                                </span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                            name="action_view_odoo_instance_config"
+                            icon="fa-gear">
+                            <div class="o_stat_info">
+                                <span>Config</span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Trial" bg_color="text-bg-danger" invisible="not trial"/>
+                	<div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" class="oe_inline" 
+                            	readonly="state != 'draft'"/> . <field name="based_domain_id" readonly="state != 'draft'"/>
+                        </h1>
+                    </div>
+                    <group>
+                    	<group>
+                    		<field name="operation_state" invisible="1"/>
+                    		<field name="has_extra" invisible="1"/>
+                    		<field name="partner_id" readonly="state != 'draft'"/>
+                    		<field name="url" widget="url"/>
+                    		<field name="technical_name"/>
+                    		<field name="db_name"/>
+                            <field name="is_template" invisible="use_template"/>
+                            <field name="deploy_mail_template_id" invisible="not is_template"/>
+                            <field name="odoo_version_id" readonly="state != 'draft'"/>                    		
+                    		<field name="odoo_server_id" domain="[('odoo_version_id', '=', odoo_version_id)]"
+                    			context="{'default_odoo_version_id': odoo_version_id}" readonly="state != 'draft'"/>
+                            <field name="use_template" invisible="is_template" readonly="state != 'draft'"/>
+                            <field name="template_instance_domain_ids" widget="many2many_tags" invisible="1"/>
+                            <field name="template_instance_id" invisible="not use_template" readonly="state != 'draft'"
+                            	domain="[('id', 'in', template_instance_domain_ids)]"/>                    		
+                    		<field name="domain_name" invisible="1"/>
+                    		<field name="company_id" invisible="1"/>
+                 			<field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                    	</group>
+                    	<group>                    		
+                    		<field name="pserver_id"/>
+                    		<label for="docker_xmlrpc_expose_port" string="Xmlrpc Port"/>
+             				<div class="d-flex gap-2">                    				
+               					<field name="docker_xmlrpc_expose_port" class="oe_inline" />:<field name="docker_xmlrpc_container_port" />
+               				</div>
+               				<label for="docker_xmlrpcs_expose_port" string="Xmlrpcs Port"/>
+                 			<div class="d-flex gap-2">                    				
+                  				<field name="docker_xmlrpcs_expose_port" class="oe_inline" />:<field name="docker_xmlrpcs_container_port" />
+                  			</div>
+                 			<label for="docker_longpolling_expose_port" string="Longpolling Port"/>
+                			<div class="d-flex gap-2">                    				
+                 				<field name="docker_longpolling_expose_port" class="oe_inline" />:<field name="docker_longpolling_container_port" />
+                 			</div>
+                 			<label for="active_user" string="Active Users"/>
+                 			<div>
+                 				<field name="active_user" nolabel="1" class="oe_inline"/> / <field name="paid_user" nolabel="1" class="oe_inline"/>
+                 				<div>
+                 					<button name="action_get_active_users" string="Get Users" type="object" icon="fa-users"/>
+                 				</div>
+                 			</div>
+                 			<label for="installed_app_count" string="Installed Apps"/>
+                 			<div>
+                 				<field name="installed_app_count" nolabel="1" class="oe_inline"/>
+                 				<div>
+                 					<button name="action_get_installed_apps" string="Get Apps" type="object" icon="fa-bars"/>
+                 				</div>
+                 			</div>
+                    	</group>
+                    </group>
+                    <notebook>
+                    	<page name="general" string="General Information">
+                    		<group>
+                    			<group>                    		
+                    				<field name="buy_now_from_pricing" invisible="1"/>		
+                    				<field name="user_demo_data" readonly="state != 'draft'"/>
+                    				<field name="trial" readonly="state != 'draft'"/>
+                 					<field name="default_module" readonly="state != 'draft'" invisible="use_template"/>                    				
+                    				<field name="subscription_type" invisible="not subscription_type"/>
+                    				<field name="expiration_date" readonly="state == 'suspend'"/>                    				
+                    			</group>
+                   				<group>
+                   					<field name="noindex" readonly="state != 'draft'"/>
+                   					<field name="enable_autobackup"/>
+                    				<field name="backup_limit" invisible="not enable_autobackup"/>
+                   				</group>
+                    		</group>
+                    	</page>
+                    	<page name="addons" string="Addons">
+                    		<separator string="Custom Addons"/>
+                    		<field name="custom_addon_ids">
+                    			<list>
+                    				<field name="name" />
+									<field name="addon_path"/>
+									<field name="cloned"/>
+                    			</list>
+                    		</field>
+                    		<separator string="Standard Extra Addons"/>
+                    		<field name="extra_addon_ids">
+                    			<list>
+                    				<field name="name"/>
+                    				<field name="addon_path"/>
+                    				<field name="copy_to"/>
+                    				<field name="container_path"/>
+                    			</list>
+                    		</field>                    		
+                    	</page>
+                    	<page name="resource" string="Resource Packages">
+                    		<group>
+                    			<group>
+                    				<label for="resource_package_id" string="Resource Package"/>
+		                 			<div>
+		                 				<field name="resource_package_id" nolabel="1" class="oe_inline"/>
+		                 				<div invisible="state != 'deploy'">
+		                 					<button name="action_update_resource_package" string="Update Resources" type="object" icon="fa-cog"/>
+		                 				</div>
+		                 			</div>
+                    			</group>
+                    		</group>
+                    		<separator string="Resource Lines"/>
+                    		<field name="resource_package_line_ids">
+                    			<list editable="bottom">
+                    				<field name="type"/>
+                    				<field name="name"/>
+                    				<field name="value"/>
+                    			</list>
+                    		</field>                    		
+                    	</page>
+                    	<page name="installed_app" string="Installed Apps">
+                    		<field name="installed_app_ids">
+                    			<list editable="bottom">
+					                <field name="name"/>
+					                <field name="technical_name"/>
+					                <field name="product_id"/>
+					 				<field name="installed_date" />
+					 				<field name="not_paid"/>
+					            </list>
+                    		</field>
+                    	</page>
+                    	<page name="backup" string="Backups">
+                    		<field name="backup_ids">
+                    			<list>
+					                <field name="name" />
+									<field name="datetime" />
+									<field name="format" />
+									<field name="file_size" />
+									<field name="description" />
+					            </list>
+                    		</field>
+                    	</page>
+					<page name="container_backup" string="Container Backups">
+						<field name="container_backup_ids">
+							<list create="0" edit="0">
+								<field name="name"/>
+								<field name="datetime"/>
+								<field name="file_size"/>
+								<button name="action_download" string="Download Container Backup" type="object" icon="fa-download"/>
+							</list>
+						</field>
+					</page>
+                    	<page name="containers" string="Containers">
+                    		<field name="docker_container_ids">
+                    			<list>
+					                <field name="name"/>
+					 				<field name="image"/>
+					 				<field name="ports"/>
+					 				<field name="state" />
+					 				<button icon="fa-refresh" string="Restart" type="object" name="action_restart" invisible="state != 'run'"/>
+					 				<button icon="fa-stop-circle" string="Stop" type="object" name="action_stop" invisible="state != 'run'"/>
+					 				<button icon="fa-play-circle" string="Start" type="object" name="action_start" invisible="state != 'stop'"/>
+					            </list>
+                    		</field>
+                    	</page>
+                    	<page name="volumes" string="Volumes">
+                    		<field name="docker_compose_volume_ids">
+                    			<list>
+					                <field name="container_id" string="Container"/>
+					   				<field name="name" string="Name"/>                    				
+					   				<field name="volume_type" string="Type"/>
+					   				<field name="container_path"/>
+					   				<field name="storage_path"/>
+					            </list>
+                    		</field>
+                    	</page>
+                    	<page name="domain_name" string="Domain Name">
+                    		<field name="domain_name_ids">
+                    			<list>
+					                <field name="name" readonly="is_instance_domain_name or state != 'draft'"/>
+					                <field name="noindex" readonly="is_instance_domain_name or state != 'draft'"/>     
+					 				<field name="state" />
+					 				<field name="is_instance_domain_name" column_invisible="1"/>
+					 				<field name="instance_state" column_invisible="1"/>
+					 				<button icon="fa-play-circle" string="Deploy" type="object" name="action_deploy" invisible="state != 'draft' or instance_state != 'deploy'"/>
+					 				<button icon="fa-refresh" string="Reset to Draft" type="object" name="action_draft" invisible="state != 'cancel' or instance_state != 'deploy'"/>
+					 				<button icon="fa-stop-circle" string="Cancel" type="object" name="action_cancel" invisible="state != 'deploy' or instance_state != 'deploy'"/>
+					            </list>
+                    		</field>
+                    	</page>
+                    </notebook>
+                </sheet>
+                <chatter reload_on_attachment="True"/>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_view_search" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.view.search</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="based_domain_id" />
+                <field name="partner_id"/>
+                <field name="odoo_version_id"/>
+                <separator/>
+                <filter name="ftr_trial" string="Trial Instances" domain="[('trial','=',True)]"/>
+                <filter name="ftr_is_not_template" string="Odoo Intances" domain="[('is_template','=',False)]"/>
+                <filter name="ftr_is_template" string="Intance Templates" domain="[('is_template','=',True)]"/>
+                <separator/>
+                <filter name="ftr_deploy" string="Deploy" domain="[('state','=','deploy')]"/>
+				<filter name="ftr_suspend" string="Suspended" domain="[('state','=','suspend')]"/>
+				<filter name="ftr_cancel" string="Cancelled" domain="[('state','=','cancel')]"/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_partner" string="Customer" context="{'group_by':'partner_id'}"/>
+                    <filter name="grb_state" string="Status" context="{'group_by':'state'}"/>
+                    <filter name="grb_based_domain" string="Based Domain" context="{'group_by':'based_domain_id'}"/>
+                    <filter name="grb_odoo_version" string="Odoo Version" context="{'group_by':'odoo_version_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_action" model="ir.actions.act_window">
+        <field name="name">Odoo Instances</field>
+        <field name="res_model">saas.odoo.instance</field>
+        <field name="context">{
+        	'search_default_ftr_is_not_template': True,
+        	'default_is_template': False,
+        }</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_odoo_instance_menu" action="saas_odoo_instance_action" parent="saas_menu_odoo_instance" sequence="1"/>
+    
+    <record id="saas_odoo_template_instance_action" model="ir.actions.act_window">
+        <field name="name">Instance Templates</field>
+        <field name="res_model">saas.odoo.instance</field>
+        <field name="context">{
+        	'search_default_ftr_is_template': True,
+        	'default_is_template': True,
+        }</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_odoo_template_instance_menu" action="saas_odoo_template_instance_action" parent="saas_menu_odoo_instance" sequence="2"/>
+
+</odoo>

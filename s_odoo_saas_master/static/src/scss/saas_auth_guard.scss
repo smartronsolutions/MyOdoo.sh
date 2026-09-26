@@ -1,0 +1,143 @@
+// =============================================================================
+// SaaS frontend authentication guard + notification stacking
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. Notifications must always be visible, even on top of a wizard / modal /
+//    loading overlay.
+//
+//    Odoo ships the notification manager with z-index 1055 while Bootstrap
+//    modal, `.o_blockUI` ($zindex-popover = 1070) and the fullscreen SaaS
+//    deployment preloader (99999) are all able to cover it. Raising the
+//    notification manager above every one of those layers guarantees that a
+//    User Error / Warning / Notification stays readable and clickable.
+// -----------------------------------------------------------------------------
+.o_notification_manager {
+    z-index: 1000000 !important;
+}
+
+// Custom bottom-right toast (myodoo portal) — same rule, it must clear the
+// deployment preloader and the account-required dialog.
+.toast {
+    z-index: 1000200 !important;
+}
+
+// -----------------------------------------------------------------------------
+// 2. "Account Required" dialog shown to logged-out visitors who try to create,
+//    deploy or start a trial instance.
+//
+//    It sits above the custom modals, the block UI and the deployment
+//    preloader, but below Odoo notifications so error feedback stays on top.
+// -----------------------------------------------------------------------------
+.o_saas_auth_overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(5, 25, 28, 0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 1000100;
+}
+
+.o_saas_auth_overlay.show {
+    display: flex;
+}
+
+.o_saas_auth_card {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 26px 24px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.32);
+    animation: o_saas_auth_pop 0.22s ease;
+}
+
+@keyframes o_saas_auth_pop {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.o_saas_auth_icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #0f8f88;
+    background: rgba(15, 168, 160, 0.12);
+    border: 1px solid rgba(15, 168, 160, 0.25);
+}
+
+.o_saas_auth_title {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0d3a44;
+}
+
+.o_saas_auth_message {
+    margin: 0 0 24px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5b6b73;
+}
+
+.o_saas_auth_actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.o_saas_auth_btn {
+    width: 100%;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.o_saas_auth_btn:hover {
+    transform: translateY(-1px);
+}
+
+.o_saas_auth_btn_primary {
+    color: #fff;
+    background: linear-gradient(135deg, #0f8f88, #0b6e68);
+    box-shadow: 0 10px 24px rgba(15, 143, 136, 0.28);
+}
+
+.o_saas_auth_btn_success {
+    color: #0d3a44;
+    background: rgba(15, 168, 160, 0.12);
+    border: 1px solid rgba(15, 168, 160, 0.35);
+}
+
+.o_saas_auth_btn_ghost {
+    color: #5b6b73;
+    background: transparent;
+    border: 1px solid #dfe7ea;
+}
+
+@media (max-width: 520px) {
+    .o_saas_auth_card {
+        padding: 24px 18px 18px;
+    }
+}

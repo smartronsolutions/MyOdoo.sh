@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_upgrade_module_wizard_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.upgrade.module.wizard.form</field>
+        <field name="model">saas.odoo.instance.upgrade.module.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Upgrade Module">
+            	<group>
+            		<group>
+                        <field name="instance_id" invisible="1"/>
+                        <field name="type"/>
+                        <field name="module"/>
+                    </group>
+            	</group>                	
+				<footer>
+                    <button name="action_apply" string="Apply" type="object" class="oe_highlight" />                       	
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_upgrade_module_wizard_action" model="ir.actions.act_window">
+        <field name="name">Upgrade Module</field>
+        <field name="res_model">saas.odoo.instance.upgrade.module.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="saas_odoo_instance_upgrade_module_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

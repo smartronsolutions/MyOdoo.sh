@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- Split-screen shell: wraps Odoo's bare .oe_website_login_container (login / signup /
+     reset password) with a left form column and a right branding column.
+     Must run AFTER website.login_layout injects that container, hence priority > 20. -->
+<template id="saas_auth_split_layout" name="SaaS Auth Split-Screen Layout"
+          inherit_id="website.login_layout" priority="24">
+  <xpath expr="//div[hasclass('oe_website_login_container')]" position="replace">
+    <div class="mo_auth_shell">
+      <div class="mo_auth_form_col">
+        <div class="mo_auth_form_inner">
+          <a href="/" class="mo_auth_logo">
+            <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Company Logo"/>
+          </a>
+          <div class="oe_website_login_container" t-out="0"/>
+          <div class="mo_auth_foot">
+            <span>© My Odoo — All rights reserved.</span>
+            <a href="/">Back to homepage</a>
+          </div>
+        </div>
+      </div>
+      <div class="mo_auth_brand_col">
+        <div class="mo_auth_brand_grid"/>
+
+        <t t-if="request.httprequest.path == '/web/signup'">
+          <span class="mo_auth_badge">Start Free Today</span>
+          <h2 class="mo_auth_headline">Everything your business needs,<br/>in <em>one platform</em>.</h2>
+          <ul class="mo_auth_features">
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> AI-powered automation &amp; smart insights</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Seamless integrations &amp; API connections</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Secure cloud hosting &amp; automatic backups</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Multi-company &amp; multi-currency support</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Real-time analytics dashboards</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 24/7 expert support</li>
+          </ul>
+        </t>
+        <t t-elif="request.httprequest.path == '/web/reset_password'">
+          <span class="mo_auth_badge">Account Security</span>
+          <h2 class="mo_auth_headline">Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>.</h2>
+          <ul class="mo_auth_features">
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span> Your data stays encrypted end-to-end</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span> Reset links expire automatically for safety</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg></span> Get back to work in under 2 minutes</li>
+            <li><span class="mo_auth_feat_ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Need help? Our support team is one click away</li>
+          </ul>
+        </t>
+        <t t-else="">
+          <span class="mo_auth_badge">Cloud ERP Platform</span>
+          <h2 class="mo_auth_headline">Your time is <em>precious</em>,<br/>use it to grow.</h2>
+          <div class="mo_auth_testi">
+            <p>"With My Odoo, we stopped worrying about servers, backups and technical
+            complexity. The platform lets us focus 100% on our strategy and growth."</p>
+            <div class="mo_auth_testi_author">
+              <span class="mo_auth_avatar">L</span>
+              <span class="mo_auth_testi_meta"><strong>Léa Bernard</strong><em>Head of Operations</em></span>
+            </div>
+          </div>
+        </t>
+      </div>
+    </div>
+  </xpath>
+</template>
+
+<!-- Distinguish the "email sent" success screen from the real reset-password form: both
+     reuse the oe_login_form class in auth_signup, which would otherwise get the wrong heading. -->
+<template id="saas_reset_password_success_class" name="Tag reset-password success screen"
+          inherit_id="auth_signup.reset_password">
+  <xpath expr="//div[hasclass('oe_login_form')]" position="attributes">
+    <attribute name="class" add="mo_reset_success" separator=" "/>
+  </xpath>
+</template>
+
+<record id="saas_auth_pages" model="ir.ui.view">
+  <field name="name">website_saas_landing.auth_pages</field>
+  <field name="key">website_saas_landing.auth_pages</field>
+  <field name="inherit_id" ref="website.layout"/>
+  <field name="type">qweb</field>
+  <field name="arch" type="xml">
+    <xpath expr="//head" position="inside">
+<style>
+/* ===================================================
+   My Odoo — Auth pages (login / signup / reset password)
+   Split-screen: white form column (left) + branded column (right)
+   ================================================= */
+html:has(.oe_website_login_container) #wrapwrap > footer,
+html:has(.oe_website_login_container) .o_main_navbar,
+html:has(.oe_website_login_container) .o_website_header {
+  display:none !important;
+}
+html:has(.oe_website_login_container) #wrapwrap > main {
+  padding-top:0 !important;
+  margin-top:0 !important;
+}
+html:has(.oe_website_login_container) body,
+html:has(.oe_website_login_container) body.bg-100 {
+  background:#fff !important;
+}
+
+.mo_auth_shell {
+  display:flex;
+  width:100%;
+  min-height:calc(100vh - 78px);
+  margin:0;
+  font-family:'Inter',system-ui,sans-serif;
+}
+
+/* ── LEFT: FORM COLUMN ── */
+.mo_auth_form_col {
+  flex:1 1 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  padding:48px 8%;
+  position:relative;
+}
+.mo_auth_form_inner {
+  width:100%;
+  max-width:400px;
+  animation:fadeInUp .5s ease both;
+}
+
+.mo_auth_logo {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none !important;
+  margin:0 auto 40px;
+}
+.mo_auth_logo img {
+  max-height:64px;
+  max-width:220px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+.oe_website_login_container .oe_login_form::before,
+.oe_website_login_container .oe_signup_form::before,
+.oe_website_login_container .oe_reset_password_form::before {
+  display:block;
+  margin-bottom:7px;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.7rem;
+  line-height:1.2;
+  font-weight:800;
+  letter-spacing:-.5px;
+  color:#0F172A;
+}
+.oe_website_login_container .oe_login_form::before { content:'Welcome back.'; }
+.oe_website_login_container .oe_signup_form::before { content:'Create your account.'; }
+.oe_website_login_container .oe_reset_password_form::before { content:'Reset your password.'; }
+
+.oe_website_login_container .oe_login_form::after,
+.oe_website_login_container .oe_signup_form::after,
+.oe_website_login_container .oe_reset_password_form::after {
+  display:block;
+  margin-bottom:26px;
+  color:#64748B;
+  font-size:.9rem;
+  line-height:1.6;
+}
+.oe_website_login_container .oe_login_form::after {
+  content:'Sign in to manage your Odoo cloud projects and billing.';
+}
+.oe_website_login_container .oe_signup_form::after {
+  content:'Start your workspace and deploy your first Odoo project in minutes.';
+}
+.oe_website_login_container .oe_reset_password_form::after {
+  content:'Enter your email address and we will send you a secure reset link.';
+}
+/* Success screen after a reset-password request already shows its own message */
+.oe_website_login_container .mo_reset_success::before,
+.oe_website_login_container .mo_reset_success::after {
+  display:none !important;
+}
+
+.oe_website_login_container label {
+  display:block;
+  color:#334155 !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:.3px;
+  margin-bottom:7px !important;
+}
+
+.oe_website_login_container .form-control {
+  min-height:50px !important;
+  width:100%;
+  color:#0F172A !important;
+  background-color:#F8FAFC !important;
+  border:1.5px solid #E2E8F0 !important;
+  border-radius:12px !important;
+  padding:13px 16px 13px 44px !important;
+  font-size:14px !important;
+  background-repeat:no-repeat !important;
+  background-position:16px center !important;
+  background-size:18px 18px !important;
+  transition:border-color .2s,box-shadow .2s,background-color .2s !important;
+}
+.oe_website_login_container .form-control::placeholder { color:#94A3B8 !important; }
+.oe_website_login_container .form-control:focus {
+  background-color:#fff !important;
+  border-color:#714B67 !important;
+  box-shadow:0 0 0 4px rgba(113,75,103,.12) !important;
+  outline:none !important;
+}
+
+.oe_website_login_container input#login,
+.oe_website_login_container input[name="login"] {
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2394A3B8'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='2'%20y='4'%20width='20'%20height='16'%20rx='2'/%3E%3Cpath%20d='M2%206l10%207L22%206'/%3E%3C/svg%3E") !important;
+}
+.oe_website_login_container input#password,
+.oe_website_login_container input[name="password"],
+.oe_website_login_container input[name="confirm_password"] {
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2394A3B8'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='4'%20y='11'%20width='16'%20height='9'%20rx='2'/%3E%3Cpath%20d='M8%2011V7a4%204%200%200%201%208%200v4'/%3E%3C/svg%3E") !important;
+}
+.oe_website_login_container input#name,
+.oe_website_login_container input[name="name"] {
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2394A3B8'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='8'%20r='4'/%3E%3Cpath%20d='M4%2020c0-4%203.6-7%208-7s8%203%208%207'/%3E%3C/svg%3E") !important;
+}
+.oe_website_login_container input#db,
+.oe_website_login_container input[name="db"] {
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%2394A3B8'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cellipse%20cx='12'%20cy='5'%20rx='8'%20ry='3'/%3E%3Cpath%20d='M4%205v14c0%201.7%203.6%203%208%203s8-1.3%208-3V5'/%3E%3Cpath%20d='M4%2012c0%201.7%203.6%203%208%203s8-1.3%208-3'/%3E%3C/svg%3E") !important;
+}
+
+.oe_website_login_container .input-group { display:flex !important; }
+.oe_website_login_container .input-group .form-control {
+  border-top-right-radius:0 !important;
+  border-bottom-right-radius:0 !important;
+}
+.oe_website_login_container .input-group .btn {
+  min-height:50px !important;
+  color:#475569 !important;
+  background:#F1F5F9 !important;
+  border:1.5px solid #E2E8F0 !important;
+  border-left:none !important;
+  border-top-right-radius:12px !important;
+  border-bottom-right-radius:12px !important;
+  font-weight:600 !important;
+  font-size:13px !important;
+}
+.oe_website_login_container .input-group .btn:hover { background:#E2E8F0 !important; }
+
+.oe_website_login_container .btn-primary {
+  min-height:50px !important;
+  width:100%;
+  border:0 !important;
+  border-radius:12px !important;
+  color:#fff !important;
+  background:linear-gradient(135deg,#714B67 0%,#8C6280 55%,#4F78FF 100%) !important;
+  font-weight:700 !important;
+  font-size:15px !important;
+  box-shadow:0 12px 30px rgba(113,75,103,.28) !important;
+  transition:transform .2s,box-shadow .2s,filter .2s !important;
+}
+.oe_website_login_container .btn-primary:hover {
+  transform:translateY(-2px) !important;
+  filter:brightness(1.06) !important;
+  box-shadow:0 16px 38px rgba(113,75,103,.38) !important;
+}
+
+.oe_website_login_container a,
+.oe_website_login_container .btn-link {
+  color:#714B67 !important;
+  font-weight:600 !important;
+  text-decoration:none !important;
+}
+.oe_website_login_container a:hover,
+.oe_website_login_container .btn-link:hover { color:#57384F !important; text-decoration:underline !important; }
+
+.oe_website_login_container .alert {
+  border-radius:12px !important;
+  padding:12px 16px !important;
+  font-size:13px !important;
+  line-height:1.55 !important;
+}
+.oe_website_login_container .alert-danger {
+  color:#B91C1C !important;
+  background:#FEF2F2 !important;
+  border:1px solid #FECACA !important;
+}
+.oe_website_login_container .alert-success,
+.oe_website_login_container .alert-info {
+  color:#075985 !important;
+  background:#F0F9FF !important;
+  border:1px solid #BAE6FD !important;
+}
+
+.oe_website_login_container .o_login_auth em { color:#94A3B8 !important; }
+.oe_website_login_container .o_login_auth .list-group-item {
+  color:#334155 !important;
+  background:#F8FAFC !important;
+  border-color:#E2E8F0 !important;
+  border-radius:10px !important;
+}
+
+.mo_auth_foot {
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid #F1F5F9;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:12.5px;
+  color:#94A3B8;
+}
+.mo_auth_foot a { color:#714B67 !important; font-weight:600 !important; }
+
+/* ── RIGHT: BRANDING COLUMN ── */
+.mo_auth_brand_col {
+  flex:1 1 50%;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:28px;
+  padding:64px 7%;
+  color:#fff;
+  background:
+    radial-gradient(ellipse 60% 50% at 18% 10%, rgba(140,98,128,.48) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 45% at 88% 88%, rgba(79,120,255,.28) 0%, transparent 58%),
+    linear-gradient(160deg,#2F2630 0%,#57384F 55%,#17202A 100%);
+  animation:slideInRight .6s ease both;
+}
+.mo_auth_brand_grid {
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);
+  background-size:26px 26px;
+  pointer-events:none;
+}
+.mo_auth_badge {
+  position:relative;
+  z-index:1;
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:100px;
+  padding:7px 16px;
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  backdrop-filter:blur(6px);
+}
+.mo_auth_headline {
+  position:relative;
+  z-index:1;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:2.6rem;
+  font-weight:800;
+  line-height:1.14;
+  letter-spacing:-1px;
+  margin:0;
+  max-width:520px;
+}
+.mo_auth_headline em {
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(135deg,#D7BFD1,#7F9BFF);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.mo_auth_testi {
+  position:relative;
+  z-index:1;
+  max-width:460px;
+  padding:24px 26px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(10px);
+}
+.mo_auth_testi p {
+  margin:0 0 18px;
+  font-size:.95rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.82);
+}
+.mo_auth_testi_author { display:flex; align-items:center; gap:12px; }
+.mo_auth_avatar {
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  background:linear-gradient(135deg,#714B67,#4F78FF);
+}
+.mo_auth_testi_meta { display:flex; flex-direction:column; line-height:1.35; font-size:.82rem; }
+.mo_auth_testi_meta strong { color:#fff; }
+.mo_auth_testi_meta em { font-style:normal; color:rgba(255,255,255,.5); }
+
+.mo_auth_features {
+  position:relative;
+  z-index:1;
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  max-width:460px;
+}
+.mo_auth_features li {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  font-size:.94rem;
+  color:rgba(255,255,255,.86);
+}
+.mo_auth_feat_ico {
+  width:27px;
+  height:27px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#714B67,#4F78FF);
+  box-shadow:0 4px 14px rgba(113,75,103,.4);
+}
+
+@keyframes fadeInUp {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity:0; transform:translateX(24px); }
+  to { opacity:1; transform:translateX(0); }
+}
+
+@media(max-width:991px) {
+  .mo_auth_brand_col { display:none; }
+  .mo_auth_form_col { flex:1 1 100%; }
+}
+@media(max-width:540px) {
+  .mo_auth_form_col { padding:36px 6%; }
+  .oe_website_login_container .oe_login_form::before,
+  .oe_website_login_container .oe_signup_form::before,
+  .oe_website_login_container .oe_reset_password_form::before {
+    font-size:1.4rem;
+  }
+}
+</style>
+    </xpath>
+  </field>
+</record>
+
+</data>
+</odoo>

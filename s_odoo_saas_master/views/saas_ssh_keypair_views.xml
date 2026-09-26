@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_ssh_keypair_view_tree" model="ir.ui.view">
+        <field name="name">saas.ssh.keypair.view.tree</field>
+        <field name="model">saas.ssh.keypair</field>
+        <field name="arch" type="xml">
+            <list string="SaaS SSH Key Pair">
+                <field name="name"/>
+                <field name="type"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_ssh_keypair_view_form" model="ir.ui.view">
+        <field name="name">saas.ssh.keypair.view.form</field>
+        <field name="model">saas.ssh.keypair</field>
+        <field name="arch" type="xml">
+            <form string="SaaS SSH Key Pair">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="public_key_id" invisible="1"/>
+                    <field name="can_edit_private_key" invisible="1"/>
+                    <field name="private_key_id" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="e.g. Production Key"/></h1>
+                    </div>
+                    <group>                        
+                        <group>
+                            <field name="private_key_filename" groups="s_odoo_saas_master.group_odoo_saas_master"/>
+                            <field name="private_key_data" filename="private_key_filename" groups="s_odoo_saas_master.group_odoo_saas_master"/>
+                        </group>
+                        <group>
+                        	<field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_ssh_keypair_view_search" model="ir.ui.view">
+        <field name="name">saas.ssh.keypair.view.search</field>
+        <field name="model">saas.ssh.keypair</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="type"/>
+                <separator/>
+                <filter name="ftr_type_rsa" string="RSA" domain="[('type', '=', 'rsa')]"/>
+                <separator/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Type" name="grb_type" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_ssh_keypair_action" model="ir.actions.act_window">
+        <field name="name">SSH Key Pair</field>
+        <field name="res_model">saas.ssh.keypair</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_ssh_keypair_menu" action="saas_ssh_keypair_action" parent="saas_menu_config" sequence="10" groups="s_odoo_saas_master.group_odoo_saas_master"/>
+
+</odoo>

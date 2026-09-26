@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+	<record id="saas_odoo_version_config_section_options" model="saas.odoo.version.config.section">
+		<field name="name">options</field>
+	</record>
+	
+	<record id="saas_odoo_version_config_section_saaslimits" model="saas.odoo.version.config.section">
+		<field name="name">saaslimits</field>
+	</record>
+
+</odoo>

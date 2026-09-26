@@ -1,0 +1,2047 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-09-23 07:42+1100\n"
+"Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
+"Language-Team: es\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"\"With My Odoo, we stopped worrying about servers, backups and technical\n"
+"            complexity. The platform lets us focus 100% on our strategy and growth.\""
+msgstr ""
+"\"Con Mi Odoo, dejamos de preocuparnos por servidores, respaldos y técnicas\n"
+"complejidad. La plataforma nos permite enfocarnos al 100% en nuestra estrategia y crecimiento\""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "24/7 expert support"
+msgstr "apoyo de expertos 24/7"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"availability\">Project scope</b><br/><span>Implementation, "
+"hosting, support and integrations</span>"
+msgstr ""
+"<b data-i18n=\"availability\">Alcance del proyecto</b><br/><span>Aplicación,"
+" alojamiento, apoyo e integraciones</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"connected_apps\">One connected suite</b><span class=\"mini-"
+"pill\">CRM</span><span class=\"mini-pill\" "
+"data-i18n=\"accounting\">Accounting</span><span class=\"mini-pill\" "
+"data-i18n=\"invoicing\">Invoicing</span><span class=\"mini-pill\" "
+"data-i18n=\"inventory\">Inventory</span><span class=\"mini-pill\">Point of "
+"Sale</span><span class=\"mini-pill\">eCommerce</span><span class=\"mini-"
+"pill\">EpayNC</span><span class=\"mini-pill\">AI Assistant</span><span "
+"class=\"mini-pill\" data-i18n=\"projects\">Projects</span>"
+msgstr ""
+"<b data-i18n=\"connected_apps\">Una suite conectada</b><span class=\"mini-"
+"pill\">CRM</span><span class=\"mini-pill\" "
+"data-i18n=\"accounting\">Contabilidad</span><span class=\"mini-pill\" "
+"data-i18n=\"invoicing\">Invocación</span><span class=\"mini-pill\" "
+"data-i18n=\"inventory\">Inventario</span><span class=\"mini-pill\">Punto de "
+"venta</span><span class=\"mini-pill\">eCommerce</span><span class=\"mini-"
+"pill\">EpayNC</span><span class=\"mini-pill\">AI Assistant</span><span "
+"class=\"mini-pill\" data-i18n=\"projects\">Proyectos</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"french_support\">English &amp; French support</b><small "
+"data-i18n=\"french_support_text\">Clear assistance for your team and "
+"users.</small>"
+msgstr ""
+"<b data-i18n=\"french_support\">Apoyo francés e inglés</b><small "
+"data-i18n=\"french_support_text\">Asistencia clara para su equipo y "
+"usuarios.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"inventory\">Inventory</b><small "
+"style=\"display:block;color:#7b8491\" data-i18n=\"stock_synced\">Stock "
+"synchronized</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"local_finance\">Local financial workflows</b><small "
+"data-i18n=\"local_finance_text\">Invoicing and TGC-ready processes.</small>"
+msgstr ""
+"<b data-i18n=\"local_finance\">Corrientes de trabajo financieros "
+"locales</b><small data-i18n=\"local_finance_text\">Procesos de facturación y"
+" TGC listos.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<b data-i18n=\"location\">Market focus</b><br/><span>New Caledonia</span>"
+msgstr ""
+"<b data-i18n=\"location\">Enfoque del mercado</b><br/><span>Nueva "
+"Caledonia</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"managed_platform\">Managed platform</b><small "
+"data-i18n=\"managed_platform_text\">Hosting, backups and updates handled for"
+" you.</small>"
+msgstr ""
+"<b data-i18n=\"managed_platform\">Plataforma gestionada</b><small "
+"data-i18n=\"managed_platform_text\">Alojamiento, copias de seguridad y "
+"actualizaciones manejadas para usted.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"sales_crm\">Sales &amp; CRM</b><small "
+"style=\"display:block;color:#7b8491\" "
+"data-i18n=\"pipeline_updated\">Pipeline updated</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>AI Assistant</b>"
+msgstr "<b>AI Assistant</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Accounting</b>"
+msgstr "<b>Contabilidad</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Andrea Morales</b><small>Odoo Partner</small>"
+msgstr "<b>Andrea Morales</b><small>Odoo Partner</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>CRM</b>"
+msgstr "<b>CRM</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Carlos Rodriguez</b><small>Technology Director</small>"
+msgstr "<b>Carlos Rodríguez</b><small>Technology Director</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b>Demo presentation</b><br/><span>Company contact details intentionally "
+"omitted</span>"
+msgstr ""
+"<b>Demo presentation</b><br/><span>Información de contacto de la empresa "
+"omitida intencionalmente</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Employees &amp; HR</b>"
+msgstr "<b>Empleados &quot; HR</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Field Service</b>"
+msgstr "<b>Servicio Móvil</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Helpdesk</b>"
+msgstr "<b>Helpdesk</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Inventory</b>"
+msgstr "<b>Inventario</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Jose Pacheco</b><small>IT Manager</small>"
+msgstr "<b>Jose Pacheco</b><small>IT Manager</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Manufacturing</b>"
+msgstr "<b>Fabricación</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Marketing</b>"
+msgstr "<b>Marketing</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Point of Sale</b>"
+msgstr "<b>Punto de venta</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Projects</b>"
+msgstr "<b>Proyectos</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Purchase</b>"
+msgstr "<b>Compra</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Rental</b>"
+msgstr "<b>Alquiler</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Sales</b>"
+msgstr "<b>Ventas</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Website</b>"
+msgstr "<b>Sitio web</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>eCommerce</b>"
+msgstr "<b>eCommerce</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i class=\"check\">✓</i>"
+msgstr "<i class=\"check\">✓</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>AI</i>AI Assistant"
+msgstr "<i>AI</i>AI Assistant"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>G</i>Google Workspace"
+msgstr "<i>G</i>Google Workspace"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>M</i>Microsoft 365"
+msgstr "<i>M</i>Microsoft 365"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>S</i>Stripe Payments"
+msgstr "<i>S</i>Pagos de Stripe"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Sh</i>Shopify"
+msgstr "<i>Sh</i>Shopify"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>W</i>WhatsApp Business"
+msgstr "<i>W</i>WhatsApp Business"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Z</i>Zapier Automation"
+msgstr "<i>Z</i>Automatización de Zapier"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⇄</i>Logistics"
+msgstr "<i>▪</i>Logística"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>⌁</i>"
+msgstr "<i>⌁</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⌂</i>Construction"
+msgstr "<i>⌂</i>Construcción"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▤</i>Education"
+msgstr "<i>▤</i>Educación"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▦</i>Wholesale"
+msgstr "<i>▦</i>Mayorista"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◈</i>"
+msgstr "<i>◈</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◈</i>Multi-company Groups"
+msgstr "<i>◈</i>Grupos multiempresariales"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>◈</i>Slack Alerts"
+msgstr "<i>◈</i>Alertas Slack"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◎</i>Professional Services"
+msgstr "<i>▪</i>Servicios profesionales"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◫</i>Retail"
+msgstr "<i>◫</i>Retail"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◷</i>"
+msgstr "<i>◷</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>♢</i>Hospitality"
+msgstr "<i>♢</i>Hospitalidad"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⚙</i>Manufacturing"
+msgstr "<i>⚙</i>Fabricación"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>✚</i>Healthcare"
+msgstr "<i>.</i>Salud"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<select><option data-i18n=\"new_implementation\">A new Odoo "
+"implementation</option><option data-i18n=\"support_existing\">Support for an"
+" existing Odoo</option><option data-i18n=\"website_ecommerce\">Website / "
+"eCommerce</option><option data-i18n=\"hosting_option\">Hosting and "
+"maintenance</option><option data-i18n=\"other\">Other</option></select>"
+msgstr ""
+"<select><option data-i18n=\"new_implementation\">Una nueva implementación de"
+" Odoo</option><option data-i18n=\"support_existing\">Apoyo a un Odoo "
+"existente</option><option data-i18n=\"website_ecommerce\">Sitio web / "
+"eCommerce</option><option data-i18n=\"hosting_option\">Hosting y "
+"mantenimiento</option><option data-i18n=\"other\">Otros</option></select>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<small data-i18n=\"business_growth\">Business growth</small>"
+msgstr "<small data-i18n=\"business_growth\">Crecimiento empresarial</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<small data-i18n=\"monthly_sales\">Monthly "
+"sales</small><strong>8.4M</strong><span class=\"trend\">↑ 18.6%</span>"
+msgstr ""
+"<small data-i18n=\"monthly_sales\">Ventas "
+"mensuales</small><strong>8.4M</strong><span class=\"trend\">↑ 18.6%</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">I</span>"
+msgstr "<span class=\"appdot\">I</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">S</span>"
+msgstr "<span class=\"appdot\">S</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span class=\"brand-fallback\" style=\"display:block;font-size:25px\">odoo</span>\n"
+"        <span class=\"brand-divider\"/>\n"
+"        <span class=\"brand-name\">MY ODOO NC</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid ""
+"<span class=\"brand-fallback\">odoo</span>\n"
+"      <span class=\"brand-divider\"/>\n"
+"      <span class=\"brand-name\">MY ODOO NC<small>New Caledonia</small></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"contact_badge\">Let’s "
+"talk</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"everything_needed\">Everything"
+" you need</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"hero_badge\">Built for "
+"businesses in New Caledonia</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"local_advantage\">The local "
+"advantage</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"services_badge\">Odoo "
+"solutions</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>About My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Cloud platform features</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Connections</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>FAQ</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Flexible service packages</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Implementation roadmap</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Industries</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Odoo applications</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Simple process</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Success stories</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Why My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"<span class=\"mo_auth_avatar\">L</span>\n"
+"              <span class=\"mo_auth_testi_meta\"><strong>Léa Bernard</strong><em>Head of Operations</em></span>"
+msgstr ""
+"<span class=\"mo_auth_avatar\">L</span><span "
+"class=\"mo_auth_testi_meta\"><strong>Léa Bernard</strong><em>Head of "
+"Operations</em></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Account Security</span>"
+msgstr "<span class=\"mo_auth_badge\">Seguridad de la cuenta</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Cloud ERP Platform</span>"
+msgstr "<span class=\"mo_auth_badge\">Cloud ERP Platform</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
+msgstr "<span class=\"mo_auth_badge\">Empieza gratis hoy</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Enterprise</span>"
+msgstr "<span class=\"plan-label\">Enterprise</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Most Popular</span>"
+msgstr "<span class=\"plan-label\">Más populares</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Starter</span>"
+msgstr "<span class=\"plan-label\">Starter</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span data-i18n=\"workspace\">My Odoo Workspace</span><i class=\"avatar\"/>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span><i class=\"check\">✓</i><b data-i18n=\"local_support\">Local "
+"support</b></span><span><i class=\"check\">✓</i><b "
+"data-i18n=\"secure_hosting\">Secure hosting</b></span><span><i "
+"class=\"check\">✓</i><b data-i18n=\"modular_growth\">Modular "
+"growth</b></span>"
+msgstr ""
+"<span><i class=\"check\">✓</i><b data-i18n=\"local_support\">Apoyo "
+"local</b></span><span><i class=\"check\">✓</i><b "
+"data-i18n=\"secure_hosting\">Alojamiento seguro</b></span><span><i "
+"class=\"check\">✓</i><b data-i18n=\"modular_growth\">Crecimiento "
+"modular</b></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>CRM &amp; Sales</span>\n"
+"        <span>Accounting</span>\n"
+"        <span>Inventory</span>\n"
+"        <span>eCommerce</span>"
+msgstr ""
+"<span>CRM &amp; "
+"Sales</span><span>Contabilidad</span><span>Inventario</span><span>eCommerce</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>Demo contact section</span>\n"
+"        <span>Company details omitted</span>"
+msgstr ""
+"<span>Sección de contacto de demostración</span><span>Datos de la empresa "
+"omitidos</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>© 2026 My Odoo NC. All rights reserved.</span>\n"
+"    <span>Odoo is a trademark of Odoo S.A.</span>"
+msgstr ""
+"<span>© 2026 Mi Odoo NC. Todos los derechos reservados.</span><span>Odoo es "
+"una marca comercial de Odoo S.A.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span>© My Odoo — All rights reserved.</span>"
+msgstr "<span>© My Odoo — Todos los derechos reservados.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>&lt;2 min</strong><span>Automatic deployment</span>"
+msgstr "<strong>2 min</strong><span>Despliegue automático</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>1</strong><b>Consultation</b><span>Understand goals and current "
+"challenges.</span>"
+msgstr ""
+"<strong>1</strong><b>Consulta</b><span>Comprender objetivos y desafíos "
+"actuales.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>2,400+</strong><span>Active projects</span>"
+msgstr "<strong>2.400+</strong><span>Proyectos activos</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>2</strong><b>Business Analysis</b><span>Map processes, users and "
+"priorities.</span>"
+msgstr ""
+"<strong>2</strong><b>Análisis de empresas</b><span>Procesos de mapa, "
+"usuarios y prioridades.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>30 days</strong><span>Backup retention</span>"
+msgstr "<strong>30 días</strong><span>Retención de respaldo</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>3</strong><b>Configuration</b><span>Set up apps, workflows and "
+"access.</span>"
+msgstr ""
+"<strong>3</strong><b>Configuración</b><span>Configurar aplicaciones, flujos "
+"de trabajo y acceso.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>4</strong><b>Customization</b><span>Add required reports and "
+"integrations.</span>"
+msgstr ""
+"<strong>4</strong><b>Personalización</b><span>Añada los informes e "
+"integraciones necesarios.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>5</strong><b>Testing</b><span>Validate workflows and business "
+"data.</span>"
+msgstr ""
+"<strong>5</strong><b>Pruebas</b><span>Validar los flujos de trabajo y los "
+"datos de negocios.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>6</strong><b>Training &amp; Go-live</b><span>Prepare users and "
+"launch confidently.</span>"
+msgstr ""
+"<strong>6</strong><b>Formación &quot; Go-live</b><span>Preparar usuarios y "
+"lanzar con confianza.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>7</strong><b>Ongoing Support</b><span>Improve the system as the "
+"business grows.</span>"
+msgstr ""
+"<strong>7</strong><b>Apoyo continuo</b><span>Mejorar el sistema a medida que"
+" crece el negocio.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>99.9%</strong><span>Uptime target</span>"
+msgstr "<strong>99,9%</strong><span>Objetivo de tiempo libre</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "A"
+msgstr "A"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A clear path from consultation to support"
+msgstr "Un camino claro de la consulta para apoyar"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"A clear roadmap that reduces delays and keeps the project focused on "
+"priorities."
+msgstr ""
+"Una hoja de ruta clara que reduce las demoras y mantiene el proyecto "
+"centrado en las prioridades."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A managed environment built for reliable everyday access."
+msgstr "Un entorno gestionado construido para un acceso diario confiable."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A modern Odoo environment adapted to the practical needs of New Caledonian "
+"companies, supported by people who understand your context."
+msgstr ""
+"Un ambiente moderno de Odoo adaptado a las necesidades prácticas de las "
+"empresas de Nueva Caledonia, apoyado por personas que entienden su contexto."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A practical Odoo partner for local business growth"
+msgstr "Un socio práctico de Odoo para el crecimiento empresarial local"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A practical workflow designed to reduce technical complexity and launch "
+"projects faster."
+msgstr ""
+"Un flujo de trabajo práctico diseñado para reducir la complejidad técnica y "
+"los proyectos de lanzamiento más rápido."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A structured setup aligned with your processes, users and priorities."
+msgstr ""
+"Una configuración estructurada alineada con sus procesos, usuarios y "
+"prioridades."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "AI"
+msgstr "AI"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "AI Assistant for Odoo"
+msgstr "AI Assistant for Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "AI-powered automation &amp; smart insights"
+msgstr "Automatización impulsada por IA y conocimientos inteligentes"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "AM"
+msgstr "AM"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "About"
+msgstr "Acerca de"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Adapt Odoo where your business needs more than standard configuration."
+msgstr ""
+"Adapte Odoo donde su negocio necesita más que la configuración estándar."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Advanced customization"
+msgstr "Personalización avanzada"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Application configuration"
+msgstr "Configuración de aplicaciones"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Are backups and SSL included?<span>+</span>"
+msgstr "¿Están incluidos los respaldos y SSL?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Automated backups"
+msgstr "Respaldos automatizados"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Backups"
+msgstr "Copias de seguridad automáticas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Builds"
+msgstr "Construcciones automáticas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Deploy"
+msgstr "Despliegue automático"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Back to homepage"
+msgstr "Volver a la página principal"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Bank reconciliation support"
+msgstr "Apoyo a la reconciliación bancaria"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Basic configuration"
+msgstr "Configuración básica"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Book a consultation →"
+msgstr "Reserva una consulta →"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Book a demo"
+msgstr "Reserva una demo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Branch Management"
+msgstr "Subdivisión de Gestión"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Bring payments, communication, productivity and automation into your Odoo "
+"workflows."
+msgstr ""
+"Traiga pagos, comunicación, productividad y automatización a sus flujos de "
+"trabajo Odoo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Build a better way to work."
+msgstr "Construye una mejor manera de trabajar."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Build a cleaner financial workflow from quotation to payment follow-up."
+msgstr ""
+"Construir un flujo de trabajo financiero más limpio de presupuesto a "
+"seguimiento de pago."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Build each update, review logs and validate changes before moving them into "
+"production."
+msgstr ""
+"Construya cada actualización, revise los registros y valide los cambios "
+"antes de llevarlos a la producción."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Business Growth"
+msgstr "Crecimiento empresarial"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Business-focused guidance adapted to the needs of companies in New "
+"Caledonia."
+msgstr ""
+"Orientación centrada en las empresas adaptada a las necesidades de las "
+"empresas de Nueva Caledonia."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "CR"
+msgstr "CR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM"
+msgstr "CRM"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM &amp; Sales"
+msgstr "CRM & Sales"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can I migrate an existing Odoo database?<span>+</span>"
+msgstr "¿Puedo migrar una base de datos Odoo existente?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can external tools be integrated?<span>+</span>"
+msgstr "¿Pueden integrarse las herramientas externas?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose a plan, create the project and connect your repository or existing "
+"Odoo database."
+msgstr ""
+"Elige un plan, crea el proyecto y conecta tu repositorio o la base de datos "
+"Odoo existente."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose the applications your business needs today and expand the platform as"
+" your operations grow."
+msgstr ""
+"Elija las aplicaciones que su negocio necesita hoy y amplíe la plataforma a "
+"medida que sus operaciones crezcan."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Choose the right starting point"
+msgstr "Elija el punto de partida adecuado"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company"
+msgstr "Company"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Company Logo"
+msgstr "Company Logo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company name"
+msgstr "Nombre de la empresa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Configure Branches"
+msgstr "Configure Branchs"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Connect inventory, purchasing, projects, fleet and point of sale in real "
+"time."
+msgstr ""
+"Conectar inventario, compras, proyectos, flota y punto de venta en tiempo "
+"real."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Connect local digital payment journeys with invoices, customer portals and "
+"eCommerce."
+msgstr ""
+"Conectar viajes de pago digital local con facturas, portales de clientes y "
+"eCommerce."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Connect the tools your team already uses"
+msgstr "Conecta las herramientas que tu equipo ya utiliza"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Connexion"
+msgstr "Connexion"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Continuous improvement roadmap"
+msgstr "Mejora continua"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Core Odoo applications"
+msgstr "Aplicaciones básicas de Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Create Your Project"
+msgstr "Crear su proyecto"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Créer un compte"
+msgstr "Créer un compte"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Domains"
+msgstr "Dominios personalizados"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Solution"
+msgstr "Solución personalizada"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Custom workflows and automation"
+msgstr "Corrientes de trabajo y automatización personalizadas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customer portal payments"
+msgstr "Portal de pagos al cliente"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customization &amp; Integration"
+msgstr "Personalización e Integración"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Data migration support"
+msgstr "Apoyo a la migración de datos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Define production, staging and development environments for safer testing "
+"and releases."
+msgstr ""
+"Definir entornos de producción, estadificación y desarrollo para pruebas y "
+"versiones más seguras."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Demo form submitted. No data has been sent."
+msgstr "Formulario de demostración presentado. No se han enviado datos."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Demo pricing is intentionally presented as service packages. Exact "
+"commercial pricing and technical limits should be finalized before the "
+"production website goes live."
+msgstr ""
+"Los precios de demostración se presentan intencionalmente como paquetes de "
+"servicio. Los precios comerciales y los límites técnicos deben ser "
+"finalizados antes de que el sitio web de producción vaya en vivo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Deploy, test, monitor and scale your Odoo environments from one clear "
+"workspace."
+msgstr ""
+"Implementar, probar, monitorear y escalar sus entornos Odoo desde un espacio"
+" de trabajo claro."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Déconnexion"
+msgstr "Déconnexion"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "E"
+msgstr "E"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "EN"
+msgstr "EN"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Each project follows a practical sequence so decisions stay clear and users "
+"are ready before launch."
+msgstr ""
+"Cada proyecto sigue una secuencia práctica para que las decisiones se "
+"mantengan claras y los usuarios estén listos antes del lanzamiento."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Email"
+msgstr "Email"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "EpayNC &amp; Online Payments"
+msgstr "Pagos en línea y EpayNC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Essential Setup"
+msgstr "Configuración esencial"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Every connected repository update can trigger a new build, with clear logs "
+"to help identify issues before production."
+msgstr ""
+"Cada actualización de repositorio conectado puede desencadenar una nueva "
+"construcción, con registros claros para ayudar a identificar problemas antes"
+" de la producción."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Everything you need to manage Odoo professionally"
+msgstr "Todo lo que necesitas para manejar Odoo profesionalmente"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Everything your business needs,<br/>in <em>one platform</em>."
+msgstr "Todo lo que tu negocio necesita,<br/>dentro <em>una plataforma</em>."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Explore services"
+msgstr "Explore los servicios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "FR"
+msgstr "FR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "FS"
+msgstr "SM"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Faster Deployment"
+msgstr "Despliegue más rápido"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Final pricing depends on users, applications, data migration, customization,"
+" integrations and support requirements."
+msgstr ""
+"Los precios finales dependen de usuarios, aplicaciones, migración de datos, "
+"personalización, integraciones y requisitos de soporte."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Finance &amp; TGC"
+msgstr "Finanzas y TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "First-level user support"
+msgstr "Soporte de usuario de primer nivel"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Fleet, projects and task management"
+msgstr "Fleet, proyectos y gestión de tareas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For complex workflows, integrations and multi-company requirements."
+msgstr ""
+"Para flujos de trabajo complejos, integraciones y necesidades "
+"multiempresariales."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For growing businesses centralizing multiple departments."
+msgstr "Para empresas crecientes centralizando múltiples departamentos."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For small teams moving from spreadsheets or disconnected tools."
+msgstr ""
+"Para equipos pequeños que se mueven de hojas de cálculo o herramientas "
+"desconectadas."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Frequently asked questions"
+msgstr "Preguntas frecuentes"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"From first consultation to daily support, we help you deploy a practical "
+"business platform—not just another piece of software."
+msgstr ""
+"Desde la primera consulta hasta el soporte diario, le ayudamos a implementar"
+" una plataforma de negocios práctica, no sólo otra pieza de software."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"From first consultation to long-term support, every stage is designed to "
+"make implementation clear, secure and manageable."
+msgstr ""
+"Desde la primera consulta hasta el apoyo a largo plazo, cada etapa está "
+"diseñada para que la aplicación sea clara, segura y manejable."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "From setup to production in four steps"
+msgstr "De la configuración a la producción en cuatro pasos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Full name"
+msgstr "Nombre completo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Get Demo"
+msgstr "Ver demo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Get back to work in under 2 minutes"
+msgstr "Vuelve a trabajar en menos de 2 minutos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "H"
+msgstr "H"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "HR"
+msgstr "RECURSOS HUMANOS"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Help teams find information, complete tasks and understand daily workflows "
+"more quickly."
+msgstr ""
+"Ayuda a los equipos a encontrar información, completar tareas y entender los"
+" flujos de trabajo diarios más rápidamente."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Help your users adopt Odoo confidently and get answers quickly."
+msgstr ""
+"Ayuda a tus usuarios a adoptar Odoo con confianza y obtener respuestas "
+"rápidamente."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Home"
+msgstr "Inicio"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Hosting &amp; Security"
+msgstr "Alojamiento y seguridad"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "I"
+msgstr "I"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "I am interested in"
+msgstr "Estoy interesado en"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Implementation and configuration support"
+msgstr "Apoyo a la aplicación y la configuración"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Implementation guidance, configuration assistance and user training can be "
+"included according to the selected service package."
+msgstr ""
+"La orientación de aplicación, la asistencia de configuración y la "
+"capacitación de los usuarios pueden incluirse en el paquete de servicios "
+"seleccionado."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"Implementation, hosting, customization, training and long-term Odoo support "
+"for businesses in New Caledonia."
+msgstr ""
+"Implementación, alojamiento, personalización, capacitación y apoyo a Odoo a "
+"largo plazo para empresas en Nueva Caledonia."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Important information about migration, security, capacity and support."
+msgstr "Información importante sobre migración, seguridad, capacidad y apoyo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Increase resources as usage grows without rebuilding or manually migrating "
+"the environment."
+msgstr ""
+"Aumentar los recursos a medida que el uso crece sin reconstruir o migrar "
+"manualmente el medio ambiente."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Industry-ready workflows help teams reduce manual work and gain better "
+"visibility across daily operations."
+msgstr ""
+"Los flujos de trabajo listos para la industria ayudan a los equipos a "
+"reducir el trabajo manual y a aumentar la visibilidad en todas las "
+"operaciones diarias."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Initial data and user setup"
+msgstr "Datos iniciales y configuración del usuario"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Initial training"
+msgstr "Formación inicial"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Inventory and purchasing"
+msgstr "Inventario y compra"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoice and quotation guidance"
+msgstr "Orientación sobre facturas y cotizaciones"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoicing, Accounting &amp; TGC"
+msgstr "Facturación, Contabilidad y TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Is support available during setup?<span>+</span>"
+msgstr "¿Hay apoyo disponible durante la configuración?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "JP"
+msgstr "JP"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Keep encrypted database backups and restore a previous version quickly when "
+"needed."
+msgstr ""
+"Mantenga copias de seguridad de la base de datos cifradas y restaurar una "
+"versión anterior rápidamente cuando sea necesario."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Keep stock, purchasing, sales and customer data synchronized."
+msgstr ""
+"Mantenga el stock, la compra, las ventas y los datos del cliente "
+"sincronizados."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Learn more →"
+msgstr "Aprender más →"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Let’s define a practical Odoo roadmap for your team."
+msgstr "Definimos una hoja de ruta práctica Odoo para su equipo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Local Understanding"
+msgstr "Entendimiento local"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Local understanding.<br/><span class=\"gradient-text\">Connected business "
+"technology.</span>"
+msgstr ""
+"Comprensión local.<br/><span class=\"gradient-text\">Tecnología de negocio "
+"conectada.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Long-term optimization roadmap"
+msgstr "Hoja de ruta de optimización a largo plazo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>."
+msgstr ""
+"Perder el acceso pasa.<br/>Volver a entrar <em>No debería ser difícil.</em>."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "M"
+msgstr "M"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "MK"
+msgstr "MK"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Manage multiple Odoo projects, customer environments and service plans from "
+"a single panel."
+msgstr ""
+"Gestione múltiples proyectos Odoo, entornos de clientes y planes de servicio"
+" de un solo panel."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Managed environments with backups, monitoring and controlled access."
+msgstr "Managed environments with backups, monitoring and controlled access."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Managed hosting"
+msgstr "Alojamiento gestionado"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Managed plans can include encrypted backups, secure project isolation and "
+"SSL for hosted subdomains or connected domains."
+msgstr ""
+"Los planes gestionados pueden incluir copias de seguridad cifradas, "
+"aislamiento seguro de proyectos y SSL para subdominios o dominios "
+"conectados."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Menu"
+msgstr "Menú"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mon Compte"
+msgstr "Mon Compte"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mot de passe oublié"
+msgstr "Mot de passe oublié"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Multi-company &amp; multi-currency support"
+msgstr "Multi-empresa y soporte multi-currencia"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-company setup"
+msgstr "Configuración de empresas múltiples"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-tenant Ready"
+msgstr "Multi-tenant Ready"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multiple Odoo applications"
+msgstr "Aplicaciones múltiples de Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Account"
+msgstr "Mi cuenta"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Odoo NC"
+msgstr "Mi Odoo NC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"My Odoo NC helps businesses in New Caledonia implement, host, customize and "
+"improve Odoo through a practical, business-first approach."
+msgstr ""
+"Mi Odoo NC ayuda a las empresas de Nueva Caledonia a implementar, acoger, "
+"personalizar y mejorar Odoo a través de un enfoque práctico y empresarial."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "My Odoo NC — About"
+msgstr "My Odoo NC — About"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "My Odoo NC — Contact Us"
+msgstr "Mi Odoo NC — Contáctenos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "My Odoo NC — Home"
+msgstr "My Odoo NC — Home"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "My Odoo NC — Services"
+msgstr "Mi Odoo NC — Servicios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Need help? Our support team is one click away"
+msgstr "¿Necesitas ayuda? Nuestro equipo de soporte está a un clic"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Odoo Expertise"
+msgstr "Odoo Expertise"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Odoo Implementation"
+msgstr "Odoo Implementation"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "One connected system for every department"
+msgstr "Un sistema conectado para cada departamento"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"One platform.<br/><span class=\"gradient-text\">Your entire business.</span>"
+msgstr "Una plataforma.<br/><span class=\"gradient-text\">Todo tu negocio.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Ongoing Support"
+msgstr "Apoyo continuo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Online store payment flow"
+msgstr "Flujo de pago en tienda en línea"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Operations"
+msgstr "Operaciones"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Overdue invoice lookup"
+msgstr "Consulta de facturas atrasadas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "P"
+msgstr "P"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "POS"
+msgstr "POS"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "PR"
+msgstr "PR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Payment tracking and reminders"
+msgstr "Seguimiento de pagos y recordatorios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Point of Sale"
+msgstr "Punto de venta"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Powerful technology. Local understanding."
+msgstr "Tecnología poderosa. Comprensión local."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Pricing"
+msgstr "Precios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Priority implementation support"
+msgstr "Apoyo a la aplicación de prioridades"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Process configuration"
+msgstr "Configuración del proceso"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process discovery and solution design"
+msgstr "Proceso de descubrimiento y diseño de soluciones"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process optimization reviews"
+msgstr "Exámenes de optimización de procesos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Quotations, invoices and credit notes"
+msgstr "Citas, facturas y notas de crédito"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "R"
+msgstr "R"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Ready to simplify your business?"
+msgstr "¿Listo para simplificar su negocio?"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Real-time Monitoring"
+msgstr "Vigilancia en tiempo real"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Real-time analytics dashboards"
+msgstr "Paneles de análisis en tiempo real"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Reliable hosting, easier deployments and one place to manage multiple Odoo "
+"environments."
+msgstr ""
+"Alojamiento fiable, despliegues más fáciles y un lugar para gestionar "
+"múltiples entornos Odoo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Remote functional support"
+msgstr "Soporte funcional remoto"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Replace scattered tools and repeated data entry with a clear, flexible "
+"platform that grows with your business."
+msgstr ""
+"Sustitúyase las herramientas dispersas y la entrada repetida de datos con "
+"una plataforma clara y flexible que crece con su negocio."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Reports and business dashboards"
+msgstr "Informes y paneles de negocios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Reports and dashboards"
+msgstr "Informes y paneles"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Business Quote"
+msgstr "Solicitar presupuesto de negocios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Enterprise Quote"
+msgstr "Solicitar presupuesto de la empresa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Starter Quote"
+msgstr "Solicitud de presupuesto inicial"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Reset links expire automatically for safety"
+msgstr "Reiniciar los enlaces caducan automáticamente para seguridad"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Retail &amp; Operations"
+msgstr "Retail & Operations"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run production, staging and development branches in parallel, each with its "
+"own database and secure URL."
+msgstr ""
+"Ejecutar ramas de producción, estadificación y desarrollo en paralelo, cada "
+"una con su propia base de datos y URL segura."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run sales, invoicing, inventory, projects and customer relationships from "
+"one beautifully connected Odoo workspace—with local support when you need "
+"it."
+msgstr ""
+"Ejecute ventas, facturación, inventario, proyectos y relaciones con los "
+"clientes de un espacio de trabajo Odoo muy bien conectado, con soporte local"
+" cuando lo necesite."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "S"
+msgstr "S"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "SSL and domain configuration"
+msgstr "SSL y configuración de dominio"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Scale Smoothly"
+msgstr "Scale Smoothly"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Seamless integrations &amp; API connections"
+msgstr "Integraciones perfectas y conexiones API"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Secure Hosting"
+msgstr "Hosting seguro"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure cloud hosting"
+msgstr "Alojamiento en la nube segura"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Secure cloud hosting &amp; automatic backups"
+msgstr "Alojamiento en la nube segura y respaldos automáticos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure transaction experience"
+msgstr "Experiencia de transacción segura"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Send request"
+msgstr "Enviar solicitud"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Services"
+msgstr "Servicios"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Services designed around<br/><span class=\"gradient-text\">your real "
+"operations</span>"
+msgstr ""
+"Servicios diseñados alrededor<br/><span class=\"gradient-text\">sus "
+"operaciones reales</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Share your current challenges and we will help you identify the right Odoo "
+"starting point."
+msgstr ""
+"Comparte tus retos actuales y te ayudaremos a identificar el punto de "
+"partida adecuado de Odoo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Simplify invoicing, payment follow-up and local tax workflows with a "
+"structured financial process."
+msgstr ""
+"Simplifique la facturación, el seguimiento de pagos y los flujos de trabajo "
+"de impuestos locales con un proceso financiero estructurado."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Solutions"
+msgstr "Soluciones"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Solutions shaped around real business operations"
+msgstr "Soluciones en forma de operaciones comerciales reales"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Start your project →"
+msgstr "Iniciar su proyecto →"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Structured implementation, configuration, customization and user support."
+msgstr ""
+"Implementación estructurada, configuración, personalización y soporte de "
+"usuario."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Support &amp; Training"
+msgstr "Apoyo y capacitación"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC configuration and reporting"
+msgstr "Configuración y presentación de informes"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC process assistance"
+msgstr "Asistencia para el proceso del Consejo de Administración"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Team training and go-live support"
+msgstr "Capacitación en equipo y apoyo en directo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us briefly about your business and needs"
+msgstr "Cuéntanos brevemente sobre tu negocio y necesidades"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us what you want<br/><span class=\"gradient-text\">to improve</span>"
+msgstr ""
+"Díganos lo que quieras.<br/><span class=\"gradient-text\">para "
+"mejorar</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Third-party integrations"
+msgstr "Integraciones de terceros"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Third-party service integration"
+msgstr "Integración de servicios de terceros"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track CPU, memory, storage and application activity with alerts for unusual "
+"performance."
+msgstr ""
+"Track CPU, memoria, almacenamiento y actividad de aplicación con alertas "
+"para un rendimiento inusual."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track leads, manage opportunities, prepare quotations and turn them into "
+"invoices without duplicate work."
+msgstr ""
+"Seguimiento de pistas, gestionar oportunidades, preparar citas y "
+"convertirlas en facturas sin trabajo duplicado."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Training and ongoing assistance"
+msgstr "Capacitación y asistencia en curso"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Training, troubleshooting and continuous improvement after go-live."
+msgstr ""
+"Formación, solución de problemas y mejora continua después de la vida útil."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Updates and platform monitoring"
+msgstr "Actualizaciones y monitoreo de plataformas"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Use an included secure subdomain or connect your own domain with automatic "
+"SSL configuration."
+msgstr ""
+"Utilice un subdominio seguro incluido o conecte su propio dominio con la "
+"configuración SSL automática."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "User and administrator training"
+msgstr "Capacitación de usuarios y administradores"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "User setup"
+msgstr "Configuración del usuario"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "W"
+msgstr "W"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Website and online shop connection"
+msgstr "Sitio web y conexión de tienda online"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What customers value most"
+msgstr "Lo que los clientes valoran más"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What happens when my project grows?<span>+</span>"
+msgstr "¿Qué pasa cuando mi proyecto crece?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Whether you are starting from spreadsheets or replacing an existing system, "
+"a clear first conversation can save months of complexity."
+msgstr ""
+"Ya sea que estés empezando por hojas de cálculo o reemplazando un sistema "
+"existente, una primera conversación clara puede ahorrar meses de "
+"complejidad."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Work smarter with one connected system"
+msgstr "Trabajar más inteligente con un sistema conectado"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. An existing database backup can be restored during the onboarding "
+"process while preserving users, business data and compatible customizations."
+msgstr ""
+"Sí. Una copia de seguridad de la base de datos existente se puede restaurar "
+"durante el proceso de a bordo preservando a los usuarios, datos de negocios "
+"y personalizaciones compatibles."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. Odoo can be connected with payment, communication, productivity, "
+"eCommerce and automation platforms depending on project requirements."
+msgstr ""
+"Sí. Odoo puede conectarse con plataformas de pago, comunicación, "
+"productividad, comercio electrónico y automatización dependiendo de los "
+"requisitos del proyecto."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"You can move to a larger plan or increase project resources without "
+"rebuilding the complete environment."
+msgstr ""
+"Puede pasar a un plan más grande o aumentar los recursos del proyecto sin "
+"reconstruir el entorno completo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your data stays encrypted end-to-end"
+msgstr "Tus datos se mantienen encriptados al final"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Your name"
+msgstr "Tu nombre"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your time is <em>precious</em>,<br/>use it to grow."
+msgstr "Tu tiempo es <em>precioso</em>,<br/>usarlo para crecer."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "eCommerce and product catalogue"
+msgstr "eCommerce y catálogo de productos"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "name@company.com"
+msgstr "name@company.com"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Automatic builds and backups removed hours of manual server work and gave "
+"our team a much safer release process.”"
+msgstr ""
+"“Automatic construye y copia de seguridad horas extraídas del trabajo manual"
+" del servidor y dio a nuestro equipo un proceso de liberación mucho más "
+"seguro”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Managing several customer instances is now much clearer. Each environment "
+"is isolated and available from one dashboard.”"
+msgstr ""
+"“La gestión de varias instancias de clientes es ahora mucho más clara. Cada "
+"entorno está aislado y disponible desde un panel de control”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“The staging workflow and monitoring tools give us confidence before every "
+"production update.”"
+msgstr ""
+"“El flujo de trabajo y las herramientas de monitoreo nos dan confianza antes"
+" de cada actualización de producción”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"☁ <span data-i18n=\"backup_complete\">Backup complete</span><small "
+"data-i18n=\"protected_securely\">Your data is protected</small>"
+msgstr ""
+"☁ <span data-i18n=\"backup_complete\">Copia de seguridad "
+"completa</span><small data-i18n=\"protected_securely\">Sus datos están "
+"protegidos</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"✓ <span data-i18n=\"invoice_paid\">Invoice paid</span><small>124,500 "
+"XPF</small>"
+msgstr ""
+"✓ <span data-i18n=\"invoice_paid\">Factura pagada</span><small>124.500 "
+"XPF</small>"

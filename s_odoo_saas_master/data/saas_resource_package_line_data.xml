@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_resource_package_line_limit_cpus" model="saas.resource.package.line">
+		<field name="package_id" ref="saas_resource_package_basic"/>
+		<field name="name">cpus</field>
+		<field name="value">0.3</field>
+		<field name="type">limits</field>
+	</record>
+	
+	<record id="saas_resource_package_line_limit_memory" model="saas.resource.package.line">
+		<field name="package_id" ref="saas_resource_package_basic"/>
+		<field name="name">memory</field>
+		<field name="value">1024M</field>
+		<field name="type">limits</field>
+	</record>
+	
+	<record id="saas_resource_package_line_reservations_cpus" model="saas.resource.package.line">
+		<field name="package_id" ref="saas_resource_package_basic"/>
+		<field name="name">cpus</field>
+		<field name="value">0.1</field>
+		<field name="type">reservations</field>
+	</record>
+	
+	<record id="saas_resource_package_line_reservations_memory" model="saas.resource.package.line">
+		<field name="package_id" ref="saas_resource_package_basic"/>
+		<field name="name">memory</field>
+		<field name="value">400M</field>
+		<field name="type">reservations</field>
+	</record>
+
+</odoo>

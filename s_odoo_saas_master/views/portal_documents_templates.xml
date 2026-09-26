@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==================================================================
+         MyOdoo chrome for the standard portal record pages
+         (Sales Order / Quotation and Invoice / Bill).
+
+         These pages are rendered by the ``sale`` and ``account`` modules
+         through ``portal.portal_layout``. We keep their logic untouched and
+         only re-skin them: hide the default website header / breadcrumbs,
+         drop the myodoo topbar in and tag the wrapper so our SCSS applies.
+         ================================================================== -->
+    <template id="portal_documents_layout" name="MyOdoo Document Pages Layout" inherit_id="portal.portal_layout" priority="99">
+
+        <!--
+            Detect the record pages from the request path: the sale order page
+            does not put ``page_name`` in its context, and both the order and
+            the invoice detail routes end with the record id.
+        -->
+        <xpath expr="//t[@t-set='is_portal']" position="after">
+            <t t-set="is_myodoo_doc" t-value="request.httprequest.path.startswith(('/my/orders/', '/my/quotes/', '/my/invoices/')) and '/page/' not in request.httprequest.path"/>
+            <t t-set="no_header" t-value="is_myodoo_doc"/>
+            <t t-set="no_footer" t-value="is_myodoo_doc"/>
+        </xpath>
+
+        <!-- Turn the portal wrapper into a myodoo page -->
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="t-attf-class">o_portal_wrap #{'myodoo-portal-root myodoo-doc-page' if is_myodoo_doc else ''}</attribute>
+        </xpath>
+
+        <!-- Hide the default breadcrumb bar on record pages -->
+        <xpath expr="//div[hasclass('o_portal') and hasclass('container')]" position="attributes">
+            <attribute name="t-attf-class">o_portal container mt-3 #{'d-none' if is_myodoo_doc else ''}</attribute>
+        </xpath>
+
+        <!-- myodoo topbar, full width, above the portal container -->
+        <xpath expr="//div[@id='wrap']/div[hasclass('container')]" position="before">
+            <t t-if="is_myodoo_doc">
+                <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- ==================================================================
+         Sales Order / Quotation page  (/my/orders/<id>)
+         ================================================================== -->
+    <template id="portal_sale_order_document" name="MyOdoo Sales Order Page" inherit_id="sale.sale_order_portal_template" priority="99">
+        <xpath expr="//div[hasclass('o_portal_sale_sidebar')]" position="before">
+            <a href="/my/saas/billing" class="doc-back"><i class="fa fa-arrow-left"/> Back to Billing</a>
+            <div class="billing-hero doc-hero">
+                <div class="billing-hero-left">
+                    <span class="eyebrow"><i class="fa fa-shopping-bag"/> <t t-out="sale_order.type_name or 'Sales Order'"/></span>
+                    <h2><t t-out="sale_order.name"/></h2>
+                    <p>
+                        <t t-if="sale_order.date_order">Placed on <b><span t-field="sale_order.date_order" t-options='{"widget": "date"}'/></b> · </t>
+                        Customer <b t-out="sale_order.partner_id.name"/>
+                    </p>
+                </div>
+                <div class="billing-hero-right">
+                    <span t-attf-class="vip-badge #{'vip-live' if sale_order.state in ('sale', 'done') else 'vip-trial'}">
+                        <i class="fa fa-star"/> <span t-out="dict(sale_order._fields['state'].selection).get(sale_order.state, sale_order.state).title()"/>
+                    </span>
+                    <div class="vip-plan">
+                        <small>Total</small>
+                        <strong t-field="sale_order.amount_total"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- ==================================================================
+         Invoice / Bill page  (/my/invoices/<id>)
+         ================================================================== -->
+    <template id="portal_invoice_document" name="MyOdoo Invoice Page" inherit_id="account.portal_invoice_page" priority="99">
+        <xpath expr="//div[hasclass('o_portal_invoice_sidebar')]" position="before">
+            <a href="/my/saas/billing" class="doc-back"><i class="fa fa-arrow-left"/> Back to Billing</a>
+            <div class="billing-hero doc-hero">
+                <div class="billing-hero-left">
+                    <span class="eyebrow"><i class="fa fa-file-text-o"/> <t t-out="'Invoice' if invoice.move_type == 'out_invoice' else 'Bill'"/></span>
+                    <h2><t t-out="invoice.name"/></h2>
+                    <p>
+                        <t t-if="invoice.invoice_date">Issued on <b><span t-field="invoice.invoice_date"/></b> · </t>
+                        Customer <b t-out="invoice.partner_id.name"/>
+                    </p>
+                </div>
+                <div class="billing-hero-right">
+                    <span t-attf-class="vip-badge #{'vip-live' if payment_state in ('paid', 'in_payment') else 'vip-trial'}">
+                        <i class="fa fa-star"/> <span t-out="dict(invoice._fields['payment_state'].selection).get(payment_state, payment_state or 'not_paid').title()"/>
+                    </span>
+                    <div class="vip-plan">
+                        <small t-if="payment_state in ('not_paid', 'partial')">Amount Due</small>
+                        <small t-else="">Total</small>
+                        <strong t-field="invoice.amount_total"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- ==================================================================
+         Replace the default "Terms & Conditions" / "Payment terms" blocks.
+         The generic note (a link to /terms) and the payment-term note are
+         dropped on the portal page, the order PDF and the invoice report, and
+         replaced by a short in-house message.
+         ================================================================== -->
+    <template id="portal_sale_order_note" name="MyOdoo Sales Order Note" inherit_id="sale.sale_order_portal_content" priority="99">
+        <!-- Replace the default "Terms &amp; Conditions" (sale_order.note) block -->
+        <xpath expr="//section[@id='terms']" position="replace">
+            <section class="doc-note mt-4" name="myodoo_note">
+                <h4>Good to know</h4>
+                <p>Thank you for your trust. This document reflects your order as recorded on our side.</p>
+                <ul>
+                    <li>The matching invoice, its payment status and its PDF are always available in your <a href="/my/saas/billing">Billing space</a>.</li>
+                    <li>You can review or reprint this document at any time from your customer portal.</li>
+                    <li>Need to update your billing details or have a question about this order? <a href="/contactus">Contact our team</a> — we usually reply within one business day.</li>
+                </ul>
+            </section>
+        </xpath>
+
+        <!-- Remove the default "Payment terms" (payment_term_id.note) block -->
+        <xpath expr="//span[@t-field='sale_order.payment_term_id.note']/ancestor::section" position="replace"/>
+    </template>
+
+    <template id="report_sale_order_note" name="MyOdoo Sales Order Report Note" inherit_id="sale.report_saleorder_document" priority="99">
+        <!-- Replace the default order note in the printable document -->
+        <xpath expr="//span[@t-field='doc.note']" position="replace">
+            <p class="mb-2">Thank you for your trust. This document reflects your order as recorded on our side. The matching invoice and its payment status are available in your customer portal.</p>
+        </xpath>
+
+        <!-- Remove the default payment terms note -->
+        <xpath expr="//span[@t-field='doc.payment_term_id.note']/ancestor::p" position="replace"/>
+    </template>
+
+    <template id="report_invoice_note" name="MyOdoo Invoice Report Note" inherit_id="account.report_invoice_document" priority="99">
+        <!-- Remove the default payment terms note -->
+        <xpath expr="//span[@id='payment_terms_note_id']" position="replace"/>
+
+        <!-- Replace the default terms &amp; conditions (narration) -->
+        <xpath expr="//div[@name='comment']" position="replace">
+            <div class="mb-3" name="comment">
+                Thank you for your business. This invoice was generated automatically; a copy is
+                always available in your customer portal. For any question, our billing team is
+                happy to help.
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

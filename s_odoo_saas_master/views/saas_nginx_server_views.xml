@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_nginx_server_view_tree" model="ir.ui.view">
+        <field name="name">saas.nginx.server.view.tree</field>
+        <field name="model">saas.nginx.server</field>
+        <field name="arch" type="xml">
+            <list string="SaaS nginx">
+                <field name="name"/>
+                <field name="pserver_id"/>
+                <field name="working_ip_id"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_nginx_server_view_form" model="ir.ui.view">
+        <field name="name">saas.nginx.server.view.form</field>
+        <field name="model">saas.nginx.server</field>
+        <field name="arch" type="xml">
+            <form string="SaaS Nginx">
+                <header>
+                	<button string="Check Status" type="object" name="action_check_status" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" options="{'line_breaks': False}" widget="text" />
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+	                   	<group>
+	                   		<field name="pserver_id" />
+	                   		<field name="working_ip_id" domain="[('pserver_id','=',pserver_id),('type','=','working_ip')]" 
+	                   			context="{'default_pserver_id':pserver_id, 'default_type': 'working_ip'}"/>
+	                   	</group>
+	                   	<group>
+	                   		<field name="sites_available_path" />
+	                   		<field name="sites_enabled_path" />
+                            <field name="can_edit_ssl_path" invisible="1"/>
+	                   		<field name="ssl_path" readonly="can_edit_ssl_path == False" />
+                            <div class="alert alert-info" role="alert" invisible="can_edit_ssl_path">
+                                <strong>Note:</strong> Only SaaS Master users can modify the SSL Path.
+                                Contact your SaaS Master if you need changes.
+                            </div>
+	                   		<field name="access_log_path" />
+	                   		<field name="error_log_path" />
+	                   		<field name="pagespeed_cache_path" />
+	                   	</group>
+                   </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_nginx_server_view_search" model="ir.ui.view">
+        <field name="name">saas.nginx.server.view.search</field>
+        <field name="model">saas.nginx.server</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="pserver_id" />
+                <separator/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_pserver" string="Physical Server" context="{'group_by':'pserver_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_nginx_server_action" model="ir.actions.act_window">
+        <field name="name">Nginx Servers</field>
+        <field name="res_model">saas.nginx.server</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_nginx_server_menu" action="saas_nginx_server_action" parent="saas_config_server_menu" sequence="20"/>
+
+</odoo>

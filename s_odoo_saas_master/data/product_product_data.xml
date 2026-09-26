@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    
+    <record id="product_app_mail" model="product.product">
+        <field name="name">Discuss</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">mail</field>
+        <field name="technical_name">mail</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/mail.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_calendar" model="product.product">
+        <field name="name">Calendar</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">calendar</field>
+        <field name="technical_name">calendar</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/calendar.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_contacts" model="product.product">
+        <field name="name">Contacts</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">contacts</field>
+        <field name="technical_name">contacts</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/contacts.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_crm" model="product.product">
+        <field name="name">CRM</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">crm</field>
+        <field name="technical_name">crm</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+        <field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_calendar'),
+        	ref('product_app_contacts')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/crm.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_data_recycle" model="product.product">
+        <field name="name">Data Recycle</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">data_recycle</field>
+        <field name="technical_name">data_recycle</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/data_recycle.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_fleet" model="product.product">
+        <field name="name">Fleet</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">fleet</field>
+        <field name="technical_name">fleet</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/fleet.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr" model="product.product">
+        <field name="name">Employees</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr</field>
+        <field name="technical_name">hr</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/employees.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_skills" model="product.product">
+        <field name="name">Skills Management</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_skills</field>
+        <field name="technical_name">hr_skills</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_hr')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_skills.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_attendance" model="product.product">
+        <field name="name">Attendances</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_attendance</field>
+        <field name="technical_name">hr_attendance</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+        <field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_hr'),
+        	ref('product_app_hr_skills'),])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_attendance.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_contract" model="product.product">
+        <field name="name">Employee Contracts</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_contract</field>
+        <field name="technical_name">hr_contract</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_hr')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_contract.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_holidays" model="product.product">
+        <field name="name">Time Off</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_holidays</field>
+        <field name="technical_name">hr_holidays</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_calendar'),
+        	ref('product_app_hr')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_holidays.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_recruitment" model="product.product">
+        <field name="name">Recruitment</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_recruitment</field>
+        <field name="technical_name">hr_recruitment</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_calendar'),
+        	ref('product_app_hr')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_recruitment.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_im_livechat" model="product.product">
+        <field name="name">Live Chat</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">im_livechat</field>
+        <field name="technical_name">im_livechat</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/im_livechat.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_lunch" model="product.product">
+        <field name="name">Lunch</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">lunch</field>
+        <field name="technical_name">lunch</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/lunch.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_maintenance" model="product.product">
+        <field name="name">Maintenance</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">maintenance</field>
+        <field name="technical_name">maintenance</field>
+        <field name="ecom_category_id" ref="product_public_category_manufacturing"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/maintenance.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_mass_mailing" model="product.product">
+        <field name="name">Email Marketing</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">mass_mailing</field>
+        <field name="technical_name">mass_mailing</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_contacts')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/mass_mailing.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_mass_mailing_sms" model="product.product">
+        <field name="name">SMS Marketing</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">mass_mailing_sms</field>
+        <field name="technical_name">mass_mailing_sms</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_contacts'),
+        	ref('product_app_mass_mailing')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/mass_mailing_sms.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_invoicing" model="product.product">
+        <field name="name">Invoicing</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">account</field>
+        <field name="technical_name">account</field>
+        <field name="ecom_category_id" ref="product_public_category_accounting"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/invoicing.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_stock" model="product.product">
+        <field name="name">Inventory</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">stock</field>
+        <field name="technical_name">stock</field>
+        <field name="ecom_category_id" ref="product_public_category_inventory"/>
+        <field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/stock.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_mrp" model="product.product">
+        <field name="name">Manufacturing</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">mrp</field>
+        <field name="technical_name">mrp</field>
+        <field name="ecom_category_id" ref="product_public_category_manufacturing"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_stock')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/mrp.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_point_of_sale" model="product.product">
+        <field name="name">Point of Sale</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">point_of_sale</field>
+        <field name="technical_name">point_of_sale</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_invoicing'),
+        	ref('product_app_stock')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/point_of_sale.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_pos_restaurant" model="product.product">
+        <field name="name">Restaurant</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">pos_restaurant</field>
+        <field name="technical_name">pos_restaurant</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_invoicing'),
+        	ref('product_app_stock'),
+        	ref('product_app_point_of_sale')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/pos_restaurant.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_project" model="product.product">
+        <field name="name">Project</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">project</field>
+        <field name="technical_name">project</field>
+        <field name="ecom_category_id" ref="product_public_category_service"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/project.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_project_todo" model="product.product">
+        <field name="name">To-Do</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">project_todo</field>
+        <field name="technical_name">project_todo</field>
+        <field name="ecom_category_id" ref="product_public_category_tool"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_project')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/project_todo.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_hr_expense" model="product.product">
+        <field name="name">Expenses</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">hr_expense</field>
+        <field name="technical_name">hr_expense</field>
+        <field name="ecom_category_id" ref="product_public_category_hr"/>
+       <field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_hr'),
+        	ref('product_app_invoicing')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/hr_expense.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_purchase" model="product.product">
+        <field name="name">Purchase</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">purchase</field>
+        <field name="technical_name">purchase</field>
+        <field name="ecom_category_id" ref="product_public_category_inventory"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_invoicing')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/purchase.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_sale_management" model="product.product">
+        <field name="name">Sales</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">sale_management</field>
+        <field name="technical_name">sale_management</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+        <field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_invoicing')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/sale_management.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_repair" model="product.product">
+        <field name="name">Repairs</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">repair</field>
+        <field name="technical_name">repair</field>
+        <field name="ecom_category_id" ref="product_public_category_inventory"/>
+       <field name="required_product_ids" eval="[(6, 0, [
+        	ref('product_app_mail'),
+        	ref('product_app_stock'),
+        	ref('product_app_sale_management'),
+        	ref('product_app_invoicing')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/repair.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_survey" model="product.product">
+        <field name="name">Surveys</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">survey</field>
+        <field name="technical_name">survey</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/survey.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_website" model="product.product">
+        <field name="name">Website</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">website</field>
+        <field name="technical_name">website</field>
+        <field name="ecom_category_id" ref="product_public_category_website"/>
+       	<field name="required_product_ids" eval="[(6, 0, [ref('product_app_mail')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/website.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_website_event" model="product.product">
+        <field name="name">Events</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">website_event</field>
+        <field name="technical_name">website_event</field>
+        <field name="ecom_category_id" ref="product_public_category_sale"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_website')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/website_event.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_website_hr_recruitment" model="product.product">
+        <field name="name">Online Jobs</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">website_hr_recruitment</field>
+        <field name="technical_name">website_hr_recruitment</field>
+        <field name="ecom_category_id" ref="product_public_category_website"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_calendar'),
+        	ref('product_app_hr'),
+       		ref('product_app_hr_recruitment'),
+       		ref('product_app_website')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/website_hr_recruitment.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_website_sale" model="product.product">
+        <field name="name">eCommerce</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">website_sale</field>
+        <field name="technical_name">website_sale</field>
+        <field name="ecom_category_id" ref="product_public_category_website"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_website'),
+        	ref('product_app_invoicing'),
+       		ref('product_app_sale_management')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/website_sale.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <record id="product_app_website_slides" model="product.product">
+        <field name="name">eLearning</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_app_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_app_month"/>
+        <field name="default_code">website_slides</field>
+        <field name="technical_name">website_slides</field>
+        <field name="ecom_category_id" ref="product_public_category_website"/>
+       	<field name="required_product_ids" eval="[(6, 0, [
+       		ref('product_app_mail'),
+       		ref('product_app_website')])]"/>
+        <field name="image_1920" type="base64" file="s_odoo_saas_master/static/src/img/website_slides.png"/>
+        <field name="is_published" eval="True"/>
+    </record>
+    
+    <!-- Legacy "SaaS User" product: archived. Kept so historical sale orders and
+         the old XML id keep resolving. The paid seat licence is now "Workers". -->
+    <record id="product_saas_user" model="product.product">
+        <field name="name">SaaS User (legacy)</field>
+        <field name="default_code">saas_user</field>
+        <field name="list_price">100.0</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_user_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_user_month"/>
+        <field name="ecom_category_id" ref="public_category_saas_user"/>
+        <field name="website_sequence">1000</field>
+        <field name="is_published" eval="False"/>
+        <field name="is_saas_user" eval="True"/>
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- Paid seat licence: Workers (billed per worker / month, Odoo.sh style). -->
+    <record id="product_saas_worker" model="product.product">
+        <field name="name">Workers</field>
+        <field name="default_code">saas_worker</field>
+        <field name="list_price">100.0</field>
+        <field name="can_be_user_app" eval="True"/>
+        <field name="type">service</field>
+        <field name="uom_id" ref="product_uom_saas_user_month"/>
+        <field name="uom_po_id" ref="product_uom_saas_user_month"/>
+        <field name="ecom_category_id" ref="public_category_saas_user"/>
+        <field name="website_sequence">1000</field>
+        <field name="is_published" eval="True"/>
+        <field name="is_saas_user" eval="True"/>
+    </record>
+
+    <!-- The entry plan product. The XML id stays ``product_saas_plan_essential``
+         (renaming it would break every reference/orders already pointing at it),
+         but the customer-facing name/code are "Standard" since 18.0.0.57. -->
+    <record id="product_saas_plan_essential" model="product.product">
+        <field name="name">Standard</field>
+        <field name="default_code">Standard</field>
+        <field name="can_be_user_app" eval="False"/>
+        <field name="type">service</field>
+        <field name="list_price">14900.0</field>
+        <field name="is_published" eval="True"/>
+    </record>
+
+    <record id="product_saas_plan_growth" model="product.product">
+        <field name="name">Growth</field>
+        <field name="default_code">Growth</field>
+        <field name="can_be_user_app" eval="False"/>
+        <field name="type">service</field>
+        <field name="list_price">39900.0</field>
+        <field name="is_published" eval="True"/>
+    </record>
+
+    <record id="product_saas_extra_storage" model="product.product">
+        <field name="name">Extra Storage (per GB)</field>
+        <field name="default_code">saas_extra_storage</field>
+        <field name="can_be_user_app" eval="False"/>
+        <field name="type">service</field>
+        <!-- 10 GB = 1 (company currency): the price is per GB, so 0.1 / GB. -->
+        <field name="list_price">0.1</field>
+        <field name="is_published" eval="True"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Access Rights for Storage History Model -->
+    
+    <!-- User Group - Read Only -->
+    <record id="access_saas_storage_history_user" model="ir.model.access">
+        <field name="name">saas.storage.history user</field>
+        <field name="model_id" ref="model_saas_storage_history"/>
+        <field name="group_id" ref="s_odoo_saas_master.group_odoo_saas_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <!-- Manager Group - Full Access -->
+    <record id="access_saas_storage_history_manager" model="ir.model.access">
+        <field name="name">saas.storage.history manager</field>
+        <field name="model_id" ref="model_saas_storage_history"/>
+        <field name="group_id" ref="s_odoo_saas_master.group_odoo_saas_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- Instance Access for Users -->
+    <record id="access_saas_odoo_instance_user" model="ir.model.access">
+        <field name="name">saas.odoo.instance user</field>
+        <field name="model_id" ref="s_odoo_saas_master.model_saas_odoo_instance"/>
+        <field name="group_id" ref="s_odoo_saas_master.group_odoo_saas_user"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">0</field>
+        <field name="perm_create">0</field>
+        <field name="perm_unlink">0</field>
+    </record>
+
+    <!-- Instance Access for Managers -->
+    <record id="access_saas_odoo_instance_manager" model="ir.model.access">
+        <field name="name">saas.odoo.instance manager</field>
+        <field name="model_id" ref="s_odoo_saas_master.model_saas_odoo_instance"/>
+        <field name="group_id" ref="s_odoo_saas_master.group_odoo_saas_manager"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+</odoo>

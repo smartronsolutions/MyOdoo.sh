@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+
+    <record id="storage_warning_mail_template" model="mail.template">
+        <field name="name">Storage Warning (80%+)</field>
+        <field name="model_id" ref="s_odoo_saas_master.model_saas_odoo_instance"/>
+        <field name="subject">⚠️ Storage Warning - {{ object.name }} is at {{ '%.0f' % object.storage_percentage }}% capacity</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>STORAGE WARNING</strong></div>
+                <hr width="100%" style="background-color:#fcb042; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name or ''"/>,</div>
+                <br/>
+                <div>
+                    Your Odoo instance <strong><span t-out="object.name or ''"/></strong> has used
+                    <strong><span t-out="'%.2f' % object.storage_used_gb"/> GB</strong> out of
+                    <strong><span t-out="object.storage_limit_gb"/> GB</strong>
+                    (<strong style="color:#fcb042;"><span t-out="'%.1f' % object.storage_percentage"/>%</strong>).
+                </div>
+                <br/>
+                <div>Once your storage reaches 100%, your instance will be automatically stopped until more storage is made available.</div>
+                <br/>
+                <div>
+                    You can request a storage upgrade from your
+                    <a href="/my/storage">Storage Dashboard</a>.
+                </div>
+            </div>
+            <br/>
+            <div>
+                <div>If you have any questions or need help, please contact our support team.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="storage_upgrade_approved_mail_template" model="mail.template">
+        <field name="name">Storage Upgrade Approved</field>
+        <field name="model_id" ref="s_odoo_saas_master.model_saas_odoo_instance"/>
+        <field name="subject">✅ Storage Upgrade Approved - {{ object.name }} now has {{ object.storage_limit_gb }} GB</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <div style="text-align:center; font-size:18px; color:#5cb85c;"><strong>STORAGE UPGRADE APPROVED</strong></div>
+                <hr width="100%" style="background-color:#5cb85c; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name or ''"/>,</div>
+                <br/>
+                <div>
+                    Your storage upgrade request for instance <strong><span t-out="object.name or ''"/></strong> has been approved.
+                    Your new storage limit is <strong style="color:#5cb85c;"><span t-out="object.storage_limit_gb"/> GB</strong>.
+                </div>
+                <br/>
+                <div>If your instance was stopped due to full storage, please contact support to have it restarted, or check your <a href="/my/storage">Storage Dashboard</a>.</div>
+            </div>
+            <br/>
+            <div>
+                <div>Thank you for using our services. If you have any questions, please contact our support team.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+    <record id="storage_full_mail_template" model="mail.template">
+        <field name="name">Storage Full - Instance Stopped</field>
+        <field name="model_id" ref="s_odoo_saas_master.model_saas_odoo_instance"/>
+        <field name="subject">🛑 Instance Stopped - {{ object.name }} Storage Full</field>
+        <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <div style="text-align:center; font-size:18px; color:#d9534f;"><strong>STORAGE FULL - INSTANCE STOPPED</strong></div>
+                <hr width="100%" style="background-color:#d9534f; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name or ''"/>,</div>
+                <br/>
+                <div>
+                    Your Odoo instance <strong><span t-out="object.name or ''"/></strong> has reached
+                    <strong style="color:#d9534f;">100%</strong> of its storage limit
+                    (<strong><span t-out="object.storage_limit_gb"/> GB</strong>).
+                </div>
+                <br/>
+                <div>To protect your data, your instance has been <strong>automatically stopped</strong> and is no longer accessible.</div>
+                <br/>
+                <div>
+                    Please contact our support team to increase your storage limit so your instance can be resumed,
+                    or request an upgrade from your <a href="/my/storage">Storage Dashboard</a>.
+                </div>
+            </div>
+            <br/>
+            <div>
+                <div>We're sorry for the inconvenience. Our support team is ready to help you get back online.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+
+</odoo>

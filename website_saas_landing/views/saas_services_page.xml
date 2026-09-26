@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="saas_services_page" model="website.page">
+  <field name="name">Services (My Odoo NC)</field>
+  <field name="url">/services</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_services_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo NC — Services</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_services_page">
+<div class="top-glow"></div><div class="top-glow two"></div>
+
+<main><section class="page-hero"><div class="container"><span class="eyebrow"><i></i><span data-i18n="services_badge">Odoo solutions</span></span><h1 data-i18n-html="services_title">Services designed around<br/><span class="gradient-text">your real operations</span></h1><p data-i18n="services_intro">From first consultation to daily support, we help you deploy a practical business platform—not just another piece of software.</p></div></section>
+    <section style="padding-top:25px"><div class="container service-grid">
+      <article class="service-card"><div class="icon">◎</div><div><h3 data-i18n="implementation">Odoo Implementation</h3><p data-i18n="implementation_text">A structured setup aligned with your processes, users and priorities.</p><ul><li data-i18n="process_discovery">Process discovery and solution design</li><li data-i18n="configuration">Application configuration</li><li data-i18n="data_setup">Initial data and user setup</li><li data-i18n="team_training">Team training and go-live support</li></ul></div></article>
+      <article class="service-card"><div class="icon">⚙</div><div><h3 data-i18n="customization">Customization &amp; Integration</h3><p data-i18n="customization_text">Adapt Odoo where your business needs more than standard configuration.</p><ul><li data-i18n="custom_workflows">Custom workflows and automation</li><li data-i18n="third_party">Third-party service integration</li><li data-i18n="reports">Reports and business dashboards</li><li data-i18n="website_shop">Website and online shop connection</li></ul></div></article>
+      <article class="service-card"><div class="icon">▤</div><div><h3 data-i18n="finance_service">Invoicing, Accounting &amp; TGC</h3><p data-i18n="finance_service_text">Build a cleaner financial workflow from quotation to payment follow-up.</p><ul><li data-i18n="quotes_invoices">Quotations, invoices and credit notes</li><li data-i18n="payment_tracking">Payment tracking and reminders</li><li data-i18n="tgc_setup">TGC configuration and reporting</li><li data-i18n="bank_recon">Bank reconciliation support</li></ul></div></article>
+      <article class="service-card"><div class="icon">◫</div><div><h3 data-i18n="retail_ops">Retail &amp; Operations</h3><p data-i18n="retail_ops_text">Keep stock, purchasing, sales and customer data synchronized.</p><ul><li data-i18n="inventory_purchase">Inventory and purchasing</li><li data-i18n="pos">Point of Sale</li><li data-i18n="ecommerce">eCommerce and product catalogue</li><li data-i18n="fleet_projects">Fleet, projects and task management</li></ul></div></article>
+      <article class="service-card"><div class="icon">◇</div><div><h3>EpayNC &amp; Online Payments</h3><p>Connect local digital payment journeys with invoices, customer portals and eCommerce.</p><ul><li>Customer portal payments</li><li>Online store payment flow</li><li>Secure transaction experience</li><li>Implementation and configuration support</li></ul></div></article>
+      <article class="service-card"><div class="icon">✦</div><div><h3>AI Assistant for Odoo</h3><p>Help teams find information, complete tasks and understand daily workflows more quickly.</p><ul><li>Invoice and quotation guidance</li><li>Overdue invoice lookup</li><li>TGC process assistance</li><li>First-level user support</li></ul></div></article>
+      <article class="service-card"><div class="icon">☁</div><div><h3 data-i18n="hosting">Hosting &amp; Security</h3><p data-i18n="hosting_text">A managed environment built for reliable everyday access.</p><ul><li data-i18n="secure_cloud">Secure cloud hosting</li><li data-i18n="backups">Automated backups</li><li data-i18n="ssl">SSL and domain configuration</li><li data-i18n="monitoring">Updates and platform monitoring</li></ul></div></article>
+      <article class="service-card"><div class="icon">✦</div><div><h3 data-i18n="support_training">Support &amp; Training</h3><p data-i18n="support_training_text">Help your users adopt Odoo confidently and get answers quickly.</p><ul><li data-i18n="remote_support">Remote functional support</li><li data-i18n="user_training">User and administrator training</li><li data-i18n="optimization">Process optimization reviews</li><li data-i18n="continuous_improvement">Continuous improvement roadmap</li></ul></div></article>
+    </div></section>
+  </main>
+
+<t t-call="website_saas_landing.mo_cta"/>
+<t t-call="website_saas_landing.mo_footer"/>
+
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

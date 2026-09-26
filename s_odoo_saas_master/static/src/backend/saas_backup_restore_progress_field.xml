@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="s_odoo_saas_master.SaasBackupRestoreProgress">
+        <span t-esc="state.message"/>
+        <button type="button" class="btn btn-link p-0 ms-2" t-on-click="onRefreshClick" t-att-disabled="state.refreshing">
+            <i class="fa fa-refresh" t-att-class="{ 'fa-spin': state.refreshing }"/> Refresh status
+        </button>
+    </t>
+</templates>

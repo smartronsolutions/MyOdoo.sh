@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- Shared CTA band — reused by Home, About, Services, Contact Us -->
+<template id="mo_cta" name="My Odoo NC Shared CTA">
+<section class="cta"><div class="container cta-box">
+  <div><h2>Ready to simplify your business?</h2><p>Let’s define a practical Odoo roadmap for your team.</p></div>
+  <a class="btn btn-light" href="/contact-us">Book a consultation →</a>
+</div></section>
+</template>
+
+<!-- Shared footer — reused by Home, About, Services, Contact Us -->
+<template id="mo_footer" name="My Odoo NC Shared Footer">
+<footer><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="brand">
+        <span class="brand-fallback" style="display:block;font-size:25px">odoo</span>
+        <span class="brand-divider"></span>
+        <span class="brand-name">MY ODOO NC</span>
+      </div>
+      <p style="color:var(--muted);font-size:13px;max-width:280px">Implementation, hosting, customization, training and long-term Odoo support for businesses in New Caledonia.</p>
+    </div>
+    <div>
+      <div class="footer-title">Company</div>
+      <div class="footer-links">
+        <a href="/saas">Home</a>
+        <a href="/services">Services</a>
+        <a href="/about">About</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Solutions</div>
+      <div class="footer-links">
+        <span>CRM &amp; Sales</span>
+        <span>Accounting</span>
+        <span>Inventory</span>
+        <span>eCommerce</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title">Contact</div>
+      <div class="footer-links">
+        <a href="/contact-us">Book a demo</a>
+        <span>Demo contact section</span>
+        <span>Company details omitted</span>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>© 2026 My Odoo NC. All rights reserved.</span>
+    <span>Odoo is a trademark of Odoo S.A.</span>
+  </div>
+</div></footer>
+</template>
+
+</data>
+</odoo>

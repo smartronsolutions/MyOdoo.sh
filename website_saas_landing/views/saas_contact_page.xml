@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="saas_contact_page" model="website.page">
+  <field name="name">Contact Us (My Odoo NC)</field>
+  <field name="url">/contact-us</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_contact_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo NC — Contact Us</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_contact_page">
+<div class="top-glow"></div><div class="top-glow two"></div>
+
+<main><section class="page-hero"><div class="container"><span class="eyebrow"><i></i><span data-i18n="contact_badge">Let’s talk</span></span><h1 data-i18n-html="contact_title">Tell us what you want<br/><span class="gradient-text">to improve</span></h1><p data-i18n="contact_intro">Share your current challenges and we will help you identify the right Odoo starting point.</p></div></section>
+    <section style="padding-top:20px"><div class="container contact-grid">
+      <div class="contact-info"><h2 data-i18n="build_better">Build a better way to work.</h2><p data-i18n="contact_text">Whether you are starting from spreadsheets or replacing an existing system, a clear first conversation can save months of complexity.</p><div class="contact-line"><i>◈</i><div><b>Demo presentation</b><br/><span>Company contact details intentionally omitted</span></div></div><div class="contact-line"><i>⌁</i><div><b data-i18n="location">Market focus</b><br/><span>New Caledonia</span></div></div><div class="contact-line"><i>◷</i><div><b data-i18n="availability">Project scope</b><br/><span>Implementation, hosting, support and integrations</span></div></div></div>
+      <form class="form" id="contactForm"><div class="form-row"><div class="field"><label data-i18n="full_name">Full name</label><input required="required" name="name" placeholder="Your name"/></div><div class="field"><label data-i18n="company">Company</label><input name="company" placeholder="Company name"/></div></div><div class="form-row"><div class="field"><label data-i18n="email">Email</label><input required="required" type="email" name="email" placeholder="name@company.com"/></div><div class="field"><label data-i18n="phone">Phone</label><input name="phone" placeholder="+687 ..."/></div></div><div class="field"><label data-i18n="interest">I am interested in</label><select><option data-i18n="new_implementation">A new Odoo implementation</option><option data-i18n="support_existing">Support for an existing Odoo</option><option data-i18n="website_ecommerce">Website / eCommerce</option><option data-i18n="hosting_option">Hosting and maintenance</option><option data-i18n="other">Other</option></select></div><div class="field"><label data-i18n="message">Message</label><textarea required="required" placeholder="Tell us briefly about your business and needs"></textarea></div><button class="btn btn-primary" type="submit" style="width:100%" data-i18n="send_request">Send request</button></form>
+    </div></section>
+  </main>
+
+<t t-call="website_saas_landing.mo_cta"/>
+<t t-call="website_saas_landing.mo_footer"/>
+
+<div class="toast" id="mo_toast">Demo form submitted. No data has been sent.</div>
+<script>
+var mo_form = document.getElementById('contactForm');
+if(mo_form){
+  mo_form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var t = document.getElementById('mo_toast');
+    if(t){ t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 3500); }
+    mo_form.reset();
+  });
+}
+</script>
+
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

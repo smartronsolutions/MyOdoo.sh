@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default backup directory system parameter -->
+        <record id="saas_backup_directory" model="ir.config_parameter">
+            <field name="key">saas.backup_directory</field>
+            <field name="value">/var/lib/odoo/backups</field>
+        </record>
+    </data>
+</odoo> 

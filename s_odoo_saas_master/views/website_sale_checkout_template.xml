@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- 1. Inherit website_sale.checkout_layout to wrap checkout in myodoo portal theme -->
+    <template id="checkout_layout_inherit_saas" inherit_id="website_sale.checkout_layout">
+        <!-- Hide default website header and footer -->
+        <xpath expr="//t[@t-set='no_footer']" position="before">
+            <t t-set="no_header" t-value="True"/>
+        </xpath>
+
+        <!-- Modify #wrap to use myodoo-portal-root -->
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="myodoo-portal-root checkout-portal-wrap" separator=" "/>
+        </xpath>
+
+        <!-- Add myodoo_topbar at top of #wrap -->
+        <xpath expr="//div[@id='wrap']//div[hasclass('oe_website_sale')]" position="before">
+            <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+        </xpath>
+
+        <!-- Replace standard wizard checkout with VIP Stepper and Header -->
+        <xpath expr="//div[@id='wrap']//div[@t-if='show_wizard_checkout']" position="replace">
+            <div class="col-12 checkout-header-section mb-4">
+                <div class="head checkout-head mb-4">
+                    <div>
+                        <span class="eyebrow">Cloud Workspace Activation</span>
+                        <h1>
+                            <t t-if="xmlid == 'website_sale.cart'">Review Your Cart</t>
+                            <t t-elif="xmlid == 'website_sale.payment'">Payment &amp;amp; Activation</t>
+                            <t t-elif="xmlid == 'website_sale.confirmation'">Order Confirmed</t>
+                            <t t-else="">Review &amp;amp; Complete Order</t>
+                        </h1>
+                        <div class="sub">
+                            <t t-if="xmlid == 'website_sale.cart'">Review your selected cloud package, worker licences, and extra storage before checkout.</t>
+                            <t t-elif="xmlid == 'website_sale.payment'">Select your preferred secure payment method to finalize and launch your instance.</t>
+                            <t t-elif="xmlid == 'website_sale.confirmation'">Your subscription is verified and instance provisioning is underway.</t>
+                            <t t-else="">Verify your cloud instance configuration, billing address, and proceed to activation.</t>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a href="/saas/pricing" class="ghost" style="text-decoration:none">
+                            <i class="fa fa-arrow-left me-1"/> Change Plan
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VIP 3-Step Stepper -->
+                <div t-if="show_wizard_checkout" class="glass vip-stepper-card">
+                    <!-- Step 1: Cart & Plan -->
+                    <div t-attf-class="stepper-item {{ 'step-active' if xmlid == 'website_sale.cart' else 'step-completed' }}">
+                        <span class="stepper-badge">
+                            <t t-if="xmlid == 'website_sale.cart'">1</t>
+                            <t t-else=""><i class="fa fa-check"/></t>
+                        </span>
+                        <div class="stepper-content">
+                            <small class="stepper-sub">Step 1</small>
+                            <strong class="stepper-title">Cart &amp;amp; Plan</strong>
+                        </div>
+                    </div>
+
+                    <!-- Divider 1 -->
+                    <div t-attf-class="stepper-divider {{ 'active' if xmlid in ('website_sale.checkout', 'website_sale.address', 'website_sale.payment', 'website_sale.confirmation') else '' }}"/>
+
+                    <!-- Step 2: Billing & Review -->
+                    <div t-attf-class="stepper-item {{ 'step-active' if xmlid in ('website_sale.checkout', 'website_sale.address') else ('step-completed' if xmlid in ('website_sale.payment', 'website_sale.confirmation') else 'step-pending') }}">
+                        <span class="stepper-badge">
+                            <t t-if="xmlid in ('website_sale.payment', 'website_sale.confirmation')"><i class="fa fa-check"/></t>
+                            <t t-else="">2</t>
+                        </span>
+                        <div class="stepper-content">
+                            <small class="stepper-sub">Step 2</small>
+                            <strong class="stepper-title">Billing &amp;amp; Review</strong>
+                        </div>
+                    </div>
+
+                    <!-- Divider 2 -->
+                    <div t-attf-class="stepper-divider {{ 'active' if xmlid in ('website_sale.payment', 'website_sale.confirmation') else '' }}"/>
+
+                    <!-- Step 3: Payment & Launch -->
+                    <div t-attf-class="stepper-item {{ 'step-active' if xmlid == 'website_sale.payment' else ('step-completed' if xmlid == 'website_sale.confirmation' else 'step-pending') }}">
+                        <span class="stepper-badge">
+                            <t t-if="xmlid == 'website_sale.confirmation'"><i class="fa fa-check"/></t>
+                            <t t-else="">3</t>
+                        </span>
+                        <div class="stepper-content">
+                            <small class="stepper-sub">Step 3</small>
+                            <strong class="stepper-title">Payment &amp;amp; Launch</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+        <!-- Append VIP Guarantees under right accordion summary (checkout & payment pages) -->
+        <xpath expr="//div[@id='o_wsale_total_accordion']" position="inside">
+            <div class="glass vip-security-card mt-3">
+                <div class="security-card-head">
+                    <i class="fa fa-shield text-teal"/>
+                    <strong>Enterprise Cloud Guarantees</strong>
+                </div>
+                <ul class="security-items-list">
+                    <li>
+                        <i class="fa fa-lock"/>
+                        <div>
+                            <strong>256-Bit SSL Encryption</strong>
+                            <small>Protected by enterprise bank-grade protocol</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-bolt"/>
+                        <div>
+                            <strong>Instant Automated Setup</strong>
+                            <small>Isolated Docker container provisioned in seconds</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-history"/>
+                        <div>
+                            <strong>Daily Off-site Snapshots</strong>
+                            <small>Automated backups with instant restore</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle"/>
+                        <div>
+                            <strong>Cancel or Upgrade Anytime</strong>
+                            <small>Transparent billing · 0 lock-in contracts</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+
+        <!-- Also append VIP Guarantees under cart summary (cart page) -->
+        <xpath expr="//div[@id='o_cart_summary']" position="inside">
+            <div class="glass vip-security-card mt-3">
+                <div class="security-card-head">
+                    <i class="fa fa-shield text-teal"/>
+                    <strong>Enterprise Cloud Guarantees</strong>
+                </div>
+                <ul class="security-items-list">
+                    <li>
+                        <i class="fa fa-lock"/>
+                        <div>
+                            <strong>256-Bit SSL Encryption</strong>
+                            <small>Protected by enterprise bank-grade protocol</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-bolt"/>
+                        <div>
+                            <strong>Instant Automated Setup</strong>
+                            <small>Isolated Docker container provisioned in seconds</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-history"/>
+                        <div>
+                            <strong>Daily Off-site Snapshots</strong>
+                            <small>Automated backups with instant restore</small>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle"/>
+                        <div>
+                            <strong>Cancel or Upgrade Anytime</strong>
+                            <small>Transparent billing · 0 lock-in contracts</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 2. Inherit website_sale.cart for VIP Cart page -->
+    <template id="cart_inherit_saas" inherit_id="website_sale.cart">
+        <xpath expr="//div[hasclass('col')]/h3" position="replace">
+            <div class="cart-header-title-box mb-4">
+                <span class="eyebrow">Configured Services</span>
+                <h2 style="font-family:Georgia,serif;font-size:24px;color:var(--navy);margin:4px 0 2px">Selected Cloud Subscriptions</h2>
+                <div style="font-size:12px;color:var(--muted)">Review and manage your instance package, worker licences, and storage allocations before proceeding.</div>
+            </div>
+
+            <!-- Dedicated SaaS Instance Cloud Banner if order is SaaS -->
+            <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <div class="glass vip-instance-box mb-4">
+                    <div class="instance-box-header">
+                        <div class="instance-avatar-icon">
+                            <i class="fa fa-cloud"/>
+                        </div>
+                        <div class="instance-title-meta">
+                            <span class="eyebrow">
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-else="">Dedicated Cloud Instance</t>
+                            </span>
+                            <h2>
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">
+                                    <t t-esc="website_sale_order.instance_id.name"/>
+                                </t>
+                                <t t-elif="website_sale_order.subdomain">
+                                    https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
+                                </t>
+                                <t t-else="">
+                                    Dedicated Odoo 18 Environment
+                                </t>
+                            </h2>
+                        </div>
+                        <span class="state-pill ms-auto">
+                            <t t-if="website_sale_order.saas_order_type == 'buy_storage'"><i class="fa fa-hdd-o"/> Storage Only</t>
+                            <t t-else=""><i class="fa fa-bolt"/> Instant Provisioning</t>
+                        </span>
+                    </div>
+
+                    <!-- Storage-only order: the already-purchased instance/plan is NOT charged again -->
+                    <div class="instance-specs-grid" t-if="website_sale_order.saas_order_type == 'buy_storage'">
+                        <div class="spec-tile">
+                            <small>Additional Storage</small>
+                            <strong>+<t t-esc="'%.0f' % (website_sale_order.storage_limit_gb or 0)"/> GB</strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Billing Cycle</small>
+                            <strong class="text-capitalize">
+                                <t t-esc="'Annual · 15% OFF' if website_sale_order.subscription_type == 'yearly' else 'Monthly Subscription'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Instance</small>
+                            <strong><t t-esc="website_sale_order.instance_id.name"/></strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>New Storage Limit</small>
+                            <strong><t t-esc="'%.0f' % ((website_sale_order.instance_id.storage_limit_gb or 0) + (website_sale_order.storage_limit_gb or 0))"/> GB</strong>
+                        </div>
+                    </div>
+
+                    <div class="instance-specs-grid" t-if="website_sale_order.saas_order_type != 'buy_storage'">
+                        <div class="spec-tile">
+                            <small>Selected Plan</small>
+                            <strong>
+                                <t t-set="plan_line" t-value="website_sale_order.order_line.filtered(lambda l: 'Plan' in l.name or 'Standard' in l.name or 'Essential' in l.name or 'Growth' in l.name)[:1]"/>
+                                <t t-esc="plan_line.product_id.name if plan_line else 'SaaS Plan'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Billing Cycle</small>
+                            <strong class="text-capitalize">
+                                <t t-esc="'Annual · 15% OFF' if website_sale_order.subscription_type == 'yearly' else 'Monthly Subscription'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Included Workers</small>
+                            <strong>
+                                <t t-set="user_line" t-value="website_sale_order.order_line.filtered(lambda l: l.product_id.is_saas_user or 'Worker' in l.name or 'User' in l.name)[:1]"/>
+                                <t t-esc="int(user_line.product_uom_qty) if user_line else 1"/> Active Workers
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Cloud Storage</small>
+                            <strong>
+                                <t t-esc="round(website_sale_order.storage_limit_gb or 5.0, 1)"/> GB SSD
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- 3. Inherit website_sale.cart_lines for VIP Empty Cart & Lines Layout -->
+    <template id="cart_lines_inherit_saas" inherit_id="website_sale.cart_lines">
+        <xpath expr="//div[hasclass('js_cart_lines') and contains(text(), 'Your cart is empty!')]" position="replace">
+            <div class="js_cart_lines glass empty-cart-vip text-center p-5 mb-4">
+                <div class="empty-cart-icon mb-3">
+                    <i class="fa fa-cloud fa-3x" style="color:var(--teal);opacity:0.6"/>
+                </div>
+                <h3 style="font-family:Georgia,serif;color:var(--navy);font-size:22px;margin-bottom:6px">Your Cloud Cart is Empty</h3>
+                <p style="color:var(--muted);font-size:13px;max-width:440px;margin:0 auto 20px">
+                    You haven't added any cloud hosting packages to your cart yet. Select a high-performance Odoo plan to get started.
+                </p>
+                <a href="/saas/pricing" class="btn btn-primary px-4 py-2" style="background:linear-gradient(135deg, var(--teal), var(--deep));border-radius:10px;font-weight:800;font-size:13px;border:none;box-shadow:0 6px 18px rgba(15,168,160,0.3);text-decoration:none">
+                    <i class="fa fa-server me-1"/> Browse Hosting Plans
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 4. Inherit website_sale.checkout to inject SaaS Instance Workspace Preview Card -->
+    <template id="checkout_inherit_saas" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@id='shop_checkout']" position="before">
+            <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <div class="glass vip-instance-box mb-4">
+                    <div class="instance-box-header">
+                        <div class="instance-avatar-icon">
+                            <i class="fa fa-cloud"/>
+                        </div>
+                        <div class="instance-title-meta">
+                            <span class="eyebrow">
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-else="">Dedicated Cloud Instance</t>
+                            </span>
+                            <h2>
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">
+                                    <t t-esc="website_sale_order.instance_id.name"/>
+                                </t>
+                                <t t-elif="website_sale_order.subdomain">
+                                    https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
+                                </t>
+                                <t t-else="">
+                                    Dedicated Odoo 18 Environment
+                                </t>
+                            </h2>
+                        </div>
+                        <span class="state-pill ms-auto">
+                            <t t-if="website_sale_order.saas_order_type == 'buy_storage'"><i class="fa fa-hdd-o"/> Storage Only</t>
+                            <t t-else=""><i class="fa fa-bolt"/> Instant Provisioning</t>
+                        </span>
+                    </div>
+
+                    <!-- Storage-only order: the already-purchased instance/plan is NOT charged again -->
+                    <div class="instance-specs-grid" t-if="website_sale_order.saas_order_type == 'buy_storage'">
+                        <div class="spec-tile">
+                            <small>Additional Storage</small>
+                            <strong>+<t t-esc="'%.0f' % (website_sale_order.storage_limit_gb or 0)"/> GB</strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Billing Cycle</small>
+                            <strong class="text-capitalize">
+                                <t t-esc="'Annual · 15% OFF' if website_sale_order.subscription_type == 'yearly' else 'Monthly Subscription'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Instance</small>
+                            <strong><t t-esc="website_sale_order.instance_id.name"/></strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>New Storage Limit</small>
+                            <strong><t t-esc="'%.0f' % ((website_sale_order.instance_id.storage_limit_gb or 0) + (website_sale_order.storage_limit_gb or 0))"/> GB</strong>
+                        </div>
+                    </div>
+
+                    <div class="instance-specs-grid" t-if="website_sale_order.saas_order_type != 'buy_storage'">
+                        <div class="spec-tile">
+                            <small>Selected Plan</small>
+                            <strong>
+                                <t t-set="plan_line" t-value="website_sale_order.order_line.filtered(lambda l: 'Plan' in l.name or 'Standard' in l.name or 'Essential' in l.name or 'Growth' in l.name)[:1]"/>
+                                <t t-esc="plan_line.product_id.name if plan_line else 'SaaS Plan'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Billing Cycle</small>
+                            <strong class="text-capitalize">
+                                <t t-esc="'Annual · 15% OFF' if website_sale_order.subscription_type == 'yearly' else 'Monthly Subscription'"/>
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Included Workers</small>
+                            <strong>
+                                <t t-set="user_line" t-value="website_sale_order.order_line.filtered(lambda l: l.product_id.is_saas_user or 'Worker' in l.name or 'User' in l.name)[:1]"/>
+                                <t t-esc="int(user_line.product_uom_qty) if user_line else 1"/> Active Workers
+                            </strong>
+                        </div>
+                        <div class="spec-tile">
+                            <small>Cloud Storage</small>
+                            <strong>
+                                <t t-esc="round(website_sale_order.storage_limit_gb or 5.0, 1)"/> GB SSD
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="instance-box-notice">
+                        <i class="fa fa-info-circle text-teal me-2"/>
+                        <span t-if="website_sale_order.saas_order_type == 'buy_storage'">Only the additional storage is charged now. Your existing plan is not billed again.</span>
+                        <span t-else="">Your private Docker container and database will be automatically created and started upon successful checkout.</span>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- 5. Inherit website_sale.billing_address_row for clean VIP header -->
+    <template id="billing_address_row_inherit_saas" inherit_id="website_sale.billing_address_row">
+        <xpath expr="//h4" position="replace">
+            <div class="section-title ps-0 pe-0 mb-3">
+                <h2 style="font-size:20px;font-family:Georgia,serif;color:var(--navy);margin:0">Billing Address</h2>
+                <span style="font-size:11px;color:var(--muted)">Select or create the billing address for your subscription invoice</span>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 6. Inherit website_sale.address for address creation/edit page -->
+    <template id="address_inherit_saas" inherit_id="website_sale.address">
+        <xpath expr="//t[@t-set='no_footer']" position="before">
+            <t t-set="no_header" t-value="True"/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class" add="myodoo-portal-root checkout-portal-wrap" separator=" "/>
+        </xpath>
+        <xpath expr="//div[@id='wrap']//div[hasclass('oe_website_sale')]" position="before">
+            <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+        </xpath>
+    </template>
+
+    <!-- 7. Inherit website_sale.payment for VIP Payment Page -->
+    <template id="payment_inherit_saas" inherit_id="website_sale.payment">
+        <xpath expr="//h3[contains(text(), 'Confirm order')]" position="replace">
+            <div class="payment-header-title-box mb-4">
+                <span class="eyebrow">Final Step</span>
+                <h2 style="font-family:Georgia,serif;font-size:24px;color:var(--navy);margin:4px 0 2px">Payment &amp;amp; Final Activation</h2>
+                <div style="font-size:12px;color:var(--muted)">Choose your secure payment method below to complete the subscription and provision your instance.</div>
+            </div>
+
+            <!-- Dedicated SaaS Instance Cloud Banner on Payment page -->
+            <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <div class="glass vip-instance-box mb-4">
+                    <div class="instance-box-header">
+                        <div class="instance-avatar-icon">
+                            <i class="fa fa-cloud"/>
+                        </div>
+                        <div class="instance-title-meta">
+                            <span class="eyebrow">
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-else="">Ready for Launch</t>
+                            </span>
+                            <h2>
+                                <t t-if="website_sale_order.saas_order_type == 'buy_storage'">
+                                    <t t-esc="website_sale_order.instance_id.name"/> ·
+                                    +<t t-esc="'%.0f' % (website_sale_order.storage_limit_gb or 0)"/> GB
+                                </t>
+                                <t t-elif="website_sale_order.subdomain">
+                                    https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
+                                </t>
+                                <t t-else="">
+                                    Dedicated Odoo 18 Environment
+                                </t>
+                            </h2>
+                        </div>
+                        <span class="state-pill ms-auto">
+                            <t t-if="website_sale_order.saas_order_type == 'buy_storage'"><i class="fa fa-hdd-o"/> Storage Only</t>
+                            <t t-else=""><i class="fa fa-shield"/> Secure Checkout</t>
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+
+        <!-- Security trust notice above payment methods -->
+        <xpath expr="//div[@id='payment_method']" position="before">
+            <div class="payment-security-notice mb-3">
+                <i class="fa fa-lock text-teal me-2"/>
+                <span><strong>Bank-grade 256-bit SSL encryption</strong> · Your payment details are processed through a strictly encrypted connection.</span>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 8. Inherit website_sale.address_on_payment for sleek VIP Address Recap on Payment Page -->
+    <template id="address_on_payment_inherit_saas" inherit_id="website_sale.address_on_payment">
+        <xpath expr="//div[hasclass('card')]" position="attributes">
+            <attribute name="class" add="glass vip-address-recap" separator=" "/>
+        </xpath>
+    </template>
+
+    <!-- 9. Payment status page (/payment/status) — myodoo themed with live states -->
+    <template id="saas_payment_status" inherit_id="payment.payment_status" name="SaaS Payment Status">
+        <xpath expr="//t[@t-call='portal.frontend_layout']" position="replace">
+            <t t-call="portal.frontend_layout">
+                <t t-set="no_header" t-value="True"/>
+                <t t-set="no_footer" t-value="True"/>
+                <t t-set="title">Payment Status — myodoo.nc</t>
+
+                <div class="myodoo-portal-root checkout-portal-wrap">
+                    <t t-set="page_name" t-value="'payment_status'"/>
+                    <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+
+                    <main class="page" style="max-width:860px">
+                        <div class="head" style="justify-content:center;text-align:center">
+                            <div>
+                                <span class="eyebrow">Secure Payment</span>
+                                <h1 t-if="not payment_not_found">Processing your payment</h1>
+                                <h1 t-else="">Payment status</h1>
+                                <div class="sub" t-if="not payment_not_found">
+                                    Hold on — we are confirming your payment with the provider.
+                                    Please do not refresh, close or press the back button on this page.
+                                </div>
+                                <div class="sub" t-else="">
+                                    We could not find an active payment for this session. If you have just paid,
+                                    a confirmation email will arrive within a few minutes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment not found (session expired / direct visit) -->
+                        <t t-if="payment_not_found">
+                            <div class="glass" style="padding:34px 28px;text-align:center">
+                                <div style="font-size:46px;line-height:1">⏳</div>
+                                <h2 style="margin:14px 0 8px;font-size:22px">Your payment is on its way!</h2>
+                                <p style="font-size:13px;color:var(--muted);margin:0 auto 22px;max-width:470px">
+                                    You should receive an email confirming your payment within a few minutes.
+                                    Don't hesitate to contact us if you don't receive it.
+                                </p>
+                                <a href="/my/saas/odoo-instances" class="primary"
+                                   style="text-decoration:none;display:inline-block;padding:12px 22px">Go to My Instances</a>
+                            </div>
+                        </t>
+
+                        <!-- Live payment status -->
+                        <t t-else="">
+                            <t t-set="saas_order" t-value="tx.sale_order_ids.filtered(lambda o: o.is_saas_order and o.instance_id)[:1] or tx.sale_order_ids.filtered(lambda o: o.is_saas_order)[:1]"/>
+                            <t t-set="saas_instance" t-value="saas_order.instance_id if saas_order else False"/>
+                            <t t-set="retry_url" t-value="('/my/saas/odoo-instance/%s' % saas_instance.id) if saas_instance else ('/saas/pricing' if (saas_order and saas_order.saas_order_type == 'buy_new') else '/shop/checkout')"/>
+
+                            <div class="glass" id="saasPaymentStatus"
+                                 t-att-data-tx-id="tx.id"
+                                 t-att-data-retry-url="retry_url"
+                                 t-att-data-instance-url="('/my/saas/odoo-instance/%s' % saas_instance.id) if saas_instance else ''"
+                                 style="padding:0;overflow:hidden">
+
+                                <!-- Amount / reference header -->
+                                <div style="padding:24px 28px 20px;border-bottom:1px solid var(--line)">
+                                    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+                                        <div>
+                                            <div style="font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase">Reference</div>
+                                            <div style="font:700 15px monospace;color:var(--ink);margin-top:4px"><t t-esc="tx.reference"/></div>
+                                        </div>
+                                        <div style="text-align:right">
+                                            <div style="font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase">Amount</div>
+                                            <div style="font:700 24px Georgia;color:var(--navy);margin-top:2px">
+                                                <t t-esc="tx.amount" t-options="{'widget': 'monetary', 'display_currency': tx.currency_id}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- What is being paid for -->
+                                <t t-if="saas_order and saas_order.order_line">
+                                    <div style="padding:18px 28px;border-bottom:1px solid var(--line);background:rgba(15,168,160,0.04)">
+                                        <div style="font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--deep);text-transform:uppercase;margin-bottom:10px">Your order</div>
+                                        <t t-foreach="saas_order.order_line" t-as="line">
+                                            <div style="display:flex;justify-content:space-between;gap:14px;font-size:12px;padding:4px 0">
+                                                <span t-esc="line.name"/>
+                                                <strong style="white-space:nowrap">
+                                                    <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': saas_order.currency_id}"/>
+                                                </strong>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </t>
+
+                                <!-- STATE: processing -->
+                                <div id="saasPayProcessing" style="padding:32px 28px;text-align:center">
+                                    <div class="saas-spinner-container" style="margin:0 auto 6px">
+                                        <div class="saas-pulse-ring"></div>
+                                        <div class="saas-spinner">
+                                            <div class="saas-spinner-inner">
+                                                <span class="saas-spinner-icon"><i class="fa fa-lock"/></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 style="margin:12px 0 6px;font-size:20px">We are processing your payment…</h2>
+                                    <p style="font-size:12px;color:var(--muted);margin:0 auto 18px;max-width:430px">
+                                        This usually takes only a few seconds. Your access is activated automatically as
+                                        soon as the payment is confirmed — no manual action is needed.
+                                    </p>
+                                    <div class="saas-progress-bar-wrap" style="max-width:420px;margin:0 auto 10px">
+                                        <div class="saas-progress-bar-fill" id="saasPayProgressFill" style="width:25%"></div>
+                                    </div>
+                                    <div style="font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--coral);text-transform:uppercase">
+                                        <i class="fa fa-exclamation-circle me-1"/> Do not refresh or close this page
+                                    </div>
+                                </div>
+
+                                <!-- STATE: success -->
+                                <div id="saasPaySuccess" style="display:none;padding:32px 28px;text-align:center">
+                                    <div style="font-size:46px;line-height:1">✅</div>
+                                    <h2 style="margin:12px 0 6px;font-size:21px">Payment confirmed!</h2>
+                                    <p style="font-size:12px;color:var(--muted);margin:0">
+                                        Taking you to your instance and applying your change…
+                                    </p>
+                                </div>
+
+                                <!-- STATE: declined -->
+                                <div id="saasPayDeclined" style="display:none;padding:32px 28px;text-align:center">
+                                    <div style="font-size:46px;line-height:1">😕</div>
+                                    <h2 style="margin:12px 0 6px;font-size:21px;color:var(--coral)">Oops! Your payment was declined.</h2>
+                                    <p style="font-size:12.5px;color:var(--muted);margin:0 auto 6px;max-width:470px">
+                                        The payment was cancelled or your card was refused. <strong>No amount has been charged</strong>.
+                                    </p>
+                                    <p style="font-size:12.5px;color:var(--muted);margin:0 auto 22px;max-width:470px">
+                                        Please try again with the same or a different card.
+                                    </p>
+                                    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                                        <button type="button" class="primary" id="saasPayRetryBtn"
+                                                style="padding:12px 20px;font-size:13px">
+                                            <i class="fa fa-credit-card me-1"/> Try again / change card
+                                        </button>
+                                        <a href="/my/saas/odoo-instances" class="ghost"
+                                           style="text-decoration:none;display:inline-block;padding:11px 18px;font-size:13px">
+                                            Back to My Instances
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:14px">
+                                Need help? <a href="/my/saas/settings" style="color:var(--deep);font-weight:700">Contact support</a>
+                            </p>
+                        </t>
+                    </main>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

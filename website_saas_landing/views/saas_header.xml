@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- Global Header â€” new "My Odoo NC" nav design, injects on EVERY website page -->
+<record id="saas_global_header" model="ir.ui.view">
+  <field name="name">website_saas_landing.global_header</field>
+  <field name="key">website_saas_landing.global_header</field>
+  <field name="inherit_id" ref="website.layout"/>
+  <field name="type">qweb</field>
+  <field name="arch" type="xml">
+    <xpath expr="//header" position="before">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800;900&amp;display=swap');
+
+.mo_site{
+      --odoo:#714B67; --odoo-deep:#57384f; --lav:#f6f1f6; --lav-2:#eee5ed;
+      --ink:#17202a; --muted:#637083; --line:#e9e9ee; --white:#fff;
+      --green:#28a98b; --blue:#4f78ff; --shadow:0 24px 70px rgba(53,36,51,.12);
+      --shadow-soft:0 12px 35px rgba(39,35,43,.08); --radius:24px;
+    }.mo_site *{box-sizing:border-box}html{scroll-behavior:smooth}.mo_site{margin:0;font-family:'DM Sans',sans-serif;color:var(--ink);background:#fff;line-height:1.6;overflow-x:hidden}.mo_site a{text-decoration:none;color:inherit}.mo_site button,.mo_site input,.mo_site textarea,.mo_site select{font:inherit}.mo_site .container{width:min(1160px,calc(100% - 40px));margin:auto}.mo_site .top-glow{position:fixed;inset:-220px auto auto -120px;width:520px;height:520px;background:radial-gradient(circle,rgba(113,75,103,.18),transparent 68%);pointer-events:none;z-index:-1}.mo_site .top-glow.two{inset:90px -220px auto auto;background:radial-gradient(circle,rgba(79,120,255,.11),transparent 68%)}.mo_site header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(229,226,231,.8)}.mo_site .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}.mo_site .brand{display:flex;align-items:center;gap:12px;min-width:max-content}.mo_site .odoo-logo{height:58px;width:auto;max-width:190px;display:block;object-fit:contain}.mo_site .brand-fallback{font:800 30px/1 'Manrope';letter-spacing:-2px;color:var(--odoo);display:none}.mo_site .brand-divider{height:25px;width:1px;background:#d8d4d8}.mo_site .brand-name{font:800 17px 'Manrope';letter-spacing:-.4px}.mo_site .brand-name small{display:block;font:600 9px 'DM Sans';letter-spacing:1.35px;color:var(--muted);text-transform:uppercase;margin-top:-2px}.mo_site .navlinks{display:flex;align-items:center;gap:8px}.mo_site .navlink{padding:10px 14px;border-radius:12px;font-weight:600;color:#4d5868;cursor:pointer;border:0;background:transparent}.mo_site .navlink:hover,.mo_site .navlink.active{color:var(--odoo);background:var(--lav)}.mo_site .nav-actions{display:flex;align-items:center;gap:10px}.mo_site .lang{display:flex;border:1px solid var(--line);padding:4px;border-radius:12px;background:#fff}.mo_site .lang button{border:0;background:transparent;padding:6px 9px;border-radius:8px;font-size:12px;font-weight:800;color:#7b8491;cursor:pointer}.mo_site .lang button.active{background:var(--odoo);color:#fff}.mo_site .btn{border:0;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.25s}.mo_site .btn:hover{transform:translateY(-2px)}.mo_site .btn-primary{background:linear-gradient(135deg,var(--odoo),#8c6280);color:#fff;box-shadow:0 12px 28px rgba(113,75,103,.25)}.mo_site .btn-light{background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:var(--shadow-soft)}.mo_site .menu{display:none;border:1px solid var(--line);background:#fff;border-radius:12px;width:42px;height:42px;font-size:20px}.mo_site main{min-height:70vh}.mo_site .page{display:none}.mo_site .page.active{display:block;animation:fade .4s ease}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.mo_site .hero{padding:82px 0 72px;position:relative}.mo_site .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:62px}.mo_site .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid #e4d9e2;border-radius:999px;background:rgba(255,255,255,.75);box-shadow:0 6px 22px rgba(74,51,70,.06);color:var(--odoo);font-size:13px;font-weight:800}.mo_site .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(40,169,139,.12)}.mo_site h1,.mo_site h2,.mo_site h3{font-family:'Manrope',sans-serif;line-height:1.1;margin:0}.mo_site h1{font-size:clamp(43px,5.6vw,72px);letter-spacing:-3.6px;margin:22px 0 22px}.mo_site .gradient-text{background:linear-gradient(135deg,var(--odoo) 0%,#9e718f 50%,#4f78ff 100%);-webkit-background-clip:text;color:transparent}.mo_site .lead{font-size:19px;color:var(--muted);max-width:650px}.mo_site .hero-actions{display:flex;gap:12px;margin:32px 0 28px;flex-wrap:wrap}.mo_site .trust-row{display:flex;gap:22px;flex-wrap:wrap;color:#596577;font-size:13px;font-weight:600}.mo_site .trust-row span{display:flex;align-items:center;gap:7px}.mo_site .check{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#eaf8f4;color:var(--green);font-size:12px;font-weight:900}.mo_site .visual{position:relative;min-height:520px}.mo_site .glass-orb{position:absolute;border-radius:50%;filter:blur(.1px)}.mo_site .orb1{width:340px;height:340px;right:25px;top:20px;background:linear-gradient(145deg,#f8edf7,#efe7f5);box-shadow:inset -30px -30px 70px rgba(113,75,103,.08),0 35px 90px rgba(113,75,103,.14)}.mo_site .orb2{width:170px;height:170px;left:15px;bottom:20px;background:linear-gradient(145deg,#edf8ff,#f4f0ff)}.mo_site .dashboard{position:absolute;inset:72px 0 auto 45px;background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.92);border-radius:28px;padding:22px;box-shadow:var(--shadow);transform:rotate(-1deg)}.mo_site .dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.mo_site .dots{display:flex;gap:5px}.mo_site .dots i{width:7px;height:7px;border-radius:50%;background:#d9d7dd}.mo_site .mini-profile{display:flex;align-items:center;gap:8px;color:#667083;font-size:11px;font-weight:700}.mo_site .avatar{width:27px;height:27px;border-radius:50%;background:linear-gradient(135deg,#714b67,#b790aa)}.mo_site .dash-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.mo_site .metric,.mo_site .chart,.mo_site .activity{border:1px solid #ece9ee;border-radius:18px;background:#fff;padding:16px}.mo_site .metric strong{display:block;font:800 28px 'Manrope';margin-top:7px}.mo_site .metric small{color:var(--muted)}.mo_site .trend{color:var(--green);font-size:11px;font-weight:800}.mo_site .chart{grid-row:span 2}.mo_site .bars{height:132px;display:flex;align-items:end;gap:8px;margin-top:15px}.mo_site .bars i{flex:1;border-radius:8px 8px 3px 3px;background:linear-gradient(#9d758f,#714b67);min-height:18px}.mo_site .activity{display:flex;gap:10px;align-items:center}.mo_site .appdot{width:36px;height:36px;border-radius:11px;background:var(--lav);display:grid;place-items:center;color:var(--odoo);font-weight:900}.mo_site .floating-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 16px;box-shadow:var(--shadow-soft);font-weight:700;font-size:13px}.mo_site .fc1{right:-5px;top:35px}.mo_site .fc2{left:-10px;bottom:58px}.mo_site .floating-card small{display:block;color:var(--muted);font-weight:500}.mo_site .logo-strip{border-top:1px solid #f1eef1;border-bottom:1px solid #f1eef1;padding:22px 0;background:rgba(252,251,252,.8)}.mo_site .strip{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}.mo_site .strip b{font:700 12px 'Manrope';color:#8a929e;text-transform:uppercase;letter-spacing:1.3px}.mo_site .mini-pill{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;color:#677181;font-size:12px;font-weight:700}.mo_site section{padding:88px 0}.mo_site .section-head{max-width:760px;margin:0 auto 46px;text-align:center}.mo_site .section-head h2{font-size:clamp(34px,4vw,50px);letter-spacing:-2.2px;margin:14px 0}.mo_site .section-head p{color:var(--muted);font-size:17px}.mo_site .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.mo_site .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:27px;box-shadow:0 12px 45px rgba(35,32,37,.055);transition:.3s}.mo_site .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft);border-color:#dfd1dc}.mo_site .icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#fbf7fa,#efe4ed);color:var(--odoo);font-size:22px;margin-bottom:20px}.mo_site .card h3{font-size:20px;margin-bottom:10px}.mo_site .card p{color:var(--muted);font-size:14px;margin:0}.mo_site .card-link{display:inline-block;margin-top:18px;color:var(--odoo);font-weight:800;font-size:13px}.mo_site .feature-band{background:linear-gradient(135deg,#fbf9fb,#f4eff5);border:1px solid #eadfea;border-radius:34px;padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.mo_site .feature-band h2{font-size:42px;letter-spacing:-2px;margin-bottom:18px}.mo_site .feature-list{display:grid;gap:13px}.mo_site .feature-item{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.8);border:1px solid #ece4eb;padding:14px;border-radius:16px}.mo_site .feature-item b{display:block}.mo_site .feature-item small{color:var(--muted)}.mo_site .page-hero{padding:72px 0 50px;text-align:center}.mo_site .page-hero h1{font-size:clamp(42px,5vw,64px);margin-bottom:18px}.mo_site .page-hero p{max-width:720px;margin:auto;color:var(--muted);font-size:18px}.mo_site .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.mo_site .service-card{padding:32px;background:#fff;border:1px solid var(--line);border-radius:26px;display:grid;grid-template-columns:auto 1fr;gap:18px;box-shadow:0 15px 50px rgba(40,35,40,.055)}.mo_site .service-card ul{padding:0;margin:14px 0 0;list-style:none;display:grid;gap:7px;color:var(--muted);font-size:14px}.mo_site .service-card li:before{content:'✓';color:var(--green);font-weight:900;margin-right:8px}.mo_site .pricing-toggle{display:flex;justify-content:center;gap:8px;margin-bottom:30px}.mo_site .pricing-toggle button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 15px;font-weight:800;color:var(--muted)}.mo_site .pricing-toggle button.active{background:var(--odoo);color:#fff;border-color:var(--odoo)}.mo_site .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}.mo_site .price-card{border:1px solid var(--line);border-radius:28px;padding:30px;background:#fff;position:relative;box-shadow:var(--shadow-soft)}.mo_site .price-card.featured{border-color:#cbb5c6;transform:translateY(-8px);box-shadow:0 24px 65px rgba(113,75,103,.15)}.mo_site .popular{position:absolute;right:22px;top:20px;background:var(--lav);color:var(--odoo);border-radius:999px;padding:6px 10px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.8px}.mo_site .price-card h3{font-size:24px}.mo_site .price{font:800 43px 'Manrope';letter-spacing:-2px;margin:18px 0 2px}.mo_site .price sup{font-size:16px;vertical-align:top;margin-right:2px}.mo_site .price small{font:600 13px 'DM Sans';letter-spacing:0;color:var(--muted)}.mo_site .price-note{color:var(--muted);font-size:13px;min-height:42px}.mo_site .price-card ul{list-style:none;padding:18px 0;margin:18px 0;border-top:1px solid var(--line);display:grid;gap:10px;font-size:14px}.mo_site .price-card li:before{content:'✓';color:var(--green);font-weight:900;margin-right:9px}.mo_site .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px}.mo_site .contact-info{background:linear-gradient(145deg,var(--odoo),#8d647f);color:#fff;border-radius:30px;padding:38px;position:relative;overflow:hidden}.mo_site .contact-info:after{content:'';position:absolute;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,.08);right:-100px;bottom:-100px}.mo_site .contact-info h2{font-size:40px;letter-spacing:-2px}.mo_site .contact-info p{color:rgba(255,255,255,.78)}.mo_site .contact-line{display:flex;gap:13px;margin:22px 0}.mo_site .contact-line i{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.13);display:grid;place-items:center;font-style:normal}.mo_site .form{background:#fff;border:1px solid var(--line);border-radius:30px;padding:34px;box-shadow:var(--shadow-soft)}.mo_site .form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.mo_site .field{margin-bottom:15px}.mo_site .field label{display:block;font-size:12px;font-weight:800;margin-bottom:7px}.mo_site .field input,.mo_site .field textarea,.mo_site .field select{width:100%;border:1px solid #e2e2e8;border-radius:13px;padding:13px 14px;outline:none;background:#fcfcfd}.mo_site .field input:focus,.mo_site .field textarea:focus,.mo_site .field select:focus{border-color:#aa8aa2;box-shadow:0 0 0 4px rgba(113,75,103,.08)}.mo_site .field textarea{min-height:125px;resize:vertical}.mo_site .cta{padding:30px 0 85px}.mo_site .cta-box{background:linear-gradient(135deg,#2f2630,#714b67);color:#fff;border-radius:32px;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:30px;box-shadow:0 25px 70px rgba(60,40,57,.22)}.mo_site .cta-box h2{font-size:38px;letter-spacing:-1.7px}.mo_site .cta-box p{color:rgba(255,255,255,.74);margin:9px 0 0}.mo_site footer{border-top:1px solid var(--line);padding:45px 0 25px;background:#fcfbfc}.mo_site .footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}.mo_site .footer-title{font-weight:800;margin-bottom:13px}.mo_site .footer-links{display:grid;gap:8px;color:var(--muted);font-size:13px}.mo_site .copyright{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;color:#8a929d;font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.mo_site .toast{position:fixed;right:24px;bottom:24px;background:#222;color:#fff;padding:13px 18px;border-radius:14px;box-shadow:var(--shadow);opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s;z-index:99}.mo_site .toast.show{opacity:1;transform:none}@media(max-width:900px){.mo_site .navlinks{position:fixed;left:20px;right:20px;top:88px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:var(--shadow);display:none;flex-direction:column;align-items:stretch}.mo_site .navlinks.open{display:flex}.mo_site .navlink{text-align:left}.mo_site .menu{display:block}.mo_site .nav-actions .btn{display:none}.mo_site .hero-grid,.mo_site .feature-band,.mo_site .contact-grid{grid-template-columns:1fr}.mo_site .visual{min-height:470px}.mo_site .cards,.mo_site .pricing-grid{grid-template-columns:1fr 1fr}.mo_site .service-grid{grid-template-columns:1fr}.mo_site .footer-grid{grid-template-columns:1fr 1fr}.mo_site .price-card.featured{transform:none}}@media(max-width:620px){.mo_site .container{width:min(100% - 26px,1160px)}.mo_site .brand-divider,.mo_site .brand-name small{display:none}.mo_site .brand-name{font-size:15px}.mo_site .odoo-logo{height:48px;max-width:150px}.mo_site .hero{padding-top:52px}.mo_site .hero-grid{gap:30px}.mo_site h1{letter-spacing:-2.4px}.mo_site .lead{font-size:16px}.mo_site .visual{min-height:390px}.mo_site .dashboard{inset:45px 4px auto 10px;padding:14px}.mo_site .dash-grid{gap:9px}.mo_site .metric,.mo_site .chart,.mo_site .activity{padding:11px}.mo_site .chart{grid-row:auto}.mo_site .bars{height:90px}.mo_site .floating-card{font-size:11px;padding:10px}.mo_site .fc1{right:0}.mo_site .fc2{left:0;bottom:12px}.mo_site .cards,.mo_site .pricing-grid{grid-template-columns:1fr}.mo_site .feature-band{padding:28px}.mo_site .feature-band h2,.mo_site .contact-info h2{font-size:34px}.mo_site .page-hero{padding-top:50px}.mo_site .service-card{grid-template-columns:1fr}.mo_site .form-row{grid-template-columns:1fr}.mo_site .form,.mo_site .contact-info{padding:25px}.mo_site .cta-box{padding:30px;display:block}.mo_site .cta-box .btn{margin-top:22px}.mo_site .footer-grid{grid-template-columns:1fr}.mo_site .nav{height:70px}.mo_site .lang button{padding:5px 7px}}.mo_site .stats-band{padding:28px 0;background:#fcfbfd;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.mo_site .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.mo_site .stat{text-align:center;padding:18px;border-radius:18px;background:#fff;border:1px solid var(--line)}.mo_site .stat strong{display:block;font:800 28px 'Manrope';color:var(--odoo);letter-spacing:-1px}.mo_site .stat span{font-size:13px;color:var(--muted);font-weight:700}.mo_site .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.mo_site .detail-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:var(--shadow-soft)}.mo_site .detail-card .icon{margin-bottom:16px}.mo_site .detail-card h3{font-size:19px;margin-bottom:9px}.mo_site .detail-card p{margin:0;color:var(--muted);font-size:14px}.mo_site .integration-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.mo_site .integration-item{display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--line);border-radius:17px;background:#fff;font-weight:800;font-size:13px}.mo_site .integration-item i{width:36px;height:36px;border-radius:11px;background:var(--lav);display:grid;place-items:center;color:var(--odoo);font-style:normal}.mo_site .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:steps}.mo_site .process-step{position:relative;padding:27px 22px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow-soft)}.mo_site .process-step:before{counter-increment:steps;content:counter(steps);display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--odoo);color:#fff;font-weight:900;margin-bottom:18px}.mo_site .process-step h3{font-size:18px;margin-bottom:9px}.mo_site .process-step p{font-size:13px;color:var(--muted);margin:0}.mo_site .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.mo_site .testimonial{background:#fff;border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:var(--shadow-soft)}.mo_site .stars{color:#e4a93b;letter-spacing:2px;margin-bottom:13px}.mo_site .testimonial p{color:#556173;font-size:14px}.mo_site .person{display:flex;align-items:center;gap:11px;margin-top:18px}.mo_site .person-avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--lav);color:var(--odoo);font-weight:900}.mo_site .person small{display:block;color:var(--muted)}.mo_site .faq-wrap{max-width:850px;margin:auto;display:grid;gap:12px}.mo_site .faq-item{border:1px solid var(--line);border-radius:17px;background:#fff;overflow:hidden}.mo_site .faq-q{width:100%;border:0;background:#fff;padding:18px 20px;text-align:left;font-weight:800;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.mo_site .faq-a{display:none;padding:0 20px 18px;color:var(--muted);font-size:14px}.mo_site .faq-item.open .faq-a{display:block}.mo_site .faq-item.open .faq-q span{transform:rotate(45deg)}@media(max-width:900px){.mo_site .stats-grid,.mo_site .process-grid{grid-template-columns:repeat(2,1fr)}.mo_site .detail-grid,.mo_site .testimonial-grid{grid-template-columns:1fr 1fr}.mo_site .integration-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.mo_site .stats-grid,.mo_site .detail-grid,.mo_site .integration-grid,.mo_site .process-grid,.mo_site .testimonial-grid{grid-template-columns:1fr}}.mo_site .why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.mo_site .why-card{padding:22px 18px;border:1px solid var(--line);border-radius:21px;background:#fff;text-align:center;box-shadow:var(--shadow-soft)}.mo_site .why-card .icon{margin:0 auto 15px}.mo_site .why-card h3{font-size:16px;margin-bottom:8px}.mo_site .why-card p{font-size:12.5px;color:var(--muted);margin:0}.mo_site .apps-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:14px}.mo_site .app-card{padding:18px 10px;border:1px solid var(--line);border-radius:18px;background:#fff;text-align:center;transition:.25s}.mo_site .app-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}.mo_site .app-symbol{width:48px;height:48px;border-radius:15px;margin:0 auto 11px;display:grid;place-items:center;background:linear-gradient(145deg,#faf6fa,#eee5ed);color:var(--odoo);font-weight:900}.mo_site .app-card b{font-size:12px;display:block}.mo_site .industry-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.mo_site .industry-card{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff;display:flex;align-items:center;gap:12px;font-weight:800;font-size:13px}.mo_site .industry-card i{width:38px;height:38px;border-radius:12px;background:var(--lav);display:grid;place-items:center;color:var(--odoo);font-style:normal}.mo_site .roadmap{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}.mo_site .roadmap-step{position:relative;padding:20px 14px;border:1px solid var(--line);border-radius:19px;background:#fff;text-align:center}.mo_site .roadmap-step strong{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--odoo);color:#fff;margin:0 auto 12px}.mo_site .roadmap-step b{font-size:13px;display:block;margin-bottom:7px}.mo_site .roadmap-step span{font-size:11px;color:var(--muted);display:block}.mo_site .demo-pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.mo_site .demo-price-card{border:1px solid var(--line);border-radius:28px;padding:30px;background:#fff;box-shadow:var(--shadow-soft);position:relative}.mo_site .demo-price-card.featured{border-color:#c9b0c3;box-shadow:0 24px 65px rgba(113,75,103,.14)}.mo_site .demo-price-card h3{font-size:24px}.mo_site .demo-price-card p{color:var(--muted);font-size:13px}.mo_site .demo-price-card ul{list-style:none;padding:18px 0 0;margin:18px 0 0;border-top:1px solid var(--line);display:grid;gap:10px;font-size:13px}.mo_site .demo-price-card li:before{content:'✓';color:var(--green);font-weight:900;margin-right:8px}.mo_site .plan-label{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--lav);color:var(--odoo);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.7px;margin-bottom:16px}.mo_site .important-note{max-width:900px;margin:24px auto 0;padding:17px 20px;border-radius:16px;background:#fff8ea;border:1px solid #f2dfb7;color:#6e5a2f;font-size:12px;text-align:center}@media(max-width:1000px){.mo_site .why-grid{grid-template-columns:repeat(3,1fr)}.mo_site .apps-grid{grid-template-columns:repeat(4,1fr)}.mo_site .industry-grid{grid-template-columns:repeat(3,1fr)}.mo_site .roadmap{grid-template-columns:repeat(4,1fr)}}@media(max-width:700px){.mo_site .why-grid,.mo_site .industry-grid,.mo_site .demo-pricing{grid-template-columns:1fr}.mo_site .apps-grid{grid-template-columns:repeat(2,1fr)}.mo_site .roadmap{grid-template-columns:1fr 1fr}}
+
+/* Hide Odoo default header &amp; footer sitewide â€” the new nav/footer below replace them */
+.mo_site .mo_account{position:relative}.mo_site .mo_account_btn{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 14px;border-radius:12px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:.2s}.mo_site .mo_account_btn:hover,.mo_site .mo_account_btn.mo_active_btn{border-color:var(--odoo);color:var(--odoo);background:var(--lav)}.mo_site .mo_account_drop{position:absolute;top:calc(100% + 10px);right:0;min-width:220px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s;z-index:60}.mo_site .mo_account_drop.mo_open{opacity:1;visibility:visible;transform:translateY(0)}.mo_site .mo_account_drop a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:.85rem;color:var(--ink);text-decoration:none;transition:.15s}.mo_site .mo_account_drop a:hover{background:var(--lav);color:var(--odoo)}.mo_site .mo_drop_sep{height:1px;background:var(--line);margin:6px 2px}@media(max-width:640px){.mo_site .mo_account_btn .mo_acc_label{display:none}.mo_site .mo_account_btn{padding:10px}}
+#wrapwrap > header,
+#wrapwrap > footer,
+.o_main_navbar { display:none !important; }
+
+/* Odoo/Bootstrap compatibility and responsive safeguards. */
+.mo_site{direction:ltr!important;text-align:left}
+.mo_header_shell{position:sticky;top:0;z-index:1050;width:100%;overflow:visible!important}
+.mo_header_shell > header{display:block!important;position:relative;top:auto;width:100%}
+.mo_header_shell .nav,.mo_header_shell .nav-actions,.mo_header_shell .mo_account{overflow:visible!important}
+.mo_header_shell .mo_account_drop{z-index:2000!important}
+/* Keep the header on a single row for every language: Bootstrap .nav forces
+   flex-wrap:wrap, which pushed the actions onto a 2nd row once translated
+   labels got longer (fr/es/pt/vi). nowrap + slightly tighter spacing keeps
+   the original design while fitting all languages. */
+.mo_header_shell .nav{flex-wrap:nowrap!important;gap:12px!important}
+.mo_header_shell .navlinks{flex-wrap:nowrap!important;min-width:0}
+.mo_header_shell .navlink{padding-left:8px!important;padding-right:8px!important;white-space:nowrap}
+.mo_header_shell .nav-actions{flex-wrap:nowrap!important;gap:8px!important;flex:0 0 auto}
+.mo_header_shell .mo_lang_btn{padding-left:10px!important;padding-right:10px!important}
+.mo_header_shell .nav-actions .btn{padding-left:13px!important;padding-right:13px!important;white-space:nowrap}
+.mo_header_shell .mo_account_btn{padding-left:10px!important;padding-right:10px!important}
+/* Below this width the nav links fold into the existing hamburger menu, so the
+   header can never overflow, whatever the language or translation length. */
+@media(max-width:1200px){
+  .mo_site .navlinks{position:fixed;left:20px;right:20px;top:88px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:var(--shadow);display:none;flex-direction:column;align-items:stretch}
+  .mo_site .navlinks.open{display:flex}
+  .mo_site .navlink{text-align:left}
+  .mo_site .menu{display:block}
+}
+.mo_site .container{max-width:1160px!important;padding-left:0!important;padding-right:0!important}
+.mo_site .hero-grid > *,.mo_site .contact-grid > *,.mo_site .feature-band > *{min-width:0}
+.mo_site img{max-width:100%;height:auto}
+@media(min-width:901px){
+  .mo_site .hero-grid{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)!important}
+  .mo_site .feature-band{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  .mo_site .contact-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)!important}
+  .mo_site .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .mo_site .cards,.mo_site .demo-pricing{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:900px){
+  .mo_site .container{width:calc(100% - 40px)!important}
+  .mo_site .hero-grid{grid-template-columns:1fr!important;gap:34px!important}
+  .mo_site .hero-grid > div:first-child{width:100%;max-width:760px;margin:0 auto}
+  .mo_site .visual{width:100%;max-width:680px;margin:0 auto}
+  .mo_site .feature-band,.mo_site .contact-grid{grid-template-columns:1fr!important}
+  .mo_site .service-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:760px){
+  .mo_site section{padding:58px 0!important}
+  .mo_site .page-hero{padding:50px 0 34px!important}
+  .mo_site h1{font-size:clamp(38px,11vw,54px)!important;letter-spacing:-2.2px!important}
+  .mo_site .section-head h2{font-size:clamp(30px,8vw,42px)!important}
+  .mo_site .cards,.mo_site .detail-grid,.mo_site .testimonial-grid,.mo_site .demo-pricing,
+  .mo_site .why-grid,.mo_site .industry-grid{grid-template-columns:1fr!important}
+  .mo_site .integration-grid,.mo_site .apps-grid,.mo_site .stats-grid,
+  .mo_site .process-grid,.mo_site .roadmap{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .mo_site .footer-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:520px){
+  .mo_site .container{width:calc(100% - 26px)!important}
+  .mo_site .hero{padding:42px 0 48px!important}
+  .mo_site .visual{min-height:390px!important}
+  .mo_site .dashboard{left:4px!important;right:4px!important}
+  .mo_site .integration-grid,.mo_site .apps-grid,.mo_site .stats-grid,
+  .mo_site .process-grid,.mo_site .roadmap,.mo_site .footer-grid{grid-template-columns:1fr!important}
+  .mo_site .cta-box{padding:28px!important}
+  .mo_site .form,.mo_site .contact-info,.mo_site .service-card{padding:24px!important}
+}
+</style>
+
+<style>
+/* Language dropdown (English / Français / Español) — replaces the old EN/FR pills */
+.mo_site .mo_lang{position:relative}
+.mo_site .mo_lang_btn{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 13px;border-radius:12px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:.2s}
+.mo_site .mo_lang_btn:hover,.mo_site .mo_lang_btn.mo_active_btn{border-color:var(--odoo);color:var(--odoo);background:var(--lav)}
+.mo_site .mo_lang_drop{position:absolute;top:calc(100% + 10px);right:0;min-width:210px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s;z-index:2000}
+.mo_site .mo_lang_drop.mo_open{opacity:1;visibility:visible;transform:translateY(0)}
+.mo_site .mo_lang_item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:10px;font-size:.85rem;color:var(--ink);text-decoration:none;transition:.15s}
+.mo_site .mo_lang_item:hover{background:var(--lav);color:var(--odoo)}
+.mo_site .mo_lang_item.active{background:var(--lav);color:var(--odoo);font-weight:800}
+.mo_site .mo_lang_item .mo_lang_code{font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 5px}
+.mo_site .mo_lang_item.active .mo_lang_code{color:var(--odoo);border-color:rgba(113,75,103,.35)}
+@media(max-width:640px){.mo_site .mo_lang_btn .mo_lang_label{display:none}}
+</style>
+
+<div class="mo_site mo_header_shell">
+<header>
+  <div class="container nav">
+    <a class="brand" href="/saas">
+      <img class="odoo-logo" src="/website_saas_landing/static/src/img/myodoo_logo.png" alt="My Odoo NC"/>
+      <span class="brand-fallback">odoo</span>
+      <span class="brand-divider"></span>
+      <span class="brand-name">MY ODOO NC<small>New Caledonia</small></span>
+    </a>
+    <nav class="navlinks" id="mo_navlinks">
+      <a class="navlink" href="/">Home</a>
+      <a class="navlink" href="/services">Services</a>
+      <a class="navlink" href="/pricing">Pricing</a>
+      <a class="navlink" href="/about">About</a>
+      <a class="navlink" href="/contact-us">Contact Us</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="mo_lang" id="mo_lang">
+        <button class="mo_lang_btn" id="mo_lang_btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="mo_lang_drop">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+          <t t-set="mo_active_lang" t-value="frontend_languages[lang] if lang in frontend_languages else None"/>
+          <span class="mo_lang_label" t-att-title="mo_active_lang.name if mo_active_lang else 'English'">
+            <t t-if="mo_active_lang" t-out="mo_active_lang.url_code.split('_')[0].upper()"/>
+            <t t-else="">EN</t>
+          </span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mo_lang_drop" id="mo_lang_drop" role="menu">
+          <t t-set="mo_lang_order" t-value="['en_US', 'fr_FR', 'ar_001', 'es_ES', 'pt_PT', 'vi_VN', 'zh_CN']"/>
+          <t t-foreach="mo_lang_order" t-as="code">
+            <t t-if="code in frontend_languages">
+              <t t-set="lg" t-value="frontend_languages[code]"/>
+              <a t-attf-class="mo_lang_item js_change_lang{{ ' active' if lg.code == lang else '' }}"
+                 t-att-href="url_localized(lang_code=lg.code, prefetch_langs=True, force_default_lang=True)"
+                 t-att-data-url_code="lg.url_code"
+                 role="menuitem">
+                <span t-out="'English' if lg.code.startswith('en') else lg.name.split('/')[-1].strip()"/>
+                <span class="mo_lang_code" t-out="lg.url_code.split('_')[0].upper()"/>
+              </a>
+            </t>
+          </t>
+          <t t-foreach="frontend_languages.values()" t-as="lg">
+            <t t-if="lg.code not in mo_lang_order">
+              <a t-attf-class="mo_lang_item js_change_lang{{ ' active' if lg.code == lang else '' }}"
+                 t-att-href="url_localized(lang_code=lg.code, prefetch_langs=True, force_default_lang=True)"
+                 t-att-data-url_code="lg.url_code"
+                 role="menuitem">
+                <span t-out="'English' if lg.code.startswith('en') else lg.name.split('/')[-1].strip()"/>
+                <span class="mo_lang_code" t-out="lg.url_code.split('_')[0].upper()"/>
+              </a>
+            </t>
+          </t>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" onclick="location.href='/contact-us'">Book a demo</button>
+      <div class="mo_account" id="mo_account">
+        <button class="mo_account_btn" id="mo_account_btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="mo_account_drop">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="mo_acc_label"><t t-if="request.env.user._is_public()">Sign in</t><t t-if="not request.env.user._is_public()">My Account</t></span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="mo_account_drop" id="mo_account_drop" role="menu">
+          <t t-if="not request.env.user._is_public()">
+            <a href="/my">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              Mon Compte
+            </a>
+            <div class="mo_drop_sep"></div>
+            <a href="/web/session/logout">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Déconnexion
+            </a>
+          </t>
+          <t t-if="request.env.user._is_public()">
+            <a href="/web/login">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+              Connexion
+            </a>
+            <a href="/web/signup">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              Créer un compte
+            </a>
+            <a href="/web/reset_password">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 21v-6h6"/></svg>
+              Mot de passe oublié
+            </a>
+          </t>
+          <div class="mo_drop_sep"></div>
+          <a href="https://myodoo.nc/pricing">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+            Get Demo
+          </a>
+        </div>
+      </div>
+      <button class="menu" id="mo_menu" type="button" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+</div>
+
+<script>
+(function(){
+  var menu = document.getElementById('mo_menu');
+  var navlinks = document.getElementById('mo_navlinks');
+  if(menu &amp;&amp; navlinks){
+    menu.addEventListener('click', function(){ navlinks.classList.toggle('open'); });
+    navlinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ navlinks.classList.remove('open'); });
+    });
+  }
+  var path = window.location.pathname;
+  document.querySelectorAll('.mo_site .navlink').forEach(function(a){
+    if(a.getAttribute('href') === path){ a.classList.add('active'); }
+  });
+})();
+</script>
+
+    </xpath>
+  </field>
+</record>
+
+</data>
+</odoo>

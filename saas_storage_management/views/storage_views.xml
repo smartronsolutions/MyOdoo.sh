@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Storage History Tree View -->
+    <record id="view_storage_history_tree" model="ir.ui.view">
+        <field name="name">saas.storage.history.tree</field>
+        <field name="model">saas.storage.history</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="check_date"/>
+                <field name="instance_id"/>
+                <field name="storage_used_gb"/>
+                <field name="storage_limit_gb"/>
+                <field name="storage_percentage"/>
+                <field name="storage_status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_storage_history_form" model="ir.ui.view">
+        <field name="name">saas.storage.history.form</field>
+        <field name="model">saas.storage.history</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="instance_id"/>
+                    <field name="check_date"/>
+                </group>
+                <group>
+                    <field name="storage_used_gb"/>
+                    <field name="storage_limit_gb"/>
+                    <field name="storage_percentage"/>
+                    <field name="storage_status"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Storage History Action -->
+    <record id="action_storage_history" model="ir.actions.act_window">
+        <field name="name">Storage History</field>
+        <field name="res_model">saas.storage.history</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu - Storage History under SaaS Master Configuration -->
+    <menuitem id="menu_storage_history" name="Storage History" 
+              parent="s_odoo_saas_master.saas_menu_config" 
+              action="action_storage_history" 
+              groups="s_odoo_saas_master.group_odoo_saas_manager"
+              sequence="70"/>
+</odoo>

@@ -1,0 +1,62 @@
+import logging
+from odoo import models, _
+from odoo.exceptions import UserError
+
+
+_logger = logging.getLogger(__name__)
+
+
+class SSHMixin(models.AbstractModel):
+    _name = 'saas.ssh.mixin'
+    _description = "SaaS SSH Mixin"
+
+    def _check_ssh_connection(self, ssh):
+        if not ssh or not hasattr(ssh, 'exec_command'):
+            raise UserError(_("Cannot connect to server. Please check server information and SSH Key Pair."))
+
+    def _exec_cmd(self, command, ssh, arguments=False, without_return=True, raise_on_error=False):
+        """Execute a command on the remote server via SSH.
+
+        :param command: shell command to run
+        :param ssh: opened paramiko SSHClient
+        :param arguments: optional list of arguments piped to stdin
+        :param without_return: if False, return stdout lines
+        :param raise_on_error: if True, raise a UserError when the remote
+            command exits with a non-zero status (instead of silently
+            ignoring the failure).
+        """
+        assert isinstance(command, str) and command
+        self._check_ssh_connection(ssh)
+        command = command.strip()
+        stdin, stdout, stderr = ssh.exec_command(command)
+        if arguments:
+            for arg in arguments:
+                stdin.write('%s\n' % arg)
+            stdin.flush()
+        channel = stdout.channel
+        exit_status = channel.recv_exit_status()
+        if raise_on_error and exit_status:
+            error = stderr.read().decode().strip()
+            raise UserError(
+                _("Command failed on server (exit code %s): %s\n%s")
+                % (exit_status, command, error or _("Unknown error."))
+            )
+        if not without_return:
+            return stdout.readlines()
+
+    def _create_file(self, ssh, file_path, file_content):
+        self._check_ssh_connection(ssh)
+        sftp = ssh.open_sftp()
+        f = sftp.open(file_path, 'w')
+        f.write(file_content)
+        f.close()
+        sftp.close()
+        return True
+
+    def _create_symlink(self, ssh, from_path, to_path, overwrite=False):
+        cmd = "ln -s"
+        if overwrite:
+            cmd += 'f'
+        cmd += ' ' + from_path + ' ' + to_path
+
+        return self._exec_cmd(cmd, ssh)

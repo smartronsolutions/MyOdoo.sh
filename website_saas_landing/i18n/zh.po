@@ -1,0 +1,1896 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-09-23 08:00+1100\n"
+"Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
+"Language-Team: zh\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"\"With My Odoo, we stopped worrying about servers, backups and technical\n"
+"            complexity. The platform lets us focus 100% on our strategy and growth.\""
+msgstr ""
+"我们不再担心服务器、备份和技术\n"
+"复杂。 平台让我们百分之百关注我们的策略和成长\""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "24/7 expert support"
+msgstr "24/7 专家支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"availability\">Project scope</b><br/><span>Implementation, "
+"hosting, support and integrations</span>"
+msgstr "<b data-i18n=\"availability\">项目范围</b><br/><span>执行、托管、支助和一体化</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"connected_apps\">One connected suite</b><span class=\"mini-"
+"pill\">CRM</span><span class=\"mini-pill\" "
+"data-i18n=\"accounting\">Accounting</span><span class=\"mini-pill\" "
+"data-i18n=\"invoicing\">Invoicing</span><span class=\"mini-pill\" "
+"data-i18n=\"inventory\">Inventory</span><span class=\"mini-pill\">Point of "
+"Sale</span><span class=\"mini-pill\">eCommerce</span><span class=\"mini-"
+"pill\">EpayNC</span><span class=\"mini-pill\">AI Assistant</span><span "
+"class=\"mini-pill\" data-i18n=\"projects\">Projects</span>"
+msgstr ""
+"<b data-i18n=\"connected_apps\">一个相连的套房</b><span class=\"mini-"
+"pill\">客户关系管理</span><span class=\"mini-pill\" "
+"data-i18n=\"accounting\">会计</span><span class=\"mini-pill\" "
+"data-i18n=\"invoicing\">发票</span><span class=\"mini-pill\" "
+"data-i18n=\"inventory\">库存</span><span class=\"mini-pill\">销售点</span><span "
+"class=\"mini-pill\">电子商务</span><span class=\"mini-pill\">EpayNC "
+"(英语).</span><span class=\"mini-pill\">大赦国际助理</span><span class=\"mini-pill\""
+" data-i18n=\"projects\">项目</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"french_support\">English &amp; French support</b><small "
+"data-i18n=\"french_support_text\">Clear assistance for your team and "
+"users.</small>"
+msgstr ""
+"<b data-i18n=\"french_support\">英文和法文支助</b><small "
+"data-i18n=\"french_support_text\">为您的团队和用户提供明确的帮助 。</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"inventory\">Inventory</b><small "
+"style=\"display:block;color:#7b8491\" data-i18n=\"stock_synced\">Stock "
+"synchronized</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"local_finance\">Local financial workflows</b><small "
+"data-i18n=\"local_finance_text\">Invoicing and TGC-ready processes.</small>"
+msgstr ""
+"<b data-i18n=\"local_finance\">地方财务工作流程</b><small "
+"data-i18n=\"local_finance_text\">发票和TGC准备程序。</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<b data-i18n=\"location\">Market focus</b><br/><span>New Caledonia</span>"
+msgstr "<b data-i18n=\"location\">市场重点</b><br/><span>新喀里多尼亚</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"managed_platform\">Managed platform</b><small "
+"data-i18n=\"managed_platform_text\">Hosting, backups and updates handled for"
+" you.</small>"
+msgstr ""
+"<b data-i18n=\"managed_platform\">管理平台</b><small "
+"data-i18n=\"managed_platform_text\">为您处理的托管、备份和更新 。</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"sales_crm\">Sales &amp; CRM</b><small "
+"style=\"display:block;color:#7b8491\" "
+"data-i18n=\"pipeline_updated\">Pipeline updated</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>AI Assistant</b>"
+msgstr "<b>大赦国际助理</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Accounting</b>"
+msgstr "<b>会计</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Andrea Morales</b><small>Odoo Partner</small>"
+msgstr "<b>安德烈·莫拉莱斯</b><small>Odoo 合伙人</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>CRM</b>"
+msgstr "<b>客户关系管理</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Carlos Rodriguez</b><small>Technology Director</small>"
+msgstr "<b>卡洛斯·罗德里格斯</b><small>技术主任</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b>Demo presentation</b><br/><span>Company contact details intentionally "
+"omitted</span>"
+msgstr "<b>演示文稿</b><br/><span>故意省略公司联系方式</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Employees &amp; HR</b>"
+msgstr "<b>雇员和人力资源</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Field Service</b>"
+msgstr "<b>外勤事务</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Helpdesk</b>"
+msgstr "<b>服务台</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Inventory</b>"
+msgstr "<b>库存</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Jose Pacheco</b><small>IT Manager</small>"
+msgstr "<b>何塞·帕切科</b><small>信息技术管理员</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Manufacturing</b>"
+msgstr "<b>制造业</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Marketing</b>"
+msgstr "<b>营销</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Point of Sale</b>"
+msgstr "<b>销售点</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Projects</b>"
+msgstr "<b>项目</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Purchase</b>"
+msgstr "<b>采购</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Rental</b>"
+msgstr "<b>租金</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Sales</b>"
+msgstr "<b>销售</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Website</b>"
+msgstr "<b>网站</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>eCommerce</b>"
+msgstr "<b>电子商务</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i class=\"check\">✓</i>"
+msgstr "<i class=\"check\">✓</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>AI</i>AI Assistant"
+msgstr "<i>大赦国际</i>大赦国际助理"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>G</i>Google Workspace"
+msgstr "<i>G级</i>谷歌工作空间"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>M</i>Microsoft 365"
+msgstr "<i>联合国</i>微软365"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>S</i>Stripe Payments"
+msgstr "<i>页:1</i>扣钱"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Sh</i>Shopify"
+msgstr "<i>嘘</i>购买"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>W</i>WhatsApp Business"
+msgstr "<i>W级</i>什么App业务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Z</i>Zapier Automation"
+msgstr "<i>页:1</i>Zapier 自动化"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⇄</i>Logistics"
+msgstr "<i>⇄</i>后勤"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>⌁</i>"
+msgstr "<i>⌁</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⌂</i>Construction"
+msgstr "<i>⌂</i>建筑业"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▤</i>Education"
+msgstr "<i>▤</i>学历"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▦</i>Wholesale"
+msgstr "<i>▦</i>批发"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◈</i>"
+msgstr "<i>◈</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◈</i>Multi-company Groups"
+msgstr "<i>◈</i>多公司集团"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>◈</i>Slack Alerts"
+msgstr "<i>◈</i>黑警报"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◎</i>Professional Services"
+msgstr "<i>                                                      </i>专业服务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◫</i>Retail"
+msgstr "<i>◫</i>零售"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◷</i>"
+msgstr "<i>◷</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>♢</i>Hospitality"
+msgstr "<i>♢</i>招待费"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⚙</i>Manufacturing"
+msgstr "<i>⚙</i>制造业"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>✚</i>Healthcare"
+msgstr "<i>✚</i>保健"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<select><option data-i18n=\"new_implementation\">A new Odoo "
+"implementation</option><option data-i18n=\"support_existing\">Support for an"
+" existing Odoo</option><option data-i18n=\"website_ecommerce\">Website / "
+"eCommerce</option><option data-i18n=\"hosting_option\">Hosting and "
+"maintenance</option><option data-i18n=\"other\">Other</option></select>"
+msgstr ""
+"<select><option data-i18n=\"new_implementation\">新的奥杜行动</option><option "
+"data-i18n=\"support_existing\">支持现有的 Odoo</option><option "
+"data-i18n=\"website_ecommerce\">网站/电子商务</option><option "
+"data-i18n=\"hosting_option\">东道主和维修</option><option "
+"data-i18n=\"other\">其它</option></select>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<small data-i18n=\"business_growth\">Business growth</small>"
+msgstr "<small data-i18n=\"business_growth\">商业增长</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<small data-i18n=\"monthly_sales\">Monthly "
+"sales</small><strong>8.4M</strong><span class=\"trend\">↑ 18.6%</span>"
+msgstr ""
+"<small data-i18n=\"monthly_sales\">每月销售额</small><strong>8.4M "
+"(韩语)</strong><span class=\"trend\">妇女:18.6%</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">I</span>"
+msgstr "<span class=\"appdot\">一、导 言</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">S</span>"
+msgstr "<span class=\"appdot\">页:1</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span class=\"brand-fallback\" style=\"display:block;font-size:25px\">odoo</span>\n"
+"        <span class=\"brand-divider\"/>\n"
+"        <span class=\"brand-name\">MY ODOO NC</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid ""
+"<span class=\"brand-fallback\">odoo</span>\n"
+"      <span class=\"brand-divider\"/>\n"
+"      <span class=\"brand-name\">MY ODOO NC<small>New Caledonia</small></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"contact_badge\">Let’s "
+"talk</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"everything_needed\">Everything"
+" you need</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"hero_badge\">Built for "
+"businesses in New Caledonia</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"local_advantage\">The local "
+"advantage</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"services_badge\">Odoo "
+"solutions</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>About My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Cloud platform features</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Connections</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>FAQ</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Flexible service packages</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Implementation roadmap</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Industries</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Odoo applications</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Simple process</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Success stories</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Why My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"<span class=\"mo_auth_avatar\">L</span>\n"
+"              <span class=\"mo_auth_testi_meta\"><strong>Léa Bernard</strong><em>Head of Operations</em></span>"
+msgstr ""
+"<span class=\"mo_auth_avatar\">L</span><span "
+"class=\"mo_auth_testi_meta\"><strong>莱娅·伯纳德</strong><em>业务主管</em></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Account Security</span>"
+msgstr "<span class=\"mo_auth_badge\">账户安全</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Cloud ERP Platform</span>"
+msgstr "<span class=\"mo_auth_badge\">云企业资源规划平台</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
+msgstr "<span class=\"mo_auth_badge\">今天开始免费</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Enterprise</span>"
+msgstr "<span class=\"plan-label\">企业</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Most Popular</span>"
+msgstr "<span class=\"plan-label\">最受欢迎的</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Starter</span>"
+msgstr "<span class=\"plan-label\">启动器</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span data-i18n=\"workspace\">My Odoo Workspace</span><i class=\"avatar\"/>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span><i class=\"check\">✓</i><b data-i18n=\"local_support\">Local "
+"support</b></span><span><i class=\"check\">✓</i><b "
+"data-i18n=\"secure_hosting\">Secure hosting</b></span><span><i "
+"class=\"check\">✓</i><b data-i18n=\"modular_growth\">Modular "
+"growth</b></span>"
+msgstr ""
+"<span><i class=\"check\">✓</i><b "
+"data-i18n=\"local_support\">当地支助</b></span><span><i class=\"check\">✓</i><b "
+"data-i18n=\"secure_hosting\">安全托管</b></span><span><i class=\"check\">✓</i><b"
+" data-i18n=\"modular_growth\">模块增长</b></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>CRM &amp; Sales</span>\n"
+"        <span>Accounting</span>\n"
+"        <span>Inventory</span>\n"
+"        <span>eCommerce</span>"
+msgstr "<span>CRM 销售</span><span>会计</span><span>库存</span><span>电子商务</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>Demo contact section</span>\n"
+"        <span>Company details omitted</span>"
+msgstr "<span>演示联系部分</span><span>公司细节省略</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>© 2026 My Odoo NC. All rights reserved.</span>\n"
+"    <span>Odoo is a trademark of Odoo S.A.</span>"
+msgstr "<span>2026年,我的奥杜NC。 版权所有。</span><span>Odoo是Odoo S.A的一个商标.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span>© My Odoo — All rights reserved.</span>"
+msgstr "<span>我的奥多 版权所有</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>&lt;2 min</strong><span>Automatic deployment</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>1</strong><b>Consultation</b><span>Understand goals and current "
+"challenges.</span>"
+msgstr "<strong>1个</strong><b>协商</b><span>理解目标和当前的挑战。</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>2,400+</strong><span>Active projects</span>"
+msgstr "<strong>2,400+ (英语).</strong><span>现行项目</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>2</strong><b>Business Analysis</b><span>Map processes, users and "
+"priorities.</span>"
+msgstr "<strong>2个</strong><b>业务分析</b><span>地图进程、用户和优先事项。</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>30 days</strong><span>Backup retention</span>"
+msgstr "<strong>30天时间</strong><span>保留备份</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>3</strong><b>Configuration</b><span>Set up apps, workflows and "
+"access.</span>"
+msgstr "<strong>3个</strong><b>配置</b><span>设置应用,工作流程和访问权限.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>4</strong><b>Customization</b><span>Add required reports and "
+"integrations.</span>"
+msgstr "<strong>页:1</strong><b>自定义</b><span>增加必要的报告和综合。</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>5</strong><b>Testing</b><span>Validate workflows and business "
+"data.</span>"
+msgstr "<strong>页:1</strong><b>测试</b><span>验证工作流程和业务数据。</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>6</strong><b>Training &amp; Go-live</b><span>Prepare users and "
+"launch confidently.</span>"
+msgstr "<strong>6个</strong><b>培训和启用</b><span>做好用户准备,自信地发射.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>7</strong><b>Ongoing Support</b><span>Improve the system as the "
+"business grows.</span>"
+msgstr "<strong>第7条</strong><b>持续支助</b><span>随着企业的发展,完善制度.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>99.9%</strong><span>Uptime target</span>"
+msgstr "<strong>99.9%</strong><span>超时目标</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "A"
+msgstr "A级"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A clear path from consultation to support"
+msgstr "从磋商到支持的明确途径"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"A clear roadmap that reduces delays and keeps the project focused on "
+"priorities."
+msgstr "制定明确的路线图,减少拖延,使项目侧重于优先事项."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A managed environment built for reliable everyday access."
+msgstr "为可靠的日常准入而建立的管理环境."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A modern Odoo environment adapted to the practical needs of New Caledonian "
+"companies, supported by people who understand your context."
+msgstr "一个适应新喀里多尼亚公司实际需要的现代奥杜环境,得到了解你背景的人的支持."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A practical Odoo partner for local business growth"
+msgstr "当地商业发展的一个实用的Odoo合作伙伴"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A practical workflow designed to reduce technical complexity and launch "
+"projects faster."
+msgstr "一个实用的工作流程,旨在降低技术复杂性并更快地启动项目."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A structured setup aligned with your processes, users and priorities."
+msgstr "一个与您的进程,用户和优先事项相匹配的结构化设置 ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "AI"
+msgstr "大赦国际"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "AI Assistant for Odoo"
+msgstr "奥杜的AI助理"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "AI-powered automation &amp; smart insights"
+msgstr "AI - 驱动自动化 & amp; 聪明的见解"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "AM"
+msgstr "上午"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "About"
+msgstr "关于我们"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Adapt Odoo where your business needs more than standard configuration."
+msgstr "适应Odoo , 您的业务需要超过标准配置 ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Advanced customization"
+msgstr "高级定制"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Application configuration"
+msgstr "应用程序配置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Are backups and SSL included?<span>+</span>"
+msgstr "是否包含备份和SSL?<span>+ 键</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Automated backups"
+msgstr "自动备份"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Backups"
+msgstr "自动备份"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Builds"
+msgstr "自动构建"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Deploy"
+msgstr "自动部署"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Back to homepage"
+msgstr "回主页"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Bank reconciliation support"
+msgstr "银行对账支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Basic configuration"
+msgstr "基本配置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Book a consultation →"
+msgstr "安排一次咨询"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Book a demo"
+msgstr "预约演示"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Branch Management"
+msgstr "部门管理"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Bring payments, communication, productivity and automation into your Odoo "
+"workflows."
+msgstr "将支付,通信,生产力和自动化带入你的Odoo工作流程."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Build a better way to work."
+msgstr "构建更好的工作方式."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Build a cleaner financial workflow from quotation to payment follow-up."
+msgstr "构建从报价到支付后续的更清洁的财务工作流程."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Build each update, review logs and validate changes before moving them into "
+"production."
+msgstr "构建每个更新,审查日志并验证更改后再进行生产."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Business Growth"
+msgstr "商业增长"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Business-focused guidance adapted to the needs of companies in New "
+"Caledonia."
+msgstr "适应新喀里多尼亚公司需要的以商业为重点的指导."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "CR"
+msgstr "捷克"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM"
+msgstr "客户关系管理"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM &amp; Sales"
+msgstr "CMM & amp; 销售"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can I migrate an existing Odoo database?<span>+</span>"
+msgstr "我可以迁移一个现有的Odoo数据库吗?<span>+ 键</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can external tools be integrated?<span>+</span>"
+msgstr "外部工具能否整合?<span>+ 键</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose a plan, create the project and connect your repository or existing "
+"Odoo database."
+msgstr "选择一个计划,创建项目并连接您的仓库或现有的 Odoo 数据库 ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose the applications your business needs today and expand the platform as"
+" your operations grow."
+msgstr "选择您当前业务需要的应用程序并随着您的业务增长而扩展平台."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Choose the right starting point"
+msgstr "选择正确的起点"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company"
+msgstr "企业"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Company Logo"
+msgstr "公司日志"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company name"
+msgstr "公司名称"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Configure Branches"
+msgstr "配置分支"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Connect inventory, purchasing, projects, fleet and point of sale in real "
+"time."
+msgstr "实时连接库存、采购、项目、车队和销售点."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Connect local digital payment journeys with invoices, customer portals and "
+"eCommerce."
+msgstr "将当地数字支付行程与发票,客户门户和电子商务相接."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Connect the tools your team already uses"
+msgstr "连接您的团队已经使用的工具"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Connexion"
+msgstr "连接"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Contact"
+msgstr "联系人"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Contact Us"
+msgstr "联系我们"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Continuous improvement roadmap"
+msgstr "持续改进路线图"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Core Odoo applications"
+msgstr "Odoo 核心应用程序"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Create Your Project"
+msgstr "创建您的工程"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Créer un compte"
+msgstr "Créer 无效"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Domains"
+msgstr "自定义域"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Solution"
+msgstr "自定义解决方案"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Custom workflows and automation"
+msgstr "自定义工作流程和自动化"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customer portal payments"
+msgstr "客户门户付款"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customization &amp; Integration"
+msgstr "自定义并amp; 集成"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Data migration support"
+msgstr "数据迁移支持"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Define production, staging and development environments for safer testing "
+"and releases."
+msgstr "为更安全的测试和释放确定生产、中转和发展环境."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Demo form submitted. No data has been sent."
+msgstr "递交了除名表。 没有发送数据."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Demo pricing is intentionally presented as service packages. Exact "
+"commercial pricing and technical limits should be finalized before the "
+"production website goes live."
+msgstr "降级定价是有意作为成套服务提出的。 准确的商业定价和技术限制应当在生产网站启用前最后确定."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Deploy, test, monitor and scale your Odoo environments from one clear "
+"workspace."
+msgstr "从一个清晰的工作空间部署、测试、监测和扩展您的 Odoo 环境."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Déconnexion"
+msgstr "德康纳通"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "E"
+msgstr "页:1"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "EN"
+msgstr "EN 环境"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Each project follows a practical sequence so decisions stay clear and users "
+"are ready before launch."
+msgstr "每个项目都遵循一个实际的顺序,因此决定保持清晰,用户在启动前做好了准备."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Email"
+msgstr "电子邮件"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "EpayNC &amp; Online Payments"
+msgstr "EpayNC & amp; 在线支付"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Essential Setup"
+msgstr "基本设置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Every connected repository update can trigger a new build, with clear logs "
+"to help identify issues before production."
+msgstr "每一个连接的寄存器更新可以触发一个新的构建,在生产前都有清晰的日志帮助识别出问题."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Everything you need to manage Odoo professionally"
+msgstr "所有你需要的 管理Odoo专业"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Everything your business needs,<br/>in <em>one platform</em>."
+msgstr "你的生意需要的东西<br/>内 <em>一个平台</em>。 。 。 。"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Explore services"
+msgstr "探索服务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "FR"
+msgstr "法语"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "FS"
+msgstr "页:1"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Faster Deployment"
+msgstr "更快的部署"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Final pricing depends on users, applications, data migration, customization,"
+" integrations and support requirements."
+msgstr "最后定价取决于用户、应用程序、数据迁移、定制、集成和支助要求."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Finance &amp; TGC"
+msgstr "财务 & amp; TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "First-level user support"
+msgstr "一级用户支持"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Fleet, projects and task management"
+msgstr "车队、项目和任务管理"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For complex workflows, integrations and multi-company requirements."
+msgstr "对于复杂的工作流程,集成和多公司要求."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For growing businesses centralizing multiple departments."
+msgstr "用于培育多个部门集中经营的企业."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For small teams moving from spreadsheets or disconnected tools."
+msgstr "对于从电子表格或被断开的工具中移动的小团队."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Frequently asked questions"
+msgstr "经常问的问题"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"From first consultation to daily support, we help you deploy a practical "
+"business platform—not just another piece of software."
+msgstr "从第一次磋商到日常支持,我们帮助你们部署一个实用的商业平台,而不仅仅是另一个软件."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"From first consultation to long-term support, every stage is designed to "
+"make implementation clear, secure and manageable."
+msgstr "从第一次磋商到长期支持,每个阶段的设计都是为了使执行工作明确、安全和易于管理."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "From setup to production in four steps"
+msgstr "从设置到生产分四个步骤"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Full name"
+msgstr "全名"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Get Demo"
+msgstr "预约演示"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Get back to work in under 2 minutes"
+msgstr "两分钟后回去工作"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "H"
+msgstr "页:1"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "HR"
+msgstr "人力资源"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Help teams find information, complete tasks and understand daily workflows "
+"more quickly."
+msgstr "帮助团队找到信息,完成任务并更快地理解日常工作流程."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Help your users adopt Odoo confidently and get answers quickly."
+msgstr "帮助用户自信地收养奥多并迅速得到答案."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Home"
+msgstr "首页"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Hosting &amp; Security"
+msgstr "托管 & amp; 安全"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "I"
+msgstr "一、导 言"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "I am interested in"
+msgstr "我有兴趣"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Implementation and configuration support"
+msgstr "执行和配置支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Implementation guidance, configuration assistance and user training can be "
+"included according to the selected service package."
+msgstr "执行指导、配置援助和用户培训可按选定的服务包进行."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"Implementation, hosting, customization, training and long-term Odoo support "
+"for businesses in New Caledonia."
+msgstr "新喀里多尼亚企业的实施、托管、定制、培训和长期支助."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Important information about migration, security, capacity and support."
+msgstr "关于移徙、安全、能力和支助的重要信息."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Increase resources as usage grows without rebuilding or manually migrating "
+"the environment."
+msgstr "随着使用量的增加而增加资源,而不重建或人工迁移环境."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Industry-ready workflows help teams reduce manual work and gain better "
+"visibility across daily operations."
+msgstr "工业准备工作流程有助于各小组减少手工工作,提高日常业务的能见度."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Initial data and user setup"
+msgstr "初步数据和用户设置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Initial training"
+msgstr "初步培训"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Inventory and purchasing"
+msgstr "库存和采购"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoice and quotation guidance"
+msgstr "发票和报价指导"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoicing, Accounting &amp; TGC"
+msgstr "发票、会计和amp; TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Is support available during setup?<span>+</span>"
+msgstr "设置时是否有支持?<span>+ 键</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "JP"
+msgstr "日记"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Keep encrypted database backups and restore a previous version quickly when "
+"needed."
+msgstr "保持加密数据库备份,并在需要时快速恢复上一个版本."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Keep stock, purchasing, sales and customer data synchronized."
+msgstr "保持库存,购买,销售和客户数据同步."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Learn more →"
+msgstr "学习更多"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Let’s define a practical Odoo roadmap for your team."
+msgstr "让我们为您的团队确定一个实用的奥杜路线图."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Local Understanding"
+msgstr "当地理解"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Local understanding.<br/><span class=\"gradient-text\">Connected business "
+"technology.</span>"
+msgstr "地方谅解.<br/><span class=\"gradient-text\">连通商业技术.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Long-term optimization roadmap"
+msgstr "长期优化路线图"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>."
+msgstr "失去访问权的情况发生。<br/>回来 <em>不应该很难</em>。 。 。 。"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "M"
+msgstr "联合国"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "MK"
+msgstr "马克"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Manage multiple Odoo projects, customer environments and service plans from "
+"a single panel."
+msgstr "从一个面板管理多个Odoo项目,客户环境和服务计划."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Managed environments with backups, monitoring and controlled access."
+msgstr "通过备份、监测和控制准入管理环境."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Managed hosting"
+msgstr "管理托管"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Managed plans can include encrypted backups, secure project isolation and "
+"SSL for hosted subdomains or connected domains."
+msgstr "所管理的计划可以包括加密备份,安全的项目隔离以及主机子域或连接域的SSL."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Menu"
+msgstr "菜单"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Message"
+msgstr "消息"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mon Compte"
+msgstr "单曲"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mot de passe oublié"
+msgstr "乌布里埃之行"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Multi-company &amp; multi-currency support"
+msgstr "多公司和amp;多货币支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-company setup"
+msgstr "多公司设置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-tenant Ready"
+msgstr "多租户准备"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multiple Odoo applications"
+msgstr "多个 Odoo 应用程序"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Account"
+msgstr "我的账户"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Odoo NC"
+msgstr "我的奥多NC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"My Odoo NC helps businesses in New Caledonia implement, host, customize and "
+"improve Odoo through a practical, business-first approach."
+msgstr "我的Odoo NC通过实用的第一商业方法帮助新喀里多尼亚的企业实施、主办、定制和改进Odoo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "My Odoo NC — About"
+msgstr "我的Odoo NC——关于"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "My Odoo NC — Contact Us"
+msgstr "我的Odoo NC——联系我们"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "My Odoo NC — Home"
+msgstr "我的Odoo NC-家园"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "My Odoo NC — Services"
+msgstr "我的Odoo NC——服务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Need help? Our support team is one click away"
+msgstr "需要帮忙吗? 我们的支援队离这里一公里远"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Odoo Expertise"
+msgstr "奥多"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Odoo Implementation"
+msgstr "Odoo 执行"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "One connected system for every department"
+msgstr "每个部门有一个连接的系统"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"One platform.<br/><span class=\"gradient-text\">Your entire business.</span>"
+msgstr "一个站台.<br/><span class=\"gradient-text\">你整个生意。</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Ongoing Support"
+msgstr "持续支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Online store payment flow"
+msgstr "网上存储支付流程"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Operations"
+msgstr "业务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Overdue invoice lookup"
+msgstr "逾期发票查询"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "P"
+msgstr "页:1"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "POS"
+msgstr "业务干事"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "PR"
+msgstr "公关"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Payment tracking and reminders"
+msgstr "付款跟踪和催复通知"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Phone"
+msgstr "电话"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Point of Sale"
+msgstr "销售点"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Powerful technology. Local understanding."
+msgstr "强能科技. 地方谅解."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Pricing"
+msgstr "定价"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Priority implementation support"
+msgstr "优先执行支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Process configuration"
+msgstr "进程配置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process discovery and solution design"
+msgstr "工艺发现和解决方案设计"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process optimization reviews"
+msgstr "流程优化审查"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Quotations, invoices and credit notes"
+msgstr "说明、发票和信用证"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "R"
+msgstr "区域"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Ready to simplify your business?"
+msgstr "准备好简化你的生意了吗?"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Real-time Monitoring"
+msgstr "实时监测"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Real-time analytics dashboards"
+msgstr "实时分析仪表板"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Reliable hosting, easier deployments and one place to manage multiple Odoo "
+"environments."
+msgstr "可靠的托管,更方便的部署,以及管理多所奥都环境的一个地段."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Remote functional support"
+msgstr "远程功能支持"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Replace scattered tools and repeated data entry with a clear, flexible "
+"platform that grows with your business."
+msgstr "将分散的工具和重复的数据输入替换为清晰,灵活的平台,随着业务的发展而成长."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Reports and business dashboards"
+msgstr "报告和业务仪表板"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Reports and dashboards"
+msgstr "报告和仪表板"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Business Quote"
+msgstr "请求商业引用"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Enterprise Quote"
+msgstr "请求企业引文"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Starter Quote"
+msgstr "请求启动引用"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Reset links expire automatically for safety"
+msgstr "重置链接自动过期安全性"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Retail &amp; Operations"
+msgstr "零售和amp; 操作"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run production, staging and development branches in parallel, each with its "
+"own database and secure URL."
+msgstr "平行运行生产、中转和开发分支,每个分支都有自己的数据库和安全的URL."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run sales, invoicing, inventory, projects and customer relationships from "
+"one beautifully connected Odoo workspace—with local support when you need "
+"it."
+msgstr "运行销售、发票、库存、项目和客户关系."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "S"
+msgstr "页:1"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "SSL and domain configuration"
+msgstr "SSL 和域配置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Scale Smoothly"
+msgstr "平滑地缩放"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Seamless integrations &amp; API connections"
+msgstr "无缝集成和amp; API 连接"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Secure Hosting"
+msgstr "安全托管"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure cloud hosting"
+msgstr "安全云托管"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Secure cloud hosting &amp; automatic backups"
+msgstr "安全云托管并amp; 自动备份"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure transaction experience"
+msgstr "安全交易经验"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Send request"
+msgstr "发送请求"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Services"
+msgstr "服务"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Services designed around<br/><span class=\"gradient-text\">your real "
+"operations</span>"
+msgstr "服务设计<br/><span class=\"gradient-text\">您的真实操作</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Share your current challenges and we will help you identify the right Odoo "
+"starting point."
+msgstr "分享你目前的挑战 我们会帮助你找到奥多的起点."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign in"
+msgstr "登录"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Simplify invoicing, payment follow-up and local tax workflows with a "
+"structured financial process."
+msgstr "简化发票,支付跟踪和地方税收工作流程,实行结构化财务流程."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Solutions"
+msgstr "解决方案"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Solutions shaped around real business operations"
+msgstr "围绕实际业务形成的解决方案"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Start your project →"
+msgstr "开始你的项目 ~"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Structured implementation, configuration, customization and user support."
+msgstr "结构化实施、配置、定制和用户支持."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Support &amp; Training"
+msgstr "支持和amp; 培训"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC configuration and reporting"
+msgstr "TGC 配置和报告"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC process assistance"
+msgstr "TGC 流程援助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Team training and go-live support"
+msgstr "团队培训和上线支助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us briefly about your business and needs"
+msgstr "说说你的生意和需要"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us what you want<br/><span class=\"gradient-text\">to improve</span>"
+msgstr "告诉我们你想要什么<br/><span class=\"gradient-text\">改进</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Third-party integrations"
+msgstr "第三方合并"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Third-party service integration"
+msgstr "第三方服务一体化"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track CPU, memory, storage and application activity with alerts for unusual "
+"performance."
+msgstr "追踪CPU,内存,存储和应用程序活动,并有异常性能的提示."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track leads, manage opportunities, prepare quotations and turn them into "
+"invoices without duplicate work."
+msgstr "追踪线索,管理机会,准备出价,并转换成发票而无需重复工作."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Training and ongoing assistance"
+msgstr "培训和持续援助"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Training, troubleshooting and continuous improvement after go-live."
+msgstr "训练,排除故障,上线后不断改进."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Updates and platform monitoring"
+msgstr "最新情况和平台监测"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Use an included secure subdomain or connect your own domain with automatic "
+"SSL configuration."
+msgstr "使用包含的安全子域或用自动 SSL 配置连接自己的域 ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "User and administrator training"
+msgstr "用户和管理员培训"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "User setup"
+msgstr "用户设置"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "W"
+msgstr "W级"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Website and online shop connection"
+msgstr "网站和网上商店连接"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What customers value most"
+msgstr "顾客最珍贵的是什么"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What happens when my project grows?<span>+</span>"
+msgstr "我的项目长大后会怎样?<span>+ 键</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Whether you are starting from spreadsheets or replacing an existing system, "
+"a clear first conversation can save months of complexity."
+msgstr "无论是从电子表格开始还是替换一个已有的系统,一个清晰的首次对话都可以节省几个月的复杂性."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Work smarter with one connected system"
+msgstr "用一个连接的系统更聪明地工作"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. An existing database backup can be restored during the onboarding "
+"process while preserving users, business data and compatible customizations."
+msgstr "对 在登入过程中可以恢复现有的数据库备份,同时保存用户,业务数据和相容的定制."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. Odoo can be connected with payment, communication, productivity, "
+"eCommerce and automation platforms depending on project requirements."
+msgstr "对 Odoo可以根据项目要求与支付,通信,生产率,电子商务和自动化平台相接."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"You can move to a larger plan or increase project resources without "
+"rebuilding the complete environment."
+msgstr "在不重建完整的环境的情况下,您可以转入更大的计划或增加项目资源."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your data stays encrypted end-to-end"
+msgstr "您的数据会加密端到端"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Your name"
+msgstr "你的名字"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your time is <em>precious</em>,<br/>use it to grow."
+msgstr "你的时间是 <em>珍贵</em>, (中文(简体) ).<br/>利用它生长。"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "eCommerce and product catalogue"
+msgstr "电子商务和产品目录"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "name@company.com"
+msgstr "名称@company.com"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Automatic builds and backups removed hours of manual server work and gave "
+"our team a much safer release process.”"
+msgstr "“自动建造和备份取消了数小时的人工服务器工作,使我们的团队有了更安全的释放过程。”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Managing several customer instances is now much clearer. Each environment "
+"is isolated and available from one dashboard.”"
+msgstr "“管理几个客户的情况现在更加明确。 每个环境都是孤立的,可从一个仪表板上找到。”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“The staging workflow and monitoring tools give us confidence before every "
+"production update.”"
+msgstr "“串接工作流程和监测工具使我们在每次制作更新之前都具有信心。”"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"☁ <span data-i18n=\"backup_complete\">Backup complete</span><small "
+"data-i18n=\"protected_securely\">Your data is protected</small>"
+msgstr ""
+"☁ <span data-i18n=\"backup_complete\">备份完成</span><small "
+"data-i18n=\"protected_securely\">您的数据受到保护</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"✓ <span data-i18n=\"invoice_paid\">Invoice paid</span><small>124,500 "
+"XPF</small>"
+msgstr ""
+"✓ <span data-i18n=\"invoice_paid\">已支付的发票</span><small>124 500 XPF "
+"(韩语)</small>"

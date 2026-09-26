@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<menuitem
+        id="saas_menu_root"
+        name="My Odoo SH"
+        web_icon="s_odoo_saas_master,static/description/icon.png"
+        groups="s_odoo_saas_master.group_odoo_saas_user"
+        sequence="25"/>
+    <menuitem
+        id="saas_menu_odoo_instance"
+        name="Odoo Instances"
+        parent="saas_menu_root"
+        sequence="1" groups="s_odoo_saas_master.group_odoo_saas_user"/>
+
+    <!-- CONFIGURATION -->
+    <menuitem
+        id="saas_menu_config"
+        name="Configuration"
+        parent="saas_menu_root"
+        sequence="99" groups="s_odoo_saas_master.group_odoo_saas_manager"/>
+    <menuitem
+        id="saas_config_settings_menu"
+        name="Settings"
+        parent="saas_menu_config"
+        action="s_odoo_saas_master.saas_config_settings_action"
+        groups="base.group_system"
+        sequence="0"/>
+    <menuitem
+        id="saas_config_odoo_menu"
+        name="Odoo"
+        parent="saas_menu_config"
+        sequence="40"/>
+    <menuitem
+        id="saas_config_server_menu"
+        name="Servers"
+        parent="saas_menu_config"
+        sequence="50"/>
+    <menuitem
+        id="saas_config_domain_menu"
+        name="Domains"
+        parent="saas_menu_config"
+        sequence="60"/>
+
+</odoo>

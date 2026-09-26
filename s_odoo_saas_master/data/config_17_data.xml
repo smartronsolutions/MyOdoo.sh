@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        
+		<!-- Odoo 17 Default Config -->
+		
+		<record id="saas_odoo170_config_addons_path" model="saas.odoo.version.config">
+			<field name="name">addons_path</field>
+			<field name="value">/mnt/extra-addons</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+
+		<record id="saas_odoo170_config_admin_passwd" model="saas.odoo.version.config">
+			<field name="name">admin_passwd</field>
+			<field name="value">admin</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_csv_internal_sep" model="saas.odoo.version.config">
+			<field name="name">csv_internal_sep</field>
+			<field name="value">,</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_data_dir" model="saas.odoo.version.config">
+			<field name="name">data_dir</field>
+			<field name="value">/home/odoo/.local/share/Odoo</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_db_maxconn" model="saas.odoo.version.config">
+			<field name="name">db_maxconn</field>
+			<field name="value">64</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_db_name" model="saas.odoo.version.config">
+			<field name="name">db_name</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_dbfilter" model="saas.odoo.version.config">
+			<field name="name">dbfilter</field>
+			<field name="value">.*</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_debug_mode" model="saas.odoo.version.config">
+			<field name="name">debug_mode</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_email_from" model="saas.odoo.version.config">
+			<field name="name">email_from</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_limit_memory_hard" model="saas.odoo.version.config">
+			<field name="name">limit_memory_hard</field>
+			<field name="value">2684354560</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_limit_memory_soft" model="saas.odoo.version.config">
+			<field name="name">limit_memory_soft</field>
+			<field name="value">2147483648</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_limit_request" model="saas.odoo.version.config">
+			<field name="name">limit_request</field>
+			<field name="value">8192</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_limit_time_cpu" model="saas.odoo.version.config">
+			<field name="name">limit_time_cpu</field>
+			<field name="value">60</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_limit_time_real" model="saas.odoo.version.config">
+			<field name="name">limit_time_real</field>
+			<field name="value">120</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_list_db" model="saas.odoo.version.config">
+			<field name="name">list_db</field>
+			<field name="value">True</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_log_db" model="saas.odoo.version.config">
+			<field name="name">log_db</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_log_handler" model="saas.odoo.version.config">
+			<field name="name">log_handler</field>
+			<field name="value">[':INFO']</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_log_level" model="saas.odoo.version.config">
+			<field name="name">log_level</field>
+			<field name="value">info</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_logfile" model="saas.odoo.version.config">
+			<field name="name">logfile</field>
+			<field name="value">None</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_longpolling_port" model="saas.odoo.version.config">
+			<field name="name">longpolling_port</field>
+			<field name="value">8072</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_max_cron_threads" model="saas.odoo.version.config">
+			<field name="name">max_cron_threads</field>
+			<field name="value">2</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_osv_memory_age_limit" model="saas.odoo.version.config">
+			<field name="name">osv_memory_age_limit</field>
+			<field name="value">1.0</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_osv_memory_count_limit" model="saas.odoo.version.config">
+			<field name="name">osv_memory_count_limit</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_proxy_mode" model="saas.odoo.version.config">
+			<field name="name">proxy_mode</field>
+			<field name="value">True</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_smtp_password" model="saas.odoo.version.config">
+			<field name="name">smtp_password</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_smtp_port" model="saas.odoo.version.config">
+			<field name="name">smtp_port</field>
+			<field name="value">25</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_smtp_server" model="saas.odoo.version.config">
+			<field name="name">smtp_server</field>
+			<field name="value">localhost</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_smtp_ssl" model="saas.odoo.version.config">
+			<field name="name">smtp_ssl</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_smtp_user" model="saas.odoo.version.config">
+			<field name="name">smtp_user</field>
+			<field name="value">False</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_without_demo" model="saas.odoo.version.config">
+			<field name="name">without_demo</field>
+			<field name="value">True</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_workers" model="saas.odoo.version.config">
+			<field name="name">workers</field>
+			<field name="value">0</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpc" model="saas.odoo.version.config">
+			<field name="name">xmlrpc</field>
+			<field name="value">True</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpc_interface" model="saas.odoo.version.config">
+			<field name="name">xmlrpc_interface</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpc_port" model="saas.odoo.version.config">
+			<field name="name">xmlrpc_port</field>
+			<field name="value">8069</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpcs" model="saas.odoo.version.config">
+			<field name="name">xmlrpcs</field>
+			<field name="value">True</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpcs_interface" model="saas.odoo.version.config">
+			<field name="name">xmlrpcs_interface</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+		<record id="saas_odoo170_config_xmlrpcs_port" model="saas.odoo.version.config">
+			<field name="name">xmlrpcs_port</field>
+			<field name="value">8071</field>
+			<field name="section_id" ref="saas_odoo_version_config_section_options"/>
+			<field name="odoo_version_id" ref="saas_odoo_version_17"/>
+		</record>
+		
+	</data>
+</odoo>

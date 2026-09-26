@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="saas_landing_page" model="website.page">
+  <field name="name">Home (My Odoo NC)</field>
+  <field name="url">/saas</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_landing_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo NC — Home</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_home_page">
+<div class="top-glow"></div><div class="top-glow two"></div>
+
+<main>
+    <section class="hero"><div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><i></i><span data-i18n="hero_badge">Built for businesses in New Caledonia</span></span>
+        <h1 data-i18n-html="hero_title">One platform.<br/><span class="gradient-text">Your entire business.</span></h1>
+        <p class="lead" data-i18n="hero_text">Run sales, invoicing, inventory, projects and customer relationships from one beautifully connected Odoo workspace—with local support when you need it.</p>
+        <div class="hero-actions"><button class="btn btn-primary" onclick="location.href='/contact-us'" data-i18n="start_project">Start your project →</button><button class="btn btn-light" onclick="location.href='/services'" data-i18n="explore_services">Explore services</button></div>
+        <div class="trust-row"><span><i class="check">✓</i><b data-i18n="local_support">Local support</b></span><span><i class="check">✓</i><b data-i18n="secure_hosting">Secure hosting</b></span><span><i class="check">✓</i><b data-i18n="modular_growth">Modular growth</b></span></div>
+      </div>
+      <div class="visual">
+        <div class="glass-orb orb1"></div><div class="glass-orb orb2"></div>
+        <div class="dashboard">
+          <div class="dash-top"><div class="dots"><i></i><i></i><i></i></div><div class="mini-profile"><span data-i18n="workspace">My Odoo Workspace</span><i class="avatar"></i></div></div>
+          <div class="dash-grid">
+            <div class="metric"><small data-i18n="monthly_sales">Monthly sales</small><strong>8.4M</strong><span class="trend">↑ 18.6%</span></div>
+            <div class="chart"><small data-i18n="business_growth">Business growth</small><div class="bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:47%"></i><i style="height:75%"></i><i style="height:62%"></i><i style="height:91%"></i></div></div>
+            <div class="activity"><span class="appdot">S</span><div><b data-i18n="sales_crm">Sales &amp; CRM</b><small style="display:block;color:#7b8491" data-i18n="pipeline_updated">Pipeline updated</small></div></div>
+            <div class="activity"><span class="appdot">I</span><div><b data-i18n="inventory">Inventory</b><small style="display:block;color:#7b8491" data-i18n="stock_synced">Stock synchronized</small></div></div>
+          </div>
+        </div>
+        <div class="floating-card fc1">✓ <span data-i18n="invoice_paid">Invoice paid</span><small>124,500 XPF</small></div>
+        <div class="floating-card fc2">☁ <span data-i18n="backup_complete">Backup complete</span><small data-i18n="protected_securely">Your data is protected</small></div>
+      </div>
+    </div></section>
+    <div class="logo-strip"><div class="container strip"><b data-i18n="connected_apps">One connected suite</b><span class="mini-pill">CRM</span><span class="mini-pill" data-i18n="accounting">Accounting</span><span class="mini-pill" data-i18n="invoicing">Invoicing</span><span class="mini-pill" data-i18n="inventory">Inventory</span><span class="mini-pill">Point of Sale</span><span class="mini-pill">eCommerce</span><span class="mini-pill">EpayNC</span><span class="mini-pill">AI Assistant</span><span class="mini-pill" data-i18n="projects">Projects</span></div></div>
+    <section><div class="container"><div class="section-head"><span class="eyebrow"><i></i><span data-i18n="everything_needed">Everything you need</span></span><h2 data-i18n="work_smarter">Work smarter with one connected system</h2><p data-i18n="work_smarter_text">Replace scattered tools and repeated data entry with a clear, flexible platform that grows with your business.</p></div>
+      <div class="cards">
+        <article class="card"><div class="icon">◎</div><h3 data-i18n="crm_sales">CRM &amp; Sales</h3><p data-i18n="crm_sales_text">Track leads, manage opportunities, prepare quotations and turn them into invoices without duplicate work.</p><a class="card-link" onclick="location.href='/services'" data-i18n="learn_more">Learn more →</a></article>
+        <article class="card"><div class="icon">▤</div><h3 data-i18n="finance_tgc">Finance &amp; TGC</h3><p data-i18n="finance_tgc_text">Simplify invoicing, payment follow-up and local tax workflows with a structured financial process.</p><a class="card-link" onclick="location.href='/services'" data-i18n="learn_more">Learn more →</a></article>
+        <article class="card"><div class="icon">◫</div><h3 data-i18n="operations">Operations</h3><p data-i18n="operations_text">Connect inventory, purchasing, projects, fleet and point of sale in real time.</p><a class="card-link" onclick="location.href='/services'" data-i18n="learn_more">Learn more →</a></article>
+      </div>
+    </div></section>
+    <section style="padding-top:10px"><div class="container feature-band"><div><span class="eyebrow"><i></i><span data-i18n="local_advantage">The local advantage</span></span><h2 data-i18n="technology_local">Powerful technology. Local understanding.</h2><p class="lead" data-i18n="technology_local_text">A modern Odoo environment adapted to the practical needs of New Caledonian companies, supported by people who understand your context.</p></div><div class="feature-list">
+      <div class="feature-item"><i class="check">✓</i><div><b data-i18n="french_support">English &amp; French support</b><small data-i18n="french_support_text">Clear assistance for your team and users.</small></div></div>
+      <div class="feature-item"><i class="check">✓</i><div><b data-i18n="local_finance">Local financial workflows</b><small data-i18n="local_finance_text">Invoicing and TGC-ready processes.</small></div></div>
+      <div class="feature-item"><i class="check">✓</i><div><b data-i18n="managed_platform">Managed platform</b><small data-i18n="managed_platform_text">Hosting, backups and updates handled for you.</small></div></div>
+    </div></div></section>
+
+    <section class="stats-band"><div class="container stats-grid">
+      <div class="stat"><strong>2,400+</strong><span>Active projects</span></div>
+      <div class="stat"><strong>99.9%</strong><span>Uptime target</span></div>
+      <div class="stat"><strong>&lt;2 min</strong><span>Automatic deployment</span></div>
+      <div class="stat"><strong>30 days</strong><span>Backup retention</span></div>
+    </div></section>
+
+    <section id="platform-features"><div class="container">
+      <div class="section-head"><span class="eyebrow"><i></i><span>Cloud platform features</span></span><h2>Everything you need to manage Odoo professionally</h2><p>Deploy, test, monitor and scale your Odoo environments from one clear workspace.</p></div>
+      <div class="detail-grid">
+        <article class="detail-card"><div class="icon">↻</div><h3>Automatic Builds</h3><p>Every connected repository update can trigger a new build, with clear logs to help identify issues before production.</p></article>
+        <article class="detail-card"><div class="icon">⑂</div><h3>Branch Management</h3><p>Run production, staging and development branches in parallel, each with its own database and secure URL.</p></article>
+        <article class="detail-card"><div class="icon">☁</div><h3>Automatic Backups</h3><p>Keep encrypted database backups and restore a previous version quickly when needed.</p></article>
+        <article class="detail-card"><div class="icon">◴</div><h3>Real-time Monitoring</h3><p>Track CPU, memory, storage and application activity with alerts for unusual performance.</p></article>
+        <article class="detail-card"><div class="icon">⌘</div><h3>Custom Domains</h3><p>Use an included secure subdomain or connect your own domain with automatic SSL configuration.</p></article>
+        <article class="detail-card"><div class="icon">▦</div><h3>Multi-tenant Ready</h3><p>Manage multiple Odoo projects, customer environments and service plans from a single panel.</p></article>
+      </div>
+    </div></section>
+
+    <section style="background:#fcfbfd"><div class="container">
+      <div class="section-head"><span class="eyebrow"><i></i><span>Connections</span></span><h2>Connect the tools your team already uses</h2><p>Bring payments, communication, productivity and automation into your Odoo workflows.</p></div>
+      <div class="integration-grid">
+        <div class="integration-item"><i>W</i>WhatsApp Business</div><div class="integration-item"><i>S</i>Stripe Payments</div>
+        <div class="integration-item"><i>G</i>Google Workspace</div><div class="integration-item"><i>Z</i>Zapier Automation</div>
+        <div class="integration-item"><i>◈</i>Slack Alerts</div><div class="integration-item"><i>M</i>Microsoft 365</div>
+        <div class="integration-item"><i>AI</i>AI Assistant</div><div class="integration-item"><i>Sh</i>Shopify</div>
+      </div>
+    </div></section>
+
+    <section><div class="container">
+      <div class="section-head"><span class="eyebrow"><i></i><span>Simple process</span></span><h2>From setup to production in four steps</h2><p>A practical workflow designed to reduce technical complexity and launch projects faster.</p></div>
+      <div class="process-grid">
+        <article class="process-step"><h3>Create Your Project</h3><p>Choose a plan, create the project and connect your repository or existing Odoo database.</p></article>
+        <article class="process-step"><h3>Configure Branches</h3><p>Define production, staging and development environments for safer testing and releases.</p></article>
+        <article class="process-step"><h3>Automatic Deploy</h3><p>Build each update, review logs and validate changes before moving them into production.</p></article>
+        <article class="process-step"><h3>Scale Smoothly</h3><p>Increase resources as usage grows without rebuilding or manually migrating the environment.</p></article>
+      </div>
+    </div></section>
+
+    
+    
+
+    <section><div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i></i><span>Odoo applications</span></span>
+        <h2>One connected system for every department</h2>
+        <p>Choose the applications your business needs today and expand the platform as your operations grow.</p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-card"><div class="app-symbol">CRM</div><b>CRM</b></div>
+        <div class="app-card"><div class="app-symbol">S</div><b>Sales</b></div>
+        <div class="app-card"><div class="app-symbol">P</div><b>Purchase</b></div>
+        <div class="app-card"><div class="app-symbol">I</div><b>Inventory</b></div>
+        <div class="app-card"><div class="app-symbol">M</div><b>Manufacturing</b></div>
+        <div class="app-card"><div class="app-symbol">A</div><b>Accounting</b></div>
+        <div class="app-card"><div class="app-symbol">POS</div><b>Point of Sale</b></div>
+        <div class="app-card"><div class="app-symbol">HR</div><b>Employees &amp; HR</b></div>
+        <div class="app-card"><div class="app-symbol">W</div><b>Website</b></div>
+        <div class="app-card"><div class="app-symbol">E</div><b>eCommerce</b></div>
+        <div class="app-card"><div class="app-symbol">PR</div><b>Projects</b></div>
+        <div class="app-card"><div class="app-symbol">H</div><b>Helpdesk</b></div>
+        <div class="app-card"><div class="app-symbol">MK</div><b>Marketing</b></div>
+        <div class="app-card"><div class="app-symbol">R</div><b>Rental</b></div>
+        <div class="app-card"><div class="app-symbol">FS</div><b>Field Service</b></div>
+        <div class="app-card"><div class="app-symbol">AI</div><b>AI Assistant</b></div>
+      </div>
+    </div></section>
+
+    
+
+    
+
+    <section style="background:#fcfbfd"><div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i></i><span>Flexible service packages</span></span>
+        <h2>Choose the right starting point</h2>
+        <p>Final pricing depends on users, applications, data migration, customization, integrations and support requirements.</p>
+      </div>
+      <div class="demo-pricing">
+        <article class="demo-price-card">
+          <span class="plan-label">Starter</span>
+          <h3>Essential Setup</h3>
+          <p>For small teams moving from spreadsheets or disconnected tools.</p>
+          <ul><li>Core Odoo applications</li><li>Basic configuration</li><li>User setup</li><li>Managed hosting</li><li>Initial training</li></ul>
+          <button class="btn btn-light" style="width:100%;margin-top:22px" onclick="location.href='/contact-us'">Request Starter Quote</button>
+        </article>
+        <article class="demo-price-card featured">
+          <span class="plan-label">Most Popular</span>
+          <h3>Business Growth</h3>
+          <p>For growing businesses centralizing multiple departments.</p>
+          <ul><li>Multiple Odoo applications</li><li>Process configuration</li><li>Data migration support</li><li>Reports and dashboards</li><li>Training and ongoing assistance</li></ul>
+          <button class="btn btn-primary" style="width:100%;margin-top:22px" onclick="location.href='/contact-us'">Request Business Quote</button>
+        </article>
+        <article class="demo-price-card">
+          <span class="plan-label">Enterprise</span>
+          <h3>Custom Solution</h3>
+          <p>For complex workflows, integrations and multi-company requirements.</p>
+          <ul><li>Advanced customization</li><li>Third-party integrations</li><li>Multi-company setup</li><li>Priority implementation support</li><li>Long-term optimization roadmap</li></ul>
+          <button class="btn btn-light" style="width:100%;margin-top:22px" onclick="location.href='/contact-us'">Request Enterprise Quote</button>
+        </article>
+      </div>
+      <div class="important-note">Demo pricing is intentionally presented as service packages. Exact commercial pricing and technical limits should be finalized before the production website goes live.</div>
+    </div></section>
+
+
+
+    
+  </main>
+
+<t t-call="website_saas_landing.mo_cta"/>
+<t t-call="website_saas_landing.mo_footer"/>
+
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

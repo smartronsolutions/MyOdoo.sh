@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_resource_package_basic" model="saas.resource.package">
+		<field name="name">Basic</field>
+	</record>
+	
+</odoo>

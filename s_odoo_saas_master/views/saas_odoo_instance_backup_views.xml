@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_backup_view_tree" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.backup.view.tree</field>
+        <field name="model">saas.odoo.instance.backup</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Odoo Instance Backup">
+                <field name="name" />
+				<field name="datetime" />
+				<field name="odoo_version_id" />
+				<field name="format" />
+				<field name="file_size" />
+				<field name="restore_state" widget="badge"
+					decoration-info="restore_state == 'running'"
+					decoration-success="restore_state == 'done'"
+					decoration-danger="restore_state == 'failed'"/>
+				<field name="description" />
+				<button name="action_download" string="Download" type="object" icon="fa-download" title="Download"/>
+				<button name="action_open_restore_wizard" string="Restore" type="object" icon="fa-undo" title="Restore"
+					invisible="restore_state == 'running'"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_backup_view_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.backup.view.form</field>
+        <field name="model">saas.odoo.instance.backup</field>
+        <field name="arch" type="xml">
+            <form string="SaaS Odoo Instance Backup">
+            	<header>
+					<button name="action_download" string="Download" type="object" class="btn-primary" groups="s_odoo_saas_master.group_odoo_saas_user"/>
+					<button name="action_download_container_backup" string="Download Container Backup" type="object"
+						class="btn-secondary" invisible="not container_backup_id"
+						groups="s_odoo_saas_master.group_odoo_saas_user"/>
+					<button name="action_open_restore_wizard" string="Restore" type="object" class="btn-secondary"
+						groups="s_odoo_saas_master.group_odoo_saas_user" invisible="restore_state == 'running'"/>
+				</header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" options="{'line_breaks': False}" widget="text" />
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="alert alert-info" role="alert" invisible="restore_state != 'running'">
+                        <field name="restore_status_message" nolabel="1" widget="saas_backup_restore_progress"/>
+                    </div>
+                    <div class="alert alert-success" role="alert" invisible="restore_state != 'done'">
+                        <field name="restore_status_message" nolabel="1"/>
+                    </div>
+                    <div class="alert alert-danger" role="alert" invisible="restore_state != 'failed'">
+                        <field name="restore_status_message" nolabel="1"/>
+                    </div>
+					<group>
+						<field name="container_backup_id" invisible="1"/>
+                    	<group>
+                    		<field name="file_path"/>
+							<field name="file_size" />
+                    	</group>
+                    	<group>
+                    		<field name="datetime"/>
+							<field name="format" />
+							<field name="instance_id"/>
+							<field name="odoo_version_id"/>
+                    	</group>
+                    </group>
+                    <group string="Restore" invisible="restore_state == 'none'">
+                    	<group>
+                    		<field name="restore_state"/>
+                    		<field name="restore_instance_id"/>
+                    	</group>
+                    	<group>
+                    		<field name="restore_start_datetime"/>
+                    		<field name="restore_end_datetime"/>
+                    	</group>
+                    </group>
+                    <separator string="Description" />
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_backup_view_search" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.backup.view.search</field>
+        <field name="model">saas.odoo.instance.backup</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <separator/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_odoo_instance" string="Odoo Instance" context="{'group_by':'instance_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_backup_action" model="ir.actions.act_window">
+        <field name="name">Backups</field>
+        <field name="res_model">saas.odoo.instance.backup</field>
+        <field name="context">{'search_default_grb_odoo_instance': 1}</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_odoo_instance_backup_menu" action="saas_odoo_instance_backup_action" parent="saas_menu_odoo_instance" sequence="50"/>
+
+</odoo>

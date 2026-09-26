@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit saas.odoo.instance form to add storage fields -->
+    
+    <!-- Admin Form View - Add Storage Tab -->
+    <record id="view_saas_odoo_instance_form_storage" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.form.storage</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="inherit_id" ref="s_odoo_saas_master.saas_odoo_instance_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add Storage Tab after other tabs -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Storage Management" name="storage_management">
+                    <group>
+                        <group string="Storage Configuration">
+                            <field name="storage_limit_gb"/>
+                        </group>
+                        <group string="Storage Status">
+                            <field name="storage_used_gb" readonly="1"/>
+                            <field name="storage_percentage" readonly="1"/>
+                            <field name="storage_status" readonly="1"/>
+                            <field name="storage_last_check" readonly="1"/>
+                            <field name="storage_notification_sent" readonly="1"/>
+                            <field name="storage_full_action_taken" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Storage Upgrade Section -->
+                    <group string="Storage Upgrade Requests">
+                        <group>
+                            <field name="storage_upgrade_requested" readonly="1"/>
+                            <field name="storage_upgrade_requested_gb" readonly="1" invisible="not storage_upgrade_requested"/>
+                            <field name="storage_upgrade_request_date" readonly="1" invisible="not storage_upgrade_requested"/>
+                        </group>
+                        <group>
+                            <button name="approve_upgrade" string="Approve Upgrade" type="object" class="btn-success" 
+                                    invisible="not storage_upgrade_requested"/>
+                            <button name="reject_upgrade" string="Reject Upgrade" type="object" class="btn-danger" 
+                                    invisible="not storage_upgrade_requested"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Storage History -->
+                    <separator string="Storage History"/>
+                    <field name="storage_history_ids" readonly="1" nolabel="1">
+                        <list>
+                            <field name="check_date"/>
+                            <field name="storage_used_gb"/>
+                            <field name="storage_limit_gb"/>
+                            <field name="storage_percentage"/>
+                            <field name="storage_status"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Admin List View - Add Storage Columns -->
+    <record id="view_saas_odoo_instance_tree_storage" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.list.storage</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="inherit_id" ref="s_odoo_saas_master.saas_odoo_instance_view_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add storage columns to list view -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="storage_used_gb"/>
+                <field name="storage_limit_gb"/>
+                <field name="storage_percentage"/>
+                <field name="storage_status"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.saas</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//form" position="inside">
+        		<app string="Odoo SaaS" data-string="Odoo SaaS" name="s_odoo_saas_master" groups="s_odoo_saas_master.group_odoo_saas_manager">
+        			<block title="SaaS Master" name="saas_master_setting_container">
+                        <setting id="odoo_instance_default_ssh_username" string="Default SSH Username"
+                            help="Default SSH username for new physical servers. Use svc-odoobck for production."
+                            company_dependent="1">
+                            <field name="ssh_username"/>
+                        </setting>
+        				<setting id="odoo_instance_default_port" string="Default Instance Starting Port" 
+        					help="Default starting port of odoo instance when create physical server"
+        					company_dependent="1">
+                            <field name="instance_starting_port"/>
+                        </setting>
+                        <setting id="odoo_instance_default_backup" string="Default Instance Backup Limit" 
+        					help="When a Odoo Instance reaches the backup limit, the system will remove the oldest backups."
+        					company_dependent="1">
+                            <field name="instance_backup_limit"/>
+                        </setting>
+                        <setting id="odoo_instance_backup_directory" string="Backup Directory" 
+        					help="Directory where backups will be stored. Should be accessible by Odoo process."
+        					company_dependent="1">
+                            <field name="backup_directory"/>
+                        </setting>
+                        <setting id="odoo_instance_default_trial_day" string="Default Trial Day" 
+        					help="Default number of trial days when Odoo Instance mark as Trial."
+        					company_dependent="1">
+                            <field name="instance_trial_day"/>
+                        </setting>                        
+                        <setting id="odoo_instance_default_resource_package" string="Default Resource Package" 
+        					help="Default resource package during create Odoo instance."
+        					company_dependent="1">
+                            <field name="resource_package_id"/>
+                        </setting>
+        			</block>
+        			<block title="SaaS Sales" name="saas_sale_setting_container">
+        				<setting id="odoo_instance_notification_expiration_day" string="Notification Expiration Days" 
+        					help="Number of notification days before expiration date."
+        					company_dependent="1">
+                            <field name="notification_expiration_day"/>
+                        </setting>
+                        <setting id="odoo_instance_revoke_instance_day" string="Revoke Odoo Instance Days" 
+        					help="Number of revoke odoo instance days after expiration date."
+        					company_dependent="1">
+                            <field name="revoke_instance_day"/>
+                        </setting>
+                        <setting id="odoo_instance_limit_trial" string="Limit Trial" 
+        					help="Maximum of trial Odoo instance per Customer."
+        					company_dependent="1">
+                            <field name="limit_trial"/>
+                        </setting>
+                        <setting id="saas_price_currency" string="SaaS Price Currency"
+                            help="OPTIONAL. Leave empty (default) to show the product sale price as-is in the company currency. Set a currency only when the sale prices are entered in another currency and must be converted."
+                            company_dependent="1">
+                            <div class="content-group">
+                                <div class="row">
+                                    <label for="saas_price_currency_id" class="col-lg-4 o_light_label"/>
+                                    <field name="saas_price_currency_id"/>
+                                </div>
+                                <div class="row">
+                                    <label for="saas_price_rate" class="col-lg-4 o_light_label"/>
+                                    <field name="saas_price_rate" widget="float"/>
+                                </div>
+                            </div>
+                        </setting>
+        			</block>
+        			<block title="GitHub Integration" name="saas_github_setting_container">
+        				<setting id="github_client_id_setting" string="GitHub OAuth Client ID" 
+        					help="GitHub OAuth App Client ID for customer portal GitHub authorization."
+        					company_dependent="1">
+                            <field name="github_client_id"/>
+                        </setting>
+                        <setting id="github_client_secret_setting" string="GitHub OAuth Client Secret" 
+        					help="GitHub OAuth App Client Secret for customer portal GitHub authorization."
+        					company_dependent="1">
+                            <field name="github_client_secret" password="True"/>
+                        </setting>
+        			</block>
+        		</app>
+        	</xpath>
+        </field>
+    </record>
+
+    <record id="saas_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 's_odoo_saas_master', 'bin_size': False}</field>
+    </record>
+
+</odoo>

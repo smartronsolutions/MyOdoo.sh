@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+
+    <record id="deploy_instance_mail_template" model="mail.template">
+        <field name="name">Deploy Odoo Instance</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Deploy Odoo instance successfully</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>CONGRATULATIONS</strong></div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>ON YOUR SUCCESSFUL TRIAL REGISTRATION</strong></div>
+            </div>
+            <br/>
+            <div>
+                <p><span>Your instance&#160;</span><span><u><span t-out="object.url or ''"></span></u></span><span>&#160;has been initialized successfully</span></p>
+                <ul>
+                    <li><strong>URL:&#160;</strong><u><span t-out="object.url or ''"></span></u></li>
+                    <li><strong>Login/Email:&#160;</strong>admin</li>
+                    <li><strong>Password:&#160;</strong>admin</li>
+                </ul>
+                <p>Please change the default password to secure information in your system..</p>
+            </div>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="suspend_instance_mail_template" model="mail.template">
+        <field name="name">Suspend Odoo Instance</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Your Odoo instance has suspended</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>NOTIFICATION</strong></div>
+                <div style="text-align:center; font-size:16px;"><span><strong>Odoo Instance</strong></span>&#160;<span style="color:#fcb042;"><strong>HAS SUSPENDED</strong></span></div>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name"/>,</div>
+                <br/>
+                <div>Your Odoo instance&#160;<span><u><span t-out="object.url or ''"></span></u></span><span>&#160;has suspended!</span></div>
+            </div>
+            <br/>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="cancel_instance_mail_template" model="mail.template">
+        <field name="name">Revoke Odoo Instance</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Your Odoo instance has revoked</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>NOTIFICATION</strong></div>
+                <div style="text-align:center; font-size:16px;"><span><strong>Odoo Instance</strong></span>&#160;<span style="color:#fcb042;"><strong>HAS REVOKED</strong></span></div>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name"/>,</div>
+                <br/>
+                <div>Your Odoo instance&#160;<span><u><span t-out="object.url or ''"></span></u></span><span>&#160;has revoked!</span></div>
+            </div>
+            <br/>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="instance_expiration_notify_mail_template" model="mail.template">
+        <field name="name">Expiration Notification</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Odoo instance expiration notification</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>NOTIFICATION</strong></div>
+                <div style="text-align:center; font-size:16px;"><span><strong>Odoo Instance</strong></span>&#160;<span style="color:#fcb042;"><strong>Expiration</strong></span></div>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name"/>,</div>
+                <br/>
+                <div>Your Odoo instance&#160;<span><u><span t-out="object.url or ''"></span></u></span><span>&#160;will expire in <span t-out="object.company_id.notification_expiration_day"/> days!</span></div>
+            </div>
+            <br/>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="instance_revoke_notify_mail_template" model="mail.template">
+        <field name="name">Revoke Notification</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Odoo instance revoke notification</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>NOTIFICATION</strong></div>
+                <div style="text-align:center; font-size:16px;"><span><strong>Odoo Instance</strong></span>&#160;<span style="color:#fcb042;"><strong>Cancellation</strong></span></div>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name"/>,</div>
+                <br/>
+                <div>Your Odoo instance&#160;<span><u><span t-out="object.url or ''"></span></u></span><span>&#160;will revoked in <span t-out="object.company_id.revoke_instance_day"/> days!</span></div>
+            </div>
+            <br/>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+    <record id="suspend_instance_with_extra_mail_template" model="mail.template">
+        <field name="name">Suspend Odoo Instance</field>
+        <field name="model_id" ref="model_saas_odoo_instance"/>
+        <field name="subject">Your Odoo instance has suspended</field>
+        <field name="email_from">"{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="email_to">{{ object.partner_id.email_formatted }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <hr width="100%" style="background-color:#1A82A1; border:none; height:3px; margin: 16px 0px 16px 0px;"/>
+            </div>
+            <div>
+                <div style="text-align:center; font-size:18px; color:#fcb042;"><strong>NOTIFICATION</strong></div>
+                <div style="text-align:center; font-size:16px;"><span><strong>Odoo Instance</strong></span>&#160;<span style="color:#fcb042;"><strong>HAS SUSPENDED</strong></span></div>
+            </div>
+            <div>
+                <div>Dear <span t-out="object.partner_id.name"/>,</div>
+                <br/>
+                <div>Your Odoo instance&#160;<span><u><span t-out="object.url or ''"></span></u></span><span>&#160;has suspended because it has not paid applications or users</span></div>
+            </div>
+            <br/>
+            <div>
+                <div>During use, if you have any questions or need help, please refer to the following links for assistance.</div>
+            </div>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+    
+</odoo>

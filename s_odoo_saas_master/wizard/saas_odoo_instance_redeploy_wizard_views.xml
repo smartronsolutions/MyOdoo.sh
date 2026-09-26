@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_redeploy_wizard_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.redeploy.wizard.form</field>
+        <field name="model">saas.odoo.instance.redeploy.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Redeploy Instance">
+            	<group>
+            		<group>
+                        <field name="instance_id" invisible="1"/>
+                        <field name="redeploy_type"/>
+                    </group>
+            	</group>                	
+				<footer>
+                    <button name="action_redeploy" string="Redeploy" type="object" class="oe_highlight" />                       	
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_redeploy_wizard_action" model="ir.actions.act_window">
+        <field name="name">Redeploy Instance</field>
+        <field name="res_model">saas.odoo.instance.redeploy.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="saas_odoo_instance_redeploy_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

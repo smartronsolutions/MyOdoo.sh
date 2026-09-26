@@ -1,0 +1,2020 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-09-23 07:59+1100\n"
+"Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
+"Language-Team: vi\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"\"With My Odoo, we stopped worrying about servers, backups and technical\n"
+"            complexity. The platform lets us focus 100% on our strategy and growth.\""
+msgstr ""
+"\"Với giả thuyết của tôi, chúng tôi ngừng lo lắng về máy chủ, bản dự phòng và kỹ thuật\n"
+"phức tạp. Nền tảng cho phép chúng ta tập trung 100% vào chiến lược và sự phát triển của chúng ta.\""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "24/7 expert support"
+msgstr "hỗ trợ chuyên gia 24/7"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"availability\">Project scope</b><br/><span>Implementation, "
+"hosting, support and integrations</span>"
+msgstr ""
+"<b data-i18n=\"availability\">Phạm vi dự án</b><br/><span>Thao tác, tổ chức,"
+" hỗ trợ và hợp nhất</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"connected_apps\">One connected suite</b><span class=\"mini-"
+"pill\">CRM</span><span class=\"mini-pill\" "
+"data-i18n=\"accounting\">Accounting</span><span class=\"mini-pill\" "
+"data-i18n=\"invoicing\">Invoicing</span><span class=\"mini-pill\" "
+"data-i18n=\"inventory\">Inventory</span><span class=\"mini-pill\">Point of "
+"Sale</span><span class=\"mini-pill\">eCommerce</span><span class=\"mini-"
+"pill\">EpayNC</span><span class=\"mini-pill\">AI Assistant</span><span "
+"class=\"mini-pill\" data-i18n=\"projects\">Projects</span>"
+msgstr ""
+"<b data-i18n=\"connected_apps\">Name</b><span class=\"mini-"
+"pill\">CRM</span><span class=\"mini-pill\" data-i18n=\"accounting\">Kế "
+"toán</span><span class=\"mini-pill\" data-i18n=\"invoicing\">Gọi "
+"hồn</span><span class=\"mini-pill\" data-i18n=\"inventory\">Thiết "
+"kế</span><span class=\"mini-pill\">Điểm bán</span><span class=\"mini-"
+"pill\">eCommerce</span><span class=\"mini-pill\">EppNC</span><span "
+"class=\"mini-pill\">Trợ lý AI</span><span class=\"mini-pill\" "
+"data-i18n=\"projects\">Dự án</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"french_support\">English &amp; French support</b><small "
+"data-i18n=\"french_support_text\">Clear assistance for your team and "
+"users.</small>"
+msgstr ""
+"<b data-i18n=\"french_support\">Hỗ trợ tiếng Anh và Pháp</b><small "
+"data-i18n=\"french_support_text\">Sẵn sàng hỗ trợ đội và người dùng.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"inventory\">Inventory</b><small "
+"style=\"display:block;color:#7b8491\" data-i18n=\"stock_synced\">Stock "
+"synchronized</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"local_finance\">Local financial workflows</b><small "
+"data-i18n=\"local_finance_text\">Invoicing and TGC-ready processes.</small>"
+msgstr ""
+"<b data-i18n=\"local_finance\">Nguồn tài chính địa phương</b><small "
+"data-i18n=\"local_finance_text\">TGC đã sẵn sàng.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<b data-i18n=\"location\">Market focus</b><br/><span>New Caledonia</span>"
+msgstr "<b data-i18n=\"location\">Tiêu điểm thị trường</b><br/><span>Name</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"managed_platform\">Managed platform</b><small "
+"data-i18n=\"managed_platform_text\">Hosting, backups and updates handled for"
+" you.</small>"
+msgstr ""
+"<b data-i18n=\"managed_platform\">Nền tảng đã quản lý</b><small "
+"data-i18n=\"managed_platform_text\">Máy chủ, hỗ trợ và cập nhật được xử lý "
+"cho anh.</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<b data-i18n=\"sales_crm\">Sales &amp; CRM</b><small "
+"style=\"display:block;color:#7b8491\" "
+"data-i18n=\"pipeline_updated\">Pipeline updated</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>AI Assistant</b>"
+msgstr "<b>Trợ lý AI</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Accounting</b>"
+msgstr "<b>Kế toán</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Andrea Morales</b><small>Odoo Partner</small>"
+msgstr "<b>Andrea Morales</b><small>Cộng sự Odoo</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>CRM</b>"
+msgstr "<b>CRM</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Carlos Rodriguez</b><small>Technology Director</small>"
+msgstr "<b>Carlos Rodriguez</b><small>Giám đốc công nghệ</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<b>Demo presentation</b><br/><span>Company contact details intentionally "
+"omitted</span>"
+msgstr "<b>Bản trình bày chứng minh</b><br/><span>Name</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Employees &amp; HR</b>"
+msgstr "<b>Nhân viên & quan hệ</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Field Service</b>"
+msgstr "<b>Công việc rao giảng</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Helpdesk</b>"
+msgstr "<b>Trợ giúp</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Inventory</b>"
+msgstr "<b>Thiết kế</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<b>Jose Pacheco</b><small>IT Manager</small>"
+msgstr "<b>Jose Pacheco</b><small>Bộ quản lý IT</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Manufacturing</b>"
+msgstr "<b>Tạo ra</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Marketing</b>"
+msgstr "<b>Khu chợ</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Point of Sale</b>"
+msgstr "<b>Điểm bán</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Projects</b>"
+msgstr "<b>Dự án</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Purchase</b>"
+msgstr "<b>Purchase</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Rental</b>"
+msgstr "<b>Rental</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Sales</b>"
+msgstr "<b>Bán</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>Website</b>"
+msgstr "<b>Nơi Mạng</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<b>eCommerce</b>"
+msgstr "<b>eCommerce</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i class=\"check\">✓</i>"
+msgstr "<i class=\"check\">teppi82</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>AI</i>AI Assistant"
+msgstr "<i>Al</i>Trợ lý AI"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>G</i>Google Workspace"
+msgstr "<i>G</i>Vùng làm việc Google"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>M</i>Microsoft 365"
+msgstr "<i>M</i>Microsoft 365"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>S</i>Stripe Payments"
+msgstr "<i>S</i>Áo choàng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Sh</i>Shopify"
+msgstr "<i>Sh</i>Chuẩn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>W</i>WhatsApp Business"
+msgstr "<i>W</i>Những gì áp dụng cho công việc làm ăn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>Z</i>Zapier Automation"
+msgstr "<i>Z</i>Comment"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⇄</i>Logistics"
+msgstr "<i>teppi82</i>Bản ghi"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>⌁</i>"
+msgstr "<i>teppi82</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⌂</i>Construction"
+msgstr "<i>teppi82</i>Xây dựng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▤</i>Education"
+msgstr "<i>teppi82</i>Giáo dục"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>▦</i>Wholesale"
+msgstr "<i>teppi82</i>Toàn bộ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◈</i>"
+msgstr "<i>teppi82</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◈</i>Multi-company Groups"
+msgstr "<i>teppi82</i>Nhóm đa tổ chức"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<i>◈</i>Slack Alerts"
+msgstr "<i>teppi82</i>Cảnh báo Slack"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◎</i>Professional Services"
+msgstr "<i>teppi82</i>Dịch vụ chuyên nghiệp"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>◫</i>Retail"
+msgstr "<i>teppi82</i>Nghỉ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "<i>◷</i>"
+msgstr "<i>teppi82</i>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>♢</i>Hospitality"
+msgstr "<i>teppi82</i>Lòng hiếu khách"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>⚙</i>Manufacturing"
+msgstr "<i>teppi82</i>Tạo ra"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<i>✚</i>Healthcare"
+msgstr "<i>teppi82</i>Chăm sóc sức khỏe"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<select><option data-i18n=\"new_implementation\">A new Odoo "
+"implementation</option><option data-i18n=\"support_existing\">Support for an"
+" existing Odoo</option><option data-i18n=\"website_ecommerce\">Website / "
+"eCommerce</option><option data-i18n=\"hosting_option\">Hosting and "
+"maintenance</option><option data-i18n=\"other\">Other</option></select>"
+msgstr ""
+"<select><option data-i18n=\"new_implementation\">Name</option><option "
+"data-i18n=\"support_existing\">Name</option><option "
+"data-i18n=\"website_ecommerce\">MạngName</option><option "
+"data-i18n=\"hosting_option\">Tiếp tục và bảo trì</option><option "
+"data-i18n=\"other\">Khác</option></select>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<small data-i18n=\"business_growth\">Business growth</small>"
+msgstr "<small data-i18n=\"business_growth\">Phát triển kinh doanh</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<small data-i18n=\"monthly_sales\">Monthly "
+"sales</small><strong>8.4M</strong><span class=\"trend\">↑ 18.6%</span>"
+msgstr ""
+"<small data-i18n=\"monthly_sales\">Kinh doanh hàng "
+"tháng</small><strong>8.4M</strong><span class=\"trend\">▪ 18.6%</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">I</span>"
+msgstr "<span class=\"appdot\">I</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"appdot\">S</span>"
+msgstr "<span class=\"appdot\">S</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span class=\"brand-fallback\" style=\"display:block;font-size:25px\">odoo</span>\n"
+"        <span class=\"brand-divider\"/>\n"
+"        <span class=\"brand-name\">MY ODOO NC</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid ""
+"<span class=\"brand-fallback\">odoo</span>\n"
+"      <span class=\"brand-divider\"/>\n"
+"      <span class=\"brand-name\">MY ODOO NC<small>New Caledonia</small></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"contact_badge\">Let’s "
+"talk</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"everything_needed\">Everything"
+" you need</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"hero_badge\">Built for "
+"businesses in New Caledonia</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"local_advantage\">The local "
+"advantage</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"<span class=\"eyebrow\"><i/><span data-i18n=\"services_badge\">Odoo "
+"solutions</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>About My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Cloud platform features</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Connections</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>FAQ</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Flexible service packages</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Implementation roadmap</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Industries</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Odoo applications</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Simple process</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Success stories</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "<span class=\"eyebrow\"><i/><span>Why My Odoo NC</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid ""
+"<span class=\"mo_auth_avatar\">L</span>\n"
+"              <span class=\"mo_auth_testi_meta\"><strong>Léa Bernard</strong><em>Head of Operations</em></span>"
+msgstr ""
+"<span class=\"mo_auth_avatar\">L</span><span "
+"class=\"mo_auth_testi_meta\"><strong>Léa Bernard</strong><em>Trưởng thao "
+"tác</em></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Account Security</span>"
+msgstr "<span class=\"mo_auth_badge\">Bảo mật tài khoản</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Cloud ERP Platform</span>"
+msgstr "<span class=\"mo_auth_badge\">Comment</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
+msgstr "<span class=\"mo_auth_badge\">Bắt đầu tự do ngày nay</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Enterprise</span>"
+msgstr "<span class=\"plan-label\">Enterprise</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Most Popular</span>"
+msgstr "<span class=\"plan-label\">Nổi tiếng nhất</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span class=\"plan-label\">Starter</span>"
+msgstr "<span class=\"plan-label\">Khởi động</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<span data-i18n=\"workspace\">My Odoo Workspace</span><i class=\"avatar\"/>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"<span><i class=\"check\">✓</i><b data-i18n=\"local_support\">Local "
+"support</b></span><span><i class=\"check\">✓</i><b "
+"data-i18n=\"secure_hosting\">Secure hosting</b></span><span><i "
+"class=\"check\">✓</i><b data-i18n=\"modular_growth\">Modular "
+"growth</b></span>"
+msgstr ""
+"<span><i class=\"check\">teppi82</i><b data-i18n=\"local_support\">Hỗ trợ "
+"cục bộ</b></span><span><i class=\"check\">teppi82</i><b "
+"data-i18n=\"secure_hosting\">Name</b></span><span><i "
+"class=\"check\">teppi82</i><b data-i18n=\"modular_growth\">Sự tăng trưởng kỳ"
+" dị</b></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>CRM &amp; Sales</span>\n"
+"        <span>Accounting</span>\n"
+"        <span>Inventory</span>\n"
+"        <span>eCommerce</span>"
+msgstr ""
+"<span>& Bán hàng CRM</span><span>Kế toán</span><span>Thiết "
+"kế</span><span>eCommerce</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>Demo contact section</span>\n"
+"        <span>Company details omitted</span>"
+msgstr "<span>Comment</span><span>Bỏ qua chi tiết công ty</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"<span>© 2026 My Odoo NC. All rights reserved.</span>\n"
+"    <span>Odoo is a trademark of Odoo S.A.</span>"
+msgstr ""
+"<span>© 2026 My Odoo NC. Nhà xuất bản giữ bản quyền.</span><span>Odoo là "
+"thương hiệu của Odoo S.A.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "<span>© My Odoo — All rights reserved.</span>"
+msgstr "<span>© My Odoo — Được rồi, được rồi.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>&lt;2 min</strong><span>Automatic deployment</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>1</strong><b>Consultation</b><span>Understand goals and current "
+"challenges.</span>"
+msgstr ""
+"<strong>1</strong><b>Tham vấn</b><span>Hiểu mục tiêu và thử thách hiện "
+"tại.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>2,400+</strong><span>Active projects</span>"
+msgstr "<strong>2400+</strong><span>Dự án hoạt động</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>2</strong><b>Business Analysis</b><span>Map processes, users and "
+"priorities.</span>"
+msgstr ""
+"<strong>2</strong><b>Phân tích doanh nghiệp</b><span>Quá trình bản đồ, người"
+" dùng và ưu tiên.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>30 days</strong><span>Backup retention</span>"
+msgstr "<strong>30 ngày</strong><span>Bảo vệ sao lưu</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>3</strong><b>Configuration</b><span>Set up apps, workflows and "
+"access.</span>"
+msgstr ""
+"<strong>3</strong><b>Cấu hình</b><span>Thiết lập ứng dụng, luồng công việc "
+"và truy cập.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>4</strong><b>Customization</b><span>Add required reports and "
+"integrations.</span>"
+msgstr ""
+"<strong>4</strong><b>Tùy chỉnh</b><span>Thêm các báo cáo cần thiết và sự "
+"tích hợp.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>5</strong><b>Testing</b><span>Validate workflows and business "
+"data.</span>"
+msgstr ""
+"<strong>5</strong><b>Thử ra</b><span>Kiểm tra luồng công việc và dữ liệu "
+"kinh doanh.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>6</strong><b>Training &amp; Go-live</b><span>Prepare users and "
+"launch confidently.</span>"
+msgstr ""
+"<strong>6</strong><b>Luyện tập và Sống sót</b><span>Chuẩn bị tự tin cho "
+"người dùng.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"<strong>7</strong><b>Ongoing Support</b><span>Improve the system as the "
+"business grows.</span>"
+msgstr ""
+"<strong>7</strong><b>Hỗ trợ tiếp tục</b><span>cải thiện hệ thống khi kinh "
+"doanh phát triển.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "<strong>99.9%</strong><span>Uptime target</span>"
+msgstr "<strong>99%</strong><span>Thời gian chạy</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "A"
+msgstr "A"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A clear path from consultation to support"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"A clear roadmap that reduces delays and keeps the project focused on "
+"priorities."
+msgstr ""
+"Một bản đồ rõ ràng giúp giảm sự chậm trễ và giữ cho dự án tập trung vào "
+"những điều ưu tiên."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A managed environment built for reliable everyday access."
+msgstr "Một môi trường được xây dựng để tiếp cận hàng ngày đáng tin cậy."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A modern Odoo environment adapted to the practical needs of New Caledonian "
+"companies, supported by people who understand your context."
+msgstr ""
+"Một môi trường Odoo hiện đại thích nghi với nhu cầu thực tế của các công ty "
+"ở Tân Ước, được hỗ trợ bởi những người hiểu hoàn cảnh của bạn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "A practical Odoo partner for local business growth"
+msgstr "Một đối tác thực tế cho sự phát triển kinh doanh địa phương"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"A practical workflow designed to reduce technical complexity and launch "
+"projects faster."
+msgstr ""
+"Một luồng công việc thiết thực được thiết kế để giảm thiểu sự phức tạp kỹ "
+"thuật và các dự án phóng nhanh hơn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "A structured setup aligned with your processes, users and priorities."
+msgstr ""
+"Một thiết lập có cấu trúc liên kết với tiến trình, người dùng và ưu tiên của"
+" bạn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "AI"
+msgstr "AL"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "AI Assistant for Odoo"
+msgstr "Trợ lý AI cho Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "AI-powered automation &amp; smart insights"
+msgstr "Comment"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "AM"
+msgstr "AM"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "About"
+msgstr "Giới thiệu"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Adapt Odoo where your business needs more than standard configuration."
+msgstr ""
+"Thích nghi với Odoo nơi công việc kinh doanh của bạn cần nhiều hơn là những "
+"cấu hình tiêu chuẩn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Advanced customization"
+msgstr "Tùy chỉnh cấp cao"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Application configuration"
+msgstr "Cấu hình ứng dụng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Are backups and SSL included?<span>+</span>"
+msgstr "Có bao gồm bản sao lưu và SSL không?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Automated backups"
+msgstr "Các bản sao lưu tự động"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Backups"
+msgstr "Tự động sao lưu"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Builds"
+msgstr "Xây dựng tự động"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Automatic Deploy"
+msgstr "Tự động thực hiện"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Back to homepage"
+msgstr "Về trang chủ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Bank reconciliation support"
+msgstr "Hỗ trợ hòa giải ngân hàng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Basic configuration"
+msgstr "Cấu hình cơ bản"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Book a consultation →"
+msgstr "Đặt một sổ thảo luận"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Book a demo"
+msgstr "Đặt demo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Branch Management"
+msgstr "Quản lý Chi nhánh"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Bring payments, communication, productivity and automation into your Odoo "
+"workflows."
+msgstr ""
+"Đem thanh toán, giao tiếp, năng suất và tự động hóa vào dòng công việc của "
+"bạn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Build a better way to work."
+msgstr "Xây dựng một cách tốt hơn để làm việc."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Build a cleaner financial workflow from quotation to payment follow-up."
+msgstr ""
+"Xây dựng một công việc tài chính sạch sẽ hơn từ trích dẫn đến sau đó thanh "
+"toán."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Build each update, review logs and validate changes before moving them into "
+"production."
+msgstr ""
+"Xây dựng mỗi bản cập nhật, xem lại bản ghi và xác thực các thay đổi trước "
+"khi chuyển chúng vào sản xuất."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Business Growth"
+msgstr "Phát triển kinh doanh"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Business-focused guidance adapted to the needs of companies in New "
+"Caledonia."
+msgstr ""
+"Sự hướng dẫn tập trung kinh doanh thích nghi với nhu cầu của các công ty ở "
+"New York."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "CR"
+msgstr "CR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM"
+msgstr "CRM"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "CRM &amp; Sales"
+msgstr "Comment"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can I migrate an existing Odoo database?<span>+</span>"
+msgstr ""
+"Tôi có thể di chuyển một cơ sở dữ liệu về giả dược không?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Can external tools be integrated?<span>+</span>"
+msgstr "Có thể tích hợp các công cụ bên ngoài?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose a plan, create the project and connect your repository or existing "
+"Odoo database."
+msgstr ""
+"Chọn một kế hoạch, tạo ra dự án và kết nối dữ liệu kho của bạn hoặc đã có."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Choose the applications your business needs today and expand the platform as"
+" your operations grow."
+msgstr ""
+"Hãy chọn những ứng dụng mà công việc của bạn cần ngày hôm nay và mở rộng nền"
+" tảng khi hoạt động của bạn phát triển."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Choose the right starting point"
+msgstr "Chọn điểm bắt đầu đúng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company"
+msgstr "Công ti"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Company Logo"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Company name"
+msgstr "Tên công ty"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Configure Branches"
+msgstr "Cấu hình Chi nhánh"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Connect inventory, purchasing, projects, fleet and point of sale in real "
+"time."
+msgstr "Kết nối hàng tồn kho, mua sắm, các dự án, hạm đội và thời gian thực."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Connect local digital payment journeys with invoices, customer portals and "
+"eCommerce."
+msgstr ""
+"Kết nối các chuyến đi thanh toán địa phương với các hóa đơn, cổng khách hàng"
+" và eCommerce."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Connect the tools your team already uses"
+msgstr "Kết nối công cụ mà đội của bạn đã sử dụng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Connexion"
+msgstr "Liên kết"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Contact"
+msgstr "Contact & mới"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Contact Us"
+msgstr "Liên hệ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Continuous improvement roadmap"
+msgstr "Sơ đồ đường được cải tiến liên tục"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Core Odoo applications"
+msgstr "Ứng dụng lõi Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Create Your Project"
+msgstr "Tạo dự án của bạn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Créer un compte"
+msgstr "Bỏ ghi đè"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Domains"
+msgstr "Miền tự chọn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Custom Solution"
+msgstr "Giải pháp tự chọn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Custom workflows and automation"
+msgstr "Tuỳ chỉnh luồng công việc và tự động hóa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customer portal payments"
+msgstr "Thanh toán cổng tự chọn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Customization &amp; Integration"
+msgstr "Kiểu & tự chọn; Hợp nhất"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Data migration support"
+msgstr "Hỗ trợ di trú dữ liệu"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Define production, staging and development environments for safer testing "
+"and releases."
+msgstr ""
+"Định nghĩa sản xuất, xây dựng và phát triển môi trường để thử nghiệm và phát"
+" tán an toàn hơn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Demo form submitted. No data has been sent."
+msgstr "Đơn làm chứng đã nộp. Chưa gửi dữ liệu nào."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Demo pricing is intentionally presented as service packages. Exact "
+"commercial pricing and technical limits should be finalized before the "
+"production website goes live."
+msgstr ""
+"Giá nhân khẩu được cố tình trình bày là gói dịch vụ. Các hạn chế thương mại "
+"và kỹ thuật chính thức nên được hoàn thành trước khi trang web sản xuất được"
+" trực tiếp."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Deploy, test, monitor and scale your Odoo environments from one clear "
+"workspace."
+msgstr ""
+"Triển khai, kiểm tra, giám sát và quy mô môi trường Odoo từ một không gian "
+"làm việc rõ ràng."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Déconnexion"
+msgstr "Déconnexion"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "E"
+msgstr "E"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "EN"
+msgstr "EN"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Each project follows a practical sequence so decisions stay clear and users "
+"are ready before launch."
+msgstr ""
+"Mỗi dự án theo một trình tự thực tế vì vậy các quyết định phải rõ ràng và "
+"người dùng đã sẵn sàng trước khi phóng."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Email"
+msgstr "Email"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "EpayNC &amp; Online Payments"
+msgstr "Máy & tính & EppNC; lương trực tuyến"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Essential Setup"
+msgstr "Thiết lập thiết yếu"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Every connected repository update can trigger a new build, with clear logs "
+"to help identify issues before production."
+msgstr ""
+"Mỗi bản cập nhật kho có kết nối có thể gây ra một tòa nhà mới, với các bản "
+"ghi rõ ràng để giúp xác định các vấn đề trước khi sản xuất."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Everything you need to manage Odoo professionally"
+msgstr "Tất cả mọi thứ bạn cần để quản lý Odoo chuyên nghiệp"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Everything your business needs,<br/>in <em>one platform</em>."
+msgstr "Mọi thứ công việc của anh cần,<br/>in <em>một nền tảng</em>."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Explore services"
+msgstr "Khám phá dịch vụ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "FR"
+msgstr "FR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "FS"
+msgstr "KS"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Faster Deployment"
+msgstr "Tăng cường"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Final pricing depends on users, applications, data migration, customization,"
+" integrations and support requirements."
+msgstr ""
+"Giá cuối cùng phụ thuộc vào người dùng, ứng dụng, di trú dữ liệu, tùy chỉnh,"
+" tích hợp và hỗ trợ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Finance &amp; TGC"
+msgstr "Tài chính & biểu mẫu; TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "First-level user support"
+msgstr "Hỗ trợ người dùng cấp một"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Fleet, projects and task management"
+msgstr "Hạm đội, dự án và quản lý nhiệm vụ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For complex workflows, integrations and multi-company requirements."
+msgstr "Cho dòng công việc phức tạp, tích hợp và yêu cầu đa bộ phận."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For growing businesses centralizing multiple departments."
+msgstr "Để phát triển các doanh nghiệp tập trung nhiều bộ phận."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "For small teams moving from spreadsheets or disconnected tools."
+msgstr "Đối với các đội nhỏ di chuyển từ bảng tính hoặc công cụ ngắt kết nối."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Frequently asked questions"
+msgstr "Hỏi thường xuyên"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"From first consultation to daily support, we help you deploy a practical "
+"business platform—not just another piece of software."
+msgstr ""
+"Từ cuộc tư vấn đầu tiên đến hỗ trợ hàng ngày, chúng tôi giúp bạn triển khai "
+"một nền tảng kinh doanh thực tế - không chỉ là một phần mềm khác."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"From first consultation to long-term support, every stage is designed to "
+"make implementation clear, secure and manageable."
+msgstr ""
+"Từ lần tư vấn đầu tiên đến hỗ trợ lâu dài, mỗi giai đoạn được thiết kế để "
+"thực hiện rõ ràng, an toàn và có thể kiểm soát được."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "From setup to production in four steps"
+msgstr "Từ thiết kế đến sản xuất trong bốn bước"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Full name"
+msgstr "Tên đầy đủ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Get Demo"
+msgstr "Xem demo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Get back to work in under 2 minutes"
+msgstr "Quay lại làm việc dưới 2 phút"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "H"
+msgstr "H"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "HR"
+msgstr "HR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Help teams find information, complete tasks and understand daily workflows "
+"more quickly."
+msgstr ""
+"Các ban trợ giúp tìm thông tin, hoàn tất công việc và hiểu công việc hàng "
+"ngày nhanh chóng hơn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Help your users adopt Odoo confidently and get answers quickly."
+msgstr ""
+"Giúp người dùng của bạn nhận nuôi Odoo một cách tự tin và có được câu trả "
+"lời nhanh chóng."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Home"
+msgstr "Trang chủ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Hosting &amp; Security"
+msgstr "Máy & biểu đồ; bảo mật"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "I"
+msgstr "I"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "I am interested in"
+msgstr "Tôi quan tâm đến"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Implementation and configuration support"
+msgstr "Hỗ trợ tăng cường và cấu hình"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Implementation guidance, configuration assistance and user training can be "
+"included according to the selected service package."
+msgstr ""
+"Hướng dẫn sử dụng, cấu hình trợ giúp và đào tạo người dùng có thể bao gồm "
+"tùy theo gói dịch vụ đã chọn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid ""
+"Implementation, hosting, customization, training and long-term Odoo support "
+"for businesses in New Caledonia."
+msgstr ""
+"Thao tác, tổ chức, tùy chỉnh, đào tạo và hỗ trợ lâu dài cho các doanh nghiệp"
+" ở New York."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Important information about migration, security, capacity and support."
+msgstr "Thông tin quan trọng về di cư, an ninh, khả năng và hỗ trợ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Increase resources as usage grows without rebuilding or manually migrating "
+"the environment."
+msgstr ""
+"Tăng nguồn lực khi sử dụng phát triển mà không cần tái thiết hoặc di chuyển "
+"bằng tay môi trường."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Industry-ready workflows help teams reduce manual work and gain better "
+"visibility across daily operations."
+msgstr ""
+"Các luồng công nhân sẵn sàng giúp các đội giảm hoạt động thủ công và có tầm "
+"nhìn tốt hơn qua các hoạt động hàng ngày."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Initial data and user setup"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Initial training"
+msgstr "Luyện tập đầu tiên"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Inventory and purchasing"
+msgstr "Thiết kế và mua sắm"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoice and quotation guidance"
+msgstr "Hóa đơn và hướng dẫn trích dẫn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Invoicing, Accounting &amp; TGC"
+msgstr "TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Is support available during setup?<span>+</span>"
+msgstr "Có sẵn sự hỗ trợ trong lúc thiết lập không?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "JP"
+msgstr "JP"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Keep encrypted database backups and restore a previous version quickly when "
+"needed."
+msgstr ""
+"Giữ bản sao lưu cơ sở dữ liệu đã mã hóa và phục hồi một phiên bản trước "
+"nhanh khi cần thiết."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Keep stock, purchasing, sales and customer data synchronized."
+msgstr "Giữ cổ phiếu, mua sắm, bán hàng và dữ liệu khách hàng đồng bộ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Learn more →"
+msgstr "Học thêm"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Let’s define a practical Odoo roadmap for your team."
+msgstr "Hãy xác định một bản đồ đường Odoo thực tế cho đội của bạn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Local Understanding"
+msgstr "Hiểu biết cục bộ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Local understanding.<br/><span class=\"gradient-text\">Connected business "
+"technology.</span>"
+msgstr ""
+"Hiểu địa phương.<br/><span class=\"gradient-text\">Kết nối công nghệ kinh "
+"doanh.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Long-term optimization roadmap"
+msgstr "Sơ đồ đường dài tối ưu hóa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>."
+msgstr "Mất quyền truy cập.<br/>Quay lại <em>Không khó đâu.</em>."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "M"
+msgstr "M"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "MK"
+msgstr "MK"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Manage multiple Odoo projects, customer environments and service plans from "
+"a single panel."
+msgstr ""
+"Quản lý nhiều dự án Odoo, môi trường khách hàng và bản vẽ dịch vụ từ một "
+"bảng điều khiển."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Managed environments with backups, monitoring and controlled access."
+msgstr "Quản lý môi trường với các dự phòng, giám sát và kiểm soát truy cập."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Managed hosting"
+msgstr "Quản lý máy chủ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Managed plans can include encrypted backups, secure project isolation and "
+"SSL for hosted subdomains or connected domains."
+msgstr ""
+"Kế hoạch được quản lý có thể bao gồm các bản sao lưu đã mã hóa, dự án bảo "
+"mật cô lập và SSL cho các miền phụ hay miền đã kết nối."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Menu"
+msgstr "Trình đơn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Message"
+msgstr "Thông điệp"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mon Compte"
+msgstr "Mon Compte"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Mot de passe oublié"
+msgstr "Mot de passe oblié"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Multi-company &amp; multi-currency support"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-company setup"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multi-tenant Ready"
+msgstr "Sẵn sàng đa phần"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Multiple Odoo applications"
+msgstr "Nhiều ứng dụng Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Account"
+msgstr "Tài khoản của tôi"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "My Odoo NC"
+msgstr "Đội bóng đá của tôi"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"My Odoo NC helps businesses in New Caledonia implement, host, customize and "
+"improve Odoo through a practical, business-first approach."
+msgstr ""
+"Đội Odoo NC của tôi giúp các doanh nghiệp trong công ty sản xuất ở New khảo "
+"sát, chủ nhà, tùy chỉnh và cải thiện Odoo thông qua một phương pháp thực tế,"
+" kinh doanh đầu tiên."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "My Odoo NC — About"
+msgstr "Trận đấu của tôi — Về"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "My Odoo NC — Contact Us"
+msgstr "Trò chơi nhập vai — Hãy liên lạc với chúng tôi"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "My Odoo NC — Home"
+msgstr "Trò chơi nhập vai — Nhà"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "My Odoo NC — Services"
+msgstr "Trò chơi nhập vai — Dịch vụ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Need help? Our support team is one click away"
+msgstr "Cần giúp không? Đội hỗ trợ của chúng tôi là một nhấp chuột"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Odoo Expertise"
+msgstr "Trình độ cao"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Odoo Implementation"
+msgstr "Giải thoát"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "One connected system for every department"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"One platform.<br/><span class=\"gradient-text\">Your entire business.</span>"
+msgstr ""
+"Một nền tảng.<br/><span class=\"gradient-text\">Toàn bộ công việc của "
+"anh.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Ongoing Support"
+msgstr "Hỗ trợ tiếp tục"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Online store payment flow"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Operations"
+msgstr "Thao tác"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Overdue invoice lookup"
+msgstr "Tra hóa đơn quá nhiều"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "P"
+msgstr "P"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "POS"
+msgstr "COMMENT"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "PR"
+msgstr "PR"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Payment tracking and reminders"
+msgstr "Theo dõi và nhắc nhở phải trả tiền"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Phone"
+msgstr "Điện thoại"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Point of Sale"
+msgstr "Điểm bán"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Powerful technology. Local understanding."
+msgstr "Công nghệ mạnh. Hiểu địa phương."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Pricing"
+msgstr "Bảng giá"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Priority implementation support"
+msgstr "Hỗ trợ thực hiện ưu tiên"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Process configuration"
+msgstr "Cấu hình tiến trình"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process discovery and solution design"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Process optimization reviews"
+msgstr "Comment"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Quotations, invoices and credit notes"
+msgstr "Trích dẫn, hóa đơn và ghi chú tín dụng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "R"
+msgstr "R"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
+msgid "Ready to simplify your business?"
+msgstr "Sẵn sàng đơn giản hóa công việc chưa?"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Real-time Monitoring"
+msgstr "Theo dõi thời gian thực"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Real-time analytics dashboards"
+msgstr "Bảng phân tích thời gian thực"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Reliable hosting, easier deployments and one place to manage multiple Odoo "
+"environments."
+msgstr ""
+"Tổ chức đáng tin cậy, triển khai dễ dàng hơn và một nơi để quản lý nhiều môi"
+" trường Odoo."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Remote functional support"
+msgstr "Hỗ trợ chức năng từ xa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Replace scattered tools and repeated data entry with a clear, flexible "
+"platform that grows with your business."
+msgstr ""
+"Thay thế các công cụ rải rác và lặp đi lặp lại dữ liệu với một nền tảng rõ "
+"ràng, linh hoạt mà phát triển với doanh nghiệp của bạn."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Reports and business dashboards"
+msgstr "Báo cáo và bảng điều khiển kinh doanh"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Reports and dashboards"
+msgstr "Báo cáo và bảng điều khiển"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Business Quote"
+msgstr "Yêu cầu trích dẫn kinh doanh"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Enterprise Quote"
+msgstr "Yêu cầu trích dẫn Enterprise"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Request Starter Quote"
+msgstr "Yêu cầu trích dẫn Đầu đề"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Reset links expire automatically for safety"
+msgstr "Đặt lại liên kết tự động hết hạn để an toàn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Retail &amp; Operations"
+msgstr "Bộ & phục hồi lại; thao tác"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run production, staging and development branches in parallel, each with its "
+"own database and secure URL."
+msgstr ""
+"Chạy sản xuất, dàn dựng và phát triển các nhánh song song, mỗi nhánh với cơ "
+"sở dữ liệu riêng và URL bảo mật."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Run sales, invoicing, inventory, projects and customer relationships from "
+"one beautifully connected Odoo workspace—with local support when you need "
+"it."
+msgstr ""
+"Chạy bán hàng, hàng hóa, hàng tồn kho, các dự án và các mối quan hệ khách "
+"hàng từ một không gian làm việc kết nối đẹp mắt với hỗ trợ địa phương khi "
+"bạn cần."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "S"
+msgstr "S"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "SSL and domain configuration"
+msgstr "Cấu hình SSL và miền"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Scale Smoothly"
+msgstr "Co dãn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Seamless integrations &amp; API connections"
+msgstr "Kết nối"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Secure Hosting"
+msgstr "Máy phục vụ bảo mật"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure cloud hosting"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Secure cloud hosting &amp; automatic backups"
+msgstr "Đang tự động sao lưu"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Secure transaction experience"
+msgstr "Kinh nghiệm giao dịch an toàn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Send request"
+msgstr "Yêu cầu gửi"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Services"
+msgstr "Dịch vụ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid ""
+"Services designed around<br/><span class=\"gradient-text\">your real "
+"operations</span>"
+msgstr ""
+"Dịch vụ được thiết kế chung quanh<br/><span class=\"gradient-text\">chiến "
+"dịch thực sự của bạn</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Share your current challenges and we will help you identify the right Odoo "
+"starting point."
+msgstr ""
+"Hãy chia sẻ những thách thức hiện tại của bạn và chúng tôi sẽ giúp bạn xác "
+"định điểm bắt đầu đúng."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign in"
+msgstr "Đăng nhập"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Simplify invoicing, payment follow-up and local tax workflows with a "
+"structured financial process."
+msgstr ""
+"Đơn giản hóa việc hối lộ, thanh toán và thuế địa phương chảy qua một quá "
+"trình tài chính có cấu trúc."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+msgid "Solutions"
+msgstr "Giải pháp"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Solutions shaped around real business operations"
+msgstr "Giải pháp hình thành xung quanh các hoạt động kinh doanh thực sự"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Start your project →"
+msgstr "Bắt đầu dự án của bạn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Structured implementation, configuration, customization and user support."
+msgstr "Cấu trúc thực hiện, cấu hình, tùy chỉnh và hỗ trợ người dùng."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Support &amp; Training"
+msgstr "Hỗ trợ & đào tạo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC configuration and reporting"
+msgstr "Cấu hình TGC và báo cáo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "TGC process assistance"
+msgstr "Hỗ trợ tiến trình TGC"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Team training and go-live support"
+msgstr "Đội huấn luyện và hỗ trợ sống sót"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us briefly about your business and needs"
+msgstr "Nói ngắn gọn về công việc và nhu cầu của bạn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Tell us what you want<br/><span class=\"gradient-text\">to improve</span>"
+msgstr ""
+"Cho chúng tôi biết anh muốn gì.<br/><span class=\"gradient-text\">để cải "
+"tiến</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Third-party integrations"
+msgstr "Hợp nhất bên thứ ba"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Third-party service integration"
+msgstr "Hợp nhất dịch vụ bên thứ ba"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track CPU, memory, storage and application activity with alerts for unusual "
+"performance."
+msgstr ""
+"Theo dõi CPU, bộ nhớ, lưu trữ và ứng dụng với báo động về hiệu suất bất "
+"thường."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Track leads, manage opportunities, prepare quotations and turn them into "
+"invoices without duplicate work."
+msgstr ""
+"Theo dõi dẫn đến, quản lý cơ hội, chuẩn bị lời trích dẫn và biến chúng thành"
+" hóa đơn mà không cần làm việc gấp."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Training and ongoing assistance"
+msgstr "Huấn luyện và tiếp tục hỗ trợ"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "Training, troubleshooting and continuous improvement after go-live."
+msgstr "Huấn luyện, bắn súng và tiến bộ liên tục sau khi chết."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Updates and platform monitoring"
+msgstr "Trình theo dõi hệ thống cập nhật"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"Use an included secure subdomain or connect your own domain with automatic "
+"SSL configuration."
+msgstr ""
+"Dùng một phần phụ bao gồm an toàn hoặc kết nối miền của bạn với cấu hình SSL"
+" tự động."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "User and administrator training"
+msgstr "Luyện tập người dùng và quản trị"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "User setup"
+msgstr "Thiết lập người dùng"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "W"
+msgstr "W"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "Website and online shop connection"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What customers value most"
+msgstr "Những gì khách hàng giá trị nhất"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "What happens when my project grows?<span>+</span>"
+msgstr "Điều gì xảy ra khi dự án của tôi phát triển?<span>+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid ""
+"Whether you are starting from spreadsheets or replacing an existing system, "
+"a clear first conversation can save months of complexity."
+msgstr ""
+"Dù bạn đang bắt đầu từ bảng tính hay thay thế một hệ thống tồn tại, một cuộc"
+" trò chuyện rõ ràng đầu tiên có thể tiết kiệm được nhiều tháng phức tạp."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid "Work smarter with one connected system"
+msgstr "Làm việc thông minh hơn với một hệ thống kết nối"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. An existing database backup can be restored during the onboarding "
+"process while preserving users, business data and compatible customizations."
+msgstr ""
+"Phải. Một bản sao lưu co sở dữ liệu đã có có có thể được phục hồi trong quá "
+"trình lên tàu trong khi bảo tồn người dùng, dữ liệu kinh doanh và tùy chỉnh."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"Yes. Odoo can be connected with payment, communication, productivity, "
+"eCommerce and automation platforms depending on project requirements."
+msgstr ""
+"Phải. Odoo có thể liên hệ với thanh toán, giao tiếp, năng suất, nền tảng "
+"giao tiếp và tự động hóa tùy theo yêu cầu dự án."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"You can move to a larger plan or increase project resources without "
+"rebuilding the complete environment."
+msgstr ""
+"Bạn có thể chuyển sang một kế hoạch lớn hơn hoặc tăng thêm tài nguyên dự án "
+"mà không cần xây dựng lại môi trường hoàn chỉnh."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your data stays encrypted end-to-end"
+msgstr "Dữ liệu của bạn vẫn được mã hóa"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "Your name"
+msgstr "Tên"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
+msgid "Your time is <em>precious</em>,<br/>use it to grow."
+msgstr "Thời gian của bạn là <em>quí báu</em>.<br/>sử dụng nó để phát triển."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
+msgid "eCommerce and product catalogue"
+msgstr "name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
+msgid "name@company.com"
+msgstr "tên"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Automatic builds and backups removed hours of manual server work and gave "
+"our team a much safer release process.”"
+msgstr ""
+"“ Tự động xây dựng và dự phòng làm việc hàng giờ bằng máy chủ thủ công và "
+"cho đội chúng tôi quá trình giải phóng an toàn hơn"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“Managing several customer instances is now much clearer. Each environment "
+"is isolated and available from one dashboard.”"
+msgstr ""
+"“ Giờ đây, điều khiển nhiều trường hợp khách hàng rõ ràng hơn. Mỗi môi "
+"trường bị cô lập và có sẵn từ một bảng điều khiển"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid ""
+"“The staging workflow and monitoring tools give us confidence before every "
+"production update.”"
+msgstr "“ Chúng tôi có sự tự tin trước mỗi lần sản xuất"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"☁ <span data-i18n=\"backup_complete\">Backup complete</span><small "
+"data-i18n=\"protected_securely\">Your data is protected</small>"
+msgstr ""
+"teppi82 <span data-i18n=\"backup_complete\">Comment</span><small "
+"data-i18n=\"protected_securely\">Dữ liệu của bạn được bảo vệ</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
+msgid ""
+"✓ <span data-i18n=\"invoice_paid\">Invoice paid</span><small>124,500 "
+"XPF</small>"
+msgstr ""
+"teppi82 <span data-i18n=\"invoice_paid\">Hóa đơn được thanh "
+"toán</span><small>123.500 XPF</small>"

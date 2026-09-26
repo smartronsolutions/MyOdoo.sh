@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_server_view_tree" model="ir.ui.view">
+        <field name="name">saas.odoo.server.view.tree</field>
+        <field name="model">saas.odoo.server</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Odoo Server">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="pserver_id"/>
+                <field name="working_ip_id"/>
+                <field name="odoo_version_id"/>
+                <field name="version_type"/>
+                <field name="psql_version_id"/>
+                <field name="nginx_server_id"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_server_view_form" model="ir.ui.view">
+        <field name="name">saas.odoo.server.view.form</field>
+        <field name="model">saas.odoo.server</field>
+        <field name="arch" type="xml">
+            <form string="Odoo Server">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>                    
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" options="{'line_breaks': False}" widget="text" />
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                    	<group>
+                    		<field name="pserver_id"/>
+                    		<field name="working_ip_id" domain="[('pserver_id','=',pserver_id),('type','=','working_ip')]" 
+	                   			context="{'default_pserver_id':pserver_id, 'default_type': 'working_ip'}"/>
+                    	</group>
+                    	<group>
+                    		<field name="odoo_version_id"/>
+                    		<field name="version_type"/>
+                			<field name="psql_version_id"/>
+                			<field name="nginx_server_id" domain="[('pserver_id','=',pserver_id)]"/>
+                    	</group>
+                    </group>
+                    <notebook>
+                    	<page name="extra_addon" string="Extra Addons">
+                    		<field name="extra_addon_ids">
+                    			<list editable="bottom">                    				
+                    				<field name="source_path"/>
+                    				<field name="description" column_invisible="1"/>
+                    				<field name="docker_container_path" optional="show"/>                    				
+                    			</list>
+                    		</field>
+                    	</page>
+                    	<page name="description" string="Description">
+                    		<field name="description"/>
+                    	</page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_server_view_search" model="ir.ui.view">
+        <field name="name">saas.odoo.server.view.search</field>
+        <field name="model">saas.odoo.server</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="odoo_version_id"/>
+                <field name="version_type"/>
+                <field name="psql_version_id"/>
+                <field name="nginx_server_id"/>
+                <separator/>
+                <filter name="ftr_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_odoo_version" string="Odoo Version" context="{'group_by':'odoo_version_id'}"/>
+                    <filter name="grb_version_type" string="Version Type" context="{'group_by':'version_type'}"/>
+                    <filter name="grb_psql_version" string="PSQL Version" context="{'group_by':'psql_version_id'}"/>
+                    <filter name="grb_nginx_server" string="Nginx Server" context="{'group_by':'nginx_server_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_server_action" model="ir.actions.act_window">
+        <field name="name">Odoo Servers</field>
+        <field name="res_model">saas.odoo.server</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_odoo_server_menu" action="saas_odoo_server_action" parent="saas_config_server_menu" sequence="30"/>
+
+</odoo>

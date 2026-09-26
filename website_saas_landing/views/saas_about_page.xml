@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="saas_about_page" model="website.page">
+  <field name="name">About (My Odoo NC)</field>
+  <field name="url">/about</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_about_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo NC — About</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_about_page">
+<div class="top-glow"></div><div class="top-glow two"></div>
+
+<main>
+<section class="page-hero"><div class="container">
+<span class="eyebrow"><i></i><span>About My Odoo NC</span></span>
+<h1>Local understanding.<br/><span class="gradient-text">Connected business technology.</span></h1>
+<p>My Odoo NC helps businesses in New Caledonia implement, host, customize and improve Odoo through a practical, business-first approach.</p>
+</div></section>
+<section style="background:#fcfbfd"><div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i></i><span>Why My Odoo NC</span></span>
+        <h2>A practical Odoo partner for local business growth</h2>
+        <p>From first consultation to long-term support, every stage is designed to make implementation clear, secure and manageable.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card"><div class="icon">⌖</div><h3>Local Understanding</h3><p>Business-focused guidance adapted to the needs of companies in New Caledonia.</p></article>
+        <article class="why-card"><div class="icon">✓</div><h3>Odoo Expertise</h3><p>Structured implementation, configuration, customization and user support.</p></article>
+        <article class="why-card"><div class="icon">⚡</div><h3>Faster Deployment</h3><p>A clear roadmap that reduces delays and keeps the project focused on priorities.</p></article>
+        <article class="why-card"><div class="icon">☁</div><h3>Secure Hosting</h3><p>Managed environments with backups, monitoring and controlled access.</p></article>
+        <article class="why-card"><div class="icon">◔</div><h3>Ongoing Support</h3><p>Training, troubleshooting and continuous improvement after go-live.</p></article>
+      </div>
+    </div></section>
+<section style="background:#fcfbfd"><div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i></i><span>Industries</span></span>
+        <h2>Solutions shaped around real business operations</h2>
+        <p>Industry-ready workflows help teams reduce manual work and gain better visibility across daily operations.</p>
+      </div>
+      <div class="industry-grid">
+        <div class="industry-card"><i>◫</i>Retail</div>
+        <div class="industry-card"><i>▦</i>Wholesale</div>
+        <div class="industry-card"><i>⚙</i>Manufacturing</div>
+        <div class="industry-card"><i>⌂</i>Construction</div>
+        <div class="industry-card"><i>✚</i>Healthcare</div>
+        <div class="industry-card"><i>▤</i>Education</div>
+        <div class="industry-card"><i>⇄</i>Logistics</div>
+        <div class="industry-card"><i>♢</i>Hospitality</div>
+        <div class="industry-card"><i>◎</i>Professional Services</div>
+        <div class="industry-card"><i>◈</i>Multi-company Groups</div>
+      </div>
+    </div></section>
+<section><div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i></i><span>Implementation roadmap</span></span>
+        <h2>A clear path from consultation to support</h2>
+        <p>Each project follows a practical sequence so decisions stay clear and users are ready before launch.</p>
+      </div>
+      <div class="roadmap">
+        <div class="roadmap-step"><strong>1</strong><b>Consultation</b><span>Understand goals and current challenges.</span></div>
+        <div class="roadmap-step"><strong>2</strong><b>Business Analysis</b><span>Map processes, users and priorities.</span></div>
+        <div class="roadmap-step"><strong>3</strong><b>Configuration</b><span>Set up apps, workflows and access.</span></div>
+        <div class="roadmap-step"><strong>4</strong><b>Customization</b><span>Add required reports and integrations.</span></div>
+        <div class="roadmap-step"><strong>5</strong><b>Testing</b><span>Validate workflows and business data.</span></div>
+        <div class="roadmap-step"><strong>6</strong><b>Training &amp; Go-live</b><span>Prepare users and launch confidently.</span></div>
+        <div class="roadmap-step"><strong>7</strong><b>Ongoing Support</b><span>Improve the system as the business grows.</span></div>
+      </div>
+    </div></section>
+<section style="background:#fcfbfd"><div class="container">
+      <div class="section-head"><span class="eyebrow"><i></i><span>Success stories</span></span><h2>What customers value most</h2><p>Reliable hosting, easier deployments and one place to manage multiple Odoo environments.</p></div>
+      <div class="testimonial-grid">
+        <article class="testimonial"><div class="stars">★★★★★</div><p>“Automatic builds and backups removed hours of manual server work and gave our team a much safer release process.”</p><div class="person"><div class="person-avatar">CR</div><div><b>Carlos Rodriguez</b><small>Technology Director</small></div></div></article>
+        <article class="testimonial"><div class="stars">★★★★★</div><p>“Managing several customer instances is now much clearer. Each environment is isolated and available from one dashboard.”</p><div class="person"><div class="person-avatar">AM</div><div><b>Andrea Morales</b><small>Odoo Partner</small></div></div></article>
+        <article class="testimonial"><div class="stars">★★★★★</div><p>“The staging workflow and monitoring tools give us confidence before every production update.”</p><div class="person"><div class="person-avatar">JP</div><div><b>Jose Pacheco</b><small>IT Manager</small></div></div></article>
+      </div>
+    </div></section>
+<section id="faq"><div class="container">
+      <div class="section-head"><span class="eyebrow"><i></i><span>FAQ</span></span><h2>Frequently asked questions</h2><p>Important information about migration, security, capacity and support.</p></div>
+      <div class="faq-wrap">
+        <div class="faq-item"><button class="faq-q">Can I migrate an existing Odoo database?<span>+</span></button><div class="faq-a">Yes. An existing database backup can be restored during the onboarding process while preserving users, business data and compatible customizations.</div></div>
+        <div class="faq-item"><button class="faq-q">What happens when my project grows?<span>+</span></button><div class="faq-a">You can move to a larger plan or increase project resources without rebuilding the complete environment.</div></div>
+        <div class="faq-item"><button class="faq-q">Are backups and SSL included?<span>+</span></button><div class="faq-a">Managed plans can include encrypted backups, secure project isolation and SSL for hosted subdomains or connected domains.</div></div>
+        <div class="faq-item"><button class="faq-q">Can external tools be integrated?<span>+</span></button><div class="faq-a">Yes. Odoo can be connected with payment, communication, productivity, eCommerce and automation platforms depending on project requirements.</div></div>
+        <div class="faq-item"><button class="faq-q">Is support available during setup?<span>+</span></button><div class="faq-a">Implementation guidance, configuration assistance and user training can be included according to the selected service package.</div></div>
+      </div>
+    </div></section></main>
+
+<t t-call="website_saas_landing.mo_cta"/>
+<t t-call="website_saas_landing.mo_footer"/>
+
+<script>
+document.querySelectorAll('.mo_site .faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.mo_site .faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!wasOpen){ item.classList.add('open'); }
+  });
+});
+</script>
+
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

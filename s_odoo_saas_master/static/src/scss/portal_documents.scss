@@ -1,0 +1,306 @@
+/* =========================================================================
+   MyOdoo themed standard portal documents
+   Sales Order (/my/orders/x) + Invoice (/my/invoices/x)
+
+   The document templates only inject the myodoo topbar + a hero and tag the
+   portal wrapper with ``myodoo-portal-root myodoo-doc-page``; all the visual
+   re-skinning (fonts, glass cards, tables, buttons, responsiveness) lives
+   here so the underlying sale/account logic stays untouched.
+   ========================================================================= */
+
+/* Safety net: the layout asks frontend_layout for no_header / no_footer,
+   but hide the default website chrome here too, just in case. */
+body:has(.myodoo-doc-page) #top,
+body:has(.myodoo-doc-page) #bottom {
+    display: none !important;
+}
+
+.myodoo-portal-root.myodoo-doc-page {
+    color: var(--ink);
+
+    /* ---------------------------------------------------------------- layout */
+    > .container.pt-3.pb-5 {
+        max-width: 1240px;
+        padding: 22px 28px 50px;
+    }
+
+    .o_portal_sale_sidebar,
+    .o_portal_invoice_sidebar {
+        row-gap: 18px;
+        margin: 0;
+    }
+
+    /* ------------------------------------------------------------- back link */
+    .doc-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 14px;
+        color: var(--deep);
+        font-size: 11px;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .doc-back:hover {
+        color: var(--teal);
+    }
+
+    .doc-hero {
+        margin-bottom: 18px;
+    }
+
+    /* ------------------------------------------- record sidebar (total/actions) */
+    .o_portal_sidebar_content {
+        background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, .96);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        padding: 22px;
+    }
+
+    /* Hide the divider + the "Powered by Odoo" block */
+    .o_portal_sidebar_content .vr,
+    .o_portal_sidebar_content .d-none.d-lg-block {
+        display: none !important;
+    }
+
+    .o_portal_sidebar_content h2 {
+        font-family: Georgia, serif;
+        color: var(--navy);
+        font-size: 26px;
+    }
+
+    /* ------------------------------------------------ main blocks as glass cards */
+    #portal_sale_content,
+    #sale_order_communication,
+    #invoice_communication {
+        background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, .96);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        padding: 22px;
+        margin-bottom: 18px;
+    }
+
+    #sale_order_communication {
+        margin-top: 18px;
+    }
+
+    #sale_order_communication > hr {
+        display: none;
+    }
+
+    /* ------------------------------------------------------------------ tables */
+    #sales_order_table,
+    #total table,
+    #sale_info_table,
+    #invoice_content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+    }
+
+    #sales_order_table th,
+    #total table th,
+    #invoice_content table th {
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        font-size: 9px;
+        font-weight: 800;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        padding: 10px 12px;
+        background: transparent;
+    }
+
+    #sales_order_table td,
+    #total table td,
+    #invoice_content table td {
+        font-size: 11.5px;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+    }
+
+    #sales_order_table tbody tr:hover {
+        background: rgba(15, 168, 160, .045);
+    }
+
+    #sale_info_table th {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+
+    #sale_info_table td {
+        font-size: 11.5px;
+    }
+
+    #total {
+        margin-top: 14px;
+    }
+
+    #total table td,
+    #total table th {
+        border-bottom: 0;
+    }
+
+    /* ------------------------------------------------- document headings */
+    #quote_content h3,
+    #quote_content h4,
+    #quote_content h5,
+    #invoice_content h3 {
+        font-family: Georgia, serif;
+        color: var(--navy);
+    }
+
+    /* ----------------------------------------------------------------- buttons */
+    .btn {
+        border-radius: 11px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .btn-primary {
+        background: var(--teal);
+        border-color: var(--teal);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background: var(--deep);
+        border-color: var(--deep);
+    }
+
+    .btn-light {
+        background: rgba(255, 255, 255, .78);
+        border-color: var(--line);
+        color: var(--ink);
+    }
+
+    .btn-light:hover {
+        background: rgba(15, 168, 160, .1);
+        color: var(--deep);
+    }
+
+    .btn-danger {
+        background: var(--coral);
+        border-color: var(--coral);
+    }
+
+    .btn-danger:hover {
+        background: #e85f4f;
+        border-color: #e85f4f;
+    }
+
+    /* ---------------------------------------------------------- alerts/badges */
+    .alert {
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        font-size: 11.5px;
+    }
+
+    .alert-success { background: rgba(32, 178, 108, .12); color: #168652; }
+    .alert-warning { background: rgba(255, 194, 75, .18); color: #8a6212; }
+    .alert-danger  { background: rgba(255, 111, 94, .12); color: #a8483e; }
+    .alert-info    { background: rgba(15, 168, 160, .1); color: var(--deep); }
+
+    .badge {
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: .04em;
+    }
+
+    /* ------------------------------------------- invoice document (report iframe) */
+    #invoice_content .o_portal_html_view {
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, .96);
+        box-shadow: var(--shadow);
+        background: #fff;
+        overflow: hidden;
+    }
+
+    #invoice_content .o_portal_html_view iframe {
+        display: block;
+        width: 100%;
+        min-height: 700px;
+    }
+
+    /* ------------------------------------------------------------- chatter */
+    .o_portal_chatter,
+    .o_portal_message_thread {
+        font-size: 11.5px;
+    }
+
+    #discussion h3 {
+        font-family: Georgia, serif;
+    }
+
+    .o_portal_my_contact {
+        font-size: 11.5px;
+    }
+
+    /* -------------------------------------------------------------- modals */
+    .modal-content {
+        border: 0;
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(11, 46, 51, .28);
+    }
+
+    .modal-header,
+    .modal-footer {
+        border-color: var(--line);
+    }
+
+    .modal-title {
+        font-family: Georgia, serif;
+        color: var(--navy);
+    }
+}
+
+@media (max-width: 850px) {
+    .myodoo-portal-root.myodoo-doc-page > .container.pt-3.pb-5 {
+        padding: 18px 14px 44px;
+    }
+}
+
+/* ------------------------------------------------- in-house note (replaces terms) */
+.myodoo-portal-root.myodoo-doc-page .doc-note {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.myodoo-portal-root.myodoo-doc-page .doc-note h4 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    margin: 0 0 10px;
+}
+
+.myodoo-portal-root.myodoo-doc-page .doc-note p {
+    margin: 0 0 10px;
+}
+
+.myodoo-portal-root.myodoo-doc-page .doc-note ul {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 7px;
+}
+
+.myodoo-portal-root.myodoo-doc-page .doc-note li {
+    line-height: 1.55;
+}
+
+.myodoo-portal-root.myodoo-doc-page .doc-note a {
+    color: var(--deep);
+    font-weight: 700;
+}

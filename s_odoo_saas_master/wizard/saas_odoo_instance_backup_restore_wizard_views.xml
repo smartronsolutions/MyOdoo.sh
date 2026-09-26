@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_backup_restore_wizard_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.backup.restore.wizard.form</field>
+        <field name="model">saas.odoo.instance.backup.restore.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Restore Backup">
+                <field name="backup_id" invisible="1"/>
+                <field name="restore_state" invisible="1"/>
+                <field name="wizard_step" invisible="1"/>
+
+            	<!-- Step 1: confirmation form, shown before restore is started -->
+            	<div class="bg-danger text-white fw-bold p-3 mb16" invisible="wizard_step != 'confirm'">
+            		This will overwrite the database and filestore of the selected instance with this backup.
+            		This action cannot be undone. If you are sure, enter 'yes' in the confirmation box before restoring.
+            	</div>
+            	<group invisible="wizard_step != 'confirm'">
+            		<group>
+                        <field name="odoo_version_id" readonly="1"/>
+                        <field name="instance_id"
+                            domain="[('state','=','deploy'), ('is_template','=',False)] + ([('odoo_version_id','=', odoo_version_id)] if odoo_version_id else [])"/>
+                        <field name="confirmation"/>
+                    </group>
+            	</group>
+
+                <!-- Step 2: restore is running in the background -->
+                <div class="text-center p-4" invisible="wizard_step != 'progress' or restore_state != 'running'">
+                    <i class="fa fa-spinner fa-spin fa-3x" role="img" aria-label="Loading" title="Loading"/>
+                    <h4 class="mt-3">Your backup is restoring, please wait...</h4>
+                    <p><field name="restore_status_message" nolabel="1" widget="saas_backup_restore_progress"/></p>
+                </div>
+
+                <!-- Step 3: restore finished successfully -->
+                <div class="text-center p-4" invisible="wizard_step != 'progress' or restore_state != 'done'">
+                    <i class="fa fa-check-circle fa-3x text-success" role="img" aria-label="Done" title="Done"/>
+                    <h4 class="mt-3 text-success">Your database is restored.</h4>
+                    <p><field name="restore_status_message" nolabel="1"/></p>
+                </div>
+
+                <!-- Step 4: restore failed -->
+                <div class="text-center p-4" invisible="wizard_step != 'progress' or restore_state != 'failed'">
+                    <i class="fa fa-exclamation-triangle fa-3x text-danger" role="img" aria-label="Failed" title="Failed"/>
+                    <h4 class="mt-3 text-danger">Restore failed.</h4>
+                    <p><field name="restore_status_message" nolabel="1"/></p>
+                </div>
+
+				<footer>
+                    <button name="action_restore" string="Restore Backup" type="object" class="btn-danger"
+                        invisible="wizard_step != 'confirm'"/>
+                    <span invisible="wizard_step != 'confirm'">or</span>
+                    <button string="Cancel" class="oe_link" special="cancel" invisible="wizard_step != 'confirm'"/>
+                    <button string="Close" class="btn-secondary" special="cancel" invisible="wizard_step == 'confirm'"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="saas_odoo_instance_backup_restore_wizard_action" model="ir.actions.act_window">
+        <field name="name">Restore Backup</field>
+        <field name="res_model">saas.odoo.instance.backup.restore.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="saas_odoo_instance_backup_restore_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

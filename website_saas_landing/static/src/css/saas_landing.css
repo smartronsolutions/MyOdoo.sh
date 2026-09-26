@@ -1,0 +1,554 @@
+/* 
+ * Website SaaS Landing Page - External CSS
+ * This file can be used for additional styles or overrides
+ * Main styles are embedded in the template for better performance
+ */
+
+/* Optional: Add custom animations here */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Optional: Add print styles */
+@media print {
+  .oc_nav,
+  .oc_cta_sec,
+  .oc_footer {
+    display: none !important;
+  }
+}
+
+/* Odoo-safe responsive layout for every template in views/. */
+.mo_site {
+  direction: ltr !important;
+  text-align: left;
+  width: 100%;
+}
+
+.mo_site *,
+.mo_auth_shell * {
+  box-sizing: border-box;
+}
+
+.mo_site .container {
+  width: min(1160px, calc(100% - 40px)) !important;
+  max-width: 1160px !important;
+  padding-inline: 0 !important;
+  margin-inline: auto !important;
+}
+
+.mo_site img,
+.mo_auth_shell img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mo_site .hero-grid > *,
+.mo_site .feature-band > *,
+.mo_site .contact-grid > *,
+.mo_site .service-grid > *,
+.mo_site .cards > *,
+.mo_site .detail-grid > *,
+.mo_site .testimonial-grid > *,
+.mo_site .demo-pricing > * {
+  min-width: 0;
+}
+
+@media (min-width: 901px) {
+  .mo_site .hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr) !important;
+  }
+  .mo_site .feature-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site .contact-grid {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr) !important;
+  }
+  .mo_site .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site .cards,
+  .mo_site .detail-grid,
+  .mo_site .testimonial-grid,
+  .mo_site .demo-pricing {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .mo_site .why-grid,
+  .mo_site .industry-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .mo_site .apps-grid,
+  .mo_site .roadmap {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_site .hero-grid,
+  .mo_site .feature-band,
+  .mo_site .contact-grid,
+  .mo_site .service-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site .hero-grid {
+    gap: 34px !important;
+  }
+  .mo_site .hero-grid > div:first-child {
+    width: 100%;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .mo_site .visual {
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+  .mo_site .cards,
+  .mo_site .detail-grid,
+  .mo_site .testimonial-grid,
+  .mo_site .demo-pricing,
+  .mo_site .stats-grid,
+  .mo_site .process-grid,
+  .mo_site .integration-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site .cta-box {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .mo_site section {
+    padding-block: 58px !important;
+  }
+  .mo_site .page-hero {
+    padding-block: 50px 34px !important;
+  }
+  .mo_site h1 {
+    font-size: clamp(38px, 11vw, 54px) !important;
+    letter-spacing: -2.2px !important;
+  }
+  .mo_site .section-head h2 {
+    font-size: clamp(30px, 8vw, 42px) !important;
+  }
+  .mo_site .cards,
+  .mo_site .detail-grid,
+  .mo_site .testimonial-grid,
+  .mo_site .demo-pricing,
+  .mo_site .why-grid,
+  .mo_site .industry-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site .apps-grid,
+  .mo_site .stats-grid,
+  .mo_site .process-grid,
+  .mo_site .integration-grid,
+  .mo_site .roadmap,
+  .mo_site .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site .feature-band,
+  .mo_site .form,
+  .mo_site .contact-info,
+  .mo_site .service-card {
+    padding: 26px !important;
+  }
+  .mo_site .form-row {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site .cta-box {
+    display: block !important;
+    padding: 30px !important;
+  }
+  .mo_site .cta-box .btn {
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .mo_site .container {
+    width: calc(100% - 26px) !important;
+  }
+  .mo_site .hero {
+    padding-block: 42px 48px !important;
+  }
+  .mo_site .hero-actions,
+  .mo_site .trust-row {
+    align-items: stretch;
+  }
+  .mo_site .hero-actions .btn {
+    width: 100%;
+  }
+  .mo_site .visual {
+    min-height: 390px !important;
+  }
+  .mo_site .dashboard {
+    left: 4px !important;
+    right: 4px !important;
+  }
+  .mo_site .apps-grid,
+  .mo_site .stats-grid,
+  .mo_site .process-grid,
+  .mo_site .integration-grid,
+  .mo_site .roadmap,
+  .mo_site .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site .strip {
+    justify-content: flex-start !important;
+  }
+  .mo_site .copyright {
+    display: block !important;
+  }
+  .mo_site .copyright span {
+    display: block;
+    margin-top: 6px;
+  }
+}
+
+/* Login, signup and reset-password views. */
+@media (max-width: 991px) {
+  .mo_auth_shell {
+    min-height: calc(100vh - 70px) !important;
+  }
+  .mo_auth_form_col {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+  .mo_auth_form_inner,
+  .oe_website_login_container,
+  .oe_website_login_container form {
+    width: 100% !important;
+    max-width: 520px !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .mo_auth_form_col {
+    padding: 28px 20px !important;
+  }
+  .mo_auth_form_inner {
+    max-width: 100% !important;
+  }
+  .mo_auth_foot {
+    text-align: center;
+  }
+}
+
+/* Home page: desktop, tablet and mobile layout. */
+.mo_home_page {
+  overflow-x: clip;
+}
+
+.mo_home_page .hero-grid,
+.mo_home_page .cards,
+.mo_home_page .detail-grid,
+.mo_home_page .integration-grid,
+.mo_home_page .process-grid,
+.mo_home_page .apps-grid,
+.mo_home_page .demo-pricing {
+  width: 100%;
+}
+
+.mo_home_page .hero-grid > div,
+.mo_home_page .card,
+.mo_home_page .detail-card,
+.mo_home_page .integration-item,
+.mo_home_page .process-step,
+.mo_home_page .app-card,
+.mo_home_page .demo-price-card {
+  min-width: 0;
+}
+
+@media (min-width: 1201px) {
+  .mo_home_page .hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(500px, .98fr) !important;
+    gap: 62px !important;
+  }
+  .mo_home_page .visual {
+    width: 100%;
+    min-height: 520px;
+  }
+  .mo_home_page .detail-grid,
+  .mo_home_page .demo-pricing {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .mo_home_page .integration-grid,
+  .mo_home_page .process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .mo_home_page .apps-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .mo_home_page .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr) !important;
+    gap: 36px !important;
+  }
+  .mo_home_page .visual {
+    min-height: 500px;
+  }
+  .mo_home_page h1 {
+    font-size: clamp(46px, 5vw, 62px) !important;
+  }
+  .mo_home_page .apps-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_home_page .hero {
+    padding-block: 58px !important;
+  }
+  .mo_home_page .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .mo_home_page .hero-grid > div:first-child {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  .mo_home_page .visual {
+    width: min(100%, 680px);
+    min-height: 490px;
+    margin-inline: auto;
+  }
+  .mo_home_page .cards,
+  .mo_home_page .detail-grid,
+  .mo_home_page .demo-pricing {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_home_page .integration-grid,
+  .mo_home_page .process-grid,
+  .mo_home_page .apps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_home_page .feature-band {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .mo_home_page .hero {
+    padding-block: 42px 38px !important;
+  }
+  .mo_home_page .hero-grid {
+    gap: 18px !important;
+  }
+  .mo_home_page h1 {
+    font-size: clamp(38px, 12vw, 52px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -2px !important;
+  }
+  .mo_home_page .lead {
+    font-size: 16px !important;
+  }
+  .mo_home_page .hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  .mo_home_page .hero-actions .btn {
+    width: 100%;
+  }
+  .mo_home_page .trust-row {
+    gap: 10px 16px !important;
+  }
+  .mo_home_page .visual {
+    min-height: 390px !important;
+    transform: none !important;
+  }
+  .mo_home_page .orb1 {
+    width: 270px !important;
+    height: 270px !important;
+    right: 8px !important;
+  }
+  .mo_home_page .orb2 {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  .mo_home_page .dashboard {
+    inset: 40px 2px auto 2px !important;
+    padding: 13px !important;
+    border-radius: 20px !important;
+  }
+  .mo_home_page .dash-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .mo_home_page .metric,
+  .mo_home_page .chart,
+  .mo_home_page .activity {
+    padding: 10px !important;
+  }
+  .mo_home_page .chart {
+    grid-row: span 2 !important;
+  }
+  .mo_home_page .bars {
+    height: 92px !important;
+    gap: 4px !important;
+  }
+  .mo_home_page .floating-card {
+    max-width: 145px;
+    font-size: 10px !important;
+    padding: 9px 10px !important;
+  }
+  .mo_home_page .fc1 {
+    right: 0 !important;
+    top: 15px !important;
+  }
+  .mo_home_page .fc2 {
+    left: 0 !important;
+    bottom: 0 !important;
+  }
+  .mo_home_page .cards,
+  .mo_home_page .detail-grid,
+  .mo_home_page .integration-grid,
+  .mo_home_page .process-grid,
+  .mo_home_page .apps-grid,
+  .mo_home_page .demo-pricing {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_home_page .feature-band {
+    padding: 25px !important;
+    border-radius: 24px !important;
+  }
+  .mo_home_page .strip {
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  .mo_home_page .app-card,
+  .mo_home_page .integration-item {
+    width: 100%;
+  }
+  .mo_home_page .important-note {
+    padding: 14px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .mo_home_page .visual {
+    min-height: 365px !important;
+  }
+  .mo_home_page .dash-grid {
+    font-size: 11px;
+  }
+  .mo_home_page .activity .appdot {
+    width: 30px;
+    height: 30px;
+  }
+  .mo_home_page .floating-card {
+    transform: scale(.92);
+  }
+}
+
+/* Explicit page grid placement prevents Odoo RTL/Bootstrap auto-placement. */
+@media (min-width: 901px) {
+  .mo_contact_page .contact-grid {
+    display: grid !important;
+    direction: ltr !important;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr) !important;
+    grid-template-rows: auto !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+  }
+  .mo_contact_page .contact-grid > .contact-info {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+  .mo_contact_page .contact-grid > form.form {
+    display: block !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+  .mo_home_page .hero-grid > div:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  .mo_home_page .hero-grid > .visual {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+  .mo_home_page .feature-band > div:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  .mo_home_page .feature-band > .feature-list {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+  .mo_services_page .service-grid {
+    display: grid !important;
+    direction: ltr !important;
+    grid-auto-flow: row !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+  }
+  .mo_services_page .service-card {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_contact_page .contact-grid,
+  .mo_services_page .service-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  .mo_contact_page .contact-grid > .contact-info,
+  .mo_contact_page .contact-grid > form.form {
+    grid-column: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .mo_contact_page .contact-grid > .contact-info {
+    grid-row: 1 !important;
+  }
+  .mo_contact_page .contact-grid > form.form {
+    grid-row: 2 !important;
+  }
+}

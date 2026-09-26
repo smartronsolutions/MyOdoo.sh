@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record forcecreate="True" id="cron_saas_auto_backup" model="ir.cron">
+            <field name="name">SaaS Master: Auto backup cron</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_auto_backup()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+
+        <record forcecreate="True" id="cron_saas_clean_backup" model="ir.cron">
+            <field name="name">SaaS Master: Clean backups cron</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_clean_backup()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 00:00:00')"/>
+        </record>
+
+        <record forcecreate="True" id="cron_saas_check_instance_status" model="ir.cron">
+            <field name="name">SaaS Master: Check instance status</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_check_instance_status()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">15</field>
+            <field name="interval_type">minutes</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 00:15:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_get_active_user" model="ir.cron">
+            <field name="name">SaaS Master: Get active users</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_get_active_user()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_get_installed_app" model="ir.cron">
+            <field name="name">SaaS Master: Get installed apps</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_get_installed_app()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_instance_expiration_notification" model="ir.cron">
+            <field name="name">SaaS Master: Expiration notification</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_expiration_notification()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_instance_suspend" model="ir.cron">
+            <field name="name">SaaS Master: suspend Odoo instance</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_suspend_instance()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_instance_revoke_notification" model="ir.cron">
+            <field name="name">SaaS Master: Revoke notification</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_revoke_notification()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_saas_instance_revoke" model="ir.cron">
+            <field name="name">SaaS Master: revoke Odoo instance</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_revoke_instance()</field>
+            <field name="active" eval="False"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+        
+        <record forcecreate="True" id="cron_create_saas_extra_so" model="ir.cron">
+            <field name="name">SaaS Master: create saas extra order</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_create_extra_so()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
+        </record>
+
+        <record forcecreate="True" id="cron_saas_check_storage_limits" model="ir.cron">
+            <field name="name">SaaS Master: Check instance storage limits</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_check_storage_limits()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d %H:30:00')"/>
+        </record>
+
+        <record forcecreate="True" id="cron_saas_deploy_pending_instances" model="ir.cron">
+            <field name="name">SaaS Master: Deploy purchased instances</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_deploy_pending_instances()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+        <record forcecreate="True" id="cron_saas_shell_cleanup" model="ir.cron">
+            <field name="name">SaaS Master: Close idle instance shells</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_shell_cleanup()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+	<record id="product_public_category_tool" model="product.public.category">
+        <field name="name">Tool</field>
+        <field name="sequence">1</field>
+    </record>
+    
+    <record id="product_public_category_sale" model="product.public.category">
+        <field name="name">Sales</field>
+        <field name="sequence">2</field>
+    </record>
+    
+    <record id="product_public_category_accounting" model="product.public.category">
+        <field name="name">Accounting</field>
+        <field name="sequence">3</field>
+    </record>
+    
+    <record id="product_public_category_manufacturing" model="product.public.category">
+        <field name="name">Manufacturing</field>
+        <field name="sequence">4</field>
+    </record>
+    
+    <record id="product_public_category_inventory" model="product.public.category">
+        <field name="name">Inventory</field>
+        <field name="sequence">5</field>
+    </record>
+    
+    <record id="product_public_category_hr" model="product.public.category">
+        <field name="name">Human Resources</field>
+        <field name="sequence">6</field>
+    </record>
+    
+    <record id="product_public_category_website" model="product.public.category">
+        <field name="name">Website</field>
+        <field name="sequence">7</field>
+    </record>
+    
+    <record id="product_public_category_service" model="product.public.category">
+        <field name="name">Service</field>
+        <field name="sequence">8</field>
+    </record>
+    
+    <record id="product_public_category_other" model="product.public.category">
+        <field name="name">Other</field>
+        <field name="sequence">9</field>
+    </record>
+    
+    <record id="public_category_saas_user" model="product.public.category">
+        <field name="name">Workers</field>
+        <field name="sequence">1000</field>
+    </record>
+
+</odoo>

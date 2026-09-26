@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_cancel_wizard_form" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.cancel.wizard.form</field>
+        <field name="model">saas.odoo.instance.cancel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Instance">            	
+            	<div class="bg-danger text-white fw-bold p-3 mb16">
+            		This action will delete all data of the instance and it unrecoverable.
+            		If you are sure about this action, please enter 'yes' in the confirmation box before canceling the instance
+            	</div>
+            	<group>
+            		<group>
+                        <field name="instance_id" invisible="1"/>
+                        <field name="confirmation"/>
+                    </group>
+            	</group>                	
+				<footer>
+                    <button name="action_cancel" string="I am sure delete the instance" type="object" class="btn-danger" />                       	
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_cancel_wizard_action" model="ir.actions.act_window">
+        <field name="name">Cancel Instance</field>
+        <field name="res_model">saas.odoo.instance.cancel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="saas_odoo_instance_cancel_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

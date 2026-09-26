@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <!-- Typologies business manquantes (BTP existe déjà en base) -->
+    <record id="saas_instance_tag_ocr" model="saas.instance.tag">
+        <field name="name">OCR</field>
+        <field name="color">2</field>
+    </record>
+
+    <record id="saas_instance_tag_btp_ocr" model="saas.instance.tag">
+        <field name="name">BTP-OCR</field>
+        <field name="color">3</field>
+    </record>
+
+    <record id="saas_instance_tag_standard" model="saas.instance.tag">
+        <field name="name">Standard</field>
+        <field name="color">0</field>
+    </record>
+
+</odoo>

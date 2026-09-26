@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_instance_domain_name_view_tree" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.domain.name.view.tree</field>
+        <field name="model">saas.odoo.instance.domain.name</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Odoo Instance Domain Name" editable="bottom">
+                <field name="name" readonly="is_instance_domain_name or state != 'draft'"/>
+                <field name="noindex" readonly="is_instance_domain_name or state != 'draft'"/>     
+ 				<field name="state" />
+ 				<field name="is_instance_domain_name" column_invisible="1"/>
+ 				<field name="instance_state" column_invisible="1"/>
+ 				<button icon="fa-play-circle" string="Deploy" type="object" name="action_deploy" invisible="state != 'draft' or instance_state != 'deploy'"/>
+ 				<button icon="fa-refresh" string="Reset to Draft" type="object" name="action_draft" invisible="state != 'cancel' or instance_state != 'deploy'"/>
+ 				<button icon="fa-stop-circle" string="Cancel" type="object" name="action_cancel" invisible="state != 'deploy' or instance_state != 'deploy'"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_instance_domain_name_action" model="ir.actions.act_window">
+        <field name="name">Domain Name</field>
+        <field name="res_model">saas.odoo.instance.domain.name</field>
+        <field name="view_mode">list</field>
+    </record>
+
+</odoo>

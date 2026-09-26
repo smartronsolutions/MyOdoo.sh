@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+	<record id="saas_psql_version_12" model="saas.psql.version">
+		<field name="name">12</field>
+		<field name="docker_image_tag">12</field>
+	</record>
+	
+	<record id="saas_psql_version_13" model="saas.psql.version">
+		<field name="name">13</field>
+		<field name="docker_image_tag">13</field>
+	</record>
+	
+	<record id="saas_psql_version_14" model="saas.psql.version">
+		<field name="name">14</field>
+		<field name="docker_image_tag">14</field>
+	</record>
+	
+	<record id="saas_psql_version_15" model="saas.psql.version">
+		<field name="name">15</field>
+		<field name="docker_image_tag">15</field>
+	</record>
+
+</odoo>

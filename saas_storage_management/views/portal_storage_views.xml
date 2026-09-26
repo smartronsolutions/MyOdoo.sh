@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Shared Request-Upgrade modal + toast container + JS, styled with myodoo glassmorphism UI/UX -->
+    <template id="storage_upgrade_widget" name="Storage Upgrade Widget">
+        <div class="modal" id="storageUpgradeModal">
+            <div class="glass modal-card" style="max-width:480px;position:relative">
+                <button type="button" id="closeStorageUpgradeBtn" style="position:absolute;top:18px;right:18px;border:0;background:transparent;color:var(--muted);font-size:22px;line-height:1;cursor:pointer">&amp;times;</button>
+                <h2 style="font-size:20px;margin:0 0 6px">Request Storage Increase</h2>
+                <p style="font-size:11px;color:var(--muted);margin:0 0 16px;line-height:1.5">
+                    Submit a storage quota increase for your instance. Our operations team reviews and provisions extra disk capacity promptly.
+                </p>
+
+                <div class="field">
+                    <label style="font-size:9px;font-weight:800;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:6px">TARGET INSTANCE</label>
+                    <input type="text" id="storageUpgradeInstanceName" readonly="readonly" style="background:rgba(255,255,255,0.5);cursor:default;font-weight:700"/>
+                </div>
+
+                <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <div class="field">
+                        <label style="font-size:9px;font-weight:800;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:6px">CURRENT QUOTA</label>
+                        <input type="text" id="storageUpgradeCurrentLimit" readonly="readonly" style="background:rgba(255,255,255,0.5);cursor:default"/>
+                    </div>
+                    <div class="field">
+                        <label style="font-size:9px;font-weight:800;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:6px">NEW QUOTA (GB) *</label>
+                        <input type="number" step="1" min="1" id="storageUpgradeNewLimit" placeholder="e.g. 25"/>
+                    </div>
+                </div>
+
+                <div id="storageUpgradeError" style="display:none;background:rgba(255,111,94,.12);border:1px solid rgba(255,111,94,.25);color:#a8483e;border-radius:10px;padding:10px 14px;font-size:11px;font-weight:700;margin-bottom:14px"></div>
+
+                <div class="modal-actions" style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
+                    <button type="button" class="ghost" id="cancelStorageUpgrade">Cancel</button>
+                    <button type="button" class="primary" id="storageUpgradeSubmitBtn">Submit Request</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="storageToast"></div>
+
+        <script><![CDATA[
+            (function(){
+                function notify(msg) {
+                    var toast = document.getElementById("storageToast") || document.getElementById("toast");
+                    if (!toast) {
+                        toast = document.createElement("div");
+                        toast.className = "toast";
+                        toast.id = "storageToast";
+                        document.body.appendChild(toast);
+                    }
+                    toast.textContent = msg;
+                    toast.classList.add("show");
+                    clearTimeout(window.storageToastTimer);
+                    window.storageToastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 3500);
+                }
+
+                var modal = document.getElementById("storageUpgradeModal");
+                if (!modal) return;
+
+                var nameEl = document.getElementById("storageUpgradeInstanceName");
+                var limitEl = document.getElementById("storageUpgradeCurrentLimit");
+                var inputEl = document.getElementById("storageUpgradeNewLimit");
+                var errorEl = document.getElementById("storageUpgradeError");
+                var submitBtn = document.getElementById("storageUpgradeSubmitBtn");
+                var cancelBtn = document.getElementById("cancelStorageUpgrade");
+                var closeBtn = document.getElementById("closeStorageUpgradeBtn");
+                var currentInstanceId = null;
+
+                function openModal(id, name, limit) {
+                    currentInstanceId = id;
+                    if (nameEl) nameEl.value = name || "";
+                    if (limitEl) limitEl.value = (limit ? limit + " GB" : "");
+                    if (inputEl) {
+                        inputEl.value = "";
+                        var curVal = parseFloat(limit) || 0;
+                        inputEl.placeholder = curVal > 0 ? "e.g. " + (Math.ceil(curVal) + 5) : "e.g. 20";
+                    }
+                    if (errorEl) {
+                        errorEl.style.display = "none";
+                        errorEl.textContent = "";
+                    }
+                    modal.classList.add("show");
+                }
+
+                function closeModal() {
+                    modal.classList.remove("show");
+                }
+
+                if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+                if (closeBtn) closeBtn.addEventListener("click", closeModal);
+                modal.addEventListener("click", function(e){
+                    if (e.target === modal) closeModal();
+                });
+
+                document.querySelectorAll("[data-action='open-upgrade']").forEach(function(btn){
+                    btn.addEventListener("click", function(e){
+                        e.preventDefault();
+                        var id = btn.getAttribute("data-instance-id");
+                        var name = btn.getAttribute("data-instance-name");
+                        var limit = btn.getAttribute("data-current-limit");
+                        openModal(id, name, limit);
+                    });
+                });
+
+                var detailBtn = document.getElementById("btnRequestUpgradeDetail");
+                if (detailBtn) {
+                    detailBtn.addEventListener("click", function(e){
+                        e.preventDefault();
+                        openModal(
+                            detailBtn.getAttribute("data-instance-id"),
+                            detailBtn.getAttribute("data-instance-name"),
+                            detailBtn.getAttribute("data-current-limit")
+                        );
+                    });
+                }
+
+                var sidebarBtn = document.getElementById("btnSidebarUpgrade");
+                if (sidebarBtn) {
+                    sidebarBtn.addEventListener("click", function(e){
+                        e.preventDefault();
+                        openModal(
+                            sidebarBtn.getAttribute("data-instance-id"),
+                            sidebarBtn.getAttribute("data-instance-name"),
+                            sidebarBtn.getAttribute("data-current-limit")
+                        );
+                    });
+                }
+
+                var headerBtn = document.getElementById("btnHeaderUpgrade");
+                if (headerBtn) {
+                    headerBtn.addEventListener("click", function(e){
+                        e.preventDefault();
+                        var firstBtn = document.querySelector("[data-action='open-upgrade']");
+                        if (firstBtn) {
+                            firstBtn.click();
+                        } else {
+                            openModal(null, "Select Instance", "5.0");
+                        }
+                    });
+                }
+
+                submitBtn.addEventListener("click", function(){
+                    var newLimit = parseFloat(inputEl.value);
+                    if (!currentInstanceId) {
+                        errorEl.textContent = "Please select an instance first.";
+                        errorEl.style.display = "block";
+                        return;
+                    }
+                    if (isNaN(newLimit) || newLimit <= 0) {
+                        errorEl.textContent = "Please enter a valid storage limit in GB (greater than 0).";
+                        errorEl.style.display = "block";
+                        return;
+                    }
+                    errorEl.style.display = "none";
+                    submitBtn.disabled = true;
+                    var origText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = "Submitting...";
+
+                    fetch('/my/storage/request-upgrade', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            instance_id: parseInt(currentInstanceId),
+                            new_limit_gb: newLimit
+                        })
+                    })
+                    .then(function(res){ return res.json(); })
+                    .then(function(data){
+                        var result = data.result || data;
+                        if (result && result.status === 'success') {
+                            closeModal();
+                            notify(result.message || "Storage upgrade request submitted successfully!");
+                            setTimeout(function(){ location.reload(); }, 1500);
+                        } else {
+                            errorEl.textContent = (result && result.message) || "Failed to submit request.";
+                            errorEl.style.display = "block";
+                        }
+                    })
+                    .catch(function(err){
+                        errorEl.textContent = "Network error: " + err;
+                        errorEl.style.display = "block";
+                    })
+                    .finally(function(){
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = origText;
+                    });
+                });
+            })();
+        ]]></script>
+    </template>
+
+    <!-- Storage Dashboard: /my/storage -->
+    <template id="portal_storage_dashboard" name="Storage Dashboard">
+        <t t-call="portal.frontend_layout">
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <t t-set="title">Storage Management — myodoo.nc</t>
+
+            <div class="myodoo-portal-root">
+                <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+
+                <main class="page">
+                    <!-- Page Header -->
+                    <div class="head">
+                        <div>
+                            <span class="eyebrow">DISK &amp; CAPACITY</span>
+                            <h1>Storage Management</h1>
+                            <div class="sub">Real-time disk space analytics, automated threshold checks, and storage quota management.</div>
+                        </div>
+                        <div class="actions">
+                            <a href="/my" class="ghost" style="text-decoration:none">&amp;larr; Dashboard</a>
+                            <a href="/my/saas/odoo-instances" class="ghost" style="text-decoration:none">My Instances</a>
+                            <t t-if="instances">
+                                <button class="primary" id="btnHeaderUpgrade" style="text-decoration:none">+ Request Storage Upgrade</button>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!-- Active Warnings Banner -->
+                    <t t-if="warnings">
+                        <div class="glass" style="padding:16px 20px;margin-bottom:22px;border-left:4px solid var(--coral);background:rgba(255,111,94,.07)">
+                            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                                <div>
+                                    <strong style="color:var(--coral);font-size:13px">⚠️ Storage Threshold Alerts</strong>
+                                    <p style="margin:4px 0 0;font-size:11px;color:var(--muted)">
+                                        <t t-esc="len(warnings)"/> instance(s) have crossed the 80% capacity threshold. Consider upgrading quota to prevent service interruption.
+                                    </p>
+                                </div>
+                                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                                    <t t-foreach="warnings" t-as="w">
+                                        <a t-attf-href="/my/storage/{{ w['instance_id'] }}" class="ghost" style="text-decoration:none;font-size:11px;font-weight:700">
+                                            <t t-esc="w['instance_name']"/>: <span t-att-style="'color:' + ('var(--coral)' if w['status'] == 'critical' else 'var(--yellow)')"><t t-esc="w['percentage']"/>%</span> &amp;rarr;
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                    <!-- KPI Cards Grid -->
+                    <section class="admin-kpis">
+                        <div class="glass admin-kpi">
+                            <small>Total Disk Used</small>
+                            <strong><t t-esc="total_used"/> GB</strong>
+                            <em>Across all environments</em>
+                        </div>
+                        <div class="glass admin-kpi">
+                            <small>Allocated Quota</small>
+                            <strong><t t-esc="total_limit"/> GB</strong>
+                            <em>Total SSD capacity</em>
+                        </div>
+                        <div class="glass admin-kpi">
+                            <small>Aggregate Usage</small>
+                            <strong><t t-esc="overall_percentage"/>%</strong>
+                            <em t-att-class="'warn' if overall_percentage &gt;= 80 else ''">
+                                <t t-if="overall_percentage &gt;= 90">Critical capacity</t>
+                                <t t-elif="overall_percentage &gt;= 80">High usage</t>
+                                <t t-else="">Normal load</t>
+                            </em>
+                        </div>
+                        <div class="glass admin-kpi">
+                            <small>Environments</small>
+                            <strong t-esc="len(instances)"/>
+                            <em><t t-esc="healthy_count"/> healthy &amp;middot; <t t-esc="alert_count"/> alerts</em>
+                        </div>
+                        <div class="glass admin-kpi">
+                            <small>Automated Checks</small>
+                            <strong>Hourly</strong>
+                            <em>Automated cron scanner</em>
+                        </div>
+                        <div class="glass admin-kpi">
+                            <small>Data Protection</small>
+                            <strong>Active</strong>
+                            <em>Auto-stop at 100% full</em>
+                        </div>
+                    </section>
+
+                    <!-- Main Admin Layout (Table + Side Panels) -->
+                    <div class="admin-layout">
+                        <!-- Instances Storage Quotas Table -->
+                        <section class="glass panel">
+                            <div class="section-title">
+                                <h2>Environment Storage Quotas</h2>
+                                <span class="sub" style="font-size:11px"><t t-esc="len(instances)"/> instances monitored</span>
+                            </div>
+                            <div class="instance-table">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Instance</th>
+                                            <th>Status</th>
+                                            <th>Used Disk</th>
+                                            <th>Allocated Quota</th>
+                                            <th>Usage Level</th>
+                                            <th>Last Scanned</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-if="not instances">
+                                            <tr>
+                                                <td colspan="7" class="empty-state">
+                                                    <h3>No instances found</h3>
+                                                    <p>Deploy your first Odoo environment to start tracking storage and performance.</p>
+                                                    <a href="/saas/pricing" class="primary" style="text-decoration:none">+ Create Instance</a>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-foreach="instances" t-as="inst">
+                                            <tr>
+                                                <td class="client">
+                                                    <a t-attf-href="/my/storage/{{ inst.id }}" style="text-decoration:none;color:var(--ink);font-weight:800">
+                                                        <t t-esc="inst.name"/>
+                                                    </a>
+                                                    <small t-esc="inst.url or (inst.name + '.' + inst.based_domain_id.name)"/>
+                                                </td>
+                                                <td>
+                                                    <span t-attf-class="status {{ 'offline' if inst.storage_status == 'full' else 'warning' if inst.storage_status in ('warning', 'critical') else '' }}">
+                                                        <t t-esc="'Full' if inst.storage_status == 'full' else 'Critical' if inst.storage_status == 'critical' else 'Warning' if inst.storage_status == 'warning' else 'Unlimited' if inst.storage_status == 'unlimited' else 'Healthy'"/>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <b><t t-esc="round(inst.storage_used_gb, 2)"/> GB</b>
+                                                </td>
+                                                <td>
+                                                    <t t-if="inst.storage_is_unlimited">
+                                                        <span class="badge" style="background:rgba(15,168,160,.12);color:var(--deep)">Unlimited</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="inst.storage_limit_gb"/> GB
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <div style="display:flex;align-items:center;gap:8px">
+                                                        <div class="mini-bar" style="width:70px">
+                                                            <i t-attf-style="width:{{ min(inst.storage_percentage, 100) }}%; background:{{ 'var(--coral)' if inst.storage_percentage &gt;= 90 else 'var(--yellow)' if inst.storage_percentage &gt;= 80 else 'var(--teal)' }}"></i>
+                                                        </div>
+                                                        <span style="font-size:10px;font-weight:700"><t t-esc="round(inst.storage_percentage, 1)"/>%</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span style="font-size:10px;color:var(--muted)">
+                                                        <t t-if="inst.storage_last_check">
+                                                            <t t-esc="inst.storage_last_check.strftime('%d %b, %H:%M')"/>
+                                                        </t>
+                                                        <t t-else="">Pending</t>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div style="display:flex;gap:6px">
+                                                        <a t-attf-href="/my/storage/{{ inst.id }}" class="ghost" style="text-decoration:none;padding:6px 10px;font-size:11px" title="View 7-Day History">
+                                                            History
+                                                        </a>
+                                                        <t t-if="not inst.storage_is_unlimited">
+                                                            <button class="primary" style="padding:6px 10px;font-size:11px"
+                                                                    data-action="open-upgrade"
+                                                                    t-att-data-instance-id="inst.id"
+                                                                    t-att-data-instance-name="inst.name"
+                                                                    t-att-data-current-limit="inst.storage_limit_gb">
+                                                                Upgrade
+                                                            </button>
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Right Sidebar Stack -->
+                        <aside class="sidebar-stack">
+                            <section class="glass side-panel">
+                                <h3>Capacity Thresholds</h3>
+                                <div class="health-row">
+                                    <span>Warning Notice</span>
+                                    <strong style="color:var(--yellow)">80% Usage</strong>
+                                </div>
+                                <div class="health-row">
+                                    <span>Critical Alert</span>
+                                    <strong style="color:var(--coral)">90% Usage</strong>
+                                </div>
+                                <div class="health-row">
+                                    <span>Corrupt Guard</span>
+                                    <strong style="color:var(--deep)">100% (Auto-Stop)</strong>
+                                </div>
+                                <p style="font-size:10px;color:var(--muted);margin-top:12px;line-height:1.5">
+                                    Storage scans execute automatically every hour. If an instance reaches 100%, services are safely paused to protect against database corruption.
+                                </p>
+                            </section>
+
+                            <section class="glass side-panel">
+                                <h3>Need More Space?</h3>
+                                <p style="font-size:11px;color:var(--muted);margin:0 0 14px;line-height:1.5">
+                                    Need dedicated NVMe SSD space for documents or large databases? Expand storage instantly without restarting your Odoo instance.
+                                </p>
+                                <t t-if="instances">
+                                    <button class="primary" style="width:100%" data-action="open-upgrade"
+                                            t-att-data-instance-id="instances[0].id"
+                                            t-att-data-instance-name="instances[0].name"
+                                            t-att-data-current-limit="instances[0].storage_limit_gb">
+                                        + Request Storage Increase
+                                    </button>
+                                </t>
+                            </section>
+                        </aside>
+                    </div>
+                </main>
+
+                <t t-call="saas_storage_management.storage_upgrade_widget"/>
+            </div>
+        </t>
+    </template>
+
+    <!-- Per-instance storage page: /my/storage/<int:instance_id> -->
+    <template id="portal_storage_instance_detail" name="Instance Storage Detail">
+        <t t-call="portal.frontend_layout">
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <t t-set="title"><t t-esc="instance.name"/> — Storage Details</t>
+
+            <div class="myodoo-portal-root">
+                <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+
+                <main class="page">
+                    <a href="/my/storage" style="display:inline-block;margin-bottom:14px;color:var(--deep);text-decoration:none;font-size:11px;font-weight:800">&amp;larr; Back to Storage Overview</a>
+
+                    <!-- Workspace Head Glass Card -->
+                    <section class="glass workspace-head">
+                        <div class="app-icon"><t t-esc="(instance.name or 'S')[:1].upper()"/></div>
+                        <div>
+                            <h1 t-esc="instance.name"/>
+                            <p><t t-esc="instance.url"/> &amp;middot; <t t-esc="instance.odoo_version_id.name"/> &amp;middot; Storage Management</p>
+                        </div>
+                        <span t-attf-class="state-pill {{ 'suspended' if instance.storage_status in ('critical', 'full') else '' }}">
+                            <t t-esc="'Full' if instance.storage_status == 'full' else 'Critical' if instance.storage_status == 'critical' else 'Warning' if instance.storage_status == 'warning' else 'Unlimited' if instance.storage_status == 'unlimited' else 'Healthy'"/>
+                        </span>
+                        <div class="actions">
+                            <t t-if="not instance.storage_is_unlimited">
+                                <button class="primary" id="btnRequestUpgradeDetail"
+                                        t-att-data-instance-id="instance.id"
+                                        t-att-data-instance-name="instance.name"
+                                        t-att-data-current-limit="instance.storage_limit_gb">
+                                    Request Upgrade
+                                </button>
+                            </t>
+                            <a t-attf-href="/my/saas/odoo-instance/{{ instance.id }}" class="ghost" style="text-decoration:none">
+                                Manage Instance
+                            </a>
+                            <a t-att-href="instance.url" target="_blank" class="ghost" style="text-decoration:none">
+                                Open Odoo
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Pending Upgrade Notice (if applicable) -->
+                    <t t-if="instance.storage_upgrade_requested">
+                        <div class="glass" style="padding:16px 20px;margin-bottom:20px;border-left:4px solid var(--yellow);background:rgba(255,194,75,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                            <div>
+                                <strong style="color:var(--navy);font-size:13px">⏳ Storage Upgrade Request Pending</strong>
+                                <p style="margin:4px 0 0;font-size:11px;color:var(--muted)">
+                                    You requested an increase to <b><t t-esc="instance.storage_upgrade_requested_gb"/> GB</b> on <t t-esc="instance.storage_upgrade_request_date.strftime('%d %b %Y, %H:%M') if instance.storage_upgrade_request_date else ''"/>. Our operations team is reviewing your request.
+                                </p>
+                            </div>
+                            <span class="badge" style="background:rgba(255,194,75,.2);color:#9c680c;padding:6px 12px;font-size:11px">Under Review</span>
+                        </div>
+                    </t>
+
+                    <!-- 4 Metric Cards -->
+                    <div class="detail-grid">
+                        <div class="glass detail-card">
+                            <small>Used Filestore &amp; DB</small>
+                            <strong><t t-esc="round(instance.storage_used_gb, 2)"/> GB</strong>
+                            <span class="healthy">Local SSD Space</span>
+                        </div>
+                        <div class="glass detail-card">
+                            <small>Allocated Quota</small>
+                            <strong t-esc="'Unlimited' if instance.storage_is_unlimited else str(instance.storage_limit_gb) + ' GB'"/>
+                            <span class="healthy"><t t-esc="'No limit imposed' if instance.storage_is_unlimited else 'Plan allocation'"/></span>
+                        </div>
+                        <div class="glass detail-card">
+                            <small>Disk Usage %</small>
+                            <strong><t t-esc="round(instance.storage_percentage, 1)"/>%</strong>
+                            <div class="mini-bar" style="width:100%;margin-top:6px">
+                                <i t-attf-style="width:{{ min(instance.storage_percentage, 100) }}%; background:{{ 'var(--coral)' if instance.storage_percentage &gt;= 90 else 'var(--yellow)' if instance.storage_percentage &gt;= 80 else 'var(--teal)' }}"></i>
+                            </div>
+                        </div>
+                        <div class="glass detail-card">
+                            <small>Last Verified</small>
+                            <strong style="font-size:14px;margin-top:12px">
+                                <t t-if="instance.storage_last_check">
+                                    <t t-esc="instance.storage_last_check.strftime('%d %b, %H:%M')"/>
+                                </t>
+                                <t t-else="">Automated Scan Pending</t>
+                            </strong>
+                            <span class="healthy">Verified hourly</span>
+                        </div>
+                    </div>
+
+                    <!-- 7-Day History Panel & Sidebar -->
+                    <div class="wide-grid" style="grid-template-columns:1.4fr .6fr">
+                        <!-- 7-Day History Table -->
+                        <section class="glass panel">
+                            <div class="section-title">
+                                <h2>7-Day Usage History</h2>
+                                <span class="sub" style="font-size:11px">Recorded once per day</span>
+                            </div>
+                            <div class="instance-table">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Disk Used</th>
+                                            <th>Quota Limit</th>
+                                            <th>Usage Bar</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-if="not daily_history">
+                                            <tr>
+                                                <td colspan="5" class="empty-state" style="padding:28px 16px">
+                                                    <h3>No Historical Records Yet</h3>
+                                                    <p>The automated storage scanner creates a daily snapshot. Data will appear after the next hourly check.</p>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <t t-foreach="daily_history" t-as="h">
+                                            <tr>
+                                                <td>
+                                                    <span style="font-weight:700"><t t-esc="h.check_date.strftime('%A, %d %b %Y')"/></span>
+                                                    <small style="display:block;color:var(--muted);font-size:10px"><t t-esc="h.check_date.strftime('%H:%M UTC')"/></small>
+                                                </td>
+                                                <td><b><t t-esc="round(h.storage_used_gb, 2)"/> GB</b></td>
+                                                <td><t t-esc="'Unlimited' if not h.storage_limit_gb else str(round(h.storage_limit_gb, 1)) + ' GB'"/></td>
+                                                <td>
+                                                    <div style="display:flex;align-items:center;gap:8px">
+                                                        <div class="mini-bar" style="width:70px">
+                                                            <i t-attf-style="width:{{ min(h.storage_percentage or 0, 100) }}%; background:{{ 'var(--coral)' if (h.storage_percentage or 0) &gt;= 90 else 'var(--yellow)' if (h.storage_percentage or 0) &gt;= 80 else 'var(--teal)' }}"></i>
+                                                        </div>
+                                                        <span style="font-size:10px;font-weight:700"><t t-esc="round(h.storage_percentage or 0, 1)"/>%</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span t-attf-class="status {{ 'offline' if h.storage_status == 'full' else 'warning' if h.storage_status in ('warning', 'critical') else '' }}">
+                                                        <t t-esc="(h.storage_status or 'ok').upper()"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- Storage Breakdown Sidebar -->
+                        <aside class="sidebar-stack">
+                            <section class="glass side-panel">
+                                <h3>Storage Composition</h3>
+                                <p style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5">
+                                    Total instance disk space encompasses all Docker volumes, PostgreSQL database data, and Odoo filestore.
+                                </p>
+                                <div class="ops-item">
+                                    <span>PostgreSQL Data:</span>
+                                    <strong>Compressed DB</strong>
+                                </div>
+                                <div class="ops-item">
+                                    <span>Odoo Filestore:</span>
+                                    <strong>Attachments &amp; Media</strong>
+                                </div>
+                                <div class="ops-item">
+                                    <span>Custom Addons:</span>
+                                    <strong>Git Repositories</strong>
+                                </div>
+                                <div class="ops-item">
+                                    <span>Hourly Verification:</span>
+                                    <strong class="ok">Active</strong>
+                                </div>
+                            </section>
+
+                            <section class="glass side-panel">
+                                <h3>Quota Actions</h3>
+                                <p style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5">
+                                    Approaching storage limits? Upgrade in seconds to maintain uninterrupted operations.
+                                </p>
+                                <button class="primary" style="width:100%" id="btnSidebarUpgrade"
+                                        t-att-data-instance-id="instance.id"
+                                        t-att-data-instance-name="instance.name"
+                                        t-att-data-current-limit="instance.storage_limit_gb">
+                                    + Request Storage Increase
+                                </button>
+                            </section>
+                        </aside>
+                    </div>
+                </main>
+
+                <t t-call="saas_storage_management.storage_upgrade_widget"/>
+            </div>
+        </t>
+    </template>
+
+</odoo>

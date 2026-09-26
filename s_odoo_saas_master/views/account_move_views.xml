@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_invoice_tree" model="ir.ui.view">
+        <field name="name">account.move.invoice.inherit.view.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+        	<field name="invoice_date_due" position="after">
+        		<field name="instance_id" groups="s_odoo_saas_master.group_odoo_saas_user" optional="hide"/>
+        	</field>
+        </field>
+    </record>
+    
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.inherit.view.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+        	<field name="partner_shipping_id" position="after">
+        		<field name="instance_id" readonly="state != 'draft'" invisible="not instance_id" 
+        			groups="s_odoo_saas_master.group_odoo_saas_user"/>
+        	</field>
+        </field>
+    </record>
+
+</odoo>

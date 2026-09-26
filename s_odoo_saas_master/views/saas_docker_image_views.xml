@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="saas_docker_image_view_tree" model="ir.ui.view">
+        <field name="name">saas.docker.image.view.tree</field>
+        <field name="model">saas.docker.image</field>
+        <field name="arch" type="xml">
+            <list string="Docker Images">
+                <field name="name"/>
+                <field name="odoo_version_id"/>
+                <field name="tag_id"/>
+                <field name="edition"/>
+                <field name="image_name"/>
+                <field name="base_image"/>
+                <field name="build_status" widget="badge"
+                    decoration-success="build_status == 'built'"
+                    decoration-warning="build_status == 'building'"
+                    decoration-danger="build_status == 'failed'"/>
+                <field name="server_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="saas_docker_image_view_form" model="ir.ui.view">
+        <field name="name">saas.docker.image.view.form</field>
+        <field name="model">saas.docker.image</field>
+        <field name="arch" type="xml">
+            <form string="Docker Image">
+                <header>
+                    <button string="Build Image" type="object" name="action_build_image"
+                        class="btn-primary" invisible="build_status == 'building'"
+                        confirm="Build the image on the selected servers? This may take several minutes."/>
+                    <button string="Détecter requirements" type="object" name="action_detect_requirements"
+                        class="btn-secondary" invisible="build_status == 'building'"/>
+                    <button string="Reset Build" type="object" name="action_reset_build"
+                        invisible="build_status == 'not_built'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="odoo_version_id"/>
+                            <field name="tag_id"/>
+                            <field name="edition"/>
+                            <field name="image_name"/>
+                            <field name="base_image"/>
+                        </group>
+                        <group>
+                            <field name="build_status"/>
+                            <field name="server_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="System Packages">
+                            <field name="system_packages" placeholder="python3-dev&#10;build-essential&#10;libcairo2&#10;..."/>
+                        </page>
+                        <page string="Python Requirements">
+                            <field name="python_requirements" placeholder="qifparse&#10;reportlab&#10;..."/>
+                        </page>
+                        <page string="Auto Requirements (détectés)">
+                            <group string="Fichiers ignorés (exclusions)">
+                                <field name="ignored_requirements_files"
+                                    placeholder="*ks_dashboard_ninja*&#10;/home/arobase*/custom-addons/ks_woocommerce/requirements.txt&#10;... (un motif par ligne, glob fnmatch)"/>
+                            </group>
+                            <group string="Résultat de la dernière détection">
+                                <field name="auto_requirements" readonly="1"
+                                    placeholder="Détectés automatiquement depuis les requirements*.txt des custom-addons lors du build / du clic sur « Détecter requirements »."/>
+                            </group>
+                        </page>
+                        <page string="Dockerfile (auto)">
+                            <field name="dockerfile_content" readonly="1"/>
+                        </page>
+                        <page string="Build Log">
+                            <field name="build_log" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="saas_docker_image_action" model="ir.actions.act_window">
+        <field name="name">Docker Images</field>
+        <field name="res_model">saas.docker.image</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="saas_docker_image_menu" name="Docker Images"
+        parent="saas_config_odoo_menu" sequence="10"
+        action="saas_docker_image_action" groups="s_odoo_saas_master.group_odoo_saas_manager"/>
+
+</odoo>

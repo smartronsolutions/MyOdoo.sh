@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="saas_odoo_version_config_view_tree" model="ir.ui.view">
+        <field name="name">saas.odoo.version.config.view.tree</field>
+        <field name="model">saas.odoo.version.config</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Odoo Version Config">
+                <field name="name"/>
+                <field name="value"/>
+                <field name="section_id"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_version_config_view_form" model="ir.ui.view">
+        <field name="name">saas.odoo.version.config.view.form</field>
+        <field name="model">saas.odoo.version.config</field>
+        <field name="arch" type="xml">
+            <form string="Odoo Version Config">
+                <sheet>
+                    <group>
+                    	<group>
+                    		<field name="name"/>
+                    		<field name="value"/>
+                    	</group>
+                    	<group>
+                    		<field name="section_id"/>
+                    		<field name="odoo_version_id"/>
+                    	</group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_version_config_view_search" model="ir.ui.view">
+        <field name="name">saas.odoo.version.config.view.search</field>
+        <field name="model">saas.odoo.version.config</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="value"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter name="grb_section" string="Section" context="{'group_by':'section_id'}"/>
+                    <filter name="grb_odoo_version" string="Odoo Version" context="{'group_by':'odoo_version_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="saas_odoo_version_config_action" model="ir.actions.act_window">
+        <field name="name">Odoo Version Config</field>
+        <field name="res_model">saas.odoo.version.config</field>
+        <field name="context">{'search_default_grb_odoo_version': 1}</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="saas_odoo_version_config_menu" action="saas_odoo_version_config_action" parent="saas_config_odoo_menu" sequence="20"/>
+
+</odoo>
