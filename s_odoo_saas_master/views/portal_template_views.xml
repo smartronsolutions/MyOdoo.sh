@@ -363,8 +363,8 @@
                                 <div class="list-metric">
                                     <small>Status</small>
                                     <strong>
-                                        <span t-attf-class="status {{ 'offline' if inst.operation_state == 'stop' else '' }}">
-                                            <t t-esc="'Online' if inst.operation_state == 'run' else 'Stopped'"/>
+                                        <span t-attf-class="status {{ 'offline' if (inst.operation_state == 'stop' or inst.state == 'cancel') else '' }}">
+                                            <t t-esc="'Removed' if inst.state == 'cancel' else ('Online' if inst.operation_state == 'run' else 'Stopped')"/>
                                         </span>
                                     </strong>
                                 </div>
@@ -400,11 +400,12 @@
             <t t-set="no_footer" t-value="True"/>
             <t t-set="title"><t t-esc="instance.name"/> — myodoo.nc</t>
 
-            <div class="myodoo-portal-root">
+            <div t-attf-class="myodoo-portal-root {{ 'instance-removed' if instance.state == 'cancel' else '' }}">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
 
                 <main class="page">
                     <input type="hidden" id="o_instance_id" t-att-value="instance.id"/>
+                    <input type="hidden" id="o_instance_removed" t-att-value="'1' if instance.state == 'cancel' else ''"/>
                     <input type="hidden" id="instanceUrl" t-att-value="instance.url"/>
                     <input type="hidden" id="o_pending_storage_order" t-att-value="pending_storage_order_id or ''"/>
                     <input type="hidden" id="o_instance_deploying" t-att-value="'1' if is_deploying else ''"/>
@@ -634,31 +635,22 @@
                                     </button>
                                 </t>
 
-                                <!-- 4. Redeploy Latest (Purple) — disabled when storage_full -->
-                                <t t-if="instance.suspension_reason != 'storage_full'">
-                                    <button type="button" class="control-btn ctrl-action-btn btn-ctrl-redeploy" data-confirm="redeploy">
-                                        <div class="ctrl-btn-icon">
-                                            <i class="fa fa-rocket"></i>
-                                        </div>
-                                        <div class="ctrl-btn-content">
-                                            <span class="ctrl-btn-title">Redeploy Latest</span>
-                                            <span class="ctrl-btn-desc">Pull Git revision &amp; reload instance.</span>
-                                        </div>
-                                        <div class="ctrl-btn-chevron">
-                                            <i class="fa fa-chevron-right"></i>
-                                        </div>
-                                    </button>
-                                </t>
-                                <t t-else="">
-                                    <button type="button" class="control-btn ctrl-action-btn btn-ctrl-redeploy" disabled="disabled" style="opacity:0.4;cursor:not-allowed;" title="Unavailable while storage is full">
-                                        <div class="ctrl-btn-icon"><i class="fa fa-rocket"></i></div>
-                                        <div class="ctrl-btn-content">
-                                            <span class="ctrl-btn-title">Redeploy Latest</span>
-                                            <span class="ctrl-btn-desc">Unavailable — storage full.</span>
-                                        </div>
-                                        <div class="ctrl-btn-chevron"><i class="fa fa-lock"></i></div>
-                                    </button>
-                                </t>
+                                <!-- 4. Remove Instance (Red) — always available: a customer must
+                                     be able to delete an instance even when its storage is full.
+                                     Same behaviour as the backend: containers, database, files,
+                                     domain and SSL are deleted, the record stays cancelled. -->
+                                <button type="button" class="control-btn ctrl-action-btn btn-ctrl-remove" data-confirm="remove">
+                                    <div class="ctrl-btn-icon">
+                                        <i class="fa fa-trash-o"></i>
+                                    </div>
+                                    <div class="ctrl-btn-content">
+                                        <span class="ctrl-btn-title">Remove Instance</span>
+                                        <span class="ctrl-btn-desc">Delete the instance and all its data.</span>
+                                    </div>
+                                    <div class="ctrl-btn-chevron">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
+                                </button>
 
                                 <!-- 5. Create Backup (Teal) -->
                                 <button type="button" class="control-btn ctrl-action-btn btn-ctrl-backup" data-action="backup">
@@ -1780,6 +1772,35 @@
                     </section>
 
                 </main>
+
+                <!-- Removed instance: everything behind this overlay is blurred and the
+                     customer cannot interact with it any more. The record itself is kept
+                     (state 'cancel') so this page can be rendered; an administrator can
+                     then delete it from the backend and it disappears entirely. -->
+                <t t-if="instance.state == 'cancel'">
+                    <div class="instance-removed-overlay" id="instanceRemovedOverlay">
+                        <div class="instance-removed-card">
+                            <div class="instance-removed-icon">
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                            <h2>Your instance is removed</h2>
+                            <p>
+                                <b t-esc="instance.name"/><t t-if="instance.url"> (<t t-esc="instance.url"/>)</t>
+                                has been removed. Its containers, database, files, domain and SSL
+                                certificate were deleted and it no longer counts towards your
+                                subscription.
+                            </p>
+                            <p class="instance-removed-note">
+                                This cannot be undone. If you still need this data, contact support
+                                <b>before</b> the record is permanently erased from our systems.
+                            </p>
+                            <div class="instance-removed-actions">
+                                <a href="/my/saas/odoo-instances" class="primary" style="text-decoration:none">Back to My Instances</a>
+                                <a href="/saas/pricing" class="ghost" style="text-decoration:none">Create a new instance</a>
+                            </div>
+                        </div>
+                    </div>
+                </t>
 
                 <!-- Action Confirm Modal -->
                 <div class="modal" id="confirmModal">

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+
+    <!-- ============================================================
+         Internal notification — sent to the configured enquiry address
+         ============================================================ -->
+    <record id="mail_template_enquiry_internal" model="mail.template">
+        <field name="name">SaaS Enquiry: internal notification</field>
+        <field name="model_id" ref="model_website_saas_enquiry"/>
+        <field name="subject">New Website SaaS Enquiry — {{ object.name }} — {{ object.company_name }}</field>
+        <field name="email_from">{{ (object.company_id.email or '') }}</field>
+        <field name="email_to">{{ object._get_notification_email() }}</field>
+        <field name="auto_delete" eval="False"/>
+        <field name="body_html" type="html">
+<div style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1c1720">
+  <p style="margin:0 0 4px;font-size:16px;font-weight:bold">New enquiry received from MyOdoo.sh</p>
+  <p style="margin:0 0 18px;color:#6b6470">A visitor submitted the website enquiry form.</p>
+
+  <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:620px">
+    <tbody>
+      <tr>
+        <td style="padding:7px 0;width:160px;color:#6b6470">Enquiry ID</td>
+        <td style="padding:7px 0;font-weight:bold"><t t-out="object.name or ''"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Name</td>
+        <td style="padding:7px 0"><t t-out="object.full_name or ''"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Company</td>
+        <td style="padding:7px 0"><t t-out="object.company_name or ''"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Email</td>
+        <td style="padding:7px 0"><t t-out="object.email or ''"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Phone</td>
+        <td style="padding:7px 0"><t t-out="object.phone or '—'"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Country</td>
+        <td style="padding:7px 0"><t t-out="object.country or '—'"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Interested In</td>
+        <td style="padding:7px 0"><t t-out="dict(object._fields['interested_in'].selection).get(object.interested_in, '')"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Odoo Version</td>
+        <td style="padding:7px 0"><t t-out="object.odoo_version or '—'"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470">Estimated Users</td>
+        <td style="padding:7px 0"><t t-out="object.estimated_users or '—'"/></td>
+      </tr>
+      <tr>
+        <td style="padding:7px 0;color:#6b6470;vertical-align:top">Submitted</td>
+        <td style="padding:7px 0"><t t-out="object.submission_date or ''"/></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin:20px 0 6px;color:#6b6470">Message:</p>
+  <div style="padding:14px 16px;background:#f7f3f8;border-radius:10px;white-space:pre-wrap">
+    <t t-out="object.message or ''"/>
+  </div>
+
+  <p style="margin:24px 0 0">
+    <a t-att-href="'%s/odoo/action-%s/%s' % (object.get_base_url(), object.env.ref('website_saas_landing.action_website_saas_enquiry').id, object.id)"
+       style="display:inline-block;padding:12px 22px;background:#714b67;color:#ffffff;text-decoration:none;border-radius:10px;font-weight:bold">
+      Open Enquiry in Odoo
+    </a>
+  </p>
+</div>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Customer confirmation — no internal information exposed
+         ============================================================ -->
+    <record id="mail_template_enquiry_customer" model="mail.template">
+        <field name="name">SaaS Enquiry: customer confirmation</field>
+        <field name="model_id" ref="model_website_saas_enquiry"/>
+        <field name="subject">We've received your enquiry — MyOdoo.sh</field>
+        <field name="email_from">{{ (object.company_id.email or '') }}</field>
+        <field name="email_to">{{ object.email }}</field>
+        <field name="auto_delete" eval="True"/>
+        <field name="body_html" type="html">
+<div style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1c1720">
+  <p style="margin:0 0 12px">Hi <t t-out="object.full_name or ''"/>,</p>
+  <p style="margin:0 0 12px">
+    Thank you for contacting MyOdoo.sh. We have received your enquiry and our team
+    will review your requirements shortly.
+  </p>
+  <p style="margin:0 0 18px">
+    Reference: <b><t t-out="object.name or ''"/></b>
+  </p>
+  <p style="margin:0 0 18px;color:#6b6470">
+    If you need to add anything to your request, simply reply to this email.
+  </p>
+  <p style="margin:0;color:#6b6470">— The MyOdoo.sh team</p>
+</div>
+        </field>
+    </record>
+
+</data>
+</odoo>

@@ -43,6 +43,9 @@ except ImportError:  # pragma: no cover
     raise
 
 RE_TAG = re.compile(r"<[^>]+>")
+RE_TAG_OPEN = re.compile(r"<([a-zA-Z][\w:-]*)((?:\s+[^<>]*?)?)(/?)>")
+RE_TAG_CLOSE = re.compile(r"</\s*([a-zA-Z][\w:-]*)\s*>")
+RE_TAG_ATTR = re.compile(r"([a-zA-Z_:][-\w:.]*)\s*=\s*(\"[^\"]*\"|'[^']*'|[^\s\"'=<>`]+)")
 RE_PLACEHOLDER = re.compile(r"%\([^)]+\)[sdifr]|%[sdifr]|\$\{[^}]+\}|\{[0-9]*\}")
 RE_LETTER = re.compile(r"[A-Za-z]")
 
@@ -55,7 +58,7 @@ def is_candidate(msgid):
     """Return True when a string is worth sending to the translator."""
     if not msgid or not msgid.strip():
         return False
-    if len(msgid) > 600:
+    if len(msgid) > 3000:
         return False
     if not RE_LETTER.search(msgid):
         return False
@@ -67,7 +70,32 @@ def placeholders(text):
 
 
 def tags(text):
-    return Counter(RE_TAG.findall(text))
+    """Normalised multiset of tags (name + attribute set).
+
+    LibreTranslate preserves the markup but may reorder attributes or expand a
+    self-closing tag (``<i/>`` -> ``<i></i>``).  Comparing raw tag strings
+    would then reject perfectly safe translations, so tags are compared by
+    name and attribute set instead.
+    """
+    result = Counter()
+    for token in RE_TAG.findall(text):
+        if token.startswith("</"):
+            match = RE_TAG_CLOSE.match(token)
+            if match:
+                result[("close", match.group(1).lower())] += 1
+            continue
+        match = RE_TAG_OPEN.match(token)
+        if not match:
+            continue
+        name = match.group(1).lower()
+        attrs = tuple(sorted(
+            (attr.lower(), value)
+            for attr, value in RE_TAG_ATTR.findall(match.group(2) or "")
+        ))
+        result[("open", name, attrs)] += 1
+        if match.group(3) == "/":
+            result[("close", name)] += 1
+    return result
 
 
 def is_translation_safe(source, target, html):
@@ -150,7 +178,37 @@ def run_group(entries, lang, fmt, args, cache):
             entry.msgstr = value.strip()
             cache[lang][entry.msgid] = entry.msgstr
             kept += 1
-    sys.stderr.write("[%s/%s] kept %d/%d\n" % (lang, fmt, kept, len(entries)))
+
+    # LibreTranslate often returns the source unchanged for Title Case strings
+    # (it treats them as proper nouns).  Retry those in lower case and keep the
+    # result only when it is a real, markup-safe translation.
+    retried = 0
+    for entry in entries:
+        if entry.msgstr and entry.msgstr.strip() != entry.msgid.strip():
+            continue
+        lowered = entry.msgid.lower()
+        if lowered.strip() == entry.msgid.strip():
+            continue
+        try:
+            single = lt_translate([lowered], lang, args.url, args.timeout, fmt, args.api_key)
+        except Exception:  # noqa: BLE001
+            continue
+        value = single[0] if isinstance(single, list) and single else None
+        if not value or not value.strip():
+            continue
+        value = value.strip()
+        if value.lower() == entry.msgid.lower():
+            continue
+        if not is_translation_safe(entry.msgid, value, fmt == "html"):
+            continue
+        if value[:1].isalpha():
+            value = value[:1].upper() + value[1:]
+        entry.msgstr = value
+        cache[lang][entry.msgid] = value
+        retried += 1
+    sys.stderr.write(
+        "[%s/%s] kept %d/%d (+%d lower-case retry)\n" % (lang, fmt, kept, len(entries), retried)
+    )
 
 
 def translate_language(pot, lang, args, cache):
@@ -192,10 +250,11 @@ def translate_language(pot, lang, args, cache):
         if entry.msgid_plural:
             out.append(new_entry)
             continue
-        if not args.force and entry.msgid in existing:
-            new_entry.msgstr = existing[entry.msgid]
-        elif not args.force and entry.msgid in cache[lang]:
-            new_entry.msgstr = cache[lang][entry.msgid]
+        reused = None
+        if not args.force:
+            reused = existing.get(entry.msgid) or cache[lang].get(entry.msgid)
+        if reused and reused.strip() != entry.msgid.strip():
+            new_entry.msgstr = reused
         elif is_candidate(entry.msgid):
             pending.append(new_entry)
         out.append(new_entry)

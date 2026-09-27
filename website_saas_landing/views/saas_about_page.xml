@@ -3,7 +3,7 @@
 <data>
 
 <record id="saas_about_page" model="website.page">
-  <field name="name">About (My Odoo NC)</field>
+  <field name="name">About (My Odoo SH)</field>
   <field name="url">/about</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -11,99 +11,285 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_about_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo NC — About</t>
+<t t-set="additional_title">My Odoo SH — About</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
-<div class="mo_site mo_about_page">
-<div class="top-glow"></div><div class="top-glow two"></div>
+<div class="mo_site mo_about_page mh">
+<div class="top-glow"></div>
 
 <main>
-<section class="page-hero"><div class="container">
-<span class="eyebrow"><i></i><span>About My Odoo NC</span></span>
-<h1>Local understanding.<br/><span class="gradient-text">Connected business technology.</span></h1>
-<p>My Odoo NC helps businesses in New Caledonia implement, host, customize and improve Odoo through a practical, business-first approach.</p>
-</div></section>
-<section style="background:#fcfbfd"><div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><i></i><span>Why My Odoo NC</span></span>
-        <h2>A practical Odoo partner for local business growth</h2>
-        <p>From first consultation to long-term support, every stage is designed to make implementation clear, secure and manageable.</p>
+    <!-- ============================================================
+         1. HERO — asymmetric split with ecosystem diagram
+         ============================================================ -->
+    <section class="ab-hero">
+      <div class="ab-hero-bg" aria-hidden="true"></div>
+      <div class="container ab-hero-grid">
+        <div class="ab-hero-copy" data-reveal="1">
+          <span class="mh-pill"><i></i><span data-i18n="ab_pill">About My Odoo SH</span></span>
+          <h1 data-i18n-html="ab_title">Local understanding.<br/><span class="mh-grad">Connected business technology.</span></h1>
+          <p data-i18n="ab_intro">My Odoo SH helps businesses implement, host, customise and improve Odoo through a practical, business-first approach — from the first process conversation to long-term support.</p>
+          <div class="ab-hero-cta">
+            <button class="mh-btn mh-btn-primary" onclick="location.href='/contact-us'" data-i18n="ab_cta">Talk to our team →</button>
+          </div>
+        </div>
+        <div class="ab-hero-visual" data-reveal="1" role="img" aria-label="Diagram: your business connects to Odoo, running on MyOdoo.sh, with implementation, managed cloud and ongoing support as connected services.">
+          <span class="ab-chip ab-c1"><i class="mh-pulse"></i><span data-i18n="ab_chip1">Production Online</span></span>
+          <span class="ab-chip ab-c2">✓ <span data-i18n="ab_chip2">Backup completed</span></span>
+          <span class="ab-chip ab-c3">✓ <span data-i18n="ab_chip3">Deployment successful</span></span>
+          <span class="ab-chip ab-c4"><i class="mh-pulse"></i><span data-i18n="ab_chip4">Support available</span></span>
+          <div class="ab-flow">
+            <span class="ab-node"><b data-i18n="ab_node1">Business</b></span>
+            <span class="ab-link" aria-hidden="true"></span>
+            <span class="ab-node"><b>Odoo</b></span>
+            <span class="ab-link" aria-hidden="true"></span>
+            <span class="ab-node is-main"><b>MyOdoo.sh</b><small data-i18n="ab_node3">Managed platform</small></span>
+            <span class="ab-branch" aria-hidden="true"></span>
+            <div class="ab-services">
+              <span data-i18n="ab_svc1">Implementation</span>
+              <span data-i18n="ab_svc2">Managed Cloud</span>
+              <span data-i18n="ab_svc3">Ongoing Support</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="why-grid">
-        <article class="why-card"><div class="icon">⌖</div><h3>Local Understanding</h3><p>Business-focused guidance adapted to the needs of companies in New Caledonia.</p></article>
-        <article class="why-card"><div class="icon">✓</div><h3>Odoo Expertise</h3><p>Structured implementation, configuration, customization and user support.</p></article>
-        <article class="why-card"><div class="icon">⚡</div><h3>Faster Deployment</h3><p>A clear roadmap that reduces delays and keeps the project focused on priorities.</p></article>
-        <article class="why-card"><div class="icon">☁</div><h3>Secure Hosting</h3><p>Managed environments with backups, monitoring and controlled access.</p></article>
-        <article class="why-card"><div class="icon">◔</div><h3>Ongoing Support</h3><p>Training, troubleshooting and continuous improvement after go-live.</p></article>
-      </div>
-    </div></section>
-<section style="background:#fcfbfd"><div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><i></i><span>Industries</span></span>
-        <h2>Solutions shaped around real business operations</h2>
-        <p>Industry-ready workflows help teams reduce manual work and gain better visibility across daily operations.</p>
-      </div>
-      <div class="industry-grid">
-        <div class="industry-card"><i>◫</i>Retail</div>
-        <div class="industry-card"><i>▦</i>Wholesale</div>
-        <div class="industry-card"><i>⚙</i>Manufacturing</div>
-        <div class="industry-card"><i>⌂</i>Construction</div>
-        <div class="industry-card"><i>✚</i>Healthcare</div>
-        <div class="industry-card"><i>▤</i>Education</div>
-        <div class="industry-card"><i>⇄</i>Logistics</div>
-        <div class="industry-card"><i>♢</i>Hospitality</div>
-        <div class="industry-card"><i>◎</i>Professional Services</div>
-        <div class="industry-card"><i>◈</i>Multi-company Groups</div>
-      </div>
-    </div></section>
-<section><div class="container">
-      <div class="section-head">
-        <span class="eyebrow"><i></i><span>Implementation roadmap</span></span>
-        <h2>A clear path from consultation to support</h2>
-        <p>Each project follows a practical sequence so decisions stay clear and users are ready before launch.</p>
-      </div>
-      <div class="roadmap">
-        <div class="roadmap-step"><strong>1</strong><b>Consultation</b><span>Understand goals and current challenges.</span></div>
-        <div class="roadmap-step"><strong>2</strong><b>Business Analysis</b><span>Map processes, users and priorities.</span></div>
-        <div class="roadmap-step"><strong>3</strong><b>Configuration</b><span>Set up apps, workflows and access.</span></div>
-        <div class="roadmap-step"><strong>4</strong><b>Customization</b><span>Add required reports and integrations.</span></div>
-        <div class="roadmap-step"><strong>5</strong><b>Testing</b><span>Validate workflows and business data.</span></div>
-        <div class="roadmap-step"><strong>6</strong><b>Training &amp; Go-live</b><span>Prepare users and launch confidently.</span></div>
-        <div class="roadmap-step"><strong>7</strong><b>Ongoing Support</b><span>Improve the system as the business grows.</span></div>
-      </div>
-    </div></section>
-<section style="background:#fcfbfd"><div class="container">
-      <div class="section-head"><span class="eyebrow"><i></i><span>Success stories</span></span><h2>What customers value most</h2><p>Reliable hosting, easier deployments and one place to manage multiple Odoo environments.</p></div>
-      <div class="testimonial-grid">
-        <article class="testimonial"><div class="stars">★★★★★</div><p>“Automatic builds and backups removed hours of manual server work and gave our team a much safer release process.”</p><div class="person"><div class="person-avatar">CR</div><div><b>Carlos Rodriguez</b><small>Technology Director</small></div></div></article>
-        <article class="testimonial"><div class="stars">★★★★★</div><p>“Managing several customer instances is now much clearer. Each environment is isolated and available from one dashboard.”</p><div class="person"><div class="person-avatar">AM</div><div><b>Andrea Morales</b><small>Odoo Partner</small></div></div></article>
-        <article class="testimonial"><div class="stars">★★★★★</div><p>“The staging workflow and monitoring tools give us confidence before every production update.”</p><div class="person"><div class="person-avatar">JP</div><div><b>Jose Pacheco</b><small>IT Manager</small></div></div></article>
-      </div>
-    </div></section>
-<section id="faq"><div class="container">
-      <div class="section-head"><span class="eyebrow"><i></i><span>FAQ</span></span><h2>Frequently asked questions</h2><p>Important information about migration, security, capacity and support.</p></div>
-      <div class="faq-wrap">
-        <div class="faq-item"><button class="faq-q">Can I migrate an existing Odoo database?<span>+</span></button><div class="faq-a">Yes. An existing database backup can be restored during the onboarding process while preserving users, business data and compatible customizations.</div></div>
-        <div class="faq-item"><button class="faq-q">What happens when my project grows?<span>+</span></button><div class="faq-a">You can move to a larger plan or increase project resources without rebuilding the complete environment.</div></div>
-        <div class="faq-item"><button class="faq-q">Are backups and SSL included?<span>+</span></button><div class="faq-a">Managed plans can include encrypted backups, secure project isolation and SSL for hosted subdomains or connected domains.</div></div>
-        <div class="faq-item"><button class="faq-q">Can external tools be integrated?<span>+</span></button><div class="faq-a">Yes. Odoo can be connected with payment, communication, productivity, eCommerce and automation platforms depending on project requirements.</div></div>
-        <div class="faq-item"><button class="faq-q">Is support available during setup?<span>+</span></button><div class="faq-a">Implementation guidance, configuration assistance and user training can be included according to the selected service package.</div></div>
-      </div>
-    </div></section></main>
+    </section>
 
-<t t-call="website_saas_landing.mo_cta"/>
+    <!-- ============================================================
+         2. STORY + BENTO
+         ============================================================ -->
+    <section class="mh-sec"><div class="container">
+      <div class="ab-story">
+        <article class="ab-story-main" data-reveal="1">
+          <span class="mh-badge" data-i18n="ab_story_badge">Why My Odoo SH</span>
+          <h2 data-i18n="ab_story_title">One partner for your complete Odoo journey.</h2>
+          <p data-i18n="ab_story_text">Every stage is designed to make your implementation clear, secure and manageable — with the same team from first analysis to long-term improvement.</p>
+          <ol class="ab-story-flow" aria-hidden="true">
+            <li data-i18n="ab_flow1">Understand</li>
+            <li data-i18n="ab_flow2">Implement</li>
+            <li data-i18n="ab_flow3">Deploy</li>
+            <li data-i18n="ab_flow4">Operate</li>
+            <li data-i18n="ab_flow5">Improve</li>
+          </ol>
+        </article>
+        <div class="ab-bento">
+          <article class="ab-mini" data-reveal="1">
+            <div class="ab-mini-visual is-expertise" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h3 data-i18n="mini_expertise">Odoo Expertise</h3>
+            <p data-i18n="mini_expertise_text">Structured implementation, configuration and customisation.</p>
+          </article>
+          <article class="ab-mini" data-reveal="1">
+            <div class="ab-mini-visual is-fast" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <h3 data-i18n="mini_fast">Fast Deployment</h3>
+            <p data-i18n="mini_fast_text">A clear roadmap that keeps the project focused on priorities.</p>
+          </article>
+          <article class="ab-mini" data-reveal="1">
+            <div class="ab-mini-visual is-secure" aria-hidden="true"><span></span><span></span></div>
+            <h3 data-i18n="mini_secure">Secure Hosting</h3>
+            <p data-i18n="mini_secure_text">Managed environments with backups and controlled access.</p>
+          </article>
+          <article class="ab-mini" data-reveal="1">
+            <div class="ab-mini-visual is-support" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h3 data-i18n="mini_support">Ongoing Support</h3>
+            <p data-i18n="mini_support_text">Training, troubleshooting and continuous improvement.</p>
+          </article>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         3. INDUSTRIES — visual industry grid
+         ============================================================ -->
+    <section class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="ind_title">Solutions shaped around real operations</h2>
+        <p data-i18n="ind_text">Industry-ready workflows help teams reduce manual work and gain visibility across daily operations.</p>
+      </div>
+      <div class="ab-industries">
+        <article class="ab-ind" data-reveal="1">
+          <div class="ab-ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div>
+          <h3 data-i18n="ind1">Retail</h3>
+          <p>POS • Inventory • CRM</p>
+          <span class="ab-ind-arrow" aria-hidden="true">→</span>
+        </article>
+        <article class="ab-ind" data-reveal="1">
+          <div class="ab-ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V9l6-4 6 4v11"/><path d="M10 20v-5h4v5"/></svg></div>
+          <h3 data-i18n="ind2">Wholesale</h3>
+          <p>Sales • Warehouse • Distribution</p>
+          <span class="ab-ind-arrow" aria-hidden="true">→</span>
+        </article>
+        <article class="ab-ind" data-reveal="1">
+          <div class="ab-ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="M6 6l2 2"/><path d="M16 16l2 2"/><path d="M18 6l-2 2"/><path d="M8 16l-2 2"/></svg></div>
+          <h3 data-i18n="ind3">Manufacturing</h3>
+          <p>MRP • Procurement • Inventory</p>
+          <span class="ab-ind-arrow" aria-hidden="true">→</span>
+        </article>
+        <article class="ab-ind" data-reveal="1">
+          <div class="ab-ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></div>
+          <h3 data-i18n="ind4">Construction</h3>
+          <p>Projects • Costing • Purchasing</p>
+          <span class="ab-ind-arrow" aria-hidden="true">→</span>
+        </article>
+        <article class="ab-ind" data-reveal="1">
+          <div class="ab-ind-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0 1 12 8.4a4.1 4.1 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></div>
+          <h3 data-i18n="ind5">Healthcare</h3>
+          <p>Operations • Billing • Inventory</p>
+          <span class="ab-ind-arrow" aria-hidden="true">→</span>
+        </article>
+      </div>
+      <div class="ab-ind-more" data-reveal="1">
+        <span data-i18n="ind6">Education</span>
+        <span data-i18n="ind7">Logistics</span>
+        <span data-i18n="ind8">Hospitality</span>
+        <span data-i18n="ind9">Professional Services</span>
+        <span data-i18n="ind10">Multi-company Groups</span>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         4. OUR APPROACH — dark architecture section
+         ============================================================ -->
+    <section class="mh-dark ab-approach"><div class="container">
+      <div class="mh-head on-dark" data-reveal="1">
+        <h2 data-i18n="appr_title">Technology should fit the business.<br/>Not the other way around.</h2>
+        <p data-i18n="appr_text">We start from how your business actually works — the processes, the people and the requirements — and then build the Odoo setup that fits them.</p>
+      </div>
+      <div class="ab-arch" data-reveal="1" role="img" aria-label="Architecture: your business and its processes, people and requirements are the starting point, delivered through MyOdoo.sh onto Odoo ERP with customisation, cloud infrastructure and support.">
+        <div class="ab-arch-node is-top"><b data-i18n="arch_business">Your Business</b></div>
+        <span class="ab-arch-link" aria-hidden="true"></span>
+        <div class="ab-arch-node"><b data-i18n="arch_processes">Processes + People + Requirements</b></div>
+        <span class="ab-arch-link" aria-hidden="true"></span>
+        <div class="ab-arch-node is-hub"><b>MyOdoo.sh</b><small data-i18n="arch_hub">Discovery, build, deploy</small></div>
+        <span class="ab-arch-branch" aria-hidden="true"></span>
+        <div class="ab-arch-row">
+          <div class="ab-arch-node"><b>Odoo ERP</b><small data-i18n="arch_erp">Business platform</small></div>
+          <div class="ab-arch-node"><b data-i18n="arch_custom">Customisation</b><small data-i18n="arch_custom_text">Business-specific workflows</small></div>
+          <div class="ab-arch-node"><b data-i18n="arch_cloud">Cloud Infrastructure</b><small data-i18n="arch_cloud_text">Hosting, backups, monitoring</small></div>
+          <div class="ab-arch-node"><b data-i18n="arch_support">Support</b><small data-i18n="arch_support_text">Training and improvement</small></div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         5. IMPLEMENTATION ROADMAP — visual timeline
+         ============================================================ -->
+    <section class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="road_title">A clear path from consultation to support</h2>
+        <p data-i18n="road_text">Each project follows a practical sequence so decisions stay clear and your team is ready before launch.</p>
+      </div>
+      <ol class="ab-timeline" data-reveal="1">
+        <li><i>01</i><b data-i18n="road1">Consultation</b><small data-i18n="road1_d">Goals &amp; challenges</small></li>
+        <li><i>02</i><b data-i18n="road2">Business Analysis</b><small data-i18n="road2_d">Process mapping</small></li>
+        <li><i>03</i><b data-i18n="road3">Configuration</b><small data-i18n="road3_d">Odoo setup</small></li>
+        <li><i>04</i><b data-i18n="road4">Customisation</b><small data-i18n="road4_d">Business-specific workflows</small></li>
+        <li><i>05</i><b data-i18n="road5">Testing</b><small data-i18n="road5_d">Validation</small></li>
+        <li><i>06</i><b data-i18n="road6">Training &amp; Go-live</b><small data-i18n="road6_d">Production launch</small></li>
+        <li><i>07</i><b data-i18n="road7">Ongoing Support</b><small data-i18n="road7_d">Continuous improvement</small></li>
+      </ol>
+    </div></section>
+
+    <!-- ============================================================
+         6. WHAT WE DELIVER — connected ecosystem
+         ============================================================ -->
+    <section class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="deliver_title">What we actually deliver</h2>
+        <p data-i18n="deliver_text">Not separate products — one connected platform of services around your Odoo environment.</p>
+      </div>
+      <div class="mh-eco" data-reveal="1" role="img" aria-label="Diagram: implementation, custom development, managed hosting and database backups connect to your Odoo business platform, which also connects to monitoring, integrations, migration and ongoing support.">
+        <div class="mh-eco-col mh-eco-left">
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 17h16"/><circle cx="10" cy="7" r="2.4"/><circle cx="15" cy="17" r="2.4"/></svg><b data-i18n="dl1">Odoo Implementation</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8 5 12l3.5 4"/><path d="M15.5 8 19 12l-3.5 4"/></svg><b data-i18n="dl2">Custom Development</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10a4 4 0 0 0 .6-8A5.5 5.5 0 0 0 7 8a4.5 4.5 0 0 0 0 9z"/><path d="M9.5 20h5"/></svg><b data-i18n="dl3">Managed Hosting</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="3"/><path d="M5 5.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/><path d="M5 11.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><b data-i18n="dl4">Database &amp; Backups</b></span>
+        </div>
+        <div class="mh-eco-center">
+          <span class="mh-eco-hub"><i></i><b data-i18n="dl_hub">Your Odoo Business Platform</b><small data-i18n="dl_hub_text">One connected environment</small></span>
+        </div>
+        <div class="mh-eco-col mh-eco-right">
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l3-7 4 14 3-7h4"/></svg><b data-i18n="dl5">Monitoring</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg><b data-i18n="dl6">Integrations</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h11"/><path d="M11 8l4 4-4 4"/><path d="M18 4v16"/></svg><b data-i18n="dl7">Migration</b></span>
+          <span class="mh-eco-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="12.5" width="4" height="6" rx="1.6"/><rect x="17" y="12.5" width="4" height="6" rx="1.6"/></svg><b data-i18n="dl8">Ongoing Support</b></span>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         9. WHY BUSINESSES STAY — lifecycle split
+         ============================================================ -->
+    <section class="mh-sec"><div class="container mh-split">
+      <div class="mh-split-copy" data-reveal="1">
+        <h2 data-i18n="stay_title">Built for the relationship after go-live.</h2>
+        <p data-i18n="stay_text">Implementation is not where the relationship ends. Your environment keeps running, and we keep looking after it — monitoring, supporting, optimising and scaling with your business.</p>
+        <ul class="mh-checks">
+          <li><i>✓</i><span data-i18n="stay_c1">Monitoring and platform maintenance</span></li>
+          <li><i>✓</i><span data-i18n="stay_c2">Support for hosting and functional questions</span></li>
+          <li><i>✓</i><span data-i18n="stay_c3">Capacity and improvement reviews as you grow</span></li>
+        </ul>
+        <button class="mh-btn mh-btn-primary" onclick="location.href='/services'" data-i18n="stay_cta">See our services</button>
+      </div>
+      <div class="ab-life" data-reveal="1" role="img" aria-label="Circular lifecycle: launch, monitor, support, optimise and scale, repeating continuously.">
+        <span class="ab-life-ring" aria-hidden="true"></span>
+        <span class="ab-life-node ab-l1"><b data-i18n="life1">Launch</b></span>
+        <span class="ab-life-node ab-l2"><b data-i18n="life2">Monitor</b></span>
+        <span class="ab-life-node ab-l3"><b data-i18n="life3">Support</b></span>
+        <span class="ab-life-node ab-l4"><b data-i18n="life4">Optimise</b></span>
+        <span class="ab-life-node ab-l5"><b data-i18n="life5">Scale</b></span>
+        <span class="ab-life-center">↺<small data-i18n="life_center">Continuous</small></span>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         10. FAQ — split layout
+         ============================================================ -->
+    <section id="faq" class="mh-sec mh-sec-alt"><div class="container mh-faq-grid">
+      <div class="mh-faq-head" data-reveal="1">
+        <h2 data-i18n="faq_title_ab">Questions about<br/>working with us?</h2>
+        <p data-i18n="faq_text_ab">Migration, security, capacity and support — the short answers.</p>
+        <button class="mh-btn mh-btn-ghost" onclick="location.href='/contact-us'" data-i18n="faq_cta_ab">Talk to our team →</button>
+      </div>
+      <div class="faq-wrap mh-faq" data-reveal="1">
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="abfaq_q1">Can I migrate an existing Odoo database?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="abfaq_a1">Yes. An existing database backup can be restored during the onboarding process while preserving business data and compatible customisations.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="abfaq_q2">What happens when my project grows?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="abfaq_a2">You can move to a larger plan or increase project resources without rebuilding the complete environment.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="abfaq_q3">Are backups and SSL included?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="abfaq_a3">Managed plans can include encrypted backups, secure project isolation and SSL for hosted subdomains or connected domains.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="abfaq_q4">Can external tools be integrated?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="abfaq_a4">Yes. Odoo can be connected with payment, communication, productivity, eCommerce and automation platforms depending on project requirements.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="abfaq_q5">Is support available during setup?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="abfaq_a5">Implementation guidance, configuration assistance and team training can be included according to the selected service package.</div></div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         11. FINAL CTA — large
+         ============================================================ -->
+    <section class="mh-cta ab-cta">
+      <div class="mh-cta-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice">
+          <g class="mh-net">
+            <path d="M100 340 L300 250 L520 300 L760 190 L980 240 L1130 120"/>
+            <path d="M100 120 L300 200 L520 140 L760 240 L980 170 L1130 280"/>
+            <path d="M100 340 L100 120"/><path d="M300 250 L300 200"/><path d="M520 300 L520 140"/>
+            <path d="M760 190 L760 240"/><path d="M980 240 L980 170"/><path d="M1130 120 L1130 280"/>
+          </g>
+          <g class="mh-net-dots">
+            <circle cx="100" cy="340" r="4"/><circle cx="300" cy="250" r="4"/><circle cx="520" cy="300" r="4"/>
+            <circle cx="760" cy="190" r="4"/><circle cx="980" cy="240" r="4"/><circle cx="1130" cy="120" r="4"/>
+            <circle cx="100" cy="120" r="4"/><circle cx="300" cy="200" r="4"/><circle cx="520" cy="140" r="4"/>
+            <circle cx="760" cy="240" r="4"/><circle cx="980" cy="170" r="4"/><circle cx="1130" cy="280" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="container mh-cta-inner" data-reveal="1">
+        <h2 data-i18n="ab_cta_title">Let's build the right Odoo setup for your business.</h2>
+        <p data-i18n="ab_cta_text">Start with your processes — we will design, deploy and look after the environment that fits them.</p>
+        <div class="mh-cta-row">
+          <button class="mh-btn mh-btn-white" onclick="location.href='/pricing'" data-i18n="ab_cta_btn1">Start Your Project</button>
+          <button class="mh-btn mh-btn-outline" onclick="location.href='/contact-us'" data-i18n="ab_cta_btn2">Book a Demo</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
 <t t-call="website_saas_landing.mo_footer"/>
-
-<script>
-document.querySelectorAll('.mo_site .faq-q').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var item = btn.closest('.faq-item');
-    var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.mo_site .faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-    if(!wasOpen){ item.classList.add('open'); }
-  });
-});
-</script>
 
 </div>
 </div>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<!-- ============================================================
+     Privacy Policy
+     ============================================================ -->
+<record id="saas_privacy_page" model="website.page">
+  <field name="name">Privacy Policy (My Odoo SH)</field>
+  <field name="url">/privacy</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_privacy_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo SH — Privacy Policy</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_legal_page">
+<main>
+  <section class="legal-hero"><div class="container">
+    <h1 data-i18n="privacy_title">Privacy Policy</h1>
+    <p data-i18n="privacy_updated">This policy explains how MyOdoo.sh handles information when providing managed Odoo hosting, deployment and support services.</p>
+  </div></section>
+  <section><div class="container legal-body">
+    <h2 data-i18n="privacy_h1">Information we process</h2>
+    <p data-i18n="privacy_p1">We process the account and contact details you provide when you enquire about or subscribe to our services, together with the business data you choose to store in your Odoo environment.</p>
+    <p data-i18n="privacy_p2">Technical information such as access logs, deployment records and monitoring metrics is processed to operate, secure and support your environment.</p>
+
+    <h2 data-i18n="privacy_h2">How information is used</h2>
+    <p data-i18n="privacy_p3">Information is used to provide hosting and support, to maintain the security and availability of your environment, to perform backups and recovery, and to communicate with you about your services.</p>
+
+    <h2 data-i18n="privacy_h3">Storage and retention</h2>
+    <p data-i18n="privacy_p4">Your environment is hosted and backed up according to your selected plan. Backup frequency and retention are defined by that plan. Information is retained for as long as your services are active and as required by applicable obligations.</p>
+
+    <h2 data-i18n="privacy_h4">Sharing</h2>
+    <p data-i18n="privacy_p5">We do not sell your information. Information is shared only with providers required to operate the service, or where required by law.</p>
+
+    <h2 data-i18n="privacy_h5">Your choices</h2>
+    <p data-i18n="privacy_p6">You may request access to, correction of, or deletion of the information we hold about your organisation by contacting our team. Some records may be retained where required for legal or accounting purposes.</p>
+
+    <h2 data-i18n="privacy_h6">Contact</h2>
+    <p data-i18n="privacy_p7">Questions about this policy can be sent to our team through the contact page.</p>
+    <p class="legal-actions"><button class="btn btn-primary" onclick="location.href='/contact-us'" data-i18n="legal_contact_cta">Contact Our Team</button></p>
+    <p class="note-box" data-i18n="privacy_note">This policy is provided as a general description of how the service operates and should be reviewed and completed with your organisation’s legal and data-protection references before publication.</p>
+  </div></section>
+</main>
+<t t-call="website_saas_landing.mo_footer"/>
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+<!-- ============================================================
+     Terms of Service
+     ============================================================ -->
+<record id="saas_terms_page" model="website.page">
+  <field name="name">Terms of Service (My Odoo SH)</field>
+  <field name="url">/terms</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_terms_page">
+<t t-call="website.layout">
+<t t-set="additional_title">My Odoo SH — Terms of Service</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_legal_page">
+<main>
+  <section class="legal-hero"><div class="container">
+    <h1 data-i18n="terms_title">Terms of Service</h1>
+    <p data-i18n="terms_updated">These terms describe the basis on which MyOdoo.sh provides managed Odoo hosting, deployment and support services.</p>
+  </div></section>
+  <section><div class="container legal-body">
+    <h2 data-i18n="terms_h1">Services provided</h2>
+    <p data-i18n="terms_p1">MyOdoo.sh provides hosting, deployment workflows, backups, monitoring and technical support for Odoo environments. The services included in your subscription are those listed in your selected plan or quotation.</p>
+
+    <h2 data-i18n="terms_h2">Plans and scope</h2>
+    <p data-i18n="terms_p2">Hosting capacity, environments, backups and support scope are defined per plan. Implementation, custom development and functional consulting are included only when stated in your plan or a separate service agreement.</p>
+
+    <h2 data-i18n="terms_h3">Odoo licensing</h2>
+    <p data-i18n="terms_p3">Odoo Enterprise licensing is quoted separately unless your offer states that it is included. Hosting capacity and application licensing are separate items and are not interchangeable.</p>
+
+    <h2 data-i18n="terms_h4">Your responsibilities</h2>
+    <p data-i18n="terms_p4">You are responsible for the accuracy and legality of the data you host, for maintaining the confidentiality of access credentials, and for ensuring you hold the necessary rights to the applications and modules deployed in your environment.</p>
+
+    <h2 data-i18n="terms_h5">Backups and recovery</h2>
+    <p data-i18n="terms_p5">Backup frequency, retention and restoration options are defined by your plan. Backups are provided as part of the hosting service and are not a substitute for your own data-retention obligations.</p>
+
+    <h2 data-i18n="terms_h6">Support</h2>
+    <p data-i18n="terms_p6">Support channels, hours and target response times are defined by your plan. Support covers the agreed platform and technical scope and does not include unlimited development or functional consulting.</p>
+
+    <h2 data-i18n="terms_h7">Availability and maintenance</h2>
+    <p data-i18n="terms_p7">Environments are monitored and maintained during agreed maintenance windows. Any service level commitment applicable to your subscription is stated in your agreement.</p>
+
+    <h2 data-i18n="terms_h8">Changes</h2>
+    <p data-i18n="terms_p8">These terms may be updated to reflect changes to the services. Continued use of the services after an update constitutes acceptance of the revised terms.</p>
+
+    <h2 data-i18n="terms_h9">Contact</h2>
+    <p data-i18n="terms_p9">Questions about these terms can be sent to our team through the contact page.</p>
+    <p class="legal-actions"><button class="btn btn-primary" onclick="location.href='/contact-us'" data-i18n="legal_contact_cta">Contact Our Team</button></p>
+    <p class="note-box" data-i18n="terms_note">These terms are provided as a general description of the service and should be reviewed and completed with your organisation’s legal references before publication.</p>
+  </div></section>
+</main>
+<t t-call="website_saas_landing.mo_footer"/>
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

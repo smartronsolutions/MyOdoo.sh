@@ -37,4 +37,10 @@
 		<field name="docker_image_tag">19.0</field>
 	</record>
 
+	<record id="saas_odoo_version_20" model="saas.odoo.version">
+		<field name="name">20.0</field>
+		<field name="sequence">20</field>
+		<field name="docker_image_tag">20.0</field>
+	</record>
+
 </odoo>

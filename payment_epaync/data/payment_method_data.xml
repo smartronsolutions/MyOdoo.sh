@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- noupdate=0 block: structural fields that must always be set correctly -->
+
+    <!-- EpayNC payment method -->
+    <record id="payment_method_epaync" model="payment.method">
+        <field name="name">EpayNC</field>
+        <field name="code">epaync</field>
+        <field name="sequence">100</field>
+        <field name="active">True</field>
+        <field name="image" type="base64" file="payment_epaync/static/description/icon.png"/>
+    </record>
+
+    <!-- EpayNC payment provider -->
+    <record id="payment_provider_epaync" model="payment.provider">
+        <field name="name">EpayNC</field>
+        <field name="code">epaync</field>
+        <field name="module_id" ref="base.module_payment_epaync"/>
+        <field name="redirect_form_view_id" ref="payment_epaync.redirect_form"/>
+        <field name="image_128" type="base64" file="payment_epaync/static/description/icon.png"/>
+        <field name="state">disabled</field>
+        <field name="sequence">100</field>
+        <field name="epaync_payment_url">https://epaync.nc/vads-payment/</field>
+        <field name="epaync_currency">All currencies supported</field>
+        <field name="epaync_api_version">V2</field>
+        <field name="epaync_signature_algorithm">HMAC SHA-256</field>
+        <field name="epaync_payment_action">SINGLE</field>
+        <field name="epaync_trans_prefix">ODOO</field>
+        <field name="epaync_trans_length">6</field>
+        <field name="epaync_timeout">10</field>
+        <field name="epaync_auto_confirm_so">True</field>
+        <field name="epaync_enable_logs">True</field>
+        <field name="epaync_allow_customer_cancel">True</field>
+        <field name="payment_method_ids" eval="[(4, ref('payment_method_epaync'))]"/>
+    </record>
+
+</odoo>

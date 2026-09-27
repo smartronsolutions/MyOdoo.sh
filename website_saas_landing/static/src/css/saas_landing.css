@@ -1,554 +1,3091 @@
-/* 
- * Website SaaS Landing Page - External CSS
- * This file can be used for additional styles or overrides
- * Main styles are embedded in the template for better performance
+/*
+ * Website SaaS Landing Page — responsive layer for Odoo 18
+ * ---------------------------------------------------------------------------
+ * The base component styles live inline in `views/saas_header.xml`; this file
+ * is the single authoritative responsive/override layer loaded through
+ * `web.assets_frontend`.
+ *
+ * Selectors are written as `.mo_site.mo_site ...` on purpose: doubling the
+ * class raises the specificity so these rules win over the inline stylesheet
+ * regardless of source order (the inline <style> is rendered later in the
+ * body). Layout-critical properties also carry `!important` for the same
+ * reason.
  */
 
-/* Optional: Add custom animations here */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ==========================================================================
+   1. Base, containers and overflow safety
+   ========================================================================== */
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Optional: Add print styles */
-@media print {
-  .oc_nav,
-  .oc_cta_sec,
-  .oc_footer {
-    display: none !important;
-  }
-}
-
-/* Odoo-safe responsive layout for every template in views/. */
-.mo_site {
+.mo_site.mo_site {
   direction: ltr !important;
   text-align: left;
   width: 100%;
+  overflow-x: clip;
 }
 
-.mo_site *,
+.mo_site.mo_site *,
 .mo_auth_shell * {
   box-sizing: border-box;
 }
 
-.mo_site .container {
-  width: min(1160px, calc(100% - 40px)) !important;
+/* Fluid, centered container with sane gutters at every width. */
+.mo_site.mo_site .container {
+  width: min(1160px, 100% - 48px) !important;
   max-width: 1160px !important;
   padding-inline: 0 !important;
   margin-inline: auto !important;
 }
 
-.mo_site img,
-.mo_auth_shell img {
+/* Bootstrap's `.container` clearfix generates `::before`/`::after` boxes.
+   When the same element is also a grid/flex container (e.g. `.stats-grid`)
+   those pseudo-elements become real grid/flex items and shift the layout
+   (this pushed the 4th stat onto a second row). They are not needed here. */
+.mo_site.mo_site .container::before,
+.mo_site.mo_site .container::after {
+  content: none !important;
+  display: none !important;
+}
+
+.mo_site.mo_site img,
+.mo_site.mo_site svg,
+.mo_site.mo_site video {
   max-width: 100%;
   height: auto;
 }
 
-.mo_site .hero-grid > *,
-.mo_site .feature-band > *,
-.mo_site .contact-grid > *,
-.mo_site .service-grid > *,
-.mo_site .cards > *,
-.mo_site .detail-grid > *,
-.mo_site .testimonial-grid > *,
-.mo_site .demo-pricing > * {
+/* Long words / URLs must never create a horizontal scrollbar. */
+.mo_site.mo_site h1,
+.mo_site.mo_site h2,
+.mo_site.mo_site h3,
+.mo_site.mo_site p,
+.mo_site.mo_site a,
+.mo_site.mo_site li,
+.mo_site.mo_site small,
+.mo_site.mo_site strong {
+  overflow-wrap: anywhere;
+}
+
+/* Anchor targets clear the sticky header. */
+.mo_site.mo_site [id] {
+  scroll-margin-top: 96px;
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+/* ==========================================================================
+   2. Fluid typography
+   ========================================================================== */
+
+.mo_site.mo_site h1 {
+  font-size: clamp(34px, 5.4vw, 68px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.045em !important;
+  margin: clamp(16px, 2vw, 22px) 0 clamp(16px, 2vw, 22px) !important;
+}
+
+.mo_site.mo_site .section-head h2,
+.mo_site.mo_site .feature-band h2,
+.mo_site.mo_site .contact-info h2 {
+  font-size: clamp(26px, 3.6vw, 48px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em !important;
+}
+
+.mo_site.mo_site .page-hero h1 {
+  font-size: clamp(32px, 5vw, 62px) !important;
+}
+
+.mo_site.mo_site .lead {
+  font-size: clamp(15px, 1.15vw, 19px) !important;
+  max-width: 65ch;
+}
+
+.mo_site.mo_site .section-head {
+  max-width: 780px;
+  margin: 0 auto clamp(30px, 4vw, 46px) !important;
+}
+
+.mo_site.mo_site .section-head p {
+  font-size: clamp(14px, 1.05vw, 17px) !important;
+}
+
+/* ==========================================================================
+   3. Sections
+   ========================================================================== */
+
+.mo_site.mo_site section {
+  padding-block: clamp(54px, 6.6vw, 92px) !important;
+}
+
+.mo_site.mo_site .page-hero {
+  padding-block: clamp(46px, 6vw, 74px) clamp(28px, 3.5vw, 42px) !important;
+}
+
+/* ==========================================================================
+   4. Header / navigation
+   ========================================================================== */
+
+.mo_site.mo_site .nav {
+  height: 78px;
+  gap: 14px;
+}
+
+.mo_site.mo_site .brand {
   min-width: 0;
 }
 
-@media (min-width: 901px) {
-  .mo_site .hero-grid {
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr) !important;
+/* The header logo has explicit dimensions in the base stylesheet. Keep them:
+   the generic `img { max-width:100%; height:auto }` safety rule must not
+   stretch it (it is a tall banner-style logo). */
+.mo_site.mo_site .odoo-logo {
+  height: 58px !important;
+  width: auto !important;
+  max-width: 190px !important;
+  object-fit: contain;
+}
+
+.mo_site.mo_site .navlinks,
+.mo_site.mo_site .nav-actions,
+.mo_site.mo_site .navlink,
+.mo_site.mo_site .brand-name {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .nav {
+    height: 68px;
+    gap: 10px;
   }
-  .mo_site .feature-band {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  .mo_site.mo_site .odoo-logo {
+    height: 44px !important;
+    max-width: 132px !important;
   }
-  .mo_site .contact-grid {
-    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr) !important;
+  .mo_site.mo_site .brand-divider,
+  .mo_site.mo_site .brand-name small {
+    display: none !important;
   }
-  .mo_site .service-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  .mo_site.mo_site .brand-name {
+    font-size: 14px !important;
   }
-  .mo_site .cards,
-  .mo_site .detail-grid,
-  .mo_site .testimonial-grid,
-  .mo_site .demo-pricing {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  .mo_site.mo_site .navlinks {
+    top: 74px !important;
   }
 }
 
-@media (max-width: 1000px) {
-  .mo_site .why-grid,
-  .mo_site .industry-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+@media (max-width: 420px) {
+  .mo_site.mo_site .brand-name,
+  .mo_site.mo_site .brand-divider {
+    display: none !important;
   }
-  .mo_site .apps-grid,
-  .mo_site .roadmap {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  .mo_site.mo_site .odoo-logo {
+    height: 40px !important;
+    max-width: 112px !important;
+  }
+  .mo_site.mo_site .navlinks {
+    left: 12px !important;
+    right: 12px !important;
+    top: 70px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Language / account dropdowns become full-width panels so they can never
+     be clipped by the viewport on phones. */
+  .mo_site.mo_site .mo_lang_drop,
+  .mo_site.mo_site .mo_account_drop {
+    position: fixed !important;
+    top: 74px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    transform: translateY(-8px) !important;
+  }
+  .mo_site.mo_site .mo_lang_drop.mo_open,
+  .mo_site.mo_site .mo_account_drop.mo_open {
+    transform: translateY(0) !important;
+  }
+}
+
+/* ==========================================================================
+   5. Hero
+   ========================================================================== */
+
+.mo_site.mo_site .hero {
+  padding-block: clamp(46px, 6.4vw, 84px) clamp(44px, 5.6vw, 74px) !important;
+}
+
+.mo_site.mo_site .hero-grid {
+  display: grid !important;
+  gap: clamp(28px, 4.2vw, 62px) !important;
+  align-items: center;
+}
+
+.mo_site.mo_site .hero-grid > * {
+  min-width: 0;
+}
+
+.mo_site.mo_site .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: clamp(22px, 3vw, 32px) 0 clamp(18px, 2.6vw, 28px);
+}
+
+.mo_site.mo_site .trust-row {
+  gap: clamp(12px, 1.8vw, 22px);
+}
+
+/* Dashboard mock-up. The dashboard is absolutely positioned inside `.visual`,
+   so the visual needs a minimum height per breakpoint that always contains it
+   (its own height is fluid with the clamps below). */
+.mo_site.mo_site .visual {
+  position: relative;
+  width: 100%;
+  min-height: 520px !important;
+}
+
+.mo_site.mo_site .dashboard {
+  inset: clamp(38px, 6vw, 72px) 0 auto clamp(6px, 3vw, 45px) !important;
+  padding: clamp(13px, 1.8vw, 22px) !important;
+  border-radius: clamp(18px, 2.2vw, 28px) !important;
+}
+
+.mo_site.mo_site .dash-grid {
+  gap: clamp(8px, 1.1vw, 14px) !important;
+}
+
+.mo_site.mo_site .metric,
+.mo_site.mo_site .chart,
+.mo_site.mo_site .activity {
+  padding: clamp(10px, 1.3vw, 16px) !important;
+  border-radius: clamp(12px, 1.4vw, 18px) !important;
+}
+
+.mo_site.mo_site .metric strong {
+  font-size: clamp(19px, 1.9vw, 28px) !important;
+}
+
+.mo_site.mo_site .bars {
+  height: clamp(66px, 8vw, 132px) !important;
+  gap: clamp(4px, 0.6vw, 8px) !important;
+}
+
+.mo_site.mo_site .floating-card {
+  font-size: clamp(10px, 0.95vw, 13px) !important;
+  padding: clamp(8px, 0.9vw, 13px) clamp(10px, 1.1vw, 16px) !important;
+  max-width: 46%;
+}
+
+/* Keep the bottom badge on the dashboard's bottom-left corner so it does not
+   cover the activity rows inside the dashboard. */
+.mo_site.mo_site .fc2 {
+  left: -16px;
+  bottom: 0;
+}
+
+.mo_site.mo_site .orb1 {
+  width: clamp(200px, 24vw, 340px) !important;
+  height: clamp(200px, 24vw, 340px) !important;
+}
+
+.mo_site.mo_site .orb2 {
+  width: clamp(96px, 12vw, 170px) !important;
+  height: clamp(96px, 12vw, 170px) !important;
+}
+
+@media (max-width: 1200px) {
+  .mo_site.mo_site .visual {
+    min-height: 500px !important;
   }
 }
 
 @media (max-width: 900px) {
-  .mo_site .hero-grid,
-  .mo_site .feature-band,
-  .mo_site .contact-grid,
-  .mo_site .service-grid {
+  .mo_site.mo_site .hero-grid {
     grid-template-columns: 1fr !important;
+    gap: 30px !important;
   }
-  .mo_site .hero-grid {
-    gap: 34px !important;
-  }
-  .mo_site .hero-grid > div:first-child {
-    width: 100%;
-    max-width: 760px;
+  .mo_site.mo_site .hero-grid > div:first-child,
+  .mo_site.mo_site .visual {
+    width: min(100%, 700px);
     margin-inline: auto;
   }
-  .mo_site .visual {
-    width: 100%;
-    max-width: 680px;
-    margin-inline: auto;
+  .mo_site.mo_site .visual {
+    min-height: 470px !important;
   }
-  .mo_site .cards,
-  .mo_site .detail-grid,
-  .mo_site .testimonial-grid,
-  .mo_site .demo-pricing,
-  .mo_site .stats-grid,
-  .mo_site .process-grid,
-  .mo_site .integration-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-  .mo_site .cta-box {
-    align-items: flex-start;
+  .mo_site.mo_site .floating-card {
+    max-width: 42%;
   }
 }
 
-@media (max-width: 700px) {
-  .mo_site section {
-    padding-block: 58px !important;
-  }
-  .mo_site .page-hero {
-    padding-block: 50px 34px !important;
-  }
-  .mo_site h1 {
-    font-size: clamp(38px, 11vw, 54px) !important;
-    letter-spacing: -2.2px !important;
-  }
-  .mo_site .section-head h2 {
-    font-size: clamp(30px, 8vw, 42px) !important;
-  }
-  .mo_site .cards,
-  .mo_site .detail-grid,
-  .mo_site .testimonial-grid,
-  .mo_site .demo-pricing,
-  .mo_site .why-grid,
-  .mo_site .industry-grid {
+@media (max-width: 620px) {
+  .mo_site.mo_site .hero-actions {
+    display: grid !important;
     grid-template-columns: 1fr !important;
   }
-  .mo_site .apps-grid,
-  .mo_site .stats-grid,
-  .mo_site .process-grid,
-  .mo_site .integration-grid,
-  .mo_site .roadmap,
-  .mo_site .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  .mo_site.mo_site .hero-actions .btn {
+    width: 100%;
   }
-  .mo_site .feature-band,
-  .mo_site .form,
-  .mo_site .contact-info,
-  .mo_site .service-card {
-    padding: 26px !important;
+  /* On phones the dashboard becomes a normal flow element, so the visual (and
+     the whole section) always sizes itself to its content instead of relying
+     on a fixed minimum height. */
+  .mo_site.mo_site .visual {
+    min-height: 0 !important;
+    padding-block: clamp(8px, 3vw, 18px);
   }
-  .mo_site .form-row {
-    grid-template-columns: 1fr !important;
+  .mo_site.mo_site .dashboard {
+    position: relative !important;
+    inset: auto !important;
+    width: 100%;
+    transform: none !important;
   }
-  .mo_site .cta-box {
-    display: block !important;
-    padding: 30px !important;
+  .mo_site.mo_site .dash-grid {
+    grid-template-columns: 1fr 1fr !important;
   }
-  .mo_site .cta-box .btn {
-    margin-top: 22px;
+  .mo_site.mo_site .chart {
+    grid-row: span 2 !important;
   }
+  /* Floating badges would cover the full-width dashboard: hide them. */
+  .mo_site.mo_site .floating-card {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .container {
+    width: min(1160px, 100% - 32px) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .mo_site.mo_site .container {
+    width: min(1160px, 100% - 24px) !important;
+  }
+}
+
+/* ==========================================================================
+   6. Logo strip
+   ========================================================================== */
+
+.mo_site.mo_site .strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.2vw, 16px) clamp(10px, 1.6vw, 22px);
+}
+
+.mo_site.mo_site .mini-pill {
+  padding: clamp(6px, 0.7vw, 8px) clamp(9px, 1vw, 12px) !important;
+  font-size: clamp(11px, 0.85vw, 12px) !important;
+  white-space: nowrap;
 }
 
 @media (max-width: 520px) {
-  .mo_site .container {
-    width: calc(100% - 26px) !important;
+  .mo_site.mo_site .strip b {
+    flex: 1 0 100%;
+    text-align: center;
   }
-  .mo_site .hero {
-    padding-block: 42px 48px !important;
-  }
-  .mo_site .hero-actions,
-  .mo_site .trust-row {
-    align-items: stretch;
-  }
-  .mo_site .hero-actions .btn {
-    width: 100%;
-  }
-  .mo_site .visual {
-    min-height: 390px !important;
-  }
-  .mo_site .dashboard {
-    left: 4px !important;
-    right: 4px !important;
-  }
-  .mo_site .apps-grid,
-  .mo_site .stats-grid,
-  .mo_site .process-grid,
-  .mo_site .integration-grid,
-  .mo_site .roadmap,
-  .mo_site .footer-grid {
+}
+
+/* ==========================================================================
+   7. Cards & feature band
+   ========================================================================== */
+
+.mo_site.mo_site .cards,
+.mo_site.mo_site .detail-grid,
+.mo_site.mo_site .testimonial-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 1.8vw, 22px) !important;
+}
+
+.mo_site.mo_site .cards > *,
+.mo_site.mo_site .detail-grid > *,
+.mo_site.mo_site .testimonial-grid > *,
+.mo_site.mo_site .demo-pricing > *,
+.mo_site.mo_site .integration-grid > *,
+.mo_site.mo_site .process-grid > *,
+.mo_site.mo_site .apps-grid > *,
+.mo_site.mo_site .stats-grid > *,
+.mo_site.mo_site .why-grid > *,
+.mo_site.mo_site .industry-grid > *,
+.mo_site.mo_site .roadmap > * {
+  min-width: 0;
+}
+
+.mo_site.mo_site .card,
+.mo_site.mo_site .detail-card,
+.mo_site.mo_site .testimonial,
+.mo_site.mo_site .demo-price-card,
+.mo_site.mo_site .process-step {
+  height: 100%;
+}
+
+.mo_site.mo_site .feature-band {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: clamp(24px, 3.4vw, 45px) !important;
+  padding: clamp(24px, 3.6vw, 46px) !important;
+  border-radius: clamp(22px, 2.8vw, 34px) !important;
+}
+
+.mo_site.mo_site .feature-band > * {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_site .feature-band {
     grid-template-columns: 1fr !important;
   }
-  .mo_site .strip {
-    justify-content: flex-start !important;
+}
+
+@media (max-width: 1024px) {
+  .mo_site.mo_site .cards,
+  .mo_site.mo_site .detail-grid,
+  .mo_site.mo_site .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  .mo_site .copyright {
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .cards,
+  .mo_site.mo_site .detail-grid,
+  .mo_site.mo_site .testimonial-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .card,
+  .mo_site.mo_site .detail-card,
+  .mo_site.mo_site .testimonial,
+  .mo_site.mo_site .demo-price-card,
+  .mo_site.mo_site .service-card,
+  .mo_site.mo_site .form,
+  .mo_site.mo_site .contact-info {
+    padding: clamp(20px, 5vw, 27px) !important;
+  }
+}
+
+/* ==========================================================================
+   8. Stats band
+   ========================================================================== */
+
+.mo_site.mo_site .stats-band {
+  padding-block: clamp(22px, 3vw, 34px) !important;
+  background: linear-gradient(180deg, #fcfbfd 0%, #f8f4f9 100%) !important;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mo_site.mo_site .stats-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(10px, 1.4vw, 18px) !important;
+}
+
+.mo_site.mo_site .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  padding: clamp(14px, 1.7vw, 20px) clamp(10px, 1.2vw, 18px) !important;
+  border-radius: clamp(14px, 1.6vw, 18px) !important;
+  background: #fff;
+  border: 1px solid var(--line);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mo_site.mo_site .stat:hover {
+  transform: translateY(-3px);
+  border-color: #e2d4e0;
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .stat strong {
+  display: block;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(21px, 2.1vw, 30px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
+  color: var(--odoo);
+  white-space: nowrap;
+}
+
+.mo_site.mo_site .stat span {
+  display: block;
+  font-size: clamp(11px, 0.85vw, 13px) !important;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_site .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .mo_site.mo_site .stat strong {
+    font-size: 19px !important;
+  }
+  .mo_site.mo_site .stat span {
+    font-size: 10.5px !important;
+  }
+}
+
+/* ==========================================================================
+   9. Detail cards, integrations, process, testimonials, FAQ
+   ========================================================================== */
+
+.mo_site.mo_site .integration-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(10px, 1.2vw, 14px) !important;
+}
+
+.mo_site.mo_site .process-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.5vw, 18px) !important;
+}
+
+.mo_site.mo_site .faq-wrap {
+  max-width: 850px;
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .mo_site.mo_site .integration-grid,
+  .mo_site.mo_site .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mo_site.mo_site .integration-grid,
+  .mo_site.mo_site .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .integration-item {
+    padding: clamp(12px, 3.4vw, 16px) !important;
+  }
+}
+
+/* ==========================================================================
+   10. Apps, why, industry, roadmap
+   ========================================================================== */
+
+.mo_site.mo_site .apps-grid {
+  display: grid !important;
+  grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+  gap: clamp(8px, 1vw, 14px) !important;
+}
+
+.mo_site.mo_site .why-grid,
+.mo_site.mo_site .industry-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: clamp(10px, 1.2vw, 16px) !important;
+}
+
+.mo_site.mo_site .roadmap {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  gap: clamp(8px, 1vw, 12px) !important;
+}
+
+@media (max-width: 1200px) {
+  .mo_site.mo_site .apps-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .mo_site.mo_site .why-grid,
+  .mo_site.mo_site .industry-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .mo_site.mo_site .roadmap {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mo_site.mo_site .why-grid,
+  .mo_site.mo_site .industry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site.mo_site .roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .why-grid,
+  .mo_site.mo_site .industry-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .apps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mo_site.mo_site .app-card {
+    padding: clamp(12px, 3.4vw, 18px) clamp(6px, 2vw, 10px) !important;
+  }
+  .mo_site.mo_site .app-symbol {
+    width: clamp(40px, 11vw, 48px) !important;
+    height: clamp(40px, 11vw, 48px) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .mo_site.mo_site .roadmap {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   11. Pricing (Home)
+   ========================================================================== */
+
+/* Two plans side by side on desktop, stacked on phones. */
+.mo_site.mo_site .demo-pricing {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 1.8vw, 22px) !important;
+  align-items: stretch !important;
+}
+
+.mo_site.mo_site .demo-price-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.mo_site.mo_site .demo-price-card .btn {
+  margin-top: auto !important;
+}
+
+.mo_site.mo_site .demo-price-card.featured {
+  transform: none;
+}
+
+.mo_site.mo_site .demo-price-card .price {
+  font-size: clamp(30px, 3.4vw, 43px) !important;
+  line-height: 1.1 !important;
+}
+
+/* Text price ("Custom tailored quote") — same slot, sentence-sized. */
+.mo_site.mo_site .demo-price-card .price-text {
+  font-size: clamp(19px, 1.9vw, 25px) !important;
+  letter-spacing: -0.02em !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 800 !important;
+  color: var(--odoo);
+  margin: clamp(14px, 1.6vw, 18px) 0 2px;
+}
+
+/* Feature rows: checkmark + bold title + muted description. */
+.mo_site.mo_site .demo-price-card ul {
+  font-size: inherit !important;
+}
+
+.mo_site.mo_site .demo-price-card ul li {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.mo_site.mo_site .demo-price-card ul li::before {
+  content: '✓' !important;
+  flex: 0 0 auto;
+  margin: 0 !important;
+  color: var(--green);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.mo_site.mo_site .demo-price-card ul li b {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.mo_site.mo_site .demo-price-card ul li small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .demo-pricing {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   12. CTA & footer
+   ========================================================================== */
+
+.mo_site.mo_site .cta-box {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2.4vw, 28px);
+  padding: clamp(26px, 3.6vw, 46px) !important;
+}
+
+.mo_site.mo_site .cta-box .btn {
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .footer-grid {
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(22px, 3vw, 40px) !important;
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_site .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .mo_site.mo_site .cta-box {
     display: block !important;
+    text-align: left;
   }
-  .mo_site .copyright span {
+  .mo_site.mo_site .cta-box .btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .mo_site.mo_site .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .copyright {
+    display: block !important;
+    text-align: center;
+  }
+  .mo_site.mo_site .copyright span {
     display: block;
     margin-top: 6px;
   }
 }
 
-/* Login, signup and reset-password views. */
+/* ==========================================================================
+   13. Contact page
+   ========================================================================== */
+
+@media (min-width: 901px) {
+  .mo_site.mo_contact_page .contact-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr) !important;
+    align-items: stretch !important;
+    gap: clamp(20px, 2.4vw, 28px) !important;
+  }
+  .mo_site.mo_contact_page .contact-grid > .contact-info {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    height: 100%;
+    margin: 0 !important;
+  }
+  .mo_site.mo_contact_page .contact-grid > form.form {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100%;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_contact_page .contact-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_contact_page .contact-grid > .contact-info,
+  .mo_site.mo_contact_page .contact-grid > form.form {
+    grid-column: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .mo_site.mo_contact_page .contact-grid > .contact-info {
+    grid-row: 1 !important;
+  }
+  .mo_site.mo_contact_page .contact-grid > form.form {
+    grid-row: 2 !important;
+  }
+}
+
+.mo_site.mo_site .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   14. Services page
+   ========================================================================== */
+
+@media (min-width: 901px) {
+  .mo_site.mo_services_page .service-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: clamp(18px, 2vw, 24px) !important;
+  }
+  .mo_site.mo_services_page .service-card {
+    height: 100%;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_services_page .service-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   15. Authentication pages (login / signup / reset password)
+   ========================================================================== */
+
+.mo_auth_shell {
+  width: 100%;
+  overflow-x: clip;
+}
+
+.mo_auth_shell img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Keep the auth logo's designed size (the generic img rule must not widen it). */
+.mo_auth_shell .mo_auth_logo img {
+  width: auto !important;
+  max-width: 220px !important;
+  max-height: 64px !important;
+}
+
+.mo_auth_shell .oe_website_login_container,
+.mo_auth_shell .oe_website_login_container form {
+  max-width: 100% !important;
+}
+
 @media (max-width: 991px) {
   .mo_auth_shell {
     min-height: calc(100vh - 70px) !important;
   }
-  .mo_auth_form_col {
+  .mo_auth_shell .mo_auth_form_col {
     flex: 1 1 100% !important;
     width: 100% !important;
   }
-  .mo_auth_form_inner,
-  .oe_website_login_container,
-  .oe_website_login_container form {
+  .mo_auth_shell .mo_auth_form_inner,
+  .mo_auth_shell .oe_website_login_container,
+  .mo_auth_shell .oe_website_login_container form {
     width: 100% !important;
     max-width: 520px !important;
   }
 }
 
 @media (max-width: 540px) {
-  .mo_auth_form_col {
+  .mo_auth_shell .mo_auth_form_col {
     padding: 28px 20px !important;
   }
-  .mo_auth_form_inner {
+  .mo_auth_shell .mo_auth_form_inner {
     max-width: 100% !important;
   }
-  .mo_auth_foot {
+  .mo_auth_shell .mo_auth_foot {
     text-align: center;
   }
 }
 
-/* Home page: desktop, tablet and mobile layout. */
-.mo_home_page {
-  overflow-x: clip;
+/* ==========================================================================
+   16. Cloud platform sections (home): value props, pipeline, architecture,
+       monitoring, FAQ
+   ========================================================================== */
+
+/* --- Value props --------------------------------------------------------- */
+.mo_site.mo_site .cloud-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.6vw, 20px) !important;
 }
 
-.mo_home_page .hero-grid,
-.mo_home_page .cards,
-.mo_home_page .detail-grid,
-.mo_home_page .integration-grid,
-.mo_home_page .process-grid,
-.mo_home_page .apps-grid,
-.mo_home_page .demo-pricing {
-  width: 100%;
+.mo_site.mo_site .cloud-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: clamp(18px, 2vw, 26px);
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-.mo_home_page .hero-grid > div,
-.mo_home_page .card,
-.mo_home_page .detail-card,
-.mo_home_page .integration-item,
-.mo_home_page .process-step,
-.mo_home_page .app-card,
-.mo_home_page .demo-price-card {
+.mo_site.mo_site .cloud-card:hover {
+  transform: translateY(-4px);
+  border-color: #e2d4e0;
+  box-shadow: var(--shadow);
+}
+
+.mo_site.mo_site .cloud-ico {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #fbf7fa, #efe4ed);
+  color: var(--odoo);
+  margin-bottom: 15px;
+}
+
+.mo_site.mo_site .cloud-ico svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mo_site.mo_site .cloud-card h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.mo_site.mo_site .cloud-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* Service / card icon wrapper used with inline SVG icons. */
+.mo_site.mo_site .service-card .icon svg,
+.mo_site.mo_site .detail-card .icon svg,
+.mo_site.mo_site .card .icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Split panel (diagram + copy) ---------------------------------------- */
+.mo_site.mo_site .split-panel {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: clamp(26px, 4vw, 56px) !important;
+  align-items: center;
+}
+
+.mo_site.mo_site .split-copy h2 {
+  font-size: clamp(24px, 3vw, 38px) !important;
+  letter-spacing: -0.03em !important;
+  margin: 12px 0 14px !important;
+}
+
+.mo_site.mo_site .split-copy p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: clamp(14px, 1.05vw, 16px);
+}
+
+.mo_site.mo_site .split-copy .btn {
+  margin-top: 22px;
+}
+
+.mo_site.mo_site .check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.mo_site.mo_site .check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* --- Deployment pipeline diagram ----------------------------------------- */
+.mo_site.mo_site .pipe-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(6px, 0.9vw, 14px);
+}
+
+.mo_site.mo_site .pipe-node {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(16px, 1.8vw, 22px) clamp(10px, 1.2vw, 18px);
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .pipe-node.is-live {
+  border-color: #cbb5c6;
+  box-shadow: 0 18px 45px rgba(113, 75, 103, .14);
+}
+
+.mo_site.mo_site .pipe-ico {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 11px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--lav);
+  color: var(--odoo);
+}
+
+.mo_site.mo_site .pipe-ico svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mo_site.mo_site .pipe-node b {
+  display: block;
+  font-size: 14.5px;
+  line-height: 1.3;
+}
+
+.mo_site.mo_site .pipe-node small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.mo_site.mo_site .pipe-link {
+  align-self: center;
+  flex: 0 0 auto;
+  width: clamp(16px, 2.4vw, 34px);
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ded1da, var(--odoo));
+  position: relative;
+}
+
+.mo_site.mo_site .pipe-link::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid var(--odoo);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.mo_site.mo_site .pipe-branches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: clamp(16px, 2vw, 24px);
+}
+
+.mo_site.mo_site .branch-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #4d5868;
+}
+
+.mo_site.mo_site .branch-chip i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.mo_site.mo_site .branch-chip:nth-child(2) i { background: #e4a93b; }
+.mo_site.mo_site .branch-chip:nth-child(3) i { background: var(--blue); }
+
+/* --- Architecture diagram ------------------------------------------------ */
+.mo_site.mo_site .arch-panel {
+  background: linear-gradient(160deg, #fbf9fb, #f4eff5);
+  border: 1px solid #eadfea;
+  border-radius: 26px;
+  padding: clamp(16px, 2.2vw, 28px);
+}
+
+.mo_site.mo_site .arch-bar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 11px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #4d5868;
   min-width: 0;
 }
 
-@media (min-width: 1201px) {
-  .mo_home_page .hero-grid {
-    grid-template-columns: minmax(0, 1.02fr) minmax(500px, .98fr) !important;
-    gap: 62px !important;
+.mo_site.mo_site .arch-bar span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mo_site.mo_site .arch-bar svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--green);
+}
+
+.mo_site.mo_site .arch-bar-bottom svg {
+  color: var(--odoo);
+}
+
+.mo_site.mo_site .arch-box {
+  margin: 14px 0;
+  padding: clamp(12px, 1.6vw, 18px);
+  border: 1px dashed #cbb5c6;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .62);
+}
+
+.mo_site.mo_site .arch-label {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--odoo);
+  margin-bottom: 12px;
+}
+
+.mo_site.mo_site .arch-nodes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mo_site.mo_site .arch-node {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.mo_site.mo_site .arch-node b {
+  display: block;
+  font-size: 13px;
+}
+
+.mo_site.mo_site .arch-node small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* --- Monitoring panel ---------------------------------------------------- */
+.mo_site.mo_site .monitor-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(16px, 2vw, 24px);
+  box-shadow: var(--shadow);
+}
+
+.mo_site.mo_site .mon-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+
+.mo_site.mo_site .mon-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 5px rgba(40, 169, 139, .14);
+}
+
+.mo_site.mo_site .mon-gauges {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mo_site.mo_site .mon-gauge {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.mo_site.mo_site .mon-gauge small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.mo_site.mo_site .mon-gauge b {
+  text-align: right;
+  font-size: 12px;
+}
+
+.mo_site.mo_site .mon-bar {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: #f1eef2;
+  overflow: hidden;
+}
+
+.mo_site.mo_site .mon-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9d758f, var(--odoo));
+}
+
+.mo_site.mo_site .mon-chart {
+  display: block;
+  width: 100%;
+  height: 96px;
+}
+
+.mo_site.mo_site .mon-chart polyline {
+  fill: none;
+  stroke: var(--odoo);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mo_site.mo_site .mon-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* --- FAQ ----------------------------------------------------------------- */
+.mo_site.mo_site .faq-q {
+  font-size: 15.5px;
+  line-height: 1.45;
+  gap: 16px;
+}
+
+/* The base stylesheet rotates every span inside an open question
+   (`.faq-item.open .faq-q span`). Neutralise that for the question text so
+   only the toggle icon rotates and the title stays horizontal. */
+.mo_site.mo_site .faq-item .faq-q > span:not(.faq-icon) {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  transform: none !important;
+}
+
+.mo_site.mo_site .faq-item .faq-q > .faq-icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--odoo);
+  transition: transform .22s ease;
+}
+
+.mo_site.mo_site .faq-item.open .faq-q > .faq-icon {
+  transform: rotate(45deg) !important;
+}
+
+.mo_site.mo_site .faq-a {
+  line-height: 1.65;
+}
+
+.mo_site.mo_site .faq-item.open .faq-a {
+  animation: moFaqOpen .24s ease-out;
+}
+
+@keyframes moFaqOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
   }
-  .mo_home_page .visual {
-    width: 100%;
-    min-height: 520px;
-  }
-  .mo_home_page .detail-grid,
-  .mo_home_page .demo-pricing {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-  .mo_home_page .integration-grid,
-  .mo_home_page .process-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  }
-  .mo_home_page .apps-grid {
-    grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .mo_home_page .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr) !important;
-    gap: 36px !important;
+@media (max-width: 640px) {
+  .mo_site.mo_site .faq-q {
+    font-size: 14.5px;
+    padding: 16px 16px !important;
+    gap: 12px;
   }
-  .mo_home_page .visual {
-    min-height: 500px;
+  .mo_site.mo_site .faq-a {
+    padding: 0 16px 16px !important;
   }
-  .mo_home_page h1 {
-    font-size: clamp(46px, 5vw, 62px) !important;
-  }
-  .mo_home_page .apps-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* --- Application groups -------------------------------------------------- */
+.mo_site.mo_site .suite-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 1.6vw, 20px) !important;
+}
+
+.mo_site.mo_site .suite-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(16px, 1.8vw, 22px);
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mo_site.mo_site .suite-card:hover {
+  transform: translateY(-4px);
+  border-color: #e2d4e0;
+  box-shadow: var(--shadow);
+}
+
+.mo_site.mo_site .suite-ico {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--lav);
+  color: var(--odoo);
+}
+
+.mo_site.mo_site .suite-ico svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mo_site.mo_site .suite-body {
+  min-width: 0;
+}
+
+.mo_site.mo_site .suite-body b {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.mo_site.mo_site .suite-body small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   SERVICES PAGE — hosting platform layout
+   ========================================================================== */
+
+.mo_site.mo_services_page section {
+  padding-block: clamp(40px, 4.4vw, 66px) !important;
+}
+
+.mo_site.mo_services_page section.alt {
+  background: #faf8fb !important;
+}
+
+/* --- Section head -------------------------------------------------------- */
+.mo_site.mo_site .sec-head {
+  max-width: 840px;
+  margin: 0 auto clamp(26px, 3vw, 40px);
+  text-align: center;
+}
+
+.mo_site.mo_site .sec-head h2 {
+  font-size: clamp(26px, 3vw, 38px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  margin: 0 0 12px !important;
+}
+
+.mo_site.mo_site .sec-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.65;
+}
+
+.mo_site.mo_site .sec-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+.mo_site.mo_site .svc-hero {
+  padding-block: clamp(34px, 4vw, 58px) clamp(28px, 3.4vw, 50px) !important;
+  background:
+    radial-gradient(900px 420px at 88% -14%, rgba(113, 75, 103, .10), transparent 62%),
+    radial-gradient(700px 340px at 2% 0%, rgba(150, 120, 190, .10), transparent 64%),
+    #fff !important;
+}
+
+.mo_site.mo_site .svc-hero-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+  gap: clamp(24px, 3.4vw, 54px) !important;
+  align-items: center;
+}
+
+.mo_site.mo_site .svc-hero h1 {
+  font-size: clamp(30px, 3.5vw, 46px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.035em !important;
+  margin: 0 0 16px !important;
+}
+
+.mo_site.mo_site .svc-hero .lead {
+  font-size: clamp(15px, 1.15vw, 18px) !important;
+  margin: 0 0 6px;
+  max-width: 62ch;
+}
+
+.mo_site.mo_site .svc-hero .hero-actions {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+.mo_site.mo_site .hero-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: clamp(18px, 2.2vw, 26px);
+}
+
+.mo_site.mo_site .hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4d5868;
+}
+
+.mo_site.mo_site .hero-label svg {
+  width: 18px;
+  height: 18px;
+  color: var(--odoo);
+  flex: 0 0 auto;
+}
+
+/* --- Platform preview illustration --------------------------------------- */
+.mo_site.mo_site .plat-preview {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(16px, 1.9vw, 24px);
+  box-shadow: 0 24px 60px rgba(60, 40, 57, .12);
+}
+
+.mo_site.mo_site .pp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mo_site.mo_site .pp-tag {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--odoo);
+  background: var(--lav);
+  border-radius: 999px;
+  padding: 5px 11px;
+}
+
+.mo_site.mo_site .pp-project {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14.5px;
+  font-weight: 800;
+}
+
+.mo_site.mo_site .pp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.mo_site.mo_site .pp-tab {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: #f7f4f8;
+}
+
+.mo_site.mo_site .pp-tab.is-active {
+  color: #fff;
+  background: linear-gradient(135deg, #8a5f7f, var(--odoo));
+}
+
+.mo_site.mo_site .pp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.mo_site.mo_site .pp-row > span:first-child {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.mo_site.mo_site .pp-row b {
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+
+.mo_site.mo_site .pp-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--green) !important;
+}
+
+.mo_site.mo_site .pp-ok i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px rgba(40, 169, 139, .14);
+}
+
+.mo_site.mo_site .pp-bars {
+  display: grid;
+  gap: 6px;
+  width: 120px;
+}
+
+.mo_site.mo_site .pp-bars i {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9d758f, var(--odoo));
+}
+
+/* --- Service / feature cards --------------------------------------------- */
+.mo_site.mo_site .svc-cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 1.8vw, 22px) !important;
+}
+
+.mo_site.mo_site .svc-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(20px, 2.2vw, 26px);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mo_site.mo_site .svc-card:hover {
+  transform: translateY(-4px);
+  border-color: #e2d4e0;
+  box-shadow: var(--shadow);
+}
+
+.mo_site.mo_site .svc-card.is-static:hover {
+  transform: none;
+  border-color: var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .svc-card-ico {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--lav);
+  color: var(--odoo);
+  margin-bottom: 14px;
+}
+
+.mo_site.mo_site .svc-card-ico svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mo_site.mo_site .svc-card h3 {
+  font-size: 19px !important;
+  line-height: 1.3 !important;
+  margin: 0 0 8px !important;
+}
+
+.mo_site.mo_site .svc-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mo_site.mo_site .svc-link {
+  margin-top: auto;
+  padding-top: 16px;
+  color: var(--odoo);
+  font-weight: 800;
+  font-size: 13.5px;
+}
+
+.mo_site.mo_site .svc-card .svc-link::after {
+  content: ' \2192';
+}
+
+/* --- Feature list -------------------------------------------------------- */
+.mo_site.mo_site .feat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4px;
+  display: grid;
+  gap: 12px;
+}
+
+.mo_site.mo_site .feat-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 10px;
+  align-items: start;
+}
+
+.mo_site.mo_site .feat-list li::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-top: .5em;
+}
+
+.mo_site.mo_site .feat-list li > b {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.mo_site.mo_site .feat-list li > small {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.mo_site.mo_site .feat-list.compact li::before {
+  background: var(--odoo);
+}
+
+.mo_site.mo_site .feat-list b {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.mo_site.mo_site .feat-list small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.mo_site.mo_site .sub-h3 {
+  font-size: 18px !important;
+  margin: 0 0 14px !important;
+}
+
+/* --- Diagrams ------------------------------------------------------------ */
+.mo_site.mo_site .dia {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  background: linear-gradient(165deg, #fbf9fb, #f4eff5);
+  border: 1px solid #eadfea;
+  border-radius: 26px;
+  padding: clamp(16px, 2vw, 26px);
+}
+
+.mo_site.mo_site .dia-node {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.mo_site.mo_site .dia-node b {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.mo_site.mo_site .dia-node small {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.mo_site.mo_site .dia-line {
+  width: 2px;
+  height: 20px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #d9cbd6, #b79cb0);
+}
+
+.mo_site.mo_site .dia-row2,
+.mo_site.mo_site .dia-side {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.mo_site.mo_site .dia-env {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  border: 1px dashed #cbb5c6;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .66);
+  padding: clamp(12px, 1.6vw, 18px);
+}
+
+.mo_site.mo_site .dia-env-label,
+.mo_site.mo_site .mig-col-title {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--odoo);
+  text-align: center;
+}
+
+.mo_site.mo_site .dia-side-node {
+  background: #fdfcfe;
+}
+
+.mo_site.mo_site .dia-process,
+.mo_site.mo_site .dia-check {
+  border-color: #cbb5c6;
+  background: #fbf7fa;
+}
+
+.mo_site.mo_site .dia-final {
+  border-color: #b79cb0;
+  box-shadow: 0 12px 30px rgba(113, 75, 103, .10);
+}
+
+.mo_site.mo_site .dia-note,
+.mo_site.mo_site .sample-tag {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.55;
+}
+
+.mo_site.mo_site .sample-tag {
+  margin: -16px 0 18px;
+  font-weight: 700;
+}
+
+/* --- Deployment ---------------------------------------------------------- */
+.mo_site.mo_site .repo-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 0 auto clamp(16px, 2vw, 22px);
+  padding: 10px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .repo-chip svg {
+  width: 20px;
+  height: 20px;
+  color: var(--odoo);
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .repo-chip b {
+  font-size: 14px;
+}
+
+.mo_site.mo_site .repo-chip small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mo_site.mo_site .pipe-node.is-check {
+  border-color: #d9c1d4;
+  background: #fdfbfd;
+}
+
+.mo_site.mo_site .pipe-node small {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mo_site.mo_site .pipe-loop {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 13px 18px;
+  border: 1px dashed #ddc9d8;
+  border-radius: 14px;
+  background: #fbf7fa;
+  color: #6b5a66;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.mo_site.mo_site .pipe-loop > span:first-child {
+  color: var(--odoo);
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .mini-feats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.mo_site.mo_site .mini-feats span {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #4d5868;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+/* --- Backups ------------------------------------------------------------- */
+.mo_site.mo_site .bp-points {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.mo_site.mo_site .bp {
+  display: block;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #4d5868;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--odoo);
+  border-radius: 12px;
+  padding: 9px 12px;
+}
+
+.mo_site.mo_site .restore-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.mo_site.mo_site .restore-path {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+.mo_site.mo_site .restore-path b {
+  display: block;
+  font-size: 13.5px;
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.35;
+}
+
+.mo_site.mo_site .restore-path small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.mo_site.mo_site .restore-path.is-danger {
+  border-color: #e7bfcc;
+  background: #fff7f9;
+}
+
+/* --- Monitoring panels --------------------------------------------------- */
+.mo_site.mo_site .panel-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.5vw, 18px) !important;
+}
+
+.mo_site.mo_site .mon-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: clamp(16px, 1.8vw, 20px);
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .mp-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.mo_site.mo_site .mp-head b {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.mo_site.mo_site .mp-head span {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #b39aa9;
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .mp-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.mo_site.mo_site .mp-bar {
+  display: block;
+  height: 9px;
+  border-radius: 999px;
+  background: #f1eef2;
+  overflow: hidden;
+}
+
+.mo_site.mo_site .mp-bar.slim {
+  height: 8px;
+}
+
+.mo_site.mo_site .mp-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9d758f, var(--odoo));
+}
+
+.mo_site.mo_site .mp-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.mo_site.mo_site .mp-foot {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.mo_site.mo_site .mp-status,
+.mo_site.mo_site .mp-events {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.mo_site.mo_site .mp-status li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.5px;
+  color: #4d5868;
+}
+
+.mo_site.mo_site .mp-status i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .mp-status i.ok { background: var(--green); }
+.mo_site.mo_site .mp-status i.warn { background: #e4a93b; }
+
+.mo_site.mo_site .mp-events li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12.5px;
+  color: #4d5868;
+}
+
+.mo_site.mo_site .mp-events small {
+  font-size: 11px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+/* --- Migration ----------------------------------------------------------- */
+.mo_site.mo_site .dia-migrate {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  align-items: center !important;
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+.mo_site.mo_site .mig-col {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+
+.mo_site.mo_site .mig-arrow {
+  display: grid;
+  gap: 16px;
+}
+
+.mo_site.mo_site .mig-arrow span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d9cbd6, var(--odoo));
+  position: relative;
+}
+
+.mo_site.mo_site .mig-arrow span::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid var(--odoo);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+/* --- Notes --------------------------------------------------------------- */
+.mo_site.mo_site .note-box {
+  max-width: 900px;
+  margin: clamp(18px, 2vw, 24px) auto 0;
+  padding: 14px 18px;
+  border: 1px dashed #ddc9d8;
+  border-radius: 14px;
+  background: #fbf7fa;
+  color: #6b5a66;
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.mo_site.mo_site .split-copy .note-box {
+  margin-inline: 0;
+  text-align: left;
+}
+
+/* --- Final CTA ----------------------------------------------------------- */
+.mo_site.mo_site .final-cta {
+  background: linear-gradient(135deg, #2f2630, #714b67) !important;
+  color: #fff;
+  padding-block: clamp(44px, 5vw, 74px) !important;
+  text-align: center;
+}
+
+.mo_site.mo_site .final-cta h2 {
+  color: #fff !important;
+  font-size: clamp(26px, 3vw, 40px) !important;
+  letter-spacing: -0.03em !important;
+  margin: 0 0 12px !important;
+}
+
+.mo_site.mo_site .final-cta p {
+  color: rgba(255, 255, 255, .84);
+  font-size: clamp(15px, 1.1vw, 17px);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.mo_site.mo_site .final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+.mo_site.mo_site .btn-white {
+  background: #fff !important;
+  color: var(--odoo) !important;
+}
+
+.mo_site.mo_site .btn-outline-white {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1.5px solid rgba(255, 255, 255, .45) !important;
+}
+
+.mo_site.mo_site .btn-outline-white:hover {
+  background: rgba(255, 255, 255, .14) !important;
+}
+
+.mo_site.mo_site .support-table {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .mo_site.mo_site .panel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
 @media (max-width: 900px) {
-  .mo_home_page .hero {
-    padding-block: 58px !important;
-  }
-  .mo_home_page .hero-grid {
-    display: grid !important;
+  .mo_site.mo_site .svc-hero-grid {
     grid-template-columns: 1fr !important;
-    gap: 30px !important;
   }
-  .mo_home_page .hero-grid > div:first-child {
-    max-width: 720px;
-    margin-inline: auto;
-  }
-  .mo_home_page .visual {
-    width: min(100%, 680px);
-    min-height: 490px;
-    margin-inline: auto;
-  }
-  .mo_home_page .cards,
-  .mo_home_page .detail-grid,
-  .mo_home_page .demo-pricing {
+  .mo_site.mo_site .svc-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  .mo_home_page .integration-grid,
-  .mo_home_page .process-grid,
-  .mo_home_page .apps-grid {
+  .mo_site.mo_site .dia-side {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .mo_site.mo_site .dia-migrate {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .mig-arrow {
+    justify-items: center;
+    gap: 5px;
+  }
+  .mo_site.mo_site .mig-arrow span {
+    width: 2px;
+    height: 18px;
+    background: linear-gradient(180deg, #d9cbd6, var(--odoo));
+  }
+  .mo_site.mo_site .mig-arrow span::after {
+    right: 50%;
+    top: auto;
+    bottom: -1px;
+    transform: translateX(50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--odoo);
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .mo_site.mo_site .svc-cards,
+  .mo_site.mo_site .panel-grid,
+  .mo_site.mo_site .dia-row2,
+  .mo_site.mo_site .restore-paths {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .repo-chip {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 18px;
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  .mo_site.mo_site .svc-card:hover {
+    transform: none;
+  }
+}
+
+/* --- Editions band (Community / Enterprise) ------------------------------ */
+.mo_site.mo_site .edition-band {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: clamp(22px, 3vw, 44px) !important;
+  align-items: center;
+  background: linear-gradient(135deg, #2f2630, #714b67);
+  color: #fff;
+  border-radius: 30px;
+  padding: clamp(24px, 3.4vw, 46px);
+  box-shadow: 0 25px 70px rgba(60, 40, 57, .22);
+}
+
+.mo_site.mo_site .edition-band h2 {
+  color: #fff !important;
+  font-size: clamp(24px, 3vw, 38px) !important;
+  letter-spacing: -0.03em !important;
+  margin: 14px 0 12px !important;
+}
+
+.mo_site.mo_site .edition-band p {
+  color: rgba(255, 255, 255, .8);
+  margin: 0;
+  font-size: clamp(14px, 1.05vw, 16px);
+}
+
+.mo_site.mo_site .edition-band .eyebrow {
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .24);
+  color: #fff;
+}
+
+.mo_site.mo_site .edition-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.mo_site.mo_site .edition-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 16px;
+  padding: 14px 18px;
+}
+
+.mo_site.mo_site .edition-card b {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15.5px;
+  white-space: nowrap;
+}
+
+.mo_site.mo_site .edition-card small {
+  color: rgba(255, 255, 255, .74);
+  font-size: 12.5px;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.mo_site.mo_site .edition-card.is-hl {
+  background: rgba(255, 255, 255, .17);
+  border-color: rgba(255, 255, 255, .36);
+}
+
+/* --- Plan comparison table ----------------------------------------------- */
+.mo_site.mo_site .compare-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.mo_site.mo_site .compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+  font-size: 13.5px;
+}
+
+.mo_site.mo_site .compare-table th,
+.mo_site.mo_site .compare-table td {
+  padding: 13px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.mo_site.mo_site .compare-table thead th {
+  background: #fbf9fb;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.mo_site.mo_site .compare-table thead th:nth-child(2),
+.mo_site.mo_site .compare-table thead th:nth-child(3) {
+  color: var(--odoo);
+}
+
+.mo_site.mo_site .compare-table tbody td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.mo_site.mo_site .compare-table tbody td:not(:first-child) {
+  color: #4d5868;
+}
+
+.mo_site.mo_site .compare-table tbody tr:hover {
+  background: #fcfbfd;
+}
+
+.mo_site.mo_site .compare-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_site .edition-band {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .edition-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .mo_site.mo_site .edition-card small {
+    text-align: left;
+  }
+  /* Stack the comparison table into one card per feature. */
+  .mo_site.mo_site .compare-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .mo_site.mo_site .compare-table {
+    display: block;
+    min-width: 0;
+  }
+  .mo_site.mo_site .compare-table thead {
+    display: none;
+  }
+  .mo_site.mo_site .compare-table tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .mo_site.mo_site .compare-table tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 4px 0 6px;
+    box-shadow: var(--shadow-soft);
+  }
+  .mo_site.mo_site .compare-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border: 0;
+    padding: 8px 16px;
+  }
+  .mo_site.mo_site .compare-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 700;
+    flex: 0 0 auto;
+  }
+  .mo_site.mo_site .compare-table td:first-child {
+    display: block;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+    font-weight: 800;
+  }
+  .mo_site.mo_site .compare-table td:first-child::before {
+    content: none;
+  }
+  .mo_site.mo_site .compare-table td:nth-child(2)::before {
+    color: var(--odoo);
+  }
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .mo_site.mo_site .cloud-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  .mo_home_page .feature-band {
+  .mo_site.mo_site .suite-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mo_site.mo_site .split-panel {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .mo_site.mo_site .pipe-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .mo_site.mo_site .pipe-link {
+    width: 2px;
+    height: 20px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #ded1da, var(--odoo));
+  }
+  .mo_site.mo_site .pipe-link::after {
+    right: 50%;
+    top: auto;
+    bottom: -1px;
+    transform: translateX(50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--odoo);
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .mo_site.mo_site .cloud-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mo_site.mo_site .suite-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .mo_site.mo_site .arch-nodes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   17. Home page & shared components — readability pass
+   ========================================================================== */
+
+/* --- Wider content column (approx. 1200px on desktop) -------------------- */
+.mo_site.mo_site .container {
+  width: min(1200px, 100% - 48px) !important;
+  max-width: 1200px !important;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .container {
+    width: min(1200px, 100% - 32px) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .mo_site.mo_site .container {
+    width: min(1200px, 100% - 24px) !important;
+  }
+}
+
+/* --- Body copy at 16–18px ----------------------------------------------- */
+.mo_site.mo_site .lead {
+  font-size: clamp(16px, 1.15vw, 19px) !important;
+  line-height: 1.65 !important;
+}
+
+.mo_site.mo_site .sec-head p,
+.mo_site.mo_site .section-head p {
+  font-size: clamp(16px, 1.1vw, 17.5px) !important;
+}
+
+.mo_site.mo_site .cloud-card p,
+.mo_site.mo_site .svc-card p,
+.mo_site.mo_site .benefit small {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+.mo_site.mo_site .feat-list small,
+.mo_site.mo_site .feature-item small,
+.mo_site.mo_site .suite-body small {
+  font-size: 14px !important;
+}
+
+/* Consistent section rhythm (services page keeps its tighter spacing) */
+.mo_site.mo_site section {
+  padding-block: clamp(48px, 5vw, 76px) !important;
+}
+
+.mo_site.mo_services_page section {
+  padding-block: clamp(40px, 4.4vw, 66px) !important;
+}
+
+.mo_site.mo_site .benefit-strip,
+.mo_site.mo_site .stats-band {
+  padding-block: clamp(26px, 2.8vw, 36px) !important;
+}
+
+/* --- Header: readable logo and navigation -------------------------------- */
+.mo_site.mo_site .nav {
+  height: 84px;
+  gap: 16px;
+}
+
+.mo_site.mo_site .navlink {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.mo_site.mo_site .odoo-logo {
+  height: 62px !important;
+  max-width: 220px !important;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .nav {
+    height: 72px;
+  }
+  .mo_site.mo_site .navlink {
+    font-size: 16px !important;
+  }
+  .mo_site.mo_site .odoo-logo {
+    height: 46px !important;
+    max-width: 150px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .mo_site.mo_site .odoo-logo {
+    height: 42px !important;
+    max-width: 126px !important;
+  }
+}
+
+/* --- Platform benefits strip -------------------------------------------- */
+.mo_site.mo_site .benefit-strip {
+  background: #faf8fb !important;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mo_site.mo_site .benefit-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 2vw, 30px) !important;
+}
+
+.mo_site.mo_site .benefit {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.mo_site.mo_site .benefit-ico {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--odoo);
+}
+
+.mo_site.mo_site .benefit-ico svg {
+  width: 21px;
+  height: 21px;
+}
+
+.mo_site.mo_site .benefit b {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.mo_site.mo_site .benefit small {
+  color: var(--muted);
+}
+
+/* --- Feature cards: larger icons, equal heights -------------------------- */
+.mo_site.mo_site .cloud-grid {
+  align-items: stretch !important;
+}
+
+.mo_site.mo_site .cloud-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(22px, 2.4vw, 30px) !important;
+}
+
+.mo_site.mo_site .cloud-ico {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 18px !important;
+  margin-bottom: 18px !important;
+}
+
+.mo_site.mo_site .cloud-ico svg {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.mo_site.mo_site .cloud-card h3 {
+  font-size: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+/* --- Application groups -------------------------------------------------- */
+.mo_site.mo_site .suite-grid {
+  align-items: stretch !important;
+}
+
+.mo_site.mo_site .suite-card {
+  align-items: center;
+  height: 100%;
+}
+
+.mo_site.mo_site .suite-ico {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 16px !important;
+}
+
+.mo_site.mo_site .suite-ico svg {
+  width: 27px !important;
+  height: 27px !important;
+}
+
+.mo_site.mo_site .suite-body b {
+  font-size: 17.5px !important;
+}
+
+/* --- Deployment workflow: larger, clearer -------------------------------- */
+.mo_site.mo_site .pipe-node {
+  padding: clamp(20px, 2.2vw, 28px) clamp(14px, 1.6vw, 20px) !important;
+}
+
+.mo_site.mo_site .pipe-node b {
+  font-size: 16.5px !important;
+}
+
+.mo_site.mo_site .pipe-node small {
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  margin-top: 6px !important;
+}
+
+.mo_site.mo_site .pipe-ico {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 15px !important;
+  margin-bottom: 14px !important;
+}
+
+.mo_site.mo_site .pipe-ico svg {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.mo_site.mo_site .repo-chip b {
+  font-size: 15px;
+}
+
+.mo_site.mo_site .repo-chip small {
+  font-size: 13px;
+}
+
+/* --- Infrastructure / monitoring: readable labels ------------------------ */
+.mo_site.mo_site .arch-bar {
+  font-size: 14px !important;
+  padding: 13px 16px !important;
+}
+
+/* Grid children must be allowed to shrink below their content width. */
+.mo_site.mo_site .split-panel > * {
+  min-width: 0;
+}
+
+/* On phones the status bars wrap instead of forcing the panel wider. */
+@media (max-width: 640px) {
+  .mo_site.mo_site .arch-bar {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+  .mo_site.mo_site .arch-bar span {
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+.mo_site.mo_site .arch-bar svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.mo_site.mo_site .arch-label {
+  font-size: 11.5px !important;
+}
+
+.mo_site.mo_site .arch-node {
+  padding: 14px 10px !important;
+}
+
+.mo_site.mo_site .arch-node b {
+  font-size: 15px !important;
+}
+
+.mo_site.mo_site .arch-node small {
+  font-size: 12.5px !important;
+}
+
+.mo_site.mo_site .mon-gauge {
+  grid-template-columns: 78px minmax(0, 1fr) 48px !important;
+  font-size: 13.5px !important;
+}
+
+.mo_site.mo_site .mon-gauge small,
+.mo_site.mo_site .mon-gauge b {
+  font-size: 13.5px !important;
+}
+
+.mo_site.mo_site .mon-head {
+  font-size: 14px !important;
+}
+
+.mo_site.mo_site .mon-foot {
+  font-size: 13px !important;
+}
+
+.mo_site.mo_site .mp-mini {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 9px;
+}
+
+.mo_site.mo_site .mp-mini li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: #4d5868;
+}
+
+.mo_site.mo_site .mp-mini i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.mo_site.mo_site .mp-mini i.ok {
+  background: var(--green);
+}
+
+/* --- Pricing ------------------------------------------------------------- */
+.mo_site.mo_site .demo-price-card .price {
+  font-size: clamp(34px, 3.6vw, 48px) !important;
+  margin: clamp(12px, 1.4vw, 16px) 0 2px !important;
+}
+
+/* The text price ("Custom tailored quote") stays sentence-sized. */
+.mo_site.mo_site .demo-price-card .price.price-text {
+  font-size: clamp(20px, 2vw, 28px) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.mo_site.mo_site .plan-more {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--odoo);
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none !important;
+}
+
+.mo_site.mo_site .plan-more:hover {
+  text-decoration: underline !important;
+}
+
+/* --- FAQ: larger questions and taller rows ------------------------------- */
+.mo_site.mo_site .faq-q {
+  font-size: 17px !important;
+  padding: 20px 22px !important;
+  line-height: 1.45 !important;
+}
+
+.mo_site.mo_site .faq-a {
+  font-size: 15.5px !important;
+  padding: 0 22px 20px !important;
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_site .faq-q {
+    font-size: 15.5px !important;
+    padding: 17px 16px !important;
+  }
+  .mo_site.mo_site .faq-a {
+    font-size: 15px !important;
+    padding: 0 16px 17px !important;
+  }
+}
+
+/* --- Shared CTA ---------------------------------------------------------- */
+.mo_site.mo_site .cta-copy {
+  min-width: 0;
+}
+
+.mo_site.mo_site .cta-box h2 {
+  font-size: clamp(24px, 2.6vw, 36px) !important;
+  letter-spacing: -0.03em !important;
+}
+
+.mo_site.mo_site .cta-box p {
+  font-size: 16px !important;
+  line-height: 1.6;
+}
+
+.mo_site.mo_site .cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+.mo_site.mo_site footer .brand-fallback {
+  display: block !important;
+  font-size: 25px;
+}
+
+.mo_site.mo_site .footer-about {
+  margin: 16px 0 0;
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 15px !important;
+  line-height: 1.65;
+}
+
+.mo_site.mo_site footer .footer-title {
+  font-size: 13.5px !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.mo_site.mo_site footer .footer-links {
+  font-size: 15px !important;
+  gap: 10px !important;
+}
+
+.mo_site.mo_site footer .footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.mo_site.mo_site footer .footer-links a:hover {
+  color: var(--odoo);
+  text-decoration: underline;
+}
+
+.mo_site.mo_site footer .copyright {
+  font-size: 13.5px !important;
+  line-height: 1.6;
+}
+
+/* --- Legal pages --------------------------------------------------------- */
+.mo_site.mo_site .legal-hero {
+  padding-block: clamp(40px, 4.4vw, 64px) clamp(14px, 1.8vw, 22px) !important;
+  background:
+    radial-gradient(800px 360px at 90% -20%, rgba(113, 75, 103, .10), transparent 62%),
+    #fff !important;
+}
+
+.mo_site.mo_site .legal-hero h1 {
+  font-size: clamp(30px, 3.4vw, 44px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.035em !important;
+  margin: 0 0 12px !important;
+}
+
+.mo_site.mo_site .legal-hero p {
+  margin: 0;
+  max-width: 760px;
+  color: var(--muted);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.65;
+}
+
+.mo_site.mo_site .legal-body {
+  max-width: 840px;
+  margin-inline: auto;
+}
+
+.mo_site.mo_site .legal-body h2 {
+  font-size: clamp(19px, 2vw, 24px) !important;
+  letter-spacing: -0.02em !important;
+  margin: clamp(26px, 3vw, 36px) 0 10px !important;
+}
+
+.mo_site.mo_site .legal-body h2:first-of-type {
+  margin-top: 0 !important;
+}
+
+.mo_site.mo_site .legal-body p {
+  margin: 0 0 8px;
+  color: #4d5868;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.mo_site.mo_site .legal-actions {
+  margin-top: clamp(24px, 3vw, 34px) !important;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .mo_site.mo_site .benefit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .mo_site.mo_site .benefit-grid {
     grid-template-columns: 1fr !important;
   }
 }
 
 @media (max-width: 620px) {
-  .mo_home_page .hero {
-    padding-block: 42px 38px !important;
-  }
-  .mo_home_page .hero-grid {
-    gap: 18px !important;
-  }
-  .mo_home_page h1 {
-    font-size: clamp(38px, 12vw, 52px) !important;
-    line-height: 1.04 !important;
-    letter-spacing: -2px !important;
-  }
-  .mo_home_page .lead {
-    font-size: 16px !important;
-  }
-  .mo_home_page .hero-actions {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-  }
-  .mo_home_page .hero-actions .btn {
+  .mo_site.mo_site .cta-actions {
     width: 100%;
   }
-  .mo_home_page .trust-row {
-    gap: 10px 16px !important;
+  .mo_site.mo_site .cta-actions .btn {
+    flex: 1 1 100%;
   }
-  .mo_home_page .visual {
-    min-height: 390px !important;
-    transform: none !important;
-  }
-  .mo_home_page .orb1 {
-    width: 270px !important;
-    height: 270px !important;
-    right: 8px !important;
-  }
-  .mo_home_page .orb2 {
-    width: 130px !important;
-    height: 130px !important;
-  }
-  .mo_home_page .dashboard {
-    inset: 40px 2px auto 2px !important;
-    padding: 13px !important;
-    border-radius: 20px !important;
-  }
-  .mo_home_page .dash-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
-  .mo_home_page .metric,
-  .mo_home_page .chart,
-  .mo_home_page .activity {
-    padding: 10px !important;
-  }
-  .mo_home_page .chart {
-    grid-row: span 2 !important;
-  }
-  .mo_home_page .bars {
-    height: 92px !important;
-    gap: 4px !important;
-  }
-  .mo_home_page .floating-card {
-    max-width: 145px;
-    font-size: 10px !important;
-    padding: 9px 10px !important;
-  }
-  .mo_home_page .fc1 {
-    right: 0 !important;
-    top: 15px !important;
-  }
-  .mo_home_page .fc2 {
-    left: 0 !important;
-    bottom: 0 !important;
-  }
-  .mo_home_page .cards,
-  .mo_home_page .detail-grid,
-  .mo_home_page .integration-grid,
-  .mo_home_page .process-grid,
-  .mo_home_page .apps-grid,
-  .mo_home_page .demo-pricing {
-    grid-template-columns: 1fr !important;
-  }
-  .mo_home_page .feature-band {
-    padding: 25px !important;
-    border-radius: 24px !important;
-  }
-  .mo_home_page .strip {
-    justify-content: flex-start !important;
-    gap: 10px !important;
-  }
-  .mo_home_page .app-card,
-  .mo_home_page .integration-item {
-    width: 100%;
-  }
-  .mo_home_page .important-note {
-    padding: 14px !important;
+  .mo_site.mo_site .footer-about {
+    max-width: none;
   }
 }
 
-@media (max-width: 390px) {
-  .mo_home_page .visual {
-    min-height: 365px !important;
-  }
-  .mo_home_page .dash-grid {
-    font-size: 11px;
-  }
-  .mo_home_page .activity .appdot {
-    width: 30px;
-    height: 30px;
-  }
-  .mo_home_page .floating-card {
-    transform: scale(.92);
+@media (hover: none) {
+  .mo_site.mo_site .cloud-card:hover,
+  .mo_site.mo_site .suite-card:hover {
+    transform: none;
   }
 }
 
-/* Explicit page grid placement prevents Odoo RTL/Bootstrap auto-placement. */
-@media (min-width: 901px) {
-  .mo_contact_page .contact-grid {
-    display: grid !important;
-    direction: ltr !important;
-    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr) !important;
-    grid-template-rows: auto !important;
-    align-items: stretch !important;
-    gap: 28px !important;
-  }
-  .mo_contact_page .contact-grid > .contact-info {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-  }
-  .mo_contact_page .contact-grid > form.form {
-    display: block !important;
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-    width: 100% !important;
-    max-width: none !important;
-    height: 100% !important;
-    margin: 0 !important;
-  }
-  .mo_home_page .hero-grid > div:first-child {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-  .mo_home_page .hero-grid > .visual {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-  }
-  .mo_home_page .feature-band > div:first-child {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-  .mo_home_page .feature-band > .feature-list {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-  }
-  .mo_services_page .service-grid {
-    display: grid !important;
-    direction: ltr !important;
-    grid-auto-flow: row !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    align-items: stretch !important;
-  }
-  .mo_services_page .service-card {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
+/* ==========================================================================
+   17. Accessibility, motion & print
+   ========================================================================== */
+
+.mo_site.mo_site a:focus-visible,
+.mo_site.mo_site button:focus-visible,
+.mo_site.mo_site input:focus-visible,
+.mo_site.mo_site textarea:focus-visible,
+.mo_site.mo_site select:focus-visible,
+.mo_auth_shell a:focus-visible,
+.mo_auth_shell button:focus-visible,
+.mo_auth_shell input:focus-visible {
+  outline: 3px solid rgba(113, 75, 103, 0.4);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@media (hover: none) {
+  /* Touch devices: drop hover transforms to avoid sticky states. */
+  .mo_site.mo_site .card:hover,
+  .mo_site.mo_site .stat:hover,
+  .mo_site.mo_site .app-card:hover,
+  .mo_site.mo_site .btn:hover {
+    transform: none;
   }
 }
 
-@media (max-width: 900px) {
-  .mo_contact_page .contact-grid,
-  .mo_services_page .service-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
+@media (prefers-reduced-motion: reduce) {
+  .mo_site.mo_site *,
+  .mo_site.mo_site *::before,
+  .mo_site.mo_site *::after,
+  .mo_auth_shell *,
+  .mo_auth_shell *::before,
+  .mo_auth_shell *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-  .mo_contact_page .contact-grid > .contact-info,
-  .mo_contact_page .contact-grid > form.form {
-    grid-column: 1 !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-  .mo_contact_page .contact-grid > .contact-info {
-    grid-row: 1 !important;
-  }
-  .mo_contact_page .contact-grid > form.form {
-    grid-row: 2 !important;
+}
+
+@media print {
+  .mo_site .oc_nav,
+  .mo_site .oc_cta_sec,
+  .mo_site .oc_footer,
+  .mo_site.mo_site header,
+  .mo_site.mo_site .mo_header_shell,
+  .mo_site.mo_site .top-glow {
+    display: none !important;
   }
 }

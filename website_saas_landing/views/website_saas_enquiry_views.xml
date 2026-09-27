@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         Kanban
+         ============================================================ -->
+    <record id="view_website_saas_enquiry_kanban" model="ir.ui.view">
+        <field name="name">website.saas.enquiry.kanban</field>
+        <field name="model">website.saas.enquiry</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column" sample="1">
+                <field name="name"/>
+                <field name="full_name"/>
+                <field name="company_name"/>
+                <field name="email"/>
+                <field name="interested_in"/>
+                <field name="submission_date"/>
+                <field name="user_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <span class="fw-bold text-truncate" t-out="record.name.raw_value"/>
+                            <field name="state" widget="label_selection"
+                                   options="{'classes': {'new': 'info', 'contacted': 'warning', 'qualified': 'primary', 'in_progress': 'primary', 'won': 'success', 'closed': 'secondary'}}"/>
+                        </div>
+                        <div class="text-truncate" t-out="record.company_name.raw_value"/>
+                        <div class="text-muted small text-truncate" t-out="record.full_name.raw_value"/>
+                        <div class="text-muted small text-truncate" t-out="record.email.raw_value"/>
+                        <div class="mt-2 d-flex justify-content-between align-items-center">
+                            <field name="interested_in" widget="badge"/>
+                            <span class="text-muted small" t-out="record.submission_date.raw_value"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         List
+         ============================================================ -->
+    <record id="view_website_saas_enquiry_list" model="ir.ui.view">
+        <field name="name">website.saas.enquiry.list</field>
+        <field name="model">website.saas.enquiry</field>
+        <field name="arch" type="xml">
+            <list string="SaaS Enquiries" decoration-info="state == 'new'"
+                  decoration-muted="state in ('won', 'closed')">
+                <field name="name"/>
+                <field name="submission_date"/>
+                <field name="full_name"/>
+                <field name="company_name"/>
+                <field name="email" optional="show"/>
+                <field name="country" optional="hide"/>
+                <field name="interested_in"/>
+                <field name="odoo_version" optional="hide"/>
+                <field name="estimated_users" optional="hide"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'new'"
+                       decoration-warning="state == 'contacted'"
+                       decoration-success="state == 'won'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Form
+         ============================================================ -->
+    <record id="view_website_saas_enquiry_form" model="ir.ui.view">
+        <field name="name">website.saas.enquiry.form</field>
+        <field name="model">website.saas.enquiry</field>
+        <field name="arch" type="xml">
+            <form string="SaaS Enquiry">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="new,contacted,qualified,won"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Contact">
+                            <field name="full_name"/>
+                            <field name="company_name"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone"/>
+                            <field name="country"/>
+                        </group>
+                        <group string="Requirement">
+                            <field name="interested_in"/>
+                            <field name="odoo_version"/>
+                            <field name="estimated_users"/>
+                            <field name="submission_date"/>
+                            <field name="source_page" optional="show"/>
+                            <field name="lang" optional="hide"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Project Details" name="message">
+                            <field name="message" nolabel="1" readonly="1"/>
+                        </page>
+                        <page string="Follow-up" name="followup">
+                            <group>
+                                <field name="user_id" widget="many2one_avatar_user"/>
+                            </group>
+                            <field name="internal_notes" placeholder="Internal notes — never shown to the customer."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Search
+         ============================================================ -->
+    <record id="view_website_saas_enquiry_search" model="ir.ui.view">
+        <field name="name">website.saas.enquiry.search</field>
+        <field name="model">website.saas.enquiry</field>
+        <field name="arch" type="xml">
+            <search string="SaaS Enquiries">
+                <field name="name"/>
+                <field name="full_name"/>
+                <field name="company_name"/>
+                <field name="email"/>
+                <field name="country"/>
+                <separator/>
+                <filter name="filter_new" string="New" domain="[('state', '=', 'new')]"/>
+                <filter name="filter_open" string="In Progress"
+                        domain="[('state', 'in', ('contacted', 'qualified', 'in_progress'))]"/>
+                <filter name="filter_won" string="Won" domain="[('state', '=', 'won')]"/>
+                <separator/>
+                <filter name="filter_my" string="My Enquiries" domain="[('user_id', '=', uid)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_interested" string="Interested In" context="{'group_by': 'interested_in'}"/>
+                    <filter name="group_user" string="Assigned To" context="{'group_by': 'user_id'}"/>
+                    <filter name="group_date" string="Submission Date" context="{'group_by': 'submission_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Action + Menu (Website → SaaS Enquiries)
+         ============================================================ -->
+    <record id="action_website_saas_enquiry" model="ir.actions.act_window">
+        <field name="name">SaaS Enquiries</field>
+        <field name="res_model">website.saas.enquiry</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_website_saas_enquiry_search"/>
+        <field name="context">{'search_default_filter_new': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No enquiries yet</p>
+            <p>Enquiries submitted from the website enquiry form appear here,
+               together with the notification email sent to your team.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_website_saas_enquiry"
+              name="SaaS Enquiries"
+              action="action_website_saas_enquiry"
+              parent="website.menu_website_configuration"
+              sequence="60"/>
+
+</odoo>

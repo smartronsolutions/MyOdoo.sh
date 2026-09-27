@@ -1,6 +1,6 @@
 {
     'name': 'Odoo SaaS Master',
-    'version': '18.0.0.57',
+    'version': '18.0.0.60',
     'author': 'SkyERP',
     'category': 'Odoo SaaS',
     'sequence': 15,
@@ -20,6 +20,7 @@
         'data/config_17_data.xml',
         'data/config_18_data.xml',
         'data/config_19_data.xml',
+        'data/config_20_data.xml',
         'data/saas_psql_version_data.xml',
         'data/ir_cron_data.xml',
         'data/ir_config_parameter_data.xml',

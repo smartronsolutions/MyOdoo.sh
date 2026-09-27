@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+
+    <!-- Internal users: full visibility on enquiries.
+         Public / portal users have no ACL entry, so they can never read the
+         records they created from the website form. -->
+    <record id="rule_website_saas_enquiry_internal" model="ir.rule">
+        <field name="name">SaaS Enquiry: internal users</field>
+        <field name="model_id" ref="model_website_saas_enquiry"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+</data>
+</odoo>

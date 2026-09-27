@@ -13,7 +13,11 @@ class Partner(models.Model):
 
     @api.depends('instance_ids')
     def _compute_instance_count(self):
-        instance_data = self.env['saas.odoo.instance']._read_group([('partner_id', 'in', self.ids)], ['partner_id'], ['__count'])
+        # Removed instances (state 'cancel', e.g. deleted by the customer from the
+        # portal) no longer count as active instances on the dashboard.
+        instance_data = self.env['saas.odoo.instance']._read_group(
+            [('partner_id', 'in', self.ids), ('state', '!=', 'cancel')], ['partner_id'], ['__count']
+        )
         result = {p.id: count for p, count in instance_data}
         for r in self:
             r.instance_count = result.get(r.id, 0)

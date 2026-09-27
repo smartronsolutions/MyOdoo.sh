@@ -91,6 +91,146 @@
     }
   });
 
+  /* FAQ accordion (home and about pages). Delegated, and shared by every page
+     so there is a single source of truth for the open/close behaviour. */
+  document.addEventListener('click', function (event) {
+    var target = event.target;
+    if (!target || !target.closest) return;
+    var question = target.closest('.faq-q');
+    if (!question) return;
+    var item = question.closest('.faq-item');
+    if (!item) return;
+    event.preventDefault();
+    var wasOpen = item.classList.contains('open');
+    var container = item.parentElement;
+    if (container) {
+      container.querySelectorAll('.faq-item.open').forEach(function (other) {
+        other.classList.remove('open');
+        var otherQuestion = other.querySelector('.faq-q');
+        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+      });
+    }
+    item.classList.toggle('open', !wasOpen);
+    question.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
+  });
+
+  /* Page reveal-on-scroll entrance (home + services). The hidden state is only
+     applied when JavaScript is available, so content stays visible without it. */
+  var revealRoots = document.querySelectorAll('.mh');
+  if (revealRoots.length && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('mh-anim');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    revealRoots.forEach(function (root) {
+      root.querySelectorAll('[data-reveal]').forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    });
+  }
+
+  /* Animate dashboard sparklines once they enter the viewport. */
+  var sparkLines = document.querySelectorAll('.mh .mh-spark-line');
+  if (sparkLines.length && 'IntersectionObserver' in window) {
+    var sparkObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var line = entry.target;
+          var length = line.getTotalLength ? line.getTotalLength() : 0;
+          if (length) {
+            line.style.strokeDasharray = length;
+            line.style.strokeDashoffset = length;
+            line.style.transition = 'stroke-dashoffset 1.6s ease-out';
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () { line.style.strokeDashoffset = 0; });
+            });
+          }
+          sparkObserver.unobserve(line);
+        }
+      });
+    }, { threshold: 0.3 });
+    sparkLines.forEach(function (line) { sparkObserver.observe(line); });
+  }
+
+  /* ------------------------------------------------------------------
+   * SaaS enquiry form (Contact Us page)
+   *   - inline validation under each field
+   *   - disables the button and switches to "Sending request..." on submit
+   *   - blocks duplicate submits from the same page view
+   * ------------------------------------------------------------------ */
+  var enquiryForm = document.getElementById('saasEnquiryForm');
+  if (enquiryForm) {
+    var submitBtn = enquiryForm.querySelector('.cf-submit');
+    var originalLabel = submitBtn ? submitBtn.textContent : '';
+    var submitting = false;
+
+    var fieldWrap = function (input) {
+      return input ? input.closest('.cf-field') : null;
+    };
+
+    var setError = function (input, hasError) {
+      var wrap = fieldWrap(input);
+      if (wrap) wrap.classList.toggle('has-error', !!hasError);
+    };
+
+    var isValidEmail = function (value) {
+      return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+    };
+
+    // Live feedback: clear the error as soon as the field becomes valid.
+    enquiryForm.querySelectorAll('input, select, textarea').forEach(function (input) {
+      input.addEventListener('input', function () {
+        if (input.required && input.value.trim() !== '') setError(input, false);
+        if (input.type === 'email' && isValidEmail(input.value.trim())) setError(input, false);
+      });
+      input.addEventListener('change', function () {
+        if (input.required && input.value.trim() !== '') setError(input, false);
+      });
+    });
+
+    enquiryForm.addEventListener('submit', function (event) {
+      if (submitting) {
+        event.preventDefault();
+        return;
+      }
+
+      var firstInvalid = null;
+      enquiryForm.querySelectorAll('[required]').forEach(function (input) {
+        var value = (input.value || '').trim();
+        var invalid = !value;
+        if (!invalid && input.type === 'email') invalid = !isValidEmail(value);
+        setError(input, invalid);
+        if (invalid && !firstInvalid) firstInvalid = input;
+      });
+
+      if (firstInvalid) {
+        event.preventDefault();
+        firstInvalid.focus();
+        firstInvalid.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        return;
+      }
+
+      submitting = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending request...';
+      }
+      // Safety net: if the request is somehow cancelled, restore the button.
+      setTimeout(function () {
+        if (submitting && submitBtn && document.body.contains(submitBtn)) {
+          submitting = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }, 12000);
+    });
+  }
+
   /**
    * Handle window load event
    */

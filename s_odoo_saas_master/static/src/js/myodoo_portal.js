@@ -76,6 +76,13 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             return;
         }
         host.dataset.myodooPortalReady = "1";
+        // Removed instance: the whole page is blurred behind the "Your instance is
+        // removed" overlay, so nothing must be wired and no poll started on an
+        // instance whose containers no longer exist.
+        const removedFlag = document.getElementById("o_instance_removed");
+        if (removedFlag && removedFlag.value === "1") {
+            return;
+        }
         this._initTabs();
         this._initActions();
         this._initModals();
@@ -852,7 +859,29 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             start: [_t("Start Instance"), _t("Start Odoo, workers and public web services?")],
             suspend: [_t("Suspend Instance"), _t("This will stop public access and all background workers until started again.")],
             restart: [_t("Restart Services"), _t("The instance may be briefly unavailable while services reload.")],
-            redeploy: [_t("Redeploy Latest Revision"), _t("Pull the latest connected GitHub code and restart the instance?")]
+            redeploy: [_t("Redeploy Latest Revision"), _t("Pull the latest connected GitHub code and restart the instance?")],
+            remove: [
+                _t("Remove Instance"),
+                _t("Are you sure you want to delete this instance? Its containers, database, "
+                   + "files, domain and SSL certificate will be permanently deleted and the "
+                   + "instance can no longer be started. This cannot be undone."),
+            ],
+        };
+
+        // Destructive action: the confirmation buttons must not read "Confirm"/"Cancel"
+        // for it, the customer has to make an explicit yes/no choice.
+        const setConfirmLabels = (action) => {
+            const destructive = action === "remove";
+            const cancelButton = document.getElementById("cancelAction");
+            if (confirmButton) {
+                confirmButton.textContent = destructive
+                    ? _t("Yes, remove it")
+                    : _t("Confirm");
+                confirmButton.classList.toggle("danger", destructive);
+            }
+            if (cancelButton) {
+                cancelButton.textContent = destructive ? _t("No, keep it") : _t("Cancel");
+            }
         };
 
         document.querySelectorAll("[data-confirm]").forEach(button => {
@@ -861,6 +890,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const copy = actionCopy[pendingAction] || [_t("Confirm Action"), _t("Are you sure you want to proceed?")];
                 if (confirmTitle) confirmTitle.textContent = copy[0];
                 if (confirmText) confirmText.textContent = copy[1];
+                setConfirmLabels(pendingAction);
                 if (modal) modal.classList.add("show");
             });
         });
@@ -884,6 +914,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 suspend: "/saas/instance/suspend",
                 restart: "/saas/instance/restart",
                 redeploy: "/saas/instance/redeploy",
+                remove: "/saas/instance/remove",
             };
             const endpoint = endpoints[action];
             if (!endpoint) {
@@ -905,6 +936,13 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                         // display "Running" again) and confirm at the end.
                         notify(_t("Restart in progress — your instance will be back in about 2 minutes."));
                         this._beginInstanceRestart(instanceId);
+                        return;
+                    }
+                    if (action === "remove") {
+                        // The server keeps the record in 'cancel' state: the reload shows the
+                        // "Your instance is removed" blur instead of the controls.
+                        notify(_t("Instance removed. Its data has been deleted."));
+                        setTimeout(() => location.reload(), 1200);
                         return;
                     }
                     if (action === "suspend") {

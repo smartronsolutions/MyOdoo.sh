@@ -321,6 +321,24 @@ class Pricing(http.Controller):
         res['success'] = res.get('available', False)
         return res
 
+    @http.route(['/saas/auth-status'], type='json', auth='public', website=True)
+    def saas_auth_status(self, **kw):
+        """Authoritative "am I logged in?" endpoint for the frontend auth guard.
+
+        ``auth='public'`` so a visitor is never bounced to a login page, and the
+        answer always comes from the current server-side session. The page's own
+        ``odoo.__session_info__`` snapshot can be stale (page rendered while the
+        visitor was anonymous, restored from the back/forward cache, or the login
+        happened in another browser tab): in those cases the guard used to keep
+        answering "Account Required" even though the visitor was authenticated.
+        """
+        uid = request.session.uid
+        return {
+            'uid': uid or False,
+            'is_public': request.env.user._is_public(),
+            'partner_id': request.env.user.partner_id.id if uid else False,
+        }
+
     @http.route(['/pricing/check-trial'], type='json', auth='user', website=True)
     def check_trial(self):
         if request.env.user.partner_id.trial_instance_count >= request.website.company_id.limit_trial:

@@ -997,6 +997,10 @@ class OdooInstance(models.Model):
         for r in self:
             if r.use_template and r.template_instance_id and r.template_instance_id.state != 'deploy':
                 raise ValidationError(_("Template instance %s has not deployed yet. Please deploy it first."))             
+            # Fail fast (with an actionable message) when the Docker images the instance
+            # needs do not exist on the target server: `docker compose up` would fail and
+            # the deployment used to report the misleading "containers are not running".
+            r.pserver_id._check_docker_images_available(r)
             r._generate_instance_port()
             r._generate_instance_config()
             r._generate_instance_extra_addons()

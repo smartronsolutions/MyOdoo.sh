@@ -2,6 +2,7 @@
 
 import { _t } from "@web/core/l10n/translation";
 import { session } from "@web/session";
+import { rpc } from "@web/core/network/rpc";
 
 /**
  * Global authentication guard for the SaaS frontend.
@@ -25,6 +26,7 @@ import { session } from "@web/session";
 const PENDING_KEY = "saas_pending_auth_action";
 const PENDING_MAX_AGE_MS = 6 * 60 * 60 * 1000; // 6 hours
 const OVERLAY_ID = "o_saas_account_required";
+const AUTH_STATUS_URL = "/saas/auth-status";
 
 // Selectors of the elements that must be authenticated before doing anything.
 const AUTH_ACTIONS = [
@@ -42,6 +44,55 @@ export function isAuthenticated() {
 }
 
 /**
+ * Store the authoritative answer coming from `/saas/auth-status` inside the
+ * in-memory session object, so `isAuthenticated()` becomes truthful again on a
+ * page whose `odoo.__session_info__` snapshot is stale.
+ *
+ * The snapshot baked into the HTML is only valid at render time: a page served
+ * to an anonymous visitor stays "anonymous" for the guard even after that
+ * visitor signs in (login done in another tab, page restored from the
+ * back/forward cache, session restored after a reconnection, ...). That is what
+ * made an already signed-in customer keep getting "Account Required".
+ */
+function syncSession(info) {
+    if (!info) {
+        return false;
+    }
+    const authenticated = Boolean(info.uid) && !info.is_public;
+    try {
+        session.uid = info.uid || false;
+        session.is_public = !authenticated;
+    } catch (e) {
+        // Read-only session object: the returned boolean stays correct.
+    }
+    return authenticated;
+}
+
+let pendingAuthCheck = null;
+
+/**
+ * Ask the server whether the visitor is really authenticated right now.
+ *
+ * The page snapshot is used as a fast path; when it claims "not logged in" the
+ * server is asked before anything is blocked, so an authenticated visitor is
+ * never sent to the login page by mistake. Concurrent calls share one request.
+ */
+export function verifyAuthentication({ force = false } = {}) {
+    if (!force && isAuthenticated()) {
+        return Promise.resolve(true);
+    }
+    if (!pendingAuthCheck) {
+        pendingAuthCheck = rpc(AUTH_STATUS_URL, {})
+            .then((info) => syncSession(info))
+            .catch(() => false)
+            .finally(() => {
+                pendingAuthCheck = null;
+            });
+    }
+    return pendingAuthCheck;
+}
+
+/**
  * Heuristic: did an RPC fail because the visitor is not authenticated (e.g.
  * the session expired between opening the wizard and submitting it)?
  */
@@ -50,14 +101,20 @@ export function isAuthenticationError(error) {
         return false;
     }
     const name = error.exceptionName || (error.data && error.data.name) || "";
-    if (/SessionExpired|AccessError|SessionException|AuthenticationError/i.test(name)) {
+    if (/SessionExpired|SessionException|AuthenticationError/i.test(name)) {
         return true;
     }
-    if (error.code === 401 || error.code === 403) {
+    // An AccessError is a *permission* problem, not an authentication one: the
+    // visitor is logged in, they just may not perform that action. Reporting it
+    // as an auth error used to show "Account Required" to connected customers.
+    if (/AccessError/i.test(name) || error.code === 403) {
+        return false;
+    }
+    if (error.code === 401) {
         return true;
     }
     const message = error.message || (error.data && error.data.message) || "";
-    return /session (has )?expired|not authenticated|access denied|log ?in required/i.test(message);
+    return /session (has )?expired|not authenticated|log ?in required/i.test(message);
 }
 
 function currentRelativeUrl() {
@@ -377,17 +434,69 @@ function isAuthRequiredForm(form) {
     return action.indexOf("/pricing/checkout") !== -1;
 }
 
-function interceptEvent(ev, found, action) {
+/**
+ * Re-run an action that was interrupted because the page snapshot claimed the
+ * visitor was anonymous while the server says they are logged in.
+ */
+function replayAction(el, action) {
+    if (!el || !el.isConnected) {
+        return false;
+    }
+    if (el.nodeName === "FORM") {
+        if (el.requestSubmit) {
+            el.requestSubmit();
+        } else {
+            el.submit();
+        }
+        return true;
+    }
+    if (action === "order" && el.form) {
+        try {
+            if (el.form.requestSubmit) {
+                el.form.requestSubmit(el);
+            } else {
+                el.form.submit();
+            }
+            return true;
+        } catch (e) {
+            // Fall through to a plain click when the button cannot submit.
+        }
+    }
+    const ev = new MouseEvent("click", { bubbles: true, cancelable: true, view: window });
+    // Marked so the capture-phase guard lets this synthetic click through.
+    ev.saasAuthRetry = true;
+    el.dispatchEvent(ev);
+    return true;
+}
+
+/**
+ * The snapshot said "anonymous", but the server is authoritative: ask it and,
+ * when the visitor turns out to be logged in, simply continue the action they
+ * started instead of showing the "Account Required" dialog.
+ */
+function blockForAuthentication(ev, found, action) {
     ev.preventDefault();
     ev.stopPropagation();
     if (ev.stopImmediatePropagation) {
         ev.stopImmediatePropagation();
     }
     const form = found && found.closest ? found.closest("form") : ev.target;
-    openAccountRequiredModal({
+    const options = {
         action,
         targetId: found && found.id ? found.id : "",
         form: form && form.nodeName === "FORM" ? form : null,
+    };
+    verifyAuthentication({ force: true }).then((authenticated) => {
+        if (!authenticated) {
+            openAccountRequiredModal(options);
+            return;
+        }
+        // Restore whatever the visitor was filling in before the stale guard
+        // interrupted them, then resume.
+        if (options.form) {
+            restorePendingAction();
+        }
+        replayAction(found, action);
     });
 }
 
@@ -396,12 +505,12 @@ function interceptEvent(ev, found, action) {
 document.addEventListener(
     "click",
     (ev) => {
-        if (isAuthenticated()) {
+        if (ev.saasAuthRetry || isAuthenticated()) {
             return;
         }
         const found = findAuthAction(ev.target);
         if (found) {
-            interceptEvent(ev, found.el, found.action);
+            blockForAuthentication(ev, found.el, found.action);
         }
     },
     true
@@ -410,20 +519,69 @@ document.addEventListener(
 document.addEventListener(
     "submit",
     (ev) => {
-        if (isAuthenticated()) {
+        if (ev.saasAuthRetry || isAuthenticated()) {
             return;
         }
         if (!isAuthRequiredForm(ev.target)) {
             return;
         }
-        interceptEvent(ev, ev.target, "order");
+        blockForAuthentication(ev, ev.target, "order");
     },
     true
 );
 
+/** True when the current page contains at least one guarded action. */
+function hasGuardedAction() {
+    if (typeof document === "undefined" || !document.querySelector) {
+        return false;
+    }
+    return AUTH_ACTIONS.some((descriptor) => {
+        try {
+            return Boolean(document.querySelector(descriptor.selector));
+        } catch (e) {
+            return false;
+        }
+    });
+}
+
+/**
+ * Re-align the in-memory session with the server. Skipped on pages that do not
+ * expose any guarded action so anonymous browsing costs no extra RPC.
+ */
+function refreshAuthentication({ force = false } = {}) {
+    if (!force && !hasGuardedAction()) {
+        return;
+    }
+    verifyAuthentication({ force });
+}
+
+if (typeof document !== "undefined") {
+    const onReady = () => refreshAuthentication();
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", onReady, { once: true });
+    } else {
+        onReady();
+    }
+    // A page restored from the back/forward cache keeps its old session
+    // snapshot: it must be re-validated, it is exactly the stale case.
+    window.addEventListener("pageshow", (ev) => {
+        if (ev.persisted) {
+            refreshAuthentication({ force: true });
+        }
+    });
+    // Coming back after signing in on another tab.
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible" && !isAuthenticated()) {
+            refreshAuthentication({ force: true });
+        }
+    });
+}
+
 const SaaSAuth = {
     isAuthenticated,
     isAuthenticationError,
+    verifyAuthentication,
+    refreshAuthentication,
     openAccountRequiredModal,
     closeAccountRequiredModal,
     rememberPending,

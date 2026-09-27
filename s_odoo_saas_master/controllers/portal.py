@@ -1095,6 +1095,35 @@ class PortalInstance(CustomerPortal):
             return {'success': False, 'error': str(e)}
         return {'success': True, 'state': instance.state, 'operation_state': instance.operation_state}
 
+    @http.route('/saas/instance/remove', type='json', auth='user')
+    def instance_remove(self, instance_id, **kwargs):
+        """Customer-side "Remove Instance" (Instance Controls).
+
+        Same outcome as the back-office Cancel: the containers, the database, the
+        files, the nginx vhost, the domain and its SSL certificate are deleted and
+        the ports are released. The record itself is **kept** in state ``cancel`` so
+        the customer still gets the "Your instance is removed" page; an
+        administrator can then delete the record from the backend and it
+        disappears from the portal completely.
+
+        Only the owner (or an allowed team member) can do this: ``_validate_instance``
+        also blocks team members with the ``developer`` role.
+        """
+        instance = request.env['saas.odoo.instance'].sudo().browse(instance_id)
+        self._validate_instance(instance)
+        if instance.state == 'cancel':
+            # Idempotent: a second click (or a stale tab) must not fail.
+            return {'success': True, 'state': 'cancel', 'already_removed': True}
+        try:
+            if instance.state == 'deploy':
+                # Stop the services first so the database is not dropped under a
+                # running Odoo, then revoke everything.
+                instance.action_suspend()
+            instance._action_cancel()
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+        return {'success': True, 'state': instance.state, 'operation_state': instance.operation_state}
+
     @http.route('/saas/instance/redeploy', type='json', auth='user')
     def instance_redeploy(self, instance_id, **kwargs):
         instance = request.env['saas.odoo.instance'].sudo().browse(instance_id)

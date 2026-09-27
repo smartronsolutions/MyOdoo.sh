@@ -213,7 +213,85 @@ class PServer(models.Model):
             '  docker-compose up -d ; '
             'fi'
         ) % {'dir': project_dir, 'web': web_container}
-        self._exec_cmd(cmd, ssh)
+        exit_code, output = self._exec_capture(cmd, ssh)
+        if exit_code:
+            # `docker compose up` stops on the first image it cannot resolve, so its
+            # output is the only actionable information. Without this the failure was
+            # swallowed and the deployment only reported the misleading "containers
+            # are not running" a few seconds later.
+            raise UserError(
+                _("Docker Compose could not start instance %(instance)s (exit code %(code)s).\n\n"
+                  "%(output)s")
+                % {
+                    'instance': instance.display_name,
+                    'code': exit_code,
+                    'output': self._shorten_command_output(output),
+                }
+            )
+
+    @staticmethod
+    def _shorten_command_output(output, limit=1200):
+        """Keep the end of a command output: Docker prints the error last."""
+        output = (output or '').strip()
+        if len(output) > limit:
+            return '...\n' + output[-limit:]
+        return output or _("No output returned by the command.")
+
+    # Docker prints one of these when the image reference simply does not exist in
+    # the registry. Anything else (authentication, offline daemon, rate limit, ...)
+    # is inconclusive and must never block a deployment that could still work.
+    _IMAGE_NOT_FOUND_MARKERS = (
+        'no such manifest',
+        'manifest unknown',
+        'repository does not exist',
+        'name unknown',
+        'not found',
+    )
+
+    def _check_docker_images_available(self, instance):
+        """Fail fast when an image the instance needs is nowhere to be found.
+
+        An image is considered usable when it is present on the server (it may be a
+        typology image built locally and never pushed) or when the registry can
+        resolve it, because ``docker compose up`` pulls missing images by itself.
+        Only a reference that clearly does not exist is reported, so this check can
+        never turn a working deployment into a failed one.
+        """
+        ssh = self._connect()
+        if not ssh:
+            # The deployment itself reports the connection problem.
+            return
+        missing = []
+        try:
+            images = [img for img in (instance.docker_odoo_image, instance.docker_psql_image) if img]
+            for image in images:
+                quoted = shlex.quote(image)
+                local_code, _local_out = self._exec_capture('docker image inspect %s' % quoted, ssh)
+                if local_code == 0:
+                    continue
+                registry_code, registry_out = self._exec_capture(
+                    'docker manifest inspect %s' % quoted, ssh
+                )
+                if registry_code == 0:
+                    continue
+                haystack = (registry_out or '').lower()
+                if any(marker in haystack for marker in self._IMAGE_NOT_FOUND_MARKERS):
+                    missing.append(image)
+                else:
+                    _logger.warning(
+                        "Could not confirm the availability of Docker image %s on server %s: %s",
+                        image, self.display_name, (registry_out or '').strip(),
+                    )
+        finally:
+            ssh.close()
+        if missing:
+            raise UserError(
+                _("These Docker images are not available on server %(server)s: %(images)s.\n\n"
+                  "An instance cannot be deployed with them. Build the image on the server "
+                  "(Docker Images → Build Image) or use a version whose image exists, then "
+                  "deploy again. The instance stays in draft.")
+                % {'server': self.display_name, 'images': ', '.join(missing)}
+            )
 
     def _compose_exec(self, instance, args, ssh=False):
         """Run a compose sub-command on the server.

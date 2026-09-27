@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- List view -->
+    <record id="payment_epaync_log_list_view" model="ir.ui.view">
+        <field name="name">payment.epaync.log.list</field>
+        <field name="model">payment.epaync.log</field>
+        <field name="arch" type="xml">
+            <list string="EpayNC Logs" default_order="create_date desc"
+                  decoration-danger="log_type == 'error'"
+                  decoration-success="signature_valid == True and log_type == 'webhook'"
+                  decoration-warning="signature_valid == False and log_type == 'webhook'">
+                <field name="timestamp"/>
+                <field name="log_type" widget="badge"
+                       decoration-success="log_type == 'response'"
+                       decoration-info="log_type == 'request'"
+                       decoration-warning="log_type == 'webhook'"
+                       decoration-danger="log_type == 'error'"/>
+                <field name="provider_id"/>
+                <field name="transaction_id"/>
+                <field name="signature_valid" optional="show"/>
+                <field name="generated_signature" optional="hide"/>
+                <field name="received_signature" optional="hide"/>
+                <field name="retry_count" optional="show"/>
+                <field name="create_date" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="payment_epaync_log_form_view" model="ir.ui.view">
+        <field name="name">payment.epaync.log.form</field>
+        <field name="model">payment.epaync.log</field>
+        <field name="arch" type="xml">
+            <form string="EpayNC Log">
+                <sheet>
+                    <group>
+                        <group string="General">
+                            <field name="timestamp" readonly="1"/>
+                            <field name="log_type" readonly="1"/>
+                            <field name="provider_id" readonly="1"/>
+                            <field name="transaction_id" readonly="1"/>
+                            <field name="retry_count" readonly="1"/>
+                        </group>
+                        <group string="Signature">
+                            <field name="signature_valid" readonly="1"/>
+                            <field name="generated_signature" readonly="1"
+                                   widget="CopyClipboardChar"/>
+                            <field name="received_signature" readonly="1"
+                                   widget="CopyClipboardChar"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Signature String">
+                            <field name="signature_string" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Request">
+                            <field name="request_data" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Response">
+                            <field name="response_data" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Webhook Payload">
+                            <field name="webhook_payload" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Headers">
+                            <field name="headers" widget="text" readonly="1"/>
+                        </page>
+                        <page string="Error">
+                            <field name="error_message" widget="text" readonly="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="payment_epaync_log_search_view" model="ir.ui.view">
+        <field name="name">payment.epaync.log.search</field>
+        <field name="model">payment.epaync.log</field>
+        <field name="arch" type="xml">
+            <search string="Search EpayNC Logs">
+                <field name="transaction_id"/>
+                <field name="provider_id"/>
+                <filter string="Errors" name="errors"
+                        domain="[('log_type', '=', 'error')]"/>
+                <filter string="Webhooks" name="webhooks"
+                        domain="[('log_type', '=', 'webhook')]"/>
+                <filter string="Invalid Signature" name="invalid_sig"
+                        domain="[('log_type', '=', 'webhook'), ('signature_valid', '=', False)]"/>
+                <filter string="Requests" name="requests"
+                        domain="[('log_type', '=', 'request')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Type" name="group_type"
+                            context="{'group_by': 'log_type'}"/>
+                    <filter string="Provider" name="group_provider"
+                            context="{'group_by': 'provider_id'}"/>
+                    <filter string="Date" name="group_date"
+                            context="{'group_by': 'create_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Window action -->
+    <record id="action_payment_epaync_log" model="ir.actions.act_window">
+        <field name="name">EpayNC Logs</field>
+        <field name="res_model">payment.epaync.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="payment_epaync_log_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No EpayNC log entries yet.
+            </p>
+            <p>
+                Logs are recorded when the EpayNC payment provider processes
+                requests, responses, webhooks, and errors.
+                Enable logging in the provider configuration.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu item under Accounting → Configuration -->
+    <menuitem
+        id="menu_payment_epaync_logs"
+        name="EpayNC Logs"
+        parent="account.menu_account_config"
+        action="action_payment_epaync_log"
+        sequence="120"
+        groups="account.group_account_manager"
+    />
+
+</odoo>

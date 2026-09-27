@@ -2,7 +2,7 @@
 <odoo>
 <data>
 
-<!-- Global Header â€” new "My Odoo NC" nav design, injects on EVERY website page -->
+<!-- Global Header â€” new "My Odoo SH" nav design, injects on EVERY website page -->
 <record id="saas_global_header" model="ir.ui.view">
   <field name="name">website_saas_landing.global_header</field>
   <field name="key">website_saas_landing.global_header</field>
@@ -112,10 +112,8 @@
 <header>
   <div class="container nav">
     <a class="brand" href="/saas">
-      <img class="odoo-logo" src="/website_saas_landing/static/src/img/myodoo_logo.png" alt="My Odoo NC"/>
+      <img class="odoo-logo" src="/website_saas_landing/static/src/img/myodoo_logo.png" alt="My Odoo SH"/>
       <span class="brand-fallback">odoo</span>
-      <span class="brand-divider"></span>
-      <span class="brand-name">MY ODOO NC<small>New Caledonia</small></span>
     </a>
     <nav class="navlinks" id="mo_navlinks">
       <a class="navlink" href="/">Home</a>
@@ -162,7 +160,7 @@
           </t>
         </div>
       </div>
-      <button class="btn btn-primary" type="button" onclick="location.href='/contact-us'">Book a demo</button>
+      <button class="btn btn-primary" type="button" onclick="location.href='/pricing'">Book a demo</button>
       <div class="mo_account" id="mo_account">
         <button class="mo_account_btn" id="mo_account_btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="mo_account_drop">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>

@@ -1960,3 +1960,116 @@ body.shell-fullscreen-open {
         display: none;
     }
 }
+
+/* ---------------------------------------------------------------------------
+ * Remove Instance (Instance Controls)
+ * A customer can delete an instance themselves: same result as the backend
+ * "Cancel" (containers, database, files, domain and SSL are deleted) but the
+ * record is kept in state 'cancel' so the page can be rendered as "removed".
+ * ------------------------------------------------------------------------- */
+
+/* 4. Remove Instance - Strong red theme */
+.btn-ctrl-remove {
+    background: linear-gradient(135deg, rgba(185, 28, 28, 0.10), #ffffff 65%) !important;
+    border-color: rgba(185, 28, 28, 0.45) !important;
+
+    .ctrl-btn-icon {
+        background: rgba(185, 28, 28, 0.14);
+        color: #b91c1c;
+    }
+
+    &:hover {
+        border-color: #b91c1c !important;
+        background: linear-gradient(135deg, rgba(185, 28, 28, 0.18), #ffffff 50%) !important;
+        box-shadow: 0 10px 24px rgba(185, 28, 28, 0.22) !important;
+
+        .ctrl-btn-icon {
+            background: #b91c1c;
+            color: #ffffff;
+            transform: scale(1.06);
+        }
+
+        .ctrl-btn-title, .ctrl-btn-chevron {
+            color: #991b1b;
+        }
+    }
+}
+
+/* "Yes, remove it" in the confirmation popup */
+#confirmAction.danger {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    border-color: #b91c1c !important;
+    color: #ffffff !important;
+}
+
+/* Removed instance: blur everything except the message card. */
+.myodoo-portal-root.instance-removed {
+    > *:not(.instance-removed-overlay) {
+        filter: blur(5px) grayscale(0.4);
+        pointer-events: none !important;
+        user-select: none;
+    }
+}
+
+.instance-removed-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(6, 26, 30, 0.35);
+    backdrop-filter: blur(2px);
+}
+
+.instance-removed-card {
+    width: 100%;
+    max-width: 470px;
+    text-align: center;
+    padding: 30px 26px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(185, 28, 28, 0.22);
+    box-shadow: 0 24px 60px rgba(6, 26, 30, 0.28);
+
+    .instance-removed-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 14px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(185, 28, 28, 0.12);
+        color: #b91c1c;
+        font-size: 24px;
+    }
+
+    h2 {
+        margin: 0 0 10px;
+        font-size: 21px;
+        color: #8f1d1d;
+        font-weight: 800;
+    }
+
+    p {
+        margin: 0 0 10px;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: var(--muted);
+    }
+
+    .instance-removed-note {
+        font-size: 11px;
+        color: #a9483e;
+    }
+
+    .instance-removed-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        justify-content: center;
+        margin-top: 18px;
+    }
+}

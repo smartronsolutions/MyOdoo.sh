@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_epaync_form_inherit" model="ir.ui.view">
+        <field name="name">payment.provider.epaync.form.inherit</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+
+            <!-- ── 1. Inject credentials into the existing Credentials page ─ -->
+            <group name="provider_credentials" position="inside">
+                <group string="Shop" invisible="code != 'epaync'">
+                    <field name="epaync_merchant_id"
+                           placeholder="e.g. 14282108"/>
+                    <field name="epaync_test_key"
+                           password="True"
+                           placeholder="Test secret key"/>
+                    <field name="epaync_production_key"
+                           password="True"
+                           placeholder="Production secret key"/>
+                    <field name="epaync_payment_url"
+                           placeholder="https://epaync.nc/vads-payment/"/>
+                </group>
+                <group string="Gateway Info" invisible="code != 'epaync'">
+                    <field name="epaync_currency" readonly="1"/>
+                    <field name="epaync_api_version" readonly="1"/>
+                    <field name="epaync_signature_algorithm" readonly="1"/>
+                </group>
+            </group>
+
+            <!-- ── 2. Inject EpayNC config at the END of the Configuration page ──
+                 We target provider_config (guaranteed to exist in payment's
+                 provider form) and append our group inside it.                   -->
+            <group name="provider_config" position="inside">
+                <group string="EpayNC Settings"
+                       name="epaync_config"
+                       invisible="code != 'epaync'">
+                    <field name="epaync_payment_action"/>
+                    <field name="epaync_trans_prefix"/>
+                    <field name="epaync_trans_length"/>
+                    <field name="epaync_timeout"/>
+                    <field name="epaync_auto_confirm_so"/>
+                    <field name="epaync_auto_validate_invoice"/>
+                    <field name="epaync_auto_register_payment"/>
+                    <field name="epaync_allow_customer_cancel"/>
+                    <field name="epaync_debug_mode_enabled"/>
+                    <field name="epaync_enable_logs"/>
+                    <field name="epaync_retry_failed_ipn"/>
+                </group>
+            </group>
+
+            <!-- ── 3. Inject EpayNC messages into the existing Messages page ── -->
+            <page name="messages" position="inside">
+                <group invisible="code != 'epaync'">
+                    <field name="epaync_msg_success"/>
+                    <field name="epaync_msg_authorized"/>
+                    <field name="epaync_msg_captured"/>
+                    <field name="epaync_msg_pending"/>
+                    <field name="epaync_msg_refused"/>
+                    <field name="epaync_msg_cancelled"/>
+                    <field name="epaync_msg_expired"/>
+                    <field name="epaync_msg_failed"/>
+                    <field name="epaync_msg_invalid_signature"/>
+                    <field name="epaync_msg_unknown_error"/>
+                    <field name="epaync_msg_webhook_received"/>
+                </group>
+            </page>
+
+            <!-- ── 4. Add EpayNC Endpoints page after Messages ─────────────── -->
+            <page name="messages" position="after">
+                <page string="EpayNC Endpoints"
+                      name="epaync_endpoints"
+                      invisible="code != 'epaync'">
+                    <group string="Customer Redirect URLs">
+                        <field name="epaync_url_return" readonly="1"
+                               widget="CopyClipboardChar"/>
+                        <field name="epaync_url_success" readonly="1"
+                               widget="CopyClipboardChar"/>
+                        <field name="epaync_url_cancel" readonly="1"
+                               widget="CopyClipboardChar"/>
+                        <field name="epaync_url_refused" readonly="1"
+                               widget="CopyClipboardChar"/>
+                        <field name="epaync_url_error" readonly="1"
+                               widget="CopyClipboardChar"/>
+                    </group>
+                    <group string="Server Notification (IPN)">
+                        <field name="epaync_url_ipn" readonly="1"
+                               widget="CopyClipboardChar"/>
+                    </group>
+                </page>
+            </page>
+
+        </field>
+    </record>
+
+</odoo>

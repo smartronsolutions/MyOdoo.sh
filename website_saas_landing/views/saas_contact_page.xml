@@ -3,7 +3,7 @@
 <data>
 
 <record id="saas_contact_page" model="website.page">
-  <field name="name">Contact Us (My Odoo NC)</field>
+  <field name="name">Contact Us (My Odoo SH)</field>
   <field name="url">/contact-us</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -11,34 +11,198 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_contact_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo NC — Contact Us</t>
+<t t-set="additional_title">My Odoo SH — Contact Us</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
-<div class="mo_site mo_contact_page">
-<div class="top-glow"></div><div class="top-glow two"></div>
+<div class="mo_site mo_contact_page mh">
+<div class="top-glow"></div>
 
-<main><section class="page-hero"><div class="container"><span class="eyebrow"><i></i><span data-i18n="contact_badge">Let’s talk</span></span><h1 data-i18n-html="contact_title">Tell us what you want<br/><span class="gradient-text">to improve</span></h1><p data-i18n="contact_intro">Share your current challenges and we will help you identify the right Odoo starting point.</p></div></section>
-    <section style="padding-top:20px"><div class="container contact-grid">
-      <div class="contact-info"><h2 data-i18n="build_better">Build a better way to work.</h2><p data-i18n="contact_text">Whether you are starting from spreadsheets or replacing an existing system, a clear first conversation can save months of complexity.</p><div class="contact-line"><i>◈</i><div><b>Demo presentation</b><br/><span>Company contact details intentionally omitted</span></div></div><div class="contact-line"><i>⌁</i><div><b data-i18n="location">Market focus</b><br/><span>New Caledonia</span></div></div><div class="contact-line"><i>◷</i><div><b data-i18n="availability">Project scope</b><br/><span>Implementation, hosting, support and integrations</span></div></div></div>
-      <form class="form" id="contactForm"><div class="form-row"><div class="field"><label data-i18n="full_name">Full name</label><input required="required" name="name" placeholder="Your name"/></div><div class="field"><label data-i18n="company">Company</label><input name="company" placeholder="Company name"/></div></div><div class="form-row"><div class="field"><label data-i18n="email">Email</label><input required="required" type="email" name="email" placeholder="name@company.com"/></div><div class="field"><label data-i18n="phone">Phone</label><input name="phone" placeholder="+687 ..."/></div></div><div class="field"><label data-i18n="interest">I am interested in</label><select><option data-i18n="new_implementation">A new Odoo implementation</option><option data-i18n="support_existing">Support for an existing Odoo</option><option data-i18n="website_ecommerce">Website / eCommerce</option><option data-i18n="hosting_option">Hosting and maintenance</option><option data-i18n="other">Other</option></select></div><div class="field"><label data-i18n="message">Message</label><textarea required="required" placeholder="Tell us briefly about your business and needs"></textarea></div><button class="btn btn-primary" type="submit" style="width:100%" data-i18n="send_request">Send request</button></form>
+<main>
+    <!-- ============================================================
+         1. HERO (compact) + 2. Contact section
+         ============================================================ -->
+    <section class="cf-hero">
+      <div class="cf-hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <span class="mh-pill"><i></i><span data-i18n="contact_badge">Let's talk</span></span>
+        <h1 data-i18n-html="contact_title">Tell us what you want<br/><span class="mh-grad">to improve</span></h1>
+        <p class="cf-hero-sub" data-i18n="contact_intro">Tell us about your current Odoo setup, business challenges or new project requirements.</p>
+      </div>
+    </section>
+
+    <section class="cf-body" id="enquiry-form"><div class="container cf-grid">
+      <!-- Left: information panel -->
+      <aside class="cf-panel">
+        <div class="cf-panel-bg" aria-hidden="true">
+          <svg viewBox="0 0 600 700" preserveAspectRatio="xMidYMid slice">
+            <g class="cf-net">
+              <path d="M40 560 L180 430 L340 500 L470 330 L580 400"/>
+              <path d="M40 200 L180 300 L340 220 L470 380 L580 300"/>
+              <path d="M40 560 L40 200"/><path d="M180 430 L180 300"/><path d="M340 500 L340 220"/>
+              <path d="M470 330 L470 380"/><path d="M580 400 L580 300"/>
+            </g>
+            <g class="cf-net-dots">
+              <circle cx="40" cy="560" r="3"/><circle cx="180" cy="430" r="3"/><circle cx="340" cy="500" r="3"/>
+              <circle cx="470" cy="330" r="3"/><circle cx="580" cy="400" r="3"/><circle cx="40" cy="200" r="3"/>
+              <circle cx="180" cy="300" r="3"/><circle cx="340" cy="220" r="3"/><circle cx="470" cy="380" r="3"/>
+              <circle cx="580" cy="300" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cf-panel-inner">
+          <h2 data-i18n="build_better">Build a better way to work.</h2>
+          <p class="cf-panel-text" data-i18n="contact_text">Whether you are starting from spreadsheets or replacing an existing system, a clear first conversation can save months of complexity.</p>
+
+          <div class="cf-info">
+            <div class="cf-info-item">
+              <span class="cf-info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+              <div><b data-i18n="contact_method">Contact</b><small data-i18n="contact_method_text">Send us a message using the form and our team will reply by email.</small></div>
+            </div>
+            <div class="cf-info-item">
+              <span class="cf-info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span>
+              <div><b data-i18n="location">Market focus</b><small data-i18n="location_value">Businesses worldwide</small></div>
+            </div>
+            <div class="cf-info-item">
+              <span class="cf-info-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 4v5c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V7z"/></svg></span>
+              <div><b data-i18n="availability">Project scope</b><small>Implementation, hosting, support and integrations</small></div>
+            </div>
+          </div>
+
+          <p class="cf-trust"><i class="mh-pulse"></i><span data-i18n="cf_trust">Enquiries reviewed by our team</span></p>
+        </div>
+      </aside>
+
+      <!-- Right: form / success state -->
+      <div class="cf-form-col">
+        <t t-if="request.params.get('enquiry')">
+          <div class="cf-success" role="status">
+            <span class="cf-success-ico">✓</span>
+            <h3 data-i18n="cf_success_title">Thank you. Your enquiry has been received.</h3>
+            <p data-i18n="cf_success_text">Our team will review your request and get back to you shortly.</p>
+            <p class="cf-success-ref">
+              <span data-i18n="cf_reference">Enquiry</span>
+              #<t t-out="request.params.get('enquiry')"/>
+            </p>
+            <button class="mh-btn mh-btn-ghost" onclick="location.href='/'" data-i18n="cf_back_home">Back to home</button>
+          </div>
+        </t>
+        <t t-else="">
+          <t t-if="request.params.get('enquiry_error')">
+            <div class="cf-error-banner" role="alert" data-i18n="cf_error_banner">Please check the highlighted fields and try again.</div>
+          </t>
+          <form class="cf-form" id="saasEnquiryForm" method="post"
+                action="/website_saas_landing/enquiry" enctype="multipart/form-data">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name="redirect" t-att-value="request.httprequest.path"/>
+            <input type="hidden" name="source_page" t-att-value="request.httprequest.path"/>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cf_name" data-i18n="cf_full_name">Full Name *</label>
+                <input id="cf_name" name="full_name" type="text" required="required" placeholder="Your name"/>
+                <small class="cf-field-error" data-error-for="full_name" data-i18n="cf_err_required">This field is required.</small>
+              </div>
+              <div class="cf-field">
+                <label for="cf_company" data-i18n="cf_company">Company Name *</label>
+                <input id="cf_company" name="company_name" type="text" required="required" placeholder="Company name"/>
+                <small class="cf-field-error" data-error-for="company_name" data-i18n="cf_err_required">This field is required.</small>
+              </div>
+            </div>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cf_email" data-i18n="cf_email">Email *</label>
+                <input id="cf_email" name="email" type="email" required="required" placeholder="name@company.com"/>
+                <small class="cf-field-error" data-error-for="email" data-i18n="cf_err_email">Enter a valid email address.</small>
+              </div>
+              <div class="cf-field">
+                <label for="cf_phone" data-i18n="cf_phone">Phone / WhatsApp</label>
+                <input id="cf_phone" name="phone" type="tel" placeholder="Your phone number"/>
+              </div>
+            </div>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cf_country" data-i18n="cf_country">Country</label>
+                <input id="cf_country" name="country" type="text" placeholder="Country"/>
+              </div>
+              <div class="cf-field">
+                <label for="cf_interest" data-i18n="cf_interest">I am interested in *</label>
+                <select id="cf_interest" name="interested_in" required="required">
+                  <option value="implementation" data-i18n="cf_opt1">New Odoo Implementation</option>
+                  <option value="hosting" data-i18n="cf_opt2">Odoo Hosting / MyOdoo.sh</option>
+                  <option value="migration" data-i18n="cf_opt3">Odoo Migration</option>
+                  <option value="customisation" data-i18n="cf_opt4">Odoo Customisation</option>
+                  <option value="module_development" data-i18n="cf_opt5">Custom Module Development</option>
+                  <option value="integration" data-i18n="cf_opt6">Integration / API</option>
+                  <option value="backup_recovery" data-i18n="cf_opt7">Backup &amp; Recovery</option>
+                  <option value="support_maintenance" data-i18n="cf_opt8">Support &amp; Maintenance</option>
+                  <option value="existing_project" data-i18n="cf_opt9">Existing Odoo Project</option>
+                  <option value="other" data-i18n="cf_opt10">Other</option>
+                </select>
+                <small class="cf-field-error" data-error-for="interested_in" data-i18n="cf_err_required">This field is required.</small>
+              </div>
+            </div>
+
+            <div class="cf-row">
+              <div class="cf-field">
+                <label for="cf_version" data-i18n="cf_version">Current Odoo Version <span class="cf-optional">(optional)</span></label>
+                <input id="cf_version" name="odoo_version" type="text" placeholder="e.g. 18.0"/>
+              </div>
+              <div class="cf-field">
+                <label for="cf_users" data-i18n="cf_users">Estimated Users <span class="cf-optional">(optional)</span></label>
+                <input id="cf_users" name="estimated_users" type="text" placeholder="e.g. 25"/>
+              </div>
+            </div>
+
+            <div class="cf-field">
+              <label for="cf_message" data-i18n="cf_message">Project Details / Message *</label>
+              <textarea id="cf_message" name="message" required="required" rows="5" placeholder="Tell us briefly about your business and what you want to improve"></textarea>
+              <small class="cf-field-error" data-error-for="message" data-i18n="cf_err_required">This field is required.</small>
+            </div>
+
+            <button class="mh-btn mh-btn-primary cf-submit" type="submit" data-i18n="cf_submit">Send request</button>
+            <p class="cf-privacy">
+              <span data-i18n="cf_privacy">Your information is only used to respond to your enquiry.</span>
+              <a href="/privacy" data-i18n="cf_privacy_link">Privacy Policy</a>
+            </p>
+          </form>
+        </t>
+      </div>
     </div></section>
   </main>
 
-<t t-call="website_saas_landing.mo_cta"/>
-<t t-call="website_saas_landing.mo_footer"/>
+    <!-- ============================================================
+         3. FINAL CTA
+         ============================================================ -->
+    <section class="mh-cta cf-cta">
+      <div class="mh-cta-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice">
+          <g class="mh-net">
+            <path d="M100 340 L300 250 L520 300 L760 190 L980 240 L1130 120"/>
+            <path d="M100 120 L300 200 L520 140 L760 240 L980 170 L1130 280"/>
+            <path d="M100 340 L100 120"/><path d="M300 250 L300 200"/><path d="M520 300 L520 140"/>
+            <path d="M760 190 L760 240"/><path d="M980 240 L980 170"/><path d="M1130 120 L1130 280"/>
+          </g>
+          <g class="mh-net-dots">
+            <circle cx="100" cy="340" r="4"/><circle cx="300" cy="250" r="4"/><circle cx="520" cy="300" r="4"/>
+            <circle cx="760" cy="190" r="4"/><circle cx="980" cy="240" r="4"/><circle cx="1130" cy="120" r="4"/>
+            <circle cx="100" cy="120" r="4"/><circle cx="300" cy="200" r="4"/><circle cx="520" cy="140" r="4"/>
+            <circle cx="760" cy="240" r="4"/><circle cx="980" cy="170" r="4"/><circle cx="1130" cy="280" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="container mh-cta-inner">
+        <h2 data-i18n="cta_title">Ready to Launch Your Odoo Environment?</h2>
+        <p data-i18n="cta_text">Start a new project or talk to us about moving your existing Odoo setup.</p>
+        <div class="mh-cta-row">
+          <button class="mh-btn mh-btn-white" onclick="location.href='/pricing'" data-i18n="cta_btn1">Start Your Project</button>
+          <button class="mh-btn mh-btn-outline" onclick="location.href='#enquiry-form'" data-i18n="cta_btn2">Book a Demo</button>
+        </div>
+      </div>
+    </section>
 
-<div class="toast" id="mo_toast">Demo form submitted. No data has been sent.</div>
-<script>
-var mo_form = document.getElementById('contactForm');
-if(mo_form){
-  mo_form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var t = document.getElementById('mo_toast');
-    if(t){ t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 3500); }
-    mo_form.reset();
-  });
-}
-</script>
+<t t-call="website_saas_landing.mo_footer"/>
 
 </div>
 </div>

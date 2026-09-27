@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        EpayNC redirect form.
+
+        `payment.transaction._get_processing_values` renders this template with
+        the dict returned by `_get_specific_rendering_values` expanded as
+        TOP-LEVEL QWeb variables (via `ir.qweb._render`), not as a single
+        "rendering_values" object. We therefore receive:
+          - api_url     : gateway POST URL (used as the form action)
+          - form_fields : dict of all hidden POST fields (vads_* + signature)
+
+        The form is injected into the page and submitted by the payment engine's
+        `payment_form.js` (`_processRedirectFlow`), so no inline script is needed.
+    -->
+    <template id="redirect_form" name="EpayNC: Redirect Form">
+        <form t-att-action="api_url" method="post" id="o_payment_redirect_form">
+            <t t-foreach="form_fields.items()" t-as="item">
+                <input type="hidden" t-att-name="item[0]" t-att-value="str(item[1])"/>
+            </t>
+        </form>
+    </template>
+</odoo>

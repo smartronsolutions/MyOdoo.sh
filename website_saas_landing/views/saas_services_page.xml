@@ -3,7 +3,7 @@
 <data>
 
 <record id="saas_services_page" model="website.page">
-  <field name="name">Services (My Odoo NC)</field>
+  <field name="name">Services (My Odoo SH)</field>
   <field name="url">/services</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -11,26 +11,507 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_services_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo NC — Services</t>
+<t t-set="additional_title">My Odoo SH — Services</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
-<div class="mo_site mo_services_page">
+<div class="mo_site mo_services_page mh">
 <div class="top-glow"></div><div class="top-glow two"></div>
 
-<main><section class="page-hero"><div class="container"><span class="eyebrow"><i></i><span data-i18n="services_badge">Odoo solutions</span></span><h1 data-i18n-html="services_title">Services designed around<br/><span class="gradient-text">your real operations</span></h1><p data-i18n="services_intro">From first consultation to daily support, we help you deploy a practical business platform—not just another piece of software.</p></div></section>
-    <section style="padding-top:25px"><div class="container service-grid">
-      <article class="service-card"><div class="icon">◎</div><div><h3 data-i18n="implementation">Odoo Implementation</h3><p data-i18n="implementation_text">A structured setup aligned with your processes, users and priorities.</p><ul><li data-i18n="process_discovery">Process discovery and solution design</li><li data-i18n="configuration">Application configuration</li><li data-i18n="data_setup">Initial data and user setup</li><li data-i18n="team_training">Team training and go-live support</li></ul></div></article>
-      <article class="service-card"><div class="icon">⚙</div><div><h3 data-i18n="customization">Customization &amp; Integration</h3><p data-i18n="customization_text">Adapt Odoo where your business needs more than standard configuration.</p><ul><li data-i18n="custom_workflows">Custom workflows and automation</li><li data-i18n="third_party">Third-party service integration</li><li data-i18n="reports">Reports and business dashboards</li><li data-i18n="website_shop">Website and online shop connection</li></ul></div></article>
-      <article class="service-card"><div class="icon">▤</div><div><h3 data-i18n="finance_service">Invoicing, Accounting &amp; TGC</h3><p data-i18n="finance_service_text">Build a cleaner financial workflow from quotation to payment follow-up.</p><ul><li data-i18n="quotes_invoices">Quotations, invoices and credit notes</li><li data-i18n="payment_tracking">Payment tracking and reminders</li><li data-i18n="tgc_setup">TGC configuration and reporting</li><li data-i18n="bank_recon">Bank reconciliation support</li></ul></div></article>
-      <article class="service-card"><div class="icon">◫</div><div><h3 data-i18n="retail_ops">Retail &amp; Operations</h3><p data-i18n="retail_ops_text">Keep stock, purchasing, sales and customer data synchronized.</p><ul><li data-i18n="inventory_purchase">Inventory and purchasing</li><li data-i18n="pos">Point of Sale</li><li data-i18n="ecommerce">eCommerce and product catalogue</li><li data-i18n="fleet_projects">Fleet, projects and task management</li></ul></div></article>
-      <article class="service-card"><div class="icon">◇</div><div><h3>EpayNC &amp; Online Payments</h3><p>Connect local digital payment journeys with invoices, customer portals and eCommerce.</p><ul><li>Customer portal payments</li><li>Online store payment flow</li><li>Secure transaction experience</li><li>Implementation and configuration support</li></ul></div></article>
-      <article class="service-card"><div class="icon">✦</div><div><h3>AI Assistant for Odoo</h3><p>Help teams find information, complete tasks and understand daily workflows more quickly.</p><ul><li>Invoice and quotation guidance</li><li>Overdue invoice lookup</li><li>TGC process assistance</li><li>First-level user support</li></ul></div></article>
-      <article class="service-card"><div class="icon">☁</div><div><h3 data-i18n="hosting">Hosting &amp; Security</h3><p data-i18n="hosting_text">A managed environment built for reliable everyday access.</p><ul><li data-i18n="secure_cloud">Secure cloud hosting</li><li data-i18n="backups">Automated backups</li><li data-i18n="ssl">SSL and domain configuration</li><li data-i18n="monitoring">Updates and platform monitoring</li></ul></div></article>
-      <article class="service-card"><div class="icon">✦</div><div><h3 data-i18n="support_training">Support &amp; Training</h3><p data-i18n="support_training_text">Help your users adopt Odoo confidently and get answers quickly.</p><ul><li data-i18n="remote_support">Remote functional support</li><li data-i18n="user_training">User and administrator training</li><li data-i18n="optimization">Process optimization reviews</li><li data-i18n="continuous_improvement">Continuous improvement roadmap</li></ul></div></article>
+<main>
+    <!-- ============================================================
+         1. HERO
+         ============================================================ -->
+    <section class="svc-hero"><div class="container svc-hero-grid">
+      <div class="svc-hero-copy">
+        <h1 data-i18n="svc_hero_title">Odoo Cloud Hosting, Deployment &amp; Management</h1>
+        <p class="lead" data-i18n="svc_hero_text">Deploy and manage your Odoo environment with hosting, development workflows, backups and technical support in one place. Start a new project or move your existing setup to MyOdoo.sh.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="location.href='/pricing'" data-i18n="svc_btn_plans">View Hosting Plans</button>
+          <button class="btn btn-light" onclick="location.href='/contact-us'" data-i18n="svc_btn_demo">Book a Demo</button>
+        </div>
+        <div class="hero-labels">
+          <span class="hero-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10a4 4 0 0 0 .6-8A5.5 5.5 0 0 0 7 8a4.5 4.5 0 0 0 0 9z"/></svg><span data-i18n="label_hosting">Managed Hosting</span></span>
+          <span class="hero-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2.4"/><circle cx="7" cy="18" r="2.4"/><circle cx="17" cy="10" r="2.4"/><path d="M7 8.4v7.2"/><path d="M17 12.4c0 3-2.4 5.6-5.6 5.6H9.4"/></svg><span data-i18n="label_deploy">Deployment Workflows</span></span>
+          <span class="hero-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="label_backup">Backup &amp; Recovery</span></span>
+          <span class="hero-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="12.5" width="4" height="6" rx="1.6"/><rect x="17" y="12.5" width="4" height="6" rx="1.6"/><path d="M20 18.5a3 3 0 0 1-3 3h-3"/></svg><span data-i18n="label_support">Technical Support</span></span>
+        </div>
+      </div>
+      <div class="plat-preview" role="img" aria-label="Platform preview showing a project with development, staging and production environments, production status, latest deployment, backup status, resource usage and custom domain.">
+        <div class="pp-head">
+          <span class="pp-tag" data-i18n="pp_tag">Platform preview</span>
+          <span class="pp-project">My Company</span>
+        </div>
+        <div class="pp-tabs">
+          <span class="pp-tab" data-i18n="pp_dev">Development</span>
+          <span class="pp-tab" data-i18n="pp_staging">Staging</span>
+          <span class="pp-tab is-active" data-i18n="pp_prod">Production</span>
+        </div>
+        <div class="pp-body">
+          <div class="pp-row"><span data-i18n="pp_status">Production status</span><b class="pp-ok"><i></i><span data-i18n="pp_running">Running</span></b></div>
+          <div class="pp-row"><span data-i18n="pp_deploy">Latest deployment</span><b data-i18n="pp_branch">Deployed from main branch</b></div>
+          <div class="pp-row"><span data-i18n="pp_backup">Backup</span><b data-i18n="pp_backup_val">Scheduled daily</b></div>
+          <div class="pp-row"><span data-i18n="pp_res">Resource usage</span><span class="pp-bars"><i style="width:42%"></i><i style="width:64%"></i></span></div>
+          <div class="pp-row"><span data-i18n="pp_domain">Custom domain</span><b>your-company.example</b></div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         2. HOSTING & PLATFORM SERVICES (bento grid)
+         ============================================================ -->
+    <section id="services" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="hosting_services_title">Hosting &amp; Platform Services</h2>
+        <p data-i18n="hosting_services_text">Explore the services behind your Odoo environment\u2014from hosting and deployment to data protection, performance management and ongoing support.</p>
+      </div>
+      <div class="mh-bento svc-bento">
+        <article class="mh-card svc-bento-lg" data-reveal="1">
+          <h3 data-i18n="card_hosting">Managed Odoo Hosting</h3>
+          <p data-i18n="card_hosting_text">Run your Odoo applications on a managed environment with database, storage and hosting configuration handled together.</p>
+          <div class="svc-stack" aria-hidden="true">
+            <span class="svc-stack-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-4-9 4v8l9 4 9-4z"/><path d="M3.3 7.5 12 12l8.7-4.5"/><path d="M12 12v9"/></svg><b>Odoo App</b></span>
+            <span class="svc-stack-link"></span>
+            <span class="svc-stack-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg><b>Workers</b></span>
+            <span class="svc-stack-link"></span>
+            <span class="svc-stack-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="3"/><path d="M5 5.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/><path d="M5 11.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg><b>PostgreSQL</b></span>
+            <span class="svc-stack-link"></span>
+            <span class="svc-stack-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h4l2 2.5h6A2.5 2.5 0 0 1 20.5 10v6.5A2.5 2.5 0 0 1 18 19H6a2.5 2.5 0 0 1-2.5-2.5z"/></svg><b>Filestore</b></span>
+          </div>
+          <a class="svc-bento-link" href="#hosting" data-i18n="link_hosting">Explore Hosting →</a>
+        </article>
+
+        <article class="mh-card svc-bento-sm" data-reveal="1">
+          <h3 data-i18n="card_deploy">Deployment Management</h3>
+          <p data-i18n="card_deploy_text">Organise code changes, review deployments and move updates through a controlled release workflow.</p>
+          <a class="svc-bento-link" href="#deployment" data-i18n="link_deploy">Explore Deployment →</a>
+        </article>
+        <article class="mh-card svc-bento-sm" data-reveal="1">
+          <h3 data-i18n="card_backup">Backup &amp; Recovery</h3>
+          <p data-i18n="card_backup_text">Protect your database and uploaded files with scheduled backups and a defined recovery process.</p>
+          <a class="svc-bento-link" href="#backups" data-i18n="link_backup">Explore Backups →</a>
+        </article>
+        <article class="mh-card svc-bento-sm" data-reveal="1">
+          <h3 data-i18n="card_monitor">Monitoring</h3>
+          <p data-i18n="card_monitor_text">Keep track of resource usage and application health to understand how your environment is performing.</p>
+          <a class="svc-bento-link" href="#monitoring" data-i18n="link_monitor">Explore Monitoring →</a>
+        </article>
+        <article class="mh-card svc-bento-sm" data-reveal="1">
+          <h3 data-i18n="card_security">Security &amp; SSL</h3>
+          <p data-i18n="card_security_text">HTTPS on your own domain, secure access and environment configuration handled for you.</p>
+          <a class="svc-bento-link" href="#support" data-i18n="link_security">Explore Support →</a>
+        </article>
+        <article class="mh-card svc-bento-sm" data-reveal="1">
+          <h3 data-i18n="card_scaling">Scaling &amp; Resources</h3>
+          <p data-i18n="card_scaling_text">Review storage, memory and compute requirements, and scale your environment when you need to.</p>
+          <a class="svc-bento-link" href="#plans" data-i18n="link_scaling">Compare Plans →</a>
+        </article>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         3. MANAGED HOSTING
+         ============================================================ -->
+    <section id="hosting"><div class="container split-panel">
+      <div class="split-copy">
+        <h2 data-i18n="mng_title">A Managed Environment for Your Odoo Applications</h2>
+        <p data-i18n="mng_text">Bring your Odoo application, PostgreSQL database and uploaded files together in a managed hosting environment. We help configure the platform so your team can focus on day-to-day business.</p>
+        <ul class="feat-list">
+          <li><b data-i18n="mng_f1">Environment setup</b><small data-i18n="mng_f1_text">Initial configuration of your Odoo hosting environment.</small></li>
+          <li><b data-i18n="mng_f2">Database and file storage</b><small data-i18n="mng_f2_text">Hosting for business records, attachments and uploaded documents.</small></li>
+          <li><b data-i18n="mng_f3">Domain and HTTPS</b><small data-i18n="mng_f3_text">Connect your business domain and configure secure access.</small></li>
+          <li><b data-i18n="mng_f4">Resource planning</b><small data-i18n="mng_f4_text">Choose hosting capacity based on workload, storage and expected usage.</small></li>
+        </ul>
+        <button class="btn btn-primary" onclick="location.href='/pricing'" data-i18n="mng_cta">Compare Hosting Plans</button>
+      </div>
+      <div class="dia dia-infra" role="img" aria-label="Diagram: your team connects over HTTPS to a MyOdoo.sh managed environment containing the Odoo application, the PostgreSQL database and file storage. Backups and monitoring run alongside the environment.">
+        <div class="dia-node dia-users"><b data-i18n="dia_users">Your team &amp; customers</b><small>https://your-company.example</small></div>
+        <div class="dia-line" aria-hidden="true"></div>
+        <div class="dia-env">
+          <div class="dia-env-label" data-i18n="dia_env">MyOdoo.sh Managed Environment</div>
+          <div class="dia-node dia-app"><b>Odoo Application</b><small data-i18n="dia_app">Community or Enterprise</small></div>
+          <div class="dia-split" aria-hidden="true"></div>
+          <div class="dia-row2">
+            <div class="dia-node"><b>PostgreSQL</b><small data-i18n="dia_db">Database</small></div>
+            <div class="dia-node"><b data-i18n="dia_files">File Storage</b><small data-i18n="dia_files_text">Attachments &amp; documents</small></div>
+          </div>
+        </div>
+        <div class="dia-side">
+          <div class="dia-node dia-side-node"><b data-i18n="dia_backup">Backups</b><small data-i18n="dia_backup_text">Scheduled copies</small></div>
+          <div class="dia-node dia-side-node"><b data-i18n="dia_monitor">Monitoring</b><small data-i18n="dia_monitor_text">Resource &amp; health checks</small></div>
+        </div>
+        <p class="dia-note" data-i18n="dia_infra_note">Backups and monitoring run alongside the environment and are connected to the database and file storage.</p>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         4. DEVELOPMENT & DEPLOYMENT (CI/CD diagram)
+         ============================================================ -->
+    <section id="deployment" class="mh-dark"><div class="container">
+      <div class="mh-head on-dark" data-reveal="1">
+        <h2 data-i18n="dep_title">Develop, Test and Release with Confidence</h2>
+        <p data-i18n="dep_text">Keep development work separate from daily operations. Review changes in a testing environment before releasing approved updates to production.</p>
+      </div>
+      <div class="mh-pipeline" data-reveal="1" role="img" aria-label="CI/CD pipeline: git push, build, automated tests, staging, approval, production.">
+        <div class="mh-pipe-line" aria-hidden="true"><i></i></div>
+        <div class="mh-pipe-steps">
+          <span class="mh-step"><i>1</i><b data-i18n="pipe_s1">Git Push</b><small>main</small></span>
+          <span class="mh-step"><i>2</i><b data-i18n="pipe_s2">Build</b><small>dependencies</small></span>
+          <span class="mh-step"><i>3</i><b data-i18n="pipe_s3">Automated Tests</b><small>checks</small></span>
+          <span class="mh-step"><i>4</i><b data-i18n="pipe_s4">Staging</b><small>review</small></span>
+          <span class="mh-step"><i>5</i><b data-i18n="pipe_s5">Approval</b><small>checkpoint</small></span>
+          <span class="mh-step is-live"><i>6</i><b data-i18n="pipe_s6">Production</b><small>release</small></span>
+        </div>
+      </div>
+      <div class="mh-terminal" data-reveal="1">
+        <div class="mh-term-bar" aria-hidden="true"><span class="mh-dots"><i></i><i></i><i></i></span><span>deploy.log</span><span class="mh-term-state">success</span></div>
+        <pre class="mh-term-body">✓ Repository synchronized
+✓ Dependencies installed
+✓ Database upgraded
+✓ Assets compiled
+✓ Production deployment complete</pre>
+      </div>
+      <div class="sec-cta"><button class="mh-btn mh-btn-outline" onclick="location.href='/contact-us'" data-i18n="dep_cta">Discuss Your Deployment Workflow</button></div>
+    </div></section>
+
+    <!-- ============================================================
+         5. BACKUPS & RECOVERY
+         ============================================================ -->
+    <section id="backups"><div class="container">
+      <div class="sec-head">
+        <h2 data-i18n="bkp_title">Protect Your Data. Prepare for Recovery.</h2>
+        <p data-i18n="bkp_text">Keep recoverable copies of your Odoo database and file storage. Backup schedules, retention and restoration options should be clearly defined for your selected hosting plan.</p>
+      </div>
+      <div class="svc-cards">
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></div>
+          <h3 data-i18n="bkp_c1">Scheduled Backups</h3>
+          <p data-i18n="bkp_c1_text">Create backup copies according to your plan’s configured schedule.</p>
+        </div>
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z"/><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <h3 data-i18n="bkp_c2">Retention &amp; Storage</h3>
+          <p data-i18n="bkp_c2_text">Understand how long backup copies are retained and where they are stored.</p>
+        </div>
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div>
+          <h3 data-i18n="bkp_c3">Recovery Assistance</h3>
+          <p data-i18n="bkp_c3_text">Restore from an available backup through the supported recovery process.</p>
+        </div>
+      </div>
+      <div class="split-panel">
+        <div class="dia dia-backup" role="img" aria-label="Diagram: the PostgreSQL database and file storage feed a scheduled backup process, producing dated recovery points. Restores can target a test environment, while restoring production requires an explicit confirmation step.">
+          <div class="dia-row2">
+            <div class="dia-node"><b>PostgreSQL</b><small data-i18n="dia_db">Database</small></div>
+            <div class="dia-node"><b data-i18n="dia_files">File Storage</b><small data-i18n="dia_files_text">Attachments &amp; documents</small></div>
+          </div>
+          <div class="dia-line" aria-hidden="true"></div>
+          <div class="dia-node dia-process"><b data-i18n="bkp_process">Scheduled backup process</b><small data-i18n="bkp_process_text">Runs on your plan’s configured schedule</small></div>
+          <div class="dia-line" aria-hidden="true"></div>
+          <div class="bp-points">
+            <span class="bp" data-i18n="bkp_point1">Recovery point · most recent</span>
+            <span class="bp" data-i18n="bkp_point2">Recovery point · previous</span>
+            <span class="bp" data-i18n="bkp_point3">Recovery point · older</span>
+          </div>
+          <div class="dia-line" aria-hidden="true"></div>
+          <div class="restore-paths">
+            <div class="restore-path"><b data-i18n="bkp_restore_test">Restore to a Test Environment</b><small data-i18n="bkp_restore_test_text">Safely verify data before anything changes in production.</small></div>
+            <div class="restore-path is-danger"><b data-i18n="bkp_restore_prod">Restore Production</b><small data-i18n="bkp_restore_prod_text">Requires explicit confirmation before the restore is applied.</small></div>
+          </div>
+        </div>
+        <div class="split-copy">
+          <h3 class="sub-h3" data-i18n="bkp_details">Plan details</h3>
+          <ul class="feat-list">
+            <li><b data-i18n="bkp_d1">Backup frequency</b><small data-i18n="bkp_d1_text">Daily with the standard plan; confirmed with your selected plan.</small></li>
+            <li><b data-i18n="bkp_d2">Retention</b><small data-i18n="bkp_d2_text">Up to 5 copies in rotation; off-site copies are available with Custom.</small></li>
+            <li><b data-i18n="bkp_d3">Storage location</b><small data-i18n="bkp_d3_text">Backup storage locations are confirmed in your plan.</small></li>
+            <li><b data-i18n="bkp_d4">Restoration</b><small data-i18n="bkp_d4_text">Assisted restoration through the supported recovery process.</small></li>
+            <li><b data-i18n="bkp_d5">Restoration fees</b><small data-i18n="bkp_d5_text">Work outside your plan’s included scope is quoted separately.</small></li>
+          </ul>
+          <p class="note-box" data-i18n="bkp_note">Backup and recovery commitments are limited to what is defined in your plan. No guaranteed recovery time is advertised.</p>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         6. MONITORING & PERFORMANCE (observability dashboard)
+         ============================================================ -->
+    <section id="monitoring" class="mh-dark"><div class="container">
+      <div class="mh-head on-dark" data-reveal="1">
+        <h2 data-i18n="mon_title">Visibility Into Your Odoo Environment</h2>
+        <p data-i18n="mon_text">Understand resource usage, review application health and identify when your environment needs attention or additional capacity.</p>
+      </div>
+      <div class="mh-obs" data-reveal="1" role="img" aria-label="Monitoring dashboard with sample data: CPU, memory, disk, response time, requests, database connections and uptime, all operational.">
+        <div class="mh-obs-top">
+          <span class="mh-obs-status"><i class="mh-pulse"></i><span data-i18n="obs_ok">All systems operational</span></span>
+          <span class="mh-obs-sample" data-i18n="obs_sample">Sample data</span>
+        </div>
+        <div class="mh-obs-grid">
+          <div class="mh-obs-tile"><small>CPU Usage</small><b>38%</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,26 15,20 30,23 45,15 60,19 75,11 90,15 105,8 120,12"/></svg></div>
+          <div class="mh-obs-tile"><small data-i18n="obs_mem">Memory Usage</small><b>57%</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,22 15,24 30,18 45,20 60,14 75,17 90,12 105,14 120,10"/></svg></div>
+          <div class="mh-obs-tile"><small data-i18n="obs_disk">Disk Usage</small><b>29%</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,28 15,28 30,27 45,26 60,26 75,25 90,24 105,24 120,23"/></svg></div>
+          <div class="mh-obs-tile"><small data-i18n="obs_rt">Response Time</small><b>118 ms</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,24 15,22 30,25 45,18 60,21 75,15 90,19 105,13 120,16"/></svg></div>
+          <div class="mh-obs-tile"><small data-i18n="obs_req">Requests</small><b>1.4k/h</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,20 15,14 30,18 45,10 60,16 75,8 90,13 105,6 120,9"/></svg></div>
+          <div class="mh-obs-tile"><small data-i18n="obs_conn">Database Connections</small><b>12 / 100</b><svg viewBox="0 0 120 34" preserveAspectRatio="none" aria-hidden="true"><polyline class="mh-spark-line" points="0,27 15,25 30,26 45,22 60,24 75,20 90,22 105,18 120,20"/></svg></div>
+          <div class="mh-obs-tile is-status"><small data-i18n="obs_uptime">Uptime</small><b class="ok"><i></i><span data-i18n="obs_monitored">Monitored</span></b><small class="mh-obs-note" data-i18n="obs_uptime_note">Continuous monitoring</small></div>
+        </div>
+        <div class="mh-obs-chart" aria-hidden="true">
+          <svg viewBox="0 0 600 120" preserveAspectRatio="none">
+            <polygon class="mh-spark-fill" points="0,86 60,72 120,78 180,54 240,62 300,38 360,46 420,26 480,34 540,18 600,24 600,120 0,120"/>
+            <polyline class="mh-spark-line" points="0,86 60,72 120,78 180,54 240,62 300,38 360,46 420,26 480,34 540,18 600,24"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sec-cta"><button class="mh-btn mh-btn-outline" onclick="location.href='/pricing'" data-i18n="mon_cta">Find the Right Hosting Capacity</button></div>
+    </div></section>
+
+    <!-- ============================================================
+         7. MIGRATION (flow diagram)
+         ============================================================ -->
+    <section id="migration" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mig_title">Move Your Existing Odoo Setup to MyOdoo.sh</h2>
+        <p data-i18n="mig_text">Plan your move with a review of your current version, database, uploaded files and custom modules. Validate the destination environment before switching your users to the new setup.</p>
+      </div>
+      <div class="svc-mig" data-reveal="1" role="img" aria-label="Migration diagram: the existing Odoo server with PostgreSQL, filestore and custom addons transfers into the MyOdoo.sh managed environment with backups, monitoring and SSL.">
+        <div class="svc-mig-panel">
+          <span class="svc-mig-label" data-i18n="mig_src">Existing server</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-4-9 4v8l9 4 9-4z"/><path d="M3.3 7.5 12 12l8.7-4.5"/><path d="M12 12v9"/></svg>Odoo</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="3"/><path d="M5 5.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/><path d="M5 11.5v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>PostgreSQL</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h4l2 2.5h6A2.5 2.5 0 0 1 20.5 10v6.5A2.5 2.5 0 0 1 18 19H6a2.5 2.5 0 0 1-2.5-2.5z"/></svg>Filestore</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 8 5 12l3.5 4"/><path d="M15.5 8 19 12l-3.5 4"/><path d="M13.5 5.5 10.5 18.5"/></svg>Custom Addons</span>
+        </div>
+        <div class="svc-mig-transfer" aria-hidden="true">
+          <span class="svc-mig-arrow"><i></i></span>
+          <span class="svc-mig-arrow"><i></i></span>
+          <span class="svc-mig-arrow"><i></i></span>
+          <span class="svc-mig-arrow"><i></i></span>
+          <span class="svc-mig-transfer-label" data-i18n="mig_transfer">Transfer</span>
+        </div>
+        <div class="svc-mig-panel is-dest">
+          <span class="svc-mig-label">MyOdoo.sh</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>Managed Environment</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3z"/></svg>Backups</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l3-7 4 14 3-7h4"/></svg>Monitoring</span>
+          <span class="svc-mig-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="11" width="15" height="9" rx="2.2"/><path d="M8 11V7.8a4 4 0 0 1 8 0V11"/></svg>SSL</span>
+        </div>
+      </div>
+      <ol class="svc-mig-steps" data-reveal="1">
+        <li data-i18n="mig_step1">Audit</li>
+        <li data-i18n="mig_step2">Transfer</li>
+        <li data-i18n="mig_step3">Validate</li>
+        <li data-i18n="mig_step4">Go Live</li>
+      </ol>
+      <p class="note-box" data-i18n="mig_note">Hosting migration and Odoo version upgrades are separate services. Compatibility work and any required downtime are assessed before migration.</p>
+      <div class="sec-cta"><button class="mh-btn mh-btn-primary" onclick="location.href='/contact-us'" data-i18n="mig_cta">Request a Migration Review</button></div>
+    </div></section>
+
+    <!-- ============================================================
+         8. COMMUNITY & ENTERPRISE
+         ============================================================ -->
+    <section id="editions" class="alt"><div class="container">
+      <div class="edition-band">
+        <div>
+          <span class="eyebrow"><i></i><span data-i18n="editions_badge">Community &amp; Enterprise</span></span>
+          <h2 data-i18n="editions_title">Both editions. No usage limits.</h2>
+          <p data-i18n="editions_text">Run the open-source community core or the full enterprise edition — every plan includes unlimited uses and unlimited apps, with no hidden extras.</p>
+        </div>
+        <div class="edition-cards">
+          <div class="edition-card"><b>Community</b><small data-i18n="edition_community">The complete open-source core</small></div>
+          <div class="edition-card"><b>Enterprise</b><small data-i18n="edition_enterprise">Official apps, upgrades and vendor support</small></div>
+          <div class="edition-card is-hl"><b>∞ Unlimited uses &amp; apps</b><small data-i18n="edition_nolimit">No limits on any plan</small></div>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         9. IMPLEMENTATION, CUSTOMISATION & BUSINESS SUPPORT (pillars)
+         ============================================================ -->
+    <section id="professional" class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="pro_title">Implementation, Customisation &amp; Business Support</h2>
+        <p data-i18n="pro_text">Go beyond hosting with services that help configure Odoo around your processes, connect your systems and prepare your team for daily use.</p>
+      </div>
+      <div class="svc-pillars">
+        <article class="svc-pillar" data-reveal="1">
+          <div class="svc-pv is-setup" aria-hidden="true">
+            <div class="svc-pv-row is-done"><i>✓</i><span data-i18n="pv_discovery">Discovery</span><em>done</em></div>
+            <div class="svc-pv-row is-done"><i>✓</i><span data-i18n="pv_config">Configuration</span><em>done</em></div>
+            <div class="svc-pv-row is-active"><i>3</i><span data-i18n="pv_data">Data import</span><em data-i18n="pv_progress">in progress</em></div>
+            <div class="svc-pv-row is-muted"><i>4</i><span data-i18n="pv_golive">Go-live</span><em data-i18n="pv_planned">planned</em></div>
+          </div>
+          <span class="svc-pillar-no">01</span>
+          <h3 data-i18n="pillar_impl">Implementation</h3>
+          <p data-i18n="pillar_impl_text">Discovery, setup, process mapping and configuration.</p>
+          <ul class="svc-pillar-list">
+            <li data-i18n="impl_1">Process discovery and solution design</li>
+            <li data-i18n="impl_2">Application configuration and permissions</li>
+            <li data-i18n="impl_3">Initial data and go-live support</li>
+          </ul>
+        </article>
+
+        <article class="svc-pillar" data-reveal="1">
+          <div class="svc-pv is-code" aria-hidden="true">
+            <div class="svc-pv-code">
+              <span><em>class</em> CustomReport(models.Model):</span>
+              <span class="svc-pv-ind"><em>_name</em> = <b>'custom.report'</b></span>
+              <span class="svc-pv-ind"><em>def</em> generate(self):</span>
+              <span class="svc-pv-ind2"><em>return</em> report_data</span>
+            </div>
+            <div class="svc-pv-tags"><span>my_module</span><span>report.xml</span><span>tests</span></div>
+          </div>
+          <span class="svc-pillar-no">02</span>
+          <h3 data-i18n="pillar_custom">Customisation</h3>
+          <p data-i18n="pillar_custom_text">Custom modules, workflows, reports and integrations.</p>
+          <ul class="svc-pillar-list">
+            <li data-i18n="cust_1">Custom modules and automation</li>
+            <li data-i18n="cust_2">Reports and business dashboards</li>
+            <li data-i18n="cust_3">API and third-party integrations</li>
+          </ul>
+        </article>
+
+        <article class="svc-pillar" data-reveal="1">
+          <div class="svc-pv is-support" aria-hidden="true">
+            <div class="svc-pv-ticket"><i class="ok"></i><span data-i18n="pv_training">Training session</span><em data-i18n="pv_resolved">Resolved</em></div>
+            <div class="svc-pv-ticket"><i class="warn"></i><span data-i18n="pv_review">Workflow review</span><em data-i18n="pv_inprogress">In progress</em></div>
+            <div class="svc-pv-ticket"><i class="ok"></i><span data-i18n="pv_optim">Optimisation report</span><em data-i18n="pv_delivered">Delivered</em></div>
+          </div>
+          <span class="svc-pillar-no">03</span>
+          <h3 data-i18n="pillar_support">Business Support</h3>
+          <p data-i18n="pillar_support_text">Training, troubleshooting, optimisation and ongoing assistance.</p>
+          <ul class="svc-pillar-list">
+            <li data-i18n="bs_1">Functional support and troubleshooting</li>
+            <li data-i18n="bs_2">Team and administrator training</li>
+            <li data-i18n="bs_3">Process optimisation reviews</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note-box" data-i18n="pro_note">Professional services are scoped separately unless explicitly included in your plan.</p>
+    </div></section>
+
+    <!-- ============================================================
+         10. SUPPORT
+         ============================================================ -->
+    <section id="support" class="alt"><div class="container">
+      <div class="sec-head">
+        <h2 data-i18n="sup_title">Support for Your Hosting and Ongoing Operations</h2>
+        <p data-i18n="sup_text">Get assistance with your hosting environment and access additional technical or functional services when your project needs them.</p>
+      </div>
+      <div class="svc-cards">
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10a4 4 0 0 0 .6-8A5.5 5.5 0 0 0 7 8a4.5 4.5 0 0 0 0 9z"/><path d="M9.5 20h5"/></svg></div>
+          <h3 data-i18n="sup_c1">Hosting Support</h3>
+          <p data-i18n="sup_c1_text">Environment availability, access, platform configuration and hosting incidents.</p>
+        </div>
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1 5 5l-8.4 8.4-5-5z"/><path d="M4 20l1.6-4.6"/></svg></div>
+          <h3 data-i18n="sup_c2">Technical Maintenance</h3>
+          <p data-i18n="sup_c2_text">Deployment troubleshooting, application errors and compatibility investigations within the agreed scope.</p>
+        </div>
+        <div class="svc-card is-static">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div>
+          <h3 data-i18n="sup_c3">Functional Assistance</h3>
+          <p data-i18n="sup_c3_text">Business workflows, configuration guidance and user training where included or separately purchased.</p>
+        </div>
+      </div>
+      <div class="compare-wrap support-table">
+        <table class="compare-table">
+          <thead>
+            <tr><th data-i18n="sup_th">Support channels</th><th>Standard</th><th>Custom</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="sup_channels">Channels</td><td data-label="Standard">Email</td><td data-label="Custom">Phone, email &amp; chat</td></tr>
+            <tr><td data-i18n="sup_response">Target response time</td><td data-label="Standard">24 hours</td><td data-label="Custom">Agreed in your plan</td></tr>
+            <tr><td data-i18n="sup_hours">Support hours</td><td data-label="Standard">Business hours</td><td data-label="Custom">Confirmed in your plan</td></tr>
+            <tr><td data-i18n="sup_scope">Scope</td><td data-label="Standard">Hosting and platform support</td><td data-label="Custom">Hosting plus agreed technical and functional scope</td></tr>
+            <tr><td data-i18n="sup_manager">Account manager</td><td data-label="Standard">—</td><td data-label="Custom">Dedicated</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note-box" data-i18n="sup_note">Support covers the agreed platform and technical scope. It does not include unlimited development or functional consulting.</p>
+      <div class="sec-cta"><button class="btn btn-primary" onclick="location.href='/contact-us'" data-i18n="sup_cta">Contact Our Team</button></div>
+    </div></section>
+
+    <!-- ============================================================
+         11. GETTING STARTED
+         ============================================================ -->
+    <section id="getting-started"><div class="container">
+      <div class="sec-head">
+        <h2 data-i18n="gs_title">From Your First Project to Production</h2>
+        <p data-i18n="gs_text">A clear onboarding process for new environments and existing Odoo installations.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-step"><h3 data-i18n="gs_s1">Share Your Requirements</h3><p data-i18n="gs_s1_text">Tell us your Odoo version, edition, users, storage needs and custom modules.</p></article>
+        <article class="process-step"><h3 data-i18n="gs_s2">Configure Your Environment</h3><p data-i18n="gs_s2_text">Select the hosting resources and services required for your project.</p></article>
+        <article class="process-step"><h3 data-i18n="gs_s3">Test Your Setup</h3><p data-i18n="gs_s3_text">Validate applications, data and important workflows before launch.</p></article>
+        <article class="process-step"><h3 data-i18n="gs_s4">Launch &amp; Maintain</h3><p data-i18n="gs_s4_text">Move into production with the agreed backup, monitoring and support arrangements.</p></article>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         12. PLAN COMPARISON
+         ============================================================ -->
+    <section id="plans" class="alt"><div class="container">
+      <div class="sec-head">
+        <h2 data-i18n="plan_title">Choose the Right Environment for Your Business</h2>
+        <p data-i18n="plan_text">Compare hosting resources, environments and support options to find a plan that matches your workload.</p>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th data-i18n="plan_feature">What's included</th><th>Standard</th><th>Custom</th></tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="plan_compute">Compute resources</td><td data-label="Standard">2 dedicated workers</td><td data-label="Custom">Dedicated compute sized to your workload</td></tr>
+            <tr><td data-i18n="plan_memory">Memory allocation</td><td data-label="Standard">Included with your worker allocation</td><td data-label="Custom">Sized to your workload</td></tr>
+            <tr><td data-i18n="plan_storage">Included storage</td><td data-label="Standard">5 GB NVMe SSD</td><td data-label="Custom">Configured for your data volume</td></tr>
+            <tr><td data-i18n="plan_extra_storage">Additional storage</td><td data-label="Standard">Pay as you go</td><td data-label="Custom">Quoted separately</td></tr>
+            <tr><td data-i18n="plan_prod_env">Production environment</td><td data-label="Standard">Included</td><td data-label="Custom">Included</td></tr>
+            <tr><td data-i18n="plan_envs">Staging &amp; development</td><td data-label="Standard">Staging included</td><td data-label="Custom">Staging and sandbox included</td></tr>
+            <tr><td data-i18n="plan_repo">Repository integration</td><td data-label="Standard">GitHub · single repository</td><td data-label="Custom">GitHub · multiple repositories</td></tr>
+            <tr><td data-i18n="plan_backup">Backups</td><td data-label="Standard">Daily · up to 5 copies</td><td data-label="Custom">Daily · up to 5 copies, plus off-site</td></tr>
+            <tr><td data-i18n="plan_domain">Domain &amp; HTTPS</td><td data-label="Standard">Free subdomain + SSL</td><td data-label="Custom">Custom domain + wildcard SSL</td></tr>
+            <tr><td data-i18n="plan_access">Access permissions</td><td data-label="Standard">Odoo user permissions</td><td data-label="Custom">Odoo permissions plus environment access controls</td></tr>
+            <tr><td data-i18n="plan_support">Support</td><td data-label="Standard">Email · 24h target response</td><td data-label="Custom">Phone, email &amp; chat · dedicated account manager</td></tr>
+            <tr><td data-i18n="plan_licence">Odoo Enterprise licence</td><td data-label="Standard">Quoted separately</td><td data-label="Custom">Quoted separately</td></tr>
+            <tr><td data-i18n="plan_migration">Migration &amp; upgrades</td><td data-label="Standard">Quoted separately</td><td data-label="Custom">Quoted separately</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note-box" data-i18n="plan_note">Plan details are defined by your selected offer. Any service level commitment is stated in your agreement.</p>
+      <div class="sec-cta"><button class="btn btn-primary" onclick="location.href='/pricing'" data-i18n="plan_cta">View Full Pricing</button></div>
+    </div></section>
+
+    <!-- ============================================================
+         13. FAQ
+         ============================================================ -->
+    <section id="faq"><div class="container">
+      <div class="sec-head">
+        <h2 data-i18n="svc_faq_title">Questions About Hosting Your Odoo Environment</h2>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q1">Can I move my existing Odoo database?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a1">Yes. Migration starts with a review of your Odoo version, database, file storage and custom modules to establish compatibility and the transfer process.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q2">Can I use custom modules?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a2">Compatible custom modules can be deployed within the capabilities of your selected environment. Some modules may require additional dependencies or technical review.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q3">Is Odoo Enterprise licensing included?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a3">Your quotation or selected offer will specify whether Enterprise licensing is included or must be provided separately.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q4">Can I test changes before production?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a4">Staging and development availability depends on your selected plan. These environments allow changes to be reviewed before the production release.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q5">How are backups managed?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a5">Backup frequency, retention and restoration options are defined by your hosting plan.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q6">Can I increase resources later?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a6">Available upgrade options depend on your environment. Contact us to review storage, memory and compute requirements before changing capacity.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="svc_faq_q7">Does hosting include implementation and development?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="svc_faq_a7">Implementation, custom development and functional consulting are included only when explicitly stated in your plan or service agreement.</div></div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         14. FINAL CTA
+         ============================================================ -->
+    <section class="final-cta"><div class="container">
+      <h2 data-i18n="final_title">Ready to Host Your Odoo Project?</h2>
+      <p data-i18n="final_text">Tell us what you want to run, migrate or improve. We’ll help you choose the right environment and services.</p>
+      <div class="final-actions">
+        <button class="btn btn-white" onclick="location.href='/contact-us'" data-i18n="final_btn1">Book a Consultation</button>
+        <button class="btn btn-outline-white" onclick="location.href='/pricing'" data-i18n="final_btn2">View Hosting Plans</button>
+      </div>
     </div></section>
   </main>
 
-<t t-call="website_saas_landing.mo_cta"/>
 <t t-call="website_saas_landing.mo_footer"/>
 
 </div>

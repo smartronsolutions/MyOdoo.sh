@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend the payment.transaction form view with EpayNC fields -->
+    <record id="payment_transaction_epaync_form_inherit" model="ir.ui.view">
+        <field name="name">payment.transaction.epaync.form.inherit</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="EpayNC Details"
+                          name="epaync_details"
+                          invisible="provider_code != 'epaync'">
+                        <group>
+                            <group string="Gateway Response">
+                                <field name="epaync_gateway_status"/>
+                                <field name="epaync_gateway_trans_id"/>
+                                <field name="epaync_auth_number"/>
+                                <field name="epaync_auth_result"/>
+                                <field name="epaync_auth_result_msg"/>
+                                <field name="epaync_risk_result"/>
+                                <field name="epaync_payment_date"/>
+                            </group>
+                            <group string="Card">
+                                <field name="epaync_card_brand"/>
+                                <field name="epaync_card_type"/>
+                                <field name="epaync_ip_address"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="References">
+                                <field name="epaync_vads_trans_id"/>
+                                <field name="epaync_shop_id"/>
+                                <field name="epaync_merchant_ref"/>
+                                <field name="epaync_signature"/>
+                                <field name="epaync_processing_time"/>
+                            </group>
+                        </group>
+                        <separator string="Raw Data"/>
+                        <group>
+                            <field name="epaync_request_data" widget="text" colspan="2"/>
+                            <field name="epaync_response_data" widget="text" colspan="2"/>
+                            <field name="epaync_webhook_payload" widget="text" colspan="2"/>
+                            <field name="epaync_headers" widget="text" colspan="2"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
