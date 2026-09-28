@@ -43,16 +43,31 @@ class OdooInstanceConfig(models.Model):
                 if ctx_rows and ctx_rows[0].value != new_value:
                     ctx_rows.write({'value': new_value})
 
+    def _sync_admin_pass_to_instance(self):
+        """Mirror an ``admin_passwd`` row back onto the instance's Master Password field.
+
+        The instance field is the one that knows how to rewrite odoo.conf and restart
+        the container, so keep it in sync when an admin edits the raw config row.
+        """
+        if self.env.context.get('skip_admin_pass_sync'):
+            return
+        for record in self.filtered(lambda r: r.name == 'admin_passwd' and r.instance_id):
+            instance = record.instance_id
+            if instance.admin_pass != record.value:
+                instance.with_context(skip_admin_pass_sync=True).admin_pass = record.value
+
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
         records._sync_workers_to_instance()
+        records._sync_admin_pass_to_instance()
         return records
 
     def write(self, vals):
         res = super().write(vals)
         if 'value' in vals or 'name' in vals:
             self._sync_workers_to_instance()
+            self._sync_admin_pass_to_instance()
         return res
 
     @api.model

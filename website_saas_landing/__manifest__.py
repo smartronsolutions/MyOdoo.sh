@@ -1,6 +1,6 @@
 {
     'name': 'Website SaaS Landing Page',
-    'version': '18.0.8.4.0',
+    'version': '18.0.9.1.0',
     'category': 'Website',
     'summary': 'Premium SaaS landing page, set as the website home page (/) - Odoo 18 compatible',
     'description': '''
@@ -30,14 +30,18 @@
     'license': 'LGPL-3',
     'depends': [
         'auth_signup',
+        'crm',
+        'mail',
         'website',
     ],
     'data': [
         'security/ir.model.access.csv',
         'security/website_saas_enquiry_security.xml',
         'data/ir_sequence_data.xml',
+        'data/ir_config_parameter_data.xml',
         'data/mail_template_data.xml',
         'views/website_saas_enquiry_views.xml',
+        'views/crm_lead_views.xml',
         'views/res_config_settings_views.xml',
         'views/saas_header.xml',
         'views/auth_pages.xml',

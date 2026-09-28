@@ -19,11 +19,13 @@ function notify(message) {
     window.toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-// Restarting the containers takes a couple of minutes: the portal shows a countdown
-// banner during that window, then confirms the instance is running again.
-const INSTANCE_RESTART_WINDOW_MS = 2 * 60 * 1000;
-const INSTANCE_RESTART_POLL_MS = 5000;
-const INSTANCE_RESTART_MAX_POLLS = 24;
+// Restarting the containers takes only a few seconds, so the portal counts down 30 seconds
+// and then confirms the instance is running again. The countdown is just the prediction the
+// user reads; the polls below keep checking afterwards, so a slower restart still resolves
+// to "running" instead of leaving a stale banner behind.
+const INSTANCE_RESTART_WINDOW_MS = 30 * 1000;
+const INSTANCE_RESTART_POLL_MS = 2000;
+const INSTANCE_RESTART_MAX_POLLS = 30;
 
 const STATUS_BANNER_COPY = {
     running: {
@@ -42,7 +44,7 @@ const STATUS_BANNER_COPY = {
         className: "is-restarting",
         icon: "fa-refresh",
         title: "Your instance is restarting",
-        sub: "It will take about 2 minutes.",
+        sub: "It will take about 30 seconds.",
     },
 };
 
@@ -55,6 +57,9 @@ const SHELL_RESIZE_MIN_COLS = 40;
 const SHELL_RESIZE_MAX_COLS = 500;
 const SHELL_RESIZE_MIN_ROWS = 10;
 const SHELL_RESIZE_MAX_ROWS = 200;
+// A write that fails must never swallow what was typed: the characters are put back on the
+// queue and retried after this delay (instead of hammering a server that is already unwell).
+const SHELL_WRITE_RETRY_MS = 500;
 
 publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
     selector: ".page, .myodoo-portal-root",
@@ -104,6 +109,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._startLogsAutoRefresh();
         this._fetchLiveLogsIfVisible();
         this._initInstanceShell();
+        this._initInstanceAdminPassword();
 
         if (location.hash) {
             const targetTab = document.querySelector('[data-tab="' + location.hash.slice(1) + '"]');
@@ -857,7 +863,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         const actionCopy = {
             start: [_t("Start Instance"), _t("Start Odoo, workers and public web services?")],
-            suspend: [_t("Suspend Instance"), _t("This will stop public access and all background workers until started again.")],
+            suspend: [_t("Stop Instance"), _t("This will stop public access and all background workers until started again.")],
             restart: [_t("Restart Services"), _t("The instance may be briefly unavailable while services reload.")],
             redeploy: [_t("Redeploy Latest Revision"), _t("Pull the latest connected GitHub code and restart the instance?")],
             remove: [
@@ -931,10 +937,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const res = await this.rpc(endpoint, { instance_id: instanceId });
                 if (res && res.success) {
                     if (action === "restart") {
-                        // The containers need a couple of minutes to come back: show the
-                        // countdown banner instead of reloading (which would immediately
-                        // display "Running" again) and confirm at the end.
-                        notify(_t("Restart in progress — your instance will be back in about 2 minutes."));
+                        // The containers come back within seconds: show the 30 second countdown
+                        // banner instead of reloading (which would immediately display
+                        // "Running" again) and confirm once the polls see it running.
+                        notify(_t("Restart in progress — your instance will be back in about 30 seconds."));
                         this._beginInstanceRestart(instanceId);
                         return;
                     }
@@ -1047,7 +1053,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const secs = String(remaining % 60).padStart(2, "0");
                 this._applyStatusBanner(
                     "restarting",
-                    "It will take about 2 minutes. Time remaining: " + mins + ":" + secs + "."
+                    "It will take about 30 seconds. Time remaining: " + mins + ":" + secs + "."
                 );
             } else {
                 this._applyStatusBanner(
@@ -3957,6 +3963,50 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
     },
 
     // =====================================================================
+    // Instance Settings — Odoo master password (admin_passwd)
+    // =====================================================================
+
+    _initInstanceAdminPassword() {
+        const button = document.getElementById("saveInstanceAdminPass");
+        const input = document.getElementById("instanceAdminPass");
+        if (!button || !input || button.dataset.bound) {
+            return;
+        }
+        button.dataset.bound = "1";
+        button.addEventListener("click", async () => {
+            const value = (input.value || "").trim();
+            const status = document.getElementById("instanceAdminPassStatus");
+            if (!value) {
+                notify(_t("Please enter a master password."));
+                input.focus();
+                return;
+            }
+            button.disabled = true;
+            if (status) status.textContent = "Saving…";
+            try {
+                const res = await this.rpc("/saas/instance/admin-password", {
+                    instance_id: this._getInstanceId(),
+                    admin_pass: value,
+                });
+                if (res && res.success) {
+                    if (status) status.textContent = "Saved — Odoo restarted";
+                    notify(_t("Master password updated. Odoo restarted."));
+                } else if (res && res.storage_full) {
+                    if (status) status.textContent = "";
+                    notify(res.error || _t("Could not update the master password."));
+                } else {
+                    if (status) status.textContent = "Error";
+                    notify((res && res.error) || _t("Could not update the master password."));
+                }
+            } catch (err) {
+                if (status) status.textContent = "Error";
+                notify(_t("Could not update the master password."));
+            }
+            button.disabled = false;
+        });
+    },
+
+    // =====================================================================
     // Instance shell — live terminal inside the customer containers
     // =====================================================================
 
@@ -3973,19 +4023,33 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._shellTextBuffer = "";
         this._shellKeys = [];
         this._shellWriting = false;
-        this._shellPending = "";
-        this._shellPendingAt = 0;
+        this._shellWriteRetryAt = 0;
+        // The terminal paints the server screen only. Nothing is ever drawn from a local
+        // keystroke, so what is on screen is exactly what the shell received: no second
+        // drawing layer, no display offset, and deleted characters cannot reappear.
         this._shellServer = null;
         this._shellRows = [];
         this._shellRowKeys = [];
         this._shellSize = null;
         this._shellFullscreen = false;
         this._shellFitTimer = null;
+        // True while the view should stick to the newest output. Scrolling up turns it
+        // off so new output does not yank the user away from the lines they are reading.
+        this._shellFollow = true;
 
         const wrap = document.getElementById("shellScreenWrap");
         if (!wrap) {
             return;
         }
+        // The `start()` guard above already stops a second widget instance from
+        // initialising, but the terminal DOM is looked up by id: if this method ever runs
+        // again (widget restart, a new instance on the same page, a soft re-render) the
+        // click/key/paste handlers below would all be bound a second time. Key the guard
+        // on the shell DOM itself so one terminal has exactly one set of handlers.
+        if (wrap.dataset.shellInitialized) {
+            return;
+        }
+        wrap.dataset.shellInitialized = "1";
 
         document.querySelectorAll("[data-shell-kind]").forEach((btn) => {
             btn.addEventListener("click", () => {
@@ -4114,7 +4178,37 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                     termRemembered = "";
                 }
             });
+            // The pane now also returns tmux history, so the <pre> really has content to
+            // scroll. Follow the newest output only while the user stays at the bottom:
+            // scrolling up pins the view to what they are reading.
+            termScreen.addEventListener("scroll", () => {
+                const atBottom = termScreen.scrollTop + termScreen.clientHeight
+                    >= termScreen.scrollHeight - 4;
+                this._shellFollow = atBottom;
+                this._shellUpdateJump();
+            });
         }
+        // The button is part of the template, but create it on the fly when an older page
+        // cache does not have it yet, so the scroll fix works without a module upgrade.
+        if (!document.getElementById("shellJump") && wrap) {
+            const jump = document.createElement("button");
+            jump.type = "button";
+            jump.id = "shellJump";
+            jump.className = "shell-jump";
+            jump.title = "Jump to the newest output";
+            jump.innerHTML = '<i class="fa fa-arrow-down"></i> Latest output';
+            wrap.appendChild(jump);
+        }
+        document.getElementById("shellJump")?.addEventListener("click", () => {
+            this._shellFollow = true;
+            const el = document.getElementById("shellScreen");
+            if (el) {
+                el.scrollTop = el.scrollHeight;
+            }
+            this._shellUpdateJump();
+            document.getElementById("shellKeys")?.focus();
+        });
+        this._shellUpdateJump();
         const pasteFromClipboard = async () => {
             try {
                 const text = await navigator.clipboard.readText();
@@ -4247,6 +4341,14 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         }
     },
 
+    /** Show "jump to latest" only while the user is reading older output. */
+    _shellUpdateJump() {
+        const button = document.getElementById("shellJump");
+        if (button) {
+            button.classList.toggle("show", !this._shellFollow);
+        }
+    },
+
     _shellUpdateTarget() {
         const el = document.getElementById("shellTarget");
         if (!el) {
@@ -4351,9 +4453,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._shellHash = "";
         this._shellTextBuffer = "";
         this._shellKeys = [];
-        this._shellPending = "";
+        this._shellWriteRetryAt = 0;
         this._shellServer = null;
         this._shellSize = null;
+        // A fresh session starts at the newest output.
+        this._shellFollow = true;
         this._shellUpdateTarget();
         const blankScreen = document.getElementById("shellScreen");
         if (blankScreen && !this._shellRows.length) {
@@ -4443,6 +4547,23 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._shellSchedulePoll(30);
     },
 
+    /**
+     * A write already returned the screen: keep the poll loop fast for the next few seconds
+     * (a command may still be printing) without spending an extra request right now.
+     */
+    _shellKeepPollingFast() {
+        if (!this._shellConnected) {
+            return;
+        }
+        this._shellPollDelay = SHELL_POLL_FAST_MS;
+        this._shellHotUntil = Date.now() + 4000;
+        if (this._shellBusy) {
+            this._shellKickPending = true;
+            return;
+        }
+        this._shellSchedulePoll(SHELL_POLL_FAST_MS);
+    },
+
     async _shellPoll() {
         if (this._shellBusy || !this._shellConnected) {
             return false;
@@ -4488,7 +4609,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         const screen = res.screen || "";
         const cursor = res.cursor || [0, 0];
         // Most polls return the very same screen, so skip the DOM work in that case.
-        const hash = screen.length + ":" + cursor.join(",") + ":" + screen.slice(-160);
+        // The whole screen is compared, not just its tail: editing a character in the middle
+        // of a long line leaves both the total length and the last 160 characters untouched,
+        // and that used to make the repaint skip so the keystroke never appeared.
+        const hash = cursor.join(",") + ":" + screen;
         if (hash === this._shellHash) {
             return false;
         }
@@ -4504,15 +4628,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._shellHash = hash;
         const rows = this._shellParseAnsi(screen);
         this._shellServer = { rows: rows, cursor: cursor };
-        // What we echoed locally is either confirmed by this screen, or it was wrong.
-        if (this._shellEchoConfirmed(rows, cursor)) {
-            this._shellPending = "";
-        }
         this._shellPaint();
         return true;
     },
 
-    /** Draw the last screen from the server, plus any not-yet-confirmed local echo. */
+    /** Draw the last screen the server reported — the only thing ever painted. */
     _shellPaint() {
         const server = this._shellServer;
         const el = document.getElementById("shellScreen");
@@ -4533,7 +4653,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             // Only rows that really changed are rewritten: rebuilding the whole screen on
             // every keystroke is what made typing crawl.
             const onCursor = index === cursorRow ? server.cursor[0] : -1;
-            const html = this._shellRowHtml(rows[index], onCursor, this._shellPending);
+            const html = this._shellRowHtml(rows[index], onCursor);
             let row = this._shellRows[index];
             if (row && this._shellRowKeys[index] === html) {
                 if (!row.parentNode) {
@@ -4552,18 +4672,25 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 el.appendChild(row);
             }
         }
+        // Keep the newest line in view while following; when the user scrolled up we leave
+        // the viewport exactly where they put it.
+        if (this._shellFollow) {
+            el.scrollTop = el.scrollHeight;
+        }
+        this._shellUpdateJump();
     },
 
     /**
      * One terminal row as HTML: a single innerHTML write beats hundreds of DOM nodes.
-     * ``pending`` is the locally echoed text, drawn at the cursor until the server says so.
+     * The row is rendered exactly as the server reported it; the only thing added is the
+     * cursor cell, so no character on screen is ever invented locally.
      */
-    _shellRowHtml(cells, cursorCol, pending) {
-        const echo = cursorCol >= 0 ? String(pending || "") : "";
+    _shellRowHtml(cells, cursorCol) {
+        const list = cells || [];
         let html = "";
         let column = 0;
         let placed = false;
-        (cells || []).forEach((cell) => {
+        list.forEach((cell) => {
             const start = column;
             const end = column + cell.text.length;
             const style = cell.style ? ' style="' + cell.style + '"' : "";
@@ -4571,17 +4698,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const offset = cursorCol - start;
                 html += "<span" + style + ">"
                     + this._shellEscape(cell.text.slice(0, offset)) + "</span>";
-                if (echo) {
-                    html += "<span" + style + ">" + this._shellEscape(echo) + "</span>";
-                    html += '<span class="shell-cursor"> </span>';
-                    html += "<span" + style + ">"
-                        + this._shellEscape(cell.text.slice(offset)) + "</span>";
-                } else {
-                    html += '<span class="shell-cursor"' + style + ">"
-                        + this._shellEscape(cell.text.slice(offset, offset + 1) || " ") + "</span>";
-                    html += "<span" + style + ">"
-                        + this._shellEscape(cell.text.slice(offset + 1)) + "</span>";
-                }
+                html += '<span class="shell-cursor"' + style + ">"
+                    + this._shellEscape(cell.text.slice(offset, offset + 1) || " ") + "</span>";
+                html += "<span" + style + ">"
+                    + this._shellEscape(cell.text.slice(offset + 1)) + "</span>";
                 placed = true;
             } else {
                 html += "<span" + style + ">" + this._shellEscape(cell.text) + "</span>";
@@ -4589,9 +4709,6 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             column = end;
         });
         if (!placed && cursorCol >= column) {
-            if (echo) {
-                html += "<span>" + this._shellEscape(echo) + "</span>";
-            }
             html += '<span class="shell-cursor">'
                 + " ".repeat(Math.max(1, cursorCol - column)) + "</span>";
         }
@@ -4693,6 +4810,16 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         if (!input) {
             return;
         }
+        // Exactly one keydown + one input listener on the keystroke field. The input is
+        // found by id, so if this method ever ran twice a second pair would send every
+        // physical key twice. Drop any previous pair first and keep the handlers on the
+        // element itself, so re-running this method can never duplicate the binding.
+        if (input._saasShellOnKeydown) {
+            input.removeEventListener("keydown", input._saasShellOnKeydown);
+        }
+        if (input._saasShellOnInput) {
+            input.removeEventListener("input", input._saasShellOnInput);
+        }
         const special = {
             Enter: "Enter", Backspace: "BSpace", Tab: "Tab", Escape: "Escape",
             ArrowUp: "Up", ArrowDown: "Down", ArrowLeft: "Left", ArrowRight: "Right",
@@ -4702,7 +4829,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             c: "C-c", d: "C-d", z: "C-z", l: "C-l", a: "C-a",
             e: "C-e", u: "C-u", k: "C-k", w: "C-w", r: "C-r",
         };
-        input.addEventListener("keydown", (ev) => {
+        const onKeydown = (ev) => {
             // In fullscreen, Escape leaves fullscreen instead of reaching the terminal;
             // Shift+Escape still sends a real ESC (for vim, less, ...).
             if (ev.key === "Escape" && this._shellFullscreen && !ev.shiftKey) {
@@ -4713,8 +4840,6 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const key = control[ev.key.toLowerCase()];
                 if (key) {
                     ev.preventDefault();
-                    // A control key can redraw the whole line: drop the local echo.
-                    this._shellClearEcho();
                     this._shellSendKeys([key]);
                 }
                 return;
@@ -4722,89 +4847,45 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             if (special[ev.key]) {
                 // Enter/Tab/arrows/Backspace...: real keys, never text, so they must not
                 // reach the input event below (otherwise one press would be sent twice).
+                // Backspace goes out as tmux ``BSpace``, which the PTY reads as its erase
+                // character (0x7f / DEL). Nothing is deleted on screen here: the shell
+                // redraws the line and that redraw is what gets painted.
                 ev.preventDefault();
-                if (ev.key === "Backspace") {
-                    this._shellEchoBackspace();
-                } else {
-                    this._shellClearEcho();
-                }
                 this._shellSendKeys([special[ev.key]]);
             }
-        });
+        };
         // Plain characters — typing, paste, mobile keyboards, IME — are only sent from here,
         // so one keystroke always equals exactly one send.
-        input.addEventListener("input", () => {
+        const onInput = () => {
             const value = input.value;
             input.value = "";
             if (value) {
-                this._shellEcho(value);
+                // Send only. No character is ever drawn from here: the screen comes back
+                // from the PTY, so the shell's own echo is the single source of truth.
                 this._shellSendText(value);
             }
-        });
+        };
+        input._saasShellOnKeydown = onKeydown;
+        input._saasShellOnInput = onInput;
+        input.addEventListener("keydown", onKeydown);
+        input.addEventListener("input", onInput);
     },
 
-    // -- locally echoed typing -------------------------------------------------
-    // The round trip to the container is what makes a web terminal feel slow, so printable
-    // characters are painted immediately at the cursor. The next screen from the server
-    // either confirms them or replaces them.
+    // There is deliberately no local echo and no line editing in JS: every keystroke is sent
+    // raw to the PTY and the terminal only ever paints what the PTY sent back, so the screen
+    // can never disagree with what the shell received.
 
-    _shellEcho(text) {
-        if (!this._shellConnected || this._shellPending.length > 400) {
-            return;
-        }
-        const clean = String(text).replace(/[^\x20-\x7e]/g, "");
-        if (!clean) {
-            return;
-        }
-        this._shellPending += clean;
-        this._shellPendingAt = Date.now();
-        this._shellPaint();
-    },
-
-    _shellEchoBackspace() {
-        if (!this._shellPending) {
-            return;
-        }
-        this._shellPending = this._shellPending.slice(0, -1);
-        this._shellPendingAt = Date.now();
-        this._shellPaint();
-    },
-
-    _shellClearEcho() {
-        if (!this._shellPending) {
-            return;
-        }
-        this._shellPending = "";
-        this._shellPaint();
-    },
-
-    /** True when the screen that just arrived already shows our locally echoed text. */
-    _shellEchoConfirmed(rows, cursor) {
-        if (!this._shellPending) {
-            return false;
-        }
-        // Too old to trust: better to drop it than to show text the shell never received
-        // (a password prompt, vim, ... does not echo what you type).
-        if (Date.now() - this._shellPendingAt > 1500) {
-            return true;
-        }
-        const row = rows[cursor[1]] || [];
-        const before = row.map((cell) => cell.text).join("").slice(0, cursor[0]);
-        return before.endsWith(this._shellPending);
-    },
-
-    /** Text is batched briefly so fast typing travels in blocks, not one request each. */
+    /**
+     * Queue the characters and send them at once. There is deliberately no debounce: a timer
+     * here would delay every keystroke by its own duration before the request had even left
+     * the browser, and the single write below already keeps the order intact. Typing faster
+     * than the round trip simply accumulates here and travels in the next request.
+     */
     _shellSendText(text) {
         if (!this._shellConnected) {
             return;
         }
         this._shellTextBuffer += text;
-        clearTimeout(this._shellTextTimer);
-        this._shellTextTimer = setTimeout(() => this._shellFlushText(), 20);
-    },
-
-    _shellFlushText() {
-        clearTimeout(this._shellTextTimer);
         this._shellPump();
     },
 
@@ -4828,6 +4909,13 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         if (!this._shellConnected || this._shellWriting) {
             return;
         }
+        if (this._shellWriteRetryAt && Date.now() < this._shellWriteRetryAt) {
+            // A previous request failed: wait the backoff out instead of spinning on it.
+            clearTimeout(this._shellWriteTimer);
+            this._shellWriteTimer = setTimeout(
+                () => this._shellPump(), this._shellWriteRetryAt - Date.now());
+            return;
+        }
         const text = this._shellTextBuffer;
         const keys = this._shellKeys;
         if (!text && !keys.length) {
@@ -4839,8 +4927,33 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._shellRpc("/saas/instance/shell/write", { text: text || null, keys: keys })
             // Read back immediately: waiting for the next scheduled poll would show the
             // echo a whole tick late.
-            .then(() => this._shellKickPoll())
-            .catch(() => {})
+            .then((res) => {
+                if (!res || res.success === false) {
+                    throw new Error((res && res.error) || "write failed");
+                }
+                this._shellWriteRetryAt = 0;
+                if (res.screen !== undefined) {
+                    // The response carries the screen captured straight after the keystroke
+                    // was applied, so the echo is painted from it: no second round trip.
+                    this._shellRender(res);
+                    this._shellVeil(false);
+                    this._shellStatus(res.dead ? "process exited" : "live");
+                    // A command may still be printing, so keep the loop fast for a moment --
+                    // but do not spend an extra request now, the screen is already here.
+                    this._shellKeepPollingFast();
+                } else {
+                    // A cached page without the merged screen: fall back to polling for it.
+                    this._shellKickPoll();
+                }
+            })
+            .catch(() => {
+                // The text and the keys were already taken off the queue. Putting them back
+                // in front is what stops a failed round trip from silently swallowing what
+                // was typed: the characters are retried instead of being lost.
+                this._shellKeys = keys.concat(this._shellKeys);
+                this._shellTextBuffer = text + this._shellTextBuffer;
+                this._shellWriteRetryAt = Date.now() + SHELL_WRITE_RETRY_MS;
+            })
             .finally(() => {
                 this._shellWriting = false;
                 this._shellPump();

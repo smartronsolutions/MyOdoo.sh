@@ -10,6 +10,13 @@ class ResConfigSettings(models.TransientModel):
         string='SaaS Enquiry Recipient Email',
         config_parameter='website_saas_landing.enquiry_recipient_email',
         help="Email address that receives a notification for every enquiry "
-             "submitted from the website. Leave empty to use the company "
-             "email address.",
+             "submitted from the website. Defaults to notifications@myodoo.sh.",
+    )
+
+    saas_enquiry_from_email = fields.Char(
+        string='SaaS Enquiry Sender Email',
+        config_parameter='website_saas_landing.enquiry_from_email',
+        help="From address used for enquiry emails. Defaults to "
+             "notifications@myodoo.sh, the address bound to the default "
+             "outgoing mail server.",
     )

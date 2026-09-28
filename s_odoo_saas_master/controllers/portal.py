@@ -492,6 +492,13 @@ class PortalInstance(CustomerPortal):
     def _instance_get_page_view_values(self, instance_id, access_token, **kwargs):
         instance = request.env['saas.odoo.instance'].sudo().browse(instance_id)
         self._validate_instance(instance)
+        # Existing instances were deployed before the Master Password field existed:
+        # seed it from the generated odoo.conf config so the portal can show it.
+        if not instance.admin_pass:
+            admin_config = instance.config_ids.filtered(
+                lambda c: c.name == 'admin_passwd')[:1]
+            if admin_config:
+                instance.with_context(skip_admin_pass_sync=True).admin_pass = admin_config.value
         managing_ip = ''
         if instance.pserver_id:
             try:
@@ -682,6 +689,30 @@ class PortalInstance(CustomerPortal):
         except Exception as e:
             return {'success': False, 'error': str(e)}
         return {'success': True, 'state': instance.state, 'operation_state': instance.operation_state}
+
+    @http.route('/saas/instance/admin-password', type='json', auth='user')
+    def instance_admin_password(self, instance_id, admin_pass=None, **kwargs):
+        """Change the Odoo master password (``admin_passwd``) of an instance.
+
+        The new value is written to the instance's ``admin_passwd`` config, mirrored on
+        the ``admin_pass`` field and the generated ``odoo.conf``, then the Odoo container
+        is restarted by ``_redeploy_odoo_instance_config``.
+        """
+        instance = request.env['saas.odoo.instance'].sudo().browse(instance_id)
+        self._validate_instance(instance)
+        password = (admin_pass or '').strip()
+        if not password:
+            return {'success': False, 'error': _("Please enter a master password.")}
+        if instance.state != 'deploy':
+            return {'success': False, 'error': _(
+                "Start the instance before changing its master password.")}
+        try:
+            instance._apply_admin_password(password)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            return {'success': False, 'error': str(error)}
+        return {'success': True, 'admin_pass': instance.admin_pass}
 
     def _storage_lock_error(self, instance):
         """Return an error payload when the instance is locked because its storage is full.
@@ -1197,8 +1228,22 @@ class PortalInstance(CustomerPortal):
 
     @http.route('/saas/instance/shell/write', type='json', auth='user')
     def instance_shell_write(self, instance_id, kind='odoo', text=None, keys=None, **kwargs):
-        return self._instance_shell_call(instance_id, '_shell_write', kind,
-                                         text=text, keys=keys)
+        """Send the keystrokes and answer with the screen they produced.
+
+        The browser used to need two round trips per keystroke: one to write, then one to
+        read the echo back. Capturing the screen inside the same request removes a whole
+        browser -> nginx -> Odoo -> SSH round trip from every single character typed.
+        """
+        result = self._instance_shell_call(instance_id, '_shell_write', kind,
+                                           text=text, keys=keys)
+        if not (result and result.get('success')):
+            return result
+        screen = self._instance_shell_call(instance_id, '_shell_read', kind)
+        # Only merge a screen that really describes a live session: otherwise the regular
+        # poll reports the problem (and the end of the session) as it always did.
+        if screen and screen.get('success') and screen.get('alive'):
+            result.update(screen)
+        return result
 
     @http.route('/saas/instance/shell/resize', type='json', auth='user')
     def instance_shell_resize(self, instance_id, kind='odoo', cols=None, rows=None, **kwargs):

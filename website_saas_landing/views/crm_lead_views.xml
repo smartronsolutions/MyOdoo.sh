@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         Form: dedicated "SaaS Enquiry" page on leads/opportunities
+         ============================================================ -->
+    <record id="crm_lead_view_form_saas_enquiry" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.website.saas.landing</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page string="SaaS Enquiry" name="saas_enquiry"
+                      invisible="not saas_enquiry_id">
+                    <group>
+                        <group string="Enquiry">
+                            <field name="saas_enquiry_id"/>
+                            <field name="saas_interested_in"/>
+                            <field name="saas_odoo_version"/>
+                            <field name="saas_estimated_users"/>
+                        </group>
+                        <group string="Origin">
+                            <field name="saas_country"/>
+                            <field name="saas_source_page"/>
+                            <field name="saas_lang"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Lists: optional "Interested In" column
+         ============================================================ -->
+    <record id="crm_case_tree_view_leads_saas" model="ir.ui.view">
+        <field name="name">crm.lead.list.lead.inherit.website.saas.landing</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email_from']" position="after">
+                <field name="saas_interested_in" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_case_tree_view_oppor_saas" model="ir.ui.view">
+        <field name="name">crm.lead.list.opportunity.inherit.website.saas.landing</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email_from']" position="after">
+                <field name="saas_interested_in" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ============================================================
+         Search: filter / group by enquiry interest
+         ============================================================ -->
+    <record id="view_crm_case_leads_filter_saas" model="ir.ui.view">
+        <field name="name">crm.lead.search.lead.inherit.website.saas.landing</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lead_properties']" position="after">
+                <field name="saas_interested_in"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_by_lead_properties']" position="after">
+                <filter name="group_saas_interested_in" string="Interested In"
+                        context="{'group_by': 'saas_interested_in'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_case_opportunities_filter_saas" model="ir.ui.view">
+        <field name="name">crm.lead.search.opportunity.inherit.website.saas.landing</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lead_properties']" position="after">
+                <field name="saas_interested_in"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_by_lead_properties']" position="after">
+                <filter name="group_saas_interested_in" string="Interested In"
+                        context="{'group_by': 'saas_interested_in'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

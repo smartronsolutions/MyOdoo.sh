@@ -10,9 +10,11 @@
             <block id="website_settings" position="inside">
                 <setting id="saas_enquiry_recipient_setting"
                          string="SaaS Enquiry Notifications"
-                         help="Address that receives an email for every enquiry submitted from the website form. Leave empty to use the company email address.">
+                         help="Emails sent for every enquiry submitted from the website form. The sender address is bound to the default outgoing mail server.">
                     <field name="saas_enquiry_recipient_email"
-                           placeholder="e.g. sales@your-domain.com"/>
+                           placeholder="e.g. notifications@myodoo.sh"/>
+                    <field name="saas_enquiry_from_email"
+                           placeholder="e.g. notifications@myodoo.sh"/>
                 </setting>
             </block>
         </field>

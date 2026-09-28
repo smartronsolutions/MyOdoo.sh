@@ -73,8 +73,11 @@ class OdooIstanceDockerContainer(models.Model):
         for instance in self.instance_id:
             ssh = self._connect_instance(instance)
             try:
-                # Use compose stop to ensure all services are stopped consistently
-                instance.pserver_id._compose_exec(instance, "stop", ssh)
+                # Plain ``docker stop`` on this instance's own containers (see
+                # PServer._docker_stop_instance). It stops them and nothing else: no
+                # ``compose down``, so the containers, their network and their data are all
+                # left in place and starting again brings the same containers back.
+                instance.pserver_id._docker_stop_instance(instance, ssh)
             finally:
                 if ssh:
                     ssh.close()

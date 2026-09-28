@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import shlex
+import socket
 from odoo import fields, models, _
 from odoo.exceptions import UserError
 
@@ -96,6 +97,17 @@ class PServer(models.Model):
             )
             if not ssh:
                 raise UserError(_("Cannot connect to server %s. Please check server information and SSH Key Pair") % self.name)
+            # Nagle's algorithm holds a small packet back until the previous one is
+            # acknowledged. This connection carries exactly the small request/response pairs
+            # of the live shell (one keystroke, one screen poll), so leaving it on adds tens
+            # of milliseconds to every single round trip. paramiko does not set this itself.
+            transport = ssh.get_transport()
+            if transport is not None and transport.sock is not None:
+                try:
+                    transport.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                except OSError:
+                    # Never fail a connection over socket tuning that may be unavailable.
+                    _logger.debug("Could not set TCP_NODELAY on the SSH connection to %s", self.name)
             return ssh
         except paramiko.AuthenticationException:
             raise UserError(_("Auth failed for user %s on %s. Check: SSH key, user exists, AllowUsers") % (username, self.display_name))
@@ -116,6 +128,7 @@ class PServer(models.Model):
         ssh = self._connect()
         try:
             self._create_instance_folder(instance, ssh)
+            self._create_pgvector_init_file(instance, ssh)
             self._create_odoo_instance_config_file(instance, ssh)
             # self._create_standard_extra_addons(instance, ssh)
             self._create_custom_addons(instance.custom_addon_ids, ssh)
@@ -145,8 +158,12 @@ class PServer(models.Model):
         try:
             self._create_instance_folder(instance, ssh)
             self._prepare_instance_folder_from_template(instance, ssh)
+            self._create_pgvector_init_file(instance, ssh)
             self._create_docker_compose_file(instance, ssh)
             self._docker_compose_up(instance, ssh)
+            # This cluster was copied with the template instead of being initialised, so the
+            # initdb script does not run for it: enable the extension on the copied database.
+            instance._ensure_pgvector_extension(ssh, wait=True)
             self._create_nginx_file(instance.domain_name_ids, ssh)            
             ssh.close()
         except Exception as ex:
@@ -162,6 +179,19 @@ class PServer(models.Model):
         self._exec_cmd('mkdir /home/%s' % instance.technical_name, ssh)
         for volume in instance.docker_compose_volume_ids:
             self._exec_cmd('mkdir %s' % volume.storage_path, ssh)
+
+    def _create_pgvector_init_file(self, instance, ssh):
+        """Write the pgvector initdb script next to docker-compose.yml.
+
+        It has to exist *before* the containers are created: the PostgreSQL entrypoint runs
+        that directory only while initialising an empty data directory, so on every instance
+        creation and never again afterwards.
+        """
+        self._create_file(
+            ssh,
+            instance._get_pgvector_init_file_path(),
+            instance._get_pgvector_init_sql(),
+        )
 
     def _create_odoo_instance_config_file(self, instance, ssh):
         file_content = self.env['saas.odoo.instance.config']._get_config_file_content(instance)
@@ -309,6 +339,22 @@ class PServer(models.Model):
             'else docker-compose %(args)s ; fi'
         ) % {'dir': project_dir, 'args': args}
         self._exec_cmd(cmd, ssh)
+
+    def _docker_stop_instance(self, instance, ssh=False):
+        """Stop the instance's containers with a plain ``docker stop``.
+
+        Only the containers of this instance are named, and ``docker stop`` stops them
+        without touching anything else: unlike ``docker compose down`` it never removes the
+        containers or their network, so starting the instance again brings back the very
+        same containers with their data intact.
+        """
+        if not ssh:
+            ssh = self._connect()
+        names = instance.docker_container_ids.mapped('name')
+        if not names:
+            return
+        self._exec_cmd(
+            'docker stop %s' % ' '.join(shlex.quote(name) for name in names), ssh)
 
     def _create_nginx_file(self, domain_name_ids, ssh):
         for domain_name in domain_name_ids:
@@ -865,6 +911,10 @@ class PServer(models.Model):
                     _("Database restore error for %s: %s")
                     % (instance.display_name, error or _("Unknown Error."))
                 )
+
+            # A restored dump can use the vector type and the database was just recreated:
+            # make sure the extension is there, whichever image the instance started on.
+            instance._ensure_pgvector_extension(ssh)
 
             if filestore_file_count == 0:
                 return _(

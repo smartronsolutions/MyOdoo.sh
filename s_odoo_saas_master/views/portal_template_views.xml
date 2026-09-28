@@ -128,13 +128,15 @@
                         </div>
                     </section>
 
-                    <div class="admin-layout">
+                    <div class="admin-layout dashboard-layout">
                         <section class="glass panel">
                             <div class="section-title">
                                 <h2>My Environments</h2>
                                 <div class="actions">
-                                    <button class="ghost">Odoo 18</button>
-                                    <button class="ghost">All Statuses</button>
+                                    <a class="ghost" href="/my/saas/odoo-instances"
+                                       style="text-decoration:none">Odoo 18</a>
+                                    <a class="ghost" href="/my/saas/odoo-instances"
+                                       style="text-decoration:none">All Statuses</a>
                                 </div>
                             </div>
                             <div class="instance-table">
@@ -208,7 +210,7 @@
                             </div>
                         </section>
 
-                        <aside class="sidebar-stack">
+                        <div class="dashboard-cards">
                             <section class="glass side-panel">
                                 <h3>Service Health</h3>
                                 <div class="health-row"><span>My Live Instance</span><strong class="ok">Operational</strong></div>
@@ -252,33 +254,20 @@
                                     <button onclick="location.href='/my/saas/billing'">Billing</button>
                                 </div>
                             </section>
-                        </aside>
+                        </div>
                     </div>
 
+                    <t t-set="overview_instance" t-value="instances[:1]"/>
+                    <t t-set="overview_url" t-value="'/my/saas/odoo-instance/%s' % overview_instance.id if overview_instance else '/my/saas/odoo-instances'"/>
                     <section class="ops-grid">
-                        <div class="glass ops-card">
-                            <h3>Deployments &amp; Builds</h3>
-                            <div class="ops-item"><span>Builds this month</span><strong>14</strong></div>
-                            <div class="ops-item"><span>Successful</span><strong class="ok">13</strong></div>
-                            <div class="ops-item"><span>In progress</span><strong>0</strong></div>
-                            <div class="ops-item"><span>Average build time</span><strong>4m 12s</strong></div>
-                            <button class="ghost" onclick="location.href='/my/saas/odoo-instances'">View My Builds</button>
-                        </div>
                         <div class="glass ops-card">
                             <h3>Backups &amp; Recovery</h3>
                             <div class="ops-item"><span>Automatic backups</span><strong>Daily · max 5 copies</strong></div>
                             <div class="ops-item"><span>Manual backups</span><strong t-esc="len(recent_backups)"/></div>
                             <div class="ops-item"><span>Latest completed</span><strong>Today, 04:00</strong></div>
                             <div class="ops-item"><span>Backup storage</span><strong>18.4 GB</strong></div>
-                            <button class="ghost" onclick="location.href='/my/saas/odoo-instances'">Manage Backups</button>
-                        </div>
-                        <div class="glass ops-card">
-                            <h3>Version &amp; Upgrade</h3>
-                            <div class="ops-item"><span>Current version</span><strong>Odoo 18</strong></div>
-                            <div class="ops-item"><span>Edition</span><strong>Community</strong></div>
-                            <div class="ops-item"><span>Upgrade target</span><strong>Odoo 19</strong></div>
-                            <div class="ops-item"><span>Upgrade test</span><strong>Ready</strong></div>
-                            <button class="ghost" onclick="location.href='/my/saas/odoo-instances'">Plan Upgrade</button>
+                            <a class="ghost" t-attf-href="{{ overview_url }}#backups"
+                               style="text-decoration:none;display:inline-block">Manage Backups</a>
                         </div>
                         <div class="glass ops-card">
                             <h3>Domains &amp; SSL</h3>
@@ -286,7 +275,8 @@
                             <div class="ops-item"><span>SSL status</span><strong class="ok">Active</strong></div>
                             <div class="ops-item"><span>DNS status</span><strong class="ok">Verified</strong></div>
                             <div class="ops-item"><span>Certificates</span><strong>Automated</strong></div>
-                            <button class="ghost" onclick="location.href='/my/saas/odoo-instances'">Manage Domains</button>
+                            <a class="ghost" t-attf-href="{{ overview_url }}#domains"
+                               style="text-decoration:none;display:inline-block">Manage Domains</a>
                         </div>
                         <div class="glass ops-card">
                             <h3>GitHub &amp; Access</h3>
@@ -294,7 +284,8 @@
                             <div class="ops-item"><span>Deploy on push</span><strong>Supported</strong></div>
                             <div class="ops-item"><span>Custom Addons</span><strong>/mnt/extra-addons</strong></div>
                             <div class="ops-item"><span>Branch syncing</span><strong>Automated</strong></div>
-                            <button class="ghost" onclick="location.href='/my/saas/settings#github'">Manage GitHub</button>
+                            <a class="ghost" t-attf-href="{{ overview_url }}#ghlogs"
+                               style="text-decoration:none;display:inline-block">GitHub Sync &amp; Deploy</a>
                         </div>
                         <div class="glass ops-card">
                             <h3>Recent Activity</h3>
@@ -312,7 +303,8 @@
                                     <small>Instance running stably</small>
                                 </div>
                             </t>
-                            <button class="ghost" onclick="location.href='/my/saas/odoo-instances'">View All Activity</button>
+                            <a class="ghost" t-attf-href="{{ overview_url }}#history"
+                               style="text-decoration:none;display:inline-block">View All Activity</a>
                         </div>
                     </section>
                 </main>
@@ -509,11 +501,10 @@
                             <button data-tab="logs">Logs</button>
                             <button data-tab="ghlogs">GitHub Sync &amp; Deploy</button>
                             <button data-tab="backups">Backups</button>
-                            <button data-tab="upgrade">Upgrade</button>
                             <button data-tab="tools">Tools</button>
                             <button data-tab="domains">Domains</button>
                             <button data-tab="access">Users Access</button>
-                            <button data-tab="configuration">Settings</button>
+                            <button data-tab="configuration">Instance Settings</button>
                             <button data-tab="storage">Storage</button>
                         </t>
                     </nav>
@@ -595,13 +586,13 @@
                                     </button>
                                 </t>
 
-                                <!-- 2. Suspend Instance (Red) -->
+                                <!-- 2. Stop Instance (Red) -->
                                 <button type="button" class="control-btn ctrl-action-btn btn-ctrl-suspend" data-confirm="suspend">
                                     <div class="ctrl-btn-icon">
-                                        <i class="fa fa-pause"></i>
+                                        <i class="fa fa-stop"></i>
                                     </div>
                                     <div class="ctrl-btn-content">
-                                        <span class="ctrl-btn-title">Suspend Instance</span>
+                                        <span class="ctrl-btn-title">Stop Instance</span>
                                         <span class="ctrl-btn-desc">Stop public access &amp; workers.</span>
                                     </div>
                                     <div class="ctrl-btn-chevron">
@@ -838,15 +829,27 @@
                                     <i class="fa fa-circle-o-notch fa-spin"></i>
                                     <span>We are preparing your instance shell…</span>
                                 </div>
+                                <button type="button" id="shellJump" class="shell-jump"
+                                        title="Jump to the newest output">
+                                    <i class="fa fa-arrow-down"/> Latest output
+                                </button>
                             </div>
                             <input type="text" id="shellKeys" class="shell-keys" autocomplete="off"
                                    autocorrect="off" autocapitalize="off" spellcheck="false"/>
                             <div class="sub" style="padding:10px 14px">
                                 Click the terminal and type. <b>Tab</b> completes, <b>↑/↓</b> recall the
-                                history, <b>Ctrl+C</b> interrupts. <b>Fullscreen</b> grows the terminal
-                                to the whole screen (<b>Esc</b> leaves it, <b>Shift+Esc</b> sends a real
-                                Escape). The session stays alive on the server for a while after you
+                                history, <b>Ctrl+C</b> interrupts. Scroll up to read earlier output
+                                (use <b>Latest output</b> to jump back). <b>Fullscreen</b> grows the
+                                terminal to the whole screen (<b>Esc</b> leaves it, <b>Shift+Esc</b>
+                                sends a real Escape). The session stays alive on the server for a
+                                while after you
                                 leave this tab.
+                            </div>
+                            <div class="sub shell-tip">
+                                <i class="fa fa-cube" aria-hidden="true"/>
+                                <span class="shell-tip-text">To install a Python library in this
+                                    container, run</span>
+                                <code class="shell-cmd" t-translation="off">pip install 'package-name' --break-system-packages</code>
                             </div>
                         </div>
                     </section>
@@ -1331,51 +1334,6 @@
 
                     <!-- Tab 9: Editor -->
 
-                    <!-- Tab 10: Upgrade -->
-                    <section class="tab-pane" id="upgrade">
-                        <div class="wide-grid">
-                            <div class="glass form">
-                                <h2>Upgrade Center</h2>
-                                <p>Test a newer Odoo version safely before upgrading the live environment.</p>
-                                <div class="upgrade-step">
-                                    <span class="step-num">1</span>
-                                    <div>
-                                        <strong>Select target version</strong>
-                                        <small>Current version: <t t-esc="instance.odoo_version_id.name"/></small>
-                                        <div class="field" style="margin-top:10px">
-                                            <select>
-                                                <option>Odoo 19</option>
-                                                <option>Odoo 18</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="upgrade-step">
-                                    <span class="step-num">2</span>
-                                    <div>
-                                        <strong>Run upgrade test</strong>
-                                        <small>Create an isolated upgraded copy and review the result.</small>
-                                    </div>
-                                </div>
-                                <div class="upgrade-step">
-                                    <span class="step-num">3</span>
-                                    <div>
-                                        <strong>Validate and schedule</strong>
-                                        <small>Choose a maintenance window after successful testing.</small>
-                                    </div>
-                                </div>
-                                <button class="primary" onclick="notify('Upgrade test requested.')">Start Upgrade Test</button>
-                            </div>
-                            <div class="glass side-panel">
-                                <h3>Upgrade Readiness</h3>
-                                <div class="health-row"><span>Latest backup</span><strong class="ok">Ready</strong></div>
-                                <div class="health-row"><span>Git status</span><strong class="ok">Clean</strong></div>
-                                <div class="health-row"><span>Target</span><strong>Odoo 19</strong></div>
-                                <div class="health-row"><span>Test status</span><strong>Ready</strong></div>
-                            </div>
-                        </div>
-                    </section>
-
                     <!-- Tab 11: Tools -->
                     <section class="tab-pane" id="tools">
                         <div class="head">
@@ -1520,7 +1478,7 @@
                     </section>
 
                     <!-- Tab 14: Settings / Configuration -->
-                    <section class="tab-pane" id="configuration">
+                    <section class="tab-pane" id="configuration" t-att-data-instance-id="instance.id">
                         <div class="glass form">
                             <h2>Instance Settings</h2>
                             <p>What this instance is running with. Everything here is read-only — these resources come from your plan, so use the upgrade button to change them.</p>
@@ -1548,6 +1506,29 @@
                                 <div class="field">
                                     <label>BACKUP COPIES</label>
                                     <input t-att-value="'Maximum {} backups'.format(instance.backup_limit or 5)" readonly="readonly"/>
+                                </div>
+                            </div>
+                            <!-- Odoo master password: saving rewrites odoo.conf and restarts Odoo -->
+                            <div style="margin-top:18px;padding:18px;border:1.5px solid rgba(15,168,160,.25);border-radius:14px;background:rgba(15,168,160,.06)">
+                                <strong style="font-size:13px;color:var(--navy)">Odoo Master Password</strong>
+                                <div class="sub" style="margin:6px 0 12px">
+                                    This is the <b>admin_passwd</b> of the instance (the Odoo database
+                                    manager / master password). Saving it updates the instance's
+                                    <b>odoo.conf</b> and restarts Odoo so it takes effect.
+                                </div>
+                                <div class="field" style="max-width:460px">
+                                    <label>MASTER PASSWORD</label>
+                                    <input type="text" id="instanceAdminPass" autocomplete="off"
+                                           spellcheck="false"
+                                           t-att-value="instance.admin_pass or ''"
+                                           placeholder="master password"/>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap">
+                                    <button type="button" class="primary dark" id="saveInstanceAdminPass"
+                                            style="border:0;cursor:pointer">
+                                        <i class="fa fa-key"/> Save Master Password
+                                    </button>
+                                    <span class="sub" id="instanceAdminPassStatus"></span>
                                 </div>
                             </div>
                             <div style="margin-top:18px;padding:18px;border:1.5px solid rgba(15,168,160,.25);border-radius:14px;background:rgba(15,168,160,.06)">
@@ -3284,6 +3265,15 @@
                                         <small id="orderCycleNote">Monthly subscription · Cancel or upgrade anytime</small>
                                     </div>
                                     <span class="status">Instant Setup</span>
+                                </div>
+                            </div>
+
+                            <div style="display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;padding:12px 14px;border:1px solid rgba(15,168,160,.30);border-radius:12px;background:rgba(15,168,160,.08)">
+                                <i class="fa fa-info-circle" style="color:var(--teal);font-size:15px;margin-top:1px"></i>
+                                <div style="font-size:11px;line-height:1.55;color:var(--ink)">
+                                    Your new instance is created with the default administrator login
+                                    <b>admin</b> and password <b>admin</b>. You can change it anytime
+                                    from <b>Settings</b>.
                                 </div>
                             </div>
 

@@ -9,7 +9,7 @@
         <field name="name">SaaS Enquiry: internal notification</field>
         <field name="model_id" ref="model_website_saas_enquiry"/>
         <field name="subject">New Website SaaS Enquiry — {{ object.name }} — {{ object.company_name }}</field>
-        <field name="email_from">{{ (object.company_id.email or '') }}</field>
+        <field name="email_from">{{ object._get_from_email() }}</field>
         <field name="email_to">{{ object._get_notification_email() }}</field>
         <field name="auto_delete" eval="False"/>
         <field name="body_html" type="html">
@@ -84,7 +84,7 @@
         <field name="name">SaaS Enquiry: customer confirmation</field>
         <field name="model_id" ref="model_website_saas_enquiry"/>
         <field name="subject">We've received your enquiry — MyOdoo.sh</field>
-        <field name="email_from">{{ (object.company_id.email or '') }}</field>
+        <field name="email_from">{{ object._get_from_email() }}</field>
         <field name="email_to">{{ object.email }}</field>
         <field name="auto_delete" eval="True"/>
         <field name="body_html" type="html">

@@ -154,6 +154,7 @@
                     		<field name="url" widget="url"/>
                     		<field name="technical_name"/>
                     		<field name="db_name"/>
+                                    <field name="admin_pass" password="False"/>
                             <field name="template_tag" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="is_template" invisible="1"/>
                             <field name="deploy_mail_template_id" invisible="1"/>

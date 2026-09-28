@@ -1607,6 +1607,28 @@
     tab-size: 8;
     cursor: text;
     outline: none;
+    scrollbar-width: thin;
+    scrollbar-color: #2c5b5f #0f1c1f;
+    overscroll-behavior: contain;
+}
+
+.myodoo-portal-root .shell-screen::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.myodoo-portal-root .shell-screen::-webkit-scrollbar-track {
+    background: #0f1c1f;
+}
+
+.myodoo-portal-root .shell-screen::-webkit-scrollbar-thumb {
+    background: #2c5b5f;
+    border: 2px solid #0f1c1f;
+    border-radius: 8px;
+}
+
+.myodoo-portal-root .shell-screen::-webkit-scrollbar-thumb:hover {
+    background: #3b7c80;
 }
 
 .myodoo-portal-root .shell-screen .shell-row {
@@ -1647,6 +1669,76 @@
 .myodoo-portal-root .shell-veil .fa {
     font-size: 20px;
     color: var(--teal);
+}
+
+/* "Latest output" pill: only visible while the terminal is scrolled up */
+.myodoo-portal-root .shell-jump {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(15, 168, 160, .55);
+    border-radius: 999px;
+    background: rgba(9, 24, 27, .92);
+    color: #d7ebe8;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.myodoo-portal-root .shell-jump.show {
+    display: inline-flex;
+}
+
+.myodoo-portal-root .shell-jump:hover {
+    background: var(--teal);
+    color: #06201f;
+}
+
+/* Python library hint under the terminal. It is a wrapping flex row, so on a narrow screen
+   the command chip drops onto its own line and scrolls sideways instead of breaking the
+   command across lines or overflowing the card. */
+.myodoo-portal-root .shell-tip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+    padding: 10px 14px 12px;
+    border-top: 1px solid rgba(15, 168, 160, .18);
+}
+
+.myodoo-portal-root .shell-tip > .fa {
+    flex: none;
+    color: var(--teal);
+    font-size: 13px;
+}
+
+.myodoo-portal-root .shell-tip-text {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.myodoo-portal-root .shell-cmd {
+    flex: 0 1 auto;
+    /* min-width:0 lets the chip shrink below its content width and scroll, which is what
+       keeps the command on one line without overflowing the card on a phone. */
+    min-width: 0;
+    max-width: 100%;
+    padding: 3px 9px;
+    border: 1px solid rgba(15, 168, 160, .38);
+    border-radius: 7px;
+    background: #0f1c1f;
+    color: #d7ebe8;
+    font: 11px/1.6 "SFMono-Regular", Menlo, Consolas, monospace;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Keystroke capture field: focusable but invisible */
@@ -2071,5 +2163,60 @@ body.shell-fullscreen-open {
         gap: 9px;
         justify-content: center;
         margin-top: 18px;
+    }
+}
+
+/* Hosting Overview: My Environments full width, the three info cards in one row below. */
+.myodoo-portal-root .admin-layout.dashboard-layout {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.myodoo-portal-root .dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.myodoo-portal-root .dashboard-cards > .side-panel {
+    height: 100%;
+}
+
+/* Give the environments table the full content width instead of a 2/3 column. */
+.myodoo-portal-root .dashboard-layout .instance-table {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 1050px) {
+    .myodoo-portal-root .dashboard-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .myodoo-portal-root .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* The overview now keeps four info cards (Backups, Domains, GitHub, Activity). */
+.myodoo-portal-root .ops-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.myodoo-portal-root .ops-card .ghost {
+    margin-top: 12px;
+}
+
+@media (max-width: 1050px) {
+    .myodoo-portal-root .ops-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .myodoo-portal-root .ops-grid {
+        grid-template-columns: 1fr;
     }
 }

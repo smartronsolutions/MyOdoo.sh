@@ -104,6 +104,11 @@ class OdooInstance(models.Model):
     port_ids = fields.One2many('saas.odoo.instance.port', 'instance_id', string='Odoo Instance Ports', readonly=True)
     user_demo_data = fields.Boolean(string='Use Demo Data')
     config_ids = fields.One2many('saas.odoo.instance.config', 'instance_id', string='Configs')
+    admin_pass = fields.Char(
+        string='Master Password',
+        help="Odoo master password (``admin_passwd``) of this instance. Changing it rewrites "
+             "``odoo.conf`` on the instance server and restarts the Odoo container so the new "
+             "value takes effect.")
     db_name = fields.Char(string='Database Name', compute='_compute_db_name', store=True)
     domain_name_ids = fields.One2many('saas.odoo.instance.domain.name', 'instance_id', string='Domains Name')
     domain_name_count = fields.Integer(string="Domain Name Count", compute='_compute_domain_name_count')
@@ -771,7 +776,10 @@ class OdooInstance(models.Model):
                     r.docker_odoo_image = r.docker_image_id.image_name
                 else:
                     r.docker_odoo_image = 'odoo:%s' % r.odoo_server_id.odoo_version_id.docker_image_tag
-                r.docker_psql_image = 'postgres:%s' % r.odoo_server_id.psql_version_id.docker_image_tag
+                # Version matched on purpose: the image carries pgvector for the very
+                # PostgreSQL version this instance runs, whatever was selected.
+                psql_version = r.odoo_server_id.psql_version_id
+                r.docker_psql_image = psql_version._get_postgres_image() if psql_version else ''
                 r.docker_container_ids = r._prepare_docker_containers()
             for port in r.port_ids:
                 if port.name == 'xmlrpc_port':
@@ -1794,6 +1802,16 @@ class OdooInstance(models.Model):
     # rogue client from asking for absurd tmux windows.
     SHELL_MIN_COLS, SHELL_MAX_COLS = 40, 500
     SHELL_MIN_ROWS, SHELL_MAX_ROWS = 10, 200
+    # How many lines of scrollback are sent to the browser so old output stays reachable
+    # (the browser can scroll up). tmux keeps its own history; this only bounds one poll.
+    #
+    # Measured on this deployment: a pane holding 1000 lines of ordinary command output came
+    # back as ~95 KB per poll, against ~4.5 KB for the visible pane alone. At the fast poll
+    # rate that is hundreds of KB per second to move over SSH, parse and diff in the browser,
+    # which is what made large output (``ls -la /``, ``cat bigfile``) stutter. 300 lines keeps
+    # scrolling back useful and cuts the per-poll payload by roughly three quarters. Raise it
+    # if deeper scrollback matters more than the smoothness.
+    SHELL_HISTORY_LINES = 300
     SHELL_IDLE_TIMEOUT = 30 * 60
     SHELL_KEYS = (
         'Enter', 'BSpace', 'Tab', 'BTab', 'Escape', 'Space', 'DC',
@@ -1940,12 +1958,17 @@ class OdooInstance(models.Model):
         }
 
     def _shell_read(self, kind):
-        """Return the current screen of the terminal, plus cursor and liveness.
+        """Return the terminal screen (with scrollback), plus cursor and liveness.
 
         A poll runs several times per second, so the whole screen is fetched with ONE
         remote command (one SSH/sudo round trip). It used to be three separate commands
         — has-session, display-message and capture-pane — which was the main reason the
         terminal felt slow and typing lagged behind.
+
+        ``capture-pane -S -`` also returns the lines tmux keeps in its history, so the
+        browser gets the previous output too and can scroll back through it. The cursor
+        row is reported relative to the visible pane, so it is shifted by the number of
+        history lines that were actually captured.
         """
         self.ensure_one()
         self._shell_check_available()
@@ -1961,16 +1984,21 @@ class OdooInstance(models.Model):
         dead_mark = '###SAAS_DEAD###'
         command = (
             "if tmux has-session -t {s} 2>/dev/null; then "
+            "echo '{screen_begin}'; "
+            "tmux capture-pane -p -e -S -{history} -t {s}; "
+            "echo '{screen_end}'; "
+            # The cursor is read *after* the pane: if the shell prints something between
+            # the two commands the cursor may only be ahead of the captured screen, never
+            # behind it. A cursor behind the echo made the browser draw the same
+            # characters a second time (the "llss" bug).
             "echo '{meta_begin}'; "
             "tmux display-message -p -t {s} "
             "'#{{cursor_x}} #{{cursor_y}} #{{pane_width}} #{{pane_height}} #{{pane_dead}}'; "
-            "echo '{screen_begin}'; "
-            "tmux capture-pane -p -e -t {s}; "
-            "echo '{screen_end}'; "
             "tmux set-option -t {s} @saas_last $(date +%s) 2>/dev/null; "
             "else echo '{dead_mark}'; fi"
         ).format(s=quoted, meta_begin=meta_begin, screen_begin=screen_begin,
-                 screen_end=screen_end, dead_mark=dead_mark)
+                 screen_end=screen_end, dead_mark=dead_mark,
+                 history=self.SHELL_HISTORY_LINES)
         output = self._shell_exec(ssh, command)
 
         ended = {
@@ -1978,16 +2006,16 @@ class OdooInstance(models.Model):
             'alive': False,
             'message': _("Shell session ended. Click Reconnect to start a new one."),
         }
-        if meta_begin not in output:
+        if meta_begin not in output or screen_begin not in output:
             return ended
-        begin = output.index(meta_begin)
         try:
-            screen_at = output.index(screen_begin, begin + 1)
+            screen_at = output.index(screen_begin)
             screen_stop = output.index(screen_end, screen_at + 1)
+            meta_at = output.index(meta_begin, screen_stop + 1)
         except ValueError:
             return ended
 
-        values = output[begin + 1].split() if begin + 1 < screen_at else []
+        values = output[meta_at + 1].split() if meta_at + 1 < len(output) else []
         screen = output[screen_at + 1:screen_stop]
 
         def as_int(index, default):
@@ -1996,12 +2024,17 @@ class OdooInstance(models.Model):
             except (IndexError, ValueError):
                 return default
 
+        pane_height = as_int(3, self.SHELL_ROWS) or self.SHELL_ROWS
+        # tmux reports cursor_y relative to the visible pane; capturing history adds the
+        # history lines on top, so shift the cursor row to match the returned screen.
+        history_offset = max(0, len(screen) - pane_height)
+
         return {
             'success': True,
             'alive': True,
             'dead': as_int(4, 0) == 1,
-            'cursor': [as_int(0, 0), as_int(1, 0)],
-            'size': [as_int(2, self.SHELL_COLS), as_int(3, self.SHELL_ROWS)],
+            'cursor': [as_int(0, 0), history_offset + as_int(1, 0)],
+            'size': [as_int(2, self.SHELL_COLS), pane_height],
             'screen': "\n".join(screen),
         }
 
@@ -2337,8 +2370,41 @@ class OdooInstance(models.Model):
     def _generate_instance_config(self):        
         conf_vals_list = self._prepare_conf_vals_list()
         self.config_ids.unlink()
-        return self.env['saas.odoo.instance.config'].create(conf_vals_list)
-    
+        configs = self.env['saas.odoo.instance.config'].create(conf_vals_list)
+        # Keep the instance's Master Password field in sync with the generated odoo.conf.
+        admin_config = configs.filtered(lambda c: c.name == 'admin_passwd')[:1]
+        if admin_config and self.admin_pass != admin_config.value:
+            self.with_context(skip_admin_pass_sync=True).admin_pass = admin_config.value
+        return configs
+
+    def _apply_admin_password(self, password):
+        """Set the Odoo master password (``admin_passwd``) of this instance.
+
+        Updates the ``admin_passwd`` config row, mirrors it on the instance record,
+        rewrites ``odoo.conf`` on the instance server and restarts the Odoo container so
+        the new password is active immediately.
+        """
+        self.ensure_one()
+        password = (password or '').strip()
+        if not password:
+            raise UserError(_("The master password cannot be empty."))
+        configs = self.config_ids.filtered(lambda c: c.name == 'admin_passwd')
+        if configs:
+            configs[0].with_context(skip_admin_pass_sync=True).write({'value': password})
+        if self.admin_pass != password:
+            self.with_context(skip_admin_pass_sync=True).write({'admin_pass': password})
+        if self.pserver_id and self.state == 'deploy':
+            self.pserver_id._redeploy_odoo_instance_config(self)
+        return True
+
+    def write(self, vals):
+        res = super().write(vals)
+        if 'admin_pass' in vals and not self.env.context.get('skip_admin_pass_sync'):
+            for instance in self:
+                instance._apply_admin_password(instance.admin_pass)
+        return res
+
+
     def _get_addons_path(self):
         """Return addon mount paths in the same order as the server lines."""
         self.ensure_one()
@@ -2359,7 +2425,9 @@ class OdooInstance(models.Model):
             if conf.name == 'addons_path':
                 value = self._get_addons_path()
             elif conf.name == 'admin_passwd':
-                value = ''.join(random.choice(string.ascii_lowercase) for i in range(32))
+                # Keep a password the customer already set; only generate one the first time.
+                value = self.admin_pass or ''.join(
+                    random.choice(string.ascii_lowercase) for i in range(32))
             elif conf.name == 'data_dir':
                 value = '/var/lib/odoo'
             elif conf.name == 'db_name':
@@ -2444,6 +2512,73 @@ class OdooInstance(models.Model):
     def _get_domain_name(self):
         return self.name + '.' + self.based_domain_id.name
 
+    # ------------------------------------------------------------------
+    # pgvector
+    # ------------------------------------------------------------------
+    # Initdb script mounted into the PostgreSQL container; it lives next to
+    # docker-compose.yml in the instance folder.
+    PGVECTOR_INIT_FILE = 'pgvector-init.sql'
+    # A restored or template-copied cluster can still be booting when we ask for the
+    # extension, so the safety net below retries for a while before giving up.
+    PGVECTOR_WAIT_ATTEMPTS = 10
+    PGVECTOR_WAIT_SECONDS = 2
+
+    def _get_pgvector_init_sql(self):
+        """SQL the PostgreSQL entrypoint runs when the cluster is created.
+
+        Installing the extension in ``template1`` is what makes this work for *every*
+        database created in the cluster afterwards -- the instance database included --
+        because ``CREATE DATABASE`` copies template1. The entrypoint runs this before the
+        server accepts any connection, so the extension is in place before Odoo starts
+        creating its database. Deploying first and running ``CREATE EXTENSION`` afterwards
+        would race Odoo's own initialisation instead.
+        """
+        return (
+            "-- Written by s_odoo_saas_master. Runs once, on the first start of this\n"
+            "-- PostgreSQL cluster, before it accepts connections.\n"
+            "\\connect template1\n"
+            "CREATE EXTENSION IF NOT EXISTS vector;\n"
+        )
+
+    def _get_pgvector_init_file_path(self):
+        return '/home/%s/%s' % (self.technical_name, self.PGVECTOR_INIT_FILE)
+
+    def _ensure_pgvector_extension(self, ssh, wait=False):
+        """Make sure ``vector`` exists in this instance's database (idempotent).
+
+        A freshly created instance already has it: the initdb script installs the extension
+        in template1, which every later ``CREATE DATABASE`` copies. This is the safety net
+        for databases that did *not* come from a freshly initialised cluster -- template
+        based deploys, restores, and instances created before pgvector existed -- so those
+        get it too instead of needing a manual ``CREATE EXTENSION``.
+
+        Never raises: pgvector is an extra, and it must not turn a working deployment into a
+        failed one. A failure is logged with the server output instead.
+        """
+        self.ensure_one()
+        container = shlex.quote('psql_%s' % self.technical_name)
+        database = shlex.quote(self.db_name or self.technical_name)
+        statement = shlex.quote('CREATE EXTENSION IF NOT EXISTS vector')
+        command = ('docker exec -e PGPASSWORD=odoo %s psql -U odoo -d %s -c %s'
+                   % (container, database, statement))
+        attempts = self.PGVECTOR_WAIT_ATTEMPTS if wait else 1
+        output = ''
+        for attempt in range(attempts):
+            try:
+                exit_code, output = self.pserver_id._exec_capture(command, ssh)
+            except Exception:
+                _logger.exception("Could not enable pgvector on %s", self.display_name)
+                return False
+            if not exit_code:
+                return True
+            if attempt + 1 < attempts:
+                time.sleep(self.PGVECTOR_WAIT_SECONDS)
+        _logger.warning(
+            "pgvector is not enabled on %s: the PostgreSQL image of this instance may not "
+            "provide the extension. Server said: %s",
+            self.display_name, (output or '').strip()[-400:])
+        return False
+
     def _get_docker_compose_file_content(self, odoo_command=False):
         file_content = ''
         file_content += 'services:\n'
@@ -2484,6 +2619,10 @@ class OdooInstance(models.Model):
             file_content += '        volumes:\n'
             for volume in self.docker_compose_volume_ids.filtered(lambda v: v.volume_type == 'pgdata'):
                 file_content += '            - ./' + volume.name + ':' + volume.container_path + '\n'
+            # pgvector: the postgres entrypoint executes everything in this directory on the
+            # first start of an empty PGDATA, i.e. exactly when the instance is created and
+            # before anything can connect to it. See _get_pgvector_init_sql().
+            file_content += '            - ./%s:/docker-entrypoint-initdb.d/00-pgvector.sql:ro\n' % self.PGVECTOR_INIT_FILE
 
             if any(volume.volume_type == 'odoo_filestore' for volume in self.docker_compose_volume_ids):
                 file_content += 'volumes:\n'
