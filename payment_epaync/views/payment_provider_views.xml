@@ -22,7 +22,9 @@
                            placeholder="https://epaync.nc/vads-payment/"/>
                 </group>
                 <group string="Gateway Info" invisible="code != 'epaync'">
-                    <field name="epaync_currency" readonly="1"/>
+                    <field name="epaync_gateway_currency_id"
+                           context="{'active_test': False}"
+                           options="{'no_create': False}"/>
                     <field name="epaync_api_version" readonly="1"/>
                     <field name="epaync_signature_algorithm" readonly="1"/>
                 </group>
@@ -35,6 +37,7 @@
                 <group string="EpayNC Settings"
                        name="epaync_config"
                        invisible="code != 'epaync'">
+                    <field name="epaync_min_amount"/>
                     <field name="epaync_payment_action"/>
                     <field name="epaync_trans_prefix"/>
                     <field name="epaync_trans_length"/>
@@ -63,6 +66,7 @@
                     <field name="epaync_msg_invalid_signature"/>
                     <field name="epaync_msg_unknown_error"/>
                     <field name="epaync_msg_webhook_received"/>
+                    <field name="epaync_msg_min_amount"/>
                 </group>
             </page>
 

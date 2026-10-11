@@ -30,6 +30,7 @@ class SaleOrder(models.Model):
         ('buy_extra', 'Buy Extra'),
         ('buy_storage', 'Buy Storage'),
         ('buy_workers', 'Upgrade Workers'),
+        ('buy_upgrade', 'Upgrade Resources'),
     ], default='buy_new', readonly=True, copy=False)
     buy_now_from_pricing = fields.Boolean(help="Technical field")
     storage_limit_gb = fields.Float(string="Storage Limit (GB)", default=5.0)
@@ -59,9 +60,15 @@ class SaleOrder(models.Model):
 
     @api.constrains('is_saas_order', 'order_line')
     def _check_saas_order_line(self):
+        # ``renew`` may be a plan-only renewal (no Workers line), and ``buy_upgrade``
+        # may be storage-only, so neither is required to carry a SaaS User product.
+        allowed_without_user = (
+            'buy_extra', 'buy_plan_extra', 'buy_storage', 'buy_workers',
+            'buy_upgrade', 'renew',
+        )
         for r in self:
             if r.is_saas_order and r.order_line:
-                if r.saas_order_type not in ('buy_extra', 'buy_plan_extra', 'buy_storage', 'buy_workers') and not any(line.product_id.is_saas_user for line in r.order_line):
+                if r.saas_order_type not in allowed_without_user and not any(line.product_id.is_saas_user for line in r.order_line):
                     raise ValidationError(_("Order lines must include SaaS User product"))
 
     def _get_update_prices_lines(self):
@@ -93,7 +100,28 @@ class SaleOrder(models.Model):
                     }
                     if r.storage_limit_gb and r.storage_limit_gb > (r.instance_id.storage_limit_gb or 0):
                         renew_vals['storage_limit_gb'] = r.storage_limit_gb
+                    # Workers upgrade chosen in the "Renew & Upgrade Plan" wizard: the
+                    # worker line quantity is the desired TOTAL number of workers, so it
+                    # must be applied to the instance (only upgrades, never a downgrade).
+                    ordered_workers = max(int(sum(
+                        float(line.product_uom_qty or 0.0)
+                        for line in r.order_line if line.product_id.is_saas_user
+                    )), 1)
+                    ordered_workers = min(ordered_workers, InstanceObj.MAX_WORKERS_PER_INSTANCE)
+                    workers_changed = ordered_workers > (r.instance_id.workers_count or 1)
+                    if workers_changed:
+                        renew_vals['workers_count'] = ordered_workers
                     r.instance_id.write(renew_vals)
+                    if workers_changed:
+                        # Regenerate odoo.conf / docker-compose and restart the instance
+                        # with the new worker count (best effort: never break payment).
+                        try:
+                            r.instance_id.action_apply_workers()
+                        except Exception:
+                            _logger.exception(
+                                "Could not redeploy instance %s after workers upgrade on renewal",
+                                r.instance_id.name,
+                            )
                     if r.instance_id.operation_state == 'stop' and r.instance_id._can_auto_resume():
                         try:
                             r.instance_id.action_start()
@@ -122,7 +150,7 @@ class SaleOrder(models.Model):
             'resumed': False,
             'instance_id': self.instance_id.id if self.instance_id else False,
         }
-        if not self.is_saas_order or self.saas_order_type != 'buy_storage':
+        if not self.is_saas_order or self.saas_order_type not in ('buy_storage', 'buy_upgrade'):
             status.update({'success': False, 'error': 'not_a_storage_order'})
             return status
         if not self.instance_id:
@@ -212,7 +240,7 @@ class SaleOrder(models.Model):
             'workers_count': 0,
             'instance_id': self.instance_id.id if self.instance_id else False,
         }
-        if not self.is_saas_order or self.saas_order_type != 'buy_workers':
+        if not self.is_saas_order or self.saas_order_type not in ('buy_workers', 'buy_upgrade'):
             status.update({'success': False, 'error': 'not_a_workers_order'})
             return status
         if not self.instance_id:
@@ -306,6 +334,12 @@ class SaleOrder(models.Model):
                 order._apply_storage_upgrade()
             if order.saas_order_type == 'buy_workers' and not order.workers_applied:
                 order._apply_workers_upgrade()
+            # Combined "Upgrade" (extra workers + extra storage) in a single order.
+            if order.saas_order_type == 'buy_upgrade':
+                if order.storage_limit_gb and not order.storage_applied:
+                    order._apply_storage_upgrade()
+                if order.workers_count and not order.workers_applied:
+                    order._apply_workers_upgrade()
             if order.saas_order_type == 'buy_new' and order.instance_id.state == 'draft':
                 # Brand new instance: deploy it (in the background) so the portal can
                 # show the deployment preloader until it is ready.

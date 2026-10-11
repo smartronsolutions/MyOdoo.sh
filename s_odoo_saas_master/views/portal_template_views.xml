@@ -134,7 +134,7 @@
                                 <h2>My Environments</h2>
                                 <div class="actions">
                                     <a class="ghost" href="/my/saas/odoo-instances"
-                                       style="text-decoration:none">Odoo 18</a>
+                                       style="text-decoration:none">All Versions</a>
                                     <a class="ghost" href="/my/saas/odoo-instances"
                                        style="text-decoration:none">All Statuses</a>
                                 </div>
@@ -455,13 +455,13 @@
                         <div class="app-icon" id="detailIcon"><t t-esc="(instance.name or 'D')[:1].upper()"/></div>
                         <div>
                             <h1 id="detailName" t-esc="instance.name"/>
-                            <p id="detailMeta"><t t-esc="instance.url"/> &amp;middot; <t t-esc="instance.odoo_version_id.name"/> &amp;middot; Growth Plan</p>
+                            <p id="detailMeta"><t t-esc="instance.url"/> &amp;middot; <t t-esc="instance.odoo_version_id.name"/> &amp;middot; Standard Plan</p>
                         </div>
                         <span t-attf-class="state-pill {{ 'suspended' if instance.operation_state == 'stop' else '' }}" id="instanceState">
                             <t t-esc="'Running' if instance.operation_state == 'run' else 'Suspended'"/>
                         </span>
                         <div class="actions">
-                            <button type="button" class="primary" id="btnOpenRenewModalHeader" style="background:linear-gradient(135deg,#ff9800,#f57c00);border:0;display:inline-flex;align-items:center;gap:6px">⚡ Renew Plan</button>
+                            <button type="button" class="primary" id="btnOpenRenewModalHeader" style="background:linear-gradient(135deg,#ff9800,#f57c00);border:0;display:inline-flex;align-items:center;gap:6px">⚡ Renew &amp; Upgrade Plan</button>
                             <button class="ghost" data-confirm="restart">Restart</button>
                             <button class="ghost" data-action="backup">Create Backup</button>
                             <t t-if="instance.github_connected or partner.github_login or partner.github_oauth_token">
@@ -665,6 +665,22 @@
                                     <div class="ctrl-btn-content">
                                         <span class="ctrl-btn-title">Add Domain</span>
                                         <span class="ctrl-btn-desc">Connect custom domain &amp; SSL.</span>
+                                    </div>
+                                    <div class="ctrl-btn-chevron">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </div>
+                                </button>
+
+                                <!-- 7. Install Python Library (Violet) — opens the wizard where
+                                     the customer types a package name; it is pip-installed inside
+                                     the container and recorded in requirements.txt. -->
+                                <button type="button" class="control-btn ctrl-action-btn btn-ctrl-python" data-action="python-libs">
+                                    <div class="ctrl-btn-icon">
+                                        <i class="fa fa-cube"></i>
+                                    </div>
+                                    <div class="ctrl-btn-content">
+                                        <span class="ctrl-btn-title">Install Python Library</span>
+                                        <span class="ctrl-btn-desc">Add a pip package to your instance.</span>
                                     </div>
                                     <div class="ctrl-btn-chevron">
                                         <i class="fa fa-chevron-right"></i>
@@ -1373,6 +1389,11 @@
                                 <p>Restart Odoo HTTP worker containers gracefully.</p>
                                 <button class="ghost" data-confirm="restart">Restart</button>
                             </div>
+                            <div class="glass tool-card">
+                                <h3>Python Libraries</h3>
+                                <p>Install extra Python packages (pip) inside your instance and keep them in requirements.txt.</p>
+                                <button class="ghost" data-action="python-libs">Manage Libraries</button>
+                            </div>
                         </div>
                     </section>
 
@@ -1989,8 +2010,9 @@
                      t-att-data-currency-symbol="currency_symbol"
                      t-att-data-essential-monthly="essential_monthly_price or 14900"
                      t-att-data-essential-annual="essential_annual_price or 151980"
-                     t-att-data-growth-monthly="growth_monthly_price or 39900"
-                     t-att-data-growth-annual="growth_annual_price or 406980">
+                     t-att-data-current-workers="instance.workers_count or 1"
+                     t-att-data-current-storage="instance.storage_limit_gb or 5"
+                     t-att-data-instance-id="instance.id">
                     <div class="glass modal-card" style="width:100%;max-width:540px;padding:26px">
                         <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:14px">
                             <div>
@@ -1998,6 +2020,20 @@
                                 <p style="margin:0;font-size:12px;color:var(--muted)">Select duration and configure instance resources.</p>
                             </div>
                             <button type="button" class="ghost" id="btnCloseRenewModal" style="padding:4px 8px;font-size:14px;line-height:1;border-radius:6px">✕</button>
+                        </div>
+
+                        <!-- Current resources owned by the instance -->
+                        <div style="background:rgba(15,168,160,0.08);border:1px solid rgba(15,168,160,0.25);border-radius:12px;padding:12px 14px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px">
+                            <div>
+                                <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.05em">Your current resources</div>
+                                <div style="font-size:14px;font-weight:800;color:var(--navy);margin-top:2px">
+                                    <t t-esc="instance.workers_count or 1"/> worker(s) &amp;middot;
+                                    <t t-esc="'%g' % (instance.storage_limit_gb or 5)"/> GB storage
+                                </div>
+                            </div>
+                            <div style="font-size:11px;color:var(--muted);text-align:right;max-width:45%">
+                                Increase the values below to upgrade your instance.
+                            </div>
                         </div>
 
                         <form id="renewOrderForm" method="post" action="/pricing/checkout">
@@ -2009,6 +2045,8 @@
                             <input type="hidden" name="price_by" id="renewPriceBy" value="monthly"/>
                             <input type="hidden" name="plan" id="renewPlanName" value="Standard"/>
                             <input type="hidden" name="plan_product_id" id="renewPlanProductId" t-att-value="essential_product.id if essential_product else ''"/>
+                            <!-- The visible storage field is the EXTRA GB to add; the form posts the resulting total. -->
+                            <input type="hidden" name="storage_gb" id="renewStorageGbTotal" t-att-value="'%g' % (instance.storage_limit_gb or 5)"/>
 
                             <!-- Billing Duration Toggle -->
                             <div class="field" style="margin-bottom:14px">
@@ -2019,40 +2057,33 @@
                                 </div>
                             </div>
 
-                            <!-- Plan Selection (Standard vs Growth) -->
+                            <!-- Plan (Standard only) -->
                             <div class="field" style="margin-bottom:14px">
-                                <label>CHOOSE PLAN</label>
-                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                                    <div class="renew-plan-card active" id="renewPlanCardEssential" data-plan="Standard"
-                                         t-att-data-product-id="essential_product.id if essential_product else ''"
-                                         data-base-storage="5" style="cursor:pointer;padding:12px;border:2px solid var(--teal);border-radius:12px;background:rgba(15,168,160,0.06);transition:all .2s">
-                                        <div style="font-size:13px;font-weight:800;color:var(--navy)">Standard</div>
-                                        <div style="font-size:16px;font-weight:800;color:var(--deep);margin:4px 0" id="renewEssPriceDisplay">
-                                            <t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/>
-                                        </div>
-                                        <div style="font-size:10px;color:var(--muted)">5 GB storage · 1 worker</div>
+                                <label>PLAN</label>
+                                <div class="renew-plan-card active" id="renewPlanCardEssential" data-plan="Standard"
+                                     t-att-data-product-id="essential_product.id if essential_product else ''"
+                                     data-base-storage="5" style="padding:12px;border:2px solid var(--teal);border-radius:12px;background:rgba(15,168,160,0.06)">
+                                    <div style="display:flex;justify-content:space-between;align-items:center">
+                                        <span style="font-size:13px;font-weight:800;color:var(--navy)">Standard</span>
+                                        <span style="font-size:8px;font-weight:800;background:var(--teal);color:#fff;padding:2px 6px;border-radius:99px">PLAN</span>
                                     </div>
-                                    <div class="renew-plan-card" id="renewPlanCardGrowth" data-plan="Growth"
-                                         t-att-data-product-id="growth_product.id if growth_product else ''"
-                                         data-base-storage="20" style="cursor:pointer;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,0.7);transition:all .2s">
-                                        <div style="display:flex;justify-content:space-between;align-items:center">
-                                            <span style="font-size:13px;font-weight:800;color:var(--navy)">Growth</span>
-                                            <span style="font-size:8px;font-weight:800;background:var(--coral);color:#fff;padding:2px 6px;border-radius:99px">POPULAR</span>
-                                        </div>
-                                        <div style="font-size:16px;font-weight:800;color:var(--deep);margin:4px 0" id="renewGroPriceDisplay">
-                                            <t t-esc="growth_monthly_price_formatted or '39,900'"/> <t t-esc="currency_symbol"/>
-                                        </div>
-                                        <div style="font-size:10px;color:var(--muted)">20 GB storage · 2 workers</div>
+                                    <div style="font-size:16px;font-weight:800;color:var(--deep);margin:4px 0" id="renewEssPriceDisplay">
+                                        <t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/>
                                     </div>
+                                    <div style="font-size:10px;color:var(--muted)">Includes 5 GB base storage &amp;middot; workers &amp; extra storage billed below</div>
                                 </div>
                             </div>
 
                             <!-- Workers Stepper -->
                             <div class="field" style="margin-bottom:14px">
-                                <label>NUMBER OF WORKERS</label>
+                                <label>NUMBER OF WORKERS (TOTAL)</label>
                                 <div style="display:flex;align-items:center;gap:8px">
                                     <button type="button" class="ghost" id="renewBtnMinusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
-                                    <input type="number" name="num_users" id="renewUsersCount" min="1" t-att-max="max_workers or 4" value="1" style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
+                                    <input type="number" name="num_users" id="renewUsersCount"
+                                           t-att-min="instance.workers_count or 1"
+                                           t-att-max="max_workers or 4"
+                                           t-att-value="instance.workers_count or 1"
+                                           style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                     <button type="button" class="ghost" id="renewBtnPlusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                     <span style="font-size:11px;color:var(--muted);margin-left:6px" id="renewUserPriceDisplay">
                                         <t t-esc="user_monthly_price_formatted or '100'"/> <t t-esc="currency_symbol"/> / worker / month
@@ -2060,39 +2091,50 @@
                                 </div>
                             </div>
 
-                            <!-- Storage Stepper -->
+                            <!-- Extra Storage Stepper: only the GB added on top are charged -->
                             <div class="field" style="margin-bottom:14px">
-                                <label>STORAGE (GB)</label>
+                                <label>EXTRA STORAGE (GB)</label>
                                 <div style="display:flex;align-items:center;gap:8px">
                                     <button type="button" class="ghost" id="renewBtnMinusStorage" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
-                                    <input type="number" name="storage_gb" id="renewStorageGb" min="5" max="500" value="5" style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
+                                    <input type="number" name="extra_storage_gb" id="renewStorageGb"
+                                           min="0"
+                                           t-att-max="'%g' % (500 - (instance.storage_limit_gb or 5))"
+                                           value="1"
+                                           style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                     <button type="button" class="ghost" id="renewBtnPlusStorage" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                     <span style="font-size:11px;color:var(--muted);margin-left:6px" id="renewStoragePriceDisplay">
-                                        5 GB included · + <t t-esc="extra_storage_monthly_price_formatted or '220'"/> <t t-esc="currency_symbol"/> / extra GB
+                                        <t t-esc="'%g' % (instance.storage_limit_gb or 5)"/> GB included · + <t t-esc="extra_storage_monthly_price_formatted or '220'"/> <t t-esc="currency_symbol"/> / extra GB
                                     </span>
                                 </div>
+                                <div style="font-size:10px;color:var(--muted);margin-top:5px" id="renewStorageTotalHint"/>
                             </div>
 
-                            <!-- Total Summary Box -->
+                            <!-- Upgrade add-ons summary (only extra workers/storage are charged) -->
                             <div style="background:rgba(15,168,160,0.08);border:1px solid rgba(15,168,160,0.25);border-radius:12px;padding:14px;margin-bottom:18px">
                                 <div style="display:flex;justify-content:space-between;align-items:center">
                                     <div>
-                                        <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.05em">Total Due Today</div>
+                                        <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.05em">Upgrade add-ons — due today</div>
                                         <div style="font-size:22px;font-weight:800;color:var(--navy)" id="renewGrandTotalDisplay">
-                                            <t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/>
+                                            0 <t t-esc="currency_symbol"/>
                                         </div>
+                                        <div style="font-size:10px;color:var(--muted);margin-top:2px">Only the extra workers &amp; storage are charged.</div>
                                     </div>
                                     <div style="text-align:right">
                                         <span class="state-pill" id="renewSummaryCycleBadge" style="background:rgba(15,168,160,0.15);color:var(--deep);font-weight:800">Monthly</span>
-                                        <div style="font-size:10px;color:var(--muted);margin-top:4px" id="renewSummaryNote">Cancel or modify anytime</div>
+                                        <div style="font-size:10px;color:var(--muted);margin-top:4px" id="renewSummaryNote">Upgrades apply instantly</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="modal-actions" style="margin-top:16px">
+                            <input type="hidden" name="renew_plan_only" value="on"/>
+
+                            <div class="modal-actions" style="margin-top:16px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
                                 <button type="button" class="ghost" id="renewCancelBtn">Cancel</button>
-                                <button type="submit" class="primary" id="renewSubmitBtn" style="padding:11px 24px;font-size:13px">
-                                    Proceed to Checkout &amp; Pay &amp;rarr;
+                                <button type="button" class="primary" id="renewUpgradeBtn" style="padding:11px 18px;font-size:13px;background:linear-gradient(135deg,#15a8a0,#0d8e87);border-color:transparent">
+                                    Upgrade &amp;middot; <span id="renewUpgradeBtnAmount">0</span> &amp;rarr;
+                                </button>
+                                <button type="submit" class="primary" id="renewSubmitBtn" style="padding:11px 18px;font-size:13px">
+                                    Renew Plan &amp;middot; <span id="renewRenewBtnAmount">0</span> &amp;rarr;
                                 </button>
                             </div>
                         </form>
@@ -2354,10 +2396,62 @@
                          t-att-data-order-id="pending_workers_order_id or 0" style="display:none"></div>
                 </t>
 
-                <!-- Backup in-progress preloader popup -->
+                <!-- Install Python Library wizard (Overview control + Tools card) -->
+                <div class="modal" id="pythonLibsModal">
+                    <div class="glass modal-card" style="width:100%;max-width:580px;padding:26px"
+                         t-att-data-instance-id="instance.id">
+                        <h2 style="font-size:22px;margin:0 0 4px;color:var(--navy)">Install Python Library</h2>
+                        <p style="font-size:12px;color:var(--muted);margin:0 0 18px">
+                            Type the name of the Python package you need (a
+                            <b>pip</b> library) and press Install. It is installed inside your
+                            instance container with <b>pip --user</b>, so it stays available after
+                            a restart or a redeploy. Restart the instance if the library is used by a
+                            module that is already loaded.
+                        </p>
+
+                        <div class="field" style="margin-bottom:10px">
+                            <label>LIBRARY NAME</label>
+                            <div style="display:flex;gap:8px">
+                                <input type="text" id="pythonLibInput" autocomplete="off" spellcheck="false"
+                                       placeholder="pandas   ·   python-escpos==3.1   ·   pandas[excel]"
+                                       style="flex:1"/>
+                                <button class="primary" type="button" id="btnPythonLibInstall"
+                                        style="white-space:nowrap">Install</button>
+                            </div>
+                            <div id="pythonLibHint" style="font-size:10px;color:var(--muted);margin-top:7px">
+                                Version is optional — when you leave it out, the exact version pip installs is
+                                pinned in requirements.txt.
+                            </div>
+                        </div>
+
+                        <div id="pythonLibProgress" style="display:none;align-items:center;gap:9px;font-size:11px;color:var(--deep);font-weight:700;margin:12px 0">
+                            <span class="python-lib-spin">&#8635;</span>
+                            <span>Installing… pip is resolving and downloading the package, this can take up to a minute.</span>
+                        </div>
+
+                        <div id="pythonLibError" style="display:none;font-size:11px;line-height:1.55;color:#b91c1c;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.28);border-radius:10px;padding:10px 12px;margin:12px 0;white-space:pre-wrap"></div>
+
+                        <div class="section-title" style="padding:14px 0 8px">
+                            <h3 style="margin:0;font-family:Inter,sans-serif;font-size:13px;color:var(--navy)">
+                                Installed libraries
+                            </h3>
+                            <span id="pythonLibCount" style="font-size:10px;color:var(--muted)"></span>
+                        </div>
+                        <div class="python-lib-list" id="pythonLibList"></div>
+                        <div style="font-size:10px;color:var(--muted);margin-top:9px">
+                            Manifest updated automatically: <b class="mono" id="pythonLibPath">/home/&lt;instance&gt;/requirements.txt</b>
+                        </div>
+
+                        <div class="modal-actions" style="margin-top:16px">
+                            <button class="ghost" type="button" id="pythonLibsClose">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backup preloader popup: running -> completed / failed / taking too long -->
                 <div class="modal" id="backupProgressModal">
                     <div class="glass modal-card" style="max-width:460px;text-align:center;padding:32px 26px">
-                        <div class="saas-spinner-container" style="margin:0 auto 6px">
+                        <div class="saas-spinner-container" id="backupModalSpinner" style="margin:0 auto 6px">
                             <div class="saas-pulse-ring"></div>
                             <div class="saas-spinner">
                                 <div class="saas-spinner-inner">
@@ -2365,14 +2459,19 @@
                                 </div>
                             </div>
                         </div>
-                        <h2 style="margin:14px 0 6px;font-size:20px">Your backup is in progress</h2>
-                        <p style="font-size:12.5px;color:var(--muted);margin:0 0 18px">
-                            Please wait — do not close or refresh this page while the backup is being created.
+                        <div id="backupModalResultIcon" style="display:none;font-size:44px;line-height:1;margin:6px 0 0"></div>
+                        <h2 id="backupModalTitle" style="margin:14px 0 6px;font-size:20px">Your backup is in progress</h2>
+                        <p id="backupModalMessage" style="font-size:12.5px;color:var(--muted);margin:0 0 18px">
+                            The backup is now running. Follow its progress on the Backups tab — refreshing the page is safe.
                         </p>
                         <div class="saas-progress-bar-wrap" style="margin:0 0 8px">
                             <div class="saas-progress-bar-fill" id="backupModalProgressFill" style="width:0%"></div>
                         </div>
                         <div id="backupModalPct" class="mono" style="font-size:11px;color:var(--muted)">0%</div>
+                        <div class="modal-actions" id="backupModalActions" style="display:none;justify-content:center;margin-top:18px">
+                            <button class="ghost" type="button" id="backupModalClose">Close</button>
+                            <button class="primary" type="button" id="backupModalRefresh">Refresh</button>
+                        </div>
                     </div>
                 </div>
 

@@ -1101,37 +1101,48 @@
       cursor: pointer;
     }
   }
+}
 
-  button[name="o_payment_submit_button"], .o_payment_submit_button {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    background: linear-gradient(135deg, var(--teal, #0fa8a0) 0%, var(--deep, #0b6e68) 100%) !important;
+/* ------------------------------------------------------------------ */
+/* Pay now / Confirm order submit button                              */
+/* This button is rendered by website_sale.navigation_buttons, i.e.    */
+/* OUTSIDE #payment_method, so it must be targeted from the checkout   */
+/* wrapper too. Styled like the cart "Proceed to Checkout" button.     */
+/* ------------------------------------------------------------------ */
+.checkout-portal-wrap button[name="o_payment_submit_button"],
+.checkout-portal-wrap .o_payment_submit_button,
+#payment_method button[name="o_payment_submit_button"],
+#payment_method .o_payment_submit_button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 52px !important;
+  background: linear-gradient(135deg, var(--teal, #0fa8a0) 0%, var(--deep, #0b6e68) 100%) !important;
+  color: #fff !important;
+  font-family: Inter, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em !important;
+  padding: 15px 24px !important;
+  border: none !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 25px rgba(15, 168, 160, 0.35) !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+  margin-top: 18px !important;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 32px rgba(15, 168, 160, 0.45) !important;
     color: #fff !important;
-    font-family: Inter, sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
-    padding: 15px 30px !important;
-    border: none !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 25px rgba(15, 168, 160, 0.35) !important;
-    transition: all 0.25s ease !important;
-    cursor: pointer !important;
-    margin-top: 18px !important;
+  }
 
-    &:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 14px 32px rgba(15, 168, 160, 0.45) !important;
-      color: #fff !important;
-    }
-
-    &:disabled {
-      opacity: 0.55 !important;
-      cursor: not-allowed !important;
-      transform: none !important;
-      box-shadow: none !important;
-    }
+  &:disabled {
+    opacity: 0.55 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -1187,6 +1198,16 @@
     }
   }
 
+  /* Pay now / Confirm order button: comfortable full-width touch target */
+  button[name="o_payment_submit_button"],
+  .o_payment_submit_button {
+    font-size: 14px !important;
+    padding: 14px 18px !important;
+    min-height: 50px !important;
+    border-radius: 12px !important;
+    margin-top: 14px !important;
+  }
+
   .vip-instance-box {
     padding: 18px 16px;
 
@@ -1197,5 +1218,50 @@
 
   .vip-stepper-card {
     padding: 14px 16px;
+  }
+}
+
+/* ==========================================================================
+   Minimum order amount / checkout blocking errors
+   ========================================================================== */
+.saas-checkout-errors {
+  margin-bottom: 6px;
+
+  .alert-danger {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid rgba(214, 74, 74, 0.32);
+    background: linear-gradient(180deg, #fff7f5, #fff1ee);
+    color: #8a2b1f;
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 12px 30px rgba(214, 74, 74, 0.08);
+    font-size: 13px;
+    line-height: 1.6;
+
+    &::before {
+      content: '!';
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--coral, #ff6f5e);
+      color: #fff;
+      font-family: Georgia, serif;
+      font-weight: 700;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h4 {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #b23a28;
+      margin: 2px 0 6px;
+    }
   }
 }

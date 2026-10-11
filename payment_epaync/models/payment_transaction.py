@@ -42,6 +42,24 @@ ISO4217_NUMERIC = {
     'ZMW': '967', 'ZWL': '932',
 }
 
+
+def epaync_numeric_code(currency):
+    """Return the ISO 4217 numeric code of a ``res.currency`` as a string.
+
+    Odoo's ``res.currency.iso_numeric`` is preferred; the static mapping is only
+    used as a fallback for currencies that don't define it.
+
+    :param res.currency currency: The currency whose numeric code is wanted.
+    :return: The 3-digit numeric code, or an empty string if it is unknown.
+    :rtype: str
+    """
+    if not currency:
+        return ''
+    if currency.iso_numeric:
+        return str(currency.iso_numeric)
+    return ISO4217_NUMERIC.get(currency.name, '')
+
+
 # EpayNC vads_trans_status → Odoo payment state
 # EpayNC SINGLE mode (immediate capture, capture_delay=0): AUTHORISED means money
 # is taken — treat as done. _set_authorized() requires support_manual_capture on
@@ -91,6 +109,19 @@ class PaymentTransaction(models.Model):
     epaync_auth_number = fields.Char(string="Authorization Number")
     epaync_vads_trans_id = fields.Char(string="vads_trans_id", readonly=True)
     epaync_shop_id = fields.Char(string="Shop ID")
+    epaync_gateway_currency_id = fields.Many2one(
+        'res.currency',
+        string="Gateway Currency",
+        readonly=True,
+        help="Currency actually sent to EpayNC (vads_currency). It may differ from the "
+             "transaction currency when the amount was auto-converted.",
+    )
+    epaync_gateway_amount = fields.Char(
+        string="Gateway Amount (minor units)",
+        readonly=True,
+        help="Exact vads_amount sent to / received from EpayNC, in the gateway currency's "
+             "minor units (e.g. cents).",
+    )
     epaync_gateway_status = fields.Char(string="Gateway Status")
     epaync_card_brand = fields.Char(string="Card Brand")
     epaync_card_type = fields.Char(string="Card Type")
@@ -124,15 +155,44 @@ class PaymentTransaction(models.Model):
         vads_trans_id = self._epaync_generate_trans_id()
         trans_date = datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')
 
-        # Use actual transaction currency — convert to ISO 4217 numeric code
-        currency = self.currency_id
-        currency_alpha = currency.name if currency else 'XPF'
-        currency_numeric = ISO4217_NUMERIC.get(currency_alpha, '953')
+        # EpayNC expects the ISO 4217 *numeric* currency code. The order currency is
+        # converted to the provider's gateway currency (XPF by default for New
+        # Caledonia) so that any customer currency (EUR, USD, ...) is accepted by the
+        # gateway even when it only enabled XPF on the shop/contract.
+        order_currency = self.currency_id
+        gateway_currency = provider.epaync_gateway_currency_id or order_currency
+        if not gateway_currency:
+            raise ValidationError(_("EpayNC: no currency is set on the transaction."))
 
-        # Amount in smallest currency unit (cents for USD/EUR, whole units for XPF/JPY)
-        decimal_places = currency.decimal_places if currency else 0
+        currency_numeric = epaync_numeric_code(gateway_currency)
+        if not currency_numeric:
+            raise ValidationError(_(
+                "EpayNC: unable to determine the ISO 4217 numeric code for currency %s.",
+                gateway_currency.name,
+            ))
+
+        # Amount in the gateway currency, expressed in its smallest unit
+        # (cents for EUR/USD, whole units for XPF/JPY).
+        conversion_date = (
+            fields.Date.to_date(self.create_date) if self.create_date else fields.Date.today()
+        )
         raw_amount = processing_values.get('amount', self.amount)
-        amount = int(round(raw_amount * (10 ** decimal_places)))
+        gateway_amount_float = provider._epaync_convert_amount(
+            raw_amount, order_currency, gateway_currency, conversion_date
+        )
+        gateway_amount = int(
+            round(gateway_amount_float * (10 ** gateway_currency.decimal_places))
+        )
+
+        # Never send an amount below the MID minimum to the gateway: EpayNC rejects the
+        # whole payment with '10118 - MID_MIN_AMOUNT_NOT_REACHED'. Whatever the flow
+        # (checkout, portal, payment link, ...), a friendly ValidationError is raised
+        # before the redirect form is built. Validation transactions (0-amount card
+        # checks) are not real payments and must not be blocked.
+        if self.operation != 'validation':
+            provider._epaync_raise_if_below_min_amount(
+                raw_amount, order_currency, date=conversion_date
+            )
 
         base_url = provider._epaync_get_base_url()
 
@@ -144,7 +204,7 @@ class PaymentTransaction(models.Model):
 
         vads_data = {
             'vads_action_mode': 'INTERACTIVE',
-            'vads_amount': str(amount),
+            'vads_amount': str(gateway_amount),
             'vads_ctx_mode': 'TEST' if provider.state == 'test' else 'PRODUCTION',
             'vads_currency': currency_numeric,
             'vads_page_action': 'PAYMENT',
@@ -188,6 +248,8 @@ class PaymentTransaction(models.Model):
         self.sudo().write({
             'epaync_vads_trans_id': vads_trans_id,
             'epaync_shop_id': provider.epaync_merchant_id,
+            'epaync_gateway_currency_id': gateway_currency.id,
+            'epaync_gateway_amount': str(gateway_amount),
             'epaync_request_data': str(form_fields),
             'epaync_processing_time': processing_time,
         })

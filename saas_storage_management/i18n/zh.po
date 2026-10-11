@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-23 08:01+1100\n"
+"PO-Revision-Date: 2026-10-12 04:48+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: zh\n"
 "Language: zh\n"
@@ -24,32 +24,32 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;larr; Back to Storage Overview"
-msgstr "& larr; 返回存储概览"
+msgstr "&amp;larr; 返回存储概览"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;larr; Dashboard"
-msgstr "平面板( P)"
+msgstr "&amp;larr; 挂板"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot;"
-msgstr "& amp; middot; 缓存;"
+msgstr "&amp;middot;"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot; Storage Management"
-msgstr "& middot; 存储管理"
+msgstr "&amp;middot; 储存管理"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;rarr;"
-msgstr "(amp; rarr;) (s) :;"
+msgstr "&amp;rarr;"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "&amp;times;"
-msgstr "amp; 时间;"
+msgstr "&amp;times;"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -100,6 +100,9 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#5cb85c;\"><strong>已核准更新</strong></div><hr style=\"background-color:#5cb85c; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>亲爱的 <span t-out=\"object.partner_id.name or ''\"></span>, (中文(简体) ).</div><br/><div>例如您的存储更新请求 <strong><span t-out=\"object.name or ''\"></span></strong> 已经获得批准。\n"
+"您的新存储限制 <strong style=\"color:#5cb85c;\"><span t-out=\"object.storage_limit_gb\"></span> GB 语句</strong>。 。 。 。\n"
+" </div><br/><div>如果您的实例由于完全存储而停止, 请联系支持以重新启动, 或检查您的 <a href=\"/my/storage\">存储盘</a>。 。 。 。</div></div><br/><div><div>谢谢你利用我们的服务 有问题请联系支援组</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_full_mail_template
@@ -130,6 +133,12 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#d9534f;\"><strong>储存完毕 停止</strong></div><hr style=\"background-color:#d9534f; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>亲爱的 <span t-out=\"object.partner_id.name or ''\"></span>, (中文(简体) ).</div><br/><div>你的奥多克实例 <strong><span t-out=\"object.name or ''\"></span></strong> 已达到\n"
+" <strong style=\"color:#d9534f;\">100%</strong> 其存储限制\n"
+"(单位:千美元)<strong><span t-out=\"object.storage_limit_gb\"></span> GB 语句</strong>) (中文(简体) ).\n"
+" </div><br/><div>为了保护你的数据,你的例子 <strong>自动停止</strong> 并且已经无法进入。</div><br/><div>请联系我们的支援小组 提高你的存储限度 这样你就可以恢复试验了\n"
+"或请求升级 <a href=\"/my/storage\">存储盘</a>。 。 。 。\n"
+" </div></div><br/><div><div>我们为不便感到抱歉 我们的支援小组已经准备好 帮助你回到网上。</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_warning_mail_template
@@ -161,6 +170,12 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#fcb042;\"><strong>警告</strong></div><hr style=\"background-color:#fcb042; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>亲爱的 <span t-out=\"object.partner_id.name or ''\"></span>, (中文(简体) ).</div><br/><div>你的奥多克实例 <strong><span t-out=\"object.name or ''\"></span></strong> 已经使用\n"
+" <strong><span t-out=\"'%.2f' % object.storage_used_gb\"></span> GB 语句</strong> 调出\n"
+" <strong><span t-out=\"object.storage_limit_gb\"></span> GB 语句</strong>(单位:千美元)<strong style=\"color:#fcb042;\"><span t-out=\"'%.1f' % object.storage_percentage\"></span>百分比(%)</strong>) (中文(简体) ).\n"
+" </div><br/><div>一旦您的存储量达到100%, 您将自动停止运行, 直至获得更多的存储量 。</div><br/><div>您可以请求您的存储升级\n"
+" <a href=\"/my/storage\">存储盘</a>。 。 。 。\n"
+" </div></div><br/><div><div>如有问题或需要帮助,请联系支援组.</div></div>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -222,7 +237,7 @@ msgstr "<small>所用磁盘总数</small>"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "<small>Used Filestore &amp; DB</small>"
-msgstr "<small>已使用的文件和 DB</small>"
+msgstr "<small>已使用的文件堆 &amp; DB</small>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -247,7 +262,7 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "<span class=\"eyebrow\">DISK &amp; CAPACITY</span>"
-msgstr "<span class=\"eyebrow\">流离失所与能力</span>"
+msgstr "<span class=\"eyebrow\">磁盘&amp;容量</span>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -297,7 +312,7 @@ msgstr "<span>小时验证 :</span><strong class=\"ok\">活动</strong>"
 msgid ""
 "<span>Odoo Filestore:</span>\n"
 "                                    <strong>Attachments &amp; Media</strong>"
-msgstr "<span>奥多文件堆 :</span><strong>附件和媒体( M)</strong>"
+msgstr "<span>奥多文件堆 :</span><strong>附件&amp; 媒体</strong>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -495,9 +510,9 @@ msgstr "管理实例"
 #. module: saas_storage_management
 #: model:ir.model.fields,help:saas_storage_management.field_saas_odoo_instance__storage_limit_gb
 msgid ""
-"Maximum storage allowed for this instance in GB. Default: 5 GB for "
-"Essential, 20 GB for Growth. Leave empty or 0 for unlimited."
-msgstr "允许在 GB 中最大存储此实例 。 默认:基本值为5GB,增长值为20GB. 空出或入出无穷."
+"Maximum storage allowed for this instance in GB. Default: 5 GB for Standard,"
+" 20 GB for Growth. Leave empty or 0 for unlimited."
+msgstr "允许在 GB 中最大存储此实例 。 默认:标准为5GB,增长为20GB. 空出或入出无穷."
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -813,7 +828,7 @@ msgstr "例如,25个"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "healthy &amp;middot;"
-msgstr "健康( amp; middot;);"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard

@@ -167,7 +167,7 @@
 
         <record id="saas_odoo190_config_proxy_mode" model="saas.odoo.version.config">
             <field name="name">proxy_mode</field>
-            <field name="value">False</field>
+            <field name="value">True</field>
             <field name="section_id" ref="saas_odoo_version_config_section_options"/>
             <field name="odoo_version_id" ref="saas_odoo_version_19"/>
         </record>

@@ -21,6 +21,7 @@ from . import saas_odoo_instance_domain_name
 from . import saas_odoo_instance_backup
 from . import saas_odoo_instance_container_backup
 from . import saas_odoo_instance_history
+from . import saas_odoo_instance_python_library
 from . import saas_odoo_server_extra_addons
 from . import saas_odoo_instance_extra_addons
 from . import saas_odoo_instance_custom_addon

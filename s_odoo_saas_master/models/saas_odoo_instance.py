@@ -38,6 +38,15 @@ MAX_WORKERS_PER_INSTANCE = 4
 # which is why installing the module is the only thing left to do to get Enterprise.
 ENTERPRISE_MODULE = 'web_enterprise'
 
+# A backup that stays 'running' longer than this is considered dead (worker killed,
+# server restart, database contention, ...) and is automatically failed. The portal
+# gives up waiting a little later so it can display the recorded result.
+BACKUP_WATCHDOG_MINUTES = 20
+
+# Short lock timeout used when writing the backup state: waiting on a row locked by a
+# long cron/backup job must never hang the (short) progress transaction.
+BACKUP_STATE_LOCK_TIMEOUT = '5s'
+
 
 def _is_db_concurrency_error(exc):
     """True for PostgreSQL concurrency errors Odoo retries at the request level.
@@ -1400,11 +1409,55 @@ class OdooInstance(models.Model):
                 error = str(e) or repr(e)
                 raise UserError(_("Database backup error: %s") % error)
 
+    def _write_backup_state(self, vals, retries=6, delay=0.4):
+        """Persist the backup state on a dedicated, short-lived transaction.
+
+        The backup job runs in a long-lived transaction (Odoo cursors use ``REPEATABLE
+        READ``). Publishing the progress through that same cursor made every commit fail
+        as soon as a cron or a portal request updated the same ``saas.odoo.instance``
+        row: PostgreSQL then raises ``could not serialize access due to concurrent
+        update``, the backup is aborted and — because the failure handler used the very
+        same broken transaction — ``backup_state`` stayed ``running`` forever. That is
+        what kept the customer dashboard stuck on "Your backup is in progress".
+
+        Opening a separate connection per update (with a short ``lock_timeout`` and a
+        few retries) guarantees that a state is always written, even when the job's own
+        transaction is being rolled back.
+        """
+        if not self or not vals:
+            return False
+        instance_ids = self.ids
+        last_error = None
+        for attempt in range(max(1, retries)):
+            try:
+                with self.pool.cursor() as cr:
+                    # Never wait forever on a row locked by a long cron/backup job.
+                    cr.execute("SET LOCAL lock_timeout = %s", (BACKUP_STATE_LOCK_TIMEOUT,))
+                    env = api.Environment(cr, SUPERUSER_ID, {})
+                    env['saas.odoo.instance'].sudo().browse(instance_ids).write(vals)
+                return True
+            except Exception as error:  # noqa: BLE001 - must never break the caller
+                last_error = error
+                if not _is_db_concurrency_error(error):
+                    _logger.warning(
+                        "Could not write backup state %s on instance(s) %s: %s",
+                        vals, instance_ids, error,
+                    )
+                    return False
+                time.sleep(delay * (attempt + 1))
+        _logger.error(
+            "Could not write backup state %s on instance(s) %s after %s attempts: %s",
+            vals, instance_ids, retries, last_error,
+        )
+        return False
+
     def _publish_backup_progress(self, percent=0, message=None, state=None, commit=True):
         """Write the backup progress straight to the database.
 
-        Called from the background worker with its own cursor, so the portal sees the
-        progress live even though the worker's transaction is not committed yet.
+        Delegates to :meth:`_write_backup_state` so the update goes through its own
+        short transaction and can never abort the running backup. ``commit`` is kept
+        for backwards compatibility and is no longer used (the dedicated cursor is
+        always committed).
         """
         vals = {}
         if percent is not None:
@@ -1414,10 +1467,8 @@ class OdooInstance(models.Model):
         if state is not None:
             vals['backup_state'] = state
         if not vals:
-            return
-        self.sudo().write(vals)
-        if commit:
-            self.env.cr.commit()
+            return False
+        return self._write_backup_state(vals)
 
     @classmethod
     def _run_backup_job(cls, dbname, instance_id, backup_type, uid):
@@ -1435,7 +1486,9 @@ class OdooInstance(models.Model):
                     instance._publish_backup_progress(percent, message)
 
                 instance.action_backup(backup_type=backup_type, progress_cb=progress)
-                instance.sudo().write({
+                # Final state on a dedicated transaction: it must survive even if the
+                # job transaction is later rolled back / closed by the caller.
+                instance._write_backup_state({
                     'backup_state': 'done',
                     'backup_progress': 100,
                     'backup_message': _("Backup completed."),
@@ -1458,7 +1511,10 @@ class OdooInstance(models.Model):
                 _logger.exception("Background backup failed for instance %s", instance_id)
                 try:
                     cr.rollback()
-                    instance.sudo().write({
+                    # The job cursor is unusable after the failure, so the state is
+                    # written on its own connection: the dashboard then always sees
+                    # 'failed' instead of a spinner that never stops.
+                    instance._write_backup_state({
                         'backup_state': 'failed',
                         'backup_progress': 100,
                         'backup_message': message[:250],
@@ -1494,12 +1550,36 @@ class OdooInstance(models.Model):
         """
         self.ensure_one()
         if self.backup_state == 'running':
-            return {
-                'success': False,
-                'error': _("A backup is already running for this instance."),
-                'state': 'running',
-                'progress': self.backup_progress,
-            }
+            # A backup left 'running' by a killed worker would otherwise refuse every new
+            # attempt forever. Past the watchdog delay it is declared interrupted and the
+            # customer can start a fresh one.
+            started_at = self.backup_started_at
+            stale_before = fields.Datetime.subtract(
+                fields.Datetime.now(), minutes=BACKUP_WATCHDOG_MINUTES)
+            if started_at and started_at >= stale_before:
+                return {
+                    'success': False,
+                    'error': _("A backup is already running for this instance."),
+                    'state': 'running',
+                    'running': True,
+                    'progress': self.backup_progress,
+                    'message': self.backup_message,
+                }
+            _logger.warning(
+                "Backup of instance %s was stuck in 'running' since %s; restarting it.",
+                self.name, started_at,
+            )
+            self._write_backup_state({
+                'backup_state': 'failed',
+                'backup_progress': 100,
+                'backup_message': _("The previous backup was interrupted."),
+                'backup_finished_at': fields.Datetime.now(),
+            })
+            self._log_history(
+                _("Backup interrupted"),
+                category='backup', level='warning', icon='fa-exclamation-triangle',
+                description=_("The previous backup did not finish and was restarted."),
+            )
         self.write({
             'backup_state': 'running',
             'backup_progress': 3,
@@ -1529,6 +1609,10 @@ class OdooInstance(models.Model):
     def get_backup_status(self):
         """Return the live backup state for the portal progress bar."""
         self.ensure_one()
+        elapsed_seconds = 0
+        if self.backup_state == 'running' and self.backup_started_at:
+            elapsed = fields.Datetime.now() - self.backup_started_at
+            elapsed_seconds = max(0, int(elapsed.total_seconds()))
         return {
             'success': True,
             'state': self.backup_state,
@@ -1537,6 +1621,10 @@ class OdooInstance(models.Model):
             'running_type': self.backup_running_type or False,
             'started_at': fields.Datetime.to_string(self.backup_started_at) if self.backup_started_at else False,
             'finished_at': fields.Datetime.to_string(self.backup_finished_at) if self.backup_finished_at else False,
+            'elapsed_seconds': elapsed_seconds,
+            # The server watchdog fails a backup after this delay; the portal uses it to
+            # stop its own spinner a little later instead of running forever.
+            'watchdog_minutes': BACKUP_WATCHDOG_MINUTES,
             'backup_count': self.backup_count,
             'limit': self.backup_limit or 0,
         }
@@ -2640,26 +2728,44 @@ class OdooInstance(models.Model):
         return '/home/%s/docker-compose.yml' % self.technical_name
 
     @api.model
-    def _recover_stuck_backups(self):
-        """Mark backups left 'running' by a server restart/crash as failed."""
-        stale_before = fields.Datetime.subtract(fields.Datetime.now(), minutes=45)
+    def _recover_stuck_backups(self, timeout_minutes=None):
+        """Mark backups left 'running' by a crash/serialization error as failed.
+
+        Without this guard-rail the dashboard of the customer keeps showing the
+        "Your backup is in progress" screen forever: the worker that owned the job is
+        gone, so no transaction will ever write the final state. The write goes through
+        :meth:`_write_backup_state` so the recovery itself never suffers from the very
+        concurrency error that killed the backup.
+        """
+        timeout = BACKUP_WATCHDOG_MINUTES if timeout_minutes is None else timeout_minutes
+        stale_before = fields.Datetime.subtract(fields.Datetime.now(), minutes=timeout)
         stuck = self.search([
             ('backup_state', '=', 'running'),
             '|', ('backup_started_at', '=', False), ('backup_started_at', '<', stale_before),
         ])
         for instance in stuck:
-            instance.write({
+            _logger.warning(
+                "Backup of instance %s stuck in 'running' since %s; marking it as failed.",
+                instance.name, instance.backup_started_at,
+            )
+            instance._write_backup_state({
                 'backup_state': 'failed',
                 'backup_progress': 100,
-                'backup_message': _("Backup interrupted (the server was restarted)."),
+                'backup_message': _("Backup interrupted (it timed out and was stopped)."),
                 'backup_finished_at': fields.Datetime.now(),
             })
             instance._log_history(
                 _("Backup interrupted"),
                 category='backup', level='warning', icon='fa-exclamation-triangle',
-                description=_("The backup was interrupted before it finished (server restart)."),
+                description=_("The backup was interrupted before it finished (timeout)."),
                 source='cron',
             )
+        return len(stuck)
+
+    @api.model
+    def cron_backup_watchdog(self):
+        """Frequently fail backups stuck in 'running' so the portal never spins forever."""
+        return self._recover_stuck_backups()
 
     @api.model
     def cron_auto_backup(self):

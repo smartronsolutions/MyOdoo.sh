@@ -4,9 +4,13 @@ import base64
 import hashlib
 import hmac
 
+from odoo import fields
 from odoo.tests import tagged
 
 from odoo.addons.payment.tests.common import PaymentCommon
+from odoo.addons.payment_epaync.models.payment_transaction import (
+    epaync_numeric_code,
+)
 
 
 @tagged('-at_install', 'post_install')
@@ -29,17 +33,29 @@ class TestPaymentEpaync(PaymentCommon):
         )
         cls.payment_method_id = cls.payment_method.id
         cls.payment_method_code = 'epaync'
+        cls.xpf_currency = cls._prepare_currency('XPF')
 
     # ── Helpers ───────────────────────────────────────────────────────────────
     def _expected_amount(self, tx):
         return str(int(round(tx.amount * (10 ** tx.currency_id.decimal_places))))
 
+    def _expected_gateway_amount(self, tx):
+        """Return the expected ``vads_amount`` for the tx's gateway currency."""
+        provider = self.provider
+        gateway_currency = provider.epaync_gateway_currency_id or tx.currency_id
+        date = fields.Date.to_date(tx.create_date) if tx.create_date else fields.Date.today()
+        converted = provider._epaync_convert_amount(
+            tx.amount, tx.currency_id, gateway_currency, date
+        )
+        return str(int(round(converted * (10 ** gateway_currency.decimal_places))))
+
     def _build_notification(self, tx, **overrides):
         """Return a validly-signed EpayNC notification payload for the tx."""
+        gateway_currency = tx.epaync_gateway_currency_id or tx.currency_id
         data = {
             'vads_trans_id': tx.epaync_vads_trans_id or '000001',
-            'vads_amount': self._expected_amount(tx),
-            'vads_currency': '978',  # EUR
+            'vads_amount': tx.epaync_gateway_amount or self._expected_amount(tx),
+            'vads_currency': epaync_numeric_code(gateway_currency),
             'vads_site_id': self.provider.epaync_merchant_id,
             'vads_trans_status': 'AUTHORISED',
             'vads_auth_result': '00',
@@ -105,8 +121,75 @@ class TestPaymentEpaync(PaymentCommon):
         )
         self.assertFalse(valid)
 
+    # ── Currencies ────────────────────────────────────────────────────────────
+    def test_gateway_currency_defaults_to_xpf(self):
+        self.assertEqual(self.provider.epaync_gateway_currency_id, self.xpf_currency)
+
+    def test_currency_numeric_code_helper(self):
+        self.assertEqual(epaync_numeric_code(self.currency_euro), '978')
+        self.assertEqual(epaync_numeric_code(self.xpf_currency), '953')
+        self.assertEqual(epaync_numeric_code(self.env['res.currency']), '')
+
+    def test_gateway_currency_uses_order_currency_when_configured(self):
+        """With the gateway currency set to the order currency, nothing is converted."""
+        self.provider.epaync_gateway_currency_id = self.currency_euro
+        tx = self._create_transaction(flow='redirect')
+        processing_values = tx._get_processing_values()
+        inputs = self._extract_values_from_html_form(
+            processing_values['redirect_form_html']
+        )['inputs']
+
+        self.assertEqual(inputs['vads_currency'], '978')  # EUR ISO 4217 numeric code
+        self.assertEqual(inputs['vads_amount'], self._expected_amount(tx))
+        self.assertEqual(tx.epaync_gateway_currency_id, self.currency_euro)
+        self.assertEqual(tx.epaync_gateway_amount, self._expected_amount(tx))
+
+    def test_amount_is_converted_to_xpf_with_fixed_peg(self):
+        """Without any configured rate, EUR -> XPF uses the fixed peg (953)."""
+        self.env['res.currency.rate'].sudo().search([
+            ('currency_id', 'in', (self.currency_euro | self.xpf_currency).ids),
+        ]).unlink()
+
+        tx = self._create_transaction(flow='redirect')
+        processing_values = tx._get_processing_values()
+        inputs = self._extract_values_from_html_form(
+            processing_values['redirect_form_html']
+        )['inputs']
+
+        self.assertEqual(inputs['vads_currency'], '953')  # XPF ISO 4217 numeric code
+        self.assertEqual(inputs['vads_amount'], str(int(round(self.amount * 119.3317))))
+        self.assertEqual(tx.epaync_gateway_currency_id, self.xpf_currency)
+        self.assertEqual(tx.epaync_gateway_amount, self._expected_gateway_amount(tx))
+
+    def test_conversion_uses_configured_rate_when_available(self):
+        """A rate configured in Odoo takes precedence over the fixed peg."""
+        company = self.env.company
+        self.env['res.currency.rate'].sudo().search([
+            ('currency_id', 'in', (self.currency_euro | self.xpf_currency).ids),
+        ]).unlink()
+        for currency in (self.currency_euro, self.xpf_currency):
+            if currency == company.currency_id:
+                continue
+            self.env['res.currency.rate'].sudo().create({
+                'currency_id': currency.id,
+                'rate': 1.0,
+                'name': '2020-01-01',
+                'company_id': company.id,
+            })
+
+        converted = self.provider._epaync_convert_amount(
+            self.amount, self.currency_euro, self.xpf_currency, fields.Date.today()
+        )
+        expected = self.currency_euro._convert(
+            self.amount, self.xpf_currency, company, fields.Date.today()
+        )
+        self.assertAlmostEqual(converted, expected, places=2)
+
     # ── Redirect form rendering ───────────────────────────────────────────────
     def test_redirect_form_rendering(self):
+        # Charge in the order currency (no conversion) to keep this test focused on
+        # the form itself; conversion is covered by the currency tests above.
+        self.provider.epaync_gateway_currency_id = self.currency_euro
         tx = self._create_transaction(flow='redirect')
         processing_values = tx._get_processing_values()
 

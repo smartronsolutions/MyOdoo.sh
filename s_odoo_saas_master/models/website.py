@@ -35,7 +35,10 @@ class Website(models.Model):
         partner = data.get('partner')
         sub_domain = data.get('sub_domain')
         domain_id = int(data.get('domain_id')) if data.get('domain_id') else False
-        users_count = int(data.get('users_count', 1))
+        # ``None``/empty means "default to 1 seat"; an explicit 0 means "plan only,
+        # no Workers line" (used by the plan-only renewal).
+        raw_users_count = data.get('users_count')
+        users_count = int(float(raw_users_count)) if raw_users_count not in (None, '') else 1
         plan_product_id = data.get('plan_product_id')
         plan_name = data.get('plan_name') or data.get('plan')
         app_ids = data.get('app_ids', [])
@@ -106,7 +109,7 @@ class Website(models.Model):
         # 2. Workers line (paid seat licence, auto-created if missing)
         user_product = Product._get_saas_worker_product()
 
-        if user_product and user_product.exists():
+        if user_product and user_product.exists() and users_count > 0:
             user_base_price = company._saas_convert_price(float(user_product.list_price or 100.0))
             # Same unit price as monthly, whatever the billing cycle.
             user_unit_price = round(user_base_price * addon_multiplier, 2)
@@ -122,7 +125,7 @@ class Website(models.Model):
             }))
 
         # 3. Extra Storage line (if extra_storage_gb > 0)
-        storage_gb = int(data.get('storage_gb', 0))
+        storage_gb = int(float(data.get('storage_gb', 0) or 0))
         base_storage = 20 if (plan_name and 'growth' in str(plan_name).lower()) else 5
         if storage_gb < base_storage:
             storage_gb = base_storage

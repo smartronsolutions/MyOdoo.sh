@@ -1,0 +1,781 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-10-12 04:41+1100\n"
+"Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
+"Language-Team: ar\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_api_version
+msgid "API Version"
+msgstr "نسخة أولية"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_allow_customer_cancel
+msgid "Allow Customer Cancel"
+msgstr "السماح للزبائن"
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_unknown_error:payment_epaync.payment_provider_epaync
+msgid "An unknown error occurred. Please contact support."
+msgstr "حدث خطأ غير معروف يرجى الاتصال بالدعم."
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_auth_number
+msgid "Authorization Number"
+msgstr "عدد الأذون"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_auth_result
+msgid "Authorization Result Code"
+msgstr "قانون إصدار التراخيص"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_auth_result_msg
+msgid "Authorization Result Message"
+msgstr "رسالة الأذن"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_auto_confirm_so
+msgid "Auto Confirm Sales Order"
+msgstr "أمر المبيعات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_auto_register_payment
+msgid "Auto Register Payment"
+msgstr "مدفوعات السجل الآلي"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_auto_validate_invoice
+msgid "Auto Validate Invoice"
+msgstr "فاتورة التحقق الآلي"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_cancel
+msgid "Cancel URL"
+msgstr "الغي اورل"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_transaction_epaync_form_inherit
+msgid "Card"
+msgstr "بطاقة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_card_brand
+msgid "Card Brand"
+msgstr "بطاقات تجارية"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_card_type
+msgid "Card Type"
+msgstr "نوع البطاقة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__code
+msgid "Code"
+msgstr "المدونة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__create_uid
+msgid "Created by"
+msgstr "أنشئت من قبل"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__create_date
+msgid "Created on"
+msgstr "المنشأة على"
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_transaction__epaync_gateway_currency_id
+msgid ""
+"Currency actually sent to EpayNC (vads_currency). It may differ from the "
+"transaction currency when the amount was auto-converted."
+msgstr ""
+"العملة أرسلت بالفعل إلى EpayNC (vads currency). وقد يختلف هذا المبلغ عن عملة"
+" المعاملات عندما يكون المبلغ محسوبا آليا."
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_provider__epaync_gateway_currency_id
+msgid ""
+"Currency actually sent to EpayNC as 'vads_currency' (ISO 4217 numeric code). The order total is automatically converted from the customer currency to this currency using Odoo's exchange rates (the fixed 1 EUR = 119.3317 XPF peg is used as a fallback if no rate is configured).\n"
+"EpayNC New Caledonia contracts usually only accept XPF (953): keep this set to XPF to allow EUR/USD/any other currency at checkout. If EpayNC enabled another currency on your shop/contract, select it here. Leave empty to send the order currency unchanged (only do this if that currency is enabled at EpayNC, otherwise the gateway returns error 10 'vads_currency Currency not found')."
+msgstr ""
+"العملة أرسلت في الواقع إلى EpayNC كما 'vads currency' (ISO 4217 رمز رقمي). ويحوّل مجموع الطلب تلقائياً من عملة العملاء إلى هذه العملة باستخدام أسعار صرف (أودو) (يستخدم الجزء الثابت من سعر الصرف (EUR = 119.3317\n"
+"ولا تقبل عقود شركة EpayNC New California عادة سوى أرقام التخطيط الارشادية (953): إبقاء هذه المجموعة على أرقام التخطيط الارشادية (XPF) للسماح لأية عملة أخرى عند المغادرة. إذا مَكّنَ EpayNC عملة أخرى على محلك/عقدك، إختارْه هنا. إتركْ فارغَ لإرسال عملةِ الطلبِ بدون تغيير (فقط يَعمَلُ هذا إذا تلك العملةِ مُمْكَنُة في EpayNC، خلافاً لخطأِ البوابةِ 10 'vads currency currency لَمْ يُعثرَ عليه."
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_ip_address
+msgid "Customer IP"
+msgstr "زبون"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Customer Redirect URLs"
+msgstr "العملاء"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_debug_mode_enabled
+msgid "Enable Debug Mode"
+msgstr "طريقة التمكين"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_enable_logs
+msgid "Enable Logs"
+msgstr "أجهزة تمكينية"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_provider__code__epaync
+#: model:payment.method,name:payment_epaync.payment_method_epaync
+#: model:payment.provider,name:payment_epaync.payment_provider_epaync
+msgid "EpayNC"
+msgstr "EpayNC"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_transaction_epaync_form_inherit
+msgid "EpayNC Details"
+msgstr "EpayNCتفاصيل"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "EpayNC Endpoints"
+msgstr "نقطة النهاية"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "EpayNC Log"
+msgstr "سجل بيبيك"
+
+#. module: payment_epaync
+#: model:ir.actions.act_window,name:payment_epaync.action_payment_epaync_log
+#: model:ir.ui.menu,name:payment_epaync.menu_payment_epaync_logs
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_list_view
+msgid "EpayNC Logs"
+msgstr "EpayNC Logs"
+
+#. module: payment_epaync
+#: model:ir.model,name:payment_epaync.model_payment_epaync_log
+msgid "EpayNC Payment Log"
+msgstr "سجل سداد التكاليف"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "EpayNC Settings"
+msgstr "EpayNC الترتيبات"
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_transaction.py:0
+msgid "EpayNC: No reference found in notification data."
+msgstr "EpayNC: No reference found in notification data."
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_transaction.py:0
+msgid "EpayNC: No transaction found for reference %s."
+msgstr "EpayNC: No transaction found for reference %s."
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_transaction.py:0
+msgid "EpayNC: no currency is set on the transaction."
+msgstr "التصفيق: لا توجد عملة في الصفقة."
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_provider.py:0
+msgid ""
+"EpayNC: no exchange rate is configured to convert %(from)s into %(to)s on "
+"company %(company)s. Please define a rate in Accounting ▸ Configuration ▸ "
+"Currencies, or set the Gateway Currency to the order currency."
+msgstr ""
+"EpayNC: no exchange rate is configured to convert %(from)s into %(to)s on "
+"company %(company)s. يُرجى تحديد سعر صرف العملة في المحاسبة أو تحديد سعر صرف"
+" العملة حسب الترتيب."
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_transaction.py:0
+msgid "EpayNC: unable to determine the ISO 4217 numeric code for currency %s."
+msgstr ""
+"EpayNC: unable to determine the ISO 4217 numeric code for currency %s."
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_epaync_log__log_type__error
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Error"
+msgstr "الرعب"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__error_message
+msgid "Error Message"
+msgstr "رسالة خاطئة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_error
+msgid "Error URL"
+msgstr "خطأ"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Errors"
+msgstr "الأخطاء"
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_transaction__epaync_gateway_amount
+msgid ""
+"Exact vads_amount sent to / received from EpayNC, in the gateway currency's "
+"minor units (e.g. cents)."
+msgstr "تم إرسالها من شركة (إيباي إن) في الوحدات الثانوية لعملة البوابة."
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_gateway_amount
+msgid "Gateway Amount (minor units)"
+msgstr "المبلغ (الوحدات الرئيسية)"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_gateway_currency_id
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_gateway_currency_id
+msgid "Gateway Currency"
+msgstr "عملة البوابة"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Gateway Info"
+msgstr "معلومات البوابة"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_transaction_epaync_form_inherit
+msgid "Gateway Response"
+msgstr "الرد على البوابة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_gateway_status
+msgid "Gateway Status"
+msgstr "بوابة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_gateway_trans_id
+msgid "Gateway Transaction ID"
+msgstr "تحديد هوية المعاملات"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "General"
+msgstr "معلومات عامة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__generated_signature
+msgid "Generated Signature"
+msgstr "التوقيع المولد"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Group By"
+msgstr "المجموعة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__headers
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Headers"
+msgstr "رؤساء"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__id
+msgid "ID"
+msgstr "الهوية"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_provider__epaync_payment_action__single
+msgid "Immediate Capture"
+msgstr "الإمساك الفوري"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_invalid_signature
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Invalid Signature"
+msgstr "التوقيع غير الرسمي"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث"
+
+#. module: payment_epaync
+#: model_terms:ir.actions.act_window,help:payment_epaync.action_payment_epaync_log
+msgid ""
+"Logs are recorded when the EpayNC payment provider processes\n"
+"                requests, responses, webhooks, and errors.\n"
+"                Enable logging in the provider configuration."
+msgstr ""
+"تُسجَّل رسوم عند عمليات تقديم مدفوعات الشركة\n"
+"الطلبات، والردود، والصور الإلكترونية، والأخطاء.\n"
+"(ج) إمكانية قطع الأشجار في تشكيلة مقدمي الخدمات."
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_provider__epaync_payment_action__multi
+msgid "Manual Capture (future)"
+msgstr "الرسم البياني (الأثاث)"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_merchant_ref
+msgid "Merchant Reference"
+msgstr "مرجعية تجارية"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_merchant_id
+msgid "Merchant Shop ID"
+msgstr "متاجر البضائع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_min_amount
+msgid "Minimum Order Amount"
+msgstr "الحد الأدنى للأمر"
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_provider__epaync_min_amount
+msgid ""
+"Minimum amount accepted by your EpayNC contract (MID), expressed in the "
+"Gateway Currency. Example: most New Caledonian CB MIDs reject amounts below "
+"1 000.00 XPF and answer the error '10118 - MID_MIN_AMOUNT_NOT_REACHED'. The "
+"checkout blocks the payment below this amount and shows the limit converted "
+"into the customer's currency (1 000 XPF ≈ 9 €). Set 0 to disable the check."
+msgstr ""
+"الحد الأدنى للمبلغ الذي قبله عقد EpayNC الخاص بك (MID)، المعبر عنه في عملة "
+"البوابة. مثال: معظم الدول الجزرية الصغيرة النامية الكاليدونية الجديدة ترفض "
+"مبالغ أقل من 1000.00 XPF وتجيب على الخطأ '10118-MID MIN AMOUNT NOT REACHED'."
+" السحب يحجب المبلغ الذي يقل عن هذا المبلغ ويظهر الحد الذي تم تحويله إلى عملة"
+" العميل جهزوا صفر لتعطيل الشيك."
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_provider.py:0
+msgid "Minimum order amount not reached"
+msgstr "المبلغ الأدنى المطلوب"
+
+#. module: payment_epaync
+#: model_terms:ir.actions.act_window,help:payment_epaync.action_payment_epaync_log
+msgid "No EpayNC log entries yet."
+msgstr "لا يوجد دخول لسجلات (إيباي إن) بعد."
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_provider__epaync_msg_min_amount
+msgid ""
+"Optional. Message shown on the checkout page when the order total is below "
+"the Minimum Order Amount. Leave empty to use the built-in message. Available"
+" placeholders: %(minimum)s (minimum in the customer currency), "
+"%(gateway_minimum)s (minimum in the gateway currency), %(total)s (order "
+"total), %(missing)s (amount missing to reach the minimum) and %(currency)s."
+msgstr ""
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_min_amount
+msgid "Order Below Minimum Amount"
+msgstr "المبلغ الأدنى"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_payment_action
+msgid "Payment Action"
+msgstr "إجراءات الدفع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_authorized
+msgid "Payment Authorized"
+msgstr "المدفوعات المأذون بها"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_cancelled
+msgid "Payment Cancelled"
+msgstr "المدفوعات الملغومة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_captured
+msgid "Payment Captured"
+msgstr "المدفوعات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_payment_date
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_expired
+msgid "Payment Expired"
+msgstr "المدفوعات المنتهية"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_failed
+msgid "Payment Failed"
+msgstr "عدم الدفع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_pending
+msgid "Payment Pending"
+msgstr "قيد الدفع"
+
+#. module: payment_epaync
+#: model:ir.model,name:payment_epaync.model_payment_provider
+msgid "Payment Provider"
+msgstr "مقدِّم المدفوعات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_refused
+msgid "Payment Refused"
+msgstr "إعادة استخدام المدفوعات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_success
+msgid "Payment Successful"
+msgstr "المدفوعات الناجحة"
+
+#. module: payment_epaync
+#: model:ir.model,name:payment_epaync.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "معاملات الدفع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_payment_url
+msgid "Payment URL"
+msgstr "المدفوعات"
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_webhook_received:payment_epaync.payment_provider_epaync
+msgid "Payment notification received from EpayNC gateway."
+msgstr "إشعار بالدفع وارد من بوابة EpayNC."
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_processing_time
+msgid "Processing Time (s)"
+msgstr "وقت التجهيز (ق)"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_production_key
+msgid "Production Key"
+msgstr "مفتاح الإنتاج"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Production secret key"
+msgstr "مفتاح الإنتاج"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__provider_id
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Provider"
+msgstr "مقدِّم"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_transaction_epaync_form_inherit
+msgid "Raw Data"
+msgstr "البيانات الخام"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__received_signature
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_signature
+msgid "Received Signature"
+msgstr "التوقيع الوارد"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_transaction_epaync_form_inherit
+msgid "References"
+msgstr "المراجع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_refused
+msgid "Refused URL"
+msgstr "رُفض"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_epaync_log__log_type__request
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Request"
+msgstr "الطلب"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__request_data
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_request_data
+msgid "Request Data"
+msgstr "بيانات الطلب"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_headers
+msgid "Request Headers"
+msgstr "رؤساء الطلبات"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Requests"
+msgstr "الطلبات"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_epaync_log__log_type__response
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Response"
+msgstr "الرد"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__response_data
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_response_data
+msgid "Response Data"
+msgstr "بيانات الاستجابة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__retry_count
+msgid "Retry Count"
+msgstr "الكونت"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_retry_failed_ipn
+msgid "Retry Failed IPN"
+msgstr "شبكة الإنترنت المتخلفة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_return
+msgid "Return URL"
+msgstr "العودة"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_risk_result
+msgid "Risk Result"
+msgstr "المخاطر"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Search EpayNC Logs"
+msgstr "باحثاً عن حشرات EpayNC"
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_invalid_signature:payment_epaync.payment_provider_epaync
+msgid "Security verification failed. The payment cannot be processed."
+msgstr "فشل التحقق الأمني. ولا يمكن تجهيز المبلغ."
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Server Notification (IPN)"
+msgstr "إخطار الموظفين"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Shop"
+msgstr "محلات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_shop_id
+msgid "Shop ID"
+msgstr "هويّة العرض"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_epaync_log__log_type__signature
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Signature"
+msgstr "التوقيع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_signature_algorithm
+msgid "Signature Algorithm"
+msgstr "التوقيع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__signature_string
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Signature String"
+msgstr "التوقيع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__signature_valid
+msgid "Signature Valid"
+msgstr "التوقيع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_success
+msgid "Success URL"
+msgstr "النجاح"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_test_key
+msgid "Test Key"
+msgstr "مفتاح الاختبار"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "Test secret key"
+msgstr "مفتاح الاختبار"
+
+#. module: payment_epaync
+#. odoo-python
+#: code:addons/payment_epaync/models/payment_provider.py:0
+msgid ""
+"The minimum order amount for this payment method is %(minimum)s (gateway "
+"limit: %(gateway_minimum)s). Your order total is %(total)s, so %(missing)s "
+"is missing. Please add products to your cart to continue."
+msgstr ""
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_provider__code
+msgid "The technical code of this payment provider."
+msgstr "The technical code of this payment provider."
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_timeout
+msgid "Timeout (seconds)"
+msgstr "التوقيت (الثانيات)"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__timestamp
+msgid "Timestamp"
+msgstr "الزمان"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__transaction_id
+msgid "Transaction"
+msgstr "المعاملات"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_trans_length
+msgid "Transaction ID Length"
+msgstr "المعاملات(د)"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_trans_prefix
+msgid "Transaction Prefix"
+msgstr "Prefix"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__log_type
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Type"
+msgstr "النوع"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_unknown_error
+msgid "Unknown Error"
+msgstr "غير معروف"
+
+#. module: payment_epaync
+#: model:ir.model.fields.selection,name:payment_epaync.selection__payment_epaync_log__log_type__webhook
+msgid "Webhook"
+msgstr "Webhook"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_url_ipn
+msgid "Webhook / IPN URL"
+msgstr "Webhook / IPN URL"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_epaync_log__webhook_payload
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_webhook_payload
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_form_view
+msgid "Webhook Payload"
+msgstr "حمولة إلكترونية"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_provider__epaync_msg_webhook_received
+msgid "Webhook Received"
+msgstr "موقع استقبال"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_epaync_log_search_view
+msgid "Webhooks"
+msgstr "Webhooks"
+
+#. module: payment_epaync
+#: model:ir.model.fields,help:payment_epaync.field_payment_provider__epaync_merchant_id
+msgid "Your EpayNC shop ID (vads_site_id), e.g. 14282108"
+msgstr "هويّة محلّك (EpayNC shop) (vads site id), e.g. 14282108"
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_failed:payment_epaync.payment_provider_epaync
+msgid "Your payment could not be processed. Please try again."
+msgstr "دفعك لا يمكن تجهيزه أرجوك حاول مرة أخرى."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_authorized:payment_epaync.payment_provider_epaync
+msgid "Your payment has been authorized and is awaiting capture."
+msgstr "دفعك مأذون به وهو ينتظر القبض عليه."
+
+#. module: payment_epaync
+#: model_terms:payment.provider,auth_msg:payment_epaync.payment_provider_epaync
+msgid "Your payment has been authorized."
+msgstr "لقد تم الإذن بدفعك."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_cancelled:payment_epaync.payment_provider_epaync
+#: model_terms:payment.provider,cancel_msg:payment_epaync.payment_provider_epaync
+msgid "Your payment has been cancelled."
+msgstr "تم إلغاء دفعك."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_captured:payment_epaync.payment_provider_epaync
+msgid "Your payment has been captured successfully."
+msgstr "دفعك تم القبض عليه بنجاح."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_refused:payment_epaync.payment_provider_epaync
+msgid ""
+"Your payment has been refused. Please contact your bank or try a different "
+"card."
+msgstr "تم رفض دفعك من فضلك اتصل بمصرفك أو جرب بطاقة مختلفة."
+
+#. module: payment_epaync
+#: model_terms:payment.provider,pending_msg:payment_epaync.payment_provider_epaync
+msgid ""
+"Your payment has been successfully processed but is waiting for approval."
+msgstr "دفعك تم تجهيزه بنجاح لكنه ينتظر الموافقة."
+
+#. module: payment_epaync
+#: model_terms:payment.provider,done_msg:payment_epaync.payment_provider_epaync
+msgid "Your payment has been successfully processed."
+msgstr "دفعك تم تجهيزه بنجاح."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_pending:payment_epaync.payment_provider_epaync
+msgid ""
+"Your payment is pending verification. We will notify you once confirmed."
+msgstr "دفعك في انتظار التحقق سنعلمك مرة واحدة مؤكدة."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_expired:payment_epaync.payment_provider_epaync
+msgid "Your payment session has expired. Please try again."
+msgstr "جلسة الدفع الخاصة بك انتهت. أرجوك حاول مرة أخرى."
+
+#. module: payment_epaync
+#: model:payment.provider,epaync_msg_success:payment_epaync.payment_provider_epaync
+msgid "Your payment was processed successfully. Thank you for your order."
+msgstr "دفعك تم تجهيزه بنجاح شكراً على طلبك."
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "e.g. 14282108"
+msgstr "e.g. 14282108"
+
+#. module: payment_epaync
+#: model_terms:ir.ui.view,arch_db:payment_epaync.payment_provider_epaync_form_inherit
+msgid "https://epaync.nc/vads-payment/"
+msgstr "https://epaync.nc/vads-payment/"
+
+#. module: payment_epaync
+#: model:ir.model.fields,field_description:payment_epaync.field_payment_transaction__epaync_vads_trans_id
+msgid "vads_trans_id"
+msgstr "المزهريات:"

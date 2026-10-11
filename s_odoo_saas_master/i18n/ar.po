@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-23 08:05+1100\n"
+"PO-Revision-Date: 2026-10-12 04:43+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -18,6 +18,12 @@ msgstr ""
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid " (no outgoing mail server configured yet, the mail is queued)"
 msgstr "(لا يوجد خادم بريد خارجي تم تشكيله حتى الآن، البريد محجوب)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "\"%s\" cannot be installed or replaced inside your instance."
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -99,6 +105,12 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "%s in requirements.txt"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid "%s is already used by another user."
@@ -106,9 +118,37 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "%s is installed."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "%s is uninstalled and removed from requirements.txt."
+msgstr "%s is uninstalled and removed from requirements.txt."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid "%s no longer has access to this account."
 msgstr "%s no longer has access to this account."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "%s package(s)"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"%s was removed from requirements.txt, but pip could not uninstall it: it is "
+"provided by the base image and stays available to your Odoo."
+msgstr ""
+"%s was removed from requirements.txt, but pip could not uninstall it: it is "
+"provided by the base image and stays available to your Odoo."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -125,28 +165,28 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "&amp;larr; Back to My Instances"
-msgstr "&larr; back to My Instances"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_my_instances
 msgid "&amp;middot;"
-msgstr "&middot;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "&amp;middot; Account Owner &amp;middot; full access"
-msgstr "&middot; Account Owner &middot; full access"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "&amp;middot; Connected as"
-msgstr "&middot; Connected as"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "&amp;middot; Growth Plan"
-msgstr "&middot; Growth Plan"
+msgid "&amp;middot; Standard Plan"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -195,7 +235,7 @@ msgstr "+ إنشاء"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "+%.2f GB → %.2f GB"
-msgstr "+%.2f GB → %.2f GB"
+msgstr "+%.2و gb → %.2و gb"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -211,17 +251,17 @@ msgstr "+10 GB"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "+25 GB"
-msgstr "+25 GB"
+msgstr "+25 غم"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "+5 GB"
-msgstr "+5 GB"
+msgstr "+ 5 ح"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "+50 GB"
-msgstr "+50 GB"
+msgstr "+50 غم"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -234,8 +274,6 @@ msgid ""
 ". Only the extra workers are billed &amp;mdash; your plan is not charged again.\n"
 "                            Memory scales with workers (2 GB / 2.5 GB per worker). Maximum"
 msgstr ""
-"فقط العمال الاضافيين يشترون فواتير و مدخرات؛ خطتك ليست مره اخرى\n"
-"Memory scales with workers (2 GB / 2.5 GB per worker). الحد الأقصى"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -277,15 +315,20 @@ msgid "/ month"
 msgstr "الشهر"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "/ month (1 Worker)"
-msgstr "شهر )١ عامل("
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "/ worker / month"
 msgstr "العامل/الشهر"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "1 production instance"
+msgstr "حالة إنتاج واحدة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "1 worker (upgradable)"
+msgstr "عامل واحد (متفوق)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -295,17 +338,32 @@ msgstr "10 غيغابايت إضافية"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "15-Day Free Trial Active"
-msgstr "15-Day Free Trial Active"
+msgstr "إجراء محاكمات مجانية لمدة 15 يوما"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "2 GB RAM each &amp;middot;"
-msgstr "2 GB RAM each &middot;"
+msgstr ""
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "20 GB storage · 2 workers"
-msgstr "20 مخزناً من نوع GB: عاملان"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "24 hours"
+msgstr "24 ساعة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "24/7 + proactive alerting"
+msgstr "24/7 + الإنذار الاستباقي"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "24/7 monitoring"
+msgstr "24/7 الرصد"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "24/7 phone, email &amp; chat"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -313,15 +371,19 @@ msgid "25 additional gigabytes"
 msgstr "25 غيغابايا إضافيا"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "4 hours (priority)"
+msgstr "4 ساعات (الأولوية)"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "5 GB included · +"
 msgstr "5 خ ع = +"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "5 GB storage · 1 worker"
-msgstr "5 مخزن GB: عامل واحد"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "5 GB included, expandable"
+msgstr "5 خ ع م، بما في ذلك التوسع"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -337,6 +399,11 @@ msgstr "50 غيغابايا إضافية"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "6-digit code"
 msgstr "رمز 6 أرقام"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "99.99% + service credits"
+msgstr "99.99 في المائة + ائتمانات الخدمات"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -610,6 +677,7 @@ msgid ""
 "<i class=\"fa fa-arrow-circle-up\"/>\n"
 "                                Proceed to Payment → Upgrade Storage"
 msgstr ""
+"<i class=\"fa fa-arrow-circle-up\"></i>Proceed to Payment   Upgrade Storage"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -620,24 +688,29 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "<i class=\"fa fa-arrow-circle-up\"/>Want to upgrade?"
-msgstr ""
+msgstr "<i class=\"fa fa-arrow-circle-up\"></i>أتريد التحديث؟"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-arrow-down\"/> Latest output"
+msgstr "<i class=\"fa fa-arrow-down\"></i> آخر ناتج"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid "<i class=\"fa fa-arrow-left me-1\"/> Change Plan"
-msgstr ""
+msgstr "<i class=\"fa fa-arrow-left me-1\"></i> خطة التغيير"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_invoice_document
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_document
 msgid "<i class=\"fa fa-arrow-left\"/> Back to Billing"
-msgstr ""
+msgstr "<i class=\"fa fa-arrow-left\"></i> العودة إلى بيلينغ"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "<i class=\"fa fa-bolt\"/> Instant Provisioning"
-msgstr ""
+msgstr "<i class=\"fa fa-bolt\"></i> توفير الأدلة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -645,11 +718,13 @@ msgid ""
 "<i class=\"fa fa-check-circle fa-3x text-success\" role=\"img\" aria-"
 "label=\"Done\" title=\"Done\"/>"
 msgstr ""
+"<i aria-label=\"Done\" class=\"fa fa-check-circle fa-3x text-success\" "
+"role=\"img\" title=\"Done\"></i>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<i class=\"fa fa-check-circle\"/> Paid"
-msgstr ""
+msgstr "<i class=\"fa fa-check-circle\"></i> دفع"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -657,33 +732,45 @@ msgid ""
 "<i class=\"fa fa-circle-o-notch fa-spin\"/>\n"
 "                                    <span>We are preparing your instance shell…</span>"
 msgstr ""
+"<i class=\"fa fa-circle-o-notch fa-spin\"></i><span>نحن نجهز قذيفة "
+"حالتك</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<i class=\"fa fa-clock-o\"/> Unpaid"
-msgstr ""
+msgstr "<i class=\"fa fa-clock-o\"></i> غير مدفوعة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "<i class=\"fa fa-credit-card me-1\"/> Try again / change card"
+msgstr "<i class=\"fa fa-credit-card me-1\"></i> حاول مرة أخرى/بطاقة تغيير"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<i class=\"fa fa-cube\" aria-hidden=\"true\"/>\n"
+"                                <span class=\"shell-tip-text\">To install a Python library in this\n"
+"                                    container, run</span>"
 msgstr ""
+"<i aria-hidden=\"true\" class=\"fa fa-cube\"></i><span class=\"shell-tip-text\">لتركيب مكتبة بيثون في هذا\n"
+"حاوية، تشغيل</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-cube\"/> Current subscription"
-msgstr ""
+msgstr "<i class=\"fa fa-cube\"></i> الاشتراك الحالي"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-download\"/> PDF"
-msgstr ""
+msgstr "<i class=\"fa fa-download\"></i> PDF"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-envelope-o\"/>Contact support"
-msgstr ""
+msgstr "<i class=\"fa fa-envelope-o\"></i>دعم الاتصال"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -691,6 +778,7 @@ msgid ""
 "<i class=\"fa fa-exclamation-circle me-1\"/> Do not refresh or close this "
 "page"
 msgstr ""
+"<i class=\"fa fa-exclamation-circle me-1\"></i> لا تنعش أو تغلق هذه الصفحة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -698,6 +786,8 @@ msgid ""
 "<i class=\"fa fa-exclamation-triangle fa-3x text-danger\" role=\"img\" aria-"
 "label=\"Failed\" title=\"Failed\"/>"
 msgstr ""
+"<i aria-label=\"Failed\" class=\"fa fa-exclamation-triangle fa-3x text-"
+"danger\" role=\"img\" title=\"Failed\"></i>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -705,19 +795,31 @@ msgid ""
 "<i class=\"fa fa-exclamation-triangle me-1\"/> Deployment needs a little "
 "help"
 msgstr ""
+"<i class=\"fa fa-exclamation-triangle me-1\"></i> النشر يحتاج إلى القليل من "
+"المساعدة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-expand\"/> <span>Fullscreen</span>"
+msgstr "<i class=\"fa fa-expand\"></i> <span>الشاشة الكاملة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-file-text-o\"/> Invoices"
-msgstr ""
+msgstr "<i class=\"fa fa-file-text-o\"></i> الفواتير"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 msgid "<i class=\"fa fa-hdd-o\"/> Storage Only"
-msgstr ""
+msgstr "<i class=\"fa fa-hdd-o\"></i> التخزين فقط"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-key\"/> Save Master Password"
+msgstr "<i class=\"fa fa-key\"></i> احفظ كلمة المرور"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
@@ -725,41 +827,44 @@ msgid ""
 "<i class=\"fa fa-lock text-teal me-2\"/>\n"
 "                <span><strong>Bank-grade 256-bit SSL encryption</strong> · Your payment details are processed through a strictly encrypted connection.</span>"
 msgstr ""
+"<i class=\"fa fa-lock text-teal me-2\"></i><span><strong>Bank-grade 256-bit "
+"SSL encryption</strong> تفاصيل الدفع الخاصة بك يتم تجهيزها من خلال اتصال "
+"مشفرة بدقة.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<i class=\"fa fa-play-circle me-1\"/> Your instance has been resumed "
 "automatically."
-msgstr ""
+msgstr "<i class=\"fa fa-play-circle me-1\"></i> استؤنفت حالتك تلقائياً"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-refresh me-1\"/> Retry deployment"
-msgstr ""
+msgstr "<i class=\"fa fa-refresh me-1\"></i> نشر المعدات"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_lines_inherit_saas
 msgid "<i class=\"fa fa-server me-1\"/> Browse Hosting Plans"
-msgstr ""
+msgstr "<i class=\"fa fa-server me-1\"></i> Browse Hosting Plans"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid ""
 "<i class=\"fa fa-shield text-teal\"/>\n"
 "                    <strong>Enterprise Cloud Guarantees</strong>"
-msgstr ""
+msgstr "<i class=\"fa fa-shield text-teal\"></i><strong>ضمانات الشركات</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 msgid "<i class=\"fa fa-shield\"/> Secure Checkout"
-msgstr ""
+msgstr "<i class=\"fa fa-shield\"></i> مراقبة آمنة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-shopping-bag\"/> Sale Orders"
-msgstr ""
+msgstr "<i class=\"fa fa-shopping-bag\"></i> أوامر البيع"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -767,22 +872,24 @@ msgid ""
 "<i class=\"fa fa-spinner fa-spin fa-3x\" role=\"img\" aria-label=\"Loading\""
 " title=\"Loading\"/>"
 msgstr ""
+"<i aria-label=\"Loading\" class=\"fa fa-spinner fa-spin fa-3x\" role=\"img\""
+" title=\"Loading\"></i>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"/>Backup running…"
-msgstr ""
+msgstr "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"></i>المساندة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-user-o\"/> Billing contact"
-msgstr ""
+msgstr "<i class=\"fa fa-user-o\"></i> الاتصال بالبلوغ"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.myodoo_topbar
 msgid "<i/>myodoo<span>.nc</span>"
-msgstr ""
+msgstr "<i></i>Myodoo<span>المنطقة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -804,8 +911,6 @@ msgid ""
 "                                    Pick the branch that contains your custom addons, then click <b>Sync &amp; Deploy</b>.\n"
 "                                </small>"
 msgstr ""
-"<select id=\"githubBranchSelect\" style=\"width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:12px\"><option value=\"\">-اختار فرعاً</option></select><small style=\"display:block;margin-top:4px;color:var(--muted);font-size:10px;\">اختر الفرع الذي يحتوي على إضافات العرف ثم انقر <b>رمز النشر</b>.\n"
-" </small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -852,15 +957,11 @@ msgid ""
 "                                        <option value=\"enterprise\">Enterprise</option>\n"
 "                                    </select>"
 msgstr ""
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"<select>\n"
-"                                                <option>Odoo 19</option>\n"
-"                                                <option>Odoo 18</option>\n"
-"                                            </select>"
-msgstr "<select><option>Odoo 19</option><option>Odoo 18</option></select>"
+"<select id=\"planVersionType\" name=\"version_type\" style=\"flex:1;min-"
+"width:130px;padding:11px;border:1px solid var(--line);border-"
+"radius:10px;background:rgba(255,255,255,.75);color:var(--ink);font-"
+"weight:700\"><option value=\"community\">المجتمع</option><option "
+"value=\"enterprise\">Enterprise</option></select>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -868,8 +969,6 @@ msgid ""
 "<small class=\"stepper-sub\">Step 1</small>\n"
 "                            <strong class=\"stepper-title\">Cart &amp;amp; Plan</strong>"
 msgstr ""
-"<small class=\"stepper-sub\">الخطوة 1</small><strong class=\"stepper-"
-"title\">Cart &amp; Plan</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -877,8 +976,6 @@ msgid ""
 "<small class=\"stepper-sub\">Step 2</small>\n"
 "                            <strong class=\"stepper-title\">Billing &amp;amp; Review</strong>"
 msgstr ""
-"<small class=\"stepper-sub\">الخطوة 2</small><strong class=\"stepper-"
-"title\">إعداد الفواتير والاستعراض</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -886,8 +983,6 @@ msgid ""
 "<small class=\"stepper-sub\">Step 3</small>\n"
 "                            <strong class=\"stepper-title\">Payment &amp;amp; Launch</strong>"
 msgstr ""
-"<small class=\"stepper-sub\">الخطوة 3</small><strong class=\"stepper-"
-"title\">المدفوعات والإطلاق</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -933,8 +1028,6 @@ msgid ""
 "<small style=\"color:var(--muted);font-size:10px\">attachments &amp; "
 "filestore · Docker volume</small>"
 msgstr ""
-"<small style=\"color:var(--muted);font-size:10px\">ملحقات &quot; الملفات "
-"&quot; ؛</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -980,7 +1073,7 @@ msgid ""
 "spacing:0.06em;\">Limit</small>"
 msgstr ""
 "<small style=\"font-size:10px;text-transform:uppercase;letter-"
-"spacing:0.06em;\">Limit</small>"
+"spacing:0.06em;\">الحد الأقصى</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -989,7 +1082,7 @@ msgid ""
 "spacing:0.06em;\">Usage</small>"
 msgstr ""
 "<small style=\"font-size:10px;text-transform:uppercase;letter-"
-"spacing:0.06em;\">Usage</small>"
+"spacing:0.06em;\">الاستخدام</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1053,12 +1146,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "<small>Instance</small>"
-msgstr "<small>Instance</small>"
+msgstr "<small>مثال</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<small>Instances Running</small>"
-msgstr "<small>Instances Running</small>"
+msgstr "<small>حالات جارية</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -1070,12 +1163,6 @@ msgstr "<small>حياتي</small>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "<small>New Storage Limit</small>"
 msgstr "<small>حدود التخزين الجديدة</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<small>One-click restore with automatic rotation of old copies.</small>"
-msgstr "<small>عوده واحده بالتناوب التلقائي للنسخ القديمة</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1149,6 +1236,18 @@ msgid "<span class=\"badge-icon\">🎉</span>"
 msgstr "<span class=\"badge-icon\">?</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"<span class=\"cmp-plan\">Custom</span>\n"
+"                                            <span class=\"cmp-price\">Tailored quote</span>"
+msgstr "<span class=\"cmp-plan\">العرف</span><span class=\"cmp-price\">مقتبسة</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "<span class=\"cmp-plan\">Standard</span>"
+msgstr "<span class=\"cmp-plan\">المعيار</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"coffee-icon\">☕</span>"
@@ -1165,8 +1264,6 @@ msgid ""
 "<span class=\"ctrl-btn-title\">Add Domain</span>\n"
 "                                        <span class=\"ctrl-btn-desc\">Connect custom domain &amp; SSL.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">مضافا إليه</span><span class=\"ctrl-btn-"
-"desc\">Connect custom domain &quot; SSL.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1180,20 +1277,20 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span class=\"ctrl-btn-title\">Redeploy Latest</span>\n"
-"                                            <span class=\"ctrl-btn-desc\">Pull Git revision &amp; reload instance.</span>"
+"<span class=\"ctrl-btn-title\">Install Python Library</span>\n"
+"                                        <span class=\"ctrl-btn-desc\">Add a pip package to your instance.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">شهادة نقل</span><span class=\"ctrl-btn-"
-"desc\">اسحبوا جهاز إعادة تحميل</span>"
+"<span class=\"ctrl-btn-title\">Install Python Library</span><span "
+"class=\"ctrl-btn-desc\">أضف رزمة على حالتك</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span class=\"ctrl-btn-title\">Redeploy Latest</span>\n"
-"                                            <span class=\"ctrl-btn-desc\">Unavailable — storage full.</span>"
+"<span class=\"ctrl-btn-title\">Remove Instance</span>\n"
+"                                        <span class=\"ctrl-btn-desc\">Delete the instance and all its data.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">شهادة نقل</span><span class=\"ctrl-btn-"
-"desc\">غير متاح - مخزن كامل.</span>"
+"<span class=\"ctrl-btn-title\">إزالة الألغام</span><span class=\"ctrl-btn-"
+"desc\">تحذف الحالة وجميع بياناتها.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1201,8 +1298,6 @@ msgid ""
 "<span class=\"ctrl-btn-title\">Restart Services</span>\n"
 "                                            <span class=\"ctrl-btn-desc\">Restart HTTP &amp; scheduled workers.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">خدمات إعادة التشغيل</span><span class=\"ctrl-"
-"btn-desc\">أعيدوا تشغيلهم</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1219,8 +1314,6 @@ msgid ""
 "<span class=\"ctrl-btn-title\">Start Instance</span>\n"
 "                                            <span class=\"ctrl-btn-desc\">Start Odoo, workers &amp; web services.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">البداية</span><span class=\"ctrl-btn-"
-"desc\">ابدأوا بـ (أودو)، خدمات العمال</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1234,11 +1327,9 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span class=\"ctrl-btn-title\">Suspend Instance</span>\n"
+"<span class=\"ctrl-btn-title\">Stop Instance</span>\n"
 "                                        <span class=\"ctrl-btn-desc\">Stop public access &amp; workers.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">المرحلة المعلقة</span><span class=\"ctrl-btn-"
-"desc\">أوقفوا دخول الجمهور</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -1254,6 +1345,11 @@ msgid "<span class=\"eyebrow\">Cloud Workspace Activation</span>"
 msgstr "<span class=\"eyebrow\">تنشيط أماكن العمل</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "<span class=\"eyebrow\">Compare plans</span>"
+msgstr "<span class=\"eyebrow\">خطط مقارنة</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 msgid "<span class=\"eyebrow\">Configured Services</span>"
 msgstr "<span class=\"eyebrow\">خدمات المؤتمرات</span>"
@@ -1261,7 +1357,7 @@ msgstr "<span class=\"eyebrow\">خدمات المؤتمرات</span>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<span class=\"eyebrow\">Customer Portal</span>"
-msgstr "<span class=\"eyebrow\">Customer Portal</span>"
+msgstr "<span class=\"eyebrow\">بوابة العملاء</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
@@ -1294,6 +1390,8 @@ msgid ""
 "<span class=\"healthy\"><i class=\"fa fa-plus-circle\"/> Upgrade "
 "Workers</span>"
 msgstr ""
+"<span class=\"healthy\"><i class=\"fa fa-plus-circle\"></i> العمال الأعلى "
+"درجة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1386,6 +1484,15 @@ msgid "<span class=\"popular-badge\">Most Popular</span>"
 msgstr "<span class=\"popular-badge\">معظم الناس</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<span class=\"python-lib-spin\">↻</span>\n"
+"                            <span>Installing… pip is resolving and downloading the package, this can take up to a minute.</span>"
+msgstr ""
+"<span class=\"python-lib-spin\">?</span><span>المماطلة... النزيف يُحل "
+"ويُحمّل الطرد، هذا يُمكن أن يستغرق دقيقة.</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"saas-spinner-icon\" id=\"saasSpinnerIcon\">☕</span>"
 msgstr "<span class=\"saas-spinner-icon\" id=\"saasSpinnerIcon\">?</span>"
@@ -1434,7 +1541,7 @@ msgstr "<span class=\"status\">جاهز</span>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span class=\"status\">SSL Active</span>"
-msgstr "<span class=\"status\">SSL Active</span>"
+msgstr "<span class=\"status\">نشيطة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1442,6 +1549,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Applying your worker settings</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">تطبيق أماكن عملكم</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1456,6 +1565,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Creating your Docker container</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">إنشاء حاوية دوكر الخاص بك</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1470,6 +1581,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Extending storage limit in the backend</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">توسيع حدود التخزين في نهاية المطاف</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1477,6 +1590,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Finalizing Odoo core services</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">وضع الصيغة النهائية لخدمات أودو الأساسية</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1491,6 +1606,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Refreshing your storage information</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">تجديد معلومات التخزين الخاصة بك</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1505,6 +1622,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Restarting your instance with the new workers</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">إعادة تشكيلك مع العمال الجدد</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1512,6 +1631,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Setting up PostgreSQL database</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">إنشاء قاعدة بيانات لبرمجيات البريد</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1526,6 +1647,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"/></span>\n"
 "                                <span class=\"step-text\">Warming up your workspace</span>"
 msgstr ""
+"<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
+"class=\"step-text\">احرقوا مكان عملك</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1547,21 +1670,8 @@ msgid ""
 "<span class=\"step-bullet\"><i class=\"fa fa-spinner fa-spin\"/></span>\n"
 "                                <span class=\"step-text\">Payment verified</span>"
 msgstr ""
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span class=\"step-num\">1</span>"
-msgstr "<span class=\"step-num\">1</span>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span class=\"step-num\">2</span>"
-msgstr "<span class=\"step-num\">2</span>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span class=\"step-num\">3</span>"
-msgstr "<span class=\"step-num\">3</span>"
+"<span class=\"step-bullet\"><i class=\"fa fa-spinner fa-"
+"spin\"></i></span><span class=\"step-text\">تم التحقق من الدفع</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -1604,6 +1714,25 @@ msgid ""
 msgstr ""
 "<span id=\"logsStatus\" style=\"font-"
 "size:10px;color:var(--muted)\">تحميل...</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "<span id=\"orderPlanLineLabel\">Standard Plan</span>"
+msgstr "<span id=\"orderPlanLineLabel\">الخطة الموحدة</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"<span id=\"orderStorageLineLabel\">Extra storage</span>\n"
+"                                                <strong id=\"orderStorageLinePrice\">—</strong>"
+msgstr ""
+"<span id=\"orderStorageLineLabel\">التخزين الإضافي</span><strong "
+"id=\"orderStorageLinePrice\">-</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "<span id=\"orderWorkerLineLabel\">1 Worker</span>"
+msgstr "<span id=\"orderWorkerLineLabel\">1 عامل</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1655,6 +1784,8 @@ msgid ""
 "                                    <i class=\"fa fa-check-circle me-1\"/> Running\n"
 "                                </span>"
 msgstr ""
+"<span style=\"font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em\">Subdomain</span><span class=\"state-pill\" style=\"background:rgba(32,178,108,0.15);color:#168652;font-weight:800\"><i class=\"fa fa-check-circle me-1\"></i> تشغيل\n"
+" </span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1662,6 +1793,9 @@ msgid ""
 "<span style=\"font-size:12px;color:var(--muted);\">GB additional storage</span>\n"
 "                                    <span id=\"storageCustomPriceDisplay\" style=\"font-size:14px;font-weight:700;color:var(--teal);margin-left:auto;\"/>"
 msgstr ""
+"<span style=\"font-size:12px;color:var(--muted);\">مخزن إضافي</span><span "
+"id=\"storageCustomPriceDisplay\" style=\"font-size:14px;font-"
+"weight:700;color:var(--teal);margin-left:auto;\"></span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1726,13 +1860,13 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span style=\"font-size:13px;font-weight:800;color:var(--navy)\">Growth</span>\n"
-"                                            <span style=\"font-size:8px;font-weight:800;background:var(--coral);color:#fff;padding:2px 6px;border-radius:99px\">POPULAR</span>"
+"<span style=\"font-size:13px;font-weight:800;color:var(--navy)\">Standard</span>\n"
+"                                        <span style=\"font-size:8px;font-weight:800;background:var(--teal);color:#fff;padding:2px 6px;border-radius:99px\">PLAN</span>"
 msgstr ""
 "<span style=\"font-size:13px;font-"
-"weight:800;color:var(--navy)\">النمو</span><span style=\"font-size:8px;font-"
-"weight:800;background:var(--coral);color:#fff;padding:2px 6px;border-"
-"radius:99px\">POPULAR</span>"
+"weight:800;color:var(--navy)\">المعيار</span><span style=\"font-"
+"size:8px;font-weight:800;background:var(--teal);color:#fff;padding:2px "
+"6px;border-radius:99px\">PLAN</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1740,8 +1874,6 @@ msgid ""
 "<span style=\"font-size:22px;\">🔑</span>\n"
 "                                <strong style=\"font-size:15px;color:var(--navy)\">Personal Access Token (Fast &amp; Easy)</strong>"
 msgstr ""
-"<span style=\"font-size:22px;\">?</span><strong style=\"font-"
-"size:15px;color:var(--navy)\">الوصول الشخصي</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1757,11 +1889,6 @@ msgstr "<span>التجديد الذاتي</span><strong class=\"ok\">Enabled</st
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<span>Automatic backups</span><strong>Daily · max 5 copies</strong>"
 msgstr "<span>الدعم الآلي</span><strong>اليومية: 5 نسخ</strong>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Average build time</span><strong>4m 12s</strong>"
-msgstr "<span>متوسط وقت البناء</span><strong>4m 12</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -1786,11 +1913,6 @@ msgstr "<span>تزامن الفرع</span><strong>الآلية</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Builds this month</span><strong>14</strong>"
-msgstr "<span>البناء هذا الشهر</span><strong>14</strong>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<span>Certificates</span><strong>Automated</strong>"
 msgstr "<span>الشهادات</span><strong>الآلية</strong>"
 
@@ -1798,7 +1920,7 @@ msgstr "<span>الشهادات</span><strong>الآلية</strong>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Company</span>"
-msgstr "<span>Company</span>"
+msgstr "<span>شركة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
@@ -1814,11 +1936,6 @@ msgstr "<span>المنشأة</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<span>Current Build</span><strong class=\"ok\">Ready</strong>"
 msgstr "<span>البناء الحالي</span><strong class=\"ok\">جاهز</strong>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Current version</span><strong>Odoo 18</strong>"
-msgstr "<span>الصيغة الحالية</span><strong>Odoo 18</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -1860,7 +1977,6 @@ msgid "<span>Deploy on push</span><strong>Supported</strong>"
 msgstr "<span>النشر على دفع</span><strong>الدعم</strong>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Edition</span><strong>Community</strong>"
 msgstr "<span>Edition</span><strong>المجتمع</strong>"
@@ -1874,7 +1990,7 @@ msgstr "<span>Email Relay</span><strong class=\"ok\">العمليات</strong>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Email</span>"
-msgstr "<span>Email</span>"
+msgstr "<span>البريد الإلكتروني</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -1882,14 +1998,9 @@ msgid "<span>Git integration</span><strong class=\"ok\">Ready</strong>"
 msgstr "<span>تكامل الهدايا</span><strong class=\"ok\">جاهز</strong>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span>Git status</span><strong class=\"ok\">Clean</strong>"
-msgstr "<span>مركز غيت</span><strong class=\"ok\">نظيفة</strong>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<span>GitHub Connection</span>"
-msgstr "<span>GitHub Connection</span>"
+msgstr "<span>الصلة بين المثليين</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1897,19 +2008,9 @@ msgid "<span>HTTPS</span><strong class=\"ok\">Enforced</strong>"
 msgstr "<span>HTTPS</span><strong class=\"ok\">الإنفاذ</strong>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>In progress</span><strong>0</strong>"
-msgstr "<span>قيد التنفيذ</span><strong>صفر</strong>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Invoices</span>"
 msgstr "<span>الفواتير</span>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span>Latest backup</span><strong class=\"ok\">Ready</strong>"
-msgstr "<span>آخر دعم</span><strong class=\"ok\">جاهز</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -1951,7 +2052,7 @@ msgstr "<span>المبالغ غير المسددة</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Phone</span>"
-msgstr "<span>Phone</span>"
+msgstr "<span>الهاتف</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2003,7 +2104,7 @@ msgstr "<span>أوامر البيع</span>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Server IP</span>"
-msgstr "<span>Server IP</span>"
+msgstr "<span>خادم</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -2012,30 +2113,15 @@ msgid "<span>Storage</span>"
 msgstr "<span>التخزين</span>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Successful</span><strong class=\"ok\">13</strong>"
-msgstr "<span>ناجح</span><strong class=\"ok\">13</strong>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Target CNAME</span>"
 msgstr "<span>الهدف</span>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span>Target</span><strong>Odoo 19</strong>"
-msgstr "<span>الهدف</span><strong>Odoo 19</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Tax ID</span>"
 msgstr "<span>الهوية الضريبية</span>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<span>Test status</span><strong>Ready</strong>"
-msgstr "<span>حالة الاختبار</span><strong>جاهز</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -2049,20 +2135,15 @@ msgid "<span>Total paid</span>"
 msgstr "<span>المجموع المدفوع</span>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Upgrade target</span><strong>Odoo 19</strong>"
-msgstr "<span>الهدف الأعلى</span><strong>Odoo 19</strong>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "<span>Upgrade test</span><strong>Ready</strong>"
-msgstr "<span>اختبار الترقية</span><strong>جاهز</strong>"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "<span>Total</span>"
+msgstr "<span>المجموع</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Version</span>"
-msgstr "<span>Version</span>"
+msgstr "<span>نسخة</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -2090,7 +2171,7 @@ msgstr "<strong style=\"color:var(--muted)\">غير متصل</strong>"
 msgid ""
 "<strong style=\"color:var(--navy)\">Official GitHub OAuth Redirect</strong>"
 msgstr ""
-"<strong style=\"color:var(--navy)\">Official GitHub OAuth Redirect</strong>"
+"<strong style=\"color:var(--navy)\">إعادة توجيه قسم الغيثوب الرسمي</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2131,6 +2212,15 @@ msgstr "<strong style=\"font-size:12px;color:var(--navy)\">إمسحْ رمزَ Q
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Odoo Master "
+"Password</strong>"
+msgstr ""
+"<strong style=\"font-size:13px;color:var(--navy)\">أودو ماستر كلمة "
+"سر</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
 "<strong style=\"font-size:13px;color:var(--navy)\">What each role can "
 "access</strong>"
 msgstr ""
@@ -2149,29 +2239,10 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
-"<strong>1 dedicated worker</strong><small>Isolated compute — your instance "
-"never shares CPU with a neighbour.</small>"
+"<strong>1 dedicated worker</strong><small>Isolated compute you can upgrade "
+"as your team grows.</small>"
 msgstr ""
-"<strong>عامل واحد متفرغ</strong><small>مُحْسَم مُعَلَّق - مثلتُكَ لا تَشتركُ"
-" أبداً مَع a جار.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<strong>2 workers — upgradable to 4</strong><small>Double the throughput "
-"when the whole team is online.</small>"
-msgstr ""
-"<strong>عاملان - يرتفعان إلى 4</strong><small>مضاعفة المخرج عندما يكون "
-"الفريق بأكمله على الإنترنت</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<strong>20 GB NVMe SSD storage</strong><small>4× the room of Essential, "
-"expandable on demand.</small>"
-msgstr ""
-"<strong>20 GB NVMe SSDخزن</strong><small>)٤( غرفة الأساسي، قابلة للتوسع عند "
-"الطلب.</small>"
+"<strong>عامل واحد متفرغ</strong><small>يمكن أن تتحسن مع نمو فريقك</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2179,8 +2250,6 @@ msgid ""
 "<strong>24/7 support · phone, email &amp; chat</strong><small>A direct line "
 "to a senior Odoo engineer, never a call centre.</small>"
 msgstr ""
-"<strong>24/7 دعم الهاتف والبريد الإلكتروني</strong><small>خط مباشر لمهندس "
-"أودو كبير، لا مركز اتصال.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -2208,15 +2277,6 @@ msgid ""
 msgstr ""
 "<strong>99.9 في المائة</strong><small>رصد 24/7 من مراكز البيانات "
 "الآمنة.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<strong>99.95% uptime SLA</strong><small>Monitored around the clock with "
-"proactive alerting.</small>"
-msgstr ""
-"<strong>99.9 في المائة من ساعات العمل</strong><small>تم رصدها على مدار "
-"الساعة مع إنذار استباقي.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2277,15 +2337,6 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
-"<strong>Community or Enterprise edition</strong><small>Pick your Odoo "
-"flavour, any version, switch whenever you like.</small>"
-msgstr ""
-"<strong>Community or Enterprise edition</strong><small>اختر نكهة أودو، أي "
-"نسخة، التبديل متى ما أردت.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
 "<strong>Custom domain + wildcard SSL</strong><small>Your brand, your domain,"
 " fully secured end to end.</small>"
 msgstr ""
@@ -2335,10 +2386,6 @@ msgid ""
 "<strong>Developer</strong> — only <b>GitHub</b>, <b>GitHub Sync &amp; Deploy</b>, <b>Shell</b> (instance + PostgreSQL) and <b>Odoo Logs</b> of this instance.<br/>\n"
 "                                    <strong>Administrator</strong> — full access to this instance: billing, workers, storage, backups, GitHub, Shell and all logs."
 msgstr ""
-"<strong>المطور</strong> - فقط <b>GitHub</b>.. <b>GitHub Sync &quot; "
-"Deploy</b>.. <b>Shell</b> (المؤسسة + PostgreSQL) و <b>Odoo Logs</b> من هذه "
-"الحالة<br/><strong>مدير البرنامج</strong> - الوصول الكامل إلى هذه الحالة: "
-"الفواتير، والعمال، والتخزين، والدعم، وغيت هوب، وشيل، وجميع السجلات."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2368,11 +2415,20 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
-"<strong>GitHub sync &amp; 1-click deploy</strong><small>Push your custom "
-"modules — we build and restart for you.</small>"
+"<strong>GitHub integration for custom addons</strong><small>Advanced flow: "
+"multiple repos, private branches and automated deploys.</small>"
 msgstr ""
-"<strong>GtHub coincide 1-click deploy</strong><small>ادفعوا وحداتكم العرفية "
-"نحن نبنيكم ونعيد تشغيلكم</small>"
+"<strong>دمج جيت هوب للإضافات العرفية</strong><small>التدفق المتقدم: "
+"المستودعات المتعددة، والفروع الخاصة، والنشر الآلي.</small>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"<strong>GitHub integration for custom addons</strong><small>Connect your "
+"repo, push your custom modules and deploy them in one click.</small>"
+msgstr ""
+"<strong>دمج جيت هوب للإضافات العرفية</strong><small>اتصلي بجهازكِ، اضغطي "
+"وحداتكِ الخاصة، وانشريها في نقرة واحدة.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2425,33 +2481,6 @@ msgstr ""
 "اتصل بمعلمك (سايس) إذا كنت بحاجة للتغييرات"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<strong>Preview / staging environment</strong><small>Test every change on a "
-"clone before it reaches production.</small>"
-msgstr ""
-"<strong>Preview/ staging environment</strong><small>اختبار كل تغيير على "
-"مستنسخ قبل أن تصل إلى الإنتاج.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"<strong>Priority support · 4h response</strong><small>Plus free migration "
-"from Odoo.sh or an existing server.</small>"
-msgstr ""
-"<strong>الدعم ذو الأولوية: 4h response</strong><small>بالإضافة إلى الهجرة "
-"الحرة من Odoo.sh أو الخادم الحالي.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"<strong>Run upgrade test</strong>\n"
-"                                        <small>Create an isolated upgraded copy and review the result.</small>"
-msgstr ""
-"<strong>اختبار تحسين الأداء</strong><small>إنشاء نسخة معزولة محسنة واستعراض "
-"النتيجة.</small>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid ""
 "<strong>SSL Certificates Auto-renew</strong>\n"
@@ -2459,11 +2488,6 @@ msgid ""
 msgstr ""
 "<strong>SSL Certificates Auto-renew</strong><small>لنجدد شهادات التشفير "
 "تلقائياً قبل 30 يوماً من الإنتهاء</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "<strong>Select target version</strong>"
-msgstr "<strong>الصيغة المستهدفة المختارة</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -2498,8 +2522,6 @@ msgid ""
 "<strong>Unlimited storage &amp; workers</strong><small>Grow without "
 "ceilings, quotas or awkward conversations.</small>"
 msgstr ""
-"<strong>عمال تخزين غير محدودين</strong><small>نكبر بدون سقف أو حصص أو "
-"محادثات غريبة</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2507,17 +2529,6 @@ msgid ""
 "<strong>Unlimited users &amp; apps</strong><small>Zero per-user licence "
 "fees. Invite the whole team.</small>"
 msgstr ""
-"<strong>مستخدمون غير محدودين</strong><small>لا رسوم ترخيص للمستعمل الواحد. "
-"دعوة الفريق بأكمله.</small>"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"<strong>Validate and schedule</strong>\n"
-"                                        <small>Choose a maintenance window after successful testing.</small>"
-msgstr ""
-"<strong>القيمة والجدول الزمني</strong><small>اختر نافذة الصيانة بعد الاختبار"
-" الناجح</small>"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -2578,12 +2589,12 @@ msgstr "حزمة من طراز APT للتركيب (واحدة لكل خط)."
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Access Denied"
-msgstr "Access Denied"
+msgstr "منع الوصول"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__access_log_path
 msgid "Access Log Path"
-msgstr "Access Log Path"
+msgstr "طريق الدخول"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -2731,6 +2742,11 @@ msgid "Add more worker processes to"
 msgstr "إضافة المزيد من عمليات العمال"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Add-on"
+msgstr "إضافة"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__addon_path
 msgid "Addon Path"
 msgstr "أدون باث"
@@ -2759,6 +2775,16 @@ msgstr ""
 "Deploy, Shell and Odoo Logs only."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Advanced / custom"
+msgstr "متقدم/معتاد"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Advanced: multiple repos, private branches &amp; automated deploys"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__ref_after
 msgid "After"
 msgstr "بعد"
@@ -2774,6 +2800,11 @@ msgstr "كل شيء"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "All Statuses"
 msgstr "جميع الحالات"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
+msgid "All Versions"
+msgstr "كل الأحاديث"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2838,12 +2869,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Annual &amp;middot; Save 15%"
-msgstr "Annual &middot; Save 15%"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Annual plans are billed once per year and include a 15% discount."
-msgstr "وتباع الخطط السنوية مرة في السنة وتشمل خصما بنسبة 15 في المائة."
+msgid ""
+"Annual plans are billed once per year and include a 15% discount. Custom "
+"plans are quoted after a short scoping call."
+msgstr ""
+"وتباع الخطط السنوية مرة في السنة وتشمل خصما بنسبة 15 في المائة. يُقتبس من "
+"الخطط العرفية بعد مكالمة قصيرة لتحديد النطاق."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -2853,13 +2888,13 @@ msgstr "سنويا"
 #. module: s_odoo_saas_master
 #: model:uom.uom,name:s_odoo_saas_master.product_uom_saas_app_month
 msgid "App"
-msgstr "App"
+msgstr "التطبيق"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_product__ecom_category_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_template__ecom_category_id
 msgid "App. Category"
-msgstr "App. Category"
+msgstr "التطبيق"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_form
@@ -2869,7 +2904,7 @@ msgstr "التطبيق"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Apply &amp; enable"
-msgstr "التطبيق والتمكين"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -2896,7 +2931,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "Apps"
-msgstr "Apps"
+msgstr "التطبيقات"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Apps &amp; development"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_based_domain_view_form
@@ -2929,6 +2969,18 @@ msgid "Archiving the container data…"
 msgstr "حفظ بيانات الحاويات.."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Are you sure you want to delete this instance? Its containers, database, "
+"files, domain and SSL certificate will be permanently deleted and the "
+"instance can no longer be started. This cannot be undone."
+msgstr ""
+"هل أنت متأكد أنك تريد حذف هذه الحالة؟ وستُحذف حاوياتها، وقاعدة بياناتها، "
+"وملفاتها، ومجالاتها، وشهادة SSL بصورة دائمة، ولم يعد من الممكن بدء هذه "
+"الحالة. هذا لا يمكن أن يزول."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "Are you sure you want to disconnect GitHub and remove custom addons?"
 msgstr "هل أنت متأكد من أنك تريد قطع غيت هوب وإزالة الإضافات العرف؟?"
@@ -2947,7 +2999,7 @@ msgstr "عدد الملحقات"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Attachments &amp; sessions"
-msgstr "الملاحق والدورات"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_hr_attendance_product_template
@@ -2973,7 +3025,12 @@ msgstr "الاحتياجات المحددة آليا"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Auto-refresh"
-msgstr "Auto-refresh"
+msgstr "تجديد السيارات"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Auto-renewed HTTPS"
+msgstr "Auto-renewed HTTPS"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3033,6 +3090,7 @@ msgid "BUY NOW"
 msgstr "BUY الآن"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Back to My Instances"
 msgstr "العودة إلى بلدي Instances"
@@ -3103,14 +3161,28 @@ msgid "Backup State"
 msgstr "دولة الدعم"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Backup completed"
+msgstr "اكتمال الدعم"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Backup completed for %s"
 msgstr ""
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Backup completed successfully."
+msgstr "اكتمل الدعم بنجاح."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Backup completed."
 msgstr "اكتمل الدعم."
 
@@ -3139,8 +3211,10 @@ msgid "Backup does not exist."
 msgstr "المساندة لا وجود لها."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Backup failed"
 msgstr "فشل الدعم"
 
@@ -3149,6 +3223,12 @@ msgstr "فشل الدعم"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Backup failed for %s"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Backup failed."
+msgstr "المساندة فشلت."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3165,8 +3245,14 @@ msgstr "توقف الدعم"
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
-msgid "Backup interrupted (the server was restarted)."
-msgstr "توقف الدعم (أعيد تشغيل الخادم)."
+msgid "Backup interrupted (it timed out and was stopped)."
+msgstr "وتوقف الدعم (وقد حان الوقت وتوقف)."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Backup is taking longer than expected"
+msgstr "الدعم يستغرق وقتا أطول مما كان متوقعا"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_backup_action
@@ -3181,7 +3267,7 @@ msgstr "الدعم"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Backups &amp; Recovery"
-msgstr "الدعم والإنعاش"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__base_image
@@ -3248,7 +3334,7 @@ msgstr "بيلينغ - مودو - نك"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_blocked_domain_view_form
 msgid "Blocked Domain"
-msgstr "Blocked Domain"
+msgstr "مجال مغلق"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_blocked_domain_name_uniq
@@ -3259,7 +3345,7 @@ msgstr "(دومن) المقفل يجب أن يكون فريداً لكل مجا�
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_blocked_domain_action
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_blocked_domain_menu
 msgid "Blocked Domains"
-msgstr "Blocked Domains"
+msgstr "المجالات المحجوبة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__branch
@@ -3282,7 +3368,7 @@ msgstr "البناء"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__build_log
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
 msgid "Build Log"
-msgstr "Build Log"
+msgstr "سجل البناء"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__server_ids
@@ -3365,11 +3451,6 @@ msgid "By (name)"
 msgstr "(الاسم)"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "CHOOSE PLAN"
-msgstr "CHOOSE PLAN"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "CHOOSE YOUR SUBDOMAIN"
 msgstr "خُذْ ملابسكَ الداخلية"
@@ -3382,7 +3463,7 @@ msgstr "الهوية الشخصية"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "CLIENT SECRET"
-msgstr "CLIENT SECRET"
+msgstr "عميل سري"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -3393,7 +3474,7 @@ msgstr "اسم الشركة"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_team_password_page
 msgid "CONFIRM PASSWORD"
-msgstr "CONFIRM PASSWORD"
+msgstr "تأكيد كلمة السر"
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_crm_product_template
@@ -3419,17 +3500,17 @@ msgstr "الجدول"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__can_edit_private_key
 msgid "Can Edit Private Key"
-msgstr "Can Edit Private Key"
+msgstr "يمكن تحرير مفتاح خاص"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__can_edit_ssh_key
 msgid "Can Edit SSH Key"
-msgstr "Can Edit SSH Key"
+msgstr "يُمْكِنُ أَنْ يُحررَ مفتاحَ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__can_edit_ssl_path
 msgid "Can Edit SSL Path"
-msgstr "Can Edit SSL Path"
+msgstr "يُمْكِنُ أَنْ يُحرّرَ مسارَ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_product__can_be_user_app
@@ -3440,6 +3521,7 @@ msgstr "يمكن أن يكون مستعملاً"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 #: code:addons/s_odoo_saas_master/static/src/js/saas_auth_guard.js:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -3458,11 +3540,6 @@ msgstr "إلغاء"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_cancel_wizard_form
 msgid "Cancel Instance"
 msgstr "إلغاء"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Cancel or modify anytime"
-msgstr "إلغاء أو تعديل أي وقت"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3588,13 +3665,8 @@ msgstr "الحالة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Choose Essential"
-msgstr "الخيار الأساسي"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Choose Growth"
-msgstr "النمو المختار"
+msgid "Choose Standard"
+msgstr "معيار الاختيار"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_team_password_page
@@ -3622,12 +3694,19 @@ msgstr "اختر طريقة الدفع المؤمنة أسفل لإكمال ال
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "Click the terminal and type. <b>Tab</b> completes, <b>↑/↓</b> recall the\n"
-"                                history, <b>Ctrl+C</b> interrupts. The session stays alive on the server\n"
-"                                for a while after you leave this tab."
+"                                history, <b>Ctrl+C</b> interrupts. Scroll up to read earlier output\n"
+"                                (use <b>Latest output</b> to jump back). <b>Fullscreen</b> grows the\n"
+"                                terminal to the whole screen (<b>Esc</b> leaves it, <b>Shift+Esc</b>\n"
+"                                sends a real Escape). The session stays alive on the server for a\n"
+"                                while after you\n"
+"                                leave this tab."
 msgstr ""
 "اضغط على الطرفية والنوع <b>Tab</b> مكتملة <b>↑</b> تذكر\n"
-"التاريخ <b>Ctrl+C</b> مقاطعات تبقى الجلسة حية على الخادم\n"
-"لفترة بعد أن تترك هذا الكتاب"
+"التاريخ <b>Ctrl+C</b> مقاطعات يُعدل ليصبح نص الناتج السابق\n"
+"(استخدام) <b>آخر ناتج</b> للقفز <b>الشاشة الكاملة</b> ينمو\n"
+"محطة طرفية إلى الشاشة بكاملها<b>Esc</b> اتركه <b>Shift+ Esc</b>يرسل الهروب الحقيقي تبقى الجلسة حية على الخادم\n"
+"بينما بعدك\n"
+"اترك هذا التمثال"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3644,12 +3723,12 @@ msgstr "لوح الشفاه فارغ."
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_custom_addon_view_form
 msgid "Clone"
-msgstr "Clone"
+msgstr "مستنسخة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__clone_uri
 msgid "Clone URI"
-msgstr "Clone URI"
+msgstr "مستنسخ"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3668,6 +3747,7 @@ msgid "Cloning repository and configuring custom addons..."
 msgstr "مستودع الاستنساخ و تشكيل الاضافات العرفية."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
 msgid "Close"
 msgstr "اقترب"
@@ -3675,12 +3755,19 @@ msgstr "اقترب"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Close &amp; Manage Instance"
-msgstr "المسافة الفاصلة"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Close / Reconnect"
 msgstr "/ Reconnect"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
+msgid "Cloud Instance"
+msgstr "السحاب"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_instance_tag__color
@@ -3699,7 +3786,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__commits
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Commits"
-msgstr "Commits"
+msgstr "ارتكاب"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__commit_count
@@ -3718,6 +3805,11 @@ msgstr "شيوعيون سحبوا"
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__version_type__community
 msgid "Community"
 msgstr "المجتمع"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Community or Enterprise"
+msgstr "الجماعة أو المؤسسة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_server__version_type
@@ -3745,7 +3837,7 @@ msgstr "الشركات"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__company_id
 msgid "Company"
-msgstr "Company"
+msgstr "شركة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_res_config_settings
@@ -3774,10 +3866,12 @@ msgid "Configure your domain and start your Odoo instance."
 msgstr "إئتمنْ مجالَكَ ويَبْدأُ مثالَكَ Odoo."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_backup_restore_wizard__wizard_step__confirm
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "تأكيد"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -3800,12 +3894,12 @@ msgstr "تهانينا!"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__trigger__connect
 msgid "Connect"
-msgstr "Connect"
+msgstr "الاتصال"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Connect GitHub"
-msgstr "Connect GitHub"
+msgstr "وصلة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3815,6 +3909,11 @@ msgid ""
 msgstr ""
 "اجمعوا مستودعاً للبناء تلقائياً عندما يتم دفع الشفرة الإضافات العرفية "
 "مستنسخة مباشرة في طريق تبرع الحاويات."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Connect repo · sync &amp; 1-click deploy"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3833,7 +3932,7 @@ msgstr "اتصل بمستودعك لـ (جيت هوب) لنشر وحدات ال�
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "Connected"
-msgstr "Connected"
+msgstr "متصل"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3870,11 +3969,6 @@ msgstr "إرتبط بنجاح!"
 #: model:ir.model,name:s_odoo_saas_master.model_res_partner
 msgid "Contact"
 msgstr "الاتصال"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Contact Us"
-msgstr "الاتصال بنا"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_note
@@ -3988,6 +4082,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not load the library list."
+msgstr "لا يمكن تحميل قائمة المكتبة."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Could not remove the team member."
 msgstr "لا يمكن إزالة عضو الفريق."
 
@@ -4010,10 +4110,22 @@ msgid "Could not send the invitation."
 msgstr "لم أستطع إرسال الدعوة."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not start the backup."
+msgstr "لا يمكن أن تبدأ الدعم."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Could not start the shell on the server."
 msgstr "لا يمكن أن تبدأ الصدفة على الخادم."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not update the master password."
+msgstr "لا يمكن تحديث كلمة المرور الرئيسية."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -4033,12 +4145,15 @@ msgstr "دليل المساندة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Create a new instance"
+msgstr "إنشاء حالة جديدة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "Create an app in GitHub Developer Settings &gt; OAuth Apps and set the "
 "Authorization Callback URL to: <br/>"
 msgstr ""
-"Create an app in GitHub Developer Settings : OAuth Apps and set the "
-"Authorization Callback URL to: <br/>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4134,9 +4249,9 @@ msgid "Current Subdomain"
 msgstr "Subdomain"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Current version:"
-msgstr "الصيغة الحالية:"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Custom"
+msgstr "العرف"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4146,7 +4261,7 @@ msgstr "العرف <small>اقتباس مصمم خصيصا</small>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_custom_addon_view_form
 msgid "Custom Addon"
-msgstr "Custom Addon"
+msgstr "الإضافة العرفية"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_custom_addon_action
@@ -4182,9 +4297,19 @@ msgid "Custom addons re-synced! Instance updated with latest code."
 msgstr "إضافات زائفة من جديد تم تحديث الموقف مع آخر شفرة."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Custom app development"
+msgstr "تطوير التطبيقات العرفية"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Custom domain &amp;middot;"
-msgstr "(أ) النطاق العرفي وميدوت؛;"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Custom domain + subdomains"
+msgstr "النطاق العرفي + المناطق الفرعية"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__partner_id
@@ -4197,31 +4322,36 @@ msgstr "زبون"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__access_url
 msgid "Customer Portal URL"
-msgstr "Customer Portal URL"
+msgstr "بوابة العملاء"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "DATABASE (pgdata)"
-msgstr "DATABASE (pgdata)"
+msgstr "قاعدة بيانات (بيانات)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "DEFAULT BRANCH"
-msgstr "DEFAULT BRANCH"
+msgstr "فرع التقصير"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "DEFAULT REGION"
-msgstr "DEFAULT REGION"
+msgstr "المنطقة غير الساحلية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "DNS Information"
-msgstr "DNS Information"
+msgstr "معلومات"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Daily backup · up to"
+msgstr "الدعم اليومي"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Daily backups"
 msgstr "الدعم اليومي"
 
 #. module: s_odoo_saas_master
@@ -4312,7 +4442,7 @@ msgstr "التاريخ"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Date &amp; time"
-msgstr "التاريخ والوقت"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__datetime
@@ -4324,21 +4454,38 @@ msgstr "التاريخ"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "Dedicated Cloud Instance"
-msgstr "Dedicated Cloud Instance"
+msgstr "حالة غيوم مخصصة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
-msgid "Dedicated Odoo 18 Environment"
-msgstr "Dedicated Odoo 18 Environment"
+msgid "Dedicated Odoo"
+msgstr "مكرس لـ (دوو)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Dedicated account manager"
+msgstr "مدير الحساب المخصص"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Dedicated infrastructure"
+msgstr "الهياكل الأساسية المخصصة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Dedicated workers"
+msgstr "العمال المكرسون"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
 "Dedicated, compliant and always on — for operations that can't afford "
-"downtime."
-msgstr "مكرس وممتثل ودائماً للعمليات التي لا تستطيع تحمل وقت النزول."
+"downtime or shared limits."
+msgstr ""
+"مخصصة وممتثلة ودائماً للعمليات التي لا تستطيع تحمل تكاليف وقت التعطل أو "
+"الحدود المشتركة."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__instance_backup_limit
@@ -4371,7 +4518,7 @@ msgstr "مجموعة الموارد غير المتوقعة"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__ssh_username
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "Default SSH Username"
-msgstr "Default SSH Username"
+msgstr "اسم مستعمل الششخ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_company__default_ssh_username
@@ -4447,19 +4594,19 @@ msgid "Deploy Email Template"
 msgstr "نشر نموذج البريد الإلكتروني"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Deploy Essential Plan"
-msgstr "خطة الانتشار الأساسية"
-
-#. module: s_odoo_saas_master
 #: model:mail.template,name:s_odoo_saas_master.deploy_instance_mail_template
 msgid "Deploy Odoo Instance"
-msgstr "Deploy Odoo Instance"
+msgstr "نشر القوات المسلحة"
 
 #. module: s_odoo_saas_master
 #: model:mail.template,subject:s_odoo_saas_master.deploy_instance_mail_template
 msgid "Deploy Odoo instance successfully"
 msgstr "النشر Odoo instanceنجاح"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Deploy Standard Plan"
+msgstr "خطة النشر الموحدة"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -4494,11 +4641,6 @@ msgstr "النشر بدأ في"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__deployment_state
 msgid "Deployment State"
 msgstr "دولة النشر"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Deployments &amp; Builds"
-msgstr "النشرات وأعمال البناء"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__descripsion
@@ -4537,7 +4679,7 @@ msgstr "الأدوات المطورة"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Diff"
-msgstr "Diff"
+msgstr "الانتشار"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
@@ -4574,7 +4716,7 @@ msgstr "حساب الفصل"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "Disconnect GitHub"
-msgstr "Disconnect GitHub"
+msgstr "قطع غيثوب"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4658,7 +4800,16 @@ msgstr "Docker Compose Volume count"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_compose_volume_ids
 msgid "Docker Compose Volumes"
-msgstr "Docker Compose Volumes"
+msgstr "حجم المغفل"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
+msgid ""
+"Docker Compose could not start instance %(instance)s (exit code %(code)s).\n"
+"\n"
+"%(output)s"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_docker_compose_volume__container_id
@@ -4684,18 +4835,18 @@ msgstr "حاويات دوكر"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_image_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
 msgid "Docker Image"
-msgstr "Docker Image"
+msgstr "صورة مغفلة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__image_name
 msgid "Docker Image Name"
-msgstr "Docker Image Name"
+msgstr "اسم مصور"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version__docker_image_tag
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_psql_version__docker_image_tag
 msgid "Docker Image Tag"
-msgstr "Docker Image Tag"
+msgstr "صورة (دوكر)"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_docker_image_action
@@ -4718,7 +4869,7 @@ msgstr "يجب أن يكون اسم صورة (دوكر) فريداً!"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__dockerfile_content
 msgid "Dockerfile"
-msgstr "Dockerfile"
+msgstr "أيها الأحمق"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
@@ -4732,8 +4883,9 @@ msgstr "(دوكرفيل) تولد تلقائياً من الحقول المذك�
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__domain
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Domain"
-msgstr "Domain"
+msgstr "النطاق"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_domain_name_action
@@ -4781,13 +4933,13 @@ msgstr "(دومين) أزيل."
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_config_domain_menu
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Domains"
-msgstr "Domains"
+msgstr "المجالات"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Domains &amp; SSL"
-msgstr "Domains & SSL"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__domain_name_ids
@@ -4899,18 +5051,28 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "EXTRA STORAGE (GB)"
+msgstr "تخزين إضافي (GB)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Easy Steps to Get Your Token:"
 msgstr "خطوات سهلة للحصول على الخاص بك:"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__edition
 msgid "Edition"
-msgstr "Edition"
+msgstr "طبعة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Email"
+msgstr "البريد الإلكتروني"
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_mass_mailing_product_template
 msgid "Email Marketing"
-msgstr "Email Marketing"
+msgstr "البريد الإلكتروني"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -4949,7 +5111,7 @@ msgstr "الموظفون"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__enable_autobackup
 msgid "Enable Autobackup"
-msgstr "Enable Autobackup"
+msgstr "التمكين من إعادة التشغيل"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -4960,7 +5122,7 @@ msgstr "تمكين أو تعطيل تطبيق المصادقة"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "Enabled"
-msgstr "Enabled"
+msgstr "مُتاح"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -4970,6 +5132,11 @@ msgid ""
 msgstr ""
 "وينتهي كل دورة من دورات البوابة النشطة - ويشمل هذا الجهاز. سيطلب منك أن توقع"
 " مرة أخرى."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.myodoo_topbar
+msgid "English"
+msgstr "الإنكليزية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4998,6 +5165,14 @@ msgid "Enter a valid email address."
 msgstr "أدخل عنوان بريد إلكتروني صحيح."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Enter the name of the Python library to install."
+msgstr "أدخلي اسم مكتبة (بايتون) لتركيبها."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "Enter your current password."
@@ -5008,9 +5183,15 @@ msgstr "أدخل كلمة المرور الحالية."
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__version_type__enterprise
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_server__version_type__enterprise
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__version_type__enterprise
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Enterprise"
-msgstr "Enterprise"
+msgstr "المؤسسة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
+msgid "Environment"
+msgstr "البيئة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__level__danger
@@ -5020,7 +5201,7 @@ msgstr "الرعب"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__error_log_path
 msgid "Error Log Path"
-msgstr "Error Log Path"
+msgstr "مسار الخطأ"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5029,18 +5210,6 @@ msgid ""
 "Error in check nginx status. Please verify server and nginx information"
 msgstr ""
 "خطأ في حالة (نجينكس). يرجى التحقق من الخادم والمعلومات المتعلقة بـ (نجينكس)"
-
-#. module: s_odoo_saas_master
-#: model:product.template,name:s_odoo_saas_master.product_saas_plan_essential_product_template
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Essential"
-msgstr "الأساس"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Essential Plan ·"
-msgstr "الخطة الأساسية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5081,17 +5250,16 @@ msgstr ""
 " <b>+</b>/<b>-</b>والناتج الدقيق من الخادم"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Everything included, side by side"
+msgstr "كُلّ شيء مُضمّن، جنباً إلى جنب"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "Everything is deployed, running and waiting for you. Log in and start "
 "building."
 msgstr "كُلّ شيء مُنْشَب، يَرْكضُ ويَنتظرُك. اركب وابدأ بالبناء."
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid ""
-"Everything you need to run Odoo like a pro — without the pro price tag."
-msgstr "كل ما تحتاجه لتشغيل (أودو) كمحترف بدون بطاقة السعر."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -5122,7 +5290,7 @@ msgstr "الإشعار بالانتهاء"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__suspension_reason__expired
 msgid "Expired"
-msgstr "Expired"
+msgstr "انتهت صلاحيتها"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -5166,7 +5334,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "FILESTORE (odoo-web-data)"
-msgstr "FILESTORE (odoo-web-data)"
+msgstr "ملفات (بيانات عن طريق دوو - ويب)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5183,6 +5351,11 @@ msgid "Failed"
 msgstr "فشل"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Feature"
+msgstr "خاصية"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Fetch Repos"
 msgstr "الإيداع"
@@ -5195,7 +5368,7 @@ msgstr "الجهل (باستثناء)"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "File"
-msgstr "File"
+msgstr "ملف"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__file_path
@@ -5228,12 +5401,12 @@ msgstr "عدد الملفات"
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_fleet_product_template
 msgid "Fleet"
-msgstr "Fleet"
+msgstr "الأسطول"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__addon_name
 msgid "Folder"
-msgstr "Folder"
+msgstr "الملف"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__name
@@ -5259,6 +5432,16 @@ msgstr "Font impressive icon e.g. fa-tasks"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__forward_ip
 msgid "Forward IP"
 msgstr "IP"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Free SSL certificate"
+msgstr "شهادة مجانية"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Free migration from Odoo.sh / existing server"
+msgstr "الهجرة الحرة من Odoo.sh/الخدمة الحالية"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5304,7 +5487,7 @@ msgstr "GB"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "GB SSD"
-msgstr "GB SSD"
+msgstr "Gb sd"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -5313,9 +5496,19 @@ msgstr "خ م"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB included · +"
+msgstr "GB included ; +"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB storage"
+msgstr "مخزن GB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "GB storage &amp;middot;"
-msgstr "GB storage &middot;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -5335,7 +5528,7 @@ msgstr "معلومات عامة"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "General Settings"
-msgstr "General Settings"
+msgstr "الأطر العامة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
@@ -5365,7 +5558,7 @@ msgstr "GitHub"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "GitHub &amp; Access"
-msgstr "GitHub & Access"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__github_token
@@ -5386,7 +5579,7 @@ msgstr "GitHub Branch"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "GitHub Config"
-msgstr "GitHub Config"
+msgstr "عقيدة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__github_connected
@@ -5399,7 +5592,7 @@ msgstr "GitHub Connected"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "GitHub Integration"
-msgstr "GitHub Integration"
+msgstr "دمج المثليين"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
@@ -5429,13 +5622,13 @@ msgstr "هوية العميل (جيت هوب)"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__github_client_secret
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "GitHub OAuth Client Secret"
-msgstr "GitHub OAuth Client Secret"
+msgstr "سر عملاء قسم الغيثوب"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_partner__github_oauth_token
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_users__github_oauth_token
 msgid "GitHub OAuth Token"
-msgstr "GitHub OAuth Token"
+msgstr "قوس قنصل"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -5460,9 +5653,10 @@ msgid "GitHub Repository URL"
 msgstr "GitHub Repository"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "GitHub Sync &amp; Deploy"
-msgstr "GitHub Sync & Deploy"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__github_log_ids
@@ -5473,7 +5667,7 @@ msgstr "GtHub Sync Logs"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_partner__github_login
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_users__github_login
 msgid "GitHub Username"
-msgstr "GitHub Username"
+msgstr "اسم المستخدم"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5501,6 +5695,11 @@ msgid ""
 msgstr "(جيت هوب) انفصل أزيلت جميع الإضافات العرفية المرتبطة بـ(جيت هوب)."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "GitHub integration for custom addons"
+msgstr "دمج جيت هوب للإضافات العرفية"
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "GitHub logs refreshed."
@@ -5511,6 +5710,11 @@ msgstr "سجلات (جيت هوب) تم تجديدها."
 #: code:addons/s_odoo_saas_master/controllers/github.py:0
 msgid "GitHub repository disconnected."
 msgstr "مستودع (جيت هوب) تم فصله."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "GitHub sync logs"
+msgstr "جيت هوب"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5563,9 +5767,13 @@ msgstr "مجموعة..."
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_plan_growth_product_template
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Growth"
 msgstr "النمو"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Guided by a senior engineer"
+msgstr "مرشد من مهندس أقدم"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__has_message
@@ -5601,6 +5809,24 @@ msgid ""
 msgstr ""
 "مهلاً، نحن نؤكّد دفعك للمقدّم\n"
 "أرجوك لا تنعش أو تغلق أو تضغط الزر الخلفي على هذه الصفحة."
+
+#. module: s_odoo_saas_master
+#: model:product.template,description_sale:s_odoo_saas_master.product_saas_plan_essential_product_template
+msgid ""
+"Hosting\n"
+"2 workers\n"
+"5 Go storage\n"
+"5 backups "
+msgstr ""
+"الرهائن\n"
+"عاملان\n"
+"5 مخزن\n"
+"5 دعم"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Hosting &amp; security"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -5701,7 +5927,7 @@ msgstr "Icon"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr "Icon to indicate an exception activity."
+msgstr "رمز يشير إلى نشاط استثناء."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_sale_order__storage_applied
@@ -5794,9 +6020,42 @@ msgid "Image 512"
 msgstr "الصورة 512"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Included"
+msgstr "مشمولة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Included + audit history"
+msgstr "متضمنة + تاريخ مراجعة الحسابات"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Includes 5 GB base storage &amp;middot; workers &amp; extra storage billed "
+"below"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Increase the values below to upgrade your instance."
+msgstr "زيادة القيم تحت لرفع مستوى حالتك."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Increase workers or storage to upgrade."
+msgstr "زيادة العمال أو التخزين للارتقاء."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__level__info
 msgid "Info"
 msgstr "المعلومات"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Infrastructure"
+msgstr "الهياكل الأساسية"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__insertions
@@ -5809,9 +6068,34 @@ msgid "Inspect live container output and execution traces."
 msgstr "فحص منتجات الحاويات الحية و آثار التنفيذ."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Install"
+msgstr "Install"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_upgrade_module_wizard__type__install
 msgid "Install Module"
-msgstr "Install Module"
+msgstr "وحدة تركيب"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Install Python Library"
+msgstr "تركيب مكتبة بيتسون"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Install extra Python packages (pip) inside your instance and keep them in "
+"requirements.txt."
+msgstr "ضع حزمة (بيثون) اضافية داخل حالتك وابقائها في المتطلبات."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Installation failed."
+msgstr "فشل التركيب."
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_installed_app_action
@@ -5832,12 +6116,23 @@ msgid "Installed Date"
 msgstr "تاريخ الإنشاء"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Installed libraries"
+msgstr "المكتبات المثبتة"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Installing…"
+msgstr "...مماطلة"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__instance_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_history__instance_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "Instance"
-msgstr "Instance"
+msgstr "مثال"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5878,18 +6173,18 @@ msgstr "التفاصيل"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Instance Settings"
-msgstr "Instance Settings"
+msgstr "الحالات"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Instance Shell"
-msgstr "Instance Shell"
+msgstr "قذيفة"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_instance_tag_action
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_instance_tag_menu
 msgid "Instance Tags"
-msgstr "Instance Tags"
+msgstr "على سبيل المثال"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__template_instance_id
@@ -5899,7 +6194,7 @@ msgstr "نموذج المرحلة"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__url
 msgid "Instance URL"
-msgstr "Instance URL"
+msgstr "على سبيل المثال"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -5917,7 +6212,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid "Instance access updated for %s."
-msgstr "Instance access updated for %s."
+msgstr "For instance access updated for %s."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5933,7 +6228,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Instance is not currently running on a physical server."
-msgstr "Instance is not currently running on a physical server."
+msgstr "على سبيل المثال لا يجري حاليا على خادم مادي."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5942,10 +6237,18 @@ msgid "Instance must be deployed to redeploy."
 msgstr "ولا بد من نشر العلاوة لنقلها."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Instance not found."
 msgstr "لم يعثر عليه."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Instance removed. Its data has been deleted."
+msgstr "تم إزالتها وقد حذفت بياناته."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5990,7 +6293,12 @@ msgstr "مع وقف التنفيذ"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Instance will be hosted at this URL."
-msgstr "Instance will be hosted at this URL."
+msgstr "على سبيل المثال سوف تستضيف في هذا اليورل."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Instances"
+msgstr "حالات"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_users__saas_team_instance_ids
@@ -6009,6 +6317,12 @@ msgid ""
 msgstr ""
 "ربطاً ثابتاً بين جميع مخازنكم الخاصة والعامة باستخدام وصول شخصي إلى (كين) "
 "بدون تشكيلة معقدة."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Invalid library name."
+msgstr "اسم المكتبة الغير مقصود."
 
 #. module: s_odoo_saas_master
 #: model:product.public.category,name:s_odoo_saas_master.product_public_category_inventory
@@ -6053,7 +6367,7 @@ msgstr "الفواتير"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "Invoices, payments &amp; sale orders"
-msgstr "الفواتير وأوامر الدفع والبيع"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_invoicing_product_template
@@ -6107,6 +6421,11 @@ msgid "Journal Item"
 msgstr "البند"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Jump to the newest output"
+msgstr "القفز إلى أحدث النواتج"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_config__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_resource_package_line__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version_config__name
@@ -6115,14 +6434,19 @@ msgid "Key"
 msgstr "المفتاح"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "LIBRARY NAME"
+msgstr "اسم المكتبة"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "LOGIN EMAIL"
-msgstr "LOGIN EMAIL"
+msgstr "البريد الإلكتروني"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__display_name
 msgid "Label"
-msgstr "Label"
+msgstr "علامة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -6240,6 +6564,18 @@ msgid "Level"
 msgstr "الرتبة"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Library installed."
+msgstr "تم تركيب المكتبة."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Library removed."
+msgstr "المكتبة أزيلت."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__lifecycle
 msgid "Lifecycle"
 msgstr "دورة الحياة"
@@ -6253,7 +6589,7 @@ msgstr "مدة المحاكمة"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_resource_package_line__type
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__type
 msgid "Limit Type"
-msgstr "Limit Type"
+msgstr "الحد الأقصى"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_resource_package_line__type__limits
@@ -6264,12 +6600,12 @@ msgstr "الحدود"
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_im_livechat_product_template
 msgid "Live Chat"
-msgstr "Live Chat"
+msgstr "الدردشة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Live Logs"
-msgstr "Live Logs"
+msgstr "السجلات الحية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6304,6 +6640,12 @@ msgid "Loading..."
 msgstr "التعبئة..."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Loading…"
+msgstr "التعبئة.."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_users__saas_login_alerts
 msgid "Login alerts"
 msgstr "إنذارات لوجين"
@@ -6312,7 +6654,7 @@ msgstr "إنذارات لوجين"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "Login email changed"
-msgstr "Login email changed"
+msgstr "تغيير البريد الإلكتروني"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6322,17 +6664,17 @@ msgstr "اللوز"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_longpolling_container_port
 msgid "Longpolling Container Port"
-msgstr "Longpolling Container Port"
+msgstr "ميناء الحاويات الطويل الأجل"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_longpolling_expose_port
 msgid "Longpolling Expose Port"
-msgstr "Longpolling Expose Port"
+msgstr "تفضح المرافئ"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "Longpolling Port"
-msgstr "Longpolling Port"
+msgstr "ميناء طويل القطب"
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_lunch_product_template
@@ -6342,12 +6684,17 @@ msgstr "الغداء"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "MANUAL BRANCH"
-msgstr "MANUAL BRANCH"
+msgstr "الفرع اليدوي"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "MANUAL REPO URL"
 msgstr "الموارد العادية"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "MASTER PASSWORD"
+msgstr "MASTER PASSWOR"
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_maintenance_product_template
@@ -6357,7 +6704,7 @@ msgstr "الصيانة"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "Manage"
-msgstr "Manage"
+msgstr "الإدارة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -6376,9 +6723,9 @@ msgid "Manage Domains"
 msgstr "إدارة المباني"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Manage GitHub"
-msgstr "Manage GitHub"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Manage Libraries"
+msgstr "مكتبات إدارة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -6393,7 +6740,7 @@ msgstr "حساب إدارة واستضافة وتكامل وفواتير وأم�
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Manage public addresses, DNS verification and HTTPS certificates."
-msgstr "Manage public addresses, DNS verification and HTTPS certificates."
+msgstr "إدارة العناوين العامة، والتحقق من الرهونات، وشهادة الموقع الشبكي."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6407,6 +6754,13 @@ msgstr ""
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_pserver_ip__type__managing_ip
 msgid "Managing IP"
 msgstr "إدارة IP"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Manifest updated automatically: <b class=\"mono\" "
+"id=\"pythonLibPath\">/home/&lt;instance&gt;/requirements.txt</b>"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -6445,6 +6799,17 @@ msgid "Manufacturing"
 msgstr "التصنيع"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__admin_pass
+msgid "Master Password"
+msgstr "سيدي كلمة المرور"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Master password updated. Odoo restarted."
+msgstr "تم تحديث كلمة السر (أودو) عاد."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__limit_trial
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__limit_trial
 msgid "Maximum Trial per Customer"
@@ -6458,11 +6823,11 @@ msgstr "الحد الأقصى من محاكمة (أودو) لكل زبون."
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__storage_limit_gb
 msgid ""
-"Maximum storage allowed for this instance in GB. Default: 5 GB for "
-"Essential, 20 GB for Growth. Leave empty or 0 for unlimited."
+"Maximum storage allowed for this instance in GB. Default: 5 GB for Standard,"
+" 20 GB for Growth. Leave empty or 0 for unlimited."
 msgstr ""
 "الحد الأقصى للتخزين المسموح به لهذه الحالة في GB. Default: 5 GB for "
-"Essential, 20 GB for Growth. إتركْ فارغ أَو صفر لغير محدود."
+"Standard, 20 GB for Growth. إتركْ فارغ أَو صفر لغير محدود."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -6512,7 +6877,7 @@ msgstr "وحدة النهوض"
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__default_module
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_upgrade_module_wizard__module
 msgid "Modules are separated by commas"
-msgstr "Modules are separated by commas"
+msgstr "الوحدات تفصل عن بعضها"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6520,6 +6885,11 @@ msgid ""
 "Monitor your storage usage and upgrade capacity at any time without "
 "interrupting your plan."
 msgstr "رصد استخدامك للتخزين ورفع مستوى القدرة في أي وقت دون انقطاع خطتك."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Monitoring"
+msgstr "الرصد"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__product_pricelist_item__subscription_type__monthly
@@ -6533,10 +6903,13 @@ msgstr "الشهر"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "More speed, more room, more safety — built for teams that scale fast."
-msgstr ""
-"المزيد من السرعة، المزيد من الغرف، المزيد من الأمان - التي تم بناؤها لأفرقة "
-"بسرعة."
+msgid "Multi-company setup"
+msgstr "إنشاء مرافق متعددة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Multiple (prod · staging · sandbox)"
+msgstr "مجموعة متعددة (منتجة: صندوق رمال)"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__my_activity_date_deadline
@@ -6577,10 +6950,19 @@ msgid "NOTIFICATION EMAIL"
 msgstr "ملحوظة"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "NUMBER OF WORKERS"
 msgstr "عدد العاملين"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "NUMBER OF WORKERS (TOTAL)"
+msgstr "عدد العمال"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "NVMe SSD storage"
+msgstr "مخزن مخزن"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__name
@@ -6658,6 +7040,12 @@ msgid "New sign-in to your hosting portal"
 msgstr "إشارة جديدة إلى بوابة استضافتك"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "New total: "
+msgstr "المجموع الجديد:"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__activity_calendar_event_id
 msgid "Next Activity Calendar Event"
 msgstr "الحدث التالي"
@@ -6681,13 +7069,13 @@ msgstr "نوع النشاط التالي"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_server__nginx_server_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 msgid "Nginx Server"
-msgstr "Nginx Server"
+msgstr "خادم نجينكس"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_nginx_server_action
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_nginx_server_menu
 msgid "Nginx Servers"
-msgstr "Nginx Servers"
+msgstr "خواديم ناكس"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_nginx_server_pserver_id_unique
@@ -6718,6 +7106,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_domain_name__noindex
 msgid "No Index"
 msgstr "الرقم القياسي"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No Python library installed yet."
+msgstr "لم يتم تركيب مكتبة (بيثون) بعد."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6780,6 +7174,12 @@ msgid "No logs available to download yet."
 msgstr "لا توجد سجلات للتنزيل بعد."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
+msgid "No output returned by the command."
+msgstr "لم يعد أي ناتج من قبل القيادة."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "No sale orders match this filter."
 msgstr "لا توجد أوامر بيع تطابق هذا المرشح."
@@ -6807,6 +7207,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "No, Keep It"
+msgstr "لا، احتفظ به"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No, keep it"
 msgstr "لا، احتفظ به"
 
 #. module: s_odoo_saas_master
@@ -6985,13 +7391,13 @@ msgstr "OAuth Redirect"
 #. module: s_odoo_saas_master
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_ocr
 msgid "OCR"
-msgstr "OCR"
+msgstr "Or"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "ODOO VERSION"
-msgstr "ODOO VERSION"
+msgstr "نسخة دودو"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
@@ -7019,14 +7425,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__container_type__odoo
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_config_odoo_menu
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Odoo"
 msgstr "Odoo"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Odoo 18"
-msgstr "Odoo 18"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_compose_volume__volume_type__odoo_config
@@ -7046,7 +7450,7 @@ msgstr "Odoo Filestore"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_odoo_image
 msgid "Odoo Image"
-msgstr "Odoo Image"
+msgstr "صورة دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__instance_id
@@ -7077,7 +7481,7 @@ msgstr "Odoo Instance"
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_cancel_wizard
 msgid "Odoo Instance Cancel Wizard"
-msgstr "Odoo Instance Cancel Wizard"
+msgstr "Odoo instance abolish wizard"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_config_action
@@ -7114,7 +7518,7 @@ msgstr "الظروف السائدة"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_compose_volume__volume_type__odoo_log
 msgid "Odoo Log File"
-msgstr "Odoo Log File"
+msgstr "ملف سجل دودو"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7166,7 +7570,7 @@ msgstr "الاضافات القياسية"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_config_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_view_form
 msgid "Odoo Version"
-msgstr "Odoo Version"
+msgstr "نسخة دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version__version
@@ -7192,6 +7596,11 @@ msgid "Odoo data — odoo-web-data (GB)"
 msgstr "بيانات Odoo - odoo-web-data (GB)"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Odoo edition"
+msgstr "Odoo edition"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__edition
 msgid ""
 "Odoo edition baked into this image. Image tag code: 'cmy' = Community, 'ent'"
@@ -7212,7 +7621,18 @@ msgstr "إخطار انتهاء الخدمة"
 #. module: s_odoo_saas_master
 #: model:mail.template,subject:s_odoo_saas_master.instance_revoke_notify_mail_template
 msgid "Odoo instance revoke notification"
-msgstr "Odoo instance revoke notification"
+msgstr "حالة نقض الإخطار"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__admin_pass
+msgid ""
+"Odoo master password (``admin_passwd``) of this instance. Changing it "
+"rewrites ``odoo.conf`` on the instance server and restarts the Odoo "
+"container so the new value takes effect."
+msgstr ""
+"Odoo master pass word ( \"admin passwd \" ) of this instance. ويعيد تغييره "
+"كتابة \" دودو \" على الخادم المثالي ويعيد رسم حاوية أودو بحيث تصبح القيمة "
+"الجديدة نافذة."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_backup__odoo_version_id
@@ -7235,9 +7655,24 @@ msgid "Oldest is deleted automatically"
 msgstr "يُحذف الأكبر منها تلقائياً"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Onboarding"
+msgstr "على متن السفينة"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_website_hr_recruitment_product_template
 msgid "Online Jobs"
 msgstr "الوظائف على الإنترنت"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"Only a plain library name is accepted, optionally with a version — for "
+"example \"pandas\", \"pandas[excel]\" or \"python-escpos==3.1\"."
+msgstr ""
+"فقط اسم مكتبة عادي مقبول، اختياريا مع نسخة - على سبيل المثال \"باندا\" أو "
+"\"باندا\" أو \"بيثون-يبوس=3.1\"."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7251,6 +7686,11 @@ msgid ""
 "Only the additional storage is charged now. Your existing plan is not billed"
 " again."
 msgstr "والمخزن الاضافي محمل الآن. خطتك الحالية لم تُخطّط مجدداً."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Only the extra workers &amp; storage are charged."
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7335,8 +7775,13 @@ msgstr "العملية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Optional add-on"
+msgstr "الإضافة الاختيارية"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Order &amp;amp; Deploy"
-msgstr "النظام والنشر"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -7352,7 +7797,7 @@ msgstr "يجب أن تشمل خطوط الطلب منتجاً من منتجات 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_duplicate_wizard__instance_id
 msgid "Original Instance"
-msgstr "Original Instance"
+msgstr "المصدر"
 
 #. module: s_odoo_saas_master
 #: model:product.public.category,name:s_odoo_saas_master.product_public_category_other
@@ -7389,17 +7834,22 @@ msgstr "PGDATA"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "PHONE"
-msgstr "PHONE"
+msgstr "الهاتف"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "PLAN"
+msgstr "الخطة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "PLAN &amp;amp; BILLING"
-msgstr "PLAN & BILLING"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "POPULAR"
-msgstr "POPULAR"
+msgstr "شعبية"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__container_type__psql
@@ -7409,20 +7859,20 @@ msgstr "PSQL"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_psql_image
 msgid "PSQL Image"
-msgstr "PSQL Image"
+msgstr "صورة ثابتة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_server__psql_version_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_psql_version_view_form
 msgid "PSQL Version"
-msgstr "PSQL Version"
+msgstr "نسخة طبق الأصل"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_psql_version_action
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_psql_version_menu
 msgid "PSQL Versions"
-msgstr "PSQL Versions"
+msgstr "نسخ من النص"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__package_id
@@ -7491,7 +7941,7 @@ msgstr "كلمات السر لا تتطابق."
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Paste"
-msgstr "Paste"
+msgstr "المراعي"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__ignored_requirements_files
@@ -7513,12 +7963,12 @@ msgstr "المدفوعات"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid "Payment &amp;amp; Activation"
-msgstr "المدفوعات والأنشطة"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 msgid "Payment &amp;amp; Final Activation"
-msgstr "المدفوعات والنشاط النهائي"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -7574,11 +8024,6 @@ msgid "Placed on"
 msgstr "وضعت على"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Plan Upgrade"
-msgstr "تحسين الخطة"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Plan:"
 msgstr "الخطة:"
@@ -7596,6 +8041,14 @@ msgstr "من فضلك أدخل 'نعم في صندوق التثبيت قبل إ�
 msgid ""
 "Please enter 'yes' in the confirmation box before restoring the backup."
 msgstr "من فضلك أدخل 'نعم في صندوق التثبيت قبل إعادة الدعم."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Please enter a master password."
+msgstr "من فضلك أدخل كلمة المرور الرئيسية."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7674,13 +8127,6 @@ msgid "Please try again with the same or a different card."
 msgstr "حاول مرة أخرى مع نفس أو بطاقة مختلفة."
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"Please wait — do not close or refresh this page while the backup is being "
-"created."
-msgstr "يرجى الانتظار - لا تغلق أو تنعش هذه الصفحة في حين يجري إنشاء الدعم."
-
-#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Please wait..."
@@ -7725,7 +8171,7 @@ msgstr "PostgreSQL"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "PostgreSQL Shell"
-msgstr "PostgreSQL Shell"
+msgstr "قذيفة ما بعد الظهر"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7746,6 +8192,11 @@ msgid ""
 "Press the button and choose your password straight away — no need to type "
 "your address again. Afterwards sign in at %(login)s with %(email)s."
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Preview / staging environment"
+msgstr "Preview/ staging environment"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_product_pricelist
@@ -7776,7 +8227,7 @@ msgstr "مفتاح خاص"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__private_key_data
 msgid "Private Key File"
-msgstr "Private Key File"
+msgstr "ملف خاص"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__private_key_filename
@@ -7785,13 +8236,8 @@ msgstr "الاسم الخاص"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Proceed to Checkout &amp; Pay &amp;rarr;"
-msgstr "Proceed to checkout & Pay &rarr;"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Proceed to Payment &amp;rarr; Upgrade Workers"
-msgstr "Proceed to Payment &rarr; Upgrade Workers"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -7903,15 +8349,43 @@ msgid "Push (webhook)"
 msgstr "إدفع (نوبهوك)"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__python
+msgid "Python"
+msgstr "Python"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Python Libraries"
+msgstr "مكتبات بيتسون"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__python_requirements
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
 msgid "Python Requirements"
 msgstr "Python requirements"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python library installation failed: %s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python library installed: %s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python library removed: %s"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__deployment_state__pending
 msgid "Queued"
-msgstr "Queued"
+msgstr "تم"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -8023,25 +8497,31 @@ msgstr "تم نقلها بنجاح."
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Redirecting to checkout - only the extra workers are charged..."
-msgstr "إعادة توجيه إلى التفقد فقط العمال الإضافيين مُتهمين."
+msgid "Redirecting to your cart - only the extra workers are charged..."
+msgstr "إعادة توجيه إلى عربتك فقط العمال الإضافيين يتهمون."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Redirecting to checkout - only your storage upgrade is charged..."
-msgstr "إعادة توجيه إلى التفقد - فقط ترقية التخزين الخاصة بك محملة..."
+msgid "Redirecting to your cart - only your storage upgrade is charged..."
+msgstr "إعادة توجيه إلى عربتك - فقط ترقية تخزينك محملة..."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Redirecting to checkout cart..."
-msgstr "إعادة توجيه العربة."
+msgid "Redirecting to your cart — only the added resources are charged..."
+msgstr "إعادة توجيه إلى عربتك فقط الموارد الإضافية محملة."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Redirecting to your cart — renewing your plan..."
+msgstr "إعادة توجيه إلى عربتك... تجديد خطتك..."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Redirects to GitHub for one-click authorization"
-msgstr "Redirects to GitHub for one-click authorization"
+msgstr "إعادة توجيه إلى (غيثوب) للحصول على إذن واحد"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -8072,9 +8552,23 @@ msgid "Refresh status"
 msgstr "حالة التجديد"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Removal failed."
+msgstr "التطهير فشل."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_custom_addon_view_form
 msgid "Remove"
+msgstr "إزالة الألغام"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Remove Instance"
 msgstr "إزالة الألغام"
 
 #. module: s_odoo_saas_master
@@ -8086,7 +8580,13 @@ msgstr "جديد"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Renew &amp; Upgrade Plan"
-msgstr "Renew & Upgrade Plan"
+msgstr "تجديد &amp; ترقية الخطة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Renew Plan &amp;middot; <span id=\"renewRenewBtnAmount\">0</span> &amp;rarr;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8181,7 +8681,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_domain_name_view_tree
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "إعادة صياغة المشروع"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
@@ -8212,6 +8712,11 @@ msgid "Resources"
 msgstr "الموارد"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Response time"
+msgstr "وقت الاستجابة"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__activity_user_id
 msgid "Responsible User"
 msgstr "المستعمل المسؤول"
@@ -8223,7 +8728,7 @@ msgstr "المستعمل المسؤول"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_tree
 msgid "Restart"
-msgstr "Restart"
+msgstr "العودة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8240,8 +8745,8 @@ msgstr "خدمات إعادة التشغيل"
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Restart in progress — your instance will be back in about 2 minutes."
-msgstr "اعيدوا العمل - سترجع حالتكم بعد دقيقتين."
+msgid "Restart in progress — your instance will be back in about 30 seconds."
+msgstr "اعيدوا العمل - سترجع حالتكم بعد 30 ثانية."
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_pos_restaurant_product_template
@@ -8253,7 +8758,7 @@ msgstr "المطاعم"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_tree
 msgid "Restore"
-msgstr "Restore"
+msgstr "الاستعادة"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_action
@@ -8269,7 +8774,7 @@ msgstr "Restore Ended on"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__restore_error_message
 msgid "Restore Error"
-msgstr "Restore Error"
+msgstr "استعادة الخطأ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__restore_start_datetime
@@ -8280,13 +8785,13 @@ msgstr "إعادة بدأت"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__restore_state
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__restore_state
 msgid "Restore Status"
-msgstr "Restore Status"
+msgstr "استعادة المركز"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup__restore_status_message
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__restore_status_message
 msgid "Restore Status Message"
-msgstr "Restore Status Message"
+msgstr "استعادة رسالة الحالة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__instance_id
@@ -8340,7 +8845,7 @@ msgstr "IP العكس"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid "Review &amp;amp; Complete Order"
-msgstr "Review & Complete Order"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
@@ -8377,7 +8882,7 @@ msgstr "التنقيح"
 #. module: s_odoo_saas_master
 #: model:mail.template,name:s_odoo_saas_master.instance_revoke_notify_mail_template
 msgid "Revoke Notification"
-msgstr "Revoke Notification"
+msgstr "إلغاء الإخطار"
 
 #. module: s_odoo_saas_master
 #: model:mail.template,name:s_odoo_saas_master.cancel_instance_mail_template
@@ -8417,7 +8922,7 @@ msgstr "Résultat de la dernière détection"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "SELECT BRANCH"
-msgstr "SELECT BRANCH"
+msgstr "فرع مختار"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8432,7 +8937,7 @@ msgstr "SMS"
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_mass_mailing_sms_product_template
 msgid "SMS Marketing"
-msgstr "SMS Marketing"
+msgstr "التسويق"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__ssh_keypair_name
@@ -8444,17 +8949,17 @@ msgstr "SSH Key"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__ssh_keypair_id
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_ssh_keypair_menu
 msgid "SSH Key Pair"
-msgstr "SSH Key Pair"
+msgstr "زوج مفاتيح"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__ssh_port
 msgid "SSH Port"
-msgstr "SSH Port"
+msgstr "ميناء شاش"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__ssh_username
 msgid "SSH Username"
-msgstr "SSH Username"
+msgstr "اسم المستخدم"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8474,7 +8979,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__ssl_path
 msgid "SSL Path"
-msgstr "SSL Path"
+msgstr "المسار"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8482,7 +8987,6 @@ msgid "STORAGE"
 msgstr "القطاع"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "STORAGE (GB)"
 msgstr "القطاع العام"
@@ -8506,23 +9010,23 @@ msgstr "معلومات تطبيقية"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_based_domain
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_based_domain_view_tree
 msgid "SaaS Based Domain"
-msgstr "SaaS Based Domain"
+msgstr "مجال الصرف الصحي"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_blocked_domain
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_blocked_domain_view_tree
 msgid "SaaS Blocked Domain"
-msgstr "SaaS Blocked Domain"
+msgstr "محاصرون"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_docker_image
 msgid "SaaS Docker Image"
-msgstr "SaaS Docker Image"
+msgstr "صورة ساخرة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_instance_tag
 msgid "SaaS Instance Tag"
-msgstr "SaaS Instance Tag"
+msgstr "Saas instance"
 
 #. module: s_odoo_saas_master
 #: model:res.groups,name:s_odoo_saas_master.group_odoo_saas_master
@@ -8534,6 +9038,11 @@ msgstr "سيد ساسا"
 #: model:ir.actions.server,name:s_odoo_saas_master.cron_saas_auto_backup_ir_actions_server
 msgid "SaaS Master: Auto backup cron"
 msgstr "سيّد (ساس)"
+
+#. module: s_odoo_saas_master
+#: model:ir.actions.server,name:s_odoo_saas_master.cron_saas_backup_watchdog_ir_actions_server
+msgid "SaaS Master: Backup watchdog"
+msgstr "المعلم:"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.server,name:s_odoo_saas_master.cron_saas_check_instance_status_ir_actions_server
@@ -8612,7 +9121,7 @@ msgstr "SaaS Odoo Instance"
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_history
 msgid "SaaS Odoo Instance Activity History"
-msgstr "SaaS Odoo Instance Activity History"
+msgstr "تاريخ نشاط ساس دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_backup
@@ -8647,7 +9156,7 @@ msgstr "SaaS Odoo Instance Custom Addon"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_docker_compose_volume
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_compose_volume_view_tree
 msgid "SaaS Odoo Instance Docker Compose Volume"
-msgstr "SaaS Odoo Instance Docker Compose Volume"
+msgstr "ساس دودو مثل دوكر يركب الحجم"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_docker_container
@@ -8659,17 +9168,17 @@ msgstr "حاويات سااس أودو دوكر"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_domain_name
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_domain_name_view_tree
 msgid "SaaS Odoo Instance Domain Name"
-msgstr "SaaS Odoo Instance Domain Name"
+msgstr "اسم ميدان ساس دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_duplicate_wizard
 msgid "SaaS Odoo Instance Duplicate Wizard"
-msgstr "SaaS Odoo Instance Duplicate Wizard"
+msgstr "سواسا دودو على سبيل المثال"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_extra_addon
 msgid "SaaS Odoo Instance Extra Addon"
-msgstr "SaaS Odoo Instance Extra Addon"
+msgstr "مضاف إضافي"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_installed_app_view_form
@@ -8681,7 +9190,7 @@ msgstr "SaS Odoo Instance Installed App"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_port
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_port_view_tree
 msgid "SaaS Odoo Instance Port"
-msgstr "SaaS Odoo Instance Port"
+msgstr "ميناء ساس دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_redeploy_wizard
@@ -8691,18 +9200,18 @@ msgstr "SaaS Odoo Instance Redeploy Wizard"
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_resource_package_line
 msgid "SaaS Odoo Instance Resource Package Line"
-msgstr "SaaS Odoo Instance Resource Package Line"
+msgstr "حزمة من الموارد"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_instance_upgrade_module_wizard
 msgid "SaaS Odoo Instance Upgrade Module Wizard"
-msgstr "SaaS Odoo Instance Upgrade Module Wizard"
+msgstr "مشرف وحدة تطوير الماجستير"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_server
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_tree
 msgid "SaaS Odoo Server"
-msgstr "SaaS Odoo Server"
+msgstr "خادم ساس دودو"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_server_extra_addon
@@ -8713,24 +9222,24 @@ msgstr "SaaS Odoo Server extra Addons"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_version
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_view_tree
 msgid "SaaS Odoo Version"
-msgstr "SaaS Odoo Version"
+msgstr "ترجمة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_version_config
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_config_view_tree
 msgid "SaaS Odoo Version Config"
-msgstr "SaaS Odoo Version Config"
+msgstr "ترجمة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_odoo_version_config_section
 msgid "SaaS Odoo Version Config Section"
-msgstr "SaaS Odoo Version Config Section"
+msgstr "ترجمة :"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_psql_version
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_psql_version_view_tree
 msgid "SaaS PSQL Version"
-msgstr "SaaS PSQL Version"
+msgstr "ترجمة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_pserver_view_tree
@@ -8740,13 +9249,13 @@ msgstr "SaaS PServer"
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_pserver_ip
 msgid "SaaS PServer IP"
-msgstr "SaaS PServer IP"
+msgstr "Ip"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_pserver
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_pserver_view_form
 msgid "SaaS Physical Server"
-msgstr "SaaS Physical Server"
+msgstr "خادم مادي"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__saas_price_currency_id
@@ -8771,24 +9280,24 @@ msgstr "مجموعة موارد ساسا"
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_resource_package_line
 msgid "SaaS Resource Packcage Line"
-msgstr "SaaS Resource Packcage Line"
+msgstr "خط حزمة موارد ساس"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_ssh_keypair
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_tree
 msgid "SaaS SSH Key Pair"
-msgstr "SaaS SSH Key Pair"
+msgstr "زوج مفاتيح"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_ssh_mixin
 msgid "SaaS SSH Mixin"
-msgstr "SaaS SSH Mixin"
+msgstr "Ssh mixin"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "SaaS Sales"
-msgstr "SaaS Sales"
+msgstr "مبيعات ساس"
 
 #. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_service_mixin
@@ -8849,7 +9358,7 @@ msgstr "خط البيع"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Save &amp; Connect"
-msgstr "الإنقاذ والتوفيق"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -8900,7 +9409,7 @@ msgstr "الأمن"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "See storage usage"
-msgstr "See storage usage"
+msgstr "استخدام التخزين"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8933,7 +9442,12 @@ msgstr "إختار طريقة الدفع المُفضّلة لإكمال و إط
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 msgid "Selected Cloud Subscriptions"
-msgstr "Selected Cloud Subscriptions"
+msgstr "اشتراكات غيمة مختارة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Self-serve setup"
+msgstr "إنشاء الخدمة الذاتية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8950,7 +9464,7 @@ msgstr "إرسال بريد إلكتروني"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_server__sequence
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version__sequence
 msgid "Sequence"
-msgstr "Sequence"
+msgstr "التسلسل"
 
 #. module: s_odoo_saas_master
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_config_server_menu
@@ -8983,7 +9497,7 @@ msgstr "وضع كلمة سر جديدة"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_team_password_page
 msgid "Set password &amp; continue"
-msgstr "وضع كلمة السر والاستمرار"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
@@ -9033,12 +9547,12 @@ msgstr "المبيتات"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Setup key: <span id=\"totpSecret\"/>"
-msgstr ""
+msgstr "مفتاح الإنشاء: <span id=\"totpSecret\"></span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Shell"
-msgstr "Shell"
+msgstr "قذيفة"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9123,7 +9637,7 @@ msgstr "المصدر"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Source Code &amp; GitHub"
-msgstr "Source Code & GitHub"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_extra_addon__addon_path
@@ -9143,7 +9657,9 @@ msgid "Stage"
 msgstr "المرحلة"
 
 #. module: s_odoo_saas_master
+#: model:product.template,name:s_odoo_saas_master.product_saas_plan_essential_product_template
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_standard
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Standard"
 msgstr "المعيار"
 
@@ -9178,9 +9694,16 @@ msgid "Start Odoo, workers and public web services?"
 msgstr "بدء Odoo، العمال وخدمات الإنترنت العامة؟?"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Start Upgrade Test"
-msgstr "بدء الاختبار"
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Start the instance before changing its master password."
+msgstr "ابدأي العرض قبل تغيير كلمة السر الرئيسية."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Start the instance before installing a Python library."
+msgstr "ابدأي بالعرض قبل تركيب مكتبة (بيثون)."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9189,8 +9712,10 @@ msgid "Start the instance before opening a shell."
 msgstr "ابدأي العرض قبل فتح قذيفة."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Starting the backup…"
 msgstr "بدء الدعم.."
 
@@ -9224,7 +9749,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Stay Here &amp; Manage"
-msgstr "إبقوا هنا"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_container_view_form
@@ -9232,6 +9757,12 @@ msgstr "إبقوا هنا"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_tree
 msgid "Stop"
+msgstr "توقف"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Stop Instance"
 msgstr "توقف"
 
 #. module: s_odoo_saas_master
@@ -9434,15 +9965,19 @@ msgid "Summary"
 msgstr "موجز"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Support &amp; service"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Support channel"
+msgstr "قناة الدعم"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_survey_product_template
 msgid "Surveys"
 msgstr "الدراسات الاستقصائية"
-
-#. module: s_odoo_saas_master
-#. odoo-javascript
-#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Suspend Instance"
-msgstr "المرحلة المعلقة"
 
 #. module: s_odoo_saas_master
 #: model:mail.template,name:s_odoo_saas_master.suspend_instance_mail_template
@@ -9472,18 +10007,18 @@ msgstr "سبب وقف التنفيذ"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Switch Repo"
-msgstr "Switch Repo"
+msgstr "استبدال"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Sync &amp; Deploy"
-msgstr "Sync & Deploy"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__status__success
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Synced"
-msgstr "Synced"
+msgstr "متزامنة"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9507,7 +10042,7 @@ msgstr "مجموعات النظام"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "TIMEZONE"
-msgstr "TIMEZONE"
+msgstr "الزمن"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -9523,7 +10058,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__template_tag
 msgid "Tag"
-msgstr "Tag"
+msgstr "بطاقة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_instance_tag__name
@@ -9534,6 +10069,11 @@ msgstr "الاسم"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Taking you to your instance and applying your change…"
 msgstr "أخذكِ إلى حالتكِ وتطبيق تغييركِ.."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Talk to us about Custom"
+msgstr "تحدثنا عن (كوم)"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9611,12 +10151,6 @@ msgid "Test Connection"
 msgstr "الاختبار"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"Test a newer Odoo version safely before upgrading the live environment."
-msgstr "اختبار نسخة أودو الجديدة بأمان قبل رفع مستوى البيئة الحية."
-
-#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid ""
@@ -9678,6 +10212,12 @@ msgid "That code is not valid. Check your authenticator app and try again."
 msgstr "هذا الرمز غير صحيح تحقق من تطبيقك وحاول مرة أخرى."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "That library name is too long (100 characters maximum)."
+msgstr "واسم المكتبة هذا طويل جدا (100 شخصية كحد أقصى)."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "The GitHub account will be <b>unlinked</b> from your profile."
 msgstr "حساب جيت هوب سيكون <b>غير مترابطة</b> من ملفك الشخصي"
@@ -9699,10 +10239,52 @@ msgstr ""
 "مرة أخرى وتغيير كلمة السر الخاصة بك."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "The backup could not be completed. Please retry."
+msgstr "ولا يمكن إنجاز الدعم. من فضلك ارجع."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"The backup is now running. Follow its progress on the Backups tab — "
+"refreshing the page is safe."
+msgstr ""
+"الدعم جاهز الآن ومتابعة التقدم الذي أحرزه في حساب الدعم - تجديد الصفحة هو "
+"آمن."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"The backup is still running on the server. Refresh this page in a few "
+"minutes to see the result."
+msgstr "الدعم مازال يعمل على الخادم اعيدي هذه الصفحة بعد دقائق لرؤية النتيجة."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
-msgid "The backup was interrupted before it finished (server restart)."
-msgstr "تم تعطيل المساندة قبل أن تنتهي (يعاد تشغيل الخادم)."
+msgid "The backup was interrupted before it finished (timeout)."
+msgstr "وقطع الدعم قبل الانتهاء منه (الوقت المتاح)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"The complete Odoo hosting plan — everything you need to launch and grow, "
+"without the enterprise price tag."
+msgstr ""
+"خطة استضافة (أودو) كاملة - كل ما تحتاجه لتنطلق وتنمو بدون بطاقة سعر المؤسسة."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"The full breakdown of what each plan includes — including the GitHub "
+"integration used to ship your custom addons."
+msgstr ""
+"والإنهيار الكامل لما تتضمنه كل خطة - بما في ذلك دمج جيت هوب المستخدم في شحن "
+"إضافات العرف الخاصة بك."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9755,6 +10337,12 @@ msgid ""
 msgstr "قذيفة الكبد تحتاج إلى حزمة \"تومكس\" على الخادم المادي ضعه مع:"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The master password cannot be empty."
+msgstr "كلمة السر الرئيسية لا يمكن أن تكون فارغة."
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -9804,6 +10392,18 @@ msgid ""
 "The payment was cancelled or your card was refused. <strong>No amount has "
 "been charged</strong>."
 msgstr "تم إلغاء الدفع أو رفض بطاقتك <strong>لم يقيد أي مبلغ</strong>."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The previous backup did not finish and was restarted."
+msgstr "الدعم السابق لم يكتمل و أعيد تشغيله."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The previous backup was interrupted."
+msgstr "تم قطع الدعم السابق."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_based_domain_name_uniq
@@ -9861,6 +10461,20 @@ msgid "The verification code must be 6 digits."
 msgstr "يجب أن يكون رمز التحقق 6 أرقام."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
+msgid ""
+"These Docker images are not available on server %(server)s: %(images)s.\n"
+"\n"
+"An instance cannot be deployed with them. Build the image on the server (Docker Images → Build Image) or use a version whose image exists, then deploy again. The instance stays in draft."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Third-party integrations"
+msgstr "إدماج الأطراف الثالثة"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "This action can temporarily affect your instance."
 msgstr "هذا العمل قد يؤثر بشكل مؤقت على حالتك."
@@ -9894,6 +10508,15 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"This cannot be undone. If you still need this data, contact support\n"
+"                                <b>before</b> the record is permanently erased from our systems."
+msgstr ""
+"هذا لا يمكن أن يزول إذا كنت لا تزال بحاجة إلى هذه البيانات، دعم الاتصال\n"
+" <b>من قبل</b> تم مسح السجل بشكل دائم من نظمنا"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "This domain was already removed."
@@ -9903,13 +10526,13 @@ msgstr "وقد أزيل هذا المجال بالفعل."
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "This instance cannot be started in its current state."
-msgstr "This instance cannot be started in its current state."
+msgstr "ولا يمكن أن تبدأ هذه الحالة في حالتها الراهنة."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "This instance cannot be stopped in its current state."
-msgstr "This instance cannot be stopped in its current state."
+msgstr "ولا يمكن وقف هذه الحالة في حالتها الراهنة."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9931,8 +10554,15 @@ msgstr "وتجري هذه القضية حالياً محاكمة حرة لمدة
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "This instance is not attached to a physical server yet."
 msgstr "هذه الحالة ليست مرتبطة بخدمة مادية بعد."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "This instance is not deployed, Python libraries cannot be installed."
+msgstr "ولا يتم نشر هذه الحالة، ولا يمكن تركيب مكتبات بيتسون."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__is_template
@@ -9959,6 +10589,17 @@ msgstr ""
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "This is already your login email."
 msgstr "هذا بريدك الإلكتروني."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"This is the <b>admin_passwd</b> of the instance (the Odoo database\n"
+"                                    manager / master password). Saving it updates the instance's\n"
+"                                    <b>odoo.conf</b> and restarts Odoo so it takes effect."
+msgstr ""
+"هذا هو <b>admin passwd</b> قاعدة بيانات أودو\n"
+"المدير/كلمة المرور الرئيسية إنقاذه يستكمل الحالة\n"
+" <b>(دو)</b> ويعيدون (أودو) ليبدأ مفعوله"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10024,7 +10665,7 @@ msgstr "إلى دو"
 #. module: s_odoo_saas_master
 #: model:product.public.category,name:s_odoo_saas_master.product_public_category_tool
 msgid "Tool"
-msgstr "Tool"
+msgstr "أداة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -10037,9 +10678,9 @@ msgid "Total"
 msgstr "المجموع"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Total Due Today"
-msgstr "المجموع المستحق اليوم"
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Training sessions"
+msgstr "الدورات التدريبية"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__trial
@@ -10067,7 +10708,7 @@ msgstr "فترة المحاكمة انتهت!"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__trigger
 msgid "Trigger"
-msgstr "Trigger"
+msgstr "الزناد"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -10142,6 +10783,21 @@ msgid "Type of the exception activity on record."
 msgstr "نوع نشاط الاستثناء المسجل."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Type the name of the Python package you need (a\n"
+"                            <b>pip</b> library) and press Install. It is installed inside your\n"
+"                            instance container with <b>pip --user</b>, so it stays available after\n"
+"                            a restart or a redeploy. Restart the instance if the library is used by a\n"
+"                            module that is already loaded."
+msgstr ""
+"صنف اسم حزمة بايتون التي تحتاجها\n"
+" <b>pip</b> المكتبة والصحافة تم تركيبه بداخلك\n"
+"حاويات على سبيل المثال <b>صنبور - مستعمل</b>لذا يبقى متاحاً بعد\n"
+"إعادة أو إعادة نشر أعيدي النظر في حالة استخدام المكتبة\n"
+"وحدة تم تحميلها بالفعل"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__url
 msgid "URL"
 msgstr "URL"
@@ -10149,12 +10805,18 @@ msgstr "URL"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver__version_16_plus
 msgid "Ubuntu Version 16+"
-msgstr "Ubuntu Version 16+"
+msgstr "نسخة أوبونتو 16+"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Unavailable while storage is full"
 msgstr "غير متاح في حين أن التخزين كامل"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Uninstall %s from this instance?"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__state__unknown
@@ -10174,10 +10836,30 @@ msgid "Unknown error."
 msgstr "خطأ غير معروف."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Unlimited"
+msgstr "غير محدود"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Unlimited / custom"
+msgstr "غير محدود/عادة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Unlimited workers"
+msgstr "العمال غير المحدودين"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Unsupported shell type: %s"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Up to"
+msgstr "حتى"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
@@ -10193,17 +10875,13 @@ msgstr "تحديث/وحدة تركيب"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "Updated"
-msgstr "Updated"
+msgstr "مستكمل"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Upgrade"
-msgstr "أعلى"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Upgrade Center"
-msgstr "المركز الأعلى"
+msgid ""
+"Upgrade &amp;middot; <span id=\"renewUpgradeBtnAmount\">0</span> &amp;rarr;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_action
@@ -10213,9 +10891,9 @@ msgid "Upgrade Module"
 msgstr "المستوى الأعلى"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Upgrade Readiness"
-msgstr "الارتقاء"
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__saas_order_type__buy_upgrade
+msgid "Upgrade Resources"
+msgstr "تحسين الموارد"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -10227,6 +10905,21 @@ msgstr "التخزين العالي"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Upgrade Workers"
 msgstr "العمال الأعلى درجة"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Upgrade add-ons — due today"
+msgstr "مضافات أعلى - من المقرر اليوم"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Upgrades apply instantly"
+msgstr "الترفيع ينطبق على الفور"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Uptime SLA"
+msgstr "وقت العمل"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__user_demo_data
@@ -10269,6 +10962,11 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Users &amp; apps"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Users Access"
 msgstr "المستعملون"
@@ -10291,12 +10989,7 @@ msgstr "التحقق من تشكيلة السحاب الخاصة بك، عنوا
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "Version"
-msgstr "Version"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Version &amp; Upgrade"
-msgstr "Version & Upgrade"
+msgstr "نسخة"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__version_type
@@ -10307,25 +11000,29 @@ msgid "Version Type"
 msgstr "الشكل"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Version is optional — when you leave it out, the exact version pip installs is\n"
+"                                pinned in requirements.txt."
+msgstr ""
+"الإصدار اختياري - عندما تتركه -\n"
+"مربوط بالمتطلبات."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "View"
-msgstr "View"
+msgstr "رأي"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "View All Activity"
-msgstr "View All Activity"
+msgstr "جميع الأنشطة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "View Logs"
-msgstr "View Logs"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "View My Builds"
-msgstr "فيو بناتي"
+msgstr "سجلات النظر"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -10373,7 +11070,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 msgid "Vérifier config"
-msgstr "Vérifier config"
+msgstr "المحكمة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -10516,6 +11213,11 @@ msgstr ""
 "حيث يتم إرسال الإخطارات الاستضافة. يتراجع إلى بريد الاتصال الإلكتروني."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Wildcard SSL"
+msgstr "البطاقات البرية"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__wizard_step
 msgid "Wizard Step"
 msgstr "الخطوة السحرية"
@@ -10542,6 +11244,11 @@ msgstr "العمال"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__workers_applied
 msgid "Workers Applied"
 msgstr "العمال"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Workers and extra storage can be added at any time from your portal."
+msgstr "العمال والمخزن الإضافي يمكن إضافته في أي وقت من بوابتك."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10572,6 +11279,11 @@ msgstr "الفريق العامل"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.myodoo_topbar
 msgid "Workspace Settings"
 msgstr "أماكن العمل"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Written SLA &amp; service credits"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__docker_xmlrpc_container_port
@@ -10614,6 +11326,12 @@ msgstr "السنة"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Yes, Disconnect"
 msgstr "نعم، انفصل"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Yes, remove it"
+msgstr "نعم، أزيله"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10753,7 +11471,7 @@ msgstr "عليك أن تربط (جيت هوب) مجدداً بتركيب أضا�
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Your 15-Day Free Trial is Live &amp; Ready!"
-msgstr "مُحاكمتك المجانية ذات الـ15 يوماً مُستعدة!"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -10793,9 +11511,18 @@ msgid "Your account, at a glance"
 msgstr "حسابك في لمحة"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Your backup is in progress"
 msgstr "الدعم الخاص بك في التقدم"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Your backup is ready. You can download it any time from the Backups tab."
+msgstr "دعمك جاهز يمكنك تحميله في أي وقت من حساب الدعم."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -10818,6 +11545,11 @@ msgstr "كلمة السر الحالية"
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 msgid "Your current password is incorrect."
 msgstr "كلمة السر الحالية غير صحيحة."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Your current resources"
+msgstr "مواردك الحالية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -10935,6 +11667,11 @@ msgstr "حالتك جاهزة!"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Your instance is removed"
+msgstr "أزيلت حالتك"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Your instance is running"
 msgstr "حالتك تجري"
 
@@ -10989,9 +11726,25 @@ msgid "Your login email is now %s."
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid ""
+"Your new instance is created with the default administrator login\n"
+"                                    <b>admin</b> and password <b>admin</b>. You can change it anytime\n"
+"                                    from <b>Settings</b>."
+msgstr ""
+"حالتك الجديدة خلقت مع سجل المدير الافتراضي\n"
+" <b>الاسم</b> كلمة السر <b>الاسم</b>يمكنك تغييره في أي وقت\n"
+"من <b>الترتيبات</b>."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Your order"
 msgstr "أمرك"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Your own subdomain"
+msgstr "تحتك الخاص"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -11070,7 +11823,7 @@ msgstr "نسخ احتياطية"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "backup copies &amp;middot;"
-msgstr "النسخ الاحتياطية؛;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11090,6 +11843,11 @@ msgstr "دعم الفواتير"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "copies"
 msgstr "نسخ"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "copies + off-site retention"
+msgstr "النسخ + الاحتفاظ خارج الموقع"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11215,6 +11973,17 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"has been removed. Its containers, database, files, domain and SSL\n"
+"                                certificate were deleted and it no longer counts towards your\n"
+"                                subscription."
+msgstr ""
+"تم إزالتها حاوياتها وقاعدة بياناتها وملفاتها ومجالاتها وشبكة SSL\n"
+"تم حذف الشهادة ولم تعد تهمك\n"
+"الاشتراك."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
@@ -11259,12 +12028,17 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "live &amp;middot;"
-msgstr "&middot;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "main"
 msgstr "الرئيسية"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "master password"
+msgstr "كلمة السر الرئيسية"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11282,6 +12056,12 @@ msgstr "رفقتي"
 #: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
 msgid "none"
 msgstr "لا"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "not installed"
+msgstr "لم يتم تركيبها"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -11329,6 +12109,11 @@ msgid "our server IP"
 msgstr "خادمنا IP"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "pandas   ·   python-escpos==3.1   ·   pandas[excel]"
+msgstr "pandas · python-escpos=3.1 · pandas[excel]"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "percent used"
 msgstr "النسبة المئوية المستخدمة"
@@ -11337,6 +12122,12 @@ msgstr "النسبة المئوية المستخدمة"
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_backup__format__dump
 msgid "pg_dump (without filestore)"
 msgstr "مضخة (دون ملفات)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "pip did not report a reason."
+msgstr "(بيب) لم يبلغ عن سبب."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
@@ -11394,7 +12185,7 @@ msgstr "العامل (العامل)"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "worker(s) &amp;middot;"
-msgstr "العامل (العمال)/العامل؛;"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11453,12 +12244,12 @@ msgstr "Re Re-sync"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "↻ Re-sync &amp; Deploy"
-msgstr "↻ Re-sync & Deploy"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "↻ Reload"
-msgstr "↻ Reload"
+msgstr "Re reload"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -11468,7 +12259,7 @@ msgstr "إذهب إلى لوحة إدارة"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "⚙️ Setup OAuth App"
-msgstr "⚙️ Setup OAuth App"
+msgstr "Set setup oauth app"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11478,17 +12269,17 @@ msgstr "حد تخزينك"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "⚠️ GitHub Client ID &amp; Secret missing"
-msgstr "ID & Secret missing"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "⚡ Renew &amp; Upgrade Plan"
+msgstr "⚡ تجديد &amp; ترقية الخطة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "⚡ Renew / Upgrade Plan"
 msgstr "خطة جديدة/ترقية"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "⚡ Renew Plan"
-msgstr "الخطة الجديدة"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page

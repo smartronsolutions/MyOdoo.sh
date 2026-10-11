@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<odoo noupdate="1">
 
-    <!-- noupdate=0 block: structural fields that must always be set correctly -->
+    <!-- noupdate=1: like every core payment provider, these records are created
+         once and are never overwritten on module upgrade, so that the provider
+         state (disabled/test/enabled) and the merchant settings configured by the
+         administrator are preserved. -->
 
     <!-- EpayNC payment method -->
     <record id="payment_method_epaync" model="payment.method">
@@ -22,7 +25,7 @@
         <field name="state">disabled</field>
         <field name="sequence">100</field>
         <field name="epaync_payment_url">https://epaync.nc/vads-payment/</field>
-        <field name="epaync_currency">All currencies supported</field>
+        <field name="epaync_gateway_currency_id" ref="base.XPF"/>
         <field name="epaync_api_version">V2</field>
         <field name="epaync_signature_algorithm">HMAC SHA-256</field>
         <field name="epaync_payment_action">SINGLE</field>

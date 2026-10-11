@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-28 02:23+1100\n"
+"PO-Revision-Date: 2026-10-12 04:47+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -201,7 +201,7 @@ msgid ""
 "data-i18n=\"dia_files_text\">Attachments &amp; documents</small>"
 msgstr ""
 "<b data-i18n=\"dia_files\">Stockage des fichiers</b><small "
-"data-i18n=\"dia_files_text\">Pièces jointes & documents</small>"
+"data-i18n=\"dia_files_text\">Pièces jointes &amp;</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -210,8 +210,8 @@ msgid ""
 "data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 msgstr ""
 "<b data-i18n=\"dia_monitor\">Surveillance</b><small "
-"data-i18n=\"dia_monitor_text\">Contrôles des ressources et de la "
-"santé</small>"
+"data-i18n=\"dia_monitor_text\">Contrôles de santé des ressources "
+"&amp;</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -219,7 +219,7 @@ msgid ""
 "<b data-i18n=\"dia_users\">Your team &amp; customers</b><small>https://your-"
 "company.example</small>"
 msgstr ""
-"<b data-i18n=\"dia_users\">Votre équipe & vos "
+"<b data-i18n=\"dia_users\">Votre équipe &amp; "
 "clients</b><small>https://votre entreprise.exemple</small>"
 
 #. module: website_saas_landing
@@ -240,7 +240,7 @@ msgstr "<b data-i18n=\"dl3\">Hébergement géré</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<b data-i18n=\"dl4\">Database &amp; Backups</b>"
-msgstr "<b data-i18n=\"dl4\">Base de données & Sauvegardes</b>"
+msgstr "<b data-i18n=\"dl4\">Base de données &amp; Sauvegardes</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -300,7 +300,7 @@ msgstr "<b data-i18n=\"eco_proj\">Projets</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_sales\">Sales &amp; CRM</b>"
-msgstr "<b data-i18n=\"eco_sales\">Ventes et CRM</b>"
+msgstr "<b data-i18n=\"eco_sales\">Vente &amp; CRM</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -607,7 +607,7 @@ msgid ""
 "<b>Priority support · phone, email &amp; chat</b><small>A direct line to a "
 "senior Odoo engineer, never a call centre.</small>"
 msgstr ""
-"<b>Assistance prioritaire · téléphone, e-mail et chat</b><small>Une ligne "
+"<b>Soutien prioritaire · téléphone, courriel &amp; chat</b><small>Une ligne "
 "directe à un ingénieur supérieur Odoo, jamais un centre d'appels.</small>"
 
 #. module: website_saas_landing
@@ -625,8 +625,8 @@ msgid ""
 "<b>Unlimited storage &amp; workers</b><small>Grow without ceilings, quotas "
 "or awkward conversations.</small>"
 msgstr ""
-"<b>Stockage illimité & travailleurs</b><small>Grandir sans plafonds, quotas "
-"ou conversations maladroites.</small>"
+"<b>Stockage illimité &amp; travailleurs</b><small>Grandir sans plafonds, "
+"quotas ou conversations maladroites.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -634,8 +634,8 @@ msgid ""
 "<b>Unlimited uses &amp; apps</b><small>No limits and no extra fees. Invite "
 "the whole team.</small>"
 msgstr ""
-"<b>Utilisations et applications illimitées</b><small>Pas de limites ni de "
-"frais supplémentaires. Invitez toute l'équipe.</small>"
+"<b>Utilisations illimitées &amp; applications</b><small>Pas de limites ni de"
+" frais supplémentaires. Invitez toute l'équipe.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -648,7 +648,7 @@ msgid ""
 "<b>∞ Unlimited uses &amp; apps</b><small data-i18n=\"edition_nolimit\">No "
 "limits on any plan</small>"
 msgstr ""
-"<b>Utilisations et applications illimitées</b><small "
+"<b>Utilisations illimitées &amp; applications</b><small "
 "data-i18n=\"edition_nolimit\">Aucune limite pour un plan</small>"
 
 #. module: website_saas_landing
@@ -801,7 +801,7 @@ msgid ""
 "data-i18n=\"road1_d\">Goals &amp; challenges</small>"
 msgstr ""
 "<i>0</i><b data-i18n=\"road1\">Consultation</b><small "
-"data-i18n=\"road1_d\">Objectifs et défis</small>"
+"data-i18n=\"road1_d\">Objectifs &amp; défis</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -845,7 +845,7 @@ msgid ""
 "<i>06</i><b data-i18n=\"road6\">Training &amp; Go-live</b><small "
 "data-i18n=\"road6_d\">Production launch</small>"
 msgstr ""
-"<i>06</i><b data-i18n=\"road6\">Formation & Go-live</b><small "
+"<i>06</i><b data-i18n=\"road6\">Formation &amp; Allez-y.</b><small "
 "data-i18n=\"road6_d\">Lancement de la production</small>"
 
 #. module: website_saas_landing
@@ -989,9 +989,9 @@ msgstr ""
 "data-i18n=\"cf_opt5\" value=\"module_development\">Développement de modules "
 "personnalisés</option><option data-i18n=\"cf_opt6\" "
 "value=\"integration\">Intégration / API</option><option "
-"data-i18n=\"cf_opt7\" value=\"backup_recovery\">Sauvegarde et "
-"récupération</option><option data-i18n=\"cf_opt8\" "
-"value=\"support_maintenance\">Soutien & Maintenance</option><option "
+"data-i18n=\"cf_opt7\" value=\"backup_recovery\">Sauvegarde &amp; "
+"Récupération</option><option data-i18n=\"cf_opt8\" "
+"value=\"support_maintenance\">Soutien &amp; Entretien</option><option "
 "data-i18n=\"cf_opt9\" value=\"existing_project\">Projet Odoo "
 "existant</option><option data-i18n=\"cf_opt10\" "
 "value=\"other\">Autres</option></select><small class=\"cf-field-error\" "
@@ -1256,7 +1256,7 @@ msgid ""
 "&amp; Enterprise</span></span>"
 msgstr ""
 "<span class=\"eyebrow\"><i></i><span data-i18n=\"editions_badge\">Communauté"
-" & Entreprise</span></span>"
+" &amp; Entreprise</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1525,6 +1525,11 @@ msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
 msgstr "<span class=\"mo_auth_badge\">Démarrer gratuitement aujourd'hui</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
+msgid "<span class=\"o_stat_text\">CRM Lead</span>"
+msgstr "<span class=\"o_stat_text\">CRM Responsable</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span class=\"pp-tab\" data-i18n=\"pp_dev\">Development</span>\n"
@@ -1720,7 +1725,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<span data-i18n=\"label_backup\">Backup &amp; Recovery</span>"
-msgstr "<span data-i18n=\"label_backup\">Sauvegarde et récupération</span>"
+msgstr "<span data-i18n=\"label_backup\">Sauvegarde &amp; Récupération</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1962,7 +1967,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "AI-powered automation &amp; smart insights"
-msgstr "Automatisation assistée par l'IA & idées intelligentes"
+msgstr "Automatisation assistée par l'IA &amp; intelligences intelligentes"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1986,19 +1991,34 @@ msgid "Account manager"
 msgstr "Gestionnaire de compte"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "Action Needed"
+msgstr "Mesures nécessaires"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_ids
+msgid "Activities"
+msgstr "Activités"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Décoration d'exception d'activité"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid "Activity State"
+msgstr "État d'activité"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Type d'activité Icône"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr "Stockage supplémentaire"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid ""
-"Address that receives an email for every enquiry submitted from the website "
-"form. Leave empty to use the company email address."
-msgstr ""
-"Adresse qui reçoit un courriel pour chaque demande soumise à partir du "
-"formulaire du site Web. Laissez vide pour utiliser l'adresse email de "
-"l'entreprise."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2055,6 +2075,11 @@ msgid "Assigned To"
 msgstr "Affecté à"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Audit"
 msgstr "Vérification des comptes"
@@ -2095,6 +2120,7 @@ msgid "Backup"
 msgstr "Sauvegarde"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__backup_recovery
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__backup_recovery
 msgid "Backup & Recovery"
 msgstr "Sauvegarde et récupération"
@@ -2102,7 +2128,7 @@ msgstr "Sauvegarde et récupération"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Backup &amp; Recovery"
-msgstr "Sauvegarde & Récupération"
+msgstr "Sauvegarde &amp; Récupération"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2142,7 +2168,7 @@ msgstr "Sauvegardes"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Backups &amp; recovery"
-msgstr "Sauvegardes & récupération"
+msgstr "Récupération des sauvegardes &amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2246,6 +2272,18 @@ msgid ""
 msgstr ""
 "CPU, mémoire, disque, requêtes et connexions de base de données — avec "
 "indicateurs d'état pour chaque environnement."
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "CRM Lead"
+msgstr "CRM Responsable"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_count
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_ids
+msgid "CRM Leads"
+msgstr "CRM Responsables"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2382,11 +2420,6 @@ msgstr ""
 "production."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Connexion"
-msgstr "Connexion"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Construction"
 msgstr "Bâtiment"
@@ -2401,7 +2434,7 @@ msgstr "Personne à contacter"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Contact &amp; legal"
-msgstr "Contact & juridique"
+msgstr "Contact &amp; juridique"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -2442,6 +2475,11 @@ msgid "Country"
 msgstr "Pays"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
+msgid "Country (Enquiry)"
+msgstr "Pays (enquête)"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Create backup copies according to your plan’s configured schedule."
 msgstr "Créez des copies de sauvegarde selon votre plan."
@@ -2457,11 +2495,7 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Créer un compte"
-msgstr "Créer un compte"
-
-#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_odoo_version
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__odoo_version
 msgid "Current Odoo Version"
 msgstr "Version actuelle Odoo"
@@ -2483,6 +2517,7 @@ msgid "Custom Addons"
 msgstr "Addons personnalisés"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__module_development
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__module_development
 msgid "Custom Module Development"
 msgstr "Développement de modules personnalisés"
@@ -2684,12 +2719,7 @@ msgstr "Afficher le nom"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Domain &amp; HTTPS"
-msgstr "Domaine & HTTPS"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Déconnexion"
-msgstr "Déconnexion"
+msgstr "Domaine &amp; HTTPS"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
@@ -2720,16 +2750,25 @@ msgstr "Courriel *"
 #: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid ""
 "Email address that receives a notification for every enquiry submitted from "
-"the website. Leave empty to use the company email address."
+"the website. Defaults to notifications@myodoo.sh."
 msgstr ""
 "Adresse électronique qui reçoit une notification pour chaque demande soumise"
-" par le site Web. Laissez vide pour utiliser l'adresse email de "
-"l'entreprise."
+" par le site Web. Par défaut à notifications@myodoo.sh."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Email · 24h target response"
 msgstr "Email · Réponse cible 24h"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
+msgid ""
+"Emails sent for every enquiry submitted from the website form. The sender "
+"address is bound to the default outgoing mail server."
+msgstr ""
+"Emails envoyés pour chaque demande soumise à partir du formulaire du site. "
+"L'adresse de l'expéditeur est liée au serveur de messagerie sortant par "
+"défaut."
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -2739,6 +2778,16 @@ msgid ""
 msgstr ""
 "Les demandes de renseignements présentées sur le site Web figurent ici,\n"
 "avec l'email de notification envoyé à votre équipe."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Enquiry"
+msgstr "Demande de renseignements"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_lang
+msgid "Enquiry Language"
+msgstr "Langue de demande"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__name
@@ -2766,6 +2815,7 @@ msgstr ""
 "abonnement est indiqué dans votre accord."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_estimated_users
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__estimated_users
 msgid "Estimated Users"
 msgstr "Utilisateurs estimés"
@@ -2812,6 +2862,7 @@ msgstr ""
 "Tout ce dont votre entreprise a besoin,<br/>dans <em>une plate-forme</em>."
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__existing_project
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__existing_project
 msgid "Existing Odoo Project"
 msgstr "Projet Odoo existant"
@@ -2872,6 +2923,26 @@ msgid "Follow-up"
 msgstr "Suivi"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnés (partenaires)"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Police icône géniale par exemple fa-tasks"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Forgot password"
+msgstr "Mot de passe oublié"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr "Sous-domaine gratuit + SSL"
@@ -2880,6 +2951,16 @@ msgstr "Sous-domaine gratuit + SSL"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "From Your First Project to Production"
 msgstr "De votre premier projet à la production"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid ""
+"From address used for enquiry emails. Defaults to notifications@myodoo.sh, "
+"the address bound to the default outgoing mail server."
+msgstr ""
+"De l'adresse utilisée pour les courriels de demande. Par défaut à "
+"notifications@myodoo.sh, l'adresse est liée au serveur de messagerie sortant"
+" par défaut."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2966,6 +3047,11 @@ msgstr ""
 "d'environnement sont gérés pour vous."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__has_message
+msgid "Has Message"
+msgstr "A un message"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Healthcare"
 msgstr "Santé"
@@ -2989,7 +3075,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Hosting &amp; Platform Services"
-msgstr "Hébergement des services de plate-forme &"
+msgstr "Hébergement &amp; Services des plates-formes"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3049,6 +3135,27 @@ msgid "ID"
 msgstr "NUMÉRO"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon"
+msgstr "Icône"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icône pour indiquer une activité exceptionnelle."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si coché, les nouveaux messages nécessitent votre attention."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si coché, certains messages ont une erreur de livraison."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Implement"
 msgstr "Mise en œuvre"
@@ -3081,7 +3188,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Implementation, Customisation &amp; Business Support"
-msgstr "Mise en œuvre, personnalisation et assistance aux entreprises"
+msgstr "Mise en œuvre, personnalisation &amp; Soutien aux entreprises"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3160,12 +3267,16 @@ msgid "Initial data and go-live support"
 msgstr "Données initiales et soutien continu"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__integration
 msgid "Integration / API"
 msgstr "Intégration / API"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_interested_in
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__interested_in
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_leads_filter_saas
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_opportunities_filter_saas
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
 msgid "Interested In"
 msgstr "Intéressé par"
@@ -3179,6 +3290,11 @@ msgstr "Notes internes"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "Internal notes — never shown to the customer."
 msgstr "Notes internes — jamais montré au client."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_is_follower
+msgid "Is Follower"
+msgstr "Est disciple"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3239,7 +3355,12 @@ msgstr "Dernier déploiement"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Launch &amp; Maintain"
-msgstr "Lancer & Maintenir"
+msgstr "Lancement &amp; Maintenir"
+
+#. module: website_saas_landing
+#: model:ir.model,name:website_saas_landing.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Plomb/Possibilité"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3254,6 +3375,11 @@ msgid ""
 msgstr ""
 "Compréhension locale.<br/><span class=\"mh-grad\">Technologie commerciale "
 "connectée.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Log out"
+msgstr "Déconnexion"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3322,9 +3448,19 @@ msgid "Menu"
 msgstr "Menu"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error
+msgid "Message Delivery error"
+msgstr "Erreur de livraison du message"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_ids
+msgid "Messages"
+msgstr "Messages"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Migration &amp; upgrades"
-msgstr "Migration & mises à jour"
+msgstr "Améliorations de la migration &amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3343,11 +3479,6 @@ msgid "Migration, security, capacity and support — the short answers."
 msgstr ""
 "Les migrations, la sécurité, les capacités et le soutien - les réponses "
 "courtes."
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mon Compte"
-msgstr "Mon Compte"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3380,11 +3511,6 @@ msgstr ""
 " de disponibilité, tous opérationnels."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mot de passe oublié"
-msgstr "Mot de passe oublié"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Move Your Existing Odoo Setup to MyOdoo.sh"
 msgstr "Déplacez votre configuration Odoo existante sur MyOdoo.sh"
@@ -3401,12 +3527,17 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Multi-company &amp; multi-currency support"
-msgstr "Soutien multi-entreprises & multi-devises"
+msgstr "Aide multi-entreprises &amp; multi-devises"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "My Account"
 msgstr "Mon compte"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Ma date limite d'activité"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
@@ -3490,6 +3621,7 @@ msgid "New"
 msgstr "Nouveau"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__implementation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__implementation
 msgid "New Odoo Implementation"
 msgstr "Nouvelle mise en œuvre d'Odoo"
@@ -3501,6 +3633,26 @@ msgid ""
 msgstr ""
 "Nouveau site web SaaS Demande — {{ object.name }} — {{ object.company name "
 "}}"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Calendrier des activités suivantes"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Prochaine étape"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_summary
+msgid "Next Activity Summary"
+msgstr "Résumé des activités suivantes"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_id
+msgid "Next Activity Type"
+msgstr "Type d'activité suivant"
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -3527,6 +3679,26 @@ msgstr ""
 "votre environnement Odoo."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'actions"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Nombre de messages nécessitant une action"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Nombre de messages avec erreur de livraison"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo"
 msgstr "Odoo"
@@ -3534,7 +3706,7 @@ msgstr "Odoo"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo Cloud Hosting, Deployment &amp; Management"
-msgstr "Hébergement Cloud Odoo, gestion du déploiement &"
+msgstr "Hébergement Cloud Odoo, Déploiement &amp; Gestion"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3542,6 +3714,7 @@ msgid "Odoo Community"
 msgstr "Communauté d'Odoo"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__customisation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__customisation
 msgid "Odoo Customisation"
 msgstr "Personnalisation d'Odoo"
@@ -3573,11 +3746,13 @@ msgid "Odoo Expertise"
 msgstr "Expertise Odoo"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__hosting
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__hosting
 msgid "Odoo Hosting / MyOdoo.sh"
 msgstr "Hébergement Odoo / MyOdoo.sh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__migration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__migration
 msgid "Odoo Migration"
 msgstr "Migration odoo"
@@ -3655,6 +3830,12 @@ msgstr ""
 " mises à jour à travers un flux de travail de publication contrôlé."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Origin"
+msgstr "Origine"
+
+#. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__other
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__other
 msgid "Other"
 msgstr "Autres"
@@ -3684,12 +3865,12 @@ msgstr "Téléphone / WhatsApp"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat"
-msgstr "Téléphone, courriel & chat"
+msgstr "Téléphone, courriel &amp; chat"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat · dedicated account manager"
-msgstr "Téléphone, e-mail & chat · gestionnaire de compte dédié"
+msgstr "Téléphone, courriel &amp; chat · gestionnaire de compte dédié"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3719,7 +3900,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Plans &amp; pricing"
-msgstr "Plans & prix"
+msgstr "Plans &amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -3892,6 +4073,11 @@ msgid "Quoted separately"
 msgstr "Indiqué séparément"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
+msgid "Ratings"
+msgstr "Évaluations"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Ready to Host Your Odoo Project?"
 msgstr "Prêt à accueillir votre projet Odoo?"
@@ -3950,6 +4136,11 @@ msgstr ""
 " de vue."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_user_id
+msgid "Responsible User"
+msgstr "Utilisateur responsable"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Restart"
 msgstr "Redémarrer"
@@ -3970,7 +4161,7 @@ msgstr "Commerce de détail"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Retention &amp; Storage"
-msgstr "Conservation & Stockage"
+msgstr "Conservation &amp; Stockage"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4011,6 +4202,11 @@ msgstr ""
 "ensemble."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Erreur de livraison de SMS"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "SSL"
 msgstr "SSL"
@@ -4024,6 +4220,8 @@ msgid "SaaS Enquiries"
 msgstr "Demandes de renseignements SaaS"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_enquiry_id
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "SaaS Enquiry"
 msgstr "SaaS Enquête"
@@ -4037,6 +4235,17 @@ msgstr "SaaS demande des notifications"
 #: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid "SaaS Enquiry Recipient Email"
 msgstr "Demande de renseignements du SaaS"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid "SaaS Enquiry Sender Email"
+msgstr "Saas demande email de l'expéditeur"
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "SaaS Enquiry: %s (%s)"
+msgstr "Demande de renseignements SaaS : %s (%s)"
 
 #. module: website_saas_landing
 #: model:mail.template,name:website_saas_landing.mail_template_enquiry_customer
@@ -4056,7 +4265,7 @@ msgstr "Ventes • Entrepôt • Distribution"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Scaling &amp; Resources"
-msgstr "Développement des ressources &"
+msgstr "Étalonnage &amp; Ressources"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4076,7 +4285,7 @@ msgstr "Portée"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Seamless integrations &amp; API connections"
-msgstr "Intégrations sans soudure et connexions API"
+msgstr "Intégrations sans soudure &amp; Connexions API"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4086,12 +4295,12 @@ msgstr "Hébergement sécurisé"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Secure cloud hosting &amp; automatic backups"
-msgstr "Sauvegardes automatiques de l'hébergement en nuage &"
+msgstr "Sauvegardes automatiques de l'hébergement en nuage sécurisé &amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
-msgstr "Sécurité & SSL"
+msgstr "Sécurité &amp; SSL"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4159,6 +4368,11 @@ msgid "Sign in"
 msgstr "Connexion"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign up"
+msgstr "Créer un compte"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
 msgstr "Une tarification simple de l'infrastructure."
@@ -4174,6 +4388,7 @@ msgid "Solutions shaped around real operations"
 msgstr "Solutions façonnées autour d'opérations réelles"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_source_page
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__source_page
 msgid "Source Page"
 msgstr "Source"
@@ -4181,7 +4396,7 @@ msgstr "Source"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Staging &amp; development"
-msgstr "Staging & développement"
+msgstr "Développement &amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4254,6 +4469,19 @@ msgid "Status"
 msgstr "État"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"État d ' avancement des activités\n"
+"Excédent: La date d'échéance est déjà passée\n"
+"Aujourd'hui: la date de l'activité est aujourd'hui\n"
+"Prévue : Activités futures."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Storage"
 msgstr "Stockage"
@@ -4285,6 +4513,7 @@ msgid "Support"
 msgstr "Appui"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__support_maintenance
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__support_maintenance
 msgid "Support & Maintenance"
 msgstr "Soutien & Maintenance"
@@ -4540,6 +4769,11 @@ msgid "Transfer"
 msgstr "Transfert"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Type d'activité d'exception enregistrée."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Understand"
 msgstr "Comprendre"
@@ -4625,9 +4859,26 @@ msgid "We've received your enquiry — MyOdoo.sh"
 msgstr "Nous avons reçu votre demande — MyOdoo.sh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website Messages"
+msgstr "Messages du site Web"
+
+#. module: website_saas_landing
 #: model:ir.model,name:website_saas_landing.model_website_saas_enquiry
 msgid "Website SaaS Enquiry"
 msgstr "Site web SaaS Enquête"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website communication history"
+msgstr "Historique de la communication sur le site"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_crm_lead__saas_enquiry_id
+msgid "Website enquiry this lead was created from."
+msgstr ""
+"Demande de renseignements sur le site Web à partir de cette piste a été "
+"créée."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4858,8 +5109,8 @@ msgstr "par exemple 25"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid "e.g. sales@your-domain.com"
-msgstr "par exemple, sales@votre-domaine.com"
+msgid "e.g. notifications@myodoo.sh"
+msgstr "par exemple, notifications@myodoo.sh"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4910,18 +5161,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "🔒 <span data-i18n=\"data_encrypted\">Encrypted Backup</span>"
 msgstr "C'est vrai. <span data-i18n=\"data_encrypted\">Sauvegarde chiffrée</span>"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Log out"
-msgstr "Déconnexion"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Sign up"
-msgstr "Créer un compte"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Forgot password"
-msgstr "Mot de passe oublié"

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-23 08:01+1100\n"
+"PO-Revision-Date: 2026-10-12 04:48+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: vi\n"
 "Language: vi\n"
@@ -24,32 +24,32 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;larr; Back to Storage Overview"
-msgstr "&am;larr; Về kho"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;larr; Dashboard"
-msgstr "Bảng & ngắn;larr; Dashboard"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot;"
-msgstr "&middot;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot; Storage Management"
-msgstr "Bộ quản lý kho lưu trữ"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;rarr;"
-msgstr "&rarr;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "&amp;times;"
-msgstr "thời gian & ngắn;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -100,6 +100,9 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#5cb85c;\"><strong>ĐÃ ĐÃ ĐÃ ĐÃ ĐÃ ĐƯỢC</strong></div><hr style=\"background-color:#5cb85c; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>Đại ca <span t-out=\"object.partner_id.name or ''\"></span>.</div><br/><div>Name <strong><span t-out=\"object.name or ''\"></span></strong> đã được chấp thuận.\n"
+"Giới hạn kho hàng mới là <strong style=\"color:#5cb85c;\"><span t-out=\"object.storage_limit_gb\"></span> GB</strong>.\n"
+" </div><br/><div>Nếu ví dụ của bạn đã được dừng lại do lưu trữ đầy đủ, vui lòng liên lạc hỗ trợ để có được nó khởi động lại, hoặc kiểm tra của bạn <a href=\"/my/storage\">Name</a>.</div></div><br/><div><div>Cảm ơn vì đã dùng dịch vụ của chúng tôi. Nếu có thắc mắc gì, xin liên lạc với đội hỗ trợ của chúng tôi.</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_full_mail_template
@@ -130,6 +133,12 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#d9534f;\"><strong>CHỮNG CÂU CHUYỆN KỂ LẠI</strong></div><hr style=\"background-color:#d9534f; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>Đại ca <span t-out=\"object.partner_id.name or ''\"></span>.</div><br/><div>Trường hợp của bạn <strong><span t-out=\"object.name or ''\"></span></strong> Đã tới\n"
+" <strong style=\"color:#d9534f;\">100%</strong> của kho chứa\n"
+"(Tiếng cười)<strong><span t-out=\"object.storage_limit_gb\"></span> GB</strong>).\n"
+" </div><br/><div>Để bảo vệ dữ liệu của bạn, ví dụ của bạn đã được <strong>tự động dừng</strong> và không còn dễ tiếp cận nữa.</div><br/><div>Vui lòng liên lạc với đội hỗ trợ của chúng tôi để gia tăng giới hạn lưu trữ của bạn để trường hợp của bạn có thể tiếp tục,\n"
+"hoặc yêu cầu nâng cấp từ bạn <a href=\"/my/storage\">Name</a>.\n"
+" </div></div><br/><div><div>Chúng tôi xin lỗi vì sự bất tiện. Đội hỗ trợ của chúng tôi đã sẵn sàng để giúp anh online trở lại.</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_warning_mail_template
@@ -206,7 +215,7 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "<small>Disk Usage %</small>"
-msgstr ""
+msgstr "<small>sử dụng ổ đĩa %</small>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -226,7 +235,7 @@ msgstr "<small>Tổng đĩa được dùng</small>"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "<small>Used Filestore &amp; DB</small>"
-msgstr "<small>Tập tin đã dùng & DB</small>"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -251,7 +260,7 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "<span class=\"eyebrow\">DISK &amp; CAPACITY</span>"
-msgstr "<span class=\"eyebrow\">Bộ phát & phát triển tích hợp</span>"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -305,7 +314,7 @@ msgstr "<span>Xác định giờ:</span><strong class=\"ok\">Hoạt động</str
 msgid ""
 "<span>Odoo Filestore:</span>\n"
 "                                    <strong>Attachments &amp; Media</strong>"
-msgstr "<span>Tập tin Odoo:</span><strong>Thêm đính kèm</strong>"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -373,7 +382,7 @@ msgstr "Comment"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "CURRENT QUOTA"
-msgstr "CURRENT QUOTA"
+msgstr "Chỉ tiêu hiện thời"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
@@ -513,11 +522,11 @@ msgstr "Name"
 #. module: saas_storage_management
 #: model:ir.model.fields,help:saas_storage_management.field_saas_odoo_instance__storage_limit_gb
 msgid ""
-"Maximum storage allowed for this instance in GB. Default: 5 GB for "
-"Essential, 20 GB for Growth. Leave empty or 0 for unlimited."
+"Maximum storage allowed for this instance in GB. Default: 5 GB for Standard,"
+" 20 GB for Growth. Leave empty or 0 for unlimited."
 msgstr ""
-"Cho phép lưu trữ tối đa cho trường hợp này trong GB. Mặc định: 5 GB cho "
-"thiết yếu, 20 GB để tăng trưởng. Để trống hoặc 0 không giới hạn."
+"Cho phép lưu trữ tối đa cho trường hợp này trong GB. Mặc định: 5 GB tiêu "
+"chuẩn, 20 GB để tăng trưởng. Để trống hoặc 0 không giới hạn."
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -527,7 +536,7 @@ msgstr "Bản năng của tôi"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "NEW QUOTA (GB) *"
-msgstr "NEW QUOTA (GB) *"
+msgstr "Chỉ tiêu mới (gb) *"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -844,7 +853,7 @@ msgstr "e.g. 25"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "healthy &amp;middot;"
-msgstr "xanh lá cây khỏe mạnh; middot;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-28 02:24+1100\n"
+"PO-Revision-Date: 2026-10-12 04:47+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: zh\n"
 "Language: zh\n"
@@ -190,8 +190,8 @@ msgid ""
 "<b data-i18n=\"dia_files\">File Storage</b><small "
 "data-i18n=\"dia_files_text\">Attachments &amp; documents</small>"
 msgstr ""
-"<b data-i18n=\"dia_files\">文件存储</b><small data-i18n=\"dia_files_text\">附件文档("
-" D)</small>"
+"<b data-i18n=\"dia_files\">文件存储</b><small "
+"data-i18n=\"dia_files_text\">附件&amp;文件</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -200,7 +200,7 @@ msgid ""
 "data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 msgstr ""
 "<b data-i18n=\"dia_monitor\">监测</b><small "
-"data-i18n=\"dia_monitor_text\">资源和健康检查</small>"
+"data-i18n=\"dia_monitor_text\">资源&amp;健康检查</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -208,8 +208,8 @@ msgid ""
 "<b data-i18n=\"dia_users\">Your team &amp; customers</b><small>https://your-"
 "company.example</small>"
 msgstr ""
-"<b data-i18n=\"dia_users\">您的团队和客户</b><small>https://your-company.example "
-"(英语).</small>"
+"<b data-i18n=\"dia_users\">你的团队&amp;客户</b><small>https://your-"
+"company.example (英语).</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -229,7 +229,7 @@ msgstr "<b data-i18n=\"dl3\">管理东道主</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<b data-i18n=\"dl4\">Database &amp; Backups</b>"
-msgstr "<b data-i18n=\"dl4\">数据库备份( B)</b>"
+msgstr "<b data-i18n=\"dl4\">数据库 &amp; 备份</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -289,7 +289,7 @@ msgstr "<b data-i18n=\"eco_proj\">项目</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_sales\">Sales &amp; CRM</b>"
-msgstr "<b data-i18n=\"eco_sales\">销售和客户关系管理</b>"
+msgstr "<b data-i18n=\"eco_sales\">销售&amp;客户关系管理</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -547,7 +547,7 @@ msgstr "<b>邮递SQL</b><small data-i18n=\"dia_db\">数据库</small>"
 msgid ""
 "<b>Priority support · phone, email &amp; chat</b><small>A direct line to a "
 "senior Odoo engineer, never a call centre.</small>"
-msgstr "<b>优先支持 • 电话、电子邮件和聊天</b><small>直通Odoo高级工程师 从来不是呼叫中心</small>"
+msgstr "<b>优先支持 \\ 电话,电子邮件 &amp; 聊天</b><small>直通Odoo高级工程师 从来不是呼叫中心</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -563,14 +563,14 @@ msgstr ""
 msgid ""
 "<b>Unlimited storage &amp; workers</b><small>Grow without ceilings, quotas "
 "or awkward conversations.</small>"
-msgstr "<b>无限制存储和工人( W)</b><small>成长时没有上限,配额或尴尬的对话.</small>"
+msgstr "<b>无限制地储存&amp;工人</b><small>成长时没有上限,配额或尴尬的对话.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "<b>Unlimited uses &amp; apps</b><small>No limits and no extra fees. Invite "
 "the whole team.</small>"
-msgstr "<b>无限制使用( A)</b><small>没有限制,也没有额外的费用。 邀请整个团队。</small>"
+msgstr "<b>无限使用 &amp; 应用</b><small>没有限制,也没有额外的费用。 邀请整个团队。</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -582,7 +582,8 @@ msgstr "<b>工人</b>"
 msgid ""
 "<b>∞ Unlimited uses &amp; apps</b><small data-i18n=\"edition_nolimit\">No "
 "limits on any plan</small>"
-msgstr "<b>QQ 无限使用( A)</b><small data-i18n=\"edition_nolimit\">对计划无限制</small>"
+msgstr ""
+"<b>QQ 无限用途 &amp; 应用程序</b><small data-i18n=\"edition_nolimit\">对计划无限制</small>"
 
 #. module: website_saas_landing
 #: model:mail.template,body_html:website_saas_landing.mail_template_enquiry_customer
@@ -732,7 +733,7 @@ msgid ""
 "data-i18n=\"road1_d\">Goals &amp; challenges</small>"
 msgstr ""
 "<i>01号</i><b data-i18n=\"road1\">协商</b><small "
-"data-i18n=\"road1_d\">目标和挑战</small>"
+"data-i18n=\"road1_d\">目标&amp;</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -776,7 +777,7 @@ msgid ""
 "<i>06</i><b data-i18n=\"road6\">Training &amp; Go-live</b><small "
 "data-i18n=\"road6_d\">Production launch</small>"
 msgstr ""
-"<i>06号</i><b data-i18n=\"road6\">培训和启用</b><small "
+"<i>06号</i><b data-i18n=\"road6\">培训&amp; 上线</b><small "
 "data-i18n=\"road6_d\">生产发射</small>"
 
 #. module: website_saas_landing
@@ -903,11 +904,12 @@ msgstr ""
 "自定义</option><option data-i18n=\"cf_opt5\" "
 "value=\"module_development\">自定义模块开发</option><option data-i18n=\"cf_opt6\" "
 "value=\"integration\">整合/ API</option><option data-i18n=\"cf_opt7\" "
-"value=\"backup_recovery\">备份恢复( R)</option><option data-i18n=\"cf_opt8\" "
-"value=\"support_maintenance\">支助和维护</option><option data-i18n=\"cf_opt9\" "
-"value=\"existing_project\">现有奥杜项目</option><option data-i18n=\"cf_opt10\" "
-"value=\"other\">其它</option></select><small class=\"cf-field-error\" data-"
-"error-for=\"interested_in\" data-i18n=\"cf_err_required\">需要这个领域。</small>"
+"value=\"backup_recovery\">备份 &amp; 恢复</option><option data-i18n=\"cf_opt8\" "
+"value=\"support_maintenance\">支助&amp; 维修</option><option "
+"data-i18n=\"cf_opt9\" value=\"existing_project\">现有奥杜项目</option><option "
+"data-i18n=\"cf_opt10\" value=\"other\">其它</option></select><small "
+"class=\"cf-field-error\" data-error-for=\"interested_in\" "
+"data-i18n=\"cf_err_required\">需要这个领域。</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -1152,8 +1154,8 @@ msgid ""
 "<span class=\"eyebrow\"><i/><span data-i18n=\"editions_badge\">Community "
 "&amp; Enterprise</span></span>"
 msgstr ""
-"<span class=\"eyebrow\"><i></i><span "
-"data-i18n=\"editions_badge\">社区和企业</span></span>"
+"<span class=\"eyebrow\"><i></i><span data-i18n=\"editions_badge\">社区&amp; "
+"企业</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1409,6 +1411,11 @@ msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
 msgstr "<span class=\"mo_auth_badge\">今天开始免费</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
+msgid "<span class=\"o_stat_text\">CRM Lead</span>"
+msgstr "<span class=\"o_stat_text\">CRM 铅</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span class=\"pp-tab\" data-i18n=\"pp_dev\">Development</span>\n"
@@ -1598,7 +1605,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<span data-i18n=\"label_backup\">Backup &amp; Recovery</span>"
-msgstr "<span data-i18n=\"label_backup\">备份恢复( R)</span>"
+msgstr "<span data-i18n=\"label_backup\">备份 &amp; 恢复</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1830,7 +1837,7 @@ msgstr "用于您的应用程序、数据库和文件的管理平台,包括部�
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "AI-powered automation &amp; smart insights"
-msgstr "AI - 驱动自动化 & amp; 聪明的见解"
+msgstr "AI动力自动化&amp;聪明的见解"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1854,16 +1861,34 @@ msgid "Account manager"
 msgstr "账户管理器"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "Action Needed"
+msgstr "需要采取的行动"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_ids
+msgid "Activities"
+msgstr "活 动"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "活动例外装饰"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid "Activity State"
+msgstr "活动状态"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "活动类型图标"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr "额外存储"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid ""
-"Address that receives an email for every enquiry submitted from the website "
-"form. Leave empty to use the company email address."
-msgstr "从网站表格中为每次询问发送电子邮件的地址。 空出可以使用公司的电子邮件地址 ."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1912,6 +1937,11 @@ msgid "Assigned To"
 msgstr "被指派"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_attachment_count
+msgid "Attachment Count"
+msgstr "附件数"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Audit"
 msgstr "审计"
@@ -1949,6 +1979,7 @@ msgid "Backup"
 msgstr "备份"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__backup_recovery
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__backup_recovery
 msgid "Backup & Recovery"
 msgstr "备份恢复( R)"
@@ -1956,7 +1987,7 @@ msgstr "备份恢复( R)"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Backup &amp; Recovery"
-msgstr "备份并amp; 恢复"
+msgstr "备份 &amp; 恢复"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1988,7 +2019,7 @@ msgstr "备份"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Backups &amp; recovery"
-msgstr "备份并amp; 恢复"
+msgstr "备份&amp;回收"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2082,6 +2113,18 @@ msgid ""
 "CPU, memory, disk, requests and database connections — with status "
 "indicators for each environment."
 msgstr "CPU,内存,磁盘,请求和数据库连接——每个环境都有状态指标."
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "CRM Lead"
+msgstr "CRM 铅"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_count
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_ids
+msgid "CRM Leads"
+msgstr "CRM 铅"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2209,11 +2252,6 @@ msgid ""
 msgstr "连接您的存储器, 并移动批准更新 ."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Connexion"
-msgstr "连接"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Construction"
 msgstr "建筑业"
@@ -2228,7 +2266,7 @@ msgstr "联系人"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Contact &amp; legal"
-msgstr "联系人( P) :"
+msgstr "联系人&amp;"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -2266,6 +2304,11 @@ msgid "Country"
 msgstr "国家"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
+msgid "Country (Enquiry)"
+msgstr "国家(查询)"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Create backup copies according to your plan’s configured schedule."
 msgstr "根据您计划配置的时间表创建备份副本 ."
@@ -2281,11 +2324,7 @@ msgid "Created on"
 msgstr "创建于"
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Créer un compte"
-msgstr "Créer 无效"
-
-#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_odoo_version
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__odoo_version
 msgid "Current Odoo Version"
 msgstr "当前 Odoo 版本"
@@ -2307,6 +2346,7 @@ msgid "Custom Addons"
 msgstr "自定义添加"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__module_development
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__module_development
 msgid "Custom Module Development"
 msgstr "自定义模块开发"
@@ -2479,12 +2519,7 @@ msgstr "显示名称"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Domain &amp; HTTPS"
-msgstr "域并amp; HTTPS"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Déconnexion"
-msgstr "德康纳通"
+msgstr "域名 &amp; https"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
@@ -2513,13 +2548,20 @@ msgstr "电子邮件*"
 #: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid ""
 "Email address that receives a notification for every enquiry submitted from "
-"the website. Leave empty to use the company email address."
-msgstr "电子邮件地址,接收从网站提交的每项询问的通知。 空出可以使用公司的电子邮件地址 ."
+"the website. Defaults to notifications@myodoo.sh."
+msgstr "电子邮件地址,接收从网站提交的每项询问的通知。 默认通知@ myodoo.sh."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Email · 24h target response"
 msgstr "电子邮件 24小时目标响应"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
+msgid ""
+"Emails sent for every enquiry submitted from the website form. The sender "
+"address is bound to the default outgoing mail server."
+msgstr "从网站表格中为每次询问发送电子邮件。 发件人地址被绑定到默认的外出邮件服务器."
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -2529,6 +2571,16 @@ msgid ""
 msgstr ""
 "网站查询表上的询问如下:\n"
 "以及发给你们团队的通知邮件."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Enquiry"
+msgstr "询问"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_lang
+msgid "Enquiry Language"
+msgstr "查询语言"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__name
@@ -2551,6 +2603,7 @@ msgid ""
 msgstr "环境在商定的维护窗口内进行监测和维护。 任何与订阅相关的服务级别承诺均在协议中注明."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_estimated_users
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__estimated_users
 msgid "Estimated Users"
 msgstr "估计用户数"
@@ -2591,6 +2644,7 @@ msgid "Everything your business needs,<br/>in <em>one platform</em>."
 msgstr "你的生意需要的东西<br/>内 <em>一个平台</em>。 。 。 。"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__existing_project
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__existing_project
 msgid "Existing Odoo Project"
 msgstr "现有奥杜项目"
@@ -2648,6 +2702,26 @@ msgid "Follow-up"
 msgstr "后续行动"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_follower_ids
+msgid "Followers"
+msgstr "跟踪者"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "追随者(合作伙伴)"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "字体惊人的图标, 例如 fa- tasks"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Forgot password"
+msgstr "忘记密码"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr "自由子域 + SSL"
@@ -2656,6 +2730,13 @@ msgstr "自由子域 + SSL"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "From Your First Project to Production"
 msgstr "从你的第一个项目到生产"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid ""
+"From address used for enquiry emails. Defaults to notifications@myodoo.sh, "
+"the address bound to the default outgoing mail server."
+msgstr "用于查询电子邮件的地址。 默认为通知@myodoo.sh, 地址绑定在默认的正在发送的邮件服务器上 ."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2734,6 +2815,11 @@ msgid ""
 msgstr "HTTPS 位于您自己的域名, 安全访问及环境配置 ."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__has_message
+msgid "Has Message"
+msgstr "有信件"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Healthcare"
 msgstr "保健"
@@ -2754,7 +2840,7 @@ msgstr "托管、部署和管理Odoo, 包括中转环境、自动备份和监测
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Hosting &amp; Platform Services"
-msgstr "托管 & amp; 平台服务"
+msgstr "东道主 &amp; 平台服务"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2807,6 +2893,27 @@ msgid "ID"
 msgstr "身份证"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon"
+msgstr "图标"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "图标表示例外活动."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "如果选中的话, 您需要注意新信件 ."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "如果选中的话, 有些信件会有发送错误 ."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Implement"
 msgstr "执行"
@@ -2834,7 +2941,7 @@ msgstr "执行不是关系结束的地方。 你的环境不断运行,我们继�
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Implementation, Customisation &amp; Business Support"
-msgstr "执行、定制和amp;业务支助"
+msgstr "执行、自定义&amp;业务支助"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2902,12 +3009,16 @@ msgid "Initial data and go-live support"
 msgstr "初始数据和连接启用支持"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__integration
 msgid "Integration / API"
 msgstr "整合/ API"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_interested_in
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__interested_in
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_leads_filter_saas
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_opportunities_filter_saas
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
 msgid "Interested In"
 msgstr "感兴趣的"
@@ -2921,6 +3032,11 @@ msgstr "内部说明"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "Internal notes — never shown to the customer."
 msgstr "内部笔记——从未向客户展示."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_is_follower
+msgid "Is Follower"
+msgstr "是跟踪者"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2972,7 +3088,12 @@ msgstr "上次部署"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Launch &amp; Maintain"
-msgstr "启动并amp; 维护"
+msgstr ""
+
+#. module: website_saas_landing
+#: model:ir.model,name:website_saas_landing.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "铅/机会"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -2985,6 +3106,11 @@ msgid ""
 "Local understanding.<br/><span class=\"mh-grad\">Connected business "
 "technology.</span>"
 msgstr "地方谅解.<br/><span class=\"mh-grad\">连通商业技术.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Log out"
+msgstr "退出登录"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3049,9 +3175,19 @@ msgid "Menu"
 msgstr "菜单"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error
+msgid "Message Delivery error"
+msgstr "消息发送出错"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_ids
+msgid "Messages"
+msgstr "信件"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Migration &amp; upgrades"
-msgstr "迁移和amp; 升级"
+msgstr "迁移&amp;升级"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3065,11 +3201,6 @@ msgstr "迁移图:现有的Odoo服务器有PostgreSQL,文件站和自定义加�
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Migration, security, capacity and support — the short answers."
 msgstr "移徙、安全、能力和支持——简短的答案."
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mon Compte"
-msgstr "单曲"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3096,11 +3227,6 @@ msgid ""
 msgstr "带有样本数据的监控仪表板:CPU,内存,磁盘,响应时间,请求,数据库连接和上行时间,全部运行."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mot de passe oublié"
-msgstr "乌布里埃之行"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Move Your Existing Odoo Setup to MyOdoo.sh"
 msgstr "将已有的 Odoo 设置移至 MyOdoo.sh"
@@ -3115,12 +3241,17 @@ msgstr "按照商定的备份、监测和支助安排投入生产."
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Multi-company &amp; multi-currency support"
-msgstr "多公司和amp;多货币支助"
+msgstr "多公司&amp;多货币支助"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "My Account"
 msgstr "我的账户"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "我的活动截止日期"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
@@ -3197,6 +3328,7 @@ msgid "New"
 msgstr "新设"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__implementation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__implementation
 msgid "New Odoo Implementation"
 msgstr "新建 Odoo 执行"
@@ -3206,6 +3338,26 @@ msgstr "新建 Odoo 执行"
 msgid ""
 "New Website SaaS Enquiry — {{ object.name }} — {{ object.company_name }}"
 msgstr "新建网站 SaaS 查询 – \\\\\\ 对象. name\\\\ \\\\ 对象.company name \\"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "下一个活动日历事件"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "下一个活动截止日期"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_summary
+msgid "Next Activity Summary"
+msgstr "下一个活动摘要"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_id
+msgid "Next Activity Type"
+msgstr "下一个活动类型"
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -3227,6 +3379,26 @@ msgid ""
 msgstr "不是单独的产品——围绕您所处地平地环境的一个连通的服务平台."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of Actions"
+msgstr "行动数量"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of errors"
+msgstr "错误次数"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "需要采取行动的信息数量"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "发送出错的信件数量"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo"
 msgstr "奥都"
@@ -3234,7 +3406,7 @@ msgstr "奥都"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo Cloud Hosting, Deployment &amp; Management"
-msgstr "Odoo 云宿、部署和amp; 管理"
+msgstr "Odoo Cloud 东道主,部署&amp; 管理层"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3242,6 +3414,7 @@ msgid "Odoo Community"
 msgstr "奥杜社区"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__customisation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__customisation
 msgid "Odoo Customisation"
 msgstr "Odoo 自定义"
@@ -3270,11 +3443,13 @@ msgid "Odoo Expertise"
 msgstr "奥多"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__hosting
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__hosting
 msgid "Odoo Hosting / MyOdoo.sh"
 msgstr "(原始内容存档于2018-09-25). Odoo Hosting / MyOdoo.sh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__migration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__migration
 msgid "Odoo Migration"
 msgstr "Odoo 移徙"
@@ -3346,6 +3521,12 @@ msgid ""
 msgstr "通过控制发布工作流程组织代码修改,审查部署并移动更新."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Origin"
+msgstr "来源"
+
+#. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__other
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__other
 msgid "Other"
 msgstr "其它"
@@ -3375,12 +3556,12 @@ msgstr "电话 / WhatsApp"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat"
-msgstr "电话、电子邮件和 amp; 聊天"
+msgstr "电话、电子邮件&amp;聊天"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat · dedicated account manager"
-msgstr "电话、电子邮件和amp; 聊天... 专用账户管理器"
+msgstr "电话、电子邮件&amp;聊天 专用账户管理器"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3405,7 +3586,7 @@ msgstr "计划您移动时检查您的当前版本、 数据库、 上传的文�
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Plans &amp; pricing"
-msgstr "计划并amp; 定价"
+msgstr "计划&amp;定价"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -3559,6 +3740,11 @@ msgid "Quoted separately"
 msgstr "单独引用"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
+msgid "Ratings"
+msgstr "评级"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Ready to Host Your Odoo Project?"
 msgstr "准备好主持你的Odoo计划了吗?"
@@ -3615,6 +3801,11 @@ msgid "Resource usage and application health in one view."
 msgstr "一种观点认为,资源使用和应用健康."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_user_id
+msgid "Responsible User"
+msgstr "负责任的用户"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Restart"
 msgstr "重新开始"
@@ -3633,7 +3824,7 @@ msgstr "零售"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Retention &amp; Storage"
-msgstr "保留并amp; 存储"
+msgstr "保留&amp; 储存"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3664,6 +3855,11 @@ msgid ""
 msgstr "在管理环境中运行您的 Odoo 应用程序, 同时处理数据库、 存储和托管配置 ."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "短消息发送错误"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "SSL"
 msgstr "SSL (英语)"
@@ -3677,6 +3873,8 @@ msgid "SaaS Enquiries"
 msgstr "SaaS调查"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_enquiry_id
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "SaaS Enquiry"
 msgstr "SaaS 调查"
@@ -3690,6 +3888,17 @@ msgstr "SaaS调查通知"
 #: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid "SaaS Enquiry Recipient Email"
 msgstr "SaaS 查询收件人电子邮件"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid "SaaS Enquiry Sender Email"
+msgstr "SaaS 问讯发送器电子邮件"
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "SaaS Enquiry: %s (%s)"
+msgstr "SaaS 查询:%s (%s)"
 
 #. module: website_saas_landing
 #: model:mail.template,name:website_saas_landing.mail_template_enquiry_customer
@@ -3709,7 +3918,7 @@ msgstr "• 销售"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Scaling &amp; Resources"
-msgstr "缩放并amp; 资源"
+msgstr "缩放 &amp; 资源"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3729,7 +3938,7 @@ msgstr "范围"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Seamless integrations &amp; API connections"
-msgstr "无缝集成和amp; API 连接"
+msgstr "无缝集成 &amp; API 连接"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3739,12 +3948,12 @@ msgstr "安全托管"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Secure cloud hosting &amp; automatic backups"
-msgstr "安全云托管并amp; 自动备份"
+msgstr "安全云托管 &amp; 自动备份"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
-msgstr "安全并amp; SSL"
+msgstr "安全 &amp; SSL"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3808,6 +4017,11 @@ msgid "Sign in"
 msgstr "登录"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign up"
+msgstr "注册"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
 msgstr "简单的基础设施定价."
@@ -3823,6 +4037,7 @@ msgid "Solutions shaped around real operations"
 msgstr "围绕实际业务形成的解决方案"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_source_page
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__source_page
 msgid "Source Page"
 msgstr "来源页"
@@ -3830,7 +4045,7 @@ msgstr "来源页"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Staging &amp; development"
-msgstr "Staging & amp; 开发"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3894,6 +4109,19 @@ msgid "Status"
 msgstr "状态"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"基于活动的状况\n"
+"逾期: 逾期已过\n"
+"今天:活动日期是今天\n"
+"计划:未来活动."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Storage"
 msgstr "存储"
@@ -3925,6 +4153,7 @@ msgid "Support"
 msgstr "支助"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__support_maintenance
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__support_maintenance
 msgid "Support & Maintenance"
 msgstr "支助和维护"
@@ -4136,6 +4365,11 @@ msgid "Transfer"
 msgstr "转让"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "记录中的例外活动类型."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Understand"
 msgstr "明白了吗"
@@ -4206,9 +4440,24 @@ msgid "We've received your enquiry — MyOdoo.sh"
 msgstr "我们收到了你的询问——MyOdoo.sh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website Messages"
+msgstr "网站消息"
+
+#. module: website_saas_landing
 #: model:ir.model,name:website_saas_landing.model_website_saas_enquiry
 msgid "Website SaaS Enquiry"
 msgstr "网站 SaaS 查询"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website communication history"
+msgstr "网站通信历史"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_crm_lead__saas_enquiry_id
+msgid "Website enquiry this lead was created from."
+msgstr "网站查询这个线索是创建的."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4399,8 +4648,8 @@ msgstr "例如,25个"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid "e.g. sales@your-domain.com"
-msgstr "例如,销售@your-domain.com"
+msgid "e.g. notifications@myodoo.sh"
+msgstr "例如,通知@myodoo.sh"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4451,18 +4700,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "🔒 <span data-i18n=\"data_encrypted\">Encrypted Backup</span>"
 msgstr "🔒 <span data-i18n=\"data_encrypted\">加密备份</span>"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Log out"
-msgstr "退出登录"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Sign up"
-msgstr "注册"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Forgot password"
-msgstr "忘记密码"

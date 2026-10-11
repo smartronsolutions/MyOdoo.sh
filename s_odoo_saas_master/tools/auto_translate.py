@@ -48,6 +48,14 @@ RE_TAG_CLOSE = re.compile(r"</\s*([a-zA-Z][\w:-]*)\s*>")
 RE_TAG_ATTR = re.compile(r"([a-zA-Z_:][-\w:.]*)\s*=\s*(\"[^\"]*\"|'[^']*'|[^\s\"'=<>`]+)")
 RE_PLACEHOLDER = re.compile(r"%\([^)]+\)[sdifr]|%[sdifr]|\$\{[^}]+\}|\{[0-9]*\}")
 RE_LETTER = re.compile(r"[A-Za-z]")
+# HTML entities, including Odoo's own double-escaped form (&amp;middot;,
+# &amp;rarr;, ...).  They must survive the machine translation untouched:
+# LibreTranslate mangles them when they are sent raw ("&amp;" came out as
+# "& amp" or a stray "&"), so they are swapped for tokens around the request.
+RE_ENTITY = re.compile(
+    r"&amp;(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#[0-9]{1,7}|#x[0-9a-fA-F]{1,6});"
+    r"|&(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#[0-9]{1,7}|#x[0-9a-fA-F]{1,6});"
+)
 
 
 def contains_html(msgid):
@@ -67,6 +75,39 @@ def is_candidate(msgid):
 
 def placeholders(text):
     return Counter(RE_PLACEHOLDER.findall(text))
+
+
+def entities(text):
+    """Multiset of the HTML entities found in ``text``."""
+    return Counter(RE_ENTITY.findall(text or ""))
+
+
+def encode_entities(text):
+    """Replace HTML entities by ``[[EZN]]`` tokens LibreTranslate keeps intact.
+
+    The token must not look like a translation candidate: ``%(ezN)s``,
+    ``##EZN##`` and ``@@EZN@@`` are sometimes truncated/dropped by
+    LibreTranslate, while ``[[EZN]]`` survived every tested case (plain text,
+    emoji, HTML text nodes and HTML attributes).
+
+    :return: The encoded text and the ``{token: entity}`` mapping used to decode
+             the translated result.
+    :rtype: tuple[str, dict]
+    """
+    mapping = {}
+
+    def repl(match):
+        token = "[[EZ%d]]" % len(mapping)
+        mapping[token] = match.group(0)
+        return token
+
+    return RE_ENTITY.sub(repl, text), mapping
+
+
+def decode_entities(text, mapping):
+    for token, entity in mapping.items():
+        text = text.replace(token, entity)
+    return text
 
 
 def tags(text):
@@ -99,10 +140,12 @@ def tags(text):
 
 
 def is_translation_safe(source, target, html):
-    """A translation is kept only when placeholders/tags survived."""
+    """A translation is kept only when placeholders/entities/tags survived."""
     if target is None:
         return False
     if placeholders(source) != placeholders(target):
+        return False
+    if entities(source) != entities(target):
         return False
     if html and tags(source) != tags(target):
         return False
@@ -149,12 +192,19 @@ def run_group(entries, lang, fmt, args, cache):
     if not entries:
         return
     texts = [entry.msgid for entry in entries]
+    # Swap HTML entities for placeholders the translator keeps intact.
+    encoded_texts = []
+    entity_maps = []
+    for text in texts:
+        encoded, mapping = encode_entities(text)
+        encoded_texts.append(encoded)
+        entity_maps.append(mapping)
     sys.stderr.write(
         "[%s/%s] translating %d string(s)\n" % (lang, fmt, len(texts))
     )
     results = []
     for start in range(0, len(texts), args.batch_size):
-        chunk = texts[start : start + args.batch_size]
+        chunk = encoded_texts[start : start + args.batch_size]
         try:
             batch = lt_translate(chunk, lang, args.url, args.timeout, fmt, args.api_key)
             if len(batch) != len(chunk):
@@ -173,10 +223,13 @@ def run_group(entries, lang, fmt, args, cache):
         time.sleep(args.sleep)
 
     kept = 0
-    for entry, value in zip(entries, results):
-        if value and value.strip() and is_translation_safe(entry.msgid, value.strip(), fmt == "html"):
-            entry.msgstr = value.strip()
-            cache[lang][entry.msgid] = entry.msgstr
+    for entry, value, entity_map in zip(entries, results, entity_maps):
+        if not value or not value.strip():
+            continue
+        value = decode_entities(value.strip(), entity_map)
+        if is_translation_safe(entry.msgid, value, fmt == "html"):
+            entry.msgstr = value
+            cache[lang][entry.msgid] = value
             kept += 1
 
     # LibreTranslate often returns the source unchanged for Title Case strings
@@ -186,7 +239,7 @@ def run_group(entries, lang, fmt, args, cache):
     for entry in entries:
         if entry.msgstr and entry.msgstr.strip() != entry.msgid.strip():
             continue
-        lowered = entry.msgid.lower()
+        lowered, lowered_map = encode_entities(entry.msgid.lower())
         if lowered.strip() == entry.msgid.strip():
             continue
         try:
@@ -196,7 +249,7 @@ def run_group(entries, lang, fmt, args, cache):
         value = single[0] if isinstance(single, list) and single else None
         if not value or not value.strip():
             continue
-        value = value.strip()
+        value = decode_entities(value.strip(), lowered_map)
         if value.lower() == entry.msgid.lower():
             continue
         if not is_translation_safe(entry.msgid, value, fmt == "html"):
@@ -253,7 +306,14 @@ def translate_language(pot, lang, args, cache):
         reused = None
         if not args.force:
             reused = existing.get(entry.msgid) or cache[lang].get(entry.msgid)
-        if reused and reused.strip() != entry.msgid.strip():
+        # Reuse the existing translation, unless it lost/broke an HTML entity
+        # (machine translations of "&amp;" used to come out as "& amp", ...).
+        # Those are re-translated so the fix also repairs already translated terms.
+        if (
+            reused
+            and reused.strip() != entry.msgid.strip()
+            and entities(reused) == entities(entry.msgid)
+        ):
             new_entry.msgstr = reused
         elif is_candidate(entry.msgid):
             pending.append(new_entry)

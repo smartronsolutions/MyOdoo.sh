@@ -395,6 +395,9 @@ class Pricing(http.Controller):
             'instance_id': instance.id,
             'subscription_type': subscription_type,
             'storage_limit_gb': additional_gb,
+            'subdomain': instance.name,
+            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
+            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
             'order_line': [(0, 0, {
                 'product_id': storage_product.id,
                 'name': '%s (+%d GB storage) (%s)' % (
@@ -410,7 +413,7 @@ class Pricing(http.Controller):
 
         order = request.env['sale.order'].sudo().create(order_vals)
         request.session['sale_order_id'] = order.id
-        return {'success': True, 'order_id': order.id, 'redirect': '/shop/checkout?express=1'}
+        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
 
     @http.route(['/saas/instance/buy-workers'], type='json', auth='user', website=True)
     def instance_buy_workers(self, instance_id, additional_workers, subscription_type='monthly', **kwargs):
@@ -461,6 +464,9 @@ class Pricing(http.Controller):
             'instance_id': instance.id,
             'subscription_type': subscription_type,
             'workers_count': additional_workers,
+            'subdomain': instance.name,
+            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
+            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
             'order_line': [(0, 0, {
                 'product_id': worker_product.id,
                 'name': '%s (+%d worker%s) (%s)' % (
@@ -477,7 +483,105 @@ class Pricing(http.Controller):
 
         order = request.env['sale.order'].sudo().create(order_vals)
         request.session['sale_order_id'] = order.id
-        return {'success': True, 'order_id': order.id, 'redirect': '/shop/checkout?express=1'}
+        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
+
+    @http.route(['/saas/instance/buy-upgrade'], type='json', auth='user', website=True)
+    def instance_buy_upgrade(self, instance_id, additional_workers=0, additional_gb=0,
+                             subscription_type='monthly', **kwargs):
+        """Create a combined upgrade order (extra workers + extra storage only).
+
+        The base plan is NOT charged again and the subscription expiry is not
+        changed: only the resources added on top of what the instance already has
+        are billed. On payment both resources are applied to the instance.
+        """
+        instance = request.env['saas.odoo.instance'].sudo().browse(int(instance_id))
+        if not instance.exists():
+            return {'error': 'Instance not found'}
+        partner = request.env.user.partner_id
+        if instance.partner_id != partner:
+            return {'error': 'Access denied'}
+
+        try:
+            additional_workers = int(float(additional_workers or 0))
+            additional_gb = int(float(additional_gb or 0))
+        except (TypeError, ValueError):
+            return {'error': 'Invalid quantity'}
+
+        max_workers = instance.MAX_WORKERS_PER_INSTANCE
+        current_workers = max(int(instance.workers_count or 1), 1)
+        # Never exceed the remaining worker slots, and cap storage at 500 GB per purchase.
+        additional_workers = max(0, min(additional_workers, max_workers - current_workers))
+        additional_gb = max(0, min(additional_gb, 500))
+        if additional_workers <= 0 and additional_gb <= 0:
+            return {'error': 'Nothing to upgrade. Add at least one worker or GB.'}
+
+        is_annual = (subscription_type == 'yearly')
+        company = self._get_company()
+        target_currency = company.currency_id
+        order_lines = []
+
+        if additional_workers > 0:
+            worker_product = request.env['product.product'].sudo()._get_saas_worker_product()
+            if not worker_product or not worker_product.exists():
+                return {'error': 'Workers product not found'}
+            worker_unit_price = round(
+                company._saas_convert_price(float(worker_product.list_price or 100.0)), 2)
+            order_lines.append((0, 0, {
+                'product_id': worker_product.id,
+                'name': '%s (+%d worker%s) (%s)' % (
+                    worker_product.name, additional_workers,
+                    's' if additional_workers > 1 else '',
+                    'Annual' if is_annual else 'Monthly'
+                ),
+                'product_uom_qty': additional_workers,
+                'product_uom': worker_product.uom_id.id,
+                'price_unit': worker_unit_price,
+                'tax_id': [(6, 0, worker_product.taxes_id.ids)],
+            }))
+
+        if additional_gb > 0:
+            storage_product = False
+            try:
+                storage_product = request.env.ref('s_odoo_saas_master.product_saas_extra_storage').sudo()
+            except Exception:
+                pass
+            if not storage_product or not storage_product.exists():
+                storage_product = request.env['product.product'].sudo().search(
+                    [('default_code', '=ilike', 'saas_extra_storage'), ('active', '=', True)], limit=1)
+            if not storage_product or not storage_product.exists():
+                return {'error': 'Storage product not found'}
+            storage_unit_price = round(
+                company._saas_convert_price(float(storage_product.list_price or 220.0)), 2)
+            order_lines.append((0, 0, {
+                'product_id': storage_product.id,
+                'name': '%s (+%d GB storage) (%s)' % (
+                    storage_product.name, additional_gb,
+                    'Annual' if is_annual else 'Monthly'
+                ),
+                'product_uom_qty': additional_gb,
+                'product_uom': storage_product.uom_id.id,
+                'price_unit': storage_unit_price,
+                'tax_id': [(6, 0, storage_product.taxes_id.ids)],
+            }))
+
+        order_vals = request.website._prepare_sale_order_values(partner_sudo=partner)
+        order_vals.update({
+            'currency_id': target_currency.id,
+            'pricelist_id': False,
+            'is_saas_order': True,
+            'saas_order_type': 'buy_upgrade',
+            'instance_id': instance.id,
+            'subscription_type': subscription_type,
+            'storage_limit_gb': additional_gb,
+            'workers_count': additional_workers,
+            'subdomain': instance.name,
+            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
+            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
+            'order_line': order_lines,
+        })
+        order = request.env['sale.order'].sudo().create(order_vals)
+        request.session['sale_order_id'] = order.id
+        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
 
     @http.route(['/pricing/checkout'], type='http', methods=['POST'], auth="public", website=True)
     def checkout(self, **post):
@@ -514,11 +618,19 @@ class Pricing(http.Controller):
                 return request.redirect(f'/saas/pricing?{params}')
 
         pricelist = request.website._get_current_pricelist()
-        num_users = int(post.pop('num_users', 1))
-        storage_gb = int(post.pop('storage_gb', 0))
+        # The renew/upgrade wizard can post float-formatted values (e.g. "5.0"),
+        # so parse through float() before casting to int.
+        num_users = int(float(post.pop('num_users', 1) or 1))
+        storage_gb = int(float(post.pop('storage_gb', 0) or 0))
         subscription_type = post.pop('price_by', 'yearly')
         plan_name = post.pop('plan', 'Standard')
         plan_product_id = post.pop('plan_product_id', False)
+        # Plan-only renewal: charge the plan for the period and extend the expiry,
+        # without re-charging workers/storage (those are handled by the Upgrade action).
+        plan_only_renew = post.pop('renew_plan_only', False) in (True, 'on', '1', 'true', 'True')
+        if plan_only_renew:
+            num_users = 0
+            storage_gb = 0
 
         if not plan_product_id:
             plan_product = self._get_plan_product(plan_name)
@@ -552,7 +664,7 @@ class Pricing(http.Controller):
         order = request.website.create_saas_order(post)
                 
         request.session['sale_order_id'] = order.id
-        return request.redirect('/shop/checkout?express=1')
+        return request.redirect('/shop/cart')
 
     @http.route('/saas/instance/create-trial', type='json', auth='user')
     def instance_create(self, instance_vals, **kwargs):
@@ -627,6 +739,48 @@ NON_REQUIRED_FIELDS = ['street', 'city']
 
 class SaasPayment(WebsiteSale):
 
+    def _get_shop_payment_errors(self, order):
+        """Block the checkout when the total is below the provider's minimum.
+
+        Odoo renders the returned ``(title, message)`` pairs as alerts on
+        ``/shop/payment`` and hides the payment methods, so a payment the gateway
+        would reject (EpayNC error ``10118 - MID_MIN_AMOUNT_NOT_REACHED``) never
+        leaves the shop.
+        """
+        errors = super()._get_shop_payment_errors(order)
+        if order and order.amount_total:
+            try:
+                errors.extend(self._get_saas_min_amount_errors(order))
+            except Exception:
+                # A configuration/currency issue must never break the checkout step;
+                # the transaction-level guard still protects the gateway.
+                _logger.exception("Could not evaluate the payment minimum amount")
+        return errors
+
+    def _get_saas_min_amount_errors(self, order):
+        """Return the 'minimum order amount not reached' errors for ``order``."""
+        currency = order.currency_id
+        amount = order.amount_total - order.amount_paid
+        if not currency or amount <= 0:
+            return []
+
+        providers = request.env['payment.provider'].sudo()._get_compatible_providers(
+            order.company_id.id,
+            order.partner_id.id,
+            amount,
+            currency_id=currency.id,
+            sale_order_id=order.id,
+        )
+        errors = []
+        for provider in providers:
+            # Only providers implementing the gateway minimum expose the check.
+            if provider.code != 'epaync' or 'epaync_min_amount' not in provider._fields:
+                continue
+            error = provider._epaync_get_min_amount_error(amount, currency)
+            if error:
+                errors.append(error)
+        return errors
+
     @http.route(['/shop/payment/validate'], type='http', auth="public", website=True, sitemap=False)
     def shop_payment_validate(self, sale_order_id=None, **post):
         """Send a paid upgrade order straight to the instance page.
@@ -693,6 +847,29 @@ class SaasPayment(WebsiteSale):
                     )
                 )
 
+        if order and order.is_saas_order and order.saas_order_type == 'buy_upgrade' and order.instance_id:
+            tx_done = any(tx.state == 'done' for tx in order.transaction_ids)
+            if tx_done or order.storage_applied or order.workers_applied:
+                try:
+                    order._finalize_saas_payment()
+                except Exception as ex:
+                    if type(ex).__name__ in ('SerializationFailure', 'DeadlockDetected', 'LockNotAvailable') \
+                            or 'could not serialize' in str(ex).lower():
+                        raise
+                    _logger.exception(ex)
+                request.website.sale_reset()
+                if order.workers_count:
+                    return request.redirect(
+                        '/my/saas/odoo-instance/%s?workers_upgraded=1&workers=%d&order_id=%d' % (
+                            order.instance_id.id, int(order.workers_count or 0), order.id
+                        )
+                    )
+                return request.redirect(
+                    '/my/saas/odoo-instance/%s?storage_extended=1&gb=%d&order_id=%d' % (
+                        order.instance_id.id, int(order.storage_limit_gb or 0), order.id
+                    )
+                )
+
         if order and order.is_saas_order and order.saas_order_type == 'buy_new' and order.instance_id:
             try:
                 order._finalize_saas_payment()
@@ -735,6 +912,20 @@ class SaasPayment(WebsiteSale):
                             )
                         )
 
+                    # ── Combined resources upgrade order ────────────────────
+                    if order.saas_order_type == 'buy_upgrade':
+                        if order.workers_count:
+                            return request.redirect(
+                                '/my/saas/odoo-instance/%s?workers_upgraded=1&workers=%d&order_id=%d' % (
+                                    order.instance_id.id, int(order.workers_count or 0), order.id
+                                )
+                            )
+                        return request.redirect(
+                            '/my/saas/odoo-instance/%s?storage_extended=1&gb=%d&order_id=%d' % (
+                                order.instance_id.id, int(order.storage_limit_gb or 0), order.id
+                            )
+                        )
+
                     # ── New instance ───────────────────────────────────────
                     if order.saas_order_type == 'buy_new':
                         return request.redirect(
@@ -748,7 +939,7 @@ class SaasPayment(WebsiteSale):
                         '&renewed=1' if is_renew else ''
                     ))
                 except Exception as ex:
-                    if order.saas_order_type not in ('renew', 'buy_storage', 'buy_workers'):
+                    if order.saas_order_type not in ('renew', 'buy_storage', 'buy_workers', 'buy_upgrade'):
                         try:
                             order.instance_id._action_cancel()
                             order.instance_id.unlink()

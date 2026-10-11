@@ -33,6 +33,7 @@ class OdooInstanceHistory(models.Model):
         ('deployment', 'Deployment'),
         ('domain', 'Domain'),
         ('billing', 'Billing'),
+        ('python', 'Python'),
         ('system', 'System'),
     ], string='Category', default='system', required=True, index=True)
     action = fields.Char(string='Action', required=True)

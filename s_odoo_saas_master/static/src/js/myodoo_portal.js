@@ -27,6 +27,13 @@ const INSTANCE_RESTART_WINDOW_MS = 30 * 1000;
 const INSTANCE_RESTART_POLL_MS = 2000;
 const INSTANCE_RESTART_MAX_POLLS = 30;
 
+// Manual / automatic backup: the job runs in a background thread, so the portal follows
+// it by polling. The server watchdog fails a backup stuck in "running" after 20 minutes;
+// the portal waits a little longer (so the recorded result can be shown) and then stops
+// on its own — the loading screen must never spin forever.
+const BACKUP_POLL_MS = 2500;
+const BACKUP_MAX_WAIT_MINUTES = 30;
+
 const STATUS_BANNER_COPY = {
     running: {
         className: "is-running",
@@ -104,12 +111,14 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._initGithubIntegration();
         this._initGithubLogs();
         this._initAutoBackupToggle();
+        this._initBackupModalActions();
         this._initBackupResume();
         this._initVersionSelector();
         this._startLogsAutoRefresh();
         this._fetchLiveLogsIfVisible();
         this._initInstanceShell();
         this._initInstanceAdminPassword();
+        this._initPythonLibraries();
 
         if (location.hash) {
             const targetTab = document.querySelector('[data-tab="' + location.hash.slice(1) + '"]');
@@ -590,6 +599,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
      * The backup runs in a background thread on the server, so refreshing or closing the
      * page does NOT stop it — on the next load `_initBackupResume()` picks the progress
      * back up and the bar keeps running.
+     *
+     * The popup is only a short confirmation. After ~2 seconds it closes on its own and
+     * the live progress keeps running on the Backups screen (in-page progress bar), so the
+     * customer is never blocked by a dialog that stays open for as long as the backup.
      */
     async _runBackupFlow() {
         const instanceId = this._getInstanceId();
@@ -597,78 +610,228 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             notify(_t("No instance selected."));
             return;
         }
+        this._showBackupOverlay("running");
+        this._paintBackupProgress(3, _t("Starting the backup…"));
+        this._closeBackupOverlaySoon(2);
+
+        let res = null;
+        try {
+            res = await this.rpc("/saas/instance/create-backup", { instance_id: instanceId });
+        } catch (err) {
+            this._finishBackup("failed", "Backup error: " + (err && err.message ? err.message : err));
+            return;
+        }
+        // A backup may already be running (or the server refused to start a new one).
+        // Only treat it as a hard error when the server is not already backing up.
+        if (!res || (res.success === false && res.state !== "running" && !res.running)) {
+            this._finishBackup("failed", (res && res.error) || _t("Could not start the backup."));
+            return;
+        }
+        this._startBackupPolling();
+    },
+
+    /** Show the popup (and the in-page bar) in the given state. */
+    _showBackupOverlay(state = "running", message) {
         const wrap = document.getElementById("backupProgressWrap");
         const modal = document.getElementById("backupProgressModal");
         if (wrap) wrap.style.display = "";
         if (modal) modal.classList.add("show");
-        this._paintBackupProgress(3, "Starting the backup…");
+        this._setBackupModalStatus(state, message);
+    },
 
-        try {
-            const res = await this.rpc("/saas/instance/create-backup", { instance_id: instanceId });
-            if (!res || res.success === false) {
-                const message = (res && res.error) || "Could not start the backup.";
-                this._paintBackupProgress(100, message);
-                notify(message);
-                this._hideBackupOverlayLater(3);
-                return;
-            }
-        } catch (err) {
-            notify("Backup error: " + (err && err.message ? err.message : err));
-            this._hideBackupOverlayLater(3);
+    /** Close the popup after a short delay, keeping the in-page progress bar running. */
+    _closeBackupOverlaySoon(seconds = 2) {
+        clearTimeout(this._backupOverlayTimer);
+        this._backupOverlayTimer = setTimeout(() => {
+            this._backupOverlayTimer = null;
+            // The job may already have finished in the meantime (success path handles the
+            // popup itself), so only close while it is still "running".
+            if (this._backupFinished) return;
+            this._hideBackupOverlay();
+            this._showBackupsTab();
+        }, Math.max(1, seconds) * 1000);
+    },
+
+    /** Hide the popup only — the in-page progress bar of the Backups tab stays visible. */
+    _hideBackupOverlay() {
+        const modal = document.getElementById("backupProgressModal");
+        if (modal) modal.classList.remove("show");
+        this._setBackupModalStatus("running");
+    },
+
+    /** Reveal the Backups tab so the running progress bar is actually on screen. */
+    _showBackupsTab() {
+        const button = document.querySelector('[data-tab="backups"]');
+        if (button && !button.classList.contains("active")) {
+            button.click();
+        }
+    },
+
+    /** Update the popup title/message/icon for "running", "done", "failed" or "stuck". */
+    _setBackupModalStatus(state, message) {
+        const spinner = document.getElementById("backupModalSpinner");
+        const icon = document.getElementById("backupModalResultIcon");
+        const title = document.getElementById("backupModalTitle");
+        const text = document.getElementById("backupModalMessage");
+        const actions = document.getElementById("backupModalActions");
+        const close = document.getElementById("backupModalClose");
+        const refresh = document.getElementById("backupModalRefresh");
+
+        const presets = {
+            running: {
+                icon: "",
+                color: "",
+                title: _t("Your backup is in progress"),
+                text: _t("The backup is now running. Follow its progress on the Backups tab — refreshing the page is safe."),
+            },
+            done: {
+                icon: "✓",
+                color: "#20b26c",
+                title: _t("Backup completed"),
+                text: _t("Your backup is ready. You can download it any time from the Backups tab."),
+            },
+            failed: {
+                icon: "!",
+                color: "#ff6f5e",
+                title: _t("Backup failed"),
+                text: _t("The backup could not be completed. Please retry."),
+            },
+            stuck: {
+                icon: "⏳",
+                color: "#ffc24b",
+                title: _t("Backup is taking longer than expected"),
+                text: _t("The backup is still running on the server. Refresh this page in a few minutes to see the result."),
+            },
+        };
+        const preset = presets[state] || presets.running;
+
+        if (spinner) spinner.style.display = state === "running" ? "" : "none";
+        if (icon) {
+            icon.style.display = state === "running" ? "none" : "block";
+            icon.style.color = preset.color || "";
+            icon.textContent = preset.icon || "";
+        }
+        if (title) title.textContent = preset.title;
+        if (text) text.textContent = message || preset.text;
+        // The action buttons only appear once the flow is over, so the "running" screen
+        // cannot be dismissed by mistake.
+        if (actions) actions.style.display = state === "running" ? "none" : "flex";
+        if (close) close.style.display = state === "stuck" ? "none" : "";
+        if (refresh) refresh.style.display = state === "done" ? "none" : "";
+    },
+
+    /** Land on a final state and stop polling. */
+    _finishBackup(state, message) {
+        this._backupFinished = true;
+        this._stopBackupPolling();
+        clearTimeout(this._backupOverlayTimer);
+        this._backupOverlayTimer = null;
+        if (state === "done") {
+            // Success is reported on the Backups screen: the in-page bar fills up,
+            // stays visible for a few seconds, then fades away.
+            this._paintBackupProgress(100, message || _t("Backup completed."));
+            this._hideBackupOverlay();
+            this._showBackupsTab();
+            this._hideBackupProgressBarLater(6);
+            notify(_t("Backup completed successfully."));
             return;
         }
-        this._startBackupPolling();
+        // Failure / timeout: keep the stopped percentage on the in-page bar (with the
+        // reason) and re-open the popup so the message cannot be missed.
+        const label = document.getElementById("backupProgressLabel");
+        if (label && message) label.textContent = message;
+        this._showBackupOverlay(state, message);
+        notify(message);
     },
 
     /** Poll the server until the running backup reaches a final state. */
     _startBackupPolling() {
         if (this._backupTimer) return;
         const instanceId = this._getInstanceId();
+        this._backupFinished = false;
+        // Local safety net: whatever happens on the server, the loading screen stops by
+        // itself instead of polling forever (the server watchdog fires after ~20 min).
+        const pollDeadline = Date.now() + BACKUP_MAX_WAIT_MINUTES * 60 * 1000;
         const tick = async () => {
+            if (this._backupFinished) return;
+            if (Date.now() > pollDeadline) {
+                this._finishBackup("stuck", _t(
+                    "The backup is still running on the server. Refresh this page in a few minutes to see the result."
+                ));
+                return;
+            }
             let status = null;
             try {
                 status = await this.rpc("/saas/instance/backup-status", { instance_id: instanceId });
             } catch (err) {
                 return; // transient network hiccup: retry on the next tick
             }
-            if (!status) return;
+            if (!status || this._backupFinished) return;
             this._paintBackupProgress(status.progress, status.message);
             if (status.state === "done" || status.state === "failed") {
-                clearInterval(this._backupTimer);
-                this._backupTimer = null;
-                const ok = status.state === "done";
-                notify(ok
-                    ? "Backup completed successfully. It is now in the Backup history."
-                    : "Backup failed: " + (status.message || "unknown error"));
                 this._renderBackupRows(status.backups);
-                // Keep the popup visible for ~3 seconds, then hide it (no page reload).
-                this._hideBackupOverlayLater(3);
+                this._finishBackup(
+                    status.state,
+                    status.state === "failed"
+                        ? (status.message || _t("Backup failed."))
+                        : _t("Backup completed."),
+                );
             }
         };
         tick();
-        this._backupTimer = setInterval(tick, 2500);
+        this._backupTimer = setInterval(tick, BACKUP_POLL_MS);
     },
 
-    /** Hide the popup + progress bar after a few seconds. */
-    _hideBackupOverlayLater(seconds = 3) {
+    /** Stop polling the backup status (idempotent). */
+    _stopBackupPolling() {
+        if (this._backupTimer) {
+            clearInterval(this._backupTimer);
+            this._backupTimer = null;
+        }
+    },
+
+    /** Hide the in-page progress bar after a few seconds (used on success). */
+    _hideBackupProgressBarLater(seconds = 6) {
         setTimeout(() => {
-            const modal = document.getElementById("backupProgressModal");
             const wrap = document.getElementById("backupProgressWrap");
-            if (modal) modal.classList.remove("show");
             if (wrap) wrap.style.display = "none";
         }, Math.max(1, seconds) * 1000);
     },
 
-    /** On page load: if a backup is already running, keep showing its progress. */
+    /** On page load: if a backup is already running, follow it on the Backups screen. */
     _initBackupResume() {
         const data = document.getElementById("backupStateData");
         if (!data || data.dataset.state !== "running") return;
+        // No blocking popup on reload: the progress belongs to the Backups screen.
         const wrap = document.getElementById("backupProgressWrap");
-        const modal = document.getElementById("backupProgressModal");
         if (wrap) wrap.style.display = "";
-        if (modal) modal.classList.add("show");
         this._paintBackupProgress(data.dataset.progress || 0, data.dataset.message || "");
+        this._showBackupsTab();
         this._startBackupPolling();
+    },
+
+    /** Wire the popup action buttons once (Close / Refresh). */
+    _initBackupModalActions() {
+        const close = document.getElementById("backupModalClose");
+        const refresh = document.getElementById("backupModalRefresh");
+        if (close && !close.dataset.bound) {
+            close.dataset.bound = "1";
+            close.addEventListener("click", () => {
+                this._stopBackupPolling();
+                this._backupFinished = true;
+                clearTimeout(this._backupOverlayTimer);
+                this._backupOverlayTimer = null;
+                const modal = document.getElementById("backupProgressModal");
+                const wrap = document.getElementById("backupProgressWrap");
+                if (modal) modal.classList.remove("show");
+                if (wrap) wrap.style.display = "none";
+                this._setBackupModalStatus("running");
+            });
+        }
+        if (refresh && !refresh.dataset.bound) {
+            refresh.dataset.bound = "1";
+            refresh.addEventListener("click", () => window.location.reload());
+        }
     },
 
     /** Re-render the backup table from the status payload (no page reload). */
@@ -2883,11 +3046,14 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         const essentialMonthly = parseFloat(renewModal.dataset.essentialMonthly || 14900);
         const essentialAnnual = parseFloat(renewModal.dataset.essentialAnnual || 151980);
-        const growthMonthly = parseFloat(renewModal.dataset.growthMonthly || 39900);
-        const growthAnnual = parseFloat(renewModal.dataset.growthAnnual || 406980);
+
+        // Resources the instance already owns: the wizard can only upgrade them.
+        const currentWorkers = Math.max(1, parseInt(renewModal.dataset.currentWorkers || 1) || 1);
+        const currentStorage = Math.max(5, parseFloat(renewModal.dataset.currentStorage || 5) || 5);
 
         // Currency symbol is provided by the server (company currency, e.g. €).
         const currencySymbol = renewModal.dataset.currencySymbol || "";
+        const instanceId = parseInt(renewModal.dataset.instanceId) || 0;
 
         const formatMoney = (val) => {
             if (val === null || val === undefined || isNaN(val)) return "0";
@@ -2900,38 +3066,49 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             const priceBy = document.getElementById("renewPriceBy")?.value || "monthly";
             const isAnnual = (priceBy === "yearly");
 
+            // Only the Standard plan is offered in this wizard.
             const activePlanCard = document.querySelector(".renew-plan-card.active") || document.getElementById("renewPlanCardEssential");
             const planName = activePlanCard?.dataset.plan || "Standard";
             const planProductId = activePlanCard?.dataset.productId || "";
-            const baseStorage = parseInt(activePlanCard?.dataset.baseStorage || (planName === "Growth" ? 20 : 5));
 
-            const planBasePrice = isAnnual ? (planName === "Growth" ? growthAnnual : essentialAnnual) : (planName === "Growth" ? growthMonthly : essentialMonthly);
+            const planBasePrice = isAnnual ? essentialAnnual : essentialMonthly;
 
-            // Users count
+            // Workers: cannot go below the resources already owned.
             const usersInput = document.getElementById("renewUsersCount");
-            let usersCount = usersInput ? (parseInt(usersInput.value) || 1) : 1;
-            if (usersCount < 1) usersCount = 1;
-
-            // Storage count
-            const storageInput = document.getElementById("renewStorageGb");
-            if (storageInput) {
-                storageInput.min = baseStorage;
-                let curStorage = parseInt(storageInput.value) || baseStorage;
-                if (curStorage < baseStorage) {
-                    curStorage = baseStorage;
-                    storageInput.value = baseStorage;
-                }
+            let usersCount = usersInput ? (parseInt(usersInput.value) || currentWorkers) : currentWorkers;
+            if (usersCount < currentWorkers) usersCount = currentWorkers;
+            if (usersInput) {
+                usersInput.min = currentWorkers;
+                const maxUsers = parseInt(usersInput.getAttribute("max")) || 4;
+                if (usersCount > maxUsers) usersCount = maxUsers;
+                usersInput.value = usersCount;
             }
-            let storageGb = storageInput ? (parseInt(storageInput.value) || baseStorage) : baseStorage;
-            if (storageGb < baseStorage) storageGb = baseStorage;
-            const extraStorageGb = Math.max(0, storageGb - baseStorage);
 
-            // Dynamic user & storage unit total
-            const userTotal = isAnnual ? (usersCount * userPriceYearly) : (usersCount * userPriceMonthly);
-            const storageTotal = isAnnual ? (extraStorageGb * storagePriceYearly) : (extraStorageGb * storagePriceMonthly);
-            const grandTotal = planBasePrice + userTotal + storageTotal;
+            // Extra storage: the field is the number of GB ADDED on top of what the
+            // instance already owns, so only those GB are charged (the plan base GB
+            // are never re-charged).
+            const storageInput = document.getElementById("renewStorageGb");
+            const maxExtraStorage = Math.max(0, 500 - currentStorage);
+            let extraStorageGb = storageInput ? (parseInt(storageInput.value) || 0) : 0;
+            if (extraStorageGb < 0) extraStorageGb = 0;
+            if (extraStorageGb > maxExtraStorage) extraStorageGb = maxExtraStorage;
+            if (storageInput) {
+                storageInput.min = 0;
+                storageInput.max = maxExtraStorage;
+                storageInput.value = extraStorageGb;
+            }
+            const storageGb = currentStorage + extraStorageGb;  // resulting total, for display
+            const storageTotalInput = document.getElementById("renewStorageGbTotal");
+            if (storageTotalInput) storageTotalInput.value = storageGb;
 
-            // Update DOM
+            // Upgrade = only the resources added on top of what the instance owns.
+            const addWorkers = Math.max(0, usersCount - currentWorkers);
+            const addStorage = extraStorageGb;
+            const upgradeTotal = (addWorkers * userPriceMonthly) + (addStorage * storagePriceMonthly);
+            // Renew = the Standard plan for the selected cycle only.
+            const planTotal = planBasePrice;
+
+            // Update hidden fields
             const planNameInput = document.getElementById("renewPlanName");
             const planProductInput = document.getElementById("renewPlanProductId");
             if (planNameInput) planNameInput.value = planName;
@@ -2939,7 +3116,24 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
             const grandTotalDisplay = document.getElementById("renewGrandTotalDisplay");
             if (grandTotalDisplay) {
-                grandTotalDisplay.textContent = formatMoney(grandTotal) + " " + currencySymbol + " / " + (isAnnual ? "year" : "month");
+                grandTotalDisplay.textContent = formatMoney(upgradeTotal) + " " + currencySymbol;
+            }
+
+            const upgradeAmountEl = document.getElementById("renewUpgradeBtnAmount");
+            if (upgradeAmountEl) {
+                upgradeAmountEl.textContent = formatMoney(upgradeTotal) + " " + currencySymbol;
+            }
+            const upgradeBtn = document.getElementById("renewUpgradeBtn");
+            if (upgradeBtn) {
+                const nothingToUpgrade = (addWorkers <= 0 && addStorage <= 0);
+                upgradeBtn.disabled = nothingToUpgrade;
+                upgradeBtn.style.opacity = nothingToUpgrade ? "0.5" : "1";
+                upgradeBtn.style.cursor = nothingToUpgrade ? "not-allowed" : "pointer";
+            }
+
+            const renewAmountEl = document.getElementById("renewRenewBtnAmount");
+            if (renewAmountEl) {
+                renewAmountEl.textContent = formatMoney(planTotal) + " " + currencySymbol;
             }
 
             const cycleBadge = document.getElementById("renewSummaryCycleBadge");
@@ -2949,19 +3143,13 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
             const cycleNote = document.getElementById("renewSummaryNote");
             if (cycleNote) {
-                cycleNote.textContent = isAnnual
-                    ? "Billed annually · the 15% discount applies to the plan only"
-                    : "Cancel or modify anytime";
+                cycleNote.textContent = "Upgrades apply instantly";
             }
 
-            // Plan card price previews
+            // Plan card price preview
             const essDisplay = document.getElementById("renewEssPriceDisplay");
             if (essDisplay) {
                 essDisplay.textContent = formatMoney(isAnnual ? essentialAnnual : essentialMonthly) + " " + currencySymbol + (isAnnual ? " / yr" : " / mo");
-            }
-            const groDisplay = document.getElementById("renewGroPriceDisplay");
-            if (groDisplay) {
-                groDisplay.textContent = formatMoney(isAnnual ? growthAnnual : growthMonthly) + " " + currencySymbol + (isAnnual ? " / yr" : " / mo");
             }
 
             // Worker helper text
@@ -2971,11 +3159,17 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 userDisplay.textContent = priceFmt + " " + currencySymbol + " / worker / " + (isAnnual ? "year" : "month");
             }
 
-            // Storage helper text
+            // Storage helper text + resulting total
             const storageDisplay = document.getElementById("renewStoragePriceDisplay");
             if (storageDisplay) {
                 const storageFmt = isAnnual ? storagePriceYearlyFmt : storagePriceMonthlyFmt;
-                storageDisplay.textContent = baseStorage + " GB included · + " + storageFmt + " " + currencySymbol + " / extra GB / " + (isAnnual ? "year" : "month");
+                storageDisplay.textContent = currentStorage + " GB included · + " + storageFmt + " " + currencySymbol + " / extra GB / " + (isAnnual ? "year" : "month");
+            }
+            const storageTotalHint = document.getElementById("renewStorageTotalHint");
+            if (storageTotalHint) {
+                storageTotalHint.textContent = extraStorageGb > 0
+                    ? (_t("New total: ") + storageGb + " GB (" + currentStorage + " + " + extraStorageGb + ")")
+                    : (_t("New total: ") + storageGb + " GB");
             }
         };
 
@@ -2998,19 +3192,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             updateRenewPricing();
         });
 
-        // Plan Selection Cards
+        // Plan card (Standard only)
         document.querySelectorAll(".renew-plan-card").forEach(card => {
             card.addEventListener("click", () => {
                 document.querySelectorAll(".renew-plan-card").forEach(c => c.classList.remove("active"));
                 card.classList.add("active");
-                const baseStorage = parseInt(card.dataset.baseStorage || 5);
-                const storageInput = document.getElementById("renewStorageGb");
-                if (storageInput) {
-                    storageInput.min = baseStorage;
-                    if (parseInt(storageInput.value) < baseStorage) {
-                        storageInput.value = baseStorage;
-                    }
-                }
                 updateRenewPricing();
             });
         });
@@ -3019,8 +3205,8 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         document.getElementById("renewBtnMinusUser")?.addEventListener("click", () => {
             const input = document.getElementById("renewUsersCount");
             if (input) {
-                let val = parseInt(input.value) || 1;
-                if (val > 1) {
+                let val = parseInt(input.value) || currentWorkers;
+                if (val > currentWorkers) {
                     input.value = val - 1;
                     updateRenewPricing();
                 }
@@ -3031,7 +3217,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             const input = document.getElementById("renewUsersCount");
             if (input) {
                 const max = parseInt(input.getAttribute("max")) || 4;
-                input.value = Math.min((parseInt(input.value) || 1) + 1, max);
+                input.value = Math.min((parseInt(input.value) || currentWorkers) + 1, max);
                 updateRenewPricing();
             }
         });
@@ -3039,20 +3225,18 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         document.getElementById("renewUsersCount")?.addEventListener("input", (ev) => {
             const input = ev.currentTarget;
             const max = parseInt(input.getAttribute("max")) || 4;
-            let val = parseInt(input.value) || 1;
+            let val = parseInt(input.value) || currentWorkers;
             if (val > max) input.value = max;
-            if (val < 1) input.value = 1;
+            if (val < currentWorkers) input.value = currentWorkers;
             updateRenewPricing();
         });
 
-        // Storage increment/decrement
+        // Extra storage increment/decrement (0 .. remaining GB up to 500)
         document.getElementById("renewBtnMinusStorage")?.addEventListener("click", () => {
-            const activePlanCard = document.querySelector(".renew-plan-card.active");
-            const baseStorage = parseInt(activePlanCard?.dataset.baseStorage || 5);
             const input = document.getElementById("renewStorageGb");
             if (input) {
-                let val = parseInt(input.value) || baseStorage;
-                if (val > baseStorage) {
+                const val = parseInt(input.value) || 0;
+                if (val > 0) {
                     input.value = val - 1;
                     updateRenewPricing();
                 }
@@ -3060,20 +3244,62 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         });
 
         document.getElementById("renewBtnPlusStorage")?.addEventListener("click", () => {
-            const activePlanCard = document.querySelector(".renew-plan-card.active");
-            const baseStorage = parseInt(activePlanCard?.dataset.baseStorage || 5);
             const input = document.getElementById("renewStorageGb");
             if (input) {
-                input.value = (parseInt(input.value) || baseStorage) + 1;
+                const max = Math.max(0, 500 - currentStorage);
+                input.value = Math.min((parseInt(input.value) || 0) + 1, max);
                 updateRenewPricing();
             }
         });
 
         document.getElementById("renewStorageGb")?.addEventListener("input", updateRenewPricing);
 
-        // Form Submit
+        // Upgrade action — charges ONLY the added workers/storage (no plan, no expiry change).
+        document.getElementById("renewUpgradeBtn")?.addEventListener("click", async () => {
+            const usersInput = document.getElementById("renewUsersCount");
+            const storageInput = document.getElementById("renewStorageGb");
+            const newWorkers = usersInput ? (parseInt(usersInput.value) || currentWorkers) : currentWorkers;
+            // The storage field is already the EXTRA GB to add.
+            const extraStorage = storageInput ? (parseInt(storageInput.value) || 0) : 0;
+            const addWorkers = Math.max(0, newWorkers - currentWorkers);
+            const addStorage = Math.max(0, extraStorage);
+            if (addWorkers <= 0 && addStorage <= 0) {
+                notify(_t("Increase workers or storage to upgrade."));
+                return;
+            }
+            if (!instanceId) {
+                notify(_t("Instance not found."));
+                return;
+            }
+            const priceBy = document.getElementById("renewPriceBy")?.value || "monthly";
+            const upgradeBtn = document.getElementById("renewUpgradeBtn");
+            const originalHtml = upgradeBtn.innerHTML;
+            upgradeBtn.disabled = true;
+            upgradeBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Creating your upgrade order...';
+            try {
+                const res = await this.rpc("/saas/instance/buy-upgrade", {
+                    instance_id: instanceId,
+                    additional_workers: addWorkers,
+                    additional_gb: addStorage,
+                    subscription_type: priceBy,
+                });
+                if (res && res.success && res.redirect) {
+                    notify(_t("Redirecting to your cart — only the added resources are charged..."));
+                    window.location.href = res.redirect;
+                    return;
+                }
+                notify((res && res.error) || "Could not start the upgrade.");
+            } catch (err) {
+                notify("Upgrade error: " + (err && err.message ? err.message : err));
+            }
+            upgradeBtn.disabled = false;
+            upgradeBtn.innerHTML = originalHtml;
+            updateRenewPricing();
+        });
+
+        // Form Submit (Renew Plan — plan only, extends the subscription period)
         document.getElementById("renewOrderForm")?.addEventListener("submit", () => {
-            notify(_t("Redirecting to checkout cart..."));
+            notify(_t("Redirecting to your cart — renewing your plan..."));
         });
 
         // Initial calculation
@@ -3153,7 +3379,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                     subscription_type: "monthly",
                 });
                 if (res && res.success && res.redirect) {
-                    notify(_t("Redirecting to checkout - only your storage upgrade is charged..."));
+                    notify(_t("Redirecting to your cart - only your storage upgrade is charged..."));
                     window.location.href = res.redirect;
                     return;
                 }
@@ -3244,7 +3470,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                     subscription_type: "monthly",
                 });
                 if (res && res.success && res.redirect) {
-                    notify(_t("Redirecting to checkout - only the extra workers are charged..."));
+                    notify(_t("Redirecting to your cart - only the extra workers are charged..."));
                     window.location.href = res.redirect;
                     return;
                 }
@@ -4004,6 +4230,208 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             }
             button.disabled = false;
         });
+    },
+
+    // =====================================================================
+    // Python libraries — pip packages installed inside the instance container
+    //
+    // The wizard is opened by the Overview control button and by the Tools card;
+    // every change goes through the manifest (/home/<instance>/requirements.txt),
+    // which the server rewrites on each install / removal.
+    // =====================================================================
+
+    _initPythonLibraries() {
+        const modal = document.getElementById("pythonLibsModal");
+        if (!modal) {
+            return;
+        }
+        const instanceId = this._getInstanceId();
+        const input = document.getElementById("pythonLibInput");
+        const installButton = document.getElementById("btnPythonLibInstall");
+        const listBox = document.getElementById("pythonLibList");
+        const countBox = document.getElementById("pythonLibCount");
+        const pathBox = document.getElementById("pythonLibPath");
+        const progress = document.getElementById("pythonLibProgress");
+        const errorBox = document.getElementById("pythonLibError");
+        const closeButton = document.getElementById("pythonLibsClose");
+        let busy = false;
+
+        const escapeHtml = (value) => String(value == null ? "" : value).replace(
+            /[&<>"']/g, (char) => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+            }[char]));
+
+        const showError = (message) => {
+            if (!errorBox) {
+                return;
+            }
+            errorBox.textContent = message || "";
+            errorBox.style.display = message ? "block" : "none";
+        };
+
+        const setBusy = (state) => {
+            busy = state;
+            if (installButton) {
+                installButton.disabled = state;
+                installButton.textContent = state ? _t("Installing…") : _t("Install");
+            }
+            if (progress) {
+                progress.style.display = state ? "flex" : "none";
+            }
+        };
+
+        // The payload is the same for the list, the install and the removal: one paint
+        // routine keeps the modal consistent in every case.
+        const renderPayload = (payload) => {
+            const libraries = (payload && payload.libraries) || [];
+            if (pathBox && payload && payload.requirements_path) {
+                pathBox.textContent = payload.requirements_path;
+            }
+            if (countBox) {
+                countBox.textContent = libraries.length
+                    ? _t("%s package(s)").replace("%s", libraries.length)
+                    : "";
+            }
+            if (!listBox) {
+                return;
+            }
+            if (!libraries.length) {
+                listBox.innerHTML = '<div class="python-lib-empty">'
+                    + _t("No Python library installed yet.") + "</div>";
+                return;
+            }
+            listBox.innerHTML = libraries.map((library) => {
+                const name = escapeHtml(library.name);
+                const status = library.installed
+                    ? '<span class="python-lib-version">' + escapeHtml(library.version) + "</span>"
+                    : '<span class="python-lib-missing">' + _t("not installed") + "</span>";
+                return '<div class="python-lib-row">'
+                    + '<div class="python-lib-meta">'
+                    + '<span class="python-lib-name">' + name + "</span>"
+                    + '<span class="python-lib-req">' + escapeHtml(library.requirement) + "</span>"
+                    + status
+                    + "</div>"
+                    + '<button type="button" class="ghost python-lib-remove" data-lib-remove="'
+                    + name + '">' + _t("Remove") + "</button>"
+                    + "</div>";
+            }).join("");
+        };
+
+        const load = async () => {
+            if (!instanceId || !listBox) {
+                return;
+            }
+            listBox.innerHTML = '<div class="python-lib-empty">' + _t("Loading…") + "</div>";
+            try {
+                const res = await this.rpc("/saas/instance/python-libraries", {
+                    instance_id: instanceId,
+                });
+                if (res && res.success) {
+                    renderPayload(res);
+                } else {
+                    listBox.innerHTML = "";
+                    showError((res && res.error) || _t("Could not load the library list."));
+                }
+            } catch (err) {
+                listBox.innerHTML = "";
+                showError(err && err.message ? err.message : String(err));
+            }
+        };
+
+        const install = async () => {
+            if (busy || !instanceId) {
+                return;
+            }
+            const requirement = input ? input.value.trim() : "";
+            if (!requirement) {
+                showError(_t("Enter the name of the Python library to install."));
+                if (input) {
+                    input.focus();
+                }
+                return;
+            }
+            showError("");
+            setBusy(true);
+            try {
+                const res = await this.rpc("/saas/instance/python-library/install", {
+                    instance_id: instanceId,
+                    requirement: requirement,
+                });
+                if (res && res.success) {
+                    if (input) {
+                        input.value = "";
+                    }
+                    renderPayload(res);
+                    notify(res.message || _t("Library installed."));
+                } else {
+                    showError((res && res.error) || _t("Installation failed."));
+                }
+            } catch (err) {
+                showError(err && err.message ? err.message : String(err));
+            } finally {
+                setBusy(false);
+            }
+        };
+
+        // The Remove buttons are created by renderPayload, so the handler is delegated on
+        // the list container instead of bound on each row.
+        listBox?.addEventListener("click", async (event) => {
+            const button = event.target.closest("[data-lib-remove]");
+            if (!button || busy || !instanceId) {
+                return;
+            }
+            const name = button.dataset.libRemove;
+            if (!window.confirm(_t("Uninstall %s from this instance?").replace("%s", name))) {
+                return;
+            }
+            button.disabled = true;
+            showError("");
+            try {
+                const res = await this.rpc("/saas/instance/python-library/remove", {
+                    instance_id: instanceId,
+                    name: name,
+                });
+                if (res && res.success) {
+                    renderPayload(res);
+                    notify(res.message || _t("Library removed."));
+                } else {
+                    button.disabled = false;
+                    showError((res && res.error) || _t("Removal failed."));
+                }
+            } catch (err) {
+                button.disabled = false;
+                showError(err && err.message ? err.message : String(err));
+            }
+        });
+
+        document.querySelectorAll('[data-action="python-libs"]').forEach((button) => {
+            if (button.dataset.pythonLibsBound) {
+                return;
+            }
+            button.dataset.pythonLibsBound = "1";
+            button.addEventListener("click", () => {
+                modal.classList.add("show");
+                showError("");
+                load();
+                if (input) {
+                    input.focus();
+                }
+            });
+        });
+
+        closeButton?.addEventListener("click", () => modal.classList.remove("show"));
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+        input?.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                install();
+            }
+        });
+        installButton?.addEventListener("click", install);
     },
 
     // =====================================================================

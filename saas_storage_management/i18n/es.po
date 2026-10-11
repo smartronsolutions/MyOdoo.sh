@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-23 07:42+1100\n"
+"PO-Revision-Date: 2026-10-12 04:47+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -26,32 +26,32 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;larr; Back to Storage Overview"
-msgstr "&larr; Volver a la vista de almacenamiento"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;larr; Dashboard"
-msgstr "&larr; Dashboard"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot;"
-msgstr "y medio punto;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "&amp;middot; Storage Management"
-msgstr "&middot; Storage Management"
+msgstr "&amp;middot;"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "&amp;rarr;"
-msgstr "&rar;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "&amp;times;"
-msgstr "y horarios;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -102,6 +102,9 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#5cb85c;\"><strong>STORAGE UPGRADE APPROVED</strong></div><hr style=\"background-color:#5cb85c; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>Querido <span t-out=\"object.partner_id.name or ''\"></span>,</div><br/><div>Su solicitud de actualización de almacenamiento por ejemplo <strong><span t-out=\"object.name or ''\"></span></strong> ha sido aprobado.\n"
+"Su nuevo límite de almacenamiento es <strong style=\"color:#5cb85c;\"><span t-out=\"object.storage_limit_gb\"></span> GB</strong>.\n"
+" </div><br/><div>Si su caso se detuvo debido al almacenamiento completo, por favor contacte con soporte para tenerlo reiniciado, o revise su <a href=\"/my/storage\">Almacenamiento</a>.</div></div><br/><div><div>Gracias por usar nuestros servicios. Si tiene alguna pregunta, póngase en contacto con nuestro equipo de apoyo.</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_full_mail_template
@@ -132,6 +135,12 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#d9534f;\"><strong>STORAGE FULL - INSTANCE STOPPED</strong></div><hr style=\"background-color:#d9534f; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>Querido <span t-out=\"object.partner_id.name or ''\"></span>,</div><br/><div>Tu caso Odoo <strong><span t-out=\"object.name or ''\"></span></strong> ha llegado\n"
+" <strong style=\"color:#d9534f;\">100%</strong> de su límite de almacenamiento\n"
+"(Asuntos)<strong><span t-out=\"object.storage_limit_gb\"></span> GB</strong>).\n"
+" </div><br/><div>Para proteger sus datos, su instancia ha sido <strong>Detenido</strong> y ya no es accesible.</div><br/><div>Por favor contacte con nuestro equipo de soporte para aumentar su límite de almacenamiento para que su instancia pueda reanudarse,\n"
+"o solicitar una actualización de su <a href=\"/my/storage\">Almacenamiento</a>.\n"
+" </div></div><br/><div><div>Lo sentimos por la molestia. Nuestro equipo de soporte está listo para ayudarle a volver en línea.</div></div>"
 
 #. module: saas_storage_management
 #: model:mail.template,body_html:saas_storage_management.storage_warning_mail_template
@@ -163,6 +172,12 @@ msgid ""
 "            </div>\n"
 "        "
 msgstr ""
+"<div><div style=\"text-align:center; font-size:18px; color:#fcb042;\"><strong>STORAGE WARNING</strong></div><hr style=\"background-color:#fcb042; border:none; height:3px; margin: 16px 0px 16px 0px;\" width=\"100%\"/></div><div><div>Querido <span t-out=\"object.partner_id.name or ''\"></span>,</div><br/><div>Tu caso Odoo <strong><span t-out=\"object.name or ''\"></span></strong> ha usado\n"
+" <strong><span t-out=\"'%.2f' % object.storage_used_gb\"></span> GB</strong> fuera de\n"
+" <strong><span t-out=\"object.storage_limit_gb\"></span> GB</strong>(Asuntos)<strong style=\"color:#fcb042;\"><span t-out=\"'%.1f' % object.storage_percentage\"></span>%</strong>).\n"
+" </div><br/><div>Una vez que su almacenamiento alcance el 100%, su instancia se detendrá automáticamente hasta que haya más almacenamiento disponible.</div><br/><div>Usted puede solicitar una actualización de almacenamiento de su\n"
+" <a href=\"/my/storage\">Almacenamiento</a>.\n"
+" </div></div><br/><div><div>Si tiene alguna pregunta o necesita ayuda, póngase en contacto con nuestro equipo de soporte.</div></div>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -183,7 +198,7 @@ msgstr "<small>Uso Aggregate</small>"
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "<small>Allocated Quota</small>"
-msgstr "<small>Allocated Quota</small>"
+msgstr "<small>cuota asignada</small>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -213,7 +228,7 @@ msgstr "<small>Uso de discos %</small>"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "<small>Environments</small>"
-msgstr "<small>Environments</small>"
+msgstr "<small>entornos</small>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -253,7 +268,7 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "<span class=\"eyebrow\">DISK &amp; CAPACITY</span>"
-msgstr "<span class=\"eyebrow\">DISK &amp; CAPACITY</span>"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -309,9 +324,7 @@ msgstr "<span>Verificación por hora:</span><strong class=\"ok\">Activo</strong>
 msgid ""
 "<span>Odoo Filestore:</span>\n"
 "                                    <strong>Attachments &amp; Media</strong>"
-msgstr ""
-"<span>Odoo Filestore:</span><strong>Adjuntos &quot; Medios de comunicación "
-"&quot;</strong>"
+msgstr "<span>Odoo Filestore:</span><strong>Adjuntos &amp; Media</strong>"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -355,7 +368,7 @@ msgstr "Acciones"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "Allocated Quota"
-msgstr "Allocated Quota"
+msgstr "Cuota asignada"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -379,7 +392,7 @@ msgstr "Pendiente de escaneo automatizado"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "CURRENT QUOTA"
-msgstr "CURRENT QUOTA"
+msgstr "Cuota actual"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
@@ -449,7 +462,7 @@ msgstr "Nombre"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "Environment Storage Quotas"
-msgstr "Environment Storage Quotas"
+msgstr "Contingentes de almacenamiento del medio ambiente"
 
 #. module: saas_storage_management
 #: model:ir.model.fields.selection,name:saas_storage_management.selection__saas_odoo_instance__storage_status__full
@@ -482,7 +495,7 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:saas_storage_management.field_saas_storage_history__instance_id
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "Instance"
-msgstr "Instance"
+msgstr "Ejemplo"
 
 #. module: saas_storage_management
 #: model:ir.model.fields,help:saas_storage_management.field_saas_odoo_instance__storage_full_action_taken
@@ -515,16 +528,16 @@ msgstr "Última actualización en"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "Manage Instance"
-msgstr "Manage Instance"
+msgstr "Instancia de gestión"
 
 #. module: saas_storage_management
 #: model:ir.model.fields,help:saas_storage_management.field_saas_odoo_instance__storage_limit_gb
 msgid ""
-"Maximum storage allowed for this instance in GB. Default: 5 GB for "
-"Essential, 20 GB for Growth. Leave empty or 0 for unlimited."
+"Maximum storage allowed for this instance in GB. Default: 5 GB for Standard,"
+" 20 GB for Growth. Leave empty or 0 for unlimited."
 msgstr ""
 "Almacenamiento máximo permitido para este caso en GB. Predeterminado: 5 GB "
-"para Essential, 20 GB para Growth. Deja vacío o 0 para ilimitado."
+"para Standard, 20 GB para el crecimiento. Deja vacío o 0 para ilimitado."
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -570,12 +583,12 @@ msgstr "Carga normal"
 #: model:ir.model.fields.selection,name:saas_storage_management.selection__saas_odoo_instance__storage_status__ok
 #: model:ir.model.fields.selection,name:saas_storage_management.selection__saas_storage_history__storage_status__ok
 msgid "OK"
-msgstr "OK"
+msgstr "Está bien"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "Open Odoo"
-msgstr "Open Odoo"
+msgstr "Odoo abierto"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -585,12 +598,12 @@ msgstr "Pendiente"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "Quota Actions"
-msgstr "Quota Actions"
+msgstr "Cupos"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "Quota Limit"
-msgstr "Quota Limit"
+msgstr "Límite de cuotas"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -675,7 +688,7 @@ msgstr "Gestión de almacenamiento"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "Storage Management — myodoo.nc"
-msgstr "Storage Management — myodoo.nc"
+msgstr "Gestión del almacenamiento — myodoo.nc"
 
 #. module: saas_storage_management
 #: model:ir.model.fields,field_description:saas_storage_management.field_saas_odoo_instance__storage_notification_sent
@@ -750,7 +763,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/saas_storage_management/models/saas_storage.py:0
 msgid "Storage upgrade requested: %s GB"
-msgstr ""
+msgstr "Actualización de almacenamiento solicitada: %s gb"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
@@ -770,7 +783,7 @@ msgstr ""
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.storage_upgrade_widget
 msgid "TARGET INSTANCE"
-msgstr "TARGET INSTANCE"
+msgstr "Instancia de destino"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
@@ -809,7 +822,7 @@ msgstr "Actualización"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_instance_detail
 msgid "Usage Bar"
-msgstr "Usage Bar"
+msgstr "Barra de uso"
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
@@ -855,7 +868,7 @@ msgstr "por ejemplo 25"
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard
 msgid "healthy &amp;middot;"
-msgstr "sano y medio punto;"
+msgstr ""
 
 #. module: saas_storage_management
 #: model_terms:ir.ui.view,arch_db:saas_storage_management.portal_storage_dashboard

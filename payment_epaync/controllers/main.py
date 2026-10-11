@@ -77,21 +77,33 @@ class EpayncController(http.Controller):
                     tx_sudo.provider_id.epaync_merchant_id != data.get('vads_site_id'):
                 raise ValidationError("EpayNC IPN: Shop ID mismatch.")
 
-            # Verify amount — vads_amount is in minor currency units
+            # Verify amount — vads_amount is in minor units of the currency that was
+            # actually sent to the gateway, which may differ from the transaction
+            # currency when it was auto-converted (e.g. EUR order charged in XPF).
+            from odoo.addons.payment_epaync.models.payment_transaction import (
+                epaync_numeric_code,
+            )
             currency = tx_sudo.currency_id
-            decimal_places = currency.decimal_places if currency else 0
-            expected_amount = int(round(tx_sudo.amount * (10 ** decimal_places)))
-            received_amount = int(data.get('vads_amount', -1))
+            gateway_currency = tx_sudo.epaync_gateway_currency_id or currency
+            stored_amount = tx_sudo.epaync_gateway_amount or ''
+            if stored_amount.isdigit():
+                expected_amount = int(stored_amount)
+            else:
+                decimal_places = gateway_currency.decimal_places if gateway_currency else 0
+                expected_amount = int(round(tx_sudo.amount * (10 ** decimal_places)))
+            try:
+                received_amount = int(data.get('vads_amount', -1))
+            except (TypeError, ValueError):
+                received_amount = -1
             if expected_amount != received_amount:
                 raise ValidationError(
                     f"EpayNC IPN: Amount mismatch — expected {expected_amount}, got {received_amount}."
                 )
 
             # Verify currency — compare ISO 4217 numeric codes
-            from odoo.addons.payment_epaync.models.payment_transaction import ISO4217_NUMERIC
-            expected_currency_numeric = ISO4217_NUMERIC.get(currency.name if currency else 'XPF', '953')
+            expected_currency_numeric = epaync_numeric_code(gateway_currency)
             received_currency = data.get('vads_currency', '')
-            if received_currency and expected_currency_numeric != received_currency:
+            if received_currency and expected_currency_numeric and expected_currency_numeric != received_currency:
                 raise ValidationError(
                     f"EpayNC IPN: Currency mismatch — expected {expected_currency_numeric}, got {received_currency}."
                 )

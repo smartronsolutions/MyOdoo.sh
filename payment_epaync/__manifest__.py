@@ -1,8 +1,8 @@
 {
     'name': 'EpayNC Payment Provider',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.2.0',
     'category': 'Accounting/Payment Providers',
-    'summary': 'Payment Provider: EpayNC (New Caledonia / XPF)',
+    'summary': 'Payment Provider: EpayNC (New Caledonia) — all currencies, auto-converted to XPF',
     'description': """
 EpayNC Payment Provider
 =======================
@@ -13,6 +13,10 @@ Features:
 - HMAC SHA-256 signature verification
 - IPN / Webhook server-to-server notification
 - Test and Production modes
+- All currencies supported: the order total is automatically converted to the
+  provider's Gateway Currency (XPF 953 by default) before being sent to EpayNC.
+  This avoids the gateway "error 10 - vads_currency Currency not found" returned
+  when the shop/contract does not have the customer currency enabled.
 - Full transaction logging (Accounting > Configuration > EpayNC Logs)
 - Website Checkout, Sales Orders, Invoices, Payment Links support
 - Multi-company / Multi-website

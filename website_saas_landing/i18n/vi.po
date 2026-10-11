@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-28 02:24+1100\n"
+"PO-Revision-Date: 2026-10-12 04:47+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: vi\n"
 "Language: vi\n"
@@ -197,8 +197,6 @@ msgid ""
 "<b data-i18n=\"dia_files\">File Storage</b><small "
 "data-i18n=\"dia_files_text\">Attachments &amp; documents</small>"
 msgstr ""
-"<b data-i18n=\"dia_files\">Lưu trữ tập tin</b><small "
-"data-i18n=\"dia_files_text\">Gắn kết & tài liệu</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -206,8 +204,6 @@ msgid ""
 "<b data-i18n=\"dia_monitor\">Monitoring</b><small "
 "data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 msgstr ""
-"<b data-i18n=\"dia_monitor\">Theo dõi</b><small "
-"data-i18n=\"dia_monitor_text\">Kiểm tra tài nguyên và sức khỏe</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -215,8 +211,6 @@ msgid ""
 "<b data-i18n=\"dia_users\">Your team &amp; customers</b><small>https://your-"
 "company.example</small>"
 msgstr ""
-"<b data-i18n=\"dia_users\">& Khách hàng nhóm của bạn</b><small>Xin "
-"chào.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -236,7 +230,7 @@ msgstr "<b data-i18n=\"dl3\">Máy đã quản lý</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<b data-i18n=\"dl4\">Database &amp; Backups</b>"
-msgstr "<b data-i18n=\"dl4\">& Sao lưu co sở dữ liệu</b>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -296,7 +290,7 @@ msgstr "<b data-i18n=\"eco_proj\">Dự án</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_sales\">Sales &amp; CRM</b>"
-msgstr "<b data-i18n=\"eco_sales\">Comment</b>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -596,8 +590,6 @@ msgid ""
 "<b>Priority support · phone, email &amp; chat</b><small>A direct line to a "
 "senior Odoo engineer, never a call centre.</small>"
 msgstr ""
-"<b>Hỗ trợ ưu tiên · phone, email & chat</b><small>Một đường dây trực tiếp "
-"tới một kỹ sư cao cấp, không bao giờ gọi một trung tâm.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -614,8 +606,6 @@ msgid ""
 "<b>Unlimited storage &amp; workers</b><small>Grow without ceilings, quotas "
 "or awkward conversations.</small>"
 msgstr ""
-"<b>Công nhân & không hạn chế</b><small>Lớn lên mà không có trần nhà, chỉ "
-"tiêu hay những cuộc nói chuyện khó xử.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -623,8 +613,6 @@ msgid ""
 "<b>Unlimited uses &amp; apps</b><small>No limits and no extra fees. Invite "
 "the whole team.</small>"
 msgstr ""
-"<b>Dùng & ứng dụng vô hạn</b><small>Không giới hạn và không thêm phí. Mời cả"
-" đội.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -637,8 +625,6 @@ msgid ""
 "<b>∞ Unlimited uses &amp; apps</b><small data-i18n=\"edition_nolimit\">No "
 "limits on any plan</small>"
 msgstr ""
-"<b>teppi82@ gmail. com</b><small data-i18n=\"edition_nolimit\">Không có giới"
-" hạn trong kế hoạch</small>"
 
 #. module: website_saas_landing
 #: model:mail.template,body_html:website_saas_landing.mail_template_enquiry_customer
@@ -789,8 +775,6 @@ msgid ""
 "<i>01</i><b data-i18n=\"road1\">Consultation</b><small "
 "data-i18n=\"road1_d\">Goals &amp; challenges</small>"
 msgstr ""
-"<i>01</i><b data-i18n=\"road1\">Tham vấn</b><small data-i18n=\"road1_d\">& "
-"Thử ra mục tiêu</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -834,8 +818,6 @@ msgid ""
 "<i>06</i><b data-i18n=\"road6\">Training &amp; Go-live</b><small "
 "data-i18n=\"road6_d\">Production launch</small>"
 msgstr ""
-"<i>06</i><b data-i18n=\"road6\">Luyện tập và Sống sót</b><small "
-"data-i18n=\"road6_d\">Name</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -965,22 +947,6 @@ msgid ""
 "                </select>\n"
 "                <small class=\"cf-field-error\" data-error-for=\"interested_in\" data-i18n=\"cf_err_required\">This field is required.</small>"
 msgstr ""
-"<select id=\"cf_interest\" name=\"interested_in\" "
-"required=\"required\"><option data-i18n=\"cf_opt1\" "
-"value=\"implementation\">Sự giải thoát mới</option><option "
-"data-i18n=\"cf_opt2\" value=\"hosting\">Odoo Hosting / "
-"MyOdoo.sh</option><option data-i18n=\"cf_opt3\" "
-"value=\"migration\">Name</option><option data-i18n=\"cf_opt4\" "
-"value=\"customisation\">Tùy biến</option><option data-i18n=\"cf_opt5\" "
-"value=\"module_development\">Phát triển môđun tự chọn</option><option "
-"data-i18n=\"cf_opt6\" value=\"integration\">Hợp nhất/ CNI</option><option "
-"data-i18n=\"cf_opt7\" value=\"backup_recovery\">Sao lưu và phục "
-"hồi</option><option data-i18n=\"cf_opt8\" value=\"support_maintenance\">Hỗ "
-"trợ & bảo trì</option><option data-i18n=\"cf_opt9\" "
-"value=\"existing_project\">Dự án Odoo tồn tại</option><option "
-"data-i18n=\"cf_opt10\" value=\"other\">Khác</option></select><small "
-"class=\"cf-field-error\" data-error-for=\"interested_in\" "
-"data-i18n=\"cf_err_required\">Cánh đồng này cần thiết.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -1234,8 +1200,6 @@ msgid ""
 "<span class=\"eyebrow\"><i/><span data-i18n=\"editions_badge\">Community "
 "&amp; Enterprise</span></span>"
 msgstr ""
-"<span class=\"eyebrow\"><i></i><span data-i18n=\"editions_badge\">& Tập tin "
-"cộng đồng</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1497,6 +1461,11 @@ msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
 msgstr "<span class=\"mo_auth_badge\">Bắt đầu tự do ngày nay</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
+msgid "<span class=\"o_stat_text\">CRM Lead</span>"
+msgstr "<span class=\"o_stat_text\">chì CRM</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span class=\"pp-tab\" data-i18n=\"pp_dev\">Development</span>\n"
@@ -1692,7 +1661,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<span data-i18n=\"label_backup\">Backup &amp; Recovery</span>"
-msgstr "<span data-i18n=\"label_backup\">Sao lưu và phục hồi</span>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1929,7 +1898,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "AI-powered automation &amp; smart insights"
-msgstr "Comment"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1953,18 +1922,34 @@ msgid "Account manager"
 msgstr "Bộ quản lý tài khoản"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "Action Needed"
+msgstr "Cần hành động"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_ids
+msgid "Activities"
+msgstr "Hoạt động"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Ngoại lệ hoạt động"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid "Activity State"
+msgstr "Trạng thái hoạt động"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Biểu tượng kiểu hoạt động"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr "Lưu trữ thêm"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid ""
-"Address that receives an email for every enquiry submitted from the website "
-"form. Leave empty to use the company email address."
-msgstr ""
-"Địa chỉ nhận được một email cho mỗi yêu cầu gửi từ các trang web. Để trống "
-"để dùng địa chỉ email của công ty."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2021,6 +2006,11 @@ msgid "Assigned To"
 msgstr "Đã gán cho"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_attachment_count
+msgid "Attachment Count"
+msgstr "Số đếm đính kèm"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Audit"
 msgstr "Kiểm toán"
@@ -2061,6 +2051,7 @@ msgid "Backup"
 msgstr "Sao lưu"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__backup_recovery
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__backup_recovery
 msgid "Backup & Recovery"
 msgstr "Sao lưu và phục hồi"
@@ -2068,7 +2059,7 @@ msgstr "Sao lưu và phục hồi"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Backup &amp; Recovery"
-msgstr "Sao lưu & ống kính; phục hồi"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2107,7 +2098,7 @@ msgstr "Sao lưu"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Backups &amp; recovery"
-msgstr "Sao lưu & ống; phục hồi"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2210,6 +2201,18 @@ msgid ""
 msgstr ""
 "CPU, bộ nhớ, đĩa, yêu cầu và kết nối cơ sở dữ liệu — với chỉ thị trạng thái "
 "cho mỗi môi trường."
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "CRM Lead"
+msgstr "Chì CRM"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_count
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_ids
+msgid "CRM Leads"
+msgstr "Crm chì"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2344,11 +2347,6 @@ msgstr ""
 "sắp xếp lại sản xuất."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Connexion"
-msgstr "Liên kết"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Construction"
 msgstr "Xây dựng"
@@ -2363,7 +2361,7 @@ msgstr "Contact & mới"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Contact &amp; legal"
-msgstr "Liên lạc &am; hợp pháp"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -2403,6 +2401,11 @@ msgid "Country"
 msgstr "Nước"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
+msgid "Country (Enquiry)"
+msgstr "Nước"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Create backup copies according to your plan’s configured schedule."
 msgstr "Tạo bản sao lưu theo thời gian biểu đã định."
@@ -2418,11 +2421,7 @@ msgid "Created on"
 msgstr "Tạo vào"
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Créer un compte"
-msgstr "Bỏ ghi đè"
-
-#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_odoo_version
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__odoo_version
 msgid "Current Odoo Version"
 msgstr "Phiên bản Odoo hiện thời"
@@ -2444,6 +2443,7 @@ msgid "Custom Addons"
 msgstr "Thêm"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__module_development
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__module_development
 msgid "Custom Module Development"
 msgstr "Phát triển môđun tự chọn"
@@ -2639,12 +2639,7 @@ msgstr "Hiện tên"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Domain &amp; HTTPS"
-msgstr "Bảng màu miền; HTTPS"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Déconnexion"
-msgstr "Déconnexion"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
@@ -2675,15 +2670,24 @@ msgstr "Email"
 #: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid ""
 "Email address that receives a notification for every enquiry submitted from "
-"the website. Leave empty to use the company email address."
+"the website. Defaults to notifications@myodoo.sh."
 msgstr ""
-"Địa chỉ thư điện tử nhận thông báo cho mỗi yêu cầu được gửi từ trang web. Để"
-" trống để dùng địa chỉ email của công ty."
+"Địa chỉ thư điện tử nhận thông báo cho mỗi yêu cầu được gửi từ trang web. "
+"Mặc định là thông báo@myodoo.sh."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Email · 24h target response"
 msgstr "Name"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
+msgid ""
+"Emails sent for every enquiry submitted from the website form. The sender "
+"address is bound to the default outgoing mail server."
+msgstr ""
+"Email gửi cho mỗi yêu cầu gửi từ các trang web. Địa chỉ người gửi bị hạn chế"
+" vào máy phục vụ thư đi lại mặc định."
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -2693,6 +2697,16 @@ msgid ""
 msgstr ""
 "Các cuộc điều tra từ các trang web đăng ở đây,\n"
 "cùng với thông báo email gửi đến đội của anh."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Enquiry"
+msgstr "Điều kiện"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_lang
+msgid "Enquiry Language"
+msgstr "Ngôn ngữ điều tra"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__name
@@ -2718,6 +2732,7 @@ msgstr ""
 "sự cam kết nào về mức độ phục vụ đều được ghi rõ trong thỏa thuận của bạn."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_estimated_users
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__estimated_users
 msgid "Estimated Users"
 msgstr "Người dùng đã ước tính"
@@ -2763,6 +2778,7 @@ msgid "Everything your business needs,<br/>in <em>one platform</em>."
 msgstr "Mọi thứ công việc của anh cần,<br/>in <em>một nền tảng</em>."
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__existing_project
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__existing_project
 msgid "Existing Odoo Project"
 msgstr "Dự án Odoo tồn tại"
@@ -2822,6 +2838,26 @@ msgid "Follow-up"
 msgstr "Theo dõi"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_follower_ids
+msgid "Followers"
+msgstr "Theo dõi"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Theo dõi (các phần)"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Phông chữ tuyệt vời biểu tượng e.g. fa-tasks"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Forgot password"
+msgstr "Quên mật khẩu"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr "Tự do subdomain + SSL"
@@ -2830,6 +2866,15 @@ msgstr "Tự do subdomain + SSL"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "From Your First Project to Production"
 msgstr "Từ dự án đầu tiên đến sản xuất"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid ""
+"From address used for enquiry emails. Defaults to notifications@myodoo.sh, "
+"the address bound to the default outgoing mail server."
+msgstr ""
+"Từ địa chỉ được dùng cho email hỏi thăm. Mặc định là thông báo@myodoo.sh, "
+"địa chỉ bị hạn chế vào máy phục vụ đi lại mặc định."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2915,6 +2960,11 @@ msgstr ""
 " xử lý cho bạn."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__has_message
+msgid "Has Message"
+msgstr "Có thông điệp"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Healthcare"
 msgstr "Chăm sóc sức khỏe"
@@ -2937,7 +2987,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Hosting &amp; Platform Services"
-msgstr "Dịch vụ máy &am; nền tảng"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2995,6 +3045,27 @@ msgid "ID"
 msgstr "ID"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon"
+msgstr "Biểu tượng"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Biểu tượng cho thấy một ngoại lệ."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Nếu được kiểm tra, bạn cần chú ý đến tin nhắn mới."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Nếu kiểm tra, một số tin nhắn có lỗi giao hàng."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Implement"
 msgstr "Thi hành"
@@ -3027,7 +3098,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Implementation, Customisation &amp; Business Support"
-msgstr "Tăng cường, tùy biến & ống; hỗ trợ kinh doanh"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3104,12 +3175,16 @@ msgid "Initial data and go-live support"
 msgstr "Name"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__integration
 msgid "Integration / API"
 msgstr "Hợp nhất/ CNI"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_interested_in
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__interested_in
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_leads_filter_saas
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_opportunities_filter_saas
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
 msgid "Interested In"
 msgstr "Quan tâm"
@@ -3123,6 +3198,11 @@ msgstr "Ghi chú nội bộ"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "Internal notes — never shown to the customer."
 msgstr "Các ghi chú nội bộ — chưa bao giờ cho khách xem."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_is_follower
+msgid "Is Follower"
+msgstr "Theo dõi"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3181,7 +3261,12 @@ msgstr "Lần khởi động cuối"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Launch &amp; Maintain"
-msgstr "Khởi chạy & ống kính; duy trì"
+msgstr ""
+
+#. module: website_saas_landing
+#: model:ir.model,name:website_saas_landing.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Hướng dẫn/ Opportunity"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3196,6 +3281,11 @@ msgid ""
 msgstr ""
 "Hiểu địa phương.<br/><span class=\"mh-grad\">Kết nối công nghệ kinh "
 "doanh.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Log out"
+msgstr "Đăng xuất"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3262,9 +3352,19 @@ msgid "Menu"
 msgstr "Trình đơn"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error
+msgid "Message Delivery error"
+msgstr "Comment"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_ids
+msgid "Messages"
+msgstr "Thông điệp"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Migration &amp; upgrades"
-msgstr "Comment"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3281,11 +3381,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Migration, security, capacity and support — the short answers."
 msgstr "Sự di cư, an ninh, khả năng và hỗ trợ — câu trả lời ngắn gọn."
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mon Compte"
-msgstr "Tiền"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3317,11 +3412,6 @@ msgstr ""
 "lời, yêu cầu, kết nối cơ sở dữ liệu và thời gian lên, tất cả đều hoạt động."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mot de passe oublié"
-msgstr "Mot de passe oblié"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Move Your Existing Odoo Setup to MyOdoo.sh"
 msgstr "Đem thiết kế tồn tại của bạn đến MOdoo.sh"
@@ -3336,12 +3426,17 @@ msgstr "Tiếp tục sản xuất với bản sao lưu đã thỏa thuận, theo
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Multi-company &amp; multi-currency support"
-msgstr "Name"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "My Account"
 msgstr "Tài khoản của tôi"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Kết thúc hoạt động của tôi"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
@@ -3425,6 +3520,7 @@ msgid "New"
 msgstr "Mới"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__implementation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__implementation
 msgid "New Odoo Implementation"
 msgstr "Sự giải thoát mới"
@@ -3434,6 +3530,26 @@ msgstr "Sự giải thoát mới"
 msgid ""
 "New Website SaaS Enquiry — {{ object.name }} — {{ object.company_name }}"
 msgstr "New Website SaaS Enquiry —{{ [tên.name ] —{ đối tượng. compan  name ]"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Lịch hoạt động kế tiếp"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Đường tắt tiếp theo"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_summary
+msgid "Next Activity Summary"
+msgstr "Tóm tắt hoạt động tiếp theo"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_id
+msgid "Next Activity Type"
+msgstr "Kiểu hoạt động kế"
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -3460,6 +3576,26 @@ msgstr ""
 "quanh môi trường Odoo của bạn."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Số Hành động"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of errors"
+msgstr "Số lỗi"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Name"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Số lần thử lại:"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo"
 msgstr "Odoo"
@@ -3467,7 +3603,7 @@ msgstr "Odoo"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo Cloud Hosting, Deployment &amp; Management"
-msgstr "Máy & phát âm; Quản lý"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3475,6 +3611,7 @@ msgid "Odoo Community"
 msgstr "Cộng đồng Odoo"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__customisation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__customisation
 msgid "Odoo Customisation"
 msgstr "Tùy biến"
@@ -3506,11 +3643,13 @@ msgid "Odoo Expertise"
 msgstr "Trình độ cao"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__hosting
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__hosting
 msgid "Odoo Hosting / MyOdoo.sh"
 msgstr "(tiếng tây ban nha)"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__migration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__migration
 msgid "Odoo Migration"
 msgstr "Name"
@@ -3587,6 +3726,12 @@ msgstr ""
 " luồng công việc được điều khiển."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Origin"
+msgstr "Nguồn gốc"
+
+#. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__other
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__other
 msgid "Other"
 msgstr "Khác"
@@ -3616,13 +3761,12 @@ msgstr "Điện thoại / Những gì áp dụng"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat"
-msgstr "Comment"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat · dedicated account manager"
 msgstr ""
-"Bộ quản lý tài khoản qua điện thoại, thư điện tử và cũng dành riêng cho chat"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3652,7 +3796,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Plans &amp; pricing"
-msgstr "Comment"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -3823,6 +3967,11 @@ msgid "Quoted separately"
 msgstr "Trích từng câu một"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
+msgid "Ratings"
+msgstr "Đánh giá"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Ready to Host Your Odoo Project?"
 msgstr "Sẵn sàng chấp nhận dự án Odoo chưa?"
@@ -3879,6 +4028,11 @@ msgid "Resource usage and application health in one view."
 msgstr "Sử dụng tài nguyên và sức khỏe ứng dụng trong một quan điểm."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_user_id
+msgid "Responsible User"
+msgstr "Người dùng có trách nhiệm"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Restart"
 msgstr "Chạy lại"
@@ -3897,7 +4051,7 @@ msgstr "Nghỉ"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Retention &amp; Storage"
-msgstr "Bộ & ký tự"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3936,6 +4090,11 @@ msgstr ""
 "lưu trữ và tổ chức cấu hình xử lý cùng nhau."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Comment"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "SSL"
 msgstr "SSL"
@@ -3949,6 +4108,8 @@ msgid "SaaS Enquiries"
 msgstr "Các câu hỏi của SaaS"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_enquiry_id
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "SaaS Enquiry"
 msgstr "Phép lạ SaaS"
@@ -3962,6 +4123,17 @@ msgstr "Thông báo điều tra của SaaS"
 #: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid "SaaS Enquiry Recipient Email"
 msgstr "Name"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid "SaaS Enquiry Sender Email"
+msgstr "Name"
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "SaaS Enquiry: %s (%s)"
+msgstr "SauS Enquiry: %s (%s)"
 
 #. module: website_saas_landing
 #: model:mail.template,name:website_saas_landing.mail_template_enquiry_customer
@@ -3981,7 +4153,7 @@ msgstr "Bán hàng • Kho lương thực • Phân phối"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Scaling &amp; Resources"
-msgstr "Comment"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4001,7 +4173,7 @@ msgstr "Phạm vị"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Seamless integrations &amp; API connections"
-msgstr "Kết nối"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4011,12 +4183,12 @@ msgstr "Máy phục vụ bảo mật"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Secure cloud hosting &amp; automatic backups"
-msgstr "Đang tự động sao lưu"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
-msgstr "Bảng bảo mật; SSL"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4081,6 +4253,11 @@ msgid "Sign in"
 msgstr "Đăng nhập"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign up"
+msgstr "Tạo tài khoản"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
 msgstr "Giá cơ sở hạ tầng đơn giản."
@@ -4096,6 +4273,7 @@ msgid "Solutions shaped around real operations"
 msgstr "Giải pháp hình thành xung quanh các hoạt động thực tế"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_source_page
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__source_page
 msgid "Source Page"
 msgstr "Trang nguồn"
@@ -4103,7 +4281,7 @@ msgstr "Trang nguồn"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Staging &amp; development"
-msgstr "Cấu hình ống kính; phát triển"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4173,6 +4351,19 @@ msgid "Status"
 msgstr "Trạng thái"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Trạng thái dựa trên hoạt động\n"
+"Đã quá hạn\n"
+"Hôm nay:\n"
+"Kế hoạch: Hoạt động tương lai."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Storage"
 msgstr "Lưu trữ"
@@ -4204,6 +4395,7 @@ msgid "Support"
 msgstr "Hỗ trợ"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__support_maintenance
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__support_maintenance
 msgid "Support & Maintenance"
 msgstr "Hỗ trợ & bảo trì"
@@ -4452,6 +4644,11 @@ msgid "Transfer"
 msgstr "Truyền:"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Loại hoạt động ngoại lệ được ghi nhận."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Understand"
 msgstr "Hiểu"
@@ -4534,9 +4731,24 @@ msgid "We've received your enquiry — MyOdoo.sh"
 msgstr "Chúng tôi đã nhận được sự hỏi thăm của anh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website Messages"
+msgstr "Comment"
+
+#. module: website_saas_landing
 #: model:ir.model,name:website_saas_landing.model_website_saas_enquiry
 msgid "Website SaaS Enquiry"
 msgstr "Điều kiện truy cập Website SaaS"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website communication history"
+msgstr "Lịch sử liên lạc với Web"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_crm_lead__saas_enquiry_id
+msgid "Website enquiry this lead was created from."
+msgstr "Điều tra sơ bộ về đầu mối này đã được tạo ra."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4760,8 +4972,8 @@ msgstr "e.g. 25"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid "e.g. sales@your-domain.com"
-msgstr "kde- l10n- vi@ kde. org"
+msgid "e.g. notifications@myodoo.sh"
+msgstr "teppi82@ gmail. com"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4812,18 +5024,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "🔒 <span data-i18n=\"data_encrypted\">Encrypted Backup</span>"
 msgstr "teppi82 <span data-i18n=\"data_encrypted\">Sao lưu đã mã hóa</span>"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Log out"
-msgstr "Đăng xuất"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Sign up"
-msgstr "Tạo tài khoản"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Forgot password"
-msgstr "Quên mật khẩu"

@@ -714,6 +714,59 @@ class PortalInstance(CustomerPortal):
             return {'success': False, 'error': str(error)}
         return {'success': True, 'admin_pass': instance.admin_pass}
 
+    # -------------------------------------------------------------------------
+    # Python libraries (pip packages installed inside the instance container)
+    # -------------------------------------------------------------------------
+    @http.route('/saas/instance/python-libraries', type='json', auth='user')
+    def instance_python_libraries(self, instance_id, **kwargs):
+        """Manifest + live versions of the Python libraries of one instance."""
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        try:
+            return dict(instance.python_library_list(), success=True)
+        except UserError as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception("Could not list Python libraries of instance %s", instance_id)
+            return {'success': False, 'error': str(error)}
+
+    @http.route('/saas/instance/python-library/install', type='json', auth='user')
+    def instance_python_library_install(self, instance_id, requirement=None, **kwargs):
+        """Install a pip package inside the instance container and record it.
+
+        The library lands in the persisted ``odoo-web-data`` volume (``pip --user``), so it
+        survives a container restart or recreate.
+        """
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        # A storage-full instance is locked: installing more code there must not grow it.
+        locked = self._storage_lock_error(instance)
+        if locked:
+            return locked
+        try:
+            return instance.python_library_install(requirement)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception("Python library install failed on instance %s", instance_id)
+            return {'success': False, 'error': str(error)}
+
+    @http.route('/saas/instance/python-library/remove', type='json', auth='user')
+    def instance_python_library_remove(self, instance_id, name=None, **kwargs):
+        """Uninstall a pip package and drop it from the instance's requirements.txt."""
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        locked = self._storage_lock_error(instance)
+        if locked:
+            return locked
+        try:
+            return instance.python_library_remove(name)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception("Python library removal failed on instance %s", instance_id)
+            return {'success': False, 'error': str(error)}
+
     def _storage_lock_error(self, instance):
         """Return an error payload when the instance is locked because its storage is full.
 

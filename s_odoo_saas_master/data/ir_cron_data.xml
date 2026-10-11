@@ -34,7 +34,21 @@
             <field name="interval_type">minutes</field>
             <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 00:15:00')"/>
         </record>
-        
+
+        <!-- Guard-rail: a backup whose worker died (server restart, database contention)
+             would otherwise leave the customer dashboard spinning on
+             "Your backup is in progress" forever. This cron fails it automatically. -->
+        <record forcecreate="True" id="cron_saas_backup_watchdog" model="ir.cron">
+            <field name="name">SaaS Master: Backup watchdog</field>
+            <field name="model_id" ref="model_saas_odoo_instance"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_backup_watchdog()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 00:05:00')"/>
+        </record>
+
         <record forcecreate="True" id="cron_saas_get_active_user" model="ir.cron">
             <field name="name">SaaS Master: Get active users</field>
             <field name="model_id" ref="model_saas_odoo_instance"/>

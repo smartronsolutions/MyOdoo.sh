@@ -24,17 +24,36 @@ PY="${ODOO_PY:-/opt/odoo18/odoo-server/env/bin/python3}"
 LT_URL="${LT_URL:-http://127.0.0.1:5001}"
 LANGS="${LANGS:-fr,es,ar,pt,vi,zh}"                       # .po file codes
 LANGS_ODOO="${LANGS_ODOO:-fr_FR,es_ES,ar_001,pt_PT,vi_VN,zh_CN}"  # Odoo res.lang codes
-MODULES="${MODULES:-s_odoo_saas_master website_saas_landing saas_storage_management}"
+MODULES="${MODULES:-payment_epaync s_odoo_saas_master website_saas_landing saas_storage_management}"
 
 TOOLS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ADDONS_DIR="$(cd "$TOOLS_DIR/../.." && pwd)"
 TMP_DIR="$(mktemp -d)"
-trap 'rm -rf "$TMP_DIR"' EXIT
+
+# Always leave the service running, even when a step fails midway (the script stops
+# it before loading the translations), and always clean the temporary directory.
+cleanup() {
+    rm -rf "$TMP_DIR"
+    if ! systemctl is-active --quiet "$SERVICE"; then
+        echo ">> restoring service $SERVICE"
+        systemctl start "$SERVICE" || true
+    fi
+}
+trap cleanup EXIT
 chown "$ODOO_USER" "$TMP_DIR"
 
 run_odoo() {
     runuser -u "$ODOO_USER" -- env HOME="$ODOO_HOME" "$PY" "$ODOO_BIN" -c "$CONF" -d "$DB" "$@"
 }
+
+echo ">> 0/4 upgrading the modules so brand-new source strings are exported"
+# --i18n-export reads the terms currently loaded in the database, not the source
+# files. Without this upgrade a string added to a view/code since the last module
+# update would be missing from the .pot (and therefore never translated).
+systemctl stop "$SERVICE" || true
+run_odoo -u "${MODULES// /,}" --stop-after-init --no-http >/dev/null
+systemctl start "$SERVICE"
+sleep 2
 
 echo ">> 1/4 exporting translation templates"
 for module in $MODULES; do
@@ -60,10 +79,11 @@ done
 
 echo ">> 3/4 loading translations into Odoo (service $SERVICE stopped)"
 systemctl stop "$SERVICE" || true
-run_odoo -u "${MODULES// /,}" --load-language="$LANGS_ODOO" --stop-after-init --no-http
+run_odoo --load-language="$LANGS_ODOO" --stop-after-init --no-http
 
 echo ">> 4/4 enabling the languages on the website"
-run_odoo shell --no-http <<PY
+# Odoo 18: the sub-command must come right after the binary, before the options.
+runuser -u "$ODOO_USER" -- env HOME="$ODOO_HOME" "$PY" "$ODOO_BIN" shell -c "$CONF" -d "$DB" --no-http <<PY
 website = env['website'].search([], limit=1)
 langs = env['res.lang'].with_context(active_test=False).search([('code', 'in', '${LANGS_ODOO}'.split(','))])
 website.language_ids = [(6, 0, sorted(set(website.language_ids.ids) | set(langs.ids)))]

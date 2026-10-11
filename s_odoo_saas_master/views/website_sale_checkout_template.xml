@@ -183,6 +183,7 @@
 
             <!-- Dedicated SaaS Instance Cloud Banner if order is SaaS -->
             <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <t t-set="saas_odoo_version_name" t-value="website_sale_order.odoo_version_id.name or (website_sale_order.instance_id.odoo_version_id.name if website_sale_order.instance_id else '') or ''"/>
                 <div class="glass vip-instance-box mb-4">
                     <div class="instance-box-header">
                         <div class="instance-avatar-icon">
@@ -191,6 +192,7 @@
                         <div class="instance-title-meta">
                             <span class="eyebrow">
                                 <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-elif="saas_odoo_version_name">Odoo <t t-esc="saas_odoo_version_name"/> Cloud Instance</t>
                                 <t t-else="">Dedicated Cloud Instance</t>
                             </span>
                             <h2>
@@ -201,7 +203,7 @@
                                     https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
                                 </t>
                                 <t t-else="">
-                                    Dedicated Odoo 18 Environment
+                                    Dedicated Odoo <t t-esc="saas_odoo_version_name or 'Cloud'"/> Environment
                                 </t>
                             </h2>
                         </div>
@@ -268,7 +270,10 @@
 
     <!-- 3. Inherit website_sale.cart_lines for VIP Empty Cart & Lines Layout -->
     <template id="cart_lines_inherit_saas" inherit_id="website_sale.cart_lines">
-        <xpath expr="//div[hasclass('js_cart_lines') and contains(text(), 'Your cart is empty!')]" position="replace">
+        <!-- Match on stable attributes only: the previous contains(text(), 'Your cart is
+             empty!') broke every translated URL (/fr, /es, ...) because Odoo translates
+             that text before combining the view, so the XPath could no longer be located. -->
+        <xpath expr="//div[hasclass('js_cart_lines') and hasclass('alert-info')]" position="replace">
             <div class="js_cart_lines glass empty-cart-vip text-center p-5 mb-4">
                 <div class="empty-cart-icon mb-3">
                     <i class="fa fa-cloud fa-3x" style="color:var(--teal);opacity:0.6"/>
@@ -288,6 +293,7 @@
     <template id="checkout_inherit_saas" inherit_id="website_sale.checkout">
         <xpath expr="//div[@id='shop_checkout']" position="before">
             <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <t t-set="saas_odoo_version_name" t-value="website_sale_order.odoo_version_id.name or (website_sale_order.instance_id.odoo_version_id.name if website_sale_order.instance_id else '') or ''"/>
                 <div class="glass vip-instance-box mb-4">
                     <div class="instance-box-header">
                         <div class="instance-avatar-icon">
@@ -296,6 +302,7 @@
                         <div class="instance-title-meta">
                             <span class="eyebrow">
                                 <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-elif="saas_odoo_version_name">Odoo <t t-esc="saas_odoo_version_name"/> Cloud Instance</t>
                                 <t t-else="">Dedicated Cloud Instance</t>
                             </span>
                             <h2>
@@ -306,7 +313,7 @@
                                     https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
                                 </t>
                                 <t t-else="">
-                                    Dedicated Odoo 18 Environment
+                                    Dedicated Odoo <t t-esc="saas_odoo_version_name or 'Cloud'"/> Environment
                                 </t>
                             </h2>
                         </div>
@@ -402,7 +409,9 @@
 
     <!-- 7. Inherit website_sale.payment for VIP Payment Page -->
     <template id="payment_inherit_saas" inherit_id="website_sale.payment">
-        <xpath expr="//h3[contains(text(), 'Confirm order')]" position="replace">
+        <!-- Anchor on the stable 'address_on_payment' id instead of the (translated)
+             'Confirm order' text, which broke /fr/shop/payment. -->
+        <xpath expr="//div[@id='address_on_payment']/preceding-sibling::h3[1]" position="replace">
             <div class="payment-header-title-box mb-4">
                 <span class="eyebrow">Final Step</span>
                 <h2 style="font-family:Georgia,serif;font-size:24px;color:var(--navy);margin:4px 0 2px">Payment &amp;amp; Final Activation</h2>
@@ -411,6 +420,7 @@
 
             <!-- Dedicated SaaS Instance Cloud Banner on Payment page -->
             <t t-if="website_sale_order and website_sale_order.is_saas_order">
+                <t t-set="saas_odoo_version_name" t-value="website_sale_order.odoo_version_id.name or (website_sale_order.instance_id.odoo_version_id.name if website_sale_order.instance_id else '') or ''"/>
                 <div class="glass vip-instance-box mb-4">
                     <div class="instance-box-header">
                         <div class="instance-avatar-icon">
@@ -419,6 +429,7 @@
                         <div class="instance-title-meta">
                             <span class="eyebrow">
                                 <t t-if="website_sale_order.saas_order_type == 'buy_storage'">Storage Upgrade</t>
+                                <t t-elif="saas_odoo_version_name">Odoo <t t-esc="saas_odoo_version_name"/> Cloud Instance</t>
                                 <t t-else="">Ready for Launch</t>
                             </span>
                             <h2>
@@ -430,7 +441,7 @@
                                     https://<span class="text-teal"><t t-esc="website_sale_order.subdomain"/></span>.<t t-esc="website_sale_order.based_domain_id.name if website_sale_order.based_domain_id else 'edc.nc'"/>
                                 </t>
                                 <t t-else="">
-                                    Dedicated Odoo 18 Environment
+                                    Dedicated Odoo <t t-esc="saas_odoo_version_name or 'Cloud'"/> Environment
                                 </t>
                             </h2>
                         </div>
@@ -441,6 +452,11 @@
                     </div>
                 </div>
             </t>
+        </xpath>
+
+        <!-- Minimum amount / shipping errors: myodoo themed warning banner -->
+        <xpath expr="//div[@t-if='errors']" position="attributes">
+            <attribute name="class" add="saas-checkout-errors" separator=" "/>
         </xpath>
 
         <!-- Security trust notice above payment methods -->

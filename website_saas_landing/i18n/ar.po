@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-28 02:23+1100\n"
+"PO-Revision-Date: 2026-10-12 04:47+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -197,8 +197,6 @@ msgid ""
 "<b data-i18n=\"dia_files\">File Storage</b><small "
 "data-i18n=\"dia_files_text\">Attachments &amp; documents</small>"
 msgstr ""
-"<b data-i18n=\"dia_files\">تخزين الملفات</b><small "
-"data-i18n=\"dia_files_text\">وثائق الملاحق</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -206,8 +204,6 @@ msgid ""
 "<b data-i18n=\"dia_monitor\">Monitoring</b><small "
 "data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 msgstr ""
-"<b data-i18n=\"dia_monitor\">الرصد</b><small "
-"data-i18n=\"dia_monitor_text\">عمليات التحقق من صحة الموارد</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -215,8 +211,6 @@ msgid ""
 "<b data-i18n=\"dia_users\">Your team &amp; customers</b><small>https://your-"
 "company.example</small>"
 msgstr ""
-"<b data-i18n=\"dia_users\">عملاء فريقك</b><small>https://your-"
-"company.example</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -236,7 +230,7 @@ msgstr "<b data-i18n=\"dl3\">المضيف المنظم</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<b data-i18n=\"dl4\">Database &amp; Backups</b>"
-msgstr "<b data-i18n=\"dl4\">قاعدة البيانات</b>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -296,7 +290,7 @@ msgstr "<b data-i18n=\"eco_proj\">المشاريع</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_sales\">Sales &amp; CRM</b>"
-msgstr "<b data-i18n=\"eco_sales\">Sales &quot; CRM</b>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -591,8 +585,6 @@ msgid ""
 "<b>Priority support · phone, email &amp; chat</b><small>A direct line to a "
 "senior Odoo engineer, never a call centre.</small>"
 msgstr ""
-"<b>الدعم ذو الأولوية: الهاتف والحديث عن البريد الإلكتروني</b><small>خط مباشر"
-" لمهندس أودو كبير، لا مركز اتصال.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -609,8 +601,6 @@ msgid ""
 "<b>Unlimited storage &amp; workers</b><small>Grow without ceilings, quotas "
 "or awkward conversations.</small>"
 msgstr ""
-"<b>عمال تخزين غير محدودين</b><small>نكبر بدون سقف أو حصص أو محادثات "
-"غريبة</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -618,8 +608,6 @@ msgid ""
 "<b>Unlimited uses &amp; apps</b><small>No limits and no extra fees. Invite "
 "the whole team.</small>"
 msgstr ""
-"<b>الاستخدامات غير المحدودة</b><small>لا حدود ولا رسوم إضافية دعوة الفريق "
-"بأكمله.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -632,8 +620,6 @@ msgid ""
 "<b>∞ Unlimited uses &amp; apps</b><small data-i18n=\"edition_nolimit\">No "
 "limits on any plan</small>"
 msgstr ""
-"<b>الاستخدامات غير المحدودة</b><small data-i18n=\"edition_nolimit\">لا حدود "
-"لأي خطة</small>"
 
 #. module: website_saas_landing
 #: model:mail.template,body_html:website_saas_landing.mail_template_enquiry_customer
@@ -784,8 +770,6 @@ msgid ""
 "<i>01</i><b data-i18n=\"road1\">Consultation</b><small "
 "data-i18n=\"road1_d\">Goals &amp; challenges</small>"
 msgstr ""
-"<i>01</i><b data-i18n=\"road1\">المشاورات</b><small "
-"data-i18n=\"road1_d\">تحديات الأهداف</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -829,8 +813,6 @@ msgid ""
 "<i>06</i><b data-i18n=\"road6\">Training &amp; Go-live</b><small "
 "data-i18n=\"road6_d\">Production launch</small>"
 msgstr ""
-"<i>06</i><b data-i18n=\"road6\">Training &quot; Go-live</b><small "
-"data-i18n=\"road6_d\">إطلاق الإنتاج</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -956,22 +938,6 @@ msgid ""
 "                </select>\n"
 "                <small class=\"cf-field-error\" data-error-for=\"interested_in\" data-i18n=\"cf_err_required\">This field is required.</small>"
 msgstr ""
-"<select id=\"cf_interest\" name=\"interested_in\" "
-"required=\"required\"><option data-i18n=\"cf_opt1\" "
-"value=\"implementation\">New Odoo Implementation</option><option "
-"data-i18n=\"cf_opt2\" value=\"hosting\">Odoo Hosting / "
-"MyOdoo.sh</option><option data-i18n=\"cf_opt3\" value=\"migration\">Odoo "
-"Migration</option><option data-i18n=\"cf_opt4\" "
-"value=\"customisation\">أودو</option><option data-i18n=\"cf_opt5\" "
-"value=\"module_development\">تطوير الوحدات العرفية</option><option "
-"data-i18n=\"cf_opt6\" value=\"integration\">Integration / "
-"API</option><option data-i18n=\"cf_opt7\" value=\"backup_recovery\">الدعم "
-"والإنعاش</option><option data-i18n=\"cf_opt8\" "
-"value=\"support_maintenance\">الدعم</option><option data-i18n=\"cf_opt9\" "
-"value=\"existing_project\">مشروع أودو الحالي</option><option "
-"data-i18n=\"cf_opt10\" value=\"other\">أخرى</option></select><small "
-"class=\"cf-field-error\" data-error-for=\"interested_in\" "
-"data-i18n=\"cf_err_required\">هذا المجال مطلوب.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -1222,8 +1188,6 @@ msgid ""
 "<span class=\"eyebrow\"><i/><span data-i18n=\"editions_badge\">Community "
 "&amp; Enterprise</span></span>"
 msgstr ""
-"<span class=\"eyebrow\"><i></i><span data-i18n=\"editions_badge\">المؤسسة "
-"المجتمعية</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1481,6 +1445,11 @@ msgid "<span class=\"mo_auth_badge\">Start Free Today</span>"
 msgstr "<span class=\"mo_auth_badge\">ابدأوا اليوم</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
+msgid "<span class=\"o_stat_text\">CRM Lead</span>"
+msgstr "<span class=\"o_stat_text\">الرصاص</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span class=\"pp-tab\" data-i18n=\"pp_dev\">Development</span>\n"
@@ -1674,7 +1643,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<span data-i18n=\"label_backup\">Backup &amp; Recovery</span>"
-msgstr "<span data-i18n=\"label_backup\">الدعم والإنعاش</span>"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1906,7 +1875,7 @@ msgstr "منبر منظم لتطبيقك وقاعدة البيانات والم�
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "AI-powered automation &amp; smart insights"
-msgstr "التشغيل الآلي والبصريات الذكية"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1930,18 +1899,34 @@ msgid "Account manager"
 msgstr "مدير حساب"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "استثناء النشاط"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid "Activity State"
+msgstr "الدولة العاملة"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "النوع Icon"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr "التخزين الإضافي"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid ""
-"Address that receives an email for every enquiry submitted from the website "
-"form. Leave empty to use the company email address."
-msgstr ""
-"Address that receives an email for every inquiry submitted from the website "
-"form. إتركْ فارغاً لإسْتِعْمال عنوان البريد الإلكتروني الشركةِ."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1996,6 +1981,11 @@ msgid "Assigned To"
 msgstr "المعينة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد الملحقات"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Audit"
 msgstr "مراجعة الحسابات"
@@ -2035,6 +2025,7 @@ msgid "Backup"
 msgstr "الدعم"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__backup_recovery
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__backup_recovery
 msgid "Backup & Recovery"
 msgstr "الدعم والإنعاش"
@@ -2042,7 +2033,7 @@ msgstr "الدعم والإنعاش"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Backup &amp; Recovery"
-msgstr "الدعم والإنعاش"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2079,7 +2070,7 @@ msgstr "الدعم"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Backups &amp; recovery"
-msgstr "الدعم والإنعاش"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2182,6 +2173,18 @@ msgid ""
 msgstr ""
 "CPU, memory, disk, requests and database connections - with status "
 "indicators for each environment."
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "CRM Lead"
+msgstr "الرصاص"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_count
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__crm_lead_ids
+msgid "CRM Leads"
+msgstr "قيادة الآلية"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2314,11 +2317,6 @@ msgid ""
 msgstr "اتصلوا بمستودعكم وحركوا تحديثات معتمدة من خلال التعبئة إلى الإنتاج."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Connexion"
-msgstr "التنافر"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Construction"
 msgstr "التشييد"
@@ -2333,7 +2331,7 @@ msgstr "الاتصال"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Contact &amp; legal"
-msgstr "الاتصال والقانون"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -2373,6 +2371,11 @@ msgid "Country"
 msgstr "البلد"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
+msgid "Country (Enquiry)"
+msgstr "البلد (الاستقصاء)"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Create backup copies according to your plan’s configured schedule."
 msgstr "إنشاء نسخ احتياطية وفقا للجدول الزمني المحدد في خطتكم."
@@ -2388,11 +2391,7 @@ msgid "Created on"
 msgstr "المنشأة على"
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Créer un compte"
-msgstr "Créer un compte"
-
-#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_odoo_version
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__odoo_version
 msgid "Current Odoo Version"
 msgstr "حالياً"
@@ -2414,6 +2413,7 @@ msgid "Custom Addons"
 msgstr "الإضافة العرفية"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__module_development
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__module_development
 msgid "Custom Module Development"
 msgstr "تطوير الوحدات العرفية"
@@ -2608,12 +2608,7 @@ msgstr "الاسم"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Domain &amp; HTTPS"
-msgstr "Domain & HTTPS"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Déconnexion"
-msgstr "Déconnexion"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
@@ -2644,15 +2639,24 @@ msgstr "Email*"
 #: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid ""
 "Email address that receives a notification for every enquiry submitted from "
-"the website. Leave empty to use the company email address."
+"the website. Defaults to notifications@myodoo.sh."
 msgstr ""
 "Email address that receives a notification for every inquiry submitted from "
-"the website. إتركْ فارغاً لإسْتِعْمال عنوان البريد الإلكتروني الشركةِ."
+"the website. Defaults to notifications@myodoo.sh."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Email · 24h target response"
 msgstr "الاستجابة المستهدفة"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
+msgid ""
+"Emails sent for every enquiry submitted from the website form. The sender "
+"address is bound to the default outgoing mail server."
+msgstr ""
+"Emails sent for every inquiry submitted from the website form. عنوان المرسل "
+"متجه إلى خادم البريد المغلق."
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -2662,6 +2666,16 @@ msgid ""
 msgstr ""
 "وترد هنا الاستفسارات المقدمة من استمارة التحقيق على الموقع الشبكي\n"
 "إلى جانب الإخطار الذي أرسل إلى فريقك."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Enquiry"
+msgstr "التحقيق"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_lang
+msgid "Enquiry Language"
+msgstr "لغة التحري"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__name
@@ -2686,6 +2700,7 @@ msgstr ""
 "مستوى الخدمة ينطبق على اشتراكك مذكور في اتفاقكم."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_estimated_users
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__estimated_users
 msgid "Estimated Users"
 msgstr "المستعملون المقدرون"
@@ -2728,6 +2743,7 @@ msgid "Everything your business needs,<br/>in <em>one platform</em>."
 msgstr "كل ما يحتاجه عملك<br/>في <em>منصة واحدة</em>."
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__existing_project
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__existing_project
 msgid "Existing Odoo Project"
 msgstr "مشروع أودو الحالي"
@@ -2787,6 +2803,26 @@ msgid "Follow-up"
 msgstr "المتابعة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font impressive icon e.g. fa-tasks"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Forgot password"
+msgstr "نسيت كلمة المرور"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr "Subdomain + SSL"
@@ -2795,6 +2831,15 @@ msgstr "Subdomain + SSL"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "From Your First Project to Production"
 msgstr "من مشروعك الأول إلى الإنتاج"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid ""
+"From address used for enquiry emails. Defaults to notifications@myodoo.sh, "
+"the address bound to the default outgoing mail server."
+msgstr ""
+"من العنوان المستخدم لالبريد الإلكتروني Defaults to notifications@myodoo.sh, "
+"the address bound to the default outgoing mail server."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2878,6 +2923,11 @@ msgstr ""
 "جهاز تحديد المواقع الخاص بك، تأمين الوصول والتشكيل البيئي التعامل معك."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__has_message
+msgid "Has Message"
+msgstr "هل الرسالة"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Healthcare"
 msgstr "الرعاية الصحية"
@@ -2900,7 +2950,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Hosting &amp; Platform Services"
-msgstr "خدمات الرهائن والمنبر"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2958,6 +3008,27 @@ msgid "ID"
 msgstr "الهوية"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon"
+msgstr "Icon"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز يشير إلى نشاط استثناء."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم فحص الرسائل الجديدة تتطلب اهتمامك."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم فحص بعض الرسائل لديها خطأ في التسليم."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Implement"
 msgstr "التنفيذ"
@@ -2989,7 +3060,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Implementation, Customisation &amp; Business Support"
-msgstr "التنفيذ والتعريف ودعم الأعمال"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3065,12 +3136,16 @@ msgid "Initial data and go-live support"
 msgstr "البيانات الأولية ودعم المعيشة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__integration
 msgid "Integration / API"
 msgstr "الدمج/القطعة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_interested_in
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__interested_in
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_leads_filter_saas
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.view_crm_case_opportunities_filter_saas
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
 msgid "Interested In"
 msgstr "الاهتمام"
@@ -3084,6 +3159,11 @@ msgstr "الحواشي الداخلية"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "Internal notes — never shown to the customer."
 msgstr "ملاحظات داخلية - لم تظهر أبدا للزبون."
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_is_follower
+msgid "Is Follower"
+msgstr "هو المتابع"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3139,7 +3219,12 @@ msgstr "آخر نشر"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Launch &amp; Maintain"
-msgstr "الإطلاق والصيانة"
+msgstr ""
+
+#. module: website_saas_landing
+#: model:ir.model,name:website_saas_landing.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "الرصاص/الاستحقاق"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3152,6 +3237,11 @@ msgid ""
 "Local understanding.<br/><span class=\"mh-grad\">Connected business "
 "technology.</span>"
 msgstr "فهم محلي<br/><span class=\"mh-grad\">متصل بتكنولوجيا الأعمال.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Log out"
+msgstr "تسجيل الخروج"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3218,9 +3308,19 @@ msgid "Menu"
 msgstr "القائمة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ التسليم"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Migration &amp; upgrades"
-msgstr "الهجرة والارتقاءات"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3237,11 +3337,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Migration, security, capacity and support — the short answers."
 msgstr "الهجرة والأمن والقدرات والدعم - الإجابات القصيرة."
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mon Compte"
-msgstr "Mon Compte"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3272,11 +3367,6 @@ msgstr ""
 "database connections and uptime, all operational."
 
 #. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Mot de passe oublié"
-msgstr "Mot de passe oublié"
-
-#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Move Your Existing Odoo Setup to MyOdoo.sh"
 msgstr "حرّك مُعدّة (أودو) الحالية إلى (ماي أودو)"
@@ -3291,12 +3381,17 @@ msgstr "الانتقال إلى الإنتاج مع ترتيبات الدعم و
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Multi-company &amp; multi-currency support"
-msgstr "الدعم المقدم من الشركات المتعددة والقائم على العملات المتعددة"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "My Account"
 msgstr "حسابي"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "خطي النهائي للنشاط"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
@@ -3379,6 +3474,7 @@ msgid "New"
 msgstr "جديدة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__implementation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__implementation
 msgid "New Odoo Implementation"
 msgstr "التنفيذ الجديد لدودو"
@@ -3389,6 +3485,26 @@ msgid ""
 "New Website SaaS Enquiry — {{ object.name }} — {{ object.company_name }}"
 msgstr ""
 "New website SaaS Enquiry — { object.name } - { object.company name } }"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "الحدث التالي"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي التالي للنشاط"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_summary
+msgid "Next Activity Summary"
+msgstr "موجز الأنشطة المقبلة"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
 
 #. module: website_saas_landing
 #: model_terms:ir.actions.act_window,help:website_saas_landing.action_website_saas_enquiry
@@ -3413,6 +3529,26 @@ msgstr ""
 "ليس منتجات منفصلة - منصة واحدة متصلة من الخدمات حول بيئة أودو الخاصة بك."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراءات"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي تحمل خطأ في التسليم"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo"
 msgstr "Odoo"
@@ -3420,7 +3556,7 @@ msgstr "Odoo"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Odoo Cloud Hosting, Deployment &amp; Management"
-msgstr "Odoo Cloud Hosting, Deployment & Management"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3428,6 +3564,7 @@ msgid "Odoo Community"
 msgstr "جماعة أودو"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__customisation
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__customisation
 msgid "Odoo Customisation"
 msgstr "أودو"
@@ -3458,11 +3595,13 @@ msgid "Odoo Expertise"
 msgstr "Odoo Expertise"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__hosting
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__hosting
 msgid "Odoo Hosting / MyOdoo.sh"
 msgstr "Odoo Hosting / MyOdoo.sh"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__migration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__migration
 msgid "Odoo Migration"
 msgstr "Odoo Migration"
@@ -3538,6 +3677,12 @@ msgstr ""
 "عمليات الإفراج المراقب."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
+msgid "Origin"
+msgstr "المنشأ"
+
+#. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__other
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__other
 msgid "Other"
 msgstr "أخرى"
@@ -3567,12 +3712,12 @@ msgstr "الهاتف/ماساب"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat"
-msgstr "Phone, email & conversation"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Phone, email &amp; chat · dedicated account manager"
-msgstr "Phone, email & conversation · dedicated account manager"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3601,7 +3746,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Plans &amp; pricing"
-msgstr "الخطط والتسعير"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -3764,6 +3909,11 @@ msgid "Quoted separately"
 msgstr "مخصصة بصورة منفصلة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
+msgid "Ratings"
+msgstr "التقييمات"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Ready to Host Your Odoo Project?"
 msgstr "مستعد لاستضافة مشروعك؟?"
@@ -3820,6 +3970,11 @@ msgid "Resource usage and application health in one view."
 msgstr "استخدام الموارد وتطبيق الصحة من وجهة نظر واحدة."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_user_id
+msgid "Responsible User"
+msgstr "المستعمل المسؤول"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Restart"
 msgstr "العودة"
@@ -3838,7 +3993,7 @@ msgstr "التجزئة"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Retention &amp; Storage"
-msgstr "الاحتجاز والتخزين"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3875,6 +4030,11 @@ msgstr ""
 "واستضافة التشكيلة التعامل معا."
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "SSL"
 msgstr "SSL"
@@ -3888,6 +4048,8 @@ msgid "SaaS Enquiries"
 msgstr "تحقيقات سااس"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_enquiry_id
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.crm_lead_view_form_saas_enquiry
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_form
 msgid "SaaS Enquiry"
 msgstr "التحقيق في قضية ساس"
@@ -3901,6 +4063,17 @@ msgstr "إخطارات التحقيق"
 #: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_recipient_email
 msgid "SaaS Enquiry Recipient Email"
 msgstr "SaS Enquiry Recipient Email"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_res_config_settings__saas_enquiry_from_email
+msgid "SaaS Enquiry Sender Email"
+msgstr "SaS Enquiry Sender Email"
+
+#. module: website_saas_landing
+#. odoo-python
+#: code:addons/website_saas_landing/models/website_saas_enquiry.py:0
+msgid "SaaS Enquiry: %s (%s)"
+msgstr "باحثة من شركة SaaS: %s (%s)"
 
 #. module: website_saas_landing
 #: model:mail.template,name:website_saas_landing.mail_template_enquiry_customer
@@ -3920,7 +4093,7 @@ msgstr "Sales • Warehouse Distribution"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Scaling &amp; Resources"
-msgstr "التصعيد والموارد"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3940,7 +4113,7 @@ msgstr "النطاق"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Seamless integrations &amp; API connections"
-msgstr "الاتصالات اللاسلكية بين الدمج والرابطة"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3950,12 +4123,12 @@ msgstr "تأمين الرهائن"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Secure cloud hosting &amp; automatic backups"
-msgstr "توفير السحب المضمونة والدعم الآلي"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
-msgstr "الأمن والأمن"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4019,6 +4192,11 @@ msgid "Sign in"
 msgstr "تسجيل الدخول"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+msgid "Sign up"
+msgstr "إنشاء حساب"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
 msgstr "تسعير بسيط للبنية التحتية."
@@ -4034,6 +4212,7 @@ msgid "Solutions shaped around real operations"
 msgstr "الحلول المصاغة حول العمليات الحقيقية"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_source_page
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__source_page
 msgid "Source Page"
 msgstr "المصدر"
@@ -4041,7 +4220,7 @@ msgstr "المصدر"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Staging &amp; development"
-msgstr "التدشين والتنمية"
+msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4107,6 +4286,19 @@ msgid "Status"
 msgstr "الحالة"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة القائمة على الأنشطة\n"
+"الموعد النهائي: تاريخ الموعد المحدد قد مر بالفعل\n"
+"اليوم: تاريخ النشاط اليوم\n"
+"المخطط له: الأنشطة المقبلة."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Storage"
 msgstr "التخزين"
@@ -4138,6 +4330,7 @@ msgid "Support"
 msgstr "الدعم"
 
 #. module: website_saas_landing
+#: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__support_maintenance
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__support_maintenance
 msgid "Support & Maintenance"
 msgstr "الدعم"
@@ -4375,6 +4568,11 @@ msgid "Transfer"
 msgstr "التحويل"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء المسجل."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Understand"
 msgstr "مفهوم"
@@ -4453,9 +4651,24 @@ msgid "We've received your enquiry — MyOdoo.sh"
 msgstr "لقد إستلمنا طلبك"
 
 #. module: website_saas_landing
+#: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website Messages"
+msgstr "الموقع الشبكي"
+
+#. module: website_saas_landing
 #: model:ir.model,name:website_saas_landing.model_website_saas_enquiry
 msgid "Website SaaS Enquiry"
 msgstr "المواقع الشبكية"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__website_message_ids
+msgid "Website communication history"
+msgstr "تاريخ الاتصال في الموقع الشبكي"
+
+#. module: website_saas_landing
+#: model:ir.model.fields,help:website_saas_landing.field_crm_lead__saas_enquiry_id
+msgid "Website enquiry this lead was created from."
+msgstr "استفسار الموقع الشبكي هذا الدليل تم خلقه."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4672,8 +4885,8 @@ msgstr "e.g. 25"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.res_config_settings_view_form_saas_enquiry
-msgid "e.g. sales@your-domain.com"
-msgstr "e.g. sales@your-domain.com"
+msgid "e.g. notifications@myodoo.sh"
+msgstr "e.g. notifications@myodoo.sh"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4724,18 +4937,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "🔒 <span data-i18n=\"data_encrypted\">Encrypted Backup</span>"
 msgstr "? <span data-i18n=\"data_encrypted\">الدعم المشفر</span>"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Log out"
-msgstr "تسجيل الخروج"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Sign up"
-msgstr "إنشاء حساب"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
-msgid "Forgot password"
-msgstr "نسيت كلمة المرور"
