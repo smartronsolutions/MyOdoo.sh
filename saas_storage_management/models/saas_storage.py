@@ -50,7 +50,9 @@ class SaasOdooInstance(models.Model):
                     if code == 'saas_extra_storage' or 'extra storage' in name:
                         extra_storage_gb += float(line.product_uom_qty or 0.0)
 
-        base_storage = 20.0 if (plan and 'growth' in str(plan).lower()) else 5.0
+        # Every plan includes the same base container: 2 workers + 5 GB of storage
+        # (Standard and Growth are sold at the same 36 / month base price).
+        base_storage = 5.0
         res['storage_limit_gb'] = base_storage + extra_storage_gb
         return res
     
@@ -63,6 +65,12 @@ class SaasOdooInstance(models.Model):
         compute='_compute_storage_used',
         store=True
     )
+
+    storage_folder_gb = fields.Float(
+        string='Instance Usage (GB)', readonly=True, copy=False,
+        help="Total size the instance itself uses: database, filestore, custom addons, "
+             "backups and logs — every file the instance wrote. Measured with `du` as "
+             "root over the server connection when the storage cron runs.")
 
     storage_percentage = fields.Float(
         string='Storage Usage %',
@@ -101,9 +109,13 @@ class SaasOdooInstance(models.Model):
         check_storage() cron is what keeps this field's stored value up to date."""
         for record in self:
             try:
-                record.storage_used_gb = round(self._calculate_filestore_size(record), 2)
+                usage_gb = self._get_instance_usage_gb(record)
+                image_gb = self._get_image_size_gb(record)
+                record.storage_folder_gb = round(usage_gb, 2)
+                record.storage_used_gb = round(usage_gb + image_gb, 2)
             except Exception as e:
                 _logger.error(f"[STORAGE] Error computing storage for {record.name}: {str(e)}")
+                record.storage_folder_gb = 0.0
                 record.storage_used_gb = 0.0
 
     @api.depends('storage_used_gb', 'storage_limit_gb', 'storage_is_unlimited')
@@ -136,10 +148,122 @@ class SaasOdooInstance(models.Model):
             else:
                 record.storage_status = 'ok'
 
+    def _get_backups_size_gb(self, instance):
+        """Storage taken by the backups of this instance, in GB.
+
+        Backups are written outside the instance folder (the master's
+        ``instance-backups`` directory and its ``container`` sub-folder), so ``du`` on
+        the instance folder never saw them. Both backup tables are summed here:
+        ``saas.odoo.instance.backup`` (database + filestore) and
+        ``saas.odoo.instance.container.backup`` (whole container).
+
+        The real file size is used when the file can be read locally; otherwise the
+        measured ``file_size`` stored on the record is used (it is in decimal MB).
+        """
+        technical = instance.technical_name or ''
+        total_bytes = 0
+        for model in ('saas.odoo.instance.backup',
+                      'saas.odoo.instance.container.backup'):
+            try:
+                records = self.env[model].sudo().search([('instance_id', '=', instance.id)])
+            except Exception as error:
+                _logger.warning("[STORAGE] Cannot read %s of %s: %s", model, instance.name, error)
+                continue
+            for record in records:
+                path = record.file_path or ''
+                # A backup stored inside the instance folder is already counted by `du`.
+                if technical and ('/home/%s/' % technical) in path:
+                    continue
+                size = 0
+                if path:
+                    try:
+                        if os.path.isfile(path):
+                            size = os.path.getsize(path)
+                    except OSError:
+                        size = 0
+                if not size:
+                    # ``file_size`` is stored in MB (bytes / 1e6) when the backup was made.
+                    size = int(float(record.file_size or 0.0) * 1000 * 1000)
+                total_bytes += size
+        return round(total_bytes / (1000 ** 3), 4)
+
+    def _get_image_size_gb(self, instance):
+        """Storage taken by the instance's private Docker image, in GB.
+
+        Python libraries and system packages are baked into a private image
+        (``odoo:<version>-custom-<technical_name>``) that lives in
+        ``/var/lib/docker/overlay2``, outside ``/home/<technical_name>``. Its real size
+        is recorded on the ``saas.docker.image`` record after every build, so it is
+        added here: rebuilding the image with extra packages grows the customer's
+        storage usage exactly like a bigger database would.
+        """
+        try:
+            image = self.env['saas.docker.image'].sudo().search(
+                [('instance_id', '=', instance.id)], limit=1)
+            return round((image.size_gb or 0.0), 2) if image else 0.0
+        except Exception as error:
+            _logger.warning(
+                "[STORAGE] Could not read the image size of %s: %s", instance.name, error)
+            return 0.0
+
+    def _get_instance_usage_gb(self, instance):
+        """Everything the instance itself uses, in GB: folder + its backups.
+
+        This is what the portal shows as **Instance Usage**: the whole instance folder
+        (database, filestore, addons, logs) plus every backup file that was written for
+        this instance outside the folder.
+        """
+        folder_gb = self._calculate_folder_size(instance) or 0.0
+        backups_gb = self._get_backups_size_gb(instance) or 0.0
+        return round(folder_gb + backups_gb, 4)
+
     def _calculate_filestore_size(self, instance):
+        """Total storage of an instance, in GB: folder + backups + private image."""
+        usage_gb = self._get_instance_usage_gb(instance)
+        image_gb = self._get_image_size_gb(instance)
+        return round(usage_gb + image_gb, 4)
+
+    def _ssh_folder_size_gb(self, instance):
+        """Total size of the instance folder over SSH, in GB (``None`` when no SSH).
+
+        The Odoo process cannot read ``pgdata/`` (owned by postgres, mode 0700) nor the
+        Docker volume, so walking the folder locally only counted a few kilobytes and
+        every instance looked empty. ``du`` through the instance server connection runs
+        as root and really sees the database, the filestore and the backups.
+        """
+        if not instance.pserver_id or not instance.technical_name:
+            return None
+        folder = '/home/%s' % instance.technical_name
+        paths = [folder]
+        # A named volume that is NOT bind-mounted inside the folder is extra space; when
+        # ``odoo-web-data`` lives inside the folder ``du`` already counted it.
+        if not os.path.exists(os.path.join(folder, 'odoo-web-data')):
+            paths.append('/var/lib/docker/volumes/%s_odoo-web-data/_data'
+                         % instance.technical_name)
+        command = 'du -sb %s 2>/dev/null || true' % ' '.join(paths)
+        try:
+            ssh = instance.pserver_id.sudo()._connect()
+            try:
+                _exit_code, output = instance.pserver_id._exec_capture(command, ssh)
+            finally:
+                ssh.close()
+        except Exception as error:
+            _logger.warning(
+                "[STORAGE] SSH du failed for %s: %s", instance.name, error)
+            return None
+        total = 0
+        for line in (output or '').splitlines():
+            parts = line.split()
+            if len(parts) >= 2 and parts[0].isdigit():
+                total += int(parts[0])
+        if not total:
+            return None
+        return round(total / (1024 ** 3), 4)
+
+    def _calculate_folder_size(self, instance):
         """
         Calculate total size of /home/{technical_name}/ directory in GB
-        
+
         Path structure:
         /home/{technical_name}/
         ├── Dockerfile
@@ -149,6 +273,9 @@ class SaasOdooInstance(models.Model):
         ├── odoo-web-data/
         └── pgdata/
         """
+        ssh_gb = self._ssh_folder_size_gb(instance)
+        if ssh_gb is not None:
+            return ssh_gb
         try:
             # Use technical_name for path
             if not instance.technical_name:
@@ -212,14 +339,49 @@ class SaasOdooInstance(models.Model):
             _logger.error(f"[STORAGE] Error calculating storage for {instance.name}: {str(e)}")
             return 0.0
 
+    def _refresh_storage_usage(self):
+        """Recompute the stored storage values **right now** (no cron, no waiting).
+
+        Called from the portal page and after every change that can move the numbers
+        (new/deleted backup, image rebuild, staging copy), so the customer always reads
+        live values. Also enforces the storage limits instantly: once an instance reaches
+        100% of its quota it is stopped on the spot, which the (now disabled) hourly cron
+        used to do.
+        """
+        for record in self:
+            try:
+                usage_gb = self._get_instance_usage_gb(record)
+                image_gb = self._get_image_size_gb(record)
+                record.storage_folder_gb = round(usage_gb, 2)
+                record.storage_used_gb = round(usage_gb + image_gb, 2)
+                record.storage_last_check = fields.Datetime.now()
+            except Exception as error:
+                _logger.error(
+                    "[STORAGE] Live refresh failed for %s: %s", record.name, error)
+                continue
+            # 100% reached: stop the instance immediately instead of waiting for a cron.
+            try:
+                if ((record.storage_percentage or 0.0) >= 100.0
+                        and record.state == 'deploy'
+                        and record.operation_state == 'run'):
+                    record._suspend_for_storage_full()
+            except Exception as error:
+                _logger.warning(
+                    "[STORAGE] Auto-stop at 100%% failed for %s: %s", record.name, error)
+        return True
+
     def check_storage(self):
         """Check storage, create history record, notify and auto-stop as thresholds are crossed"""
         for record in self:
             try:
                 # Calculate storage - writing storage_used_gb cascades (via @api.depends) to
                 # recompute + store storage_percentage and storage_status automatically.
-                size_gb = self._calculate_filestore_size(record)
-                record.storage_used_gb = round(size_gb, 2)
+                # Instance usage = the whole instance folder (one `du`) + every backup file;
+                # the total adds the private Docker image of Python libs / system packages.
+                usage_gb = self._get_instance_usage_gb(record)
+                image_gb = self._get_image_size_gb(record)
+                record.storage_folder_gb = round(usage_gb, 2)
+                record.storage_used_gb = round(usage_gb + image_gb, 2)
                 record.storage_last_check = fields.Datetime.now()
 
                 status = record.storage_status

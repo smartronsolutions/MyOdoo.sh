@@ -71,6 +71,20 @@
                                 </div>
                             </div>
                         </setting>
+                        <setting id="saas_worker_price_monthly" string="Additional Worker Price"
+                            help="Recurring monthly price of one additional worker. Annual upgrades are billed × 12, prorated over the remaining subscription period. Leave 0 to use the 'Workers' product price."
+                            company_dependent="1">
+                            <div class="content-group">
+                                <div class="row">
+                                    <label for="saas_worker_price_monthly" class="col-lg-4 o_light_label"/>
+                                    <field name="saas_worker_price_monthly" widget="float"/>
+                                </div>
+                                <div class="row">
+                                    <label for="saas_storage_price_per_gb" class="col-lg-4 o_light_label"/>
+                                    <field name="saas_storage_price_per_gb" widget="float"/>
+                                </div>
+                            </div>
+                        </setting>
         			</block>
         			<block title="GitHub Integration" name="saas_github_setting_container">
         				<setting id="github_client_id_setting" string="GitHub OAuth Client ID" 

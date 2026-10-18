@@ -3,7 +3,7 @@
 <data>
 
 <record id="saas_about_page" model="website.page">
-  <field name="name">About (My Odoo SH)</field>
+  <field name="name">About Us</field>
   <field name="url">/about</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -11,7 +11,7 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_about_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo SH — About</t>
+<t t-set="additional_title">About Us</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
 <div class="mo_site mo_about_page mh">

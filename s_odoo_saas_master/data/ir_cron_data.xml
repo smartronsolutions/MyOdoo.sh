@@ -127,16 +127,8 @@
             <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d 17:20:00')"/>
         </record>
 
-        <record forcecreate="True" id="cron_saas_check_storage_limits" model="ir.cron">
-            <field name="name">SaaS Master: Check instance storage limits</field>
-            <field name="model_id" ref="model_saas_odoo_instance"/>
-            <field name="state">code</field>
-            <field name="code">model.cron_check_storage_limits()</field>
-            <field name="user_id" ref="base.user_root"/>
-            <field name="interval_number">1</field>
-            <field name="interval_type">hours</field>
-            <field name="nextcall" eval="datetime.now().strftime('%Y-%m-%d %H:30:00')"/>
-        </record>
+        <!-- Storage is computed live (portal page load, backup create/delete,
+             image rebuild): no hourly storage cron anymore. -->
 
         <record forcecreate="True" id="cron_saas_deploy_pending_instances" model="ir.cron">
             <field name="name">SaaS Master: Deploy purchased instances</field>

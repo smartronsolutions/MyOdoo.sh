@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+<record id="saas_mcp_page" model="website.page">
+  <field name="name">MCP Odoo</field>
+  <field name="url">/mcp-odoo</field>
+  <field name="type">qweb</field>
+  <field name="is_published">True</field>
+  <field name="website_indexed">True</field>
+  <field name="arch" type="xml">
+<t t-name="website_saas_landing.saas_mcp_page">
+<t t-call="website.layout">
+<t t-set="additional_title">MCP Odoo</t>
+<t t-set="no_footer" t-value="true"/>
+<div id="wrap">
+<div class="mo_site mo_mcp_page mh">
+<div class="top-glow"></div><div class="top-glow two"></div>
+
+<main>
+
+    <!-- ============================================================
+         1. HERO — bridge Claude AI to Odoo
+         ============================================================ -->
+    <section class="mh-hero">
+      <div class="mh-hero-bg" aria-hidden="true"></div>
+      <div class="container mh-hero-inner">
+        <span class="mh-pill" data-reveal="1"><i></i><span data-i18n="mcp_pill">MCP Protocol · Real-time · Secure</span></span>
+        <h1 data-reveal="1" data-i18n-html="mcp_title">Bridge Claude AI<br/><span class="mh-grad">to your Odoo ERP</span></h1>
+        <p class="mh-sub" data-reveal="1" data-i18n="mcp_intro">Connect your Odoo instance to Claude through the Model Context Protocol. Automate workflows, enhance decisions and unlock AI-powered insights with one secure connection.</p>
+        <div class="mh-cta-row" data-reveal="1">
+          <button class="mh-btn mh-btn-primary" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_btn_start">Get started free →</button>
+          <button class="mh-btn mh-btn-ghost" onclick="location.href='#how-it-works'" data-i18n="mcp_btn_how">See how it works</button>
+        </div>
+
+        <div class="mh-dash-wrap" data-reveal="1">
+          <span class="mh-float mh-f1" aria-hidden="true"><i class="mh-pulse"></i><span data-i18n="mcp_live">Live connection</span></span>
+          <span class="mh-float mh-f3">TLS 1.3</span>
+          <span class="mh-float mh-f5"><span data-i18n="mcp_float_tools">12 MCP tools</span></span>
+
+          <div class="mcp-bridge" role="img" aria-label="Diagram: an AI assistant connects through the MCP Odoo bridge to your Odoo ERP, with a live status line.">
+            <div class="mcp-bridge-bar">
+              <span class="mh-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="mcp-bridge-url"><t t-out="'mcpodoo.com/sse'"/></span>
+              <span class="mcp-bridge-tag" data-i18n="mcp_preview">Live bridge</span>
+            </div>
+            <div class="mcp-bridge-body">
+              <div class="mcp-node">
+                <span class="mcp-node-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M12 4v3"/></svg></span>
+                <span><b data-i18n="mcp_node_ai">Claude AI</b><small>Anthropic</small></span>
+              </div>
+              <span class="mcp-link" aria-hidden="true"><em></em><i data-i18n="mcp_stream">SSE stream</i></span>
+              <div class="mcp-node is-hub">
+                <span class="mcp-node-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h6l-1 7 9-11h-6l1-7z"/></svg></span>
+                <span><b data-i18n="mcp_node_bridge">MCP Bridge</b><small><t t-out="'mcpodoo.com'"/></small></span>
+              </div>
+              <span class="mcp-link" aria-hidden="true"><em></em><i data-i18n="mcp_rpc">Odoo RPC</i></span>
+              <div class="mcp-node">
+                <span class="mcp-node-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-4-9 4v8l9 4 9-4z"/><path d="M3.3 7.5 12 12l8.7-4.5"/><path d="M12 12v9"/></svg></span>
+                <span><b data-i18n="mcp_node_odoo">Odoo ERP</b><small data-i18n="mcp_node_odoo_sub">Your instance</small></span>
+              </div>
+            </div>
+            <div class="mcp-bridge-log">
+              <i class="mh-pulse"></i>
+              <span data-i18n="mcp_log">Claude just searched 12 records and created 3 invoices in your Odoo database.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. TRUST BAR
+         ============================================================ -->
+    <div class="mh-trust"><div class="container mh-trust-inner">
+      <span class="mh-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="11" width="15" height="9" rx="2.2"/><path d="M8 11V7.8a4 4 0 0 1 8 0V11"/></svg><span data-i18n="mcp_trust1">TLS 1.3 encryption</span></span>
+      <i class="mh-sep" aria-hidden="true"></i>
+      <span class="mh-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="12" r="3.4"/><path d="M11.4 12H20"/><path d="M17 12v3"/></svg><span data-i18n="mcp_trust2">Token-based authentication</span></span>
+      <i class="mh-sep" aria-hidden="true"></i>
+      <span class="mh-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h6l-1 7 9-11h-6l1-7z"/></svg><span data-i18n="mcp_trust3">Real-time sync</span></span>
+      <i class="mh-sep" aria-hidden="true"></i>
+      <span class="mh-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><span data-i18n="mcp_trust4">All Odoo versions</span></span>
+      <i class="mh-sep" aria-hidden="true"></i>
+      <span class="mh-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10a4 4 0 0 0 .6-8A5.5 5.5 0 0 0 7 8a4.5 4.5 0 0 0 0 9z"/></svg><span data-i18n="mcp_trust5">Works with MyOdoo.sh</span></span>
+    </div></div>
+
+    <!-- ============================================================
+         3. FEATURES
+         ============================================================ -->
+    <section id="features" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_features_title">Powerful features</h2>
+        <p data-i18n="mcp_features_text">Everything you need to connect AI with your Odoo ERP — securely, in real time and without a complex setup.</p>
+      </div>
+      <div class="svc-cards">
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3 data-i18n="mcp_f1">Secure connection</h3>
+          <p data-i18n="mcp_f1_text">Enterprise-grade TLS 1.3 encryption with token-based authentication. Your data stays inside your own infrastructure.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h6l-1 7 9-11h-6l1-7z"/></svg></div>
+          <h3 data-i18n="mcp_f2">Real-time sync</h3>
+          <p data-i18n="mcp_f2_text">Instant synchronisation between AI and Odoo with an average latency under 12 ms — no waiting for batch jobs.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="11" rx="3"/><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M12 4v3"/></svg></div>
+          <h3 data-i18n="mcp_f3">AI automation</h3>
+          <p data-i18n="mcp_f3_text">Let AI automate routine work — create invoices, search records and trigger business logic on request.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20v-6"/><path d="M11 20V8"/><path d="M16 20v-9"/><path d="M21 20V5"/></svg></div>
+          <h3 data-i18n="mcp_f4">Advanced analytics</h3>
+          <p data-i18n="mcp_f4_text">Read and aggregate your Odoo data to produce summaries, reports and insights on demand.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H7a5 5 0 0 0 0 10h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M8 12h8"/></svg></div>
+          <h3 data-i18n="mcp_f5">Easy integration</h3>
+          <p data-i18n="mcp_f5_text">Connect in under five minutes. Paste the SSE endpoint into your AI client — no server setup required.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-4-9 4v8l9 4 9-4z"/><path d="M3.3 7.5 12 12l8.7-4.5"/><path d="M12 12v9"/></svg></div>
+          <h3 data-i18n="mcp_f6">Every Odoo version</h3>
+          <p data-i18n="mcp_f6_text">Compatible with Odoo Community and Enterprise, versions 16, 17 and 19 — and it works with MyOdoo.sh out of the box.</p>
+        </article>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         4. AI PROVIDERS
+         ============================================================ -->
+    <section id="providers" class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_providers_title">Connect the AI stack you already use</h2>
+        <p data-i18n="mcp_providers_text">Connect Claude directly through the Model Context Protocol, or use API-based providers for chat, automation and ERP workflows.</p>
+      </div>
+      <div class="mcp-providers">
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava an" aria-hidden="true"><t t-out="'AN'"/></span>
+            <span><h3 data-i18n="mcp_p1">Anthropic</h3><span class="mcp-provider-tag" data-i18n="mcp_p1_tag">Claude API</span></span>
+          </div>
+          <p data-i18n="mcp_p1_text">Use Claude models by API for chat, reasoning and Odoo actions with managed Anthropic access.</p>
+        </article>
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava ai" aria-hidden="true"><t t-out="'AI'"/></span>
+            <span><h3 data-i18n="mcp_p2">OpenAI</h3><span class="mcp-provider-tag" data-i18n="mcp_p2_tag">GPT API</span></span>
+          </div>
+          <p data-i18n="mcp_p2_text">Connect OpenAI models for fast assistant workflows, analytics and structured ERP operations.</p>
+        </article>
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava ds" aria-hidden="true"><t t-out="'DS'"/></span>
+            <span><h3 data-i18n="mcp_p3">DeepSeek</h3><span class="mcp-provider-tag" data-i18n="mcp_p3_tag">Low-cost models</span></span>
+          </div>
+          <p data-i18n="mcp_p3_text">Use DeepSeek chat and reasoning models for low-cost AI automation connected to your Odoo data.</p>
+        </article>
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava gq" aria-hidden="true"><t t-out="'GQ'"/></span>
+            <span><h3 data-i18n="mcp_p4">Groq</h3><span class="mcp-provider-tag" data-i18n="mcp_p4_tag">Fast · Free tier</span></span>
+          </div>
+          <p data-i18n="mcp_p4_text">Run ultra-fast inference with Groq free-tier friendly models for quick ERP questions and actions.</p>
+        </article>
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava ol" aria-hidden="true"><t t-out="'OL'"/></span>
+            <span><h3 data-i18n="mcp_p5">Ollama</h3><span class="mcp-provider-tag" data-i18n="mcp_p5_tag">Local · No API key</span></span>
+          </div>
+          <p data-i18n="mcp_p5_text">Run local models with Ollama for private, no-cloud AI workflows on your own server.</p>
+        </article>
+        <article class="mcp-provider" data-reveal="1">
+          <div class="mcp-provider-top">
+            <span class="mcp-ava mcp" aria-hidden="true"><t t-out="'MCP'"/></span>
+            <span><h3 data-i18n="mcp_p6">Claude MCP</h3><span class="mcp-provider-tag" data-i18n="mcp_p6_tag">SSE · Live tools</span></span>
+          </div>
+          <p data-i18n="mcp_p6_text">Paste the SSE endpoint into Claude connectors and Claude can use your Odoo tools directly.</p>
+        </article>
+      </div>
+      <p class="note-box" data-i18n="mcp_providers_note">Claude, Anthropic, OpenAI, DeepSeek, Groq and Ollama are trademarks of their respective owners. MCP Odoo is an independent service.</p>
+    </div></section>
+
+    <!-- ============================================================
+         5. THREE WAYS TO CONNECT
+         ============================================================ -->
+    <section id="connect" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_methods_title">How to connect AI to Odoo</h2>
+        <p data-i18n="mcp_methods_text">Three ways to plug AI into your Odoo: Claude directly via MCP, any API provider through the platform, or free local AI with Ollama — all bridged to your live Odoo data.</p>
+      </div>
+      <div class="svc-cards">
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7H7a5 5 0 0 0 0 10h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M8 12h8"/></svg></div>
+          <h3 data-i18n="mcp_m1">MCP SSE · Direct</h3>
+          <p data-i18n="mcp_m1_text">Connect Claude.ai or Claude Desktop straight to Odoo with a single URL. No API key and no code — Claude gets live Odoo tools instantly.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M8 22h8"/><path d="M12 18v4"/></svg></div>
+          <h3 data-i18n="mcp_m2">REST API · Web platform</h3>
+          <p data-i18n="mcp_m2_text">Log in to the MCP Odoo web platform with your own API key. Supported providers include Anthropic, OpenAI, DeepSeek and Groq. Chat with your Odoo directly in the browser.</p>
+        </article>
+        <article class="svc-card is-static" data-reveal="1">
+          <div class="svc-card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2.5"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <h3 data-i18n="mcp_m3">Local · Free · Private</h3>
+          <p data-i18n="mcp_m3_text">Run open-source AI on your own hardware. Zero API cost and complete data privacy — ideal for on-premise Odoo where nothing leaves your network.</p>
+        </article>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         6. HOW IT WORKS
+         ============================================================ -->
+    <section id="how-it-works" class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_how_title">How it works</h2>
+        <p data-i18n="mcp_how_text">Four simple steps to connect AI to your Odoo instance.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-step" data-reveal="1"><h3 data-i18n="mcp_h1">Create account</h3><p data-i18n="mcp_h1_text">Sign up and access your MCP Odoo dashboard with connection tools and usage analytics.</p></article>
+        <article class="process-step" data-reveal="1"><h3 data-i18n="mcp_h2">Configure Odoo</h3><p data-i18n="mcp_h2_text">Install the MCP module in your Odoo instance and follow the guided setup wizard.</p></article>
+        <article class="process-step" data-reveal="1"><h3 data-i18n="mcp_h3">Generate endpoint</h3><p data-i18n="mcp_h3_text">Get your unique SSE endpoint URL — the secure token that bridges AI to your Odoo data.</p></article>
+        <article class="process-step" data-reveal="1"><h3 data-i18n="mcp_h4">Connect Claude</h3><p data-i18n="mcp_h4_text">Add the endpoint to your AI client settings and start using AI-powered Odoo features immediately.</p></article>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         7. CONNECTION SETUP — endpoint + tools
+         ============================================================ -->
+    <section id="setup" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_setup_title">Connection setup</h2>
+        <p data-i18n="mcp_setup_text">Get your MCP SSE endpoint and connect AI to Odoo in minutes.</p>
+      </div>
+      <div class="mcp-setup">
+        <div class="mcp-panel" data-reveal="1">
+          <span class="mh-badge" data-i18n="mcp_setup_badge">MCP SSE endpoint</span>
+          <h3 class="mcp-panel-title" data-i18n="mcp_setup_endpoint_title">Your secure endpoint</h3>
+          <div class="mcp-endpoint">
+            <code><t t-out="'https://mcpodoo.com/sse'"/></code>
+            <button type="button" class="mcp-copy" data-mcp-copy="https://mcpodoo.com/sse" data-i18n="mcp_setup_copy">Copy endpoint</button>
+          </div>
+          <ol class="mcp-steps">
+            <li data-i18n="mcp_setup_s1">Open your AI client settings and add a connector.</li>
+            <li data-i18n="mcp_setup_s2">Paste the SSE endpoint URL above.</li>
+            <li data-i18n="mcp_setup_s3">Done — the Odoo tools appear immediately.</li>
+          </ol>
+        </div>
+        <div class="mcp-panel" data-reveal="1">
+          <span class="mh-badge" data-i18n="mcp_tools_badge">Available tools</span>
+          <h3 class="mcp-panel-title" data-i18n="mcp_tools_title">What your assistant can do</h3>
+          <ul class="feat-list">
+            <li><b><t t-out="'odoo_server_info'"/></b><small data-i18n="mcp_tool1">Get server information and status</small></li>
+            <li><b><t t-out="'odoo_list_models'"/></b><small data-i18n="mcp_tool2">List all available Odoo models</small></li>
+            <li><b><t t-out="'odoo_search_records'"/></b><small data-i18n="mcp_tool3">Search and retrieve records</small></li>
+            <li><b><t t-out="'odoo_create_record'"/></b><small data-i18n="mcp_tool4">Create new records in Odoo</small></li>
+            <li><b><t t-out="'odoo_update_record'"/></b><small data-i18n="mcp_tool5">Update existing records</small></li>
+            <li><b><t t-out="'odoo_execute_method'"/></b><small data-i18n="mcp_tool6">Execute custom Odoo methods</small></li>
+          </ul>
+        </div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         8. WHY CHOOSE — benefits + results
+         ============================================================ -->
+    <section id="why" class="mh-sec mh-sec-alt"><div class="container mh-split">
+      <div class="mh-split-copy" data-reveal="1">
+        <h2 data-i18n="mcp_why_title">Why choose MCP Odoo?</h2>
+        <p data-i18n="mcp_why_text">Turn your Odoo data into an AI-powered workspace.</p>
+        <ul class="mh-checks">
+          <li><i>✓</i><span data-i18n="mcp_why_c1">Increased productivity: automate routine tasks so your team can focus on strategic work.</span></li>
+          <li><i>✓</i><span data-i18n="mcp_why_c2">Better decisions: get AI-powered insights from your Odoo data.</span></li>
+          <li><i>✓</i><span data-i18n="mcp_why_c3">Lower costs: reduce manual data entry and avoid avoidable errors.</span></li>
+          <li><i>✓</i><span data-i18n="mcp_why_c4">Enterprise security: TLS 1.3 encryption with token-based authentication.</span></li>
+          <li><i>✓</i><span data-i18n="mcp_why_c5">Instant setup: no server configuration, connected in under five minutes.</span></li>
+        </ul>
+      </div>
+      <div class="mcp-results" data-reveal="1">
+        <div class="mcp-result"><b><t t-out="'+78%'"/></b><small data-i18n="mcp_r1">Faster task completion</small></div>
+        <div class="mcp-result"><b><t t-out="'−90%'"/></b><small data-i18n="mcp_r2">Less manual data entry</small></div>
+        <div class="mcp-result"><b><t t-out="'&lt;5 min'"/></b><small data-i18n="mcp_r3">To connect</small></div>
+        <div class="mcp-result"><b><t t-out="'85%'"/></b><small data-i18n="mcp_r4">Adoption in the first week</small></div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         9. PRICING
+         ============================================================ -->
+    <section id="pricing" class="mh-sec"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_price_title">Simple pricing</h2>
+        <p data-i18n="mcp_price_text">Start free forever and scale when you need more. All prices exclude VAT.</p>
+      </div>
+      <div class="mcp-pricing">
+        <article class="mh-plan" data-reveal="1">
+          <div class="mh-plan-top"><h3 data-i18n="mcp_plan_free">Free</h3></div>
+          <div class="mcp-price"><b><t t-out="'€0'"/></b><span data-i18n="mcp_plan_free_sub">Free forever</span></div>
+          <ul class="mh-feats is-alt">
+            <li><b data-i18n="mcp_pf1">50 MCP calls per day</b></li>
+            <li><b data-i18n="mcp_pf2">Unlimited connections</b></li>
+            <li><b data-i18n="mcp_pf3">Team access</b></li>
+            <li><b data-i18n="mcp_pf4">All 12 MCP Odoo tools</b></li>
+            <li><b data-i18n="mcp_pf5">Odoo 16, 17 and 19 support</b></li>
+            <li><b data-i18n="mcp_pf6">Standard support</b></li>
+          </ul>
+          <button class="mh-btn mh-btn-ghost mh-full" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_plan_free_cta">Get started free</button>
+        </article>
+        <article class="mh-plan" data-reveal="1">
+          <div class="mh-plan-top"><h3 data-i18n="mcp_plan_starter">Starter</h3></div>
+          <div class="mcp-price"><b><t t-out="'€10'"/></b><span data-i18n="mcp_plan_starter_sub">Per user / month · ex VAT</span></div>
+          <ul class="mh-feats is-alt">
+            <li><b data-i18n="mcp_ps1">200 MCP calls per day</b></li>
+            <li><b data-i18n="mcp_ps2">Unlimited connections</b></li>
+            <li><b data-i18n="mcp_ps3">Team access</b></li>
+            <li><b data-i18n="mcp_ps4">All 12 MCP Odoo tools</b></li>
+            <li><b data-i18n="mcp_ps5">Odoo 16, 17 and 19 support</b></li>
+            <li><b data-i18n="mcp_ps6">Standard support</b></li>
+          </ul>
+          <button class="mh-btn mh-btn-ghost mh-full" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_plan_starter_cta">Get started</button>
+        </article>
+        <article class="mh-plan is-featured" data-reveal="1">
+          <div class="mh-plan-top"><h3 data-i18n="mcp_plan_pro">Pro</h3><span class="mh-badge" data-i18n="mcp_plan_popular">Most popular</span></div>
+          <div class="mcp-price"><b><t t-out="'€25'"/></b><span data-i18n="mcp_plan_pro_sub">Per user / month · ex VAT</span></div>
+          <ul class="mh-feats">
+            <li><b data-i18n="mcp_pp1">500 MCP calls per day</b></li>
+            <li><b data-i18n="mcp_pp2">Unlimited connections</b></li>
+            <li><b data-i18n="mcp_pp3">Team access</b></li>
+            <li><b data-i18n="mcp_pp4">All 12 MCP Odoo tools</b></li>
+            <li><b data-i18n="mcp_pp5">Priority SSE endpoint</b></li>
+            <li><b data-i18n="mcp_pp6">Usage analytics dashboard</b></li>
+            <li><b data-i18n="mcp_pp7">99.9% uptime SLA</b></li>
+          </ul>
+          <button class="mh-btn mh-btn-primary mh-full" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_plan_pro_cta">Get started</button>
+        </article>
+        <article class="mh-plan" data-reveal="1">
+          <div class="mh-plan-top"><h3 data-i18n="mcp_plan_unlimited">Unlimited</h3></div>
+          <div class="mh-quote" data-i18n="mcp_plan_unlimited_quote">Contact us for unlimited usage</div>
+          <ul class="mh-feats is-alt">
+            <li><b data-i18n="mcp_pu1">Unlimited MCP calls</b></li>
+            <li><b data-i18n="mcp_pu2">Unlimited connections</b></li>
+            <li><b data-i18n="mcp_pu3">Team access</b></li>
+            <li><b data-i18n="mcp_pu4">All 12 MCP Odoo tools</b></li>
+            <li><b data-i18n="mcp_pu5">Dedicated SSE endpoint</b></li>
+            <li><b data-i18n="mcp_pu6">Advanced analytics</b></li>
+            <li><b data-i18n="mcp_pu7">Priority support</b></li>
+            <li><b data-i18n="mcp_pu8">99.9% uptime SLA</b></li>
+          </ul>
+          <button class="mh-btn mh-btn-ghost mh-full" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_plan_unlimited_cta">Contact us</button>
+        </article>
+      </div>
+      <p class="note-box" data-i18n="mcp_price_note">Prices exclude VAT. Plan limits and service levels are defined by your selected offer. Purchases are handled through our support team.</p>
+    </div></section>
+
+    <!-- ============================================================
+         10. FAQ
+         ============================================================ -->
+    <section id="faq" class="mh-sec mh-sec-alt"><div class="container">
+      <div class="mh-head" data-reveal="1">
+        <h2 data-i18n="mcp_faq_title">Questions about MCP Odoo</h2>
+        <p data-i18n="mcp_faq_text">Short answers about the connection, security and plans.</p>
+      </div>
+      <div class="faq-wrap" data-reveal="1">
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q1">What is the Model Context Protocol?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a1">The Model Context Protocol is an open standard that lets AI assistants use external tools. Here it connects your AI client securely to your Odoo data.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q2">Do I need an API key for Claude?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a2">No. The direct MCP connection uses an SSE endpoint added as a connector in Claude — no API key is required. API keys are only needed for API-based providers.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q3">Which Odoo versions are supported?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a3">Odoo Community and Enterprise, versions 16, 17 and 19, including environments hosted on MyOdoo.sh.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q4">Is my data secure?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a4">The connection uses TLS 1.3 encryption and token-based authentication, and your Odoo data stays inside your own infrastructure.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q5">How long does setup take?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a5">Most connections are live in under five minutes — add the SSE endpoint to your AI client and the Odoo tools appear immediately.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q6">Can I use my own AI provider?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a6">Yes. In addition to Claude over MCP, the platform supports Anthropic, OpenAI, DeepSeek and Groq by API key, and free local models with Ollama.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="mcp_faq_q7">Is there a free plan?</span><span class="faq-icon">+</span></button><div class="faq-a" data-i18n="mcp_faq_a7">Yes. The Free plan includes 50 MCP calls per day, unlimited connections and all available tools, and can be used free forever.</div></div>
+      </div>
+    </div></section>
+
+    <!-- ============================================================
+         11. FINAL CTA
+         ============================================================ -->
+    <section class="mh-cta">
+      <div class="mh-cta-bg" aria-hidden="true">
+        <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice">
+          <g class="mh-net">
+            <path d="M100 340 L300 250 L520 300 L760 190 L980 240 L1130 120"/>
+            <path d="M100 120 L300 200 L520 140 L760 240 L980 170 L1130 280"/>
+            <path d="M100 340 L100 120"/><path d="M300 250 L300 200"/><path d="M520 300 L520 140"/>
+            <path d="M760 190 L760 240"/><path d="M980 240 L980 170"/><path d="M1130 120 L1130 280"/>
+          </g>
+          <g class="mh-net-dots">
+            <circle cx="100" cy="340" r="4"/><circle cx="300" cy="250" r="4"/><circle cx="520" cy="300" r="4"/>
+            <circle cx="760" cy="190" r="4"/><circle cx="980" cy="240" r="4"/><circle cx="1130" cy="120" r="4"/>
+            <circle cx="100" cy="120" r="4"/><circle cx="300" cy="200" r="4"/><circle cx="520" cy="140" r="4"/>
+            <circle cx="760" cy="240" r="4"/><circle cx="980" cy="170" r="4"/><circle cx="1130" cy="280" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="container mh-cta-inner" data-reveal="1">
+        <h2 data-i18n="mcp_cta_title">Ready to bring AI into your Odoo?</h2>
+        <p data-i18n="mcp_cta_text">Start free and upgrade when you need more. No credit card required.</p>
+        <div class="mh-cta-row">
+          <button class="mh-btn mh-btn-white" onclick="location.href='https://mcpodoo.com/'" data-i18n="mcp_cta_btn1">Start for free →</button>
+          <button class="mh-btn mh-btn-outline" onclick="location.href='/contact-us'" data-i18n="mcp_cta_btn2">Talk to our team</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+<t t-call="website_saas_landing.mo_footer"/>
+
+</div>
+</div>
+</t>
+</t>
+  </field>
+</record>
+
+</data>
+</odoo>

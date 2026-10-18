@@ -2,6 +2,7 @@ from collections import OrderedDict
 from datetime import datetime, date
 import logging
 import werkzeug.exceptions
+from markupsafe import escape
 
 from odoo import http, fields, _
 from odoo.osv import expression
@@ -269,6 +270,14 @@ class PortalInstance(CustomerPortal):
     def _billing_subscription_values(self, instance, orders):
         expiry = instance.expiration_date
         days_left = (expiry - fields.Date.context_today(instance)).days if expiry else False
+        # Full recurring price: base plan + the worker/storage seats above the ones
+        # included in the plan (the same amount a renewal bills).
+        monthly = instance._get_base_monthly_price()
+        extra_workers = max(0, int(instance.workers_count or 0) - int(instance.base_workers or 0))
+        extra_gb = max(0.0, float(instance.storage_limit_gb or 0.0) - float(instance.base_storage_gb or 0.0))
+        monthly += extra_workers * instance._get_worker_monthly_price()
+        monthly += extra_gb * instance._get_storage_monthly_price_per_gb()
+        currency = instance.company_id.currency_id or request.env.company.currency_id
         return {
             'plan': self._billing_plan_label(orders),
             'version': '%s · %s' % (
@@ -279,11 +288,22 @@ class PortalInstance(CustomerPortal):
             'storage': self._billing_amount(instance.storage_limit_gb or 0.0),
             'cycle': 'Yearly' if instance.subscription_type == 'yearly' else 'Monthly',
             'expiry': expiry.strftime('%d %b %Y') if expiry else '—',
+            'next_renewal': expiry.strftime('%d %b %Y') if expiry else '—',
             'days_left': days_left,
             'status': 'Trial' if instance.trial else (
                 'Active' if instance.state == 'deploy' else instance.state.title()
             ),
             'is_trial': bool(instance.trial),
+            # Base subscription price and current resources of the container.
+            'monthly_price': self._billing_amount(monthly),
+            'annual_price': self._billing_amount(monthly * 12.0),
+            'currency': currency.symbol or '',
+            'base_workers': instance.base_workers or 2,
+            'base_storage': self._billing_amount(instance.base_storage_gb or 5.0),
+            'extra_workers': instance.extra_workers_total,
+            'extra_storage': self._billing_amount(instance.extra_storage_total),
+            'payment_status': dict(instance._fields['payment_status'].selection).get(
+                instance.payment_status, ''),
         }
 
     def _get_instance_billing_values(self, instance):
@@ -415,6 +435,68 @@ class PortalInstance(CustomerPortal):
         values = self._instance_get_page_view_values(instance_id, access_token, **kw)
         return request.render("s_odoo_saas_master.portal_instance_page", values)
 
+    @http.route(['/my/saas/odoo-instance/<int:instance_id>/connect'],
+                type='http', auth="user", website=True)
+    def portal_instance_connect(self, instance_id, **kw):
+        """Open the container's backend as its admin user, without a password."""
+        instance = request.env['saas.odoo.instance'].sudo().browse(instance_id).exists()
+        if not instance:
+            raise werkzeug.exceptions.NotFound()
+        self._validate_instance(instance)
+        try:
+            action = instance.sudo().action_connect_odoo()
+        except (UserError, ValidationError) as exc:
+            _logger.warning("Connect Odoo failed for %s: %s", instance.display_name, exc)
+            message = escape(str(exc))
+            return request.make_response(
+                "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+                "<title>Connect Odoo</title></head>"
+                "<body style='font-family:Arial,Helvetica,sans-serif;padding:48px;text-align:center;color:#2b2029'>"
+                "<h2 style='margin-bottom:8px'>Could not connect to %s</h2>"
+                "<p style='color:#6b6470;max-width:560px;margin:0 auto 24px'>%s</p>"
+                "<a href='/my/saas/odoo-instance/%s' style='color:#714b67;font-weight:700'>&larr; Back to the instance</a>"
+                "</body></html>" % (
+                    escape(instance.display_name), message, instance.id),
+                headers=[('Content-Type', 'text/html; charset=utf-8')],
+            )
+        # ``local=True`` would strip the host from the instance URL and send the
+        # browser to the master domain, where the instance session cookie would
+        # overwrite the visitor's own master session.
+        return request.redirect(
+            action.get('url') or instance.url, code=303, local=False)
+
+    @http.route(['/my/saas/odoo-instance/<int:instance_id>/connect-staging'],
+                type='http', auth="user", website=True)
+    def portal_instance_connect_staging(self, instance_id, **kw):
+        """Open the staging copy of the instance right away, without a password.
+
+        Same one-time hand-over as ``/connect``, but the container session is created
+        on the staging database, so the browser lands in the test copy instead of the
+        live one.
+        """
+        instance = request.env['saas.odoo.instance'].sudo().browse(instance_id).exists()
+        if not instance:
+            raise werkzeug.exceptions.NotFound()
+        self._validate_instance(instance)
+        try:
+            action = instance.sudo().action_connect_odoo_staging()
+        except (UserError, ValidationError) as exc:
+            _logger.warning(
+                "Connect staging failed for %s: %s", instance.display_name, exc)
+            message = escape(str(exc))
+            return request.make_response(
+                "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+                "<title>Connect Staging</title></head>"
+                "<body style='font-family:Arial,Helvetica,sans-serif;padding:48px;text-align:center;color:#2b2029'>"
+                "<h2 style='margin-bottom:8px'>Could not connect to the staging database</h2>"
+                "<p style='color:#6b6470;max-width:560px;margin:0 auto 24px'>%s</p>"
+                "<a href='/my/saas/odoo-instance/%s#staging' style='color:#714b67;font-weight:700'>&larr; Back to the instance</a>"
+                "</body></html>" % (message, instance.id),
+                headers=[('Content-Type', 'text/html; charset=utf-8')],
+            )
+        return request.redirect(
+            action.get('url') or instance.url, code=303, local=False)
+
     @http.route(['/my/saas/settings'], type='http', auth="user", website=True)
     def portal_saas_settings(self, **kw):
         # Deliberately NOT blocked for developers: they keep their own security tab.
@@ -492,6 +574,13 @@ class PortalInstance(CustomerPortal):
     def _instance_get_page_view_values(self, instance_id, access_token, **kwargs):
         instance = request.env['saas.odoo.instance'].sudo().browse(instance_id)
         self._validate_instance(instance)
+        # Live storage: the hourly cron is gone, so the numbers are recomputed each time
+        # the customer opens the page (folder + backups + Docker image).
+        if hasattr(instance, '_refresh_storage_usage'):
+            try:
+                instance._refresh_storage_usage()
+            except Exception as error:
+                _logger.warning("Live storage refresh failed for %s: %s", instance.name, error)
         # Existing instances were deployed before the Master Password field existed:
         # seed it from the generated odoo.conf config so the portal can show it.
         if not instance.admin_pass:
@@ -531,11 +620,20 @@ class PortalInstance(CustomerPortal):
         extra_storage_prod = pricing_ctrl._get_extra_storage_product()
         
         ess_monthly = pricing_ctrl._convert_price(float(essential_prod.list_price)) if (essential_prod and essential_prod.list_price) else pricing_ctrl._convert_price(14900.0)
-        gro_monthly = pricing_ctrl._convert_price(float(growth_prod.list_price)) if (growth_prod and growth_prod.list_price) else pricing_ctrl._convert_price(39900.0)
-        user_monthly = pricing_ctrl._convert_price(float(user_prod.list_price)) if (user_prod and user_prod.list_price) else pricing_ctrl._convert_price(100.0)
-        storage_monthly = pricing_ctrl._get_storage_price_per_gb(pricelist)
-        
+        gro_monthly = pricing_ctrl._convert_price(float(growth_prod.list_price)) if (growth_prod and growth_prod.list_price) else pricing_ctrl._convert_price(36.0)
+        user_monthly = instance._get_worker_monthly_price()
+        storage_monthly = instance._get_storage_monthly_price_per_gb()
+
+        # Upgrade pricing of THIS container: annual = monthly × 12, prorated over the
+        # remaining subscription period when the subscription is still running.
+        upgrade_pricing = instance._get_upgrade_pricing()
+
         currency_sym = pricing_ctrl._get_display_currency().symbol or ''
+
+        ess_annual = round(ess_monthly * 12, 2)
+        gro_annual = round(gro_monthly * 12 * 0.85, 2)
+        user_annual = round(user_monthly * 12, 2)
+        storage_annual = round(storage_monthly * 12, 2)
 
         # Fallback for a paid storage order that was never applied because the customer
         # did not land on the confirmation page: the instance page then plays the
@@ -593,26 +691,37 @@ class PortalInstance(CustomerPortal):
             'essential_product': essential_prod,
             'growth_product': growth_prod,
             'essential_monthly_price': ess_monthly,
-            'essential_annual_price': round(ess_monthly * 12 * 0.85, 2),
+            'essential_annual_price': ess_annual,
             'growth_monthly_price': gro_monthly,
-            'growth_annual_price': round(gro_monthly * 12 * 0.85, 2),
+            'growth_annual_price': gro_annual,
             'user_monthly_price': user_monthly,
-            # Workers and extra storage have ONE price that does not depend on the billing
-            # cycle: the annual figure is the very same amount (no x12, no discount).
-            'user_annual_price': user_monthly,
+            # Upgrades are billed monthly × 12 on annual billing.
+            'user_annual_price': user_annual,
             'extra_storage_monthly_price': storage_monthly,
-            'extra_storage_annual_price': storage_monthly,
+            'extra_storage_annual_price': storage_annual,
             'essential_monthly_price_formatted': pricing_ctrl._format_price(ess_monthly),
-            'essential_annual_price_formatted': pricing_ctrl._format_price(round(ess_monthly * 12 * 0.85, 2)),
+            'essential_annual_price_formatted': pricing_ctrl._format_price(ess_annual),
             'growth_monthly_price_formatted': pricing_ctrl._format_price(gro_monthly),
-            'growth_annual_price_formatted': pricing_ctrl._format_price(round(gro_monthly * 12 * 0.85, 2)),
+            'growth_annual_price_formatted': pricing_ctrl._format_price(gro_annual),
             'user_monthly_price_formatted': pricing_ctrl._format_price(user_monthly),
-            'user_annual_price_formatted': pricing_ctrl._format_price(user_monthly),
+            'user_annual_price_formatted': pricing_ctrl._format_price(user_annual),
             'extra_storage_monthly_price_formatted': pricing_ctrl._format_price(storage_monthly),
-            'extra_storage_annual_price_formatted': pricing_ctrl._format_price(storage_monthly),
+            'extra_storage_annual_price_formatted': pricing_ctrl._format_price(storage_annual),
             'currency_symbol': currency_sym,
             'workers_count': instance.workers_count or 1,
             'max_workers': instance.MAX_WORKERS_PER_INSTANCE,
+            # Proration data used by the upgrade modals to show the amount due today.
+            'upgrade_months': upgrade_pricing['months'],
+            'upgrade_prorated': upgrade_pricing['prorated'],
+            'upgrade_cycle_months': upgrade_pricing['cycle_months'],
+            'upgrade_period_end': upgrade_pricing['period_end'],
+            'instance_subscription_type': upgrade_pricing['subscription_type'],
+            'base_workers': instance.base_workers or 2,
+            'base_storage_gb': instance.base_storage_gb or 5.0,
+            'upgrade_history': instance.upgrade_ids,
+            'upgrade_invoices': instance.account_move_ids.filtered(
+                lambda m: m.move_type == 'out_invoice'
+                and m.saas_order_type in ('buy_storage', 'buy_workers', 'buy_upgrade')),
             'pending_workers_order_id': int(kwargs.get('order_id') or 0)
                 or (pending_workers_order.id if pending_workers_order else 0),
             'worker_monthly_price': user_monthly,
@@ -635,6 +744,23 @@ class PortalInstance(CustomerPortal):
         }
         values.update(self._get_instance_billing_values(instance))
         return self._get_page_view_values(instance, access_token, values, 'my_instances_history', False, **kwargs)
+
+    @http.route('/saas/instance/renew', type='json', auth='user', website=True)
+    def instance_renew(self, instance_id=None, **kwargs):
+        """Create the next annual renewal order of a container.
+
+        The renewal covers the base subscription AND every active worker/storage
+        upgrade, so a single invoice keeps the container running for another year.
+        """
+        instance = self._browse_instance(instance_id)
+        if not instance:
+            return {'success': False, 'error': _("Instance not found.")}
+        self._validate_instance(instance)
+        order = instance._create_renewal_order()
+        if not order:
+            return {'success': False, 'error': _("Nothing to renew for this container.")}
+        request.session['sale_order_id'] = order.id
+        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
 
     @http.route('/saas/instance/stop', type='json', auth='user')
     def instance_stop(self, instance_id, **kwargs):
@@ -714,12 +840,130 @@ class PortalInstance(CustomerPortal):
             return {'success': False, 'error': str(error)}
         return {'success': True, 'admin_pass': instance.admin_pass}
 
+    @http.route('/saas/instance/change-db-name', type='json', auth='user')
+    def instance_change_db_name(self, instance_id, db_name=None, **kwargs):
+        """Change the database name the instance is locked to.
+
+        The new name lands in the ``db_name``/``dbfilter`` rows of ``odoo.conf`` and the
+        Odoo container is restarted (redeploy) so the instance looks for that database.
+        The PostgreSQL database is not renamed: the customer restores or creates it under
+        this name from ``/web/database/manager``.
+        """
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        db_name = (db_name or '').strip()
+        if not db_name:
+            return {'success': False, 'error': _("Please enter a database name.")}
+        restarted = instance.state == 'deploy'
+        try:
+            instance.action_change_db_name(db_name)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "Could not change the database name of instance %s", instance.id)
+            return {'success': False, 'error': str(error)}
+        return {
+            'success': True,
+            'db_name': instance.db_name or db_name,
+            'restarted': restarted,
+        }
+
+    @http.route('/saas/instance/db-staging', type='json', auth='user')
+    def instance_db_staging(self, instance_id=None, enable=None, **kwargs):
+        """Toggle the test / staging database access of one instance.
+
+        ``enable=True`` comments ``db_name`` and ``dbfilter`` out of ``odoo.conf`` and
+        restarts Odoo, so ``/web/database/manager`` lists every database of the instance
+        and the customer can duplicate or restore a test database. ``enable=False``
+        restores both lines (the values are kept) and restarts again, locking the
+        instance back to its own database.
+        """
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        # Never let a full instance be unlocked: it would allow more data to be written.
+        locked = self._storage_lock_error(instance)
+        if locked:
+            return locked
+        enable = enable in (True, 1, '1', 'true', 'True', 'yes', 'on')
+        try:
+            restarted = instance._apply_db_staging_mode(enable)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "Could not change the DB staging mode of instance %s", instance.id)
+            return {'success': False, 'error': str(error)}
+        return {
+            'success': True,
+            'staging': bool(instance.conf_staging_mode),
+            'restarted': restarted,
+            'db_name': instance.db_name or instance.technical_name,
+        }
+
+    @http.route('/saas/instance/staging-db/create', type='json', auth='user')
+    def instance_staging_db_create(self, instance_id=None, mode='duplicate', **kwargs):
+        """Create the test copy of the instance database in one click.
+
+        ``mode='duplicate'`` clones the live database (filestore included),
+        ``mode='empty'`` creates a blank database. odoo.conf is unlocked
+        afterwards so /web/database/selector lists both databases.
+        """
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        locked = self._storage_lock_error(instance)
+        if locked:
+            return locked
+        mode = 'empty' if mode == 'empty' else 'duplicate'
+        try:
+            result = instance.action_create_staging_database(mode)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "Could not create the staging database of instance %s", instance.id)
+            return {'success': False, 'error': str(error)}
+        result['success'] = True
+        return result
+
+    @http.route('/saas/instance/staging-db/stop', type='json', auth='user')
+    def instance_staging_db_stop(self, instance_id=None, **kwargs):
+        """Lock the instance back to its own database, keeping the test copy."""
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        try:
+            result = instance.action_stop_staging_database()
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "Could not stop the staging database of instance %s", instance.id)
+            return {'success': False, 'error': str(error)}
+        result['success'] = True
+        return result
+
+    @http.route('/saas/instance/staging-db/delete', type='json', auth='user')
+    def instance_staging_db_delete(self, instance_id=None, **kwargs):
+        """Delete the staging database and its filestore for good."""
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        try:
+            result = instance.action_delete_staging_database()
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "Could not delete the staging database of instance %s", instance.id)
+            return {'success': False, 'error': str(error)}
+        result['success'] = True
+        return result
+
     # -------------------------------------------------------------------------
-    # Python libraries (pip packages installed inside the instance container)
+    # Python libraries + system (APT) packages baked into the instance image
     # -------------------------------------------------------------------------
     @http.route('/saas/instance/python-libraries', type='json', auth='user')
     def instance_python_libraries(self, instance_id, **kwargs):
-        """Manifest + live versions of the Python libraries of one instance."""
+        """Manifests + live versions of the Python and system packages of one instance."""
         instance = self._browse_instance(instance_id)
         self._validate_instance(instance)
         try:
@@ -731,11 +975,14 @@ class PortalInstance(CustomerPortal):
             return {'success': False, 'error': str(error)}
 
     @http.route('/saas/instance/python-library/install', type='json', auth='user')
-    def instance_python_library_install(self, instance_id, requirement=None, **kwargs):
-        """Install a pip package inside the instance container and record it.
+    def instance_python_library_install(self, instance_id, requirement=None,
+                                       system_packages=None, **kwargs):
+        """Bake Python and/or system (APT) packages into the instance Docker image.
 
-        The library lands in the persisted ``odoo-web-data`` volume (``pip --user``), so it
-        survives a container restart or recreate.
+        The packages are added to the Dockerfile of the instance image
+        (``odoo:<version>-custom-<technical_name>``), the image is rebuilt and the container
+        is recreated from it, so the packages survive a restart, a redeploy and a
+        ``docker compose down/up``.
         """
         instance = self._browse_instance(instance_id)
         self._validate_instance(instance)
@@ -744,11 +991,11 @@ class PortalInstance(CustomerPortal):
         if locked:
             return locked
         try:
-            return instance.python_library_install(requirement)
+            return instance.python_library_install(requirement, system_packages)
         except (UserError, ValidationError) as error:
             return {'success': False, 'error': str(error)}
         except Exception as error:
-            _logger.exception("Python library install failed on instance %s", instance_id)
+            _logger.exception("Package install failed on instance %s", instance_id)
             return {'success': False, 'error': str(error)}
 
     @http.route('/saas/instance/python-library/remove', type='json', auth='user')
@@ -765,6 +1012,23 @@ class PortalInstance(CustomerPortal):
             return {'success': False, 'error': str(error)}
         except Exception as error:
             _logger.exception("Python library removal failed on instance %s", instance_id)
+            return {'success': False, 'error': str(error)}
+
+    @http.route('/saas/instance/system-package/remove', type='json', auth='user')
+    def instance_system_package_remove(self, instance_id, name=None, **kwargs):
+        """Drop an APT package from the instance image and rebuild it."""
+        instance = self._browse_instance(instance_id)
+        self._validate_instance(instance)
+        locked = self._storage_lock_error(instance)
+        if locked:
+            return locked
+        try:
+            return instance.system_package_remove(name)
+        except (UserError, ValidationError) as error:
+            return {'success': False, 'error': str(error)}
+        except Exception as error:
+            _logger.exception(
+                "System package removal failed on instance %s", instance_id)
             return {'success': False, 'error': str(error)}
 
     def _storage_lock_error(self, instance):
@@ -853,6 +1117,18 @@ class PortalInstance(CustomerPortal):
             instance = order.instance_id
             self._validate_instance(instance)
 
+        # Only a PAID upgrade may be applied. A page refresh before the payment is
+        # confirmed must not credit the storage.
+        tx_done = any(tx.state == 'done' for tx in order.transaction_ids)
+        if not tx_done and not order.storage_applied:
+            return {
+                'success': False,
+                'applied': False,
+                'error': _("Payment not confirmed yet."),
+                'instance_id': instance.id,
+                'additional_gb': 0.0,
+                'storage_limit_gb': instance.storage_limit_gb or 0.0,
+            }
         # Finalize the payment once (invoice + storage), then read the status. Both
         # operations are idempotent so a page refresh never credits storage twice.
         if order.invoice_status == 'to invoice' or not order.storage_applied:
@@ -911,6 +1187,17 @@ class PortalInstance(CustomerPortal):
             instance = order.instance_id
             self._validate_instance(instance)
 
+        # Only a PAID upgrade may be applied (see the storage endpoint above).
+        tx_done = any(tx.state == 'done' for tx in order.transaction_ids)
+        if not tx_done and not order.workers_applied:
+            return {
+                'success': False,
+                'applied': False,
+                'error': _("Payment not confirmed yet."),
+                'instance_id': instance.id,
+                'additional_workers': 0,
+                'workers_count': instance.workers_count or 1,
+            }
         if order.invoice_status == 'to invoice' or not order.workers_applied:
             order._finalize_saas_payment()
         status = order._apply_workers_upgrade()

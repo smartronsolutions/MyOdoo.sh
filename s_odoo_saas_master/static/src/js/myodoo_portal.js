@@ -19,13 +19,17 @@ function notify(message) {
     window.toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-// Restarting the containers takes only a few seconds, so the portal counts down 30 seconds
+// Restarting the containers takes only a few seconds, so the portal counts down 15 seconds
 // and then confirms the instance is running again. The countdown is just the prediction the
 // user reads; the polls below keep checking afterwards, so a slower restart still resolves
 // to "running" instead of leaving a stale banner behind.
-const INSTANCE_RESTART_WINDOW_MS = 30 * 1000;
+const INSTANCE_RESTART_WINDOW_MS = 15 * 1000;
 const INSTANCE_RESTART_POLL_MS = 2000;
 const INSTANCE_RESTART_MAX_POLLS = 30;
+
+// A storage upgrade (extra GB) is never smaller than 10 GB, and 10 GB is also
+// the default selection of the Upgrade Storage section. 0 means "no upgrade".
+const MIN_STORAGE_UPGRADE = 10;
 
 // Manual / automatic backup: the job runs in a background thread, so the portal follows
 // it by polling. The server watchdog fails a backup stuck in "running" after 20 minutes;
@@ -47,11 +51,17 @@ const STATUS_BANNER_COPY = {
         title: "Your instance is suspended",
         sub: "Public access and background workers are stopped. Start the instance to bring it back online.",
     },
+    storage_full: {
+        className: "is-storage-full",
+        icon: "fa-exclamation-triangle",
+        title: "Instance stopped — storage full",
+        sub: "Your instance was stopped because it reached its storage limit. Buy extra storage to start it again instantly, or contact support.",
+    },
     restarting: {
         className: "is-restarting",
         icon: "fa-refresh",
         title: "Your instance is restarting",
-        sub: "It will take about 30 seconds.",
+        sub: "It will take about 15 seconds.",
     },
 };
 
@@ -106,6 +116,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._initRenewModal();
         this._initStorageUpgrade();
         this._initWorkersUpgrade();
+        this._initModalScrollLock();
         this._initPostPaymentFlow();
         this._initDeploymentFlow();
         this._initGithubIntegration();
@@ -118,6 +129,8 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         this._fetchLiveLogsIfVisible();
         this._initInstanceShell();
         this._initInstanceAdminPassword();
+        this._initInstanceRestore();
+        this._initDbStaging();
         this._initPythonLibraries();
 
         if (location.hash) {
@@ -1091,41 +1104,29 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             }
 
             const label = actionCopy[action] ? actionCopy[action][0] : _t("Action");
-            notify(label + " " + _t("in progress..."));
             confirmButton.disabled = true;
             const originalLabel = confirmButton.textContent;
             confirmButton.textContent = _t("Please wait...");
+            // Full screen preloader: it stays until the RPC is done, then the page
+            // reloads so the status banner ("Your instance is suspended…") is in sync.
+            this._showInstanceActionOverlay(action);
 
             try {
                 const res = await this.rpc(endpoint, { instance_id: instanceId });
                 if (res && res.success) {
                     if (action === "restart") {
-                        // The containers come back within seconds: show the 30 second countdown
-                        // banner instead of reloading (which would immediately display
-                        // "Running" again) and confirm once the polls see it running.
-                        notify(_t("Restart in progress — your instance will be back in about 30 seconds."));
+                        // Remember the restart so the countdown banner survives the reload.
                         this._beginInstanceRestart(instanceId);
-                        return;
                     }
-                    if (action === "remove") {
-                        // The server keeps the record in 'cancel' state: the reload shows the
-                        // "Your instance is removed" blur instead of the controls.
-                        notify(_t("Instance removed. Its data has been deleted."));
-                        setTimeout(() => location.reload(), 1200);
-                        return;
-                    }
-                    if (action === "suspend") {
-                        this._syncInstanceState("Suspended", "suspended");
-                    } else if (action === "start") {
-                        this._syncInstanceState("Running", "running");
-                    }
-                    notify(label + " completed successfully.");
-                    // Reload so the whole page (state pill, buttons, storage banner) is in sync.
-                    setTimeout(() => location.reload(), 900);
+                    this._finishInstanceActionOverlay(action);
+                    setTimeout(() => location.reload(), action === "remove" ? 1200 : 900);
+                    return;
                 } else {
+                    this._hideInstanceActionOverlay();
                     notify(label + " failed: " + ((res && res.error) || "Unknown error"));
                 }
             } catch (err) {
+                this._hideInstanceActionOverlay();
                 notify("Operation error: " + (err && err.message ? err.message : err));
             } finally {
                 confirmButton.disabled = false;
@@ -1133,6 +1134,104 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             }
         });
 
+    },
+
+    /* ------------------------------------------------------------------
+     * Preloader for the Overview action buttons
+     *   Start / Stop / Restart / Redeploy / Remove show a full screen preloader
+     *   with the action copy, an animated bar, then the page reloads.
+     * ------------------------------------------------------------------ */
+
+    _showInstanceActionOverlay(action) {
+        const overlay = document.getElementById("instanceActionOverlay");
+        if (!overlay) {
+            return;
+        }
+        const copy = {
+            start: [
+                _t("Starting your instance"),
+                _t("Bringing the Odoo containers online. This usually takes a few seconds."),
+            ],
+            suspend: [
+                _t("Stopping your instance"),
+                _t("Stopping public access and every background worker. Your data stays safe."),
+            ],
+            restart: [
+                _t("Restarting your instance"),
+                _t("Restarting the Odoo services. The instance is back in about 15 seconds."),
+            ],
+            redeploy: [
+                _t("Redeploying your instance"),
+                _t("Pulling the latest revision and recreating the containers with your addons."),
+            ],
+            remove: [
+                _t("Removing your instance"),
+                _t("Deleting the containers, database, files and SSL certificate. This cannot be undone."),
+            ],
+        }[action] || [_t("Working on your instance"), _t("Please wait a moment.")];
+
+        const title = document.getElementById("instanceActionTitle");
+        const message = document.getElementById("instanceActionMessage");
+        const hint = document.getElementById("instanceActionHint");
+        if (title) {
+            title.textContent = copy[0];
+        }
+        if (message) {
+            message.textContent = copy[1];
+        }
+        if (hint) {
+            hint.textContent = _t("Please keep this page open — it reloads by itself when the action is done.");
+        }
+        overlay.style.display = "flex";
+        document.body.classList.add("myodoo-modal-open");
+        this._startActionProgress();
+    },
+
+    _startActionProgress() {
+        const fill = document.getElementById("instanceActionProgressFill");
+        if (!fill) {
+            return;
+        }
+        let value = 8;
+        fill.style.width = value + "%";
+        clearInterval(this._actionProgressTimer);
+        this._actionProgressTimer = setInterval(() => {
+            value = Math.min(92, value + Math.max(1, (92 - value) * 0.08));
+            fill.style.width = Math.round(value) + "%";
+        }, 700);
+    },
+
+    _finishInstanceActionOverlay(action) {
+        clearInterval(this._actionProgressTimer);
+        const fill = document.getElementById("instanceActionProgressFill");
+        const title = document.getElementById("instanceActionTitle");
+        const message = document.getElementById("instanceActionMessage");
+        const hint = document.getElementById("instanceActionHint");
+        if (fill) {
+            fill.style.width = "100%";
+        }
+        if (title) {
+            title.textContent = action === "remove"
+                ? _t("Instance removed")
+                : _t("Done — refreshing the page");
+        }
+        if (message) {
+            message.textContent = action === "remove"
+                ? _t("The instance and all of its data have been deleted.")
+                : _t("The action finished successfully. The status below is being refreshed.");
+        }
+        if (hint) {
+            hint.textContent = _t("Reloading…");
+        }
+    },
+
+    _hideInstanceActionOverlay() {
+        clearInterval(this._actionProgressTimer);
+        const overlay = document.getElementById("instanceActionOverlay");
+        if (overlay) {
+            overlay.style.display = "none";
+        }
+        document.body.classList.remove("myodoo-modal-open");
     },
 
     /* ------------------------------------------------------------------
@@ -1172,7 +1271,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         if (!banner || !copy) {
             return;
         }
-        banner.classList.remove("is-running", "is-suspended", "is-restarting");
+        banner.classList.remove("is-running", "is-suspended", "is-restarting", "is-storage-full");
         banner.classList.add(copy.className);
         banner.dataset.state = mode;
         const icon = banner.querySelector(".isb-icon i");
@@ -1216,7 +1315,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const secs = String(remaining % 60).padStart(2, "0");
                 this._applyStatusBanner(
                     "restarting",
-                    "It will take about 30 seconds. Time remaining: " + mins + ":" + secs + "."
+                    "It will take about 15 seconds. Time remaining: " + mins + ":" + secs + "."
                 );
             } else {
                 this._applyStatusBanner(
@@ -2420,14 +2519,15 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             const annual = document.querySelector('[data-billing="annual"]')?.classList.contains("active");
 
             // Plan base price
-            const planMonthlyRaw = parseFloat(activePlanBtn?.dataset.monthlyRaw || (planName === "Growth" ? 39900 : 14900));
-            const planAnnualRaw = parseFloat(activePlanBtn?.dataset.annualRaw || (planName === "Growth" ? 406980 : 151980));
+            const planMonthlyRaw = parseFloat(activePlanBtn?.dataset.monthlyRaw || (planName === "Growth" ? 39900 : 36));
+            const planAnnualRaw = parseFloat(activePlanBtn?.dataset.annualRaw || (planName === "Growth" ? 406980 : 432));
             const planPrice = annual ? planAnnualRaw : planMonthlyRaw;
 
-            // Users count
+            // Users count — the plan includes 2 workers and never goes below that.
             const countInput = document.getElementById("planUsersCount");
-            let usersCount = countInput ? (parseInt(countInput.value) || 1) : 1;
-            if (usersCount < 1) usersCount = 1;
+            const minWorkers = parseInt(countInput?.getAttribute("min")) || 2;
+            let usersCount = countInput ? (parseInt(countInput.value) || minWorkers) : minWorkers;
+            if (usersCount < minWorkers) usersCount = minWorkers;
 
             // Storage GB
             const storageInput = document.getElementById("planStorageGb");
@@ -2446,7 +2546,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             // Worker pricing display — workers cost the same on monthly and annual billing.
             const userPriceEl = document.getElementById("userPriceDisplay");
             if (userPriceEl) {
-                userPriceEl.textContent = userPriceMonthlyFmt + " " + currencySymbol + " / worker / month";
+                userPriceEl.textContent = "Extra worker: " + userPriceMonthlyFmt + " " + currencySymbol + " / month";
             }
 
             // Storage pricing display — same price on monthly and annual billing.
@@ -2457,7 +2557,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             }
 
             // Calculate exact total (Plan + Workers + Extra Storage)
-            const userTotal = annual ? (usersCount * userPriceYearly) : (usersCount * userPriceMonthly);
+            // The base plan includes 2 workers: only the workers above them are billed.
+            const baseWorkers = parseInt(activePlanBtn?.dataset.baseWorkers || "2") || 2;
+            const billableWorkers = Math.max(0, usersCount - baseWorkers);
+            const userTotal = annual ? (billableWorkers * userPriceYearly) : (billableWorkers * userPriceMonthly);
             const storageTotal = annual ? (extraStorageGb * storagePriceYearly) : (extraStorageGb * storagePriceMonthly);
             const grandTotal = planPrice + userTotal + storageTotal;
 
@@ -2484,8 +2587,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 setLine("orderPlanLineLabel", planName + " Plan");
                 setLine("orderPlanLinePrice", money(planPrice) + " / " + cycle);
                 setLine("orderWorkerLineLabel",
-                    usersCount + " " + (usersCount === 1 ? "Worker" : "Workers"));
-                setLine("orderWorkerLinePrice", money(userTotal) + " / " + cycle);
+                    billableWorkers === 0
+                        ? (baseWorkers + " Worker" + (baseWorkers === 1 ? "" : "s") + " included")
+                        : (billableWorkers + " extra Worker" + (billableWorkers === 1 ? "" : "s")));
+                setLine("orderWorkerLinePrice",
+                    billableWorkers === 0 ? "Included" : (money(userTotal) + " / " + cycle));
                 const storageRow = document.getElementById("orderStorageLineRow");
                 if (extraStorageGb > 0) {
                     if (storageRow) {
@@ -2499,7 +2605,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 setLine("orderGrandTotal", money(grandTotal) + " / " + cycle);
             }
             if (orderCycleNote) {
-                orderCycleNote.textContent = annual ? "Annual subscription · 15% discount included · Instant Setup" : "Monthly subscription · Cancel or upgrade anytime · Instant Setup";
+                orderCycleNote.textContent = annual ? "Annual subscription · billed for 12 months · Instant Setup" : "Monthly subscription · Cancel or upgrade anytime · Instant Setup";
             }
         };
 
@@ -2518,7 +2624,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                         period.textContent = annual ? (currencySymbol + " / year") : (currencySymbol + " / month");
                     });
                     document.querySelectorAll(".annual-note").forEach(note => {
-                        note.textContent = annual ? "15% annual discount applied" : "";
+                        note.textContent = annual ? "Annual billing · charged for 12 months" : "";
                     });
 
                     const orderPriceBy = document.getElementById("orderPriceBy");
@@ -2540,6 +2646,16 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 if (storageInput) {
                     storageInput.min = baseStorage;
                     storageInput.value = baseStorage;
+                }
+                // Each plan ships with its own worker allocation (2 for Standard):
+                // reset the stepper so the modal always starts from the included count.
+                const baseWorkers = parseInt(btn.dataset.baseWorkers || "2") || 2;
+                const usersInput = document.getElementById("planUsersCount");
+                if (usersInput) {
+                    usersInput.min = baseWorkers;
+                    if ((parseInt(usersInput.value) || 0) < baseWorkers) {
+                        usersInput.value = baseWorkers;
+                    }
                 }
                 
                 updateModalPricing();
@@ -2722,8 +2838,9 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         document.getElementById("btnMinusUser")?.addEventListener("click", () => {
             const countInput = document.getElementById("planUsersCount");
             if (countInput) {
-                let val = parseInt(countInput.value) || 1;
-                if (val > 1) {
+                const min = parseInt(countInput.getAttribute("min")) || 2;
+                let val = parseInt(countInput.value) || min;
+                if (val > min) {
                     countInput.value = val - 1;
                     updateModalPricing();
                 }
@@ -2734,7 +2851,8 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             const countInput = document.getElementById("planUsersCount");
             if (countInput) {
                 const max = parseInt(countInput.getAttribute("max")) || 4;
-                countInput.value = Math.min((parseInt(countInput.value) || 1) + 1, max);
+                const min = parseInt(countInput.getAttribute("min")) || 2;
+                countInput.value = Math.min((parseInt(countInput.value) || min) + 1, max);
                 updateModalPricing();
             }
         });
@@ -2742,9 +2860,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         document.getElementById("planUsersCount")?.addEventListener("input", (ev) => {
             const countInput = ev.currentTarget;
             const max = parseInt(countInput.getAttribute("max")) || 4;
-            let val = parseInt(countInput.value) || 1;
+            const min = parseInt(countInput.getAttribute("min")) || 2;
+            let val = parseInt(countInput.value) || min;
             if (val > max) countInput.value = max;
-            if (val < 1) countInput.value = 1;
+            if (val < min) countInput.value = min;
             updateModalPricing();
         });
 
@@ -2800,7 +2919,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const subDomain = document.getElementById("planSubDomain")?.value?.trim().toLowerCase();
                 const baseDomainId = document.getElementById("planBaseDomain")?.value;
                 const baseText = baseSelect ? (baseSelect.options[baseSelect.selectedIndex]?.text || "edc.nc") : "edc.nc";
-                const usersCount = parseInt(document.getElementById("planUsersCount")?.value) || 1;
+                const usersCount = Math.max(2, parseInt(document.getElementById("planUsersCount")?.value) || 2);
                 const activePlanBtn = document.querySelector("[data-choose-plan].selected") || document.querySelector('[data-choose-plan="Standard"]');
                 const planName = activePlanBtn ? activePlanBtn.dataset.choosePlan : "Standard";
                 const baseStorage = parseInt(activePlanBtn?.dataset.baseStorage || (planName === "Growth" ? 20 : 5));
@@ -3033,6 +3152,29 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         closeBtn?.addEventListener("click", hideModal);
         cancelBtn?.addEventListener("click", hideModal);
 
+        // "Renew Subscription": create the next annual order covering the base plan
+        // and every active upgrade.
+        const renewSubBtn = document.getElementById("btnRenewSubscription");
+        renewSubBtn?.addEventListener("click", async () => {
+            const id = this._getInstanceId();
+            if (!id) return;
+            const originalHtml = renewSubBtn.innerHTML;
+            renewSubBtn.disabled = true;
+            renewSubBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Creating renewal...';
+            try {
+                const res = await this.rpc("/saas/instance/renew", { instance_id: id });
+                if (res && res.success && res.redirect) {
+                    window.location.href = res.redirect;
+                    return;
+                }
+                notify((res && res.error) || "Could not create the renewal order.");
+            } catch (err) {
+                notify("Renewal error: " + (err && err.message ? err.message : err));
+            }
+            renewSubBtn.disabled = false;
+            renewSubBtn.innerHTML = originalHtml;
+        });
+
         // Prices from data attributes
         const userPriceMonthly = parseFloat(renewModal.dataset.userPriceMonthly || 100);
         const userPriceYearly = parseFloat(renewModal.dataset.userPriceYearly || 1020);
@@ -3044,16 +3186,28 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         const storagePriceMonthlyFmt = renewModal.dataset.storagePriceMonthlyFmt || "220";
         const storagePriceYearlyFmt = renewModal.dataset.storagePriceYearlyFmt || "2,244";
 
-        const essentialMonthly = parseFloat(renewModal.dataset.essentialMonthly || 14900);
-        const essentialAnnual = parseFloat(renewModal.dataset.essentialAnnual || 151980);
+        const essentialMonthly = parseFloat(renewModal.dataset.essentialMonthly || 36);
+        const essentialAnnual = parseFloat(renewModal.dataset.essentialAnnual || 432);
 
         // Resources the instance already owns: the wizard can only upgrade them.
         const currentWorkers = Math.max(1, parseInt(renewModal.dataset.currentWorkers || 1) || 1);
         const currentStorage = Math.max(5, parseFloat(renewModal.dataset.currentStorage || 5) || 5);
+        // The plan allows up to `maxWorkers` workers per instance, so an instance
+        // that already runs `currentWorkers` can only add the difference.
+        const maxWorkers = Math.max(currentWorkers, parseInt(renewModal.dataset.maxWorkers || 4) || 4);
+        const maxAddWorkers = Math.max(0, maxWorkers - currentWorkers);
 
         // Currency symbol is provided by the server (company currency, e.g. €).
         const currencySymbol = renewModal.dataset.currencySymbol || "";
         const instanceId = parseInt(renewModal.dataset.instanceId) || 0;
+        // Upgrade billing: monthly rate × 12 months, prorated over the remaining period.
+        const upgradeMonths = parseFloat(renewModal.dataset.upgradeMonths || "12") || 12;
+        const upgradeProrated = String(renewModal.dataset.upgradeProrated || "").toLowerCase() === "true";
+        // The ADD-ON upgrades are always billed for the container's own subscription
+        // cycle (the plan toggle above only changes how the PLAN is renewed).
+        const instanceIsAnnual = (renewModal.dataset.subscriptionType || "yearly") === "yearly";
+        const upgradeUnit = instanceIsAnnual ? " / year" : " / month";
+        const upgradeCycleLabel = instanceIsAnnual ? "Annual" : "Monthly";
 
         const formatMoney = (val) => {
             if (val === null || val === undefined || isNaN(val)) return "0";
@@ -3071,18 +3225,18 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             const planName = activePlanCard?.dataset.plan || "Standard";
             const planProductId = activePlanCard?.dataset.productId || "";
 
-            const planBasePrice = isAnnual ? essentialAnnual : essentialMonthly;
-
-            // Workers: cannot go below the resources already owned.
+            // Workers: the field is the number of EXTRA workers to add (0 = no
+            // upgrade). The instance can never exceed the plan's worker limit.
             const usersInput = document.getElementById("renewUsersCount");
-            let usersCount = usersInput ? (parseInt(usersInput.value) || currentWorkers) : currentWorkers;
-            if (usersCount < currentWorkers) usersCount = currentWorkers;
+            let addWorkersCount = usersInput ? (parseInt(usersInput.value) || 0) : 0;
+            if (addWorkersCount < 0) addWorkersCount = 0;
+            if (addWorkersCount > maxAddWorkers) addWorkersCount = maxAddWorkers;
             if (usersInput) {
-                usersInput.min = currentWorkers;
-                const maxUsers = parseInt(usersInput.getAttribute("max")) || 4;
-                if (usersCount > maxUsers) usersCount = maxUsers;
-                usersInput.value = usersCount;
+                usersInput.min = 0;
+                usersInput.max = maxAddWorkers;
+                usersInput.value = addWorkersCount;
             }
+            const usersCount = currentWorkers + addWorkersCount;  // resulting total, for display
 
             // Extra storage: the field is the number of GB ADDED on top of what the
             // instance already owns, so only those GB are charged (the plan base GB
@@ -3092,6 +3246,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             let extraStorageGb = storageInput ? (parseInt(storageInput.value) || 0) : 0;
             if (extraStorageGb < 0) extraStorageGb = 0;
             if (extraStorageGb > maxExtraStorage) extraStorageGb = maxExtraStorage;
+            // A storage upgrade is always at least 10 GB (0 = no extra storage).
+            if (extraStorageGb > 0 && extraStorageGb < MIN_STORAGE_UPGRADE) {
+                extraStorageGb = Math.min(MIN_STORAGE_UPGRADE, maxExtraStorage);
+            }
             if (storageInput) {
                 storageInput.min = 0;
                 storageInput.max = maxExtraStorage;
@@ -3102,11 +3260,20 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             if (storageTotalInput) storageTotalInput.value = storageGb;
 
             // Upgrade = only the resources added on top of what the instance owns.
-            const addWorkers = Math.max(0, usersCount - currentWorkers);
+            const addWorkers = addWorkersCount;
             const addStorage = extraStorageGb;
-            const upgradeTotal = (addWorkers * userPriceMonthly) + (addStorage * storagePriceMonthly);
-            // Renew = the Standard plan for the selected cycle only.
-            const planTotal = planBasePrice;
+            const upgradeTotal = ((addWorkers * userPriceMonthly) + (addStorage * storagePriceMonthly)) * upgradeMonths;
+            // Renew = the plan + every resource the container already owns + the
+            // resources added in this wizard. The plan includes `baseWorkers` and
+            // `baseStorage` seats, only what is above them is charged.
+            const baseWorkers = parseInt(activePlanCard?.dataset.baseWorkers || "2") || 2;
+            const baseStorage = parseFloat(activePlanCard?.dataset.baseStorage || "5") || 5;
+            const ownedExtraWorkers = Math.max(0, currentWorkers - baseWorkers);
+            const ownedExtraStorage = Math.max(0, currentStorage - baseStorage);
+            const recurringMonthly = essentialMonthly
+                + (ownedExtraWorkers * userPriceMonthly)
+                + (ownedExtraStorage * storagePriceMonthly);
+            const planTotal = isAnnual ? (recurringMonthly * 12) : recurringMonthly;
 
             // Update hidden fields
             const planNameInput = document.getElementById("renewPlanName");
@@ -3116,34 +3283,82 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
             const grandTotalDisplay = document.getElementById("renewGrandTotalDisplay");
             if (grandTotalDisplay) {
-                grandTotalDisplay.textContent = formatMoney(upgradeTotal) + " " + currencySymbol;
+                // A prorated amount only covers the remaining months, so it must not
+                // be labelled with a "/ year" unit.
+                grandTotalDisplay.textContent = formatMoney(upgradeTotal) + " " + currencySymbol
+                    + (upgradeProrated ? "" : upgradeUnit);
             }
 
             const upgradeAmountEl = document.getElementById("renewUpgradeBtnAmount");
             if (upgradeAmountEl) {
-                upgradeAmountEl.textContent = formatMoney(upgradeTotal) + " " + currencySymbol;
+                upgradeAmountEl.textContent = formatMoney(upgradeTotal) + " " + currencySymbol
+                    + (upgradeProrated ? "" : upgradeUnit);
             }
+            // Monthly subscriptions can only be renewed: upgrades (extra workers /
+            // storage) are an annual-plan feature. Hide the upgrade action on
+            // monthly, show the explanation and lock the resource steppers.
+            const annualOnlyNote = document.getElementById("renewUpgradeAnnualOnlyNote");
+            if (annualOnlyNote) annualOnlyNote.style.display = isAnnual ? "none" : "flex";
+            const upgradeSummary = document.getElementById("renewUpgradeSummary");
+            if (upgradeSummary) upgradeSummary.style.display = isAnnual ? "" : "none";
+
             const upgradeBtn = document.getElementById("renewUpgradeBtn");
             if (upgradeBtn) {
                 const nothingToUpgrade = (addWorkers <= 0 && addStorage <= 0);
-                upgradeBtn.disabled = nothingToUpgrade;
-                upgradeBtn.style.opacity = nothingToUpgrade ? "0.5" : "1";
-                upgradeBtn.style.cursor = nothingToUpgrade ? "not-allowed" : "pointer";
+                upgradeBtn.style.display = isAnnual ? "" : "none";
+                upgradeBtn.disabled = !isAnnual || nothingToUpgrade;
+                upgradeBtn.style.opacity = (!isAnnual || nothingToUpgrade) ? "0.5" : "1";
+                upgradeBtn.style.cursor = (!isAnnual || nothingToUpgrade) ? "not-allowed" : "pointer";
             }
+
+            // Workers / storage steppers are the upgrade controls, so they stay
+            // locked while the wizard is on a monthly (renew-only) cycle.
+            [
+                document.getElementById("renewUsersCount"),
+                document.getElementById("renewStorageGb"),
+                document.getElementById("renewBtnMinusUser"),
+                document.getElementById("renewBtnPlusUser"),
+                document.getElementById("renewBtnMinusStorage"),
+                document.getElementById("renewBtnPlusStorage"),
+            ].forEach((el) => {
+                if (!el) return;
+                el.disabled = !isAnnual;
+                el.style.opacity = isAnnual ? "" : "0.5";
+                el.style.cursor = isAnnual ? "" : "not-allowed";
+            });
 
             const renewAmountEl = document.getElementById("renewRenewBtnAmount");
             if (renewAmountEl) {
-                renewAmountEl.textContent = formatMoney(planTotal) + " " + currencySymbol;
+                renewAmountEl.textContent = formatMoney(planTotal) + " " + currencySymbol
+                    + (isAnnual ? " / yr" : " / mo");
+            }
+
+            // Itemised recurring price of the renewal: plan + owned extra workers + owned extra storage.
+            const breakdownEl = document.getElementById("renewRecurringBreakdown");
+            if (breakdownEl) {
+                const parts = [_t("Plan ") + formatMoney(essentialMonthly) + " " + currencySymbol];
+                if (ownedExtraWorkers > 0) {
+                    parts.push(ownedExtraWorkers + " × " + formatMoney(userPriceMonthly) + " " + currencySymbol);
+                }
+                if (ownedExtraStorage > 0) {
+                    parts.push(ownedExtraStorage + " GB × " + formatMoney(storagePriceMonthly) + " " + currencySymbol);
+                }
+                breakdownEl.textContent = parts.join(" + ") + " = " + formatMoney(planTotal) + " "
+                    + currencySymbol + (isAnnual ? " / yr" : " / mo");
             }
 
             const cycleBadge = document.getElementById("renewSummaryCycleBadge");
             if (cycleBadge) {
-                cycleBadge.textContent = isAnnual ? "Annual" : "Monthly";
+                cycleBadge.textContent = upgradeCycleLabel;
             }
 
             const cycleNote = document.getElementById("renewSummaryNote");
             if (cycleNote) {
-                cycleNote.textContent = "Upgrades apply instantly";
+                const monthsLabel = Number.isInteger(upgradeMonths) ? upgradeMonths : upgradeMonths.toFixed(1);
+                const daysLeftLabel = Math.max(1, Math.round(upgradeMonths * 30));
+                cycleNote.textContent = upgradeProrated
+                    ? "Covers the remaining ~" + daysLeftLabel + " day(s) of your current period · applied on payment"
+                    : "Billed for " + monthsLabel + " month(s) · applied on payment";
             }
 
             // Plan card price preview
@@ -3152,24 +3367,31 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 essDisplay.textContent = formatMoney(isAnnual ? essentialAnnual : essentialMonthly) + " " + currencySymbol + (isAnnual ? " / yr" : " / mo");
             }
 
-            // Worker helper text
+            // Worker helper text (upgrades follow the container's own cycle)
             const userDisplay = document.getElementById("renewUserPriceDisplay");
             if (userDisplay) {
-                const priceFmt = isAnnual ? userPriceYearlyFmt : userPriceMonthlyFmt;
-                userDisplay.textContent = priceFmt + " " + currencySymbol + " / worker / " + (isAnnual ? "year" : "month");
+                const priceFmt = instanceIsAnnual ? userPriceYearlyFmt : userPriceMonthlyFmt;
+                userDisplay.textContent = priceFmt + " " + currencySymbol + " / worker / " + (instanceIsAnnual ? "year" : "month");
+            }
+            const workersHint = document.getElementById("renewWorkersHint");
+            if (workersHint) {
+                workersHint.textContent = addWorkersCount > 0
+                    ? (_t("Workers after upgrade: ") + usersCount + " (" + currentWorkers + " + " + addWorkersCount + ")")
+                    : (_t("Currently ") + currentWorkers + _t(" worker(s) · up to ") + maxAddWorkers
+                        + _t(" more · 0 = no upgrade."));
             }
 
-            // Storage helper text + resulting total
+            // Storage helper text + resulting total (upgrades follow the container's cycle)
             const storageDisplay = document.getElementById("renewStoragePriceDisplay");
             if (storageDisplay) {
-                const storageFmt = isAnnual ? storagePriceYearlyFmt : storagePriceMonthlyFmt;
-                storageDisplay.textContent = currentStorage + " GB included · + " + storageFmt + " " + currencySymbol + " / extra GB / " + (isAnnual ? "year" : "month");
+                const storageFmt = instanceIsAnnual ? storagePriceYearlyFmt : storagePriceMonthlyFmt;
+                storageDisplay.textContent = currentStorage + " GB included · + " + storageFmt + " " + currencySymbol + " / extra GB / " + (instanceIsAnnual ? "year" : "month");
             }
             const storageTotalHint = document.getElementById("renewStorageTotalHint");
             if (storageTotalHint) {
                 storageTotalHint.textContent = extraStorageGb > 0
                     ? (_t("New total: ") + storageGb + " GB (" + currentStorage + " + " + extraStorageGb + ")")
-                    : (_t("New total: ") + storageGb + " GB");
+                    : (_t("No extra storage selected · any storage upgrade starts at 10 GB."));
             }
         };
 
@@ -3201,53 +3423,50 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             });
         });
 
-        // Workers increment/decrement
+        // Workers increment/decrement: 0 (none) up to the plan's worker limit,
+        // one worker at a time, each step priced immediately.
         document.getElementById("renewBtnMinusUser")?.addEventListener("click", () => {
             const input = document.getElementById("renewUsersCount");
             if (input) {
-                let val = parseInt(input.value) || currentWorkers;
-                if (val > currentWorkers) {
-                    input.value = val - 1;
-                    updateRenewPricing();
-                }
+                input.value = Math.max(0, (parseInt(input.value) || 0) - 1);
+                updateRenewPricing();
             }
         });
 
         document.getElementById("renewBtnPlusUser")?.addEventListener("click", () => {
             const input = document.getElementById("renewUsersCount");
             if (input) {
-                const max = parseInt(input.getAttribute("max")) || 4;
-                input.value = Math.min((parseInt(input.value) || currentWorkers) + 1, max);
+                input.value = Math.min((parseInt(input.value) || 0) + 1, maxAddWorkers);
                 updateRenewPricing();
             }
         });
 
         document.getElementById("renewUsersCount")?.addEventListener("input", (ev) => {
             const input = ev.currentTarget;
-            const max = parseInt(input.getAttribute("max")) || 4;
-            let val = parseInt(input.value) || currentWorkers;
-            if (val > max) input.value = max;
-            if (val < currentWorkers) input.value = currentWorkers;
+            let val = parseInt(input.value) || 0;
+            if (val > maxAddWorkers) input.value = maxAddWorkers;
+            if (val < 0) input.value = 0;
             updateRenewPricing();
         });
 
-        // Extra storage increment/decrement (0 .. remaining GB up to 500)
+        // Extra storage decrement: 0 (none) or 10 GB and up — never 1..9 GB.
         document.getElementById("renewBtnMinusStorage")?.addEventListener("click", () => {
             const input = document.getElementById("renewStorageGb");
             if (input) {
                 const val = parseInt(input.value) || 0;
-                if (val > 0) {
-                    input.value = val - 1;
-                    updateRenewPricing();
-                }
+                input.value = val <= MIN_STORAGE_UPGRADE ? 0 : Math.max(MIN_STORAGE_UPGRADE, val - 10);
+                updateRenewPricing();
             }
         });
 
+        // Extra storage increment: jumps straight to 10 GB, then steps of 10 GB.
         document.getElementById("renewBtnPlusStorage")?.addEventListener("click", () => {
             const input = document.getElementById("renewStorageGb");
             if (input) {
                 const max = Math.max(0, 500 - currentStorage);
-                input.value = Math.min((parseInt(input.value) || 0) + 1, max);
+                const val = parseInt(input.value) || 0;
+                const next = val < MIN_STORAGE_UPGRADE ? MIN_STORAGE_UPGRADE : val + 10;
+                input.value = Math.min(next, max);
                 updateRenewPricing();
             }
         });
@@ -3258,11 +3477,14 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         document.getElementById("renewUpgradeBtn")?.addEventListener("click", async () => {
             const usersInput = document.getElementById("renewUsersCount");
             const storageInput = document.getElementById("renewStorageGb");
-            const newWorkers = usersInput ? (parseInt(usersInput.value) || currentWorkers) : currentWorkers;
-            // The storage field is already the EXTRA GB to add.
+            // Both fields are already the number of EXTRA units to add.
+            const addWorkers = Math.max(0, Math.min(parseInt(usersInput?.value) || 0, maxAddWorkers));
             const extraStorage = storageInput ? (parseInt(storageInput.value) || 0) : 0;
-            const addWorkers = Math.max(0, newWorkers - currentWorkers);
-            const addStorage = Math.max(0, extraStorage);
+            // A storage upgrade is always at least 10 GB (0 = no extra storage).
+            let addStorage = Math.max(0, extraStorage);
+            if (addStorage > 0 && addStorage < MIN_STORAGE_UPGRADE) {
+                addStorage = MIN_STORAGE_UPGRADE;
+            }
             if (addWorkers <= 0 && addStorage <= 0) {
                 notify(_t("Increase workers or storage to upgrade."));
                 return;
@@ -3272,6 +3494,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 return;
             }
             const priceBy = document.getElementById("renewPriceBy")?.value || "monthly";
+            // Upgrades (extra workers / storage) are an annual-plan feature only.
+            if (priceBy !== "yearly") {
+                notify(_t("Upgrades are allowed only on annual plans. Switch to Annual to add workers or storage."));
+                return;
+            }
             const upgradeBtn = document.getElementById("renewUpgradeBtn");
             const originalHtml = upgradeBtn.innerHTML;
             upgradeBtn.disabled = true;
@@ -3314,6 +3541,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         const pricePerGb = parseFloat(section.dataset.storagePriceMonthly || "220") || 220;
         const currency = section.dataset.currencySymbol || "";
+        // Upgrade billing: monthly rate × 12 months, prorated over the remaining period.
+        const upgradeMonths = parseFloat(section.dataset.upgradeMonths || "12") || 12;
+        const prorated = String(section.dataset.upgradeProrated || "").toLowerCase() === "true";
+        const isAnnual = (section.dataset.subscriptionType || "yearly") === "yearly";
+        const cycleLabel = isAnnual ? " / year" : " / month";
 
         const fmtMoney = (val) => {
             const rounded = Math.round(val * 100) / 100;
@@ -3329,20 +3561,24 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         const customPrice = document.getElementById("storageCustomPriceDisplay");
         const proceedBtn = document.getElementById("btnProceedStorageUpgrade");
 
-        let selectedGb = customInput ? (parseInt(customInput.value) || 5) : 5;
+        // The smallest storage upgrade is 10 GB, and it is the default selection.
+        let selectedGb = customInput ? (parseInt(customInput.value) || MIN_STORAGE_UPGRADE) : MIN_STORAGE_UPGRADE;
         if (cards.length) {
             selectedGb = parseInt(cards[0].dataset.gb) || selectedGb;
         }
 
         const updateSummary = () => {
+            // Price per GB is a MONTHLY rate: the total is a plain multiplication
+            // (10 GB × 0.10 = 1 €), never mixed with the remaining subscription months.
             const total = pricePerGb * selectedGb;
+            const suffix = " " + currency + " / month";
             if (summaryGb) summaryGb.textContent = selectedGb + " GB";
-            if (summaryTotal) summaryTotal.textContent = fmtMoney(total) + " " + currency;
-            if (customPrice) customPrice.textContent = fmtMoney(total) + " " + currency;
+            if (summaryTotal) summaryTotal.textContent = fmtMoney(total) + suffix;
+            if (customPrice) customPrice.textContent = fmtMoney(total) + suffix;
         };
 
         const applySelection = (gb) => {
-            selectedGb = Math.max(1, Math.min(parseInt(gb) || 1, 500));
+            selectedGb = Math.max(MIN_STORAGE_UPGRADE, Math.min(parseInt(gb) || MIN_STORAGE_UPGRADE, 500));
             cards.forEach(card => {
                 const isActive = parseInt(card.dataset.gb) === selectedGb;
                 card.style.border = isActive ? "2px solid var(--teal)" : "1.5px solid var(--line)";
@@ -3376,7 +3612,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const res = await this.rpc("/saas/instance/buy-storage", {
                     instance_id: instanceId,
                     additional_gb: selectedGb,
-                    subscription_type: "monthly",
+                    subscription_type: section.dataset.subscriptionType || "yearly",
                 });
                 if (res && res.success && res.redirect) {
                     notify(_t("Redirecting to your cart - only your storage upgrade is charged..."));
@@ -3402,6 +3638,10 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         const priceMonthly = parseFloat(card?.dataset.workerPriceMonthly || "100") || 100;
         const priceFmt = card?.dataset.workerPriceFormatted || "100";
         const currency = card?.dataset.currencySymbol || "";
+        // Upgrade billing: monthly rate × 12 months, prorated over the remaining period.
+        const upgradeMonths = parseFloat(card?.dataset.upgradeMonths || "12") || 12;
+        const prorated = String(card?.dataset.upgradeProrated || "").toLowerCase() === "true";
+        const isAnnual = (card?.dataset.subscriptionType || "yearly") === "yearly";
         const currentWorkers = parseInt(card?.dataset.currentWorkers)
             || parseInt(modal.querySelector("input[readonly]")?.value) || 1;
         const maxWorkers = parseInt(card?.dataset.maxWorkers) || 4;
@@ -3423,12 +3663,15 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         const close = () => modal.classList.remove("show");
         const update = () => {
-            let add = parseInt(countInput?.value) || 1;
-            add = Math.max(1, Math.min(add, Math.max(remaining, 1)));
+            // 0 = no upgrade (default). Each worker added is priced individually.
+            let add = parseInt(countInput?.value) || 0;
+            add = Math.max(0, Math.min(add, remaining));
             if (countInput) countInput.value = add;
             const total = currentWorkers + add;
             if (summaryTotal) summaryTotal.textContent = currentWorkers + " → " + total + " workers";
-            if (summaryAmount) summaryAmount.textContent = fmtMoney(priceMonthly * add) + " " + currency + " / month";
+            const cycleLabel = isAnnual ? " / year" : " / month";
+            if (summaryAmount) summaryAmount.textContent = fmtMoney(priceMonthly * upgradeMonths * add)
+                + " " + currency + (prorated ? "" : cycleLabel);
             if (priceDisplay) priceDisplay.textContent = priceFmt + " " + currency + " / worker / month";
             if (limitNote) {
                 limitNote.textContent = remaining > 0
@@ -3437,19 +3680,20 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                     : "This instance already runs the maximum of " + maxWorkers + " workers.";
             }
             if (proceedBtn) {
-                proceedBtn.disabled = remaining <= 0;
-                proceedBtn.style.opacity = remaining <= 0 ? "0.55" : "1";
-                proceedBtn.style.cursor = remaining <= 0 ? "not-allowed" : "pointer";
+                const nothingToAdd = remaining <= 0 || add <= 0;
+                proceedBtn.disabled = nothingToAdd;
+                proceedBtn.style.opacity = nothingToAdd ? "0.55" : "1";
+                proceedBtn.style.cursor = nothingToAdd ? "not-allowed" : "pointer";
             }
         };
 
         countInput?.addEventListener("input", update);
         document.getElementById("workersBtnMinus")?.addEventListener("click", () => {
-            if (countInput) countInput.value = (parseInt(countInput.value) || 1) - 1;
+            if (countInput) countInput.value = Math.max(0, (parseInt(countInput.value) || 0) - 1);
             update();
         });
         document.getElementById("workersBtnPlus")?.addEventListener("click", () => {
-            if (countInput) countInput.value = (parseInt(countInput.value) || 1) + 1;
+            if (countInput) countInput.value = Math.min((parseInt(countInput.value) || 0) + 1, remaining);
             update();
         });
         document.getElementById("workersUpgradeCancel")?.addEventListener("click", close);
@@ -3459,7 +3703,11 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         proceedBtn?.addEventListener("click", async () => {
             if (proceedBtn.disabled || remaining <= 0) return;
-            const add = Math.max(1, Math.min(parseInt(countInput?.value) || 1, remaining));
+            const add = Math.max(0, Math.min(parseInt(countInput?.value) || 0, remaining));
+            if (add <= 0) {
+                notify(_t("Add at least one worker to upgrade."));
+                return;
+            }
             proceedBtn.disabled = true;
             const originalHtml = proceedBtn.innerHTML;
             proceedBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Creating your workers order...';
@@ -3467,7 +3715,7 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const res = await this.rpc("/saas/instance/buy-workers", {
                     instance_id: instanceId,
                     additional_workers: add,
-                    subscription_type: "monthly",
+                    subscription_type: card?.dataset.subscriptionType || "yearly",
                 });
                 if (res && res.success && res.redirect) {
                     notify(_t("Redirecting to your cart - only the extra workers are charged..."));
@@ -3481,6 +3729,38 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
             update();
             proceedBtn.innerHTML = originalHtml;
         });
+    },
+
+    /**
+     * Freeze the page behind an open wizard / modal.
+     *
+     * The modals are `position: fixed` overlays. Without this, a wheel or touch
+     * gesture on the dimmed backdrop scrolls the page underneath instead of the
+     * wizard (and on phones the header stays reachable behind the dialog). The
+     * lock is class based — it never touches the inline `overflow` used by the
+     * deployment/renewal preloaders — and compensates the scrollbar width so the
+     * page does not jump when it is applied.
+     */
+    _initModalScrollLock() {
+        const apply = () => {
+            const isOpen = !!document.querySelector(".modal.show");
+            const isLocked = document.body.classList.contains("myodoo-modal-open");
+            if (isOpen === isLocked) return;
+            if (isOpen) {
+                this._prevBodyPaddingRight = document.body.style.paddingRight;
+                const gap = window.innerWidth - document.documentElement.clientWidth;
+                if (gap > 0) document.body.style.paddingRight = gap + "px";
+                document.body.classList.add("myodoo-modal-open");
+            } else {
+                document.body.classList.remove("myodoo-modal-open");
+                document.body.style.paddingRight = this._prevBodyPaddingRight || "";
+            }
+        };
+        const observer = new MutationObserver(apply);
+        document.querySelectorAll(".modal").forEach((modal) => {
+            observer.observe(modal, { attributes: true, attributeFilter: ["class"] });
+        });
+        apply();
     },
 
     async _runWorkersUpgradeFlow(orderIdOverride) {
@@ -4233,11 +4513,498 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
     },
 
     // =====================================================================
-    // Python libraries — pip packages installed inside the instance container
+    // Restore tab — domain, master password, database name and the
+    // self-service restore flow through the instance's database manager.
+    // =====================================================================
+
+    _initInstanceRestore() {
+        const pane = document.getElementById("restore");
+        if (!pane) {
+            return;
+        }
+
+        // Copy to clipboard (domain, database name, master password) — both the
+        // Restore tab and the Staging tab use the same helper.
+        document.querySelectorAll("[data-copy-target]").forEach((button) => {
+            if (button.dataset.copyBound) {
+                return;
+            }
+            button.dataset.copyBound = "1";
+            button.addEventListener("click", async () => {
+                const input = document.getElementById(button.dataset.copyTarget);
+                const value = input ? String(input.value || "") : "";
+                if (!value) {
+                    notify(_t("Nothing to copy."));
+                    return;
+                }
+                try {
+                    await navigator.clipboard.writeText(value);
+                } catch (err) {
+                    // Not a secure context (or an old browser): copy from a temp textarea.
+                    const helper = document.createElement("textarea");
+                    helper.value = value;
+                    helper.setAttribute("readonly", "readonly");
+                    helper.style.position = "fixed";
+                    helper.style.opacity = "0";
+                    document.body.appendChild(helper);
+                    helper.select();
+                    try {
+                        document.execCommand("copy");
+                    } catch (copyErr) {
+                        // The user can still select the field manually.
+                    }
+                    helper.remove();
+                }
+                notify(_t("Copied to clipboard."));
+            });
+        });
+
+        // The master password is hidden by default; the customer can reveal it to type
+        // it in the database manager.
+        const passwordInput = document.getElementById("restoreMasterPassword");
+        const toggle = document.getElementById("restoreTogglePassword");
+        if (passwordInput && toggle && !toggle.dataset.bound) {
+            toggle.dataset.bound = "1";
+            toggle.addEventListener("click", () => {
+                const hidden = passwordInput.type === "password";
+                passwordInput.type = hidden ? "text" : "password";
+                toggle.textContent = hidden ? _t("Hide") : _t("Show");
+            });
+        }
+
+        this._initRestoreDbNameForm(pane);
+    },
+
+    // =====================================================================
+    // Test / staging database
+    //
+    // "Create Staging Database" opens a small wizard: the customer picks an
+    // exact copy of the production database or a brand new empty one. The
+    // server builds it (database + filestore) and comments db_name/dbfilter
+    // out of odoo.conf, so /web/database/selector lists both databases.
+    // "Stop Staging Database" locks the instance back to its own database and
+    // keeps the copy; "Delete Staging Database" removes the copy (database +
+    // filestore) for good.
+    // =====================================================================
+    _initDbStaging() {
+        const box = document.getElementById("restoreStagingBox");
+        if (!box || box.dataset.bound) {
+            return;
+        }
+        box.dataset.bound = "1";
+        const instanceId = this._getInstanceId();
+        if (!instanceId) {
+            return;
+        }
+
+        // Master password is hidden by default; reveal it to type it in the manager.
+        const passwordInput = document.getElementById("stagingMasterPassword");
+        const passwordToggle = document.getElementById("stagingTogglePassword");
+        if (passwordInput && passwordToggle && !passwordToggle.dataset.bound) {
+            passwordToggle.dataset.bound = "1";
+            passwordToggle.addEventListener("click", () => {
+                const hidden = passwordInput.type === "password";
+                passwordInput.type = hidden ? "text" : "password";
+                passwordToggle.textContent = hidden ? _t("Hide") : _t("Show");
+            });
+        }
+
+        const createButton = document.getElementById("restoreCreateStagingDb");
+        const stopButton = document.getElementById("restoreStopStagingDb");
+        const modal = document.getElementById("stagingDbModal");
+        if (!createButton && !stopButton) {
+            return;
+        }
+
+        const stagingDbName = box.dataset.stagingDb || "";
+
+        // The wizard has three faces: the choice, the preloader and the result.
+        const views = {
+            choice: document.getElementById("stagingDbChoiceView"),
+            progress: document.getElementById("stagingDbProgressView"),
+            result: document.getElementById("stagingDbResultView"),
+        };
+        const showView = (name) => {
+            Object.keys(views).forEach((key) => {
+                if (views[key]) {
+                    views[key].style.display = key === name ? "" : "none";
+                }
+            });
+        };
+
+        const fill = document.getElementById("stagingModalProgressFill");
+        const pct = document.getElementById("stagingModalPct");
+        const progressTitle = document.getElementById("stagingModalTitle");
+        const progressMessage = document.getElementById("stagingModalMessage");
+        let progressTimer = null;
+
+        const setProgress = (value) => {
+            const clamped = Math.max(0, Math.min(100, Math.round(value)));
+            if (fill) {
+                fill.style.width = clamped + "%";
+            }
+            if (pct) {
+                pct.textContent = clamped + "%";
+            }
+        };
+
+        // The RPC blocks until the server is done, so the bar is a prediction that
+        // eases towards 90% to prove the work is still running.
+        const startProgress = () => {
+            let value = 4;
+            setProgress(value);
+            clearInterval(progressTimer);
+            progressTimer = setInterval(() => {
+                value = Math.min(90, value + Math.max(1, (90 - value) * 0.06));
+                setProgress(value);
+            }, 900);
+        };
+        const stopProgress = () => {
+            clearInterval(progressTimer);
+            progressTimer = null;
+        };
+
+        const setStatus = (id, text, color) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.color = color || "";
+                el.textContent = text || "";
+            }
+        };
+
+        const refreshState = (active, dbName) => {
+            box.dataset.staging = active ? "1" : "0";
+            const setup = document.getElementById("restoreStagingSetup");
+            const activeView = document.getElementById("restoreStagingActive");
+            const badge = document.getElementById("restoreStagingBadge");
+            if (setup) {
+                setup.style.display = active ? "none" : "";
+            }
+            if (activeView) {
+                activeView.style.display = active ? "" : "none";
+            }
+            if (badge) {
+                badge.style.display = active ? "" : "none";
+            }
+            if (dbName) {
+                box.dataset.stagingDb = dbName;
+                ["restoreStagingDbName", "stagingDbModalName"].forEach((id) => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.textContent = dbName;
+                    }
+                });
+            }
+        };
+
+        // "Delete Staging Database" only exists while a test copy does: the server
+        // renders it hidden and it is revealed/hidden here after create/delete so a
+        // page reload is never needed.
+        const setDeleteVisible = (visible) => {
+            box.dataset.stagingDbExists = visible ? "1" : "0";
+            document.querySelectorAll("[data-staging-delete]").forEach((button) => {
+                button.style.display = visible ? "" : "none";
+            });
+        };
+
+        const showResult = (ok, heading, text) => {
+            showView("result");
+            const icon = document.getElementById("stagingModalResultIcon");
+            const headingEl = document.getElementById("stagingResultTitle");
+            const textEl = document.getElementById("stagingResultMessage");
+            const close = document.getElementById("stagingModalClose");
+            if (icon) {
+                icon.textContent = ok ? "✅" : "⚠️";
+            }
+            if (headingEl) {
+                headingEl.textContent = heading;
+            }
+            if (textEl) {
+                textEl.textContent = text;
+            }
+            if (close) {
+                close.textContent = ok ? _t("Done") : _t("Close");
+            }
+        };
+
+        // ``action`` is "create" (needs a mode), "stop" (re-lock, keep the copy) or
+        // "delete" (drop the copy for good).
+        const runJob = async (action, mode) => {
+            showView("progress");
+            const deleteJob = action === "delete";
+            const stopJob = action === "stop";
+            if (progressTitle) {
+                progressTitle.textContent = deleteJob
+                    ? _t("Deleting your staging database")
+                    : (stopJob
+                        ? _t("Stopping your staging database")
+                        : _t("Preparing your staging database"));
+            }
+            if (progressMessage) {
+                progressMessage.textContent = deleteJob
+                    ? _t("Removing the test copy and its attachments from the server…")
+                    : (stopJob
+                        ? _t("Locking the instance back to your live database. The test copy is kept…")
+                        : (mode === "empty"
+                            ? _t("Creating a brand new database and unlocking the database manager…")
+                            : _t("Copying your live database and its attachments on the server. This can take a few minutes…")));
+            }
+            setProgress(0);
+            startProgress();
+            let res = null;
+            try {
+                res = await this.rpc(
+                    deleteJob
+                        ? "/saas/instance/staging-db/delete"
+                        : (stopJob
+                            ? "/saas/instance/staging-db/stop"
+                            : "/saas/instance/staging-db/create"),
+                    deleteJob || stopJob
+                        ? { instance_id: instanceId }
+                        : { instance_id: instanceId, mode: mode }
+                );
+            } catch (err) {
+                res = { success: false, error: _t("The server did not answer. Refresh the page to check the result.") };
+            }
+            stopProgress();
+            setProgress(100);
+
+            if (res && res.success) {
+                const active = !(deleteJob || stopJob);
+                refreshState(active, res.staging_db);
+                if (deleteJob) {
+                    setDeleteVisible(false);
+                    setStatus("restoreStagingStatus",
+                        _t("Staging database deleted — your live database was not touched."),
+                        "#168652");
+                    showResult(true, _t("Staging database deleted"),
+                        _t("The test copy and its attachments were removed. db_name + dbfilter are back on your live database, so the instance restarts in about 30 seconds."));
+                } else if (stopJob) {
+                    // The copy is kept, so the delete button stays available.
+                    setDeleteVisible(true);
+                    setStatus("restoreStagingStatus",
+                        _t("Staging stopped — the instance is locked back to your live database. The copy is kept."),
+                        "#168652");
+                    showResult(true, _t("Staging stopped"),
+                        _t("db_name + dbfilter are active again, so Odoo restarts locked to your live database in about 30 seconds. The test copy was kept: create a new one whenever you need it again."));
+                } else {
+                    setDeleteVisible(true);
+                    setStatus("restoreStagingStatusActive",
+                        _t("Staging database ready — open the database manager to use it."),
+                        "#168652");
+                    showResult(true, _t("Staging database ready"),
+                        (mode === "empty"
+                            ? _t("An empty database was created")
+                            : _t("Your live database was copied")) + ": " + (res.staging_db || "") + ". "
+                        + _t("Open the database manager and pick it to start testing. Scheduled actions are disabled in the copy so it never sends real e-mails."));
+                }
+                notify(deleteJob
+                    ? _t("Staging database deleted. The instance is restarting.")
+                    : (stopJob
+                        ? _t("Staging stopped. The instance is restarting.")
+                        : _t("Staging database ready. The instance is restarting.")));
+                if (res.restarted) {
+                    this._beginInstanceRestart(instanceId);
+                }
+            } else {
+                const message = (res && res.error)
+                    || _t("The staging database could not be changed.");
+                if (stopJob) {
+                    // Still on the active view: the copy was kept.
+                    setStatus("restoreStagingStatusActive", message, "#a9483e");
+                } else {
+                    setStatus("restoreStagingStatus", message, "#a9483e");
+                }
+                showResult(false, _t("Something went wrong"), message);
+            }
+        };
+
+        const openModal = () => {
+            if (modal) {
+                modal.classList.add("show");
+            }
+        };
+
+        if (createButton && !createButton.dataset.bound) {
+            createButton.dataset.bound = "1";
+            createButton.addEventListener("click", () => {
+                const nameEl = document.getElementById("stagingDbModalName");
+                if (nameEl) {
+                    nameEl.textContent = box.dataset.stagingDb || stagingDbName;
+                }
+                showView("choice");
+                setProgress(0);
+                openModal();
+            });
+        }
+        if (stopButton && !stopButton.dataset.bound) {
+            stopButton.dataset.bound = "1";
+            stopButton.addEventListener("click", () => {
+                const question = _t("Stop the staging environment?\n\nYour live database is locked back in and the test copy is kept on the server. Odoo restarts in about 30 seconds.");
+                if (!window.confirm(question)) {
+                    return;
+                }
+                openModal();
+                runJob("stop", "");
+            });
+        }
+
+        // There is one delete button in each state (locked and staging on).
+        document.querySelectorAll("[data-staging-delete]").forEach((button) => {
+            if (button.dataset.bound) {
+                return;
+            }
+            button.dataset.bound = "1";
+            button.addEventListener("click", () => {
+                const name = box.dataset.stagingDb || stagingDbName;
+                const question = _t("Delete the staging database?\n\nThe test copy")
+                    + (name ? " (" + name + ")" : "")
+                    + _t(" and its attachments will be permanently deleted. Your live database is not touched.");
+                if (!window.confirm(question)) {
+                    return;
+                }
+                openModal();
+                runJob("delete", "");
+            });
+        });
+
+        document.getElementById("stagingChoiceDuplicate")?.addEventListener("click", () => runJob("create", "duplicate"));
+        document.getElementById("stagingChoiceEmpty")?.addEventListener("click", () => runJob("create", "empty"));
+        document.getElementById("stagingChoiceCancel")?.addEventListener("click", () => modal?.classList.remove("show"));
+        document.getElementById("stagingModalClose")?.addEventListener("click", () => modal?.classList.remove("show"));
+        if (modal && !modal.dataset.bound) {
+            modal.dataset.bound = "1";
+            // The preloader must not be dismissed by a stray click on the backdrop.
+            modal.addEventListener("click", (ev) => {
+                if (ev.target !== modal) {
+                    return;
+                }
+                const busy = views.progress && views.progress.style.display !== "none";
+                if (!busy) {
+                    modal.classList.remove("show");
+                }
+            });
+        }
+    },
+
+    _initRestoreDbNameForm(pane) {
+        const input = document.getElementById("restoreNewDbName");
+        const save = document.getElementById("saveRestoreDbName");
+        const confirmBox = document.getElementById("restoreDbNameConfirm");
+        const status = document.getElementById("restoreDbNameStatus");
+        if (!input || !save || !confirmBox || save.dataset.bound) {
+            return;
+        }
+        // Odoo/PostgreSQL accept letters, digits, underscores and hyphens; the first
+        // character must be a letter or an underscore (63 characters max).
+        const pattern = /^[A-Za-z_][A-Za-z0-9_-]{0,62}$/;
+        let currentName = pane.dataset.dbName || "";
+
+        const refresh = () => {
+            const value = (input.value || "").trim();
+            const valid = pattern.test(value) && value !== currentName;
+            save.disabled = !(valid && confirmBox.checked);
+            if (!status) {
+                return;
+            }
+            status.style.color = "";
+            if (!value) {
+                status.textContent = "";
+            } else if (!pattern.test(value)) {
+                status.style.color = "#a9483e";
+                status.textContent = _t(
+                    "Use letters, digits, underscores or hyphens, and start with a "
+                    + "letter or an underscore (63 characters max).");
+            } else if (value === currentName) {
+                status.textContent = _t("This is already the current database name.");
+            } else {
+                status.textContent = "";
+            }
+        };
+
+        input.addEventListener("input", refresh);
+        confirmBox.addEventListener("change", refresh);
+        refresh();
+
+        save.dataset.bound = "1";
+        save.addEventListener("click", async () => {
+            const value = (input.value || "").trim();
+            if (!pattern.test(value) || value === currentName || !confirmBox.checked) {
+                refresh();
+                return;
+            }
+            const instanceId = this._getInstanceId();
+            if (!instanceId) {
+                notify(_t("No instance selected."));
+                return;
+            }
+
+            const originalLabel = save.innerHTML;
+            save.disabled = true;
+            save.textContent = _t("Applying…");
+            if (status) {
+                status.style.color = "";
+                status.textContent = _t("Rewriting odoo.conf and restarting Odoo…");
+            }
+            try {
+                const res = await this.rpc("/saas/instance/change-db-name", {
+                    instance_id: instanceId,
+                    db_name: value,
+                });
+                if (res && res.success) {
+                    const applied = res.db_name || value;
+                    currentName = applied;
+                    pane.dataset.dbName = applied;
+                    const dbInput = document.getElementById("restoreDbName");
+                    if (dbInput) {
+                        dbInput.value = applied;
+                    }
+                    pane.querySelectorAll("[data-restore-db-name]").forEach((element) => {
+                        element.textContent = applied;
+                    });
+                    input.value = "";
+                    confirmBox.checked = false;
+                    if (status) {
+                        status.style.color = "#168652";
+                        status.textContent = res.restarted
+                            ? _t("Saved. odoo.conf was rewritten — Odoo is restarting with "
+                                 + "the new database name.")
+                            : _t("Saved. odoo.conf will use the new name the next time this "
+                                 + "instance is deployed.");
+                    }
+                    notify(res.restarted
+                        ? _t("Database name updated. Odoo is restarting.")
+                        : _t("Database name updated."));
+                    if (res.restarted) {
+                        this._beginInstanceRestart(instanceId);
+                    }
+                } else {
+                    if (status) {
+                        status.style.color = "#a9483e";
+                        status.textContent = (res && res.error)
+                            || _t("Could not change the database name.");
+                    }
+                    notify((res && res.error) || _t("Could not change the database name."));
+                }
+            } catch (err) {
+                if (status) {
+                    status.style.color = "#a9483e";
+                    status.textContent = _t("Could not change the database name.");
+                }
+                notify(_t("Could not change the database name."));
+            }
+            save.innerHTML = originalLabel;
+            refresh();
+        });
+    },
+
+    // =====================================================================
+    // Python libraries + system (APT) packages — baked into the instance image
     //
     // The wizard is opened by the Overview control button and by the Tools card;
-    // every change goes through the manifest (/home/<instance>/requirements.txt),
-    // which the server rewrites on each install / removal.
+    // every change goes through two manifests (/home/<instance>/requirements.txt and
+    // /home/<instance>/system-packages.txt), which the server rewrites on each
+    // install / removal before rebuilding the Docker image.
     // =====================================================================
 
     _initPythonLibraries() {
@@ -4247,10 +5014,14 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
         }
         const instanceId = this._getInstanceId();
         const input = document.getElementById("pythonLibInput");
+        const systemInput = document.getElementById("systemPkgInput");
         const installButton = document.getElementById("btnPythonLibInstall");
         const listBox = document.getElementById("pythonLibList");
+        const systemListBox = document.getElementById("systemPkgList");
         const countBox = document.getElementById("pythonLibCount");
+        const systemCountBox = document.getElementById("systemPkgCount");
         const pathBox = document.getElementById("pythonLibPath");
+        const systemPathBox = document.getElementById("systemPkgPath");
         const progress = document.getElementById("pythonLibProgress");
         const errorBox = document.getElementById("pythonLibError");
         const closeButton = document.getElementById("pythonLibsClose");
@@ -4275,6 +5046,12 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 installButton.disabled = state;
                 installButton.textContent = state ? _t("Installing…") : _t("Install");
             }
+            if (input) {
+                input.disabled = state;
+            }
+            if (systemInput) {
+                systemInput.disabled = state;
+            }
             if (progress) {
                 progress.style.display = state ? "flex" : "none";
             }
@@ -4282,46 +5059,79 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
 
         // The payload is the same for the list, the install and the removal: one paint
         // routine keeps the modal consistent in every case.
+        const renderRows = (items, emptyLabel, removeAttribute) => {
+            if (!items.length) {
+                return '<div class="python-lib-empty">' + emptyLabel + "</div>";
+            }
+            return items.map((item) => {
+                const name = escapeHtml(item.name);
+                const status = item.installed
+                    ? '<span class="python-lib-version">' + escapeHtml(item.version) + "</span>"
+                    : '<span class="python-lib-missing">' + _t("not installed") + "</span>";
+                const detail = item.requirement || item.package || item.name;
+                return '<div class="python-lib-row">'
+                    + '<div class="python-lib-meta">'
+                    + '<span class="python-lib-name">' + name + "</span>"
+                    + '<span class="python-lib-req">' + escapeHtml(detail) + "</span>"
+                    + status
+                    + "</div>"
+                    + '<button type="button" class="ghost python-lib-remove" ' + removeAttribute
+                    + '="' + name + '">' + _t("Remove") + "</button>"
+                    + "</div>";
+            }).join("");
+        };
+
         const renderPayload = (payload) => {
             const libraries = (payload && payload.libraries) || [];
+            const systemPackages = (payload && payload.system_packages) || [];
+            // The rebuilt image is charged to the customer's storage: show its size.
+            const sizeBox = document.getElementById("pythonLibImageSize");
+            if (sizeBox) {
+                const imageGb = payload && payload.image_size_gb ? Number(payload.image_size_gb) : 0;
+                if (imageGb > 0) {
+                    sizeBox.textContent = _t("Your package image currently takes %s GB of your storage.")
+                        .replace("%s", imageGb.toFixed(2));
+                    sizeBox.style.display = "block";
+                } else {
+                    sizeBox.textContent = "";
+                    sizeBox.style.display = "none";
+                }
+            }
             if (pathBox && payload && payload.requirements_path) {
                 pathBox.textContent = payload.requirements_path;
+            }
+            if (systemPathBox && payload && payload.system_packages_path) {
+                systemPathBox.textContent = payload.system_packages_path;
             }
             if (countBox) {
                 countBox.textContent = libraries.length
                     ? _t("%s package(s)").replace("%s", libraries.length)
                     : "";
             }
-            if (!listBox) {
-                return;
+            if (systemCountBox) {
+                systemCountBox.textContent = systemPackages.length
+                    ? _t("%s package(s)").replace("%s", systemPackages.length)
+                    : "";
             }
-            if (!libraries.length) {
-                listBox.innerHTML = '<div class="python-lib-empty">'
-                    + _t("No Python library installed yet.") + "</div>";
-                return;
+            if (listBox) {
+                listBox.innerHTML = renderRows(
+                    libraries, _t("No Python package installed yet."), "data-lib-remove");
             }
-            listBox.innerHTML = libraries.map((library) => {
-                const name = escapeHtml(library.name);
-                const status = library.installed
-                    ? '<span class="python-lib-version">' + escapeHtml(library.version) + "</span>"
-                    : '<span class="python-lib-missing">' + _t("not installed") + "</span>";
-                return '<div class="python-lib-row">'
-                    + '<div class="python-lib-meta">'
-                    + '<span class="python-lib-name">' + name + "</span>"
-                    + '<span class="python-lib-req">' + escapeHtml(library.requirement) + "</span>"
-                    + status
-                    + "</div>"
-                    + '<button type="button" class="ghost python-lib-remove" data-lib-remove="'
-                    + name + '">' + _t("Remove") + "</button>"
-                    + "</div>";
-            }).join("");
+            if (systemListBox) {
+                systemListBox.innerHTML = renderRows(
+                    systemPackages, _t("No system package installed yet."), "data-sys-remove");
+            }
         };
 
         const load = async () => {
             if (!instanceId || !listBox) {
                 return;
             }
-            listBox.innerHTML = '<div class="python-lib-empty">' + _t("Loading…") + "</div>";
+            const loading = '<div class="python-lib-empty">' + _t("Loading…") + "</div>";
+            listBox.innerHTML = loading;
+            if (systemListBox) {
+                systemListBox.innerHTML = loading;
+            }
             try {
                 const res = await this.rpc("/saas/instance/python-libraries", {
                     instance_id: instanceId,
@@ -4330,10 +5140,16 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                     renderPayload(res);
                 } else {
                     listBox.innerHTML = "";
+                    if (systemListBox) {
+                        systemListBox.innerHTML = "";
+                    }
                     showError((res && res.error) || _t("Could not load the library list."));
                 }
             } catch (err) {
                 listBox.innerHTML = "";
+                if (systemListBox) {
+                    systemListBox.innerHTML = "";
+                }
                 showError(err && err.message ? err.message : String(err));
             }
         };
@@ -4343,8 +5159,9 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 return;
             }
             const requirement = input ? input.value.trim() : "";
-            if (!requirement) {
-                showError(_t("Enter the name of the Python library to install."));
+            const systemPackages = systemInput ? systemInput.value.trim() : "";
+            if (!requirement && !systemPackages) {
+                showError(_t("Enter a Python package, a system package, or both."));
                 if (input) {
                     input.focus();
                 }
@@ -4356,13 +5173,17 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 const res = await this.rpc("/saas/instance/python-library/install", {
                     instance_id: instanceId,
                     requirement: requirement,
+                    system_packages: systemPackages,
                 });
                 if (res && res.success) {
                     if (input) {
                         input.value = "";
                     }
+                    if (systemInput) {
+                        systemInput.value = "";
+                    }
                     renderPayload(res);
-                    notify(res.message || _t("Library installed."));
+                    notify(res.message || _t("Packages installed."));
                 } else {
                     showError((res && res.error) || _t("Installation failed."));
                 }
@@ -4394,6 +5215,36 @@ publicWidget.registry.MyOdooPortal = publicWidget.Widget.extend({
                 if (res && res.success) {
                     renderPayload(res);
                     notify(res.message || _t("Library removed."));
+                } else {
+                    button.disabled = false;
+                    showError((res && res.error) || _t("Removal failed."));
+                }
+            } catch (err) {
+                button.disabled = false;
+                showError(err && err.message ? err.message : String(err));
+            }
+        });
+
+        // Same delegated pattern for the system package list.
+        systemListBox?.addEventListener("click", async (event) => {
+            const button = event.target.closest("[data-sys-remove]");
+            if (!button || busy || !instanceId) {
+                return;
+            }
+            const name = button.dataset.sysRemove;
+            if (!window.confirm(_t("Uninstall %s from this instance?").replace("%s", name))) {
+                return;
+            }
+            button.disabled = true;
+            showError("");
+            try {
+                const res = await this.rpc("/saas/instance/system-package/remove", {
+                    instance_id: instanceId,
+                    name: name,
+                });
+                if (res && res.success) {
+                    renderPayload(res);
+                    notify(res.message || _t("System package removed."));
                 } else {
                     button.disabled = false;
                     showError((res && res.error) || _t("Removal failed."));

@@ -1618,25 +1618,6 @@
     overflow-y: auto;
     overflow-x: auto;
     border-radius: 12px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(11, 46, 51, .28) transparent;
-}
-
-.myodoo-portal-root #billing .instance-table::-webkit-scrollbar,
-.myodoo-portal-root .billing-page .instance-table::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
-}
-
-.myodoo-portal-root #billing .instance-table::-webkit-scrollbar-thumb,
-.myodoo-portal-root .billing-page .instance-table::-webkit-scrollbar-thumb {
-    background: rgba(11, 46, 51, .22);
-    border-radius: 999px;
-}
-
-.myodoo-portal-root #billing .instance-table::-webkit-scrollbar-thumb:hover,
-.myodoo-portal-root .billing-page .instance-table::-webkit-scrollbar-thumb:hover {
-    background: rgba(11, 46, 51, .35);
 }
 
 /* Keep the column headers visible while scrolling the rows */
@@ -1717,28 +1698,9 @@
     tab-size: 8;
     cursor: text;
     outline: none;
-    scrollbar-width: thin;
-    scrollbar-color: #2c5b5f #0f1c1f;
+    /* Scrollbar: the dark variant of the global premium scrollbar (scrollbars.scss). */
+    --sb-size: 10px;
     overscroll-behavior: contain;
-}
-
-.myodoo-portal-root .shell-screen::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-.myodoo-portal-root .shell-screen::-webkit-scrollbar-track {
-    background: #0f1c1f;
-}
-
-.myodoo-portal-root .shell-screen::-webkit-scrollbar-thumb {
-    background: #2c5b5f;
-    border: 2px solid #0f1c1f;
-    border-radius: 8px;
-}
-
-.myodoo-portal-root .shell-screen::-webkit-scrollbar-thumb:hover {
-    background: #3b7c80;
 }
 
 .myodoo-portal-root .shell-screen .shell-row {
@@ -2011,6 +1973,27 @@ body.shell-fullscreen-open {
     background: var(--green);
     box-shadow: 0 0 0 4px rgba(32, 178, 108, .16);
     animation: isb-pulse 1.8s ease-out infinite;
+}
+
+/* Storage full: the instance was stopped by the storage guard — red banner. */
+.myodoo-portal-root .instance-status-banner.is-storage-full {
+    border-color: rgba(220, 38, 38, .38);
+    background: linear-gradient(135deg, rgba(220, 38, 38, .13), rgba(220, 38, 38, .04));
+}
+
+.myodoo-portal-root .instance-status-banner.is-storage-full .isb-icon {
+    background: rgba(220, 38, 38, .16);
+    color: #b91c1c;
+}
+
+.myodoo-portal-root .instance-status-banner.is-storage-full .isb-title {
+    color: #b91c1c;
+}
+
+.myodoo-portal-root .instance-status-banner.is-storage-full .isb-pulse {
+    background: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, .16);
+    animation: none;
 }
 
 .myodoo-portal-root .instance-status-banner.is-suspended {
@@ -2330,3 +2313,390 @@ body.shell-fullscreen-open {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   Modal / wizard overlay: stacking + responsive scrolling
+   --------------------------------------------------------------------------
+   The overlays are fixed full-screen grids with a centred card. The base rules
+   (near the top of this file) are nested inside `.myodoo-portal-root`, so they
+   compile to `.myodoo-portal-root .modal` — specificity (0,2,0). Any override
+   MUST use the same or a higher specificity, otherwise the low base z-index
+   (80) keeps winning and the sticky website header (z-index 1050) paints on
+   top: on phones the wizard opened underneath the header and its title/close
+   button were hidden.
+
+   Fixes applied here (selectors scoped to `.myodoo-portal-root` on purpose):
+     - raise the overlay above the portal topbar (10) and the website header
+       (1050), while staying below the deployment preloader (99999), the
+       account-required dialog (1000100) and the notifications (1000000);
+     - make the overlay itself a scroll container and cap the card to the
+       viewport, so the wizard scrolls inside the modal instead of the page;
+     - top-align the card on tablets/phones so nothing is ever clipped.
+   ========================================================================== */
+.myodoo-portal-root .modal {
+    z-index: 50000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.myodoo-portal-root .modal-card {
+    box-sizing: border-box;
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Tablet / phone: the card owns the whole viewport height and scrolls itself,
+   so the wizard title and the action buttons always stay reachable. */
+@media (max-width: 768px) {
+    .myodoo-portal-root .modal {
+        padding: 12px;
+        align-items: start;
+    }
+
+    .myodoo-portal-root .modal-card {
+        max-height: calc(100vh - 24px);
+        max-height: calc(100dvh - 24px);
+    }
+}
+
+@media (max-width: 560px) {
+    .myodoo-portal-root .modal {
+        padding: 10px;
+    }
+
+    .myodoo-portal-root .modal-card {
+        max-height: calc(100vh - 20px);
+        max-height: calc(100dvh - 20px);
+    }
+}
+
+/* While a portal wizard/modal is open the page behind it must not scroll.
+   The class is toggled by myodoo_portal.js (which also compensates the
+   scrollbar width), never the inline overflow used by the preloaders. */
+body.myodoo-modal-open {
+    overflow: hidden;
+}
+
+/* =========================================================================
+   Restore tab — domain / database name / master password + restore steps
+   ========================================================================= */
+.myodoo-portal-root .restore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 18px 8px;
+}
+
+.myodoo-portal-root .restore-value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.myodoo-portal-root .restore-value input {
+    flex: 1;
+    min-width: 0;
+}
+
+.myodoo-portal-root .restore-value .restore-copy {
+    flex: none;
+    padding: 9px 11px;
+}
+
+.myodoo-portal-root .restore-link {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--deep);
+    font-size: 10px;
+    font-weight: 800;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.myodoo-portal-root .restore-steps {
+    padding: 8px 18px 18px;
+}
+
+.myodoo-portal-root .restore-steps .upgrade-step {
+    align-items: flex-start;
+}
+
+.myodoo-portal-root .restore-steps .upgrade-step small {
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.myodoo-portal-root .restore-code {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 6px;
+    background: rgba(11, 46, 51, .07);
+    color: var(--navy);
+    font-family: monospace;
+    font-size: 11px;
+    word-break: break-all;
+    text-decoration: none;
+}
+
+a.restore-code:hover {
+    background: rgba(15, 168, 160, .14);
+    text-decoration: underline;
+}
+
+.myodoo-portal-root .restore-warning {
+    margin: 0 18px 18px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 194, 75, .55);
+    border-radius: 12px;
+    background: rgba(255, 194, 75, .13);
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.myodoo-portal-root .restore-change-box {
+    margin: 0 18px 18px;
+    padding: 18px;
+    border: 1.5px solid rgba(15, 168, 160, .25);
+    border-radius: 14px;
+    background: rgba(15, 168, 160, .06);
+}
+
+.myodoo-portal-root .restore-change-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.myodoo-portal-root .restore-change-row .primary {
+    flex: none;
+    padding: 12px 18px;
+}
+
+.myodoo-portal-root .restore-change-row .primary:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.myodoo-portal-root .restore-confirm {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.myodoo-portal-root .restore-confirm input {
+    width: auto;
+    margin-top: 2px;
+    flex: none;
+}
+
+/* Test / staging database access box (Restore tab) */
+.myodoo-portal-root .restore-staging-box {
+    margin: 0 18px 18px;
+    padding: 16px 18px;
+    border: 1.5px dashed rgba(15, 168, 160, .45);
+    border-radius: 14px;
+    background: rgba(15, 168, 160, .05);
+}
+
+.myodoo-portal-root .restore-staging-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.myodoo-portal-root .restore-staging-head > i {
+    font-size: 18px;
+    color: var(--deep);
+    margin-top: 2px;
+}
+
+.myodoo-portal-root .restore-staging-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(169, 72, 62, .12);
+    color: #a9483e;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.myodoo-portal-root .restore-staging-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.myodoo-portal-root .restore-staging-actions .primary {
+    flex: none;
+    padding: 11px 16px;
+}
+
+.myodoo-portal-root .restore-staging-actions .primary:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.myodoo-portal-root .restore-staging-box .restore-steps {
+    padding: 12px 0 0;
+}
+
+/* One-click staging database: wizard + database name line */
+
+/* Odoo brand colour call-to-action (Open Database Manager). Declared after
+   .primary/.dark/.ghost so the Odoo mauve wins for any combination of those base
+   classes. #714b67 is the Odoo logo colour, #875a7b its lighter tint. */
+.myodoo-portal-root .pink {
+    background: linear-gradient(135deg, #875a7b, #714b67);
+    background-color: #714b67;
+    border: 0;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(113, 75, 103, .28);
+}
+
+.myodoo-portal-root .pink:hover {
+    background: linear-gradient(135deg, #7a4f6d, #5f3f57);
+    background-color: #5f3f57;
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(113, 75, 103, .36);
+}
+
+.myodoo-portal-root .restore-staging-dbname {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.myodoo-portal-root .restore-staging-dbname .restore-code {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.myodoo-portal-root .restore-staging-actions .ghost.danger {
+    color: #a9483e;
+    border-color: rgba(169, 72, 62, .35);
+}
+
+.myodoo-portal-root .restore-staging-actions .ghost.danger:hover {
+    background: rgba(169, 72, 62, .08);
+}
+
+.myodoo-portal-root .staging-modal-card {
+    max-width: 560px;
+    text-align: center;
+    padding: 30px 26px;
+}
+
+.myodoo-portal-root .staging-choice-icon {
+    font-size: 30px;
+    color: var(--deep);
+}
+
+.myodoo-portal-root .staging-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.myodoo-portal-root .staging-choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 16px 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.myodoo-portal-root .staging-choice:hover {
+    border-color: var(--teal);
+    box-shadow: 0 10px 24px rgba(11, 46, 51, .10);
+    transform: translateY(-1px);
+}
+
+.myodoo-portal-root .staging-choice > i {
+    font-size: 18px;
+    color: var(--teal);
+}
+
+.myodoo-portal-root .staging-choice strong {
+    font-size: 12.5px;
+    font-weight: 900;
+    color: var(--navy);
+}
+
+.myodoo-portal-root .staging-choice small {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.myodoo-portal-root .staging-choice-tag {
+    align-self: flex-start;
+    margin-top: 4px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(15, 168, 160, .14);
+    color: var(--deep);
+    font-size: 8.5px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+    .myodoo-portal-root .staging-choice-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .myodoo-portal-root .restore-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .myodoo-portal-root .restore-change-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .myodoo-portal-root .restore-change-row .primary {
+        width: 100%;
+    }
+}
+

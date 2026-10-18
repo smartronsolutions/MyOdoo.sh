@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-10-12 04:45+1100\n"
+"PO-Revision-Date: 2026-10-19 04:41+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: pt\n"
 "Language: pt\n"
@@ -22,9 +22,52 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid " (prorated)"
+msgstr "(produzido)"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid " more · 0 = no upgrade."
+msgstr "mais · 0 = sem atualização."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid " worker(s) · up to "
+msgstr "Workers · até"
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "\"%s\" cannot be installed or replaced inside your instance."
 msgstr "\"%s\" não pode ser instalado ou substituído dentro de sua instância."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"\"%s\" is not a valid system package name. Use a plain APT package name, for"
+" example \"python3-xmlsec\" or \"libxml2-dev\"."
+msgstr ""
+"\"%s\" não é um nome de pacote de sistema válido. Use um nome de pacote APT "
+"simples, por exemplo \"python3-xmlsec\" ou \"libxml2-dev\"."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"\"%s\" was not found on PyPI (or has no release for this Python version), so"
+" it was not installed. Check the exact package name — for example "
+"\"pandas\", \"psyquartz\" or \"python-escpos==3.1\". A library hosted on "
+"GitHub or a private index cannot be installed from this form."
+msgstr ""
+"\"%s\" não foi encontrado no PyPI (ou não tem lançamento para esta versão "
+"Python), então não foi instalado. Verifique o nome exato do pacote — por "
+"exemplo, \"pandas\", \"psyquartz\" ou \"python-escpos\". Uma biblioteca "
+"hospedada no GitHub ou um índice privado não pode ser instalado a partir "
+"deste formulário."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -83,6 +126,15 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"%(python)s and %(count)s system package(s) are installed in image %(image)s."
+msgstr ""
+"%(python)s e %(count)s pacote(s) do sistema são instalados em imagens "
+"%(image)s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%.2f / %.2f GB"
 msgstr "%.2f / %.2f GB"
@@ -92,6 +144,18 @@ msgstr "%.2f / %.2f GB"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%.2f / %.2f GB (%.1f%%)"
 msgstr "%.2f / %.2f GB (%.1f%)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s (+%g GB) — Annual renewal %s"
+msgstr "%s (+%g GB) — Renovação anual %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s (+%s workers) — Annual renewal %s"
+msgstr "%s (+%s Workers) — Renovação anual %s"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -108,12 +172,6 @@ msgstr "domínio %s já tomado"
 
 #. module: s_odoo_saas_master
 #. odoo-python
-#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s in requirements.txt"
-msgstr "%s em requirements.txt"
-
-#. module: s_odoo_saas_master
-#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid "%s is already used by another user."
@@ -122,14 +180,20 @@ msgstr "%s já é usado por outro usuário."
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s is installed."
-msgstr "%s está instalado."
+msgid "%s is installed in image %s."
+msgstr "%s está instalado na imagem %s."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s is uninstalled and removed from requirements.txt."
-msgstr "%s é desinstalado e removido do requirements.txt."
+msgid "%s is removed from the instance image."
+msgstr "%s é removido da imagem da instância."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "%s is uninstalled and removed from the instance image."
+msgstr "%s é desinstalado e removido da imagem da instância."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -146,18 +210,20 @@ msgstr "pacote(s) %s"
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid ""
-"%s was removed from requirements.txt, but pip could not uninstall it: it is "
-"provided by the base image and stays available to your Odoo."
-msgstr ""
-"%s foi removido do requirements.txt, mas pip não pôde desinstalá-lo: é "
-"fornecido pela imagem base e permanece disponível para o seu Odoo."
+msgid "%s system package(s) are installed in image %s."
+msgstr "%s pacote(s) do sistema são instalados na imagem %s."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%s worker(s)"
-msgstr "trabalhador(es) %s"
+msgstr "Worker(s) %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s — Annual subscription %s (%s → %s)"
+msgstr "%s — Assinatura anual %s (%s → %s)"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -196,6 +262,26 @@ msgstr "&amp;middot; plano normal"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "'%s' is a reserved subdomain. Please choose another one."
 msgstr "'%s' é um subdomínio reservado. Por favor, escolha outro."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"(<b>db_name</b> + <b>dbfilter</b> in odoo.conf), so the\n"
+"                                            database manager only lists that single database. To duplicate or\n"
+"                                            restore a <b>test database</b>, unlock it first."
+msgstr ""
+"(<b>db name</b> + <b>dbfilter</b> em odoo.conf), assim o\n"
+"O gerenciador de banco de dados apenas lista essa única base de dados. Para duplicar ou\n"
+"restaurar a <b>banco de dados de teste</b>Destranca-o primeiro."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"(odoo.conf <b>db_name</b> + <b>dbfilter</b>). If you restore under a\n"
+"                                different name, the instance URL and this panel will not find your data."
+msgstr ""
+"(odoo.conf <b>db name</b> + <b>dbfilter</b>). Se você restaurar sob um\n"
+"nome diferente, URL da instância e este painel não irá encontrar seus dados."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -244,7 +330,7 @@ msgstr "+%.2f GB →%.2f GB"
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "+%s → %s workers"
-msgstr "+%s → %s trabalhadores"
+msgstr "+%s → %s Workers"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -258,13 +344,13 @@ msgstr "+25 GB"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "+5 GB"
-msgstr "+5 GB"
+msgid "+50 GB"
+msgstr "+50 GB"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "+50 GB"
-msgstr "+50 GB"
+msgid "- My Odoo SH"
+msgstr "- Meu Odoo SH"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -322,9 +408,35 @@ msgstr "/ mês"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "/ worker / month"
-msgstr "/ trabalhador / mês"
+msgstr "/ Worker / mês"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/month"
+msgstr "/mês"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/web/database/manager"
+msgstr "/web/database/manager"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/web/login"
+msgstr "/web/login"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/year"
+msgstr "/ano"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "0 = no extra storage · any storage upgrade starts at 10 GB."
+msgstr ""
+"0 = sem armazenamento extra · qualquer atualização de armazenamento começa "
+"em 10 GB."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -332,14 +444,9 @@ msgid "1 production instance"
 msgstr "1 instância de produção"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "1 worker (upgradable)"
-msgstr "1 trabalhador (atualizável)"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "10 additional gigabytes"
-msgstr "10 gigabytes adicionais"
+msgid "10 additional gigabytes · minimum"
+msgstr "10 gigabytes adicionais · mínimo"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -350,6 +457,11 @@ msgstr "15 dias de teste livre ativo"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "2 GB RAM each &amp;middot;"
 msgstr "2 GB de RAM cada &amp;middot;"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "2 workers included (upgradable)"
+msgstr "2 trabalhadores incluídos (atualizável)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -390,11 +502,6 @@ msgstr "5 GB incluídos · +"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "5 GB included, expandable"
 msgstr "5 GB incluído, expansível"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "5 additional gigabytes"
-msgstr "5 gigabytes adicionais"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -460,10 +567,10 @@ msgid ""
 msgstr ""
 "<b class=\"openerp_enterprise_user_pricing_monthly d-none\"><span "
 "class=\"openerp_enterprise_pricing_user_amount_monthly\">0,00</span><small "
-"class=\"fw_semibold\">/trabalhador/mês</small></b><b "
+"class=\"fw_semibold\">/Worker/mês</small></b><b "
 "class=\"openerp_enterprise_user_pricing_yearly\"><span "
 "class=\"openerp_enterprise_pricing_user_amount_yearly\">0,00</span><small "
-"class=\"fw_semibold\">/trabalhador/mês</small></b>"
+"class=\"fw_semibold\">/Worker/mês</small></b>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -504,6 +611,36 @@ msgid "<b>Billed annually</b>"
 msgstr "<b>Faturado anualmente</b>"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Billed period:</b> %s month(s)%s"
+msgstr "<b>Período facturado:</b> %s mês( s)%s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Invoice type:</b> %s"
+msgstr "<b>Tipo de factura:</b> %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>SaaS container:</b> %s"
+msgstr "<b>Recipiente SaaS:</b> %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Storage:</b> %g GB (included: %g GB)"
+msgstr "<b>Armazenamento:</b> % g GB (incluído:% g GB)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Subscription period:</b> %s → %s"
+msgstr "<b>Período de assinatura:</b> %s → %s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "<b>Total / month</b>"
 msgstr "<b>Total / mês</b>"
@@ -512,6 +649,31 @@ msgstr "<b>Total / mês</b>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "<b>Total</b> / month"
 msgstr "<b>Total</b> / mês"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<b>Upgrades are allowed only on annual plans.</b><br/>\n"
+"                                Monthly plans can be renewed only. Switch to <b>Annual &amp;middot; billed yearly</b> to add workers or storage."
+msgstr ""
+"<b>As atualizações só são permitidas em planos anuais.</b><br/>Os planos "
+"mensais só podem ser renovados. Mudar para <b>Anual &amp;middot; facturado "
+"anualmente</b> adicionar Workers ou armazenagem."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Workers:</b> %s (included: %s)"
+msgstr "<b>Workers:</b> %s (incluído: %s)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<br/><b>Upgrades are allowed only on annual plans</b> — monthly "
+"subscriptions can be renewed only."
+msgstr ""
+"<br/><b>As atualizações só são permitidas em planos anuais</b> — as "
+"assinaturas mensais só podem ser renovadas."
 
 #. module: s_odoo_saas_master
 #: model:mail.template,body_html:s_odoo_saas_master.deploy_instance_mail_template
@@ -692,7 +854,7 @@ msgstr "<em>Todos os ambientes online</em>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<em>Workers available</em>"
-msgstr "<em>Trabalhadores disponíveis</em>"
+msgstr "<em>Workers disponíveis</em>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -709,6 +871,11 @@ msgid "<i class=\"fa fa-arrow-circle-up\"/> Buy Extra Storage &amp; Continue"
 msgstr ""
 "<i class=\"fa fa-arrow-circle-up\"></i> Comprar armazenamento extra &amp; "
 "Continuar"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-arrow-circle-up\"/> Upgrade History"
+msgstr "<i class=\"fa fa-arrow-circle-up\"></i> Histórico de atualização"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -776,17 +943,28 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<i class=\"fa fa-cube\" aria-hidden=\"true\"/>\n"
-"                                <span class=\"shell-tip-text\">To install a Python library in this\n"
-"                                    container, run</span>"
+"                                <span class=\"shell-tip-text\">Need a Python or system package that stays after a\n"
+"                                    redeploy? Use <b>Overview → Install Python &amp; System Packages</b>\n"
+"                                    instead of installing it by hand.</span>"
 msgstr ""
-"<i aria-hidden=\"true\" class=\"fa fa-cube\"></i><span class=\"shell-tip-text\">Para instalar uma biblioteca Python neste\n"
-"recipiente, correr</span>"
+"<i aria-hidden=\"true\" class=\"fa fa-cube\"></i><span class=\"shell-tip-text\">Precisa de um pacote Python ou sistema que permaneça após um\n"
+"Reposicionar? Utilização <b>Visão geral → Instalar Python &amp;</b>em vez de instalar à mão.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-cube\"/> Current subscription"
 msgstr "<i class=\"fa fa-cube\"></i> Assinatura actual"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-database\"/> Open Database Manager"
+msgstr "<i class=\"fa fa-database\"></i> Abrir o Gestor de Bases de Dados"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-download\"/> Download latest backup"
+msgstr "<i class=\"fa fa-download\"></i> Baixar backup mais recente"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -828,6 +1006,26 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"/>\n"
+"                                        <b>Staging mode is ON.</b> <b>db_name</b> and <b>dbfilter</b> are\n"
+"                                        commented out in odoo.conf, so"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"></i><b>O modo de localização está ligado.</b> <b>db name</b> e <b>dbfilter</b> são\n"
+"comentado em odoo.conf, assim"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"/>\n"
+"                                <b>Important:</b> this instance only sees the database whose name matches"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-"
+"right:6px\"></i><b>Importante:</b> esta instância só vê o banco de dados "
+"cujo nome corresponde"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-expand\"/> <span>Fullscreen</span>"
 msgstr "<i class=\"fa fa-expand\"></i> <span>Ecrã completo</span>"
 
@@ -861,6 +1059,11 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-lock\"/> Activate DB Name &amp; DB Filter"
+msgstr "<i class=\"fa fa-lock\"></i> Activar o Nome DB &amp; Filtro DB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<i class=\"fa fa-play-circle me-1\"/> Your instance has been resumed "
 "automatically."
@@ -872,6 +1075,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-refresh me-1\"/> Retry deployment"
 msgstr "<i class=\"fa fa-refresh me-1\"></i> Repetir a implantação"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-refresh\"/> Change &amp; Restart Odoo"
+msgstr "<i class=\"fa fa-refresh\"></i> Alterar &amp; Reiniciar o Odoo"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-refresh\"/> Renew Subscription"
+msgstr "<i class=\"fa fa-refresh\"></i> Renovar a Assinatura"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_lines_inherit_saas
@@ -913,6 +1126,16 @@ msgid "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"/>Backup run
 msgstr ""
 "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"></i>Cópia de "
 "segurança em execução..."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-unlock\"/> Remove DB Filter &amp; DB Name"
+msgstr "<i class=\"fa fa-unlock\"></i> Remover o Filtro DB &amp; Nome DB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-unlock\"/> Staging active"
+msgstr "<i class=\"fa fa-unlock\"></i> Staging ativo"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -1139,7 +1362,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<small>Active Workers</small>"
-msgstr "<small>Trabalhadores Ativos</small>"
+msgstr "<small>Workers Ativos</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
@@ -1169,7 +1392,7 @@ msgstr "<small>Plano actual</small>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "<small>Included Workers</small>"
-msgstr "<small>Trabalhadores incluídos</small>"
+msgstr "<small>Workers incluídos</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1327,11 +1550,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span class=\"ctrl-btn-title\">Install Python Library</span>\n"
-"                                        <span class=\"ctrl-btn-desc\">Add a pip package to your instance.</span>"
+"<span class=\"ctrl-btn-title\">Install Python &amp; System Packages</span>\n"
+"                                        <span class=\"ctrl-btn-desc\">Add pip and apt packages to your instance.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">Instalar a Biblioteca Python</span><span "
-"class=\"ctrl-btn-desc\">Adicione um pacote pip à sua instância.</span>"
+"<span class=\"ctrl-btn-title\">Instalar Pacotes de Sistema Python "
+"&amp;</span><span class=\"ctrl-btn-desc\">Adicione pacotes pip e apt à sua "
+"instância.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1349,8 +1573,7 @@ msgid ""
 "                                            <span class=\"ctrl-btn-desc\">Restart HTTP &amp; scheduled workers.</span>"
 msgstr ""
 "<span class=\"ctrl-btn-title\">Reiniciar os Serviços</span><span "
-"class=\"ctrl-btn-desc\">Reinicie os trabalhadores agendados HTTP "
-"&amp;.</span>"
+"class=\"ctrl-btn-desc\">Reinicie os Workers agendados HTTP &amp;.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1368,7 +1591,7 @@ msgid ""
 "                                            <span class=\"ctrl-btn-desc\">Start Odoo, workers &amp; web services.</span>"
 msgstr ""
 "<span class=\"ctrl-btn-title\">Início da instância</span><span class=\"ctrl-"
-"btn-desc\">Iniciar Odoo, trabalhadores &amp; serviços web.</span>"
+"btn-desc\">Iniciar Odoo, Workers &amp; serviços web.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1386,7 +1609,7 @@ msgid ""
 "                                        <span class=\"ctrl-btn-desc\">Stop public access &amp; workers.</span>"
 msgstr ""
 "<span class=\"ctrl-btn-title\">Parar a instância</span><span class=\"ctrl-"
-"btn-desc\">Parar o acesso público &amp; trabalhadores.</span>"
+"btn-desc\">Parar o acesso público &amp; Workers.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -1446,11 +1669,20 @@ msgstr "<span class=\"eyebrow\">Preferências do Espaço de Trabalho</span>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
+"<span class=\"healthy\" style=\"color:#b47611\"><i class=\"fa fa-lock\"/> "
+"Annual plan only</span>"
+msgstr ""
+"<span class=\"healthy\" style=\"color:#b47611\"><i class=\"fa fa-lock\"></i>"
+" Apenas plano anual</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
 "<span class=\"healthy\"><i class=\"fa fa-plus-circle\"/> Upgrade "
 "Workers</span>"
 msgstr ""
 "<span class=\"healthy\"><i class=\"fa fa-plus-circle\"></i> Atualizar os "
-"Trabalhadores</span>"
+"Workers</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1538,6 +1770,16 @@ msgstr ""
 " </span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                            Upgrades\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_stat_text\">Atualizações\n"
+" </span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"popular-badge\">Most Popular</span>"
 msgstr "<span class=\"popular-badge\">Mais Popular</span>"
@@ -1546,10 +1788,11 @@ msgstr "<span class=\"popular-badge\">Mais Popular</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<span class=\"python-lib-spin\">↻</span>\n"
-"                            <span>Installing… pip is resolving and downloading the package, this can take up to a minute.</span>"
+"                            <span>Installing… rebuilding the instance Docker image with the packages, this can take a minute or two.</span>"
 msgstr ""
-"<span class=\"python-lib-spin\">□</span><span>Instalando... pip está "
-"resolvendo e baixando o pacote, isso pode levar até um minuto.</span>"
+"<span class=\"python-lib-spin\">□</span><span>Instalando... reconstruindo a "
+"imagem do Docker instância com os pacotes, isso pode levar um minuto ou "
+"dois.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1577,17 +1820,6 @@ msgid "<span class=\"saas-spinner-icon\">🚀</span>"
 msgstr "<span class=\"saas-spinner-icon\">□</span>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"<span class=\"state-pill\" id=\"renewSummaryCycleBadge\" "
-"style=\"background:rgba(15,168,160,0.15);color:var(--deep);font-"
-"weight:800\">Monthly</span>"
-msgstr ""
-"<span class=\"state-pill\" id=\"renewSummaryCycleBadge\" "
-"style=\"background:rgba(15,168,160,0.15);color:var(--deep);font-"
-"weight:800\">Mensal</span>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"status\">Instant Setup</span>"
 msgstr "<span class=\"status\">Configuração Instantânea</span>"
@@ -1609,7 +1841,7 @@ msgid ""
 "                                <span class=\"step-text\">Applying your worker settings</span>"
 msgstr ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
-"class=\"step-text\">Aplicando as configurações do seu trabalhador</span>"
+"class=\"step-text\">Aplicando as configurações do seu Worker</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1692,8 +1924,7 @@ msgid ""
 "                                <span class=\"step-text\">Restarting your instance with the new workers</span>"
 msgstr ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
-"class=\"step-text\">Reiniciando sua instância com os novos "
-"trabalhadores</span>"
+"class=\"step-text\">Reiniciando sua instância com os novos Workers</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1752,6 +1983,31 @@ msgstr ""
 "spin\"></i></span><span class=\"step-text\">Pagamento verificado</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">1</span>"
+msgstr "<span class=\"step-num\">1</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">2</span>"
+msgstr "<span class=\"step-num\">2</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">3</span>"
+msgstr "<span class=\"step-num\">3</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">4</span>"
+msgstr "<span class=\"step-num\">4</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">5</span>"
+msgstr "<span class=\"step-num\">5</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<span class=\"sub\">All invoices issued to your account</span>"
 msgstr "<span class=\"sub\">Todas as faturas emitidas em sua conta</span>"
@@ -1765,6 +2021,13 @@ msgstr "<span class=\"sub\">Cada ordem de venda colocada nesta conta</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<span class=\"sub\">Every sale order placed on your account</span>"
 msgstr "<span class=\"sub\">Cada ordem de venda colocada em sua conta</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"sub\">Worker and storage upgrades of this container</span>"
+msgstr ""
+"<span class=\"sub\">Atualizações do Worker e armazenamento deste "
+"recipiente</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1809,8 +2072,12 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "<span id=\"orderWorkerLineLabel\">1 Worker</span>"
-msgstr "<span id=\"orderWorkerLineLabel\">1 Trabalhador</span>"
+msgid ""
+"<span id=\"orderWorkerLineLabel\">2 Workers included</span>\n"
+"                                                <strong id=\"orderWorkerLinePrice\">Included</strong>"
+msgstr ""
+"<span id=\"orderWorkerLineLabel\">2 Trabalhadores incluídos</span><strong "
+"id=\"orderWorkerLinePrice\">Incluído</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1870,12 +2137,13 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span style=\"font-size:12px;color:var(--muted);\">GB additional storage</span>\n"
+"<span style=\"font-size:12px;color:var(--muted);\">GB additional storage (min. 10 GB)</span>\n"
 "                                    <span id=\"storageCustomPriceDisplay\" style=\"font-size:14px;font-weight:700;color:var(--teal);margin-left:auto;\"/>"
 msgstr ""
 "<span style=\"font-size:12px;color:var(--muted);\">GB de armazenamento "
-"adicional</span><span id=\"storageCustomPriceDisplay\" style=\"font-"
-"size:14px;font-weight:700;color:var(--teal);margin-left:auto;\"></span>"
+"adicional (min. 10 GB)</span><span id=\"storageCustomPriceDisplay\" "
+"style=\"font-size:14px;font-weight:700;color:var(--teal);margin-"
+"left:auto;\"></span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1886,11 +2154,11 @@ msgstr "<span style=\"font-size:12px;color:var(--muted);\">Preço por GB:</span>
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<span style=\"font-size:12px;color:var(--muted);\">Selected:</span>\n"
-"                                    <strong id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">5 GB</strong>"
+"                                    <strong id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">10 GB</strong>"
 msgstr ""
 "<span style=\"font-"
 "size:12px;color:var(--muted);\">Seleccionado:</span><strong "
-"id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">5 "
+"id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">10 "
 "GB</strong>"
 
 #. module: s_odoo_saas_master
@@ -1899,7 +2167,7 @@ msgid ""
 "<span style=\"font-size:12px;color:var(--muted);\">Workers after upgrade:</span>\n"
 "                                <strong id=\"workersSummaryTotal\" style=\"font-size:15px;color:var(--navy);\">--</strong>"
 msgstr ""
-"<span style=\"font-size:12px;color:var(--muted);\">Trabalhadores após a "
+"<span style=\"font-size:12px;color:var(--muted);\">Workers após a "
 "atualização:</span><strong id=\"workersSummaryTotal\" style=\"font-"
 "size:15px;color:var(--navy);\">- O quê?</strong>"
 
@@ -1962,6 +2230,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span style=\"font-weight:700;color:var(--muted)\">.</span>"
 msgstr "<span style=\"font-weight:700;color:var(--muted)\">.</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Annual price</span>"
+msgstr "<span>Preço anual</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2121,6 +2394,11 @@ msgstr ""
 "class=\"ok\">Operacional</strong>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Next renewal date</span>"
+msgstr "<span>Data de renovação seguinte</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_view_form
 msgid "<span>Odoo Config</span>"
 msgstr "<span>Configuração do Odoo</span>"
@@ -2135,6 +2413,11 @@ msgstr "<span>Versão do Odoo</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Outstanding</span>"
 msgstr "<span>Notável</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Payment status</span>"
+msgstr "<span>Situação do pagamento</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -2174,7 +2457,6 @@ msgstr "<span>Tipo de registo</span><strong>CNAME</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Renews on</span>"
 msgstr "<span>Renova em</span>"
 
@@ -2199,6 +2481,16 @@ msgstr "<span>IP do servidor</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Storage</span>"
 msgstr "<span>Armazenamento</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Subscription price</span>"
+msgstr "<span>Preço de assinatura</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Subscription start</span>"
+msgstr "<span>Início da assinatura</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2306,6 +2598,24 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Change Database "
+"Name</strong>"
+msgstr ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Mudar o Nome da Base de "
+"Dados</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Database Access — Test / "
+"Staging</strong>"
+msgstr ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Acesso à Base de Dados — "
+"Teste / Staging</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
 "<strong style=\"font-size:13px;color:var(--navy)\">Odoo Master "
 "Password</strong>"
 msgstr ""
@@ -2334,11 +2644,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
-"<strong>1 dedicated worker</strong><small>Isolated compute you can upgrade "
-"as your team grows.</small>"
+"<strong>2 dedicated workers</strong><small>A single worker cannot run Odoo "
+"reliably — two are included, upgrade anytime.</small>"
 msgstr ""
-"<strong>1 trabalhador dedicado</strong><small>Computação isolada você pode "
-"atualizar à medida que sua equipe cresce.</small>"
+"<strong>2 trabalhadores dedicados</strong><small>Um único trabalhador não "
+"pode executar Odoo de forma confiável — dois estão incluídos, atualizar a "
+"qualquer momento.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2387,6 +2698,11 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Activate the DB name and DB filter again</strong>"
+msgstr "<strong>Activar novamente o nome DB e o filtro DB</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<strong>Active</strong>\n"
 "                                    <span class=\"healthy\">No expiry</span>"
@@ -2414,8 +2730,8 @@ msgid ""
 "<strong>Almost there!</strong>\n"
 "                                <span>Your new workers will be live in just a moment.</span>"
 msgstr ""
-"<strong>Quase lá!</strong><span>Os seus novos trabalhadores estarão ao vivo "
-"num instante.</span>"
+"<strong>Quase lá!</strong><span>Os seus novos Workers estarão ao vivo num "
+"instante.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -2485,6 +2801,11 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Delete the current database first</strong>"
+msgstr "<strong>Apagar primeiro a base de dados actual</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<strong>Developer</strong> — only <b>GitHub</b>, <b>GitHub Sync &amp; Deploy</b>, <b>Shell</b> (instance + PostgreSQL) and <b>Odoo Logs</b> of this instance.<br/>\n"
 "                                    <strong>Administrator</strong> — full access to this instance: billing, workers, storage, backups, GitHub, Shell and all logs."
@@ -2492,8 +2813,13 @@ msgstr ""
 "<strong>desenvolvedor</strong> — apenas <b>github</b>, <b>github sync "
 "&amp;</b>, <b>shell</b> (instância + pós-gresql) e <b>toros de odoo</b> "
 "desta instância.<br/><strong>administrador</strong> — acesso total a esta "
-"instância: faturamento, trabalhadores, armazenamento, backups, github, shell"
-" e todos os registros."
+"instância: faturamento, Workers, armazenamento, backups, github, shell e "
+"todos os registros."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Duplicate or restore your test database</strong>"
+msgstr "<strong>Duplicar ou restaurar seu banco de dados de teste</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2553,6 +2879,11 @@ msgstr ""
 "automaticamente.</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>If the restore does not succeed</strong>"
+msgstr "<strong>Se a restauração não tiver sucesso</strong>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid ""
 "<strong>Instant Automated Setup</strong>\n"
@@ -2560,6 +2891,11 @@ msgid ""
 msgstr ""
 "<strong>Configuração automática instantânea</strong><small>Contêiner Docker "
 "isolado fornecido em segundos</small>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Log in again</strong>"
+msgstr "<strong>Entrar novamente</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -2592,6 +2928,33 @@ msgid ""
 msgstr ""
 "<strong>Nota:</strong> Somente os usuários Mestres SaaS podem modificar o Caminho SSL.\n"
 "Contacte o seu SaaS Master se precisar de alterações."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Open the database manager</strong>"
+msgstr "<strong>Abrir o gerenciador de banco de dados</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong>Remove the DB filter and DB name</strong>\n"
+"                                                <small>\n"
+"                                                    Click <b>Remove DB Filter &amp; DB Name</b> below. This writes\n"
+"                                                    <span class=\"restore-code\">#db_name</span> and\n"
+"                                                    <span class=\"restore-code\">#dbfilter</span> (commented out)\n"
+"                                                    into the instance's <b>odoo.conf</b> and restarts Odoo.\n"
+"                                                </small>"
+msgstr ""
+"<strong>Remover o filtro DB e o nome DB</strong><small>Clique <b>Remover o Filtro DB &amp; Nome DB</b> abaixo. Isto escreve\n"
+" <span class=\"restore-code\">#db name</span> e\n"
+" <span class=\"restore-code\">#dbfilter</span> (comentário)\n"
+"na instância <b>odoo.conf</b> e reinicia Odoo.\n"
+" </small>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Restore your backup file</strong>"
+msgstr "<strong>Restaurar seu arquivo de backup</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -2636,8 +2999,8 @@ msgid ""
 "<strong>Unlimited storage &amp; workers</strong><small>Grow without "
 "ceilings, quotas or awkward conversations.</small>"
 msgstr ""
-"<strong>Armazenamento ilimitado &amp; trabalhadores</strong><small>Crescer "
-"sem tetos, cotas ou conversas estranhas.</small>"
+"<strong>Armazenamento ilimitado &amp; Workers</strong><small>Crescer sem "
+"tetos, cotas ou conversas estranhas.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2647,6 +3010,19 @@ msgid ""
 msgstr ""
 "<strong>Aplicativos ilimitados &amp;</strong><small>Nenhuma taxa de licença "
 "por utilizador. Convide toda a equipa.</small>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong>Wait until the instance is up</strong>\n"
+"                                                <small>\n"
+"                                                    Do not open the database manager yet — wait for the\n"
+"                                                    <b>“Your instance is running”</b> confirmation (about 30 seconds).\n"
+"                                                </small>"
+msgstr ""
+"<strong>Aguarde até que a instância esteja pronta</strong><small>Não abrir o gerenciador de banco de dados ainda — aguarde pelo\n"
+" <b>“Sua instância está em execução”</b> confirmação (cerca de 30 segundos).\n"
+" </small>"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -2687,6 +3063,12 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "A one-time passwordless login session was generated for %s."
+msgstr "Uma sessão de login sem senha única foi gerada para %s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_backup.py:0
 msgid "A restore for this backup is already in progress."
 msgstr "Uma restauração para este backup já está em andamento."
@@ -2695,11 +3077,6 @@ msgstr "Uma restauração para este backup já está em andamento."
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "ACCOUNT EMAIL"
 msgstr "EMAIL DE CONTA"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "ADD WORKERS"
-msgstr "TRABALHADORES ADICIONAIS"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__system_packages
@@ -2770,6 +3147,17 @@ msgstr "Acções"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Activating rewrites odoo.conf with\n"
+"                                        <span class=\"restore-code\">db_name</span> and\n"
+"                                        <span class=\"restore-code\">dbfilter</span> and restarts Odoo (about 30 seconds)."
+msgstr ""
+"Activar a reescrita do odoo.conf com\n"
+" <span class=\"restore-code\">db name</span> e\n"
+" <span class=\"restore-code\">dbfilter</span> e reinicia Odoo (cerca de 30 segundos)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Activating subscription, applying resources, and restarting Odoo..."
 msgstr "Activar a subscrição, aplicar recursos e reiniciar o Odoo..."
 
@@ -2808,7 +3196,7 @@ msgstr "Usuários ativos"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "Active Workers"
-msgstr "Trabalhadores Ativos"
+msgstr "Workers Ativos"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__activity_ids
@@ -2847,12 +3235,35 @@ msgid "Add Instance"
 msgstr "Adicionar uma instância"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Add a <b>pip</b> library and/or <b>APT</b> system packages (for\n"
+"                            example <b>python3-xmlsec</b>). Both are baked into your instance's\n"
+"                            <b>Docker image</b>: the Dockerfile gets a <b>pip install</b> and/or\n"
+"                            <b>apt-get install</b> line, the image is rebuilt and the instance is\n"
+"                            recreated from it. That keeps the packages available after a restart,\n"
+"                            a redeploy and even a container recreate."
+msgstr ""
+"Adicionar um <b>pip</b> biblioteca e/ou <b>APT</b> pacotes do sistema (para\n"
+"exemplo <b>python3-xmlsec</b>). Ambos estão cozidos no seu caso.\n"
+" <b>Imagem de acoplagem</b>: o Dockerfile recebe um <b>instalação do pip</b> e/ou\n"
+" <b>apt-get install</b> linha, a imagem é reconstruída e a instância é\n"
+"recriado dele. Isso mantém os pacotes disponíveis após uma reinicialização,\n"
+"uma transferência e até mesmo um recipiente recriado."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Add a notification email address first, then send the test again."
 msgstr ""
 "Adicione um endereço de e-mail de notificação primeiro, em seguida, envie o "
 "teste novamente."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Add at least one worker to upgrade."
+msgstr "Adicione pelo menos um Worker para atualizar."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2868,6 +3279,17 @@ msgstr "Adicionar mais processos de trabalho para"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Add-on"
 msgstr "Complemento"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
+msgid "Additional Worker Price"
+msgstr "Preço adicional do Worker"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__saas_worker_price_monthly
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__saas_worker_price_monthly
+msgid "Additional Worker Price (per month)"
+msgstr "Preço adicional do Worker (por mês)"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__addon_path
@@ -2965,6 +3387,7 @@ msgid "Already up to date"
 msgstr "Já actualizado"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__amount
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -2989,13 +3412,25 @@ msgstr ""
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "An instance can run between 1 and %s workers."
-msgstr "Uma instância pode funcionar entre 1 e %s trabalhadores."
+msgstr "Uma instância pode funcionar entre 1 e %s Workers."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_subscription_upgrade_upgrade_order_type_uniq
+msgid "An upgrade order can only be tracked once per resource type."
+msgstr ""
+"Uma ordem de atualização só pode ser rastreada uma vez por tipo de recurso."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Annual"
+msgstr "Anual"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Annual &amp;middot; Save 15%"
-msgstr "Anual &amp;middot; excepto 15%"
+msgid "Annual &amp;middot; billed yearly"
+msgstr "Anual &amp;middot; facturado anualmente"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -3021,6 +3456,17 @@ msgstr "Aplicativo"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_template__ecom_category_id
 msgid "App. Category"
 msgstr "Aplicação. Categoria"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__applied
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+msgid "Applied"
+msgstr "Aplicado"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__applied_date
+msgid "Applied On"
+msgstr "Aplicado em"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_form
@@ -3055,6 +3501,12 @@ msgid ""
 msgstr ""
 "Aplicando suas configurações de worker e quota de memória, então reiniciando"
 " sua instância. Isto só leva alguns segundos."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Applying…"
+msgstr "Aplicando.."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -3369,6 +3821,11 @@ msgid "Backup file not found on disk: %s"
 msgstr "Arquivo de backup não encontrado no disco: %s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Backup files"
+msgstr "Ficheiros de cópia de segurança"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Backup interrupted"
@@ -3402,14 +3859,35 @@ msgid "Backups &amp; Recovery"
 msgstr "Cópias de segurança &amp; Recuperação"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Baked into image %s"
+msgstr "Cozida na imagem %s"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__base_image
 msgid "Base Image"
 msgstr "Imagem Base"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_plan_product_id
+msgid "Base Plan"
+msgstr "Plano de base"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_price_monthly
+msgid "Base Subscription Price (Monthly)"
+msgstr "Preço base de assinatura (Média)"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__base_image
 msgid "Base image used as FROM, e.g. 'odoo:19.0'."
 msgstr "Imagem base usada como FROM, por exemplo, 'odoo:19.0'."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Base subscription"
+msgstr "Assinatura de base"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_blocked_domain__based_domain_id
@@ -3442,6 +3920,26 @@ msgid "Before"
 msgstr "Antes"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_upgrade_months
+msgid "Billed Months"
+msgstr "Meses contados"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__unit_price
+msgid "Billed Unit Price"
+msgstr "Preço unitário facturado"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Billed for the subscription period"
+msgstr "Cobrança do período de subscrição"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Billed period"
+msgstr "Período de cobrança"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__billing
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.myodoo_topbar
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -3450,19 +3948,24 @@ msgid "Billing"
 msgstr "Faturação"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
+msgid "Billing - My Odoo SH"
+msgstr "Billing - Meu Odoo SH"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.billing_address_row_inherit_saas
 msgid "Billing Address"
 msgstr "Endereço de cobrança"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Billing period"
+msgstr "Período de cobrança"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_note
 msgid "Billing space"
 msgstr "Espaço de faturamento"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
-msgid "Billing — myodoo.nc"
-msgstr "Faturação — myodoo.nc"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_blocked_domain_view_form
@@ -3681,9 +4184,20 @@ msgstr "Cancelar instância"
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__state__cancel
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_domain_name__state__cancel
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__cancelled
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
 msgid "Cancelled"
 msgstr "Cancelado"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"Cannot change the database name: the %(key)s setting is missing from the "
+"Odoo version configuration."
+msgstr ""
+"Não é possível alterar o nome do banco de dados: falta a configuração "
+"%(key)s na configuração da versão do odoo."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3769,6 +4283,12 @@ msgstr "Não foi possível encontrar o caminho para o arquivo de configuração.
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Cannot reach %(url)s: %(error)s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid ""
 "Cannot write backup file to '%s'. Ensure the Odoo process can write to this "
 "directory."
@@ -3835,6 +4355,19 @@ msgid ""
 msgstr ""
 "Escolha o seu método de pagamento seguro abaixo para completar a assinatura "
 "e fornecer a sua instância."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Click <b>Restore Database</b>, choose the backup file you\n"
+"                                            downloaded from the <b>Backups</b> tab (the <b>.zip</b> keeps\n"
+"                                            the filestore, <b>.sql</b>/<b>.dump</b> are also accepted),\n"
+"                                            then set the <b>Database Name</b> to exactly"
+msgstr ""
+"Clique <b>Restaurar banco de dados</b>, escolha o arquivo de backup que você\n"
+"baixado a partir da <b>Backups</b> aba (o <b>.zip</b> mantem\n"
+"a loja de ficheiros, <b>.sql</b>/<b>.dump</b> são também aceites),\n"
+"em seguida, definir o <b>Nome da Base de Dados</b> exatamente"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3931,6 +4464,15 @@ msgstr ""
 "%s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid ""
+"Comment db_name and dbfilter out of odoo.conf so /web/database/manager lists"
+" every database (test / staging restore)."
+msgstr ""
+"Comente db name e dbfilter fora de odoo.conf assim /web/database/manager "
+"lista cada banco de dados (teste / restauração de estadiamento)."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__commits
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Commits"
@@ -3985,6 +4527,7 @@ msgstr "Empresas"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__company_id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__company_id
 msgid "Company"
 msgstr "Empresa"
 
@@ -4007,7 +4550,7 @@ msgstr "Configuração"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Configure workers, default modules and addons path."
-msgstr "Configurar os trabalhadores, módulos padrão e o caminho dos addons."
+msgstr "Configurar os Workers, módulos padrão e o caminho dos addons."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4046,9 +4589,35 @@ msgid "Connect"
 msgstr "Ligar"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_admin_login
+msgid "Connect Admin Login"
+msgstr "Conectar o Login do Administrador"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Connect GitHub"
 msgstr "Ligar o GitHub"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid "Connect Odoo"
+msgstr "Ligar o Odoo"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_session_sid
+msgid "Connect Session"
+msgstr "Conectar sessão"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_token
+msgid "Connect Token"
+msgstr "Ligar o Token"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_token_expiry
+msgid "Connect Token Expiry"
+msgstr "Expiração do item de conexão"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4096,6 +4665,12 @@ msgid "Connected as"
 msgstr "Ligado como"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Connected as %s"
+msgstr "Ligado como %s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Connected as @"
 msgstr "Ligado como @"
@@ -4135,8 +4710,11 @@ msgid "Contacts"
 msgstr "Contactos"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_compose_volume_view_tree
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Container"
 msgstr "Recipiente"
 
@@ -4169,9 +4747,30 @@ msgid "Container Path"
 msgstr "Localização do Container"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__container_ref
+msgid "Container Reference"
+msgstr "Referência do recipiente"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_new
+msgid "Container Subscription"
+msgstr "Subscrição do Container"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_docker_container__container_type
 msgid "Container Type"
 msgstr "Tipo de recipiente"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Container Upgrade"
+msgstr "Actualização do Container"
+
+#. module: s_odoo_saas_master
+#: model:ir.actions.act_window,name:s_odoo_saas_master.saas_subscription_upgrade_action
+#: model:ir.ui.menu,name:s_odoo_saas_master.saas_menu_subscription_upgrade
+msgid "Container Upgrades"
+msgstr "Atualizações de Container"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -4193,8 +4792,19 @@ msgstr "Continuar"
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Copied to clipboard."
+msgstr "Copiado para a área de transferência."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Copied."
 msgstr "Entendido."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Copy"
+msgstr "Copiar"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4221,8 +4831,27 @@ msgstr "Não foi possível adicionar o membro da equipa."
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not change the database access mode."
+msgstr "Não foi possível alterar o modo de acesso à base de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not change the database name."
+msgstr "Não foi possível alterar o nome da base de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Could not change the login email."
 msgstr "Não foi possível alterar o e- mail de autenticação."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not compute the session token of %(instance)s: %(error)s"
+msgstr ""
+"Não foi possível calcular o símbolo de sessão de %(instance)s:%(error)s"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -4235,6 +4864,18 @@ msgstr "Incapaz de obter os registos: %s"
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Could not load the library list."
 msgstr "Não foi possível carregar a lista de bibliotecas."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not open a session on %(url)s: %(error)s"
+msgstr "Não foi possível abrir uma sessão em %(url)s:%(error)s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not refresh the session of %(instance)s: %(error)s"
+msgstr "Não foi possível atualizar a sessão de %(instance)s:%(error)s"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -4349,6 +4990,7 @@ msgstr "Criado"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__create_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__create_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__create_uid
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__create_uid
 msgid "Created by"
 msgstr "Criado por"
 
@@ -4388,6 +5030,7 @@ msgstr "Criado por"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__create_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__create_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__create_date
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__create_date
 msgid "Created on"
 msgstr "Criado em"
 
@@ -4397,9 +5040,30 @@ msgid "Creating Your Trial Instance"
 msgstr "Criando sua instância de julgamento"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__currency_id
+msgid "Currency"
+msgstr "Moeda"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_duplicate_wizard__current_subdomain
 msgid "Current Subdomain"
 msgstr "Subdomínio atual"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Current resources"
+msgstr "Recursos actuais"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Currently"
+msgstr "Atualmente"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Currently "
+msgstr "Atualmente"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4426,8 +5090,8 @@ msgstr "Addons Personalizados"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Custom Amount (GB)"
-msgstr "Quantidade personalizada (GB)"
+msgid "Custom Amount (GB) — minimum 10 GB"
+msgstr "Montante personalizado (GB) — mínimo 10 GB"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__docker_image_id
@@ -4468,6 +5132,7 @@ msgstr "Domínio personalizado + subdomínios"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__partner_id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__partner_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_invoice_document
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_document
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
@@ -4483,6 +5148,53 @@ msgstr "URL do Portal do Cliente"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "DATABASE (pgdata)"
 msgstr "BASE DE DADOS (pgdata)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "DATABASE NAME"
+msgstr "NOME DA BASE DE DADOS"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB filter removed — wait until the instance is running, then duplicate or "
+"restore your test database."
+msgstr ""
+"Filtro DB removido — aguarde até que a instância esteja em execução, então "
+"duplique ou restaure seu banco de dados de teste."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB filter removed. Wait until the instance is running, then duplicate or "
+"restore your test database."
+msgstr ""
+"Filtro DB removido. Espere até que a instância esteja em execução, então "
+"duplique ou restaure seu banco de dados de teste."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "DB name and DB filter activated"
+msgstr "Nome DB e filtro DB ativados"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB name and DB filter activated — Odoo is restarting and locked to your "
+"database."
+msgstr ""
+"Nome DB e filtro DB ativado — Odoo está reiniciando e travado em seu banco "
+"de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "DB name and DB filter activated. Odoo is restarting."
+msgstr "Nome DB e filtro DB ativados. O Odoo está a reiniciar."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4568,6 +5280,30 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Database name changed"
+msgstr "Nome da base de dados alterado"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Database name updated."
+msgstr "Nome da base de dados actualizado."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Database name updated. Odoo is restarting."
+msgstr "Nome da base de dados actualizado. O Odoo está a reiniciar."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Database query failed on %(instance)s: %(error)s"
+msgstr "A pesquisa na base de dados falhou em %(instance)s:%(error)s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
 msgid "Database restore error for %s: %s"
 msgstr "Erro de restauração de banco de dados para %s: %s"
@@ -4640,7 +5376,7 @@ msgstr "Infra-estruturas dedicadas"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Dedicated workers"
-msgstr "Trabalhadores dedicados"
+msgstr "Workers dedicados"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4943,6 +5679,7 @@ msgstr "Discutir"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__display_name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__display_name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__display_name
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__display_name
 msgid "Display Name"
 msgstr "Mostrar o Nome"
 
@@ -5034,6 +5771,12 @@ msgstr "Falha na compilação da imagem de acoplagem: %s"
 #: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_docker_image_image_name_uniq
 msgid "Docker image name must be unique!"
 msgstr "O nome da imagem do Docker deve ser único!"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Docker returned no output."
+msgstr "O Docker não devolveu nenhuma saída."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__dockerfile_content
@@ -5219,8 +5962,13 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "EXTRA STORAGE (GB)"
-msgstr "ARMAZENAMENTO EXTRA (GB)"
+msgid "EXTRA STORAGE (GB) · MINIMUM 10 GB"
+msgstr "ARMAZENAMENTO EXTRA (GB) · MÍNIMO 10 GB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "EXTRA WORKERS TO ADD (MAX"
+msgstr "TRABALHADORES EXTRA PARA ADD (MAX"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5314,6 +6062,14 @@ msgid "Enter Client ID and Client Secret"
 msgstr "Digite o ID do cliente e o segredo do cliente"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Enter a Python package, a system package, or both."
+msgstr "Digite um pacote Python, um pacote de sistema ou ambos."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Enter a domain like erp.mycompany.com or mycompany.com."
@@ -5335,10 +6091,8 @@ msgid "Enter a valid email address."
 msgstr "Digite um endereço de e- mail válido."
 
 #. module: s_odoo_saas_master
-#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Enter the name of the Python library to install."
 msgstr "Indique o nome da biblioteca Python a instalar."
 
@@ -5488,9 +6242,20 @@ msgid "Extra Addons"
 msgstr "Extras addons"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_extra
+msgid "Extra Apps"
+msgstr "Aplicações Extra"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_extra_storage_product_template
 msgid "Extra Storage (per GB)"
 msgstr "Armazenamento extra (por GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__saas_storage_price_per_gb
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__saas_storage_price_per_gb
+msgid "Extra Storage Price (per GB / month)"
+msgstr "Preço de Armazenamento Extra (por GB / mês)"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5499,10 +6264,15 @@ msgid "Extra storage added to %s"
 msgstr "Armazenamento extra adicionado a %s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Extra worker:"
+msgstr "Trabalhador extra:"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "Extra workers added to %s"
-msgstr "Trabalhadores extras adicionados a %s"
+msgstr "Workers extras adicionados a %s"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -5632,8 +6402,8 @@ msgstr ""
 msgid ""
 "Full access: billing, workers, storage, backups, GitHub, Shell and logs."
 msgstr ""
-"Acesso completo: faturamento, trabalhadores, armazenamento, backups, GitHub,"
-" Shell e logs."
+"Acesso completo: faturamento, Workers, armazenamento, backups, GitHub, Shell"
+" e logs."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__image_name
@@ -5649,6 +6419,8 @@ msgid "Full name"
 msgstr "Nome completo"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
@@ -5659,6 +6431,11 @@ msgstr "Nome completo"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "GB"
 msgstr "GB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB ("
+msgstr "GB ("
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
@@ -5675,6 +6452,11 @@ msgstr "GB alocados"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "GB included · +"
 msgstr "GB incluído · +"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB included)"
+msgstr "GB incluído)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5914,6 +6696,11 @@ msgid "Give people access to"
 msgstr "Dar acesso às pessoas"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Go to"
+msgstr "Ir para"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Go to My Instances"
 msgstr "Ir às minhas instâncias"
@@ -5939,6 +6726,7 @@ msgstr "É bom saber"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_config_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Group By"
 msgstr "Agrupar por"
 
@@ -5974,6 +6762,12 @@ msgid "Here is the latest update about your hosting."
 msgstr "Aqui está a última atualização sobre o seu alojamento."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Hide"
+msgstr "Ocultar"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "History"
 msgstr "Histórico"
@@ -6001,7 +6795,7 @@ msgid ""
 "5 backups "
 msgstr ""
 "Hospedagem\n"
-"2 trabalhadores\n"
+"2 Workers\n"
 "5 Ir armazenamento\n"
 "5 backups"
 
@@ -6017,8 +6811,8 @@ msgstr "Visão Geral da Hospedagem"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Hosting Overview — myodoo.nc"
-msgstr "Visão geral da hospedagem — myodoo.nc"
+msgid "Hosting Overview - My Odoo SH"
+msgstr "Visão geral da hospedagem - Meu Odoo SH"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_history__source
@@ -6035,6 +6829,15 @@ msgstr "Recursos Humanos"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_cancel_wizard_form
 msgid "I am sure delete the instance"
 msgstr "Tenho a certeza de apagar a instância"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"I understand that Odoo will restart and that the existing database\n"
+"                                    will not be renamed."
+msgstr ""
+"Eu entendo que Odoo vai reiniciar e que o banco de dados existente\n"
+"não será renomeado."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__id
@@ -6072,8 +6875,14 @@ msgstr "Tenho a certeza de apagar a instância"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__id
 msgid "ID"
 msgstr "ID"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "INSTANCE / DOMAIN"
+msgstr "Instância / domínio"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6127,8 +6936,8 @@ msgid ""
 "Idempotency guard: True once the extra workers have been applied to the "
 "instance."
 msgstr ""
-"Guarda de imunidade: Verdade, uma vez que os trabalhadores extras foram "
-"aplicados à instância."
+"Guarda de imunidade: Verdade, uma vez que os Workers extras foram aplicados "
+"à instância."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__template_tag
@@ -6219,24 +7028,37 @@ msgid "Included + audit history"
 msgstr "Incluído + histórico de auditoria"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"Includes 5 GB base storage &amp;middot; workers &amp; extra storage billed "
-"below"
-msgstr ""
-"Inclui 5 GB de armazenamento base &amp;middot; trabalhadores &amp; de "
-"armazenamento extra facturado abaixo"
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_storage_gb
+msgid "Included Storage (GB)"
+msgstr "Armazenamento incluído (GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_workers
+msgid "Included Workers"
+msgstr "Workers incluídos"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Increase the values below to upgrade your instance."
-msgstr "Aumente os valores abaixo para atualizar sua instância."
+msgid ""
+"Includes 2 workers &amp; 5 GB base storage &amp;middot; extra resources "
+"billed below"
+msgstr ""
+"Inclui 2 trabalhadores &amp; 5 GB de armazenamento de base &amp;middot; "
+"recursos adicionais cobrados abaixo"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Increase the values below to upgrade your instance (annual plans only)."
+msgstr ""
+"Aumente os valores abaixo para atualizar sua instância (apenas planos "
+"anuais)."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Increase workers or storage to upgrade."
-msgstr "Aumentar os trabalhadores ou armazenamento para atualizar."
+msgstr "Aumentar os Workers ou armazenamento para atualizar."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__level__info
@@ -6272,17 +7094,17 @@ msgstr "Instalar o Módulo"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Install Python Library"
-msgstr "Instalar a Biblioteca Python"
+msgid "Install Python &amp; System Packages"
+msgstr "Instalar Pacotes de Sistema Python &amp;"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"Install extra Python packages (pip) inside your instance and keep them in "
-"requirements.txt."
+"Install extra Python (pip) and system (apt) packages in your instance. Both "
+"are baked into the Docker image."
 msgstr ""
-"Instale pacotes Python extras (pip) dentro de sua instância e mantenha-os em"
-" requirements.txt."
+"Instale pacotes adicionais em Python (pip) e sistema (apt) em sua instância."
+" Ambos estão na imagem do Docker."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6310,8 +7132,13 @@ msgstr "Data Instalada"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Installed libraries"
-msgstr "Bibliotecas instaladas"
+msgid "Installed Python packages"
+msgstr "Pacotes Python instalados"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Installed system packages"
+msgstr "Pacotes de sistema instalados"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6320,6 +7147,7 @@ msgid "Installing…"
 msgstr "Instalando.."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__instance_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__instance_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_history__instance_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -6432,6 +7260,7 @@ msgstr "A instância deve ser mobilizada para reinstalar."
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Instance not found."
@@ -6484,6 +7313,14 @@ msgid "Instance suspended"
 msgstr "Suspensão da instância"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
+msgid ""
+"Instance this image is built for: the Odoo version and the edition are "
+"copied from it."
+msgstr ""
+"Esta imagem foi construída para: a versão Odoo e a edição são copiadas dela."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Instance will be hosted at this URL."
 msgstr "A instância será hospedada neste URL."
@@ -6513,9 +7350,26 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"Invalid database name. Use only letters, digits, underscores and hyphens, "
+"start with a letter or an underscore, and keep it under 63 characters."
+msgstr ""
+"Nome da base de dados inválido. Use apenas letras, dígitos, sublinhas e "
+"hífens, comece com uma letra ou um sublinhado, e mantenha-o abaixo de 63 "
+"caracteres."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Invalid library name."
 msgstr "Nome da biblioteca inválido."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Invalid system package name."
+msgstr "Nome de pacote do sistema inválido."
 
 #. module: s_odoo_saas_master
 #: model:product.public.category,name:s_odoo_saas_master.product_public_category_inventory
@@ -6619,17 +7473,17 @@ msgid "Jump to the newest output"
 msgstr "Ir para o mais novo resultado"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Keep this exact instance / domain — do not change it."
+msgstr "Mantenha esta instância / domínio exato — não altere."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_config__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_resource_package_line__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version_config__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__name
 msgid "Key"
 msgstr "Chave"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "LIBRARY NAME"
-msgstr "NOME LIBRÁRIO"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -6647,9 +7501,19 @@ msgid "Last Backup"
 msgstr "Última Cópia de Segurança"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_last_at
+msgid "Last Connect"
+msgstr "Última Ligação"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_redeploy_date
 msgid "Last Redeploy Date"
 msgstr "Data da Última Reaplicação"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_renewal_date
+msgid "Last Renewal Date"
+msgstr "Última data de renovação"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_sync_message
@@ -6692,6 +7556,7 @@ msgstr "Última Mensagem de Sincronização"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__write_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__write_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__write_uid
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__write_uid
 msgid "Last Updated by"
 msgstr "Última atualização por"
 
@@ -6731,6 +7596,7 @@ msgstr "Última atualização por"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__write_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__write_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__write_date
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__write_date
 msgid "Last Updated on"
 msgstr "Última atualização em"
 
@@ -6755,12 +7621,6 @@ msgstr "Última fonte tirada do GitHub, linha por linha:"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_history__level
 msgid "Level"
 msgstr "Nível"
-
-#. module: s_odoo_saas_master
-#. odoo-javascript
-#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Library installed."
-msgstr "Biblioteca instalada."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6919,8 +7779,8 @@ msgstr "Gerenciar Domínios"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Manage Libraries"
-msgstr "Gerenciar bibliotecas"
+msgid "Manage Packages"
+msgstr "Gerenciar pacotes"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -6956,6 +7816,13 @@ msgstr "Gerenciando IP"
 msgid ""
 "Manifest updated automatically: <b class=\"mono\" "
 "id=\"pythonLibPath\">/home/&lt;instance&gt;/requirements.txt</b>"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Manifest updated automatically: <b class=\"mono\" "
+"id=\"systemPkgPath\">/home/&lt;instance&gt;/system-packages.txt</b>"
 msgstr ""
 
 #. module: s_odoo_saas_master
@@ -7094,6 +7961,8 @@ msgid "Monitoring"
 msgstr "Acompanhamento"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__product_pricelist_item__subscription_type__monthly
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__subscription_type__monthly
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__subscription_type__monthly
@@ -7102,6 +7971,30 @@ msgstr "Acompanhamento"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "Monthly"
 msgstr "Mensal"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__monthly_unit_price
+msgid "Monthly Unit Price"
+msgstr "Preço unitário mensal"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_price_monthly
+msgid "Monthly price of the base subscription. Billed annually (× 12)."
+msgstr "Preço mensal da assinatura base. Faturado anualmente (× 12)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Monthly subscriptions can be <b>renewed only</b>. To add storage (or workers), switch this\n"
+"                                instance to an <b>Annual &amp;middot; billed yearly</b> plan from the Renew &amp; Upgrade wizard."
+msgstr ""
+"As assinaturas mensais podem ser <b>renovado apenas</b>. Para adicionar armazenamento (ou Workers), mude isto\n"
+"instância para um <b>Anual &amp;middot; facturado anualmente</b> Plano do Renow &amp; Assistente de atualização."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__months_billed
+msgid "Months Billed"
+msgstr "Meses Contados"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -7132,13 +8025,18 @@ msgstr "As minhas instâncias"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_my_instances
-msgid "My Instances — myodoo.nc"
-msgstr "As minhas instâncias — miodoo.nc"
+msgid "My Instances - My Odoo SH"
+msgstr "Minhas instâncias - Meu Odoo SH"
 
 #. module: s_odoo_saas_master
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_menu_root
 msgid "My Odoo SH"
 msgstr "Meu Odoo SH"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "NEW DATABASE NAME"
+msgstr "NOVO NOME DA BASE DE DADOS"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -7153,13 +8051,8 @@ msgstr "NOTIFICAÇÃO EMAIL"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "NUMBER OF WORKERS"
-msgstr "NÚMERO DE TRABALHADORES"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "NUMBER OF WORKERS (TOTAL)"
-msgstr "NÚMERO DE TRABALHADORES (TOTAL)"
+msgid "NUMBER OF WORKERS (2 INCLUDED)"
+msgstr "NÚMERO DE TRABALHADORES (2 INCLUÍDOS)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -7271,6 +8164,11 @@ msgid "Next Activity Type"
 msgstr "Tipo de atividade seguinte"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__next_renewal_date
+msgid "Next Renewal Date"
+msgstr "Próxima data de renovação"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_server__nginx_server_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 msgid "Nginx Server"
@@ -7313,10 +8211,21 @@ msgid "No Index"
 msgstr "Nenhum índice"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__no_invoice
+msgid "No Invoice"
+msgstr "Nenhuma factura"
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "No Python library installed yet."
-msgstr "Nenhuma biblioteca Python ainda instalada."
+msgid "No Python package installed yet."
+msgstr "Nenhum pacote Python instalado ainda."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "No active administrator was found in the database of %s."
+msgstr "Nenhum administrador ativo foi encontrado na base de dados de %s."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7330,6 +8239,16 @@ msgstr ""
 "Nenhum backup criado ainda. Clique acima para criar seu primeiro backup."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"No business typology is configured: the Python library image cannot be "
+"built."
+msgstr ""
+"Nenhuma tipologia de negócio está configurada: a imagem da biblioteca Python"
+" não pode ser construída."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__status__nochange
 msgid "No change"
 msgstr "Nenhuma alteração"
@@ -7340,6 +8259,19 @@ msgstr "Nenhuma alteração"
 msgid "No container backup is linked to this database backup."
 msgstr ""
 "Nenhum backup de container está ligado a este backup de banco de dados."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "No data has been lost."
+msgstr "Nenhum dado foi perdido."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No extra storage selected · any storage upgrade starts at 10 GB."
+msgstr ""
+"Nenhum armazenamento extra selecionado · qualquer atualização de "
+"armazenamento começa em 10 GB."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -7406,6 +8338,25 @@ msgid "No server is available for this version yet."
 msgstr "Nenhum servidor ainda está disponível para esta versão."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No system package installed yet."
+msgstr "Nenhum pacote de sistema instalado ainda."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.actions.act_window,help:s_odoo_saas_master.saas_subscription_upgrade_action
+msgid "No upgrade yet"
+msgstr "Sem atualização ainda"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"No upgrade yet. Upgrade workers or storage above to grow this container."
+msgstr ""
+"Ainda não houve actualização. Atualize os Workers ou armazenamento acima "
+"para crescer este recipiente."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid ""
@@ -7458,9 +8409,38 @@ msgid "Not Restored"
 msgstr "Não Restaurado"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Not set — open Instance Settings"
+msgstr "Não definido — Configurações de instância abertas"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_port_view_search
 msgid "Not used"
 msgstr "Não utilizado"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__note
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Note"
+msgstr "Nota"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Nothing to copy."
+msgstr "Nada para copiar."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Nothing to renew for this container."
+msgstr "Nada para renovar para este contentor."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Nothing to upgrade. Add at least one worker or GB."
+msgstr "Nada para atualizar. Adicione pelo menos um Worker ou GB."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_partner__saas_notify_email
@@ -7548,7 +8528,7 @@ msgstr "Notificar: atualização do armazenamento"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_partner__saas_notify_workers_upgrade
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_users__saas_notify_workers_upgrade
 msgid "Notify: workers upgrade"
-msgstr "Notificar: atualização dos trabalhadores"
+msgstr "Notificar: atualização dos Workers"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__message_needaction_counter
@@ -7559,16 +8539,18 @@ msgstr "Número de acções"
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__workers_count
 msgid ""
 "Number of Odoo worker processes the instance runs with. Also drives the "
-"container memory allocation (2 GB soft / 2.5 GB hard per worker)."
+"container memory allocation (2 GB soft / 2.5 GB hard per worker). A single "
+"worker is not enough to run Odoo reliably, so the Standard plan starts at 2."
 msgstr ""
 "Número de Odoo worker processa a instância roda com. Também conduz a "
 "alocação de memória do recipiente (2 GB macio / 2,5 GB duro por "
-"trabalhador)."
+"trabalhador). Um único trabalhador não é suficiente para executar Odoo de "
+"forma confiável, então o plano Standard começa em 2."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_sale_order__workers_count
 msgid "Number of additional workers purchased on this order."
-msgstr "Número de trabalhadores adicionais adquiridos nesta ordem."
+msgstr "Número de Workers adicionais adquiridos nesta ordem."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__message_has_error_counter
@@ -7586,6 +8568,11 @@ msgid "Number of messages with delivery error"
 msgstr "Número de mensagens com erro de entrega"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_sale_order__saas_upgrade_months
+msgid "Number of months billed on this upgrade order."
+msgstr "Número de meses faturados nesta ordem de atualização."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "Number of notification days before expiration date."
 msgstr "Número de dias de notificação antes da data de expiração."
@@ -7596,6 +8583,16 @@ msgid "Number of revoke odoo instance days after expiration date."
 msgstr "Número de revogar odoo instância dias após a data de expiração."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_workers
+msgid ""
+"Number of workers included in the base subscription. The Standard plan "
+"includes 2 workers (Odoo does not run reliably on a single worker)."
+msgstr ""
+"Número de trabalhadores incluídos na subscrição de base. O plano padrão "
+"inclui 2 trabalhadores (Odoo não funciona de forma confiável em um único "
+"trabalhador)."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "OAuth Redirect ↗"
 msgstr "OAuth Redirect"
@@ -7604,6 +8601,11 @@ msgstr "OAuth Redirect"
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_ocr
 msgid "OCR"
 msgstr "OCR"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "ODOO MASTER PASSWORD"
+msgstr "ODOO MASTERS PASSWORD"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7633,8 +8635,8 @@ msgid ""
 msgstr ""
 "Opcional. Deixe em branco (padrão) para usar o preço de venda do produto "
 "como está, na moeda da empresa. Só definir uma moeda aqui quando o plano / "
-"trabalhador / preço de venda de armazenamento são inseridos em outra moeda e"
-" deve ser convertido na moeda da empresa antes de ser mostrado ou faturado."
+"Worker / preço de venda de armazenamento são inseridos em outra moeda e deve"
+" ser convertido na moeda da empresa antes de ser mostrado ou faturado."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__container_type__odoo
@@ -7805,6 +8807,12 @@ msgid "Odoo Versions"
 msgstr "Versões Odoo"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Odoo connection opened"
+msgstr "Ligação Odoo aberta"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_odoo_data_gb
 msgid "Odoo data — odoo-web-data (GB)"
 msgstr "Dados Odoo — odoo-web-data (GB)"
@@ -7817,15 +8825,16 @@ msgstr "Edição Odoo"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__edition
 msgid ""
-"Odoo edition baked into this image. Image tag code: 'cmy' = Community, 'ent'"
-" = Enterprise. Enterprise images embed the enterprise addons; community "
-"images are based on the official community image (enterprise addons mounted "
-"at runtime, if any)."
+"Odoo edition baked into this image. Defaults to the edition (version type) "
+"of the instance the image is built for. Enterprise images embed the "
+"enterprise addons; community images are based on the official community "
+"image (enterprise addons mounted at runtime, if any)."
 msgstr ""
-"Edição de Odoo feita nesta imagem. Código da tag de imagem: 'cmy' = "
-"Comunidade, 'ent' = Empresa. As imagens corporativas incorporam os addons "
-"corporativos; as imagens comunitárias são baseadas na imagem oficial da "
-"comunidade (addons empresariais montados em tempo de execução, se houver)."
+"Edição de Odoo feita nesta imagem. O padrão da edição (tipo de versão) da "
+"instância para a qual a imagem é construída. As imagens corporativas "
+"incorporam os addons corporativos; as imagens comunitárias são baseadas na "
+"imagem oficial da comunidade (addons empresariais montados em tempo de "
+"execução, se houver)."
 
 #. module: s_odoo_saas_master
 #: model:mail.template,subject:s_odoo_saas_master.instance_expiration_notify_mail_template
@@ -7874,6 +8883,15 @@ msgid "Onboarding"
 msgstr "A bordo"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"One APT package per line. They are installed with\n"
+"                                <b>apt-get install</b> in the same Dockerfile, before the pip step."
+msgstr ""
+"Um pacote APT por linha. Eles são instalados com\n"
+" <b>apt-get install</b> no mesmo arquivo Docker, antes do passo pip."
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_website_hr_recruitment_product_template
 msgid "Online Jobs"
 msgstr "Trabalhos em linha"
@@ -7887,6 +8905,32 @@ msgid ""
 msgstr ""
 "Apenas um nome de biblioteca simples é aceito, opcionalmente com uma versão "
 "— por exemplo, \"pandas\", \"pandas[excel]\" ou \"python-escpos\"."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Only needed when the backup must live under another name. Saving\n"
+"                                    rewrites the instance's <b>odoo.conf</b> (<b>db_name</b> and\n"
+"                                    <b>dbfilter</b>) and <b>redeploys / restarts</b> Odoo so the new name\n"
+"                                    is used immediately. The PostgreSQL database itself is not renamed —\n"
+"                                    after the restart, restore or create the database with the new name\n"
+"                                    in the database manager.\n"
+"                                    <br/>\n"
+"                                    <b>Tip:</b> if the old database is no longer needed, delete it in\n"
+"                                    the database manager <b>before</b> saving the new name — as soon as\n"
+"                                    odoo.conf uses the new name, the old one no longer appears in that\n"
+"                                    list (support can still remove it on request)."
+msgstr ""
+"Só é necessário quando o backup deve viver com outro nome. Salvando\n"
+"reescreve a instância <b>odoo.conf</b> (<b>db name</b> e\n"
+" <b>dbfilter</b>) e <b>redeploys / reinicia</b> Odoo então o novo nome\n"
+"é utilizado imediatamente. O banco de dados PostgreSQL em si não é renomeado —\n"
+"após reiniciar, restaurar ou criar o banco de dados com o novo nome\n"
+"no gestor de bases de dados.\n"
+" <br/><b>Dica:</b> se o banco de dados antigo já não é necessário, apague- o em\n"
+"o gerenciador de banco de dados <b>antes</b> salvar o novo nome — logo que\n"
+"odoo.conf usa o novo nome, o antigo já não aparece\n"
+"lista (o suporte ainda pode removê-lo mediante solicitação)."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7906,7 +8950,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Only the extra workers &amp; storage are charged."
-msgstr "Apenas os trabalhadores extras &amp; armazenamento são cobrados."
+msgstr "Apenas os Workers extras &amp; armazenamento são cobrados."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7935,6 +8979,11 @@ msgid "Oops! Your payment was declined."
 msgstr "Oops! O seu pagamento foi recusado."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Open"
+msgstr "Abrir"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid ""
 "Open Google Authenticator, Microsoft Authenticator or Authy, tap\n"
@@ -7952,8 +9001,8 @@ msgstr "Abertura da instância"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Open Odoo"
-msgstr "Abrir o Odoo"
+msgid "Open Instance Settings"
+msgstr "Configurações da instância aberta"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_my_instances
@@ -7974,6 +9023,12 @@ msgstr "Abrir a página Backups"
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Open the hosting portal"
 msgstr "Abra o portal de hospedagem"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid "Open this container's backend as its administrator, without a password"
+msgstr ""
+"Abra a infra- estrutura deste recipiente como seu administrador, sem senha"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8095,6 +9150,11 @@ msgid "PSQL Versions"
 msgstr "Versões PSQL"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "PYTHON PACKAGES (PIP)"
+msgstr "EMBALAGENS DE PITONO (PIP)"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__package_id
 msgid "Package"
 msgstr "Pacote"
@@ -8104,6 +9164,18 @@ msgstr "Pacote"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_resource_package_view_form
 msgid "Package Lines"
 msgstr "Linhas de Pacotes"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Package installation failed: %s"
+msgstr "A instalação do pacote falhou: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Packages installed."
+msgstr "Pacotes instalados."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8117,9 +9189,19 @@ msgid "Pagespeed Cache Path"
 msgstr "Caminho da 'Cache' da Velocidade da Página"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__paid
+msgid "Paid"
+msgstr "Pago"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__paid_user
 msgid "Paid User"
 msgstr "Utilizador Pago"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__partial
+msgid "Partially Paid"
+msgstr "Pagado Parcialmente"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8193,6 +9275,11 @@ msgid "Payment &amp;amp; Final Activation"
 msgstr "Pagamento &amp;amp; Activação Final"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__payment_status
+msgid "Payment Status"
+msgstr "Status do pagamento"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Payment Status — myodoo.nc"
 msgstr "Estado de pagamento — myodoo.nc"
@@ -8208,9 +9295,30 @@ msgid "Payment confirmed!"
 msgstr "Pagamento confirmado!"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Payment not confirmed yet."
+msgstr "Pagamento ainda não confirmado."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Payment status"
 msgstr "Situação do pagamento"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+msgid "Pending"
+msgstr "Pendente"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__pending
+msgid "Pending Payment"
+msgstr "Pagamento Pendente"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Period & status"
+msgstr "& Estado do período"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__github_token
@@ -8246,6 +9354,17 @@ msgid "Placed on"
 msgstr "Colocado em"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Plan "
+msgstr "Plano"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_plan_product_id
+msgid "Plan product this container's base subscription is billed from."
+msgstr "Planeje o produto da assinatura de base deste contêiner."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Plan:"
 msgstr "Plano:"
@@ -8263,6 +9382,12 @@ msgstr "Digite 'sim' na caixa de confirmação antes de cancelar a instância"
 msgid ""
 "Please enter 'yes' in the confirmation box before restoring the backup."
 msgstr "Digite 'sim' na caixa de confirmação antes de restaurar o backup."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Please enter a database name."
+msgstr "Digite um nome de banco de dados."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -8440,8 +9565,8 @@ msgstr "Preços"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Pricing — myodoo.nc"
-msgstr "Preços — miodoo.nc"
+msgid "Pricing - My Odoo SH"
+msgstr "Preços - Meu Odoo SH"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__private_key_id
@@ -8461,7 +9586,7 @@ msgstr "Nome do Ficheiro de Chave Privada"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Proceed to Payment &amp;rarr; Upgrade Workers"
-msgstr "Procedimento de pagamento &amp;rarr; Atualizar os Trabalhadores"
+msgstr "Procedimento de pagamento &amp;rarr; Atualizar os Workers"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -8500,6 +9625,16 @@ msgid "Project"
 msgstr "Projeto"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__prorated
+msgid "Prorated"
+msgstr "Produzido"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_upgrade_prorated
+msgid "Prorated Upgrade"
+msgstr "Actualização Prorificada"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__public_key_id
 msgid "Public Key"
 msgstr "Chave Pública"
@@ -8510,7 +9645,7 @@ msgid ""
 "Public access and background workers are stopped. Start the instance to "
 "bring it back online."
 msgstr ""
-"O acesso público e os trabalhadores de formação são interrompidos. Comece a "
+"O acesso público e os Workers de formação são interrompidos. Comece a "
 "instância para voltar a ligá-la."
 
 #. module: s_odoo_saas_master
@@ -8576,6 +9711,16 @@ msgstr ""
 "worker(s)."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__extra_storage_total
+msgid "Purchased Extra Storage (GB)"
+msgstr "Armazenamento Extra Comprado (GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__extra_workers_total
+msgid "Purchased Extra Workers"
+msgstr "Workers Extra comprados"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__trigger__webhook
 msgid "Push (webhook)"
 msgstr "Empurre (webhook)"
@@ -8587,8 +9732,8 @@ msgstr "Piton"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Python Libraries"
-msgstr "Bibliotecas em Python"
+msgid "Python &amp; System Packages"
+msgstr "Pacotes de sistema python &amp;"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__python_requirements
@@ -8599,20 +9744,32 @@ msgstr "Requisitos Python"
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "Python library installation failed: %s"
-msgstr "A instalação da biblioteca Python falhou: %s"
-
-#. module: s_odoo_saas_master
-#. odoo-python
-#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Python library installed: %s"
 msgstr "Biblioteca Python instalada: %s"
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python library removal failed: %s"
+msgstr "A remoção da biblioteca em Python falhou: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Python library removed: %s"
 msgstr "Biblioteca Python removida: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python libs - %s"
+msgstr "Libra Python - %s"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__quantity
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Quantity"
+msgstr "Quantidade"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__deployment_state__pending
@@ -8677,6 +9834,48 @@ msgid "Recruitment"
 msgstr "Recrutamento"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
+msgid ""
+"Recurring monthly price of one additional worker. Annual upgrades are billed"
+" × 12, prorated over the remaining subscription period. Leave 0 to use the "
+"'Workers' product price."
+msgstr ""
+"Preço mensal recorrente de um Worker adicional. As atualizações anuais são "
+"cobradas × 12, prorated ao longo do período restante da assinatura. Deixe 0 "
+"para usar o preço do produto 'Workers'."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_company__saas_worker_price_monthly
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_config_settings__saas_worker_price_monthly
+msgid ""
+"Recurring monthly price of one additional worker. Leave empty (0) to use the"
+" 'Workers' product sale price. Annual upgrades are billed this amount × 12 "
+"(prorated over the remaining subscription period)."
+msgstr ""
+"Preço mensal recorrente de um Worker adicional. Deixe em branco (0) para "
+"usar o preço de venda do produto 'Workers'. Os upgrades anuais são faturados"
+" este montante × 12 (prorated ao longo do período restante da assinatura)."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_company__saas_storage_price_per_gb
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_config_settings__saas_storage_price_per_gb
+msgid ""
+"Recurring monthly price of one extra GB of storage. Leave empty (0) to use "
+"the 'Extra Storage' product sale price. Annual upgrades are billed this "
+"amount × 12 (prorated over the remaining subscription period)."
+msgstr ""
+"Preço mensal recorrente de um GB extra de armazenamento. Deixe vazio (0) "
+"para usar o preço de venda do produto 'Extra Storage'. Os upgrades anuais "
+"são faturados este montante × 12 (prorated ao longo do período restante da "
+"assinatura)."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_subscription_upgrade__monthly_unit_price
+msgid "Recurring monthly price of one unit (worker or GB) before proration."
+msgstr ""
+"Preço mensal recorrente de uma unidade (Worker ou GB) antes da proração."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_redeploy_wizard_form
 msgid "Redeploy"
 msgstr "Reafectar"
@@ -8731,7 +9930,7 @@ msgstr "A redistribuição foi desencadeada com sucesso."
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Redirecting to your cart - only the extra workers are charged..."
 msgstr ""
-"Redirecionando para o seu carrinho - apenas os trabalhadores extras são "
+"Redirecionando para o seu carrinho - apenas os Workers extras são "
 "cobrados..."
 
 #. module: s_odoo_saas_master
@@ -8762,6 +9961,7 @@ msgid "Redirects to GitHub for one-click authorization"
 msgstr "Reencaminha para o GitHub para autorização de um clique"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__name
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -8827,10 +10027,24 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Renew Subscription"
+msgstr "Renovar a Assinatura"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Renew now"
 msgstr "Renovar agora"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Renew now to unlock full cloud resources and keep your database permanent.\n"
+"                                                <b>Upgrades are allowed only on annual plans.</b>"
+msgstr ""
+"Renove agora para desbloquear recursos na nuvem e manter seu banco de dados permanente.\n"
+" <b>As atualizações só são permitidas em planos anuais.</b>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8840,6 +10054,12 @@ msgid ""
 msgstr ""
 "Renove ou atualize agora para desbloquear recursos completos da nuvem e "
 "manter seu banco de dados permanente."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Renewal Quotation"
+msgstr "Cotação de renovação"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8947,6 +10167,11 @@ msgid "Resource Packages"
 msgstr "Pacotes de Recursos"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_upgrade
+msgid "Resource Upgrade"
+msgstr "Actualização dos Recursos"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Resources"
 msgstr "Recursos"
@@ -8973,7 +10198,7 @@ msgstr "Reiniciar"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Restart Odoo HTTP worker containers gracefully."
-msgstr "Reinicie os recipientes de trabalhadores Odoo HTTP graciosamente."
+msgstr "Reinicie os recipientes de Workers Odoo HTTP graciosamente."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -8997,10 +10222,16 @@ msgstr "Restaurante"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__restore
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_tree
 msgid "Restore"
 msgstr "Restaurar"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Restore (or create) the database with exactly this name."
+msgstr "Restaurar (ou criar) o banco de dados com exatamente este nome."
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_action
@@ -9039,6 +10270,11 @@ msgstr "Restaurar a Mensagem de Estado"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__instance_id
 msgid "Restore To Instance"
 msgstr "Restaurar à instância"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Restore a Backup"
+msgstr "Restaurar uma Cópia de Segurança"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -9080,6 +10316,17 @@ msgid "Restoring"
 msgstr "Restauração"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Restoring is done from your own instance, in Odoo's\n"
+"                                <b>database manager</b>. Use the values below — they are the domain,\n"
+"                                the master password and the database name this instance is locked to."
+msgstr ""
+"Restaurar é feito de sua própria instância, em Odoo\n"
+" <b>gerenciador de banco de dados</b>. Utilizar os valores abaixo — eles são o domínio,\n"
+"a senha mestre e o nome do banco de dados para o qual esta instância está bloqueada."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__reverse_ip
 msgid "Reverse IP"
 msgstr "IP inverso"
@@ -9100,8 +10347,8 @@ msgid ""
 "Review and manage your instance package, worker licences, and storage "
 "allocations before proceeding."
 msgstr ""
-"Reveja e gerencie seu pacote de instância, licenças de trabalhador e "
-"alocação de armazenamento antes de prosseguir."
+"Reveja e gerencie seu pacote de instância, licenças de Worker e alocação de "
+"armazenamento antes de prosseguir."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9115,8 +10362,8 @@ msgid ""
 "Review your selected cloud package, worker licences, and extra storage "
 "before checkout."
 msgstr ""
-"Reveja seu pacote de nuvem selecionado, licenças de trabalhador e "
-"armazenamento extra antes do checkout."
+"Reveja seu pacote de nuvem selecionado, licenças de Worker e armazenamento "
+"extra antes do checkout."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -9143,6 +10390,12 @@ msgstr "Revoke Odoo Dia da Instância"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "Revoke Odoo Instance Days"
 msgstr "Revoke Odoo dias de instância"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Rewriting odoo.conf and restarting Odoo…"
+msgstr "Reescrever odoo.conf e reiniciar Odoo.."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9241,6 +10494,11 @@ msgid "STORAGE USED / LIMIT"
 msgstr "ARMAZENAMENTO UTILIZADO/LIMITAÇÃO"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "SYSTEM PACKAGES (APT)"
+msgstr "EMBALAGENS DE SISTEMA (APT)"
+
+#. module: s_odoo_saas_master
 #: model:uom.category,name:s_odoo_saas_master.product_uom_categ_saas_app
 msgid "SaaS App"
 msgstr "Aplicativo SaaS"
@@ -9263,6 +10521,13 @@ msgid "SaaS Blocked Domain"
 msgstr "Domínio bloqueado SaaS"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_container_ref
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_container_ref
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__instance_id
+msgid "SaaS Container"
+msgstr "Container SaaS"
+
+#. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_docker_image
 msgid "SaaS Docker Image"
 msgstr "Imagem do Acoplamento SaaS"
@@ -9271,6 +10536,12 @@ msgstr "Imagem do Acoplamento SaaS"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_instance_tag
 msgid "SaaS Instance Tag"
 msgstr "Marca de instância SaaS"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_order_type
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_order_type
+msgid "SaaS Invoice Type"
+msgstr "Tipo de factura SaaS"
 
 #. module: s_odoo_saas_master
 #: model:res.groups,name:s_odoo_saas_master.group_odoo_saas_master
@@ -9549,6 +10820,11 @@ msgid "SaaS Service Mixin"
 msgstr "Mixin de serviço SaaS"
 
 #. module: s_odoo_saas_master
+#: model:ir.model,name:s_odoo_saas_master.model_saas_subscription_upgrade
+msgid "SaaS Subscription Upgrade"
+msgstr "Atualização da Assinatura SaaS"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_user_product_template
 msgid "SaaS User (legacy)"
 msgstr "Usuário SaaS (legacy)"
@@ -9602,6 +10878,15 @@ msgstr "Linha de pedidos de vendas"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Same value as <b>Instance Settings → My Instance →\n"
+"                                        Odoo Master Password</b>."
+msgstr ""
+"Mesmo valor que <b>Configurações de instância → Minha instância →\n"
+"Senha Mestre Odoo</b>."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Save &amp; Connect"
 msgstr "Salvar &amp; Ligar"
 
@@ -9614,6 +10899,33 @@ msgstr "Salvar alterações"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Save notification settings"
 msgstr "Gravar as opções de notificação"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Saved. It will be applied the next time this instance is deployed."
+msgstr ""
+"Salvo. Será aplicado na próxima vez que esta instância for implantada."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Saved. odoo.conf was rewritten — Odoo is restarting with the new database "
+"name."
+msgstr ""
+"Salvo. odoo.conf foi reescrito — Odoo está reiniciando com o novo nome do "
+"banco de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Saved. odoo.conf will use the new name the next time this instance is "
+"deployed."
+msgstr ""
+"Salvo. odoo.conf usará o novo nome na próxima vez que esta instância for "
+"implantada."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9783,15 +11095,15 @@ msgid "Settings"
 msgstr "Configurações"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
+msgid "Settings - My Odoo SH"
+msgstr "Configurações - Meu Odoo SH"
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Settings saved successfully."
 msgstr "Configurações salvas com sucesso."
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
-msgid "Settings — myodoo.nc"
-msgstr "Configuração — myodoo.nc"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -9813,7 +11125,14 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_history__summary
 msgid "Short one-line value, e.g. '1 → 3 workers'."
-msgstr "Curto valor de uma linha, por exemplo «1 → 3 trabalhadores»."
+msgstr "Curto valor de uma linha, por exemplo «1 → 3 Workers»."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Show"
+msgstr "Mostrar"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -9907,6 +11226,21 @@ msgid "Stage"
 msgstr "Etapa"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging"
+msgstr "Estadiamento"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging tab"
+msgstr "Página de localização"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging — Test Environment"
+msgstr "Estacionamento — Ambiente de ensaio"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_plan_essential_product_template
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_standard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -9941,7 +11275,7 @@ msgstr "Início da instância"
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Start Odoo, workers and public web services?"
-msgstr "Iniciar Odoo, trabalhadores e serviços públicos web?"
+msgstr "Iniciar Odoo, Workers e serviços públicos web?"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9962,6 +11296,12 @@ msgid "Start the instance before opening a shell."
 msgstr "Iniciar a instância antes de abrir uma shell."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Start the instance first: odoo.conf is rewritten and Odoo restarted."
+msgstr ""
+"Iniciar a instância primeiro: odoo.conf é reescrito e Odoo reiniciado."
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
@@ -9976,12 +11316,19 @@ msgstr "A iniciar o backup.."
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_docker_container__state
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_domain_name__state
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__status
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__state
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Status"
 msgstr "Estado"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__state_label
+msgid "Status Label"
+msgstr "Legenda do Estado"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__activity_state
@@ -10024,9 +11371,13 @@ msgid "Stopped"
 msgstr "Parado"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__storage
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__upgrade_type__storage
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Storage"
 msgstr "Armazenamento"
 
@@ -10057,11 +11408,22 @@ msgid "Storage Path"
 msgstr "Localização do Armazenamento"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_storage
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 msgid "Storage Upgrade"
 msgstr "Actualização do Armazenamento"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_upgrade_count
+msgid "Storage Upgrade Count"
+msgstr "Contagem de atualização de armazenamento"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_upgrade_ids
+msgid "Storage Upgrades History"
+msgstr "Histórico de Atualizações de Armazenamento"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_percentage
@@ -10074,6 +11436,11 @@ msgid "Storage Used (GB)"
 msgstr "Armazenamento Usado (GB)"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_storage_gb
+msgid "Storage included in the base subscription."
+msgstr "Armazenamento incluído na assinatura base."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Storage is running out on %s"
@@ -10084,6 +11451,12 @@ msgstr "O armazenamento está a esgotar-se em %s"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Storage limit exceeded — %s was stopped"
 msgstr "Limite de armazenamento excedido — %s foi interrompido"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Storage product not found"
+msgstr "Produto de armazenamento não encontrado"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10181,9 +11554,50 @@ msgstr ""
 "começar ou terminar com um hífen."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Subscription"
+msgstr "Assinatura"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_period_end
+msgid "Subscription Period End"
+msgstr "Fim do Período de Assinatura"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_period_start
+msgid "Subscription Period Start"
+msgstr "Início do Período de Assinatura"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_annual_price
+msgid "Subscription Price (Annual)"
+msgstr "Preço de assinatura (anual)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_monthly_price
+msgid "Subscription Price (Monthly)"
+msgstr "Preço de assinatura (Média)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__renew
+msgid "Subscription Renewal"
+msgstr "Renovação da assinatura"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Subscription Renewal Notice"
 msgstr "Aviso de renovação da assinatura"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_start_date
+msgid "Subscription Start Date"
+msgstr "Data de início da assinatura"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_pricelist_item__subscription_type
@@ -10290,9 +11704,38 @@ msgid "System Packages"
 msgstr "Pacotes do Sistema"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System package removal failed: %s"
+msgstr "A remoção do pacote do sistema falhou: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "System package removed."
+msgstr "Pacote do sistema removido."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System package removed: %s"
+msgstr "Pacote do sistema removido: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System packages installed: %s"
+msgstr "Pacotes do sistema instalados: %s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "TIMEZONE"
 msgstr "Fuso horário"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "TOTAL)"
+msgstr "TOTAL)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -10398,6 +11841,17 @@ msgstr ""
 "primeiro."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__conf_staging_mode
+msgid "Test / Staging Mode (db_name + dbfilter commented out)"
+msgstr "Modo de Teste / Staging (db name + dbfilter comentado)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Test / staging mode enabled"
+msgstr "Modo de teste/estadiamento ativado"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_pserver_view_form
 msgid "Test Connection"
 msgstr "Testar a Ligação"
@@ -10424,6 +11878,11 @@ msgstr "Teste o e-mail enviado para %s."
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Test email — your hosting notifications work"
 msgstr "E-mail de teste — seu trabalho de notificações de hospedagem"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Testing a database? Open the"
+msgstr "Testando uma base de dados? Abrir o"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.report_invoice_note
@@ -10476,6 +11935,25 @@ msgid "That library name is too long (100 characters maximum)."
 msgstr "Esse nome da biblioteca é muito longo (100 caracteres no máximo)."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "That system package name is too long (100 characters maximum)."
+msgstr ""
+"Esse nome de pacote do sistema é muito longo (100 caracteres no máximo)."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The Docker image %(image)s could not be built, so the packages were not installed.\n"
+"\n"
+"%(log)s"
+msgstr ""
+"Não foi possível compilar a imagem do Docker %(image)s, pelo que os pacotes não foram instalados.\n"
+"\n"
+"%(log)s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "The GitHub account will be <b>unlinked</b> from your profile."
 msgstr "A conta GitHub será <b>sem ligação</b> do seu perfil."
@@ -10486,6 +11964,16 @@ msgstr "A conta GitHub será <b>sem ligação</b> do seu perfil."
 msgid "The GitHub repository was disconnected and the custom source removed."
 msgstr ""
 "O repositório GitHub foi desconectado e a fonte personalizada removida."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The Odoo version of this instance is not set: the Python library image "
+"cannot be built."
+msgstr ""
+"A versão Odoo desta instância não está definida: a imagem da biblioteca "
+"Python não pode ser construída."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10540,6 +12028,36 @@ msgstr ""
 "crescer, sem a etiqueta de preço da empresa."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The database name %(name)s is already used by another instance."
+msgstr "O nome do banco de dados %(name)s já é usado por outra instância."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The database name cannot be empty."
+msgstr "O nome da base de dados não pode estar em branco."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The database name could not be applied to both db_name and dbfilter (current"
+" values: %(values)s)."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The database name was saved, but this instance has no server to restart. "
+"Please redeploy the instance."
+msgstr ""
+"O nome do banco de dados foi salvo, mas esta instância não tem servidor para"
+" reiniciar. Por favor, mude a instância."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
 "The full breakdown of what each plan includes — including the GitHub "
@@ -10552,8 +12070,23 @@ msgstr ""
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "The instance containers were restarted with %s worker(s)."
+msgstr "Os recipientes de instância foram reiniciados com o(s) Worker(s) %s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The instance did not return a session cookie. Check the session settings of "
+"%s."
 msgstr ""
-"Os recipientes de instância foram reiniciados com o(s) trabalhador(es) %s."
+"A instância não devolveu um cookie de sessão. Verifique a configuração da "
+"sessão de %s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The instance has no URL yet."
+msgstr "A instância ainda não tem URL."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -10562,6 +12095,24 @@ msgid "The instance may be briefly unavailable while services reload."
 msgstr ""
 "A instância pode estar brevemente indisponível enquanto os serviços "
 "recarregam."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The instance must be deployed before you can connect to it."
+msgstr ""
+"A instância deve ser implantada antes que você possa se conectar a ela."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The instance now looks for the database %(new)s (odoo.conf: db_name + "
+"dbfilter). Restore or create that database from /web/database/manager."
+msgstr ""
+"A instância agora procura o banco de dados %(new)s (odoo.conf: db name + "
+"dbfilter). Restaurar ou criar esse banco de dados a partir de "
+"/web/database/manager."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10697,6 +12248,16 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The staging mode was saved, but this instance has no server to rewrite "
+"odoo.conf on. Please redeploy the instance."
+msgstr ""
+"O modo de encenação foi salvo, mas esta instância não tem servidor para "
+"reescrever odoo.conf ligado. Por favor, mude a instância."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/wizard/saas_odoo_instance_duplicate_wizard.py:0
 msgid ""
 "The subdomain \"%s\" already exists for domain \"%s\". Please choose a "
@@ -10704,6 +12265,18 @@ msgid ""
 msgstr ""
 "O subdomínio \"%s\" já existe para o domínio \"%s\". Por favor, escolha um "
 "nome diferente."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The system package \"%s\" is not available in the APT repositories of this "
+"Odoo image, so it was not installed. Check the exact package name — for "
+"example \"python3-xmlsec\" or \"libxml2-dev\"."
+msgstr ""
+"O pacote do sistema \"%s\" não está disponível nos repositórios do APT desta"
+" imagem Odoo, portanto não foi instalado. Verifique o nome exato do pacote —"
+" por exemplo \"python3-xmlsec\" ou \"libxml2-dev\"."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10818,6 +12391,12 @@ msgstr "Esta instância não pode ser suspensa no seu estado actual."
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "This instance has no deployed domain name."
+msgstr "Esta instância não tem nenhum nome de domínio implantado."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "This instance is already deployed."
 msgstr "Esta instância já está implantada."
@@ -10826,6 +12405,11 @@ msgstr "Esta instância já está implantada."
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "This instance is currently on a 15-day free trial."
 msgstr "Esta instância está atualmente em um teste gratuito de 15 dias."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "This instance is locked to"
+msgstr "Esta instância está bloqueada para"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10862,6 +12446,12 @@ msgid ""
 msgstr ""
 "Esta é uma mensagem de teste do seu portal de hospedagem. Se conseguir ler "
 "isto, todas as notificações que activar chegarão a este endereço."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "This is already the current database name."
+msgstr "Este já é o nome atual da base de dados."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10931,8 +12521,13 @@ msgstr ""
 msgid ""
 "This will stop public access and all background workers until started again."
 msgstr ""
-"Isto impedirá o acesso público e todos os trabalhadores de formação até "
+"Isto impedirá o acesso público e todos os Workers de formação até "
 "recomeçarem."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Tick the box next to"
+msgstr "Assinale a opção ao lado de"
 
 #. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_hr_holidays_product_template
@@ -10956,6 +12551,8 @@ msgstr "Ferramentas"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_invoice_document
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_tree
 msgid "Total"
 msgstr "Total"
 
@@ -11048,11 +12645,13 @@ msgstr "A autenticação de dois fatores foi desabilitada"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_upgrade_module_wizard__type
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver_ip__type
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__type
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__upgrade_type_label
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_compose_volume_view_tree
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_container_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Type"
 msgstr "Tipo"
 
@@ -11065,21 +12664,6 @@ msgstr "Digite \"sim\" para confirmar"
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "Tipo de actividade de excepção registada."
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"Type the name of the Python package you need (a\n"
-"                            <b>pip</b> library) and press Install. It is installed inside your\n"
-"                            instance container with <b>pip --user</b>, so it stays available after\n"
-"                            a restart or a redeploy. Restart the instance if the library is used by a\n"
-"                            module that is already loaded."
-msgstr ""
-"Digite o nome do pacote Python que você precisa (a\n"
-" <b>pip</b> biblioteca) e pressione Instalar. Está instalado dentro do seu\n"
-"recipiente de instância com <b>pip -- user</b>, por isso fica disponível depois\n"
-"um reinício ou uma transferência. Reiniciar a instância se a biblioteca for usada por um\n"
-"módulo que já está carregado."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__url
@@ -11097,10 +12681,27 @@ msgid "Unavailable while storage is full"
 msgstr "Indisponível enquanto o armazenamento está cheio"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Unexpected answer from %(url)s (HTTP %(code)s)."
+msgstr "Resposta inesperada de %(url)s (HTTP %(code)s)."
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Uninstall %s from this instance?"
 msgstr "Desinstalar %s desta instância?"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__uom_label
+msgid "Unit"
+msgstr "Unidade"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_subscription_upgrade__unit_price
+msgid "Unit price actually invoiced, prorated for the remaining period."
+msgstr ""
+"Preço unitário efectivamente facturado, pro rated para o período restante."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__state__unknown
@@ -11132,7 +12733,12 @@ msgstr "Ilimitado / personalizado"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Unlimited workers"
-msgstr "Trabalhadores ilimitados"
+msgstr "Workers ilimitados"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__unpaid
+msgid "Unpaid"
+msgstr "Não pago"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -11163,9 +12769,36 @@ msgstr "Atualizado"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Upgrade"
+msgstr "Actualização"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "Upgrade &amp;middot; <span id=\"renewUpgradeBtnAmount\">0</span> &amp;rarr;"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__upgrade_ids
+msgid "Upgrade History"
+msgstr "Histórico de atualização"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__invoice_id
+msgid "Upgrade Invoice"
+msgstr "Actualizar a factura"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Upgrade Invoices"
+msgstr "Actualizar as facturas"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Upgrade Invoices — %s"
+msgstr "Actualizar as facturas — %s"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_action
@@ -11173,6 +12806,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_form
 msgid "Upgrade Module"
 msgstr "Módulo de Atualização"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__sale_order_id
+msgid "Upgrade Order"
+msgstr "Ordem de Atualização"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__saas_order_type__buy_upgrade
@@ -11185,10 +12823,15 @@ msgid "Upgrade Storage"
 msgstr "Actualizar o Armazenamento"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__upgrade_type
+msgid "Upgrade Type"
+msgstr "Tipo de atualização"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__saas_order_type__buy_workers
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Upgrade Workers"
-msgstr "Atualizar os Trabalhadores"
+msgstr "Atualizar os Workers"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11196,14 +12839,101 @@ msgid "Upgrade add-ons — due today"
 msgstr "Atualizar add-ons — devido hoje"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__upgrade_count
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_tree
+msgid "Upgrades"
+msgstr "Atualizações"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Upgrades apply instantly"
-msgstr "Atualizações se aplicam instantaneamente"
+msgid "Upgrades are allowed only on annual plans"
+msgstr "As atualizações só são permitidas em planos anuais"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Upgrades are allowed only on annual plans — switch your subscription\n"
+"                                            to <b>Annual</b> and buy extra storage; your instance starts again automatically."
+msgstr ""
+"As atualizações só são permitidas em planos anuais — mude sua assinatura\n"
+"para <b>Anual</b> e comprar armazenamento extra; sua instância começa novamente automaticamente."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add storage."
+msgstr ""
+"As atualizações só são permitidas em planos anuais. Alternar esta instância "
+"para um plano anual para adicionar armazenamento."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add workers or storage."
+msgstr ""
+"As atualizações só são permitidas em planos anuais. Mude esta instância para"
+" um plano anual para adicionar Workers ou armazenamento."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add workers."
+msgstr ""
+"As atualizações só são permitidas em planos anuais. Mudar esta instância "
+"para um plano anual para adicionar Workers."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch to Annual to add workers "
+"or storage."
+msgstr ""
+"As atualizações só são permitidas em planos anuais. Mudar para Anual para "
+"adicionar Workers ou armazenamento."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
+msgid ""
+"Upgrades are allowed only on annual plans; this monthly subscription can be "
+"renewed only."
+msgstr ""
+"As atualizações só são permitidas em planos anuais; esta assinatura mensal "
+"só pode ser renovada."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Upgrades — %s"
+msgstr "Atualizações — %s"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Uptime SLA"
 msgstr "SLA de uptime"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Use <b>Create Database</b> with the same name"
+msgstr "Utilização <b>Criar banco de dados</b> com o mesmo nome"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Use <b>Duplicate</b> to copy a database, or <b>Restore Database</b>\n"
+"                                                    to upload your test backup. Do not delete"
+msgstr ""
+"Utilização <b>Duplicar</b> para copiar uma base de dados, ou <b>Restaurar "
+"banco de dados</b>para carregar o seu backup teste. Não apagar"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__user_demo_data
@@ -11221,6 +12951,31 @@ msgid "Use another instance's database, file store,... as a template"
 msgstr ""
 "Usar a base de dados de outra instância, o armazenamento de ficheiros,... "
 "como modelo"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Use letters, digits, underscores or hyphens, and start with a letter or an "
+"underscore (63 characters max)."
+msgstr ""
+"Use letras, dígitos, sublinhas ou hífens, e comece com uma letra ou um "
+"sublinhado (63 caracteres máx.)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Use this tab only for a <b>test environment</b>. Removing the\n"
+"                                <b>db_name</b> and <b>dbfilter</b> lines from this instance's\n"
+"                                <b>odoo.conf</b> unlocks the database manager, so you can\n"
+"                                <b>duplicate</b> or <b>restore</b> a test database. Activate them\n"
+"                                again when you are done and the instance goes back to its own database."
+msgstr ""
+"Usar esta página apenas para uma <b>ambiente de ensaio</b>. Removendo o\n"
+" <b>db name</b> e <b>dbfilter</b> linhas desta instância\n"
+" <b>odoo.conf</b> desbloqueia o gerenciador de banco de dados, assim você pode\n"
+" <b>duplicado</b> ou <b>restaurar</b> Uma base de dados de testes. Activa- os.\n"
+"novamente quando você terminar e a instância voltar para sua própria base de dados."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_port_view_search
@@ -11373,6 +13128,11 @@ msgid "WORKERS"
 msgstr "TRABALHADORES"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "WORKERS TO ADD (0 = NO UPGRADE)"
+msgstr "TRABALHADORES A DIZER (0 = NÃO ATUALIZAR)"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "WORKSPACE NAME"
 msgstr "NOME DA ESPAÇO DE TRABALHO"
@@ -11397,7 +13157,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "We are applying your new workers. Please wait…"
-msgstr "Estamos a aplicar os seus novos trabalhadores. Por favor, espere.."
+msgstr "Estamos a aplicar os seus novos Workers. Por favor, espere.."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11505,6 +13265,44 @@ msgstr ""
 "dias às 04:00 UTC."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__conf_staging_mode
+msgid ""
+"When enabled, the generated odoo.conf writes ``#db_name`` and ``#dbfilter`` "
+"instead of the real values, so the instance's /web/database/manager lists "
+"every database and the customer can duplicate or restore a test database. "
+"Turning it off restores both lines and locks the instance back to its own "
+"database. Every change rewrites odoo.conf and restarts the Odoo container."
+msgstr ""
+"Quando habilitado, o odoo.conf gerado escreve ``#db name``` e ``#dbfilter`` "
+"em vez dos valores reais, então o /web/database/manager da instância lista "
+"cada banco de dados e o cliente pode duplicar ou restaurar um banco de dados"
+" de teste. Desligar restaura ambas as linhas e bloqueia a instância de volta"
+" para o seu próprio banco de dados. Cada mudança reescreve o odoo.conf e "
+"reinicia o recipiente Odoo."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__instance_id
+msgid ""
+"When set, this is the private image of that instance: every Python library "
+"the customer installs from the portal is baked into it (Dockerfile + "
+"rebuild), so it survives restarts and redeploys."
+msgstr ""
+"Quando definido, esta é a imagem privada dessa instância: cada biblioteca "
+"Python que o cliente instala a partir do portal é cozido nele (Dockerfile + "
+"reconstruction), então ele sobrevive reinicia e reimplanta."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"When you are done, click <b>Activate DB Name &amp; DB Filter</b>.\n"
+"                                                    odoo.conf is rewritten with the real values and Odoo restarts,\n"
+"                                                    locked back to"
+msgstr ""
+"Quando terminar, clique em <b>Activar o Nome DB &amp; Filtro DB</b>.\n"
+"odoo.conf é reescrito com os valores reais e Odoo reinicia,\n"
+"bloqueado de volta para"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_partner__saas_notify_email
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_users__saas_notify_email
 msgid ""
@@ -11529,14 +13327,36 @@ msgid "Worker"
 msgstr "Trabalhador"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__worker_upgrade_count
+msgid "Worker Upgrade Count"
+msgstr "Contagem de Actualização do Worker"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__worker_upgrade_ids
+msgid "Worker Upgrades History"
+msgstr "Histórico de Atualizações do Worker"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.actions.act_window,help:s_odoo_saas_master.saas_subscription_upgrade_action
+msgid ""
+"Worker and storage upgrades purchased for a SaaS container appear here."
+msgstr ""
+"Atualizações de Worker e armazenamento comprados para um recipiente SaaS "
+"aparecem aqui."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__workers_count
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__workers_count
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__workers
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__upgrade_type__workers
 #: model:product.public.category,name:s_odoo_saas_master.public_category_saas_user
 #: model:product.template,name:s_odoo_saas_master.product_saas_worker_product_template
 #: model:uom.category,name:s_odoo_saas_master.product_uom_categ_saas_user
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.users_pricing
 msgid "Workers"
 msgstr "Trabalhadores"
@@ -11544,31 +13364,48 @@ msgstr "Trabalhadores"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__workers_applied
 msgid "Workers Applied"
-msgstr "Trabalhadores Aplicados"
+msgstr "Workers Aplicados"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_workers
+msgid "Workers Upgrade"
+msgstr "Actualização dos Workers"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Workers after upgrade: "
+msgstr "Workers após a atualização:"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Workers and extra storage can be added at any time from your portal."
 msgstr ""
-"Trabalhadores e armazenamento extra podem ser adicionados a qualquer momento"
-" do seu portal."
+"Workers e armazenamento extra podem ser adicionados a qualquer momento do "
+"seu portal."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Workers product not found"
+msgstr "Produto dos Workers não encontrado"
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Workers upgrade order not found."
-msgstr "A ordem de actualização dos trabalhadores não foi encontrada."
+msgstr "A ordem de actualização dos Workers não foi encontrada."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "Workers upgraded"
-msgstr "Trabalhadores actualizados"
+msgstr "Workers actualizados"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Workers upgraded successfully."
-msgstr "Trabalhadores atualizados com sucesso."
+msgstr "Workers atualizados com sucesso."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__working_ip_id
@@ -11763,6 +13600,15 @@ msgstr ""
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "You must selection Subscription Type."
 msgstr "Você deve selecionar Tipo de Assinatura."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"You need to buy extra storage to continue — choose a package below and\n"
+"                                            complete checkout; your instance starts again automatically."
+msgstr ""
+"Você precisa comprar armazenamento extra para continuar — escolha um pacote abaixo e\n"
+"completo checkout; sua instância começa novamente automaticamente."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -12025,7 +13871,7 @@ msgid ""
 "more memory available."
 msgstr ""
 "Sua instância agora é executada <b id=\"saasWorkersNewCount\">- O quê?</b> "
-"trabalhadores com mais memória disponível."
+"Workers com mais memória disponível."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12135,8 +13981,8 @@ msgid ""
 "Your workers upgrade is active and the instance was restarted with the new "
 "capacity."
 msgstr ""
-"Sua atualização de trabalhadores está ativa e a instância foi reiniciada com"
-" a nova capacidade."
+"Sua atualização de Workers está ativa e a instância foi reiniciada com a "
+"nova capacidade."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12144,9 +13990,39 @@ msgid "almost full — buy extra storage before the instance stops"
 msgstr "quase cheio — comprar armazenamento extra antes da instância parar"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"and click <b>Delete</b>, then confirm. Odoo cannot restore\n"
+"                                            over a database that already exists under the same name, so\n"
+"                                            it must be removed before the restore."
+msgstr ""
+"e clique <b>Apagar</b>Então confirme. Odoo não pode restaurar\n"
+"sobre um banco de dados que já existe sob o mesmo nome, então\n"
+"deve ser removido antes da restauração."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "and confirm."
+msgstr "e confirmar."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_team_password_page
 msgid "and continue to your hosting portal."
 msgstr "e continue para o seu portal de hospedagem."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "and enter the master password above."
+msgstr "e digite a senha mestre acima."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"and enter the master password above. All the databases of this\n"
+"                                                    instance are now listed (that is normal — the filter is off)."
+msgstr ""
+"e digite a senha mestre acima. Todas as bases de dados\n"
+"instância agora estão listados (isso é normal — o filtro está desligado)."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12198,6 +14074,23 @@ msgstr "dias"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "days left"
 msgstr "dias restantes"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"db_name and dbfilter are active again in odoo.conf: the instance is locked "
+"to the database %(name)s and the database manager only lists that database."
+msgstr ""
+"db name e dbfilter estão ativos novamente em odoo.conf: a instância está "
+"bloqueada para o banco de dados %(name)s e o gerenciador de banco de dados "
+"apenas lista esse banco de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "db_name and dbfilter commented out"
+msgstr "db name e dbfilter comentaram"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -12342,6 +14235,11 @@ msgid "in progress..."
 msgstr "em progresso..."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "included)"
+msgstr "incluído)"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "instance(s)"
@@ -12354,16 +14252,17 @@ msgstr "instance.edc.nc"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "limit."
+msgstr "limite."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"limit.\n"
-"                                        You need to buy extra storage to continue — choose a package below and\n"
-"                                        complete checkout; your instance starts again automatically.\n"
-"                                        No data has been lost."
+"lists <b>every</b> database of this instance. Duplicate or restore your\n"
+"                                        test database there, then lock the instance again."
 msgstr ""
-"limite.\n"
-"Você precisa comprar armazenamento extra para continuar — escolha um pacote abaixo e\n"
-"completo checkout; sua instância começa novamente automaticamente.\n"
-"Nenhum dado foi perdido."
+"listas <b>cada</b> banco de dados desta instância. Duplicar ou restaurar o seu\n"
+"testar o banco de dados lá, em seguida, bloquear a instância novamente."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -12384,6 +14283,20 @@ msgstr "senha mestre"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "member@example.com"
 msgstr "membro@example.com"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "mo billed"
+msgstr "mo faturado"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"more can be added ·\n"
+"                                    0 = no upgrade."
+msgstr ""
+"mais pode ser adicionado ·\n"
+"0 = sem actualização."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -12414,6 +14327,16 @@ msgstr "odoo.conf : %s"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "odoo.conf : contenu vide (aucune config générée)."
 msgstr "odoo.conf : contenu vide (aucune config générée)."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"odoo.conf now has #db_name and #dbfilter commented out, so "
+"/web/database/manager lists every database of this instance. Duplicate or "
+"restore the test database, then activate the DB name and DB filter again. "
+"Instance database: %(name)s."
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12470,6 +14393,12 @@ msgid "pip did not report a reason."
 msgstr "pip não relatou uma razão."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "prorated %g month(s) left"
+msgstr "%g prorated mês(s) restantes"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
 msgid ""
 "python3-dev\n"
@@ -12481,6 +14410,15 @@ msgstr ""
 "compilação essencial\n"
 "libcairo2\n"
 "..."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"python3-xmlsec\n"
+"libxml2-dev"
+msgstr ""
+"python3-xmlsec\n"
+"libxml2-dev"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
@@ -12505,6 +14443,31 @@ msgstr ""
 "Nenhum dado foi perdido."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"to get a clean instance, then open the database manager again\n"
+"                                            and restore the file over it. If it still fails, send the\n"
+"                                            backup <b>file name</b> to support."
+msgstr ""
+"para obter uma instância limpa, então abra o gerenciador de banco de dados novamente\n"
+"e restaurar o arquivo sobre ele. Se ainda falhar, envie o\n"
+"backup <b>nome do ficheiro</b> para apoiar."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"to remove <b>db_name</b> + <b>dbfilter</b> and reach the database manager."
+msgstr ""
+"para remover <b>db name</b> + <b>dbfilter</b> e contacte o gestor de bases "
+"de dados."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "unknown error"
+msgstr "erro desconhecido"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "unknown reason"
@@ -12517,20 +14480,32 @@ msgstr "utilizado"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "with the administrator credentials of the restored database."
+msgstr "com as credenciais de administrador do banco de dados restaurado."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "worker(s)"
-msgstr "trabalhador(es)"
+msgstr "Worker(s)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "worker(s) &amp;middot;"
-msgstr "trabalhador &amp;middot;"
+msgstr "Worker &amp;middot;"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "worker(s) ·"
+msgstr "Workers ·"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "workers per instance."
-msgstr "trabalhadores por exemplo."
+msgstr "Workers por exemplo."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12568,8 +14543,8 @@ msgstr "— todos num só lugar."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "— myodoo.nc"
-msgstr "— miodoo.nc"
+msgid "— it is this instance's live database."
+msgstr "— é a base de dados ao vivo desta instância."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_note
@@ -12618,8 +14593,18 @@ msgstr "⚡ Renovar &amp; atualizar o plano"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "⚡ Renew / Switch to Annual"
+msgstr "Renovar / Mudar para Anual"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "⚡ Renew / Upgrade Plan"
 msgstr "Plano de renovação / atualização"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "⚡ Renew Plan"
+msgstr "• Renovar o plano"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page

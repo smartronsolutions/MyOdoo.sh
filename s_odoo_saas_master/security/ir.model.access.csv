@@ -52,3 +52,5 @@ access_saas_odoo_instance_resource_package_line_user,saas.odoo.instance.resource
 access_saas_instance_tag_user,saas.instance.tag.user,model_saas_instance_tag,group_odoo_saas_user,1,1,1,1
 access_saas_docker_image_user,saas.docker.image.user,model_saas_docker_image,group_odoo_saas_user,1,0,0,0
 access_saas_docker_image_manager,saas.docker.image.manager,model_saas_docker_image,group_odoo_saas_manager,1,1,1,1
+access_saas_subscription_upgrade_user,saas.subscription.upgrade.user,model_saas_subscription_upgrade,group_odoo_saas_user,1,1,1,0
+access_saas_subscription_upgrade_manager,saas.subscription.upgrade.manager,model_saas_subscription_upgrade,group_odoo_saas_manager,1,1,1,1

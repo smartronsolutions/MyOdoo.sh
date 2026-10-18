@@ -91,6 +91,39 @@
     }
   });
 
+  /* Copy-to-clipboard for the MCP Odoo page endpoint box. The label is kept
+     language-neutral on success (a check mark) so the button needs no extra
+     translation and always reads correctly in every language. */
+  document.addEventListener('click', function (event) {
+    var target = event.target;
+    var button = target && target.closest ? target.closest('[data-mcp-copy]') : null;
+    if (!button || button.classList.contains('is-done')) return;
+    event.preventDefault();
+    var value = button.getAttribute('data-mcp-copy') || '';
+    if (!button.dataset.mcpOriginal) button.dataset.mcpOriginal = button.textContent;
+    var done = function () {
+      button.classList.add('is-done');
+      button.textContent = '✓';
+      setTimeout(function () {
+        button.classList.remove('is-done');
+        button.textContent = button.dataset.mcpOriginal || button.textContent;
+      }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(done, function () {});
+      return;
+    }
+    var field = document.createElement('textarea');
+    field.value = value;
+    field.setAttribute('readonly', 'readonly');
+    field.style.position = 'absolute';
+    field.style.left = '-9999px';
+    document.body.appendChild(field);
+    field.select();
+    try { document.execCommand('copy'); done(); } catch (error) { /* ignore */ }
+    document.body.removeChild(field);
+  });
+
   /* FAQ accordion (home and about pages). Delegated, and shared by every page
      so there is a single source of truth for the open/close behaviour. */
   document.addEventListener('click', function (event) {

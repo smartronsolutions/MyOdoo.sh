@@ -73,12 +73,22 @@ class OdooInstanceConfig(models.Model):
     @api.model
     def _get_config_file_content(self, instance):
         file_content = ''
+        # Test / staging mode: ``db_name`` and ``dbfilter`` are written commented out
+        # (``#db_name=...`` / ``#dbfilter=...``). Odoo then starts without a forced
+        # database and the database manager lists ALL databases of the instance, which
+        # is what the customer needs to duplicate or restore a test database. The real
+        # values stay in the config rows, so switching the flag off restores the lock
+        # without retyping anything.
+        staging = bool(instance.conf_staging_mode)
         sections = instance.config_ids.mapped('section_id')
         for section in sections:
             file_content += '[' + section.name + ']' + '\n'
             configs = instance.config_ids.filtered(lambda c: c.section_id == section)
             for config in configs:
-                file_content += config.name + '=' + config.value + '\n'
+                if staging and config.name in ('db_name', 'dbfilter'):
+                    file_content += '#%s=%s\n' % (config.name, config.value)
+                else:
+                    file_content += config.name + '=' + config.value + '\n'
         return file_content
 
     @api.model

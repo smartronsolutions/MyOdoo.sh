@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+import json
 import logging
+import re
 import shlex
 
 from odoo import _, api, fields, models
@@ -16,16 +18,18 @@ class DockerImage(models.Model):
     name = fields.Char(string="Name", required=True)
     odoo_version_id = fields.Many2one(
         'saas.odoo.version', string="Odoo Version", required=True,
+        default=lambda self: self._default_odoo_version_id(),
         help="Odoo version this image is based on.")
     tag_id = fields.Many2one(
         'saas.instance.tag', string="Business Typology", required=True,
+        default=lambda self: self._default_tag_id(),
         help="Business typology linked to this image (BTP, OCR, ...).")
     edition = fields.Selection([
         ('community', 'Community'),
         ('enterprise', 'Enterprise'),
-    ], string="Edition", default='community', required=True,
-        help="Odoo edition baked into this image. Image tag code: "
-             "'cmy' = Community, 'ent' = Enterprise. Enterprise images embed "
+    ], string="Edition", default=lambda self: self._default_edition(), required=True,
+        help="Odoo edition baked into this image. Defaults to the edition (version type) "
+             "of the instance the image is built for. Enterprise images embed "
              "the enterprise addons; community images are based on the "
              "official community image (enterprise addons mounted at runtime, if any).")
     image_name = fields.Char(
@@ -35,7 +39,8 @@ class DockerImage(models.Model):
              "'cmy' (Community) or 'ent' (Enterprise), e.g. "
              "'odoo:19.0-cmy-btp' or 'odoo:19.0-ent-btp'.")
     base_image = fields.Char(
-        string="Base Image", required=True, default='odoo:19.0',
+        string="Base Image", required=True,
+        default=lambda self: self._default_base_image(),
         help="Base image used as FROM, e.g. 'odoo:19.0'.")
     system_packages = fields.Text(
         string="System Packages",
@@ -62,14 +67,158 @@ class DockerImage(models.Model):
         ('failed', 'Failed'),
     ], string="Build Status", default='not_built', required=True)
     build_log = fields.Text(string="Build Log", readonly=True)
+    size_gb = fields.Float(
+        string="Image Size (GB)", readonly=True, copy=False,
+        help="Size of the built image on the server, in GB. It is read from "
+             "``docker image inspect`` after every build and counted in the storage "
+             "quota of the instance this image belongs to (a rebuilt image with extra "
+             "Python libraries or system packages takes space on the customer's storage).")
     server_ids = fields.Many2many(
         'saas.pserver', string="Build Servers",
         help="Servers where this image must be built/available (prod + DR).")
+    instance_id = fields.Many2one(
+        'saas.odoo.instance', string="Instance", ondelete='cascade', index=True,
+        help="When set, this is the private image of that instance: every Python "
+             "library the customer installs from the portal is baked into it "
+             "(Dockerfile + rebuild), so it survives restarts and redeploys.")
 
     _sql_constraints = [
         ('image_name_uniq', 'unique(image_name)',
          'Docker image name must be unique!'),
     ]
+
+    @api.model
+    def _default_tag_id(self):
+        """Default the Business Typology to the ``Standard`` typology."""
+        tag = self.env.ref(
+            's_odoo_saas_master.saas_instance_tag_standard',
+            raise_if_not_found=False)
+        if not tag:
+            tag = self.env['saas.instance.tag'].search(
+                [('name', '=ilike', 'Standard')], limit=1)
+        return tag.id if tag else False
+
+    @api.model
+    def _default_instance(self):
+        """Instance the record is prepared for (``default_instance_id`` in the context)."""
+        instance_id = self.env.context.get('default_instance_id')
+        if not instance_id:
+            return self.env['saas.odoo.instance']
+        return self.env['saas.odoo.instance'].browse(int(instance_id)).exists()
+
+    @api.model
+    def _default_odoo_version_id(self):
+        """Odoo version of the instance the image is built for."""
+        instance = self._default_instance()
+        return instance.odoo_version_id.id if instance.odoo_version_id else False
+
+    @api.model
+    def _default_edition(self):
+        """Edition (version type) of the instance the image is built for."""
+        instance = self._default_instance()
+        return instance.version_type or 'community'
+
+    @api.model
+    def _default_base_image(self):
+        """``odoo:<tag>`` of the instance Odoo version, else the historical default."""
+        version = self._default_instance().odoo_version_id
+        if version:
+            return 'odoo:%s' % (version.docker_image_tag or version.name)
+        return 'odoo:19.0'
+
+    def _apply_instance_values(self, vals):
+        """Copy the instance Odoo version, edition and base image into ``vals``."""
+        instance = self.env['saas.odoo.instance'].browse(
+            vals.get('instance_id') or []).exists()
+        if not instance:
+            return vals
+        version = instance.odoo_version_id
+        if version:
+            vals.setdefault('odoo_version_id', version.id)
+            vals.setdefault(
+                'base_image', 'odoo:%s' % (version.docker_image_tag or version.name))
+        if instance.version_type:
+            vals.setdefault('edition', instance.version_type)
+        return vals
+
+    @api.onchange('instance_id')
+    def _onchange_instance_id(self):
+        """A new record for an instance inherits its Odoo version and edition."""
+        if not self.instance_id:
+            return
+        version = self.instance_id.odoo_version_id
+        if version:
+            self.odoo_version_id = version
+            self.base_image = 'odoo:%s' % (version.docker_image_tag or version.name)
+        if self.instance_id.version_type:
+            self.edition = self.instance_id.version_type
+        if not self.tag_id:
+            self.tag_id = self._default_tag_id()
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('instance_id'):
+                self._apply_instance_values(vals)
+        return super().create(vals_list)
+
+    # docker reports sizes with decimal units (kB, MB, GB = 1000^n), which is exactly
+    # the "DISK USAGE" column of ``docker image ls`` / ``docker system df``.
+    _SIZE_UNITS = {
+        'B': 1, 'KB': 1000, 'MB': 1000 ** 2, 'GB': 1000 ** 3, 'TB': 1000 ** 4,
+    }
+
+    @api.model
+    def _human_size_to_bytes(self, value):
+        """``'3.62GB'`` → ``3620000000`` (0 when the string is not a size)."""
+        match = re.match(r'^\s*([0-9]+(?:\.[0-9]+)?)\s*([KMGTP]?B)\s*$', value or '', re.I)
+        if not match:
+            return 0
+        amount, unit = match.groups()
+        return int(float(amount) * self._SIZE_UNITS.get(unit.upper(), 0))
+
+    def refresh_size_gb(self, server, ssh):
+        """Read the real on-disk size of this image and store it.
+
+        ``docker image inspect .Size`` only returns the **content size** (839 MB for an
+        image whose layers really take 3.62 GB on disk). The number the customer is
+        charged for is the ``DISK USAGE`` shown by ``docker system df``, so the size is
+        read from there; ``docker image inspect`` is only the fallback when that command
+        is not available on the server.
+        """
+        self.ensure_one()
+        command = "docker system df -v --format '{{json .}}' 2>/dev/null || true"
+        _exit_code, output = server._exec_capture(command, ssh)
+        size_gb = 0.0
+        payload = (output or '').strip()
+        if payload:
+            try:
+                data = json.loads(payload.splitlines()[0])
+            except ValueError:
+                data = {}
+            for image in data.get('Images') or []:
+                repository = image.get('Repository') or ''
+                tag = image.get('Tag') or ''
+                if tag in ('', '<none>'):
+                    name = repository
+                else:
+                    name = '%s:%s' % (repository, tag)
+                if name != self.image_name:
+                    continue
+                size_gb = round(
+                    self._human_size_to_bytes(image.get('Size')) / (1000 ** 3), 2)
+                break
+        if not size_gb:
+            # Fallback: the content size (still better than storing nothing).
+            command = (
+                "docker image inspect %s --format '{{.Size}}' 2>/dev/null || true"
+                % shlex.quote(self.image_name))
+            _exit_code, output = server._exec_capture(command, ssh)
+            lines = [line.strip() for line in (output or '').splitlines() if line.strip()]
+            if lines and lines[-1].isdigit():
+                size_gb = round(int(lines[-1]) / (1000 ** 3), 2)
+        self.write({'size_gb': size_gb})
+        return size_gb
 
     @api.depends('base_image', 'system_packages', 'python_requirements')
     def _compute_dockerfile_content(self):

@@ -1,6 +1,6 @@
 {
     'name': 'Odoo SaaS Master',
-    'version': '18.0.0.81',
+    'version': '18.0.0.118',
     'author': 'SkyERP',
     'category': 'Odoo SaaS',
     'sequence': 15,
@@ -71,6 +71,7 @@
         'views/saas_instance_tag_views.xml',
         'views/saas_docker_image_views.xml',
         'views/saas_resource_package_views.xml',
+        'views/saas_subscription_upgrade_views.xml',
     ],
     'assets': {
         'web.assets_frontend': [
@@ -81,12 +82,17 @@
             's_odoo_saas_master/static/src/scss/checkout_form.scss',
             's_odoo_saas_master/static/src/scss/myodoo_portal.scss',
             's_odoo_saas_master/static/src/scss/portal_documents.scss',
+            # Premium scrollbars: loaded after the page styles so they win over the
+            # old per-component scrollbar rules.
+            's_odoo_saas_master/static/src/scss/scrollbars.scss',
             # Loaded last so its notification/overlay z-index overrides win.
             's_odoo_saas_master/static/src/scss/saas_auth_guard.scss',
         ],
         'web.assets_backend': [
             's_odoo_saas_master/static/src/backend/saas_backup_restore_progress_field.js',
             's_odoo_saas_master/static/src/backend/saas_backup_restore_progress_field.xml',
+            # Same premium scrollbars in the backend (lists, forms, dialogs, chatter).
+            's_odoo_saas_master/static/src/scss/scrollbars.scss',
         ],
     },
     'post_init_hook': '_price_list_post_init_hook',

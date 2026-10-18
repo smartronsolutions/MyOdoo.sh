@@ -89,14 +89,32 @@ class Pricing(http.Controller):
             prod = Product.search([('name', 'ilike', 'Extra Storage'), ('active', '=', True)], limit=1)
         return prod
 
+    def _get_worker_price_per_month(self):
+        """Monthly price of one additional worker, in the company currency.
+
+        The company-level setting wins when set, otherwise the 'Workers' product
+        sale price is used.
+        """
+        company = self._get_company()
+        configured = company.saas_worker_price_monthly if 'saas_worker_price_monthly' in company._fields else 0.0
+        if configured:
+            return float(configured)
+        prod = self._get_user_product()
+        if prod and prod.list_price:
+            return company._saas_convert_price(float(prod.list_price))
+        return company._saas_convert_price(100.0)
+
     def _get_storage_price_per_gb(self, pricelist=False):
         """Monthly price per extra GB, expressed in the company currency.
 
-        The ``saas_extra_storage`` price is entered in the company's SaaS price
-        currency (XPF by default) and converted automatically. When the product
-        carries no price we fall back to the historic $2 USD / GB base.
+        The company-level setting wins when set, otherwise the ``saas_extra_storage``
+        price is used (converted from the company's SaaS price currency when one is
+        configured). When neither is set we fall back to the historic $2 USD / GB base.
         """
         company = self._get_company()
+        configured = company.saas_storage_price_per_gb if 'saas_storage_price_per_gb' in company._fields else 0.0
+        if configured:
+            return float(configured)
         prod = self._get_extra_storage_product()
 
         if prod and prod.list_price:
@@ -137,21 +155,22 @@ class Pricing(http.Controller):
         essential_product = self._get_plan_product('Standard')
         essential_base_price = float(essential_product.list_price) if (essential_product and essential_product.list_price) else 14900.0
         essential_monthly_price = company._saas_convert_price(essential_base_price)
-        essential_annual_price = round(essential_monthly_price * 12 * 0.85, 2)
+        # The base container subscription is €36/month, billed annually: €36 × 12 = €432.
+        essential_annual_price = round(essential_monthly_price * 12, 2)
 
         growth_product = self._get_plan_product('Growth')
-        growth_base_price = float(growth_product.list_price) if (growth_product and growth_product.list_price) else 39900.0
+        growth_base_price = float(growth_product.list_price) if (growth_product and growth_product.list_price) else 36.0
         growth_monthly_price = company._saas_convert_price(growth_base_price)
-        growth_annual_price = round(growth_monthly_price * 12 * 0.85, 2)
+        # Same base subscription as Standard (36 / month, 2 workers + 5 GB): the annual
+        # price is the plain monthly × 12, with no extra discount.
+        growth_annual_price = round(growth_monthly_price * 12, 2)
 
         # Dynamic User product lookup
         user_product = self._get_user_product()
-        user_base_price = float(user_product.list_price) if (user_product and user_product.list_price) else 100.0
-        user_monthly_price = company._saas_convert_price(user_base_price)
-        # Workers have ONE price that never depends on the billing cycle: 1 worker costs
-        # the same whether the customer is on monthly or on annual billing (no x12, no
-        # annual discount). The plan keeps its own annual discount.
-        user_annual_price = user_monthly_price
+        # Company-configured worker price wins over the product sale price.
+        user_monthly_price = self._get_worker_price_per_month()
+        # Upgrades are billed monthly × 12 on annual billing.
+        user_annual_price = round(user_monthly_price * 12, 2)
         user_annual_per_month = user_monthly_price
 
         essential_monthly_fmt = self._format_price(essential_monthly_price)
@@ -165,9 +184,8 @@ class Pricing(http.Controller):
         # Dynamic Extra Storage product lookup (price per GB / month)
         extra_storage_product = self._get_extra_storage_product()
         extra_storage_monthly_price = self._get_storage_price_per_gb(pricelist)
-        # Extra storage follows the same rule as the workers: ONE price, identical on
-        # monthly and annual billing (no x12, no annual discount).
-        extra_storage_annual_price = extra_storage_monthly_price
+        # Extra storage follows the same rule as workers: monthly × 12 annually.
+        extra_storage_annual_price = round(extra_storage_monthly_price * 12, 2)
         extra_storage_annual_per_month = extra_storage_monthly_price
 
         extra_storage_monthly_fmt = self._format_price(extra_storage_monthly_price)
@@ -345,10 +363,95 @@ class Pricing(http.Controller):
             return False
         return True
 
+    # ------------------------------------------------------------------
+    # Container upgrades (workers / storage)
+    # ------------------------------------------------------------------
+    def _save_upgrade_order(self, instance, order_type, additional_workers=0,
+                            additional_gb=0, prorate=True, storage_months=None):
+        """Create a sale order for a container upgrade.
+
+        The base plan is never re-charged. Annual upgrades are billed
+        ``monthly price × 12`` and prorated over the remaining subscription period,
+        so a mid-term upgrade only pays for the months left. ``storage_months`` bills
+        the storage part over that many months (1 = the plain monthly rate per GB).
+        Returns ``(order, pricing, error)``.
+        """
+        company = self._get_company()
+        currency = company.currency_id
+        pricing = instance._get_upgrade_pricing(
+            additional_workers=additional_workers,
+            additional_gb=additional_gb,
+            prorate=prorate,
+            storage_months=storage_months,
+        )
+        period_label = _('Annual') if pricing['subscription_type'] == 'yearly' else _('Monthly')
+        if pricing['prorated']:
+            period_label = '%s — %s' % (
+                period_label, _('prorated %g month(s) left') % pricing['months'])
+        order_lines = []
+
+        if additional_workers > 0:
+            worker_product = request.env['product.product'].sudo()._get_saas_worker_product()
+            if not worker_product or not worker_product.exists():
+                return False, pricing, _('Workers product not found')
+            order_lines.append((0, 0, {
+                'product_id': worker_product.id,
+                'name': '%s (+%d worker%s) — %s' % (
+                    worker_product.name, additional_workers,
+                    's' if additional_workers > 1 else '', period_label),
+                'product_uom_qty': additional_workers,
+                'product_uom': worker_product.uom_id.id,
+                'price_unit': pricing['worker_unit_price'],
+                'tax_id': [(6, 0, worker_product.taxes_id.ids)],
+            }))
+
+        if additional_gb > 0:
+            storage_product = instance._get_storage_product()
+            if not storage_product:
+                return False, pricing, _('Storage product not found')
+            order_lines.append((0, 0, {
+                'product_id': storage_product.id,
+                'name': '%s (+%g GB) — %s' % (
+                    storage_product.name, additional_gb, period_label),
+                'product_uom_qty': additional_gb,
+                'product_uom': storage_product.uom_id.id,
+                'price_unit': pricing['storage_unit_price'],
+                'tax_id': [(6, 0, storage_product.taxes_id.ids)],
+            }))
+
+        if not order_lines:
+            return False, pricing, _('Nothing to upgrade. Add at least one worker or GB.')
+
+        order_vals = request.website._prepare_sale_order_values(partner_sudo=instance.partner_id)
+        order_vals.update({
+            'currency_id': currency.id,
+            'pricelist_id': False,
+            'is_saas_order': True,
+            'saas_order_type': order_type,
+            'instance_id': instance.id,
+            'subscription_type': pricing['subscription_type'],
+            'storage_limit_gb': additional_gb,
+            'workers_count': additional_workers,
+            # Billing period of the upgrade: used for the invoice and the history.
+            'saas_period_start': pricing['period_start'],
+            'saas_period_end': pricing['period_end'],
+            'saas_upgrade_months': pricing['months'],
+            'saas_upgrade_prorated': pricing['prorated'],
+            'subdomain': instance.name,
+            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
+            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
+            'order_line': order_lines,
+        })
+        order = request.env['sale.order'].sudo().create(order_vals)
+        return order, pricing, False
+
     @http.route(['/saas/instance/buy-storage'], type='json', auth='user', website=True)
     def instance_buy_storage(self, instance_id, additional_gb, subscription_type='monthly', **kwargs):
-        """Create a storage-only sale order for an existing instance.
-        Only the extra storage product line is added; the base plan is NOT charged again."""
+        """Create a storage-only upgrade order for an existing container.
+
+        Only the extra storage is charged (the base plan and the included GB are not
+        billed again). On payment the extra GB are added to the container.
+        """
         instance = request.env['saas.odoo.instance'].sudo().browse(int(instance_id))
         if not instance.exists():
             return {'error': 'Instance not found'}
@@ -357,70 +460,37 @@ class Pricing(http.Controller):
         if instance.partner_id != partner:
             return {'error': 'Access denied'}
 
+        # Upgrades are an annual-plan feature: monthly subscriptions can only be renewed.
+        if instance._get_subscription_cycle() != 'yearly':
+            return {'error': _('Upgrades are allowed only on annual plans. Switch this instance to an annual plan to add storage.')}
+
         try:
             additional_gb = int(additional_gb)
         except (TypeError, ValueError):
             return {'error': 'Invalid storage quantity'}
-        # 1 GB minimum, 500 GB maximum per purchase.
-        additional_gb = max(1, min(additional_gb, 500))
-        is_annual = (subscription_type == 'yearly')
-        # Extra storage has ONE price: the same amount is charged on a monthly order and
-        # on an annual order (no x12, no annual discount).
-        multiplier = 1.0
+        # 10 GB minimum (minimum billable storage upgrade), 500 GB maximum per purchase.
+        additional_gb = max(10, min(additional_gb, 500))
 
-        # Lookup extra storage product
-        storage_product = False
-        try:
-            storage_product = request.env.ref('s_odoo_saas_master.product_saas_extra_storage').sudo()
-        except Exception:
-            pass
-        if not storage_product or not storage_product.exists():
-            storage_product = request.env['product.product'].sudo().search(
-                [('default_code', '=ilike', 'saas_extra_storage'), ('active', '=', True)], limit=1)
-        if not storage_product or not storage_product.exists():
-            return {'error': 'Storage product not found'}
-
-        company = self._get_company()
-        storage_price_per_gb = company._saas_convert_price(float(storage_product.list_price or 220.0))
-        storage_unit_price = round(storage_price_per_gb * multiplier, 2)
-
-        target_currency = company.currency_id
-
-        order_vals = request.website._prepare_sale_order_values(partner_sudo=partner)
-        order_vals.update({
-            'currency_id': target_currency.id,
-            'pricelist_id': False,
-            'is_saas_order': True,
-            'saas_order_type': 'buy_storage',
-            'instance_id': instance.id,
-            'subscription_type': subscription_type,
-            'storage_limit_gb': additional_gb,
-            'subdomain': instance.name,
-            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
-            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
-            'order_line': [(0, 0, {
-                'product_id': storage_product.id,
-                'name': '%s (+%d GB storage) (%s)' % (
-                    storage_product.name, additional_gb,
-                    'Annual' if is_annual else 'Monthly'
-                ),
-                'product_uom_qty': additional_gb,
-                'product_uom': storage_product.uom_id.id,
-                'price_unit': storage_unit_price,
-                'tax_id': [(6, 0, storage_product.taxes_id.ids)],
-            })],
-        })
-
-        order = request.env['sale.order'].sudo().create(order_vals)
+        # Extra storage is sold at its monthly rate per GB (0.10 € × 10 GB = 1 €),
+        # exactly like the portal shows it — not prorated on the days left.
+        order, pricing, error = self._save_upgrade_order(
+            instance, 'buy_storage', additional_gb=additional_gb, storage_months=1)
+        if error:
+            return {'error': error}
         request.session['sale_order_id'] = order.id
-        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
+        return {
+            'success': True, 'order_id': order.id, 'redirect': '/shop/cart',
+            'months': pricing['months'], 'prorated': pricing['prorated'],
+            'amount': pricing['storage_amount'],
+        }
 
     @http.route(['/saas/instance/buy-workers'], type='json', auth='user', website=True)
     def instance_buy_workers(self, instance_id, additional_workers, subscription_type='monthly', **kwargs):
-        """Create a workers-only sale order for an existing instance.
+        """Create a workers-only upgrade order for an existing container.
 
-        Only the Workers seat line is added; the base plan is NOT charged again.
-        On payment the extra workers are added to the instance and it is redeployed.
+        Only the extra workers are charged (the worker included in the base plan is
+        not billed again). On payment the extra workers are added to the container
+        and it is redeployed.
         """
         instance = request.env['saas.odoo.instance'].sudo().browse(int(instance_id))
         if not instance.exists():
@@ -429,6 +499,10 @@ class Pricing(http.Controller):
         partner = request.env.user.partner_id
         if instance.partner_id != partner:
             return {'error': 'Access denied'}
+
+        # Upgrades are an annual-plan feature: monthly subscriptions can only be renewed.
+        if instance._get_subscription_cycle() != 'yearly':
+            return {'error': _('Upgrades are allowed only on annual plans. Switch this instance to an annual plan to add workers.')}
 
         max_workers = instance.MAX_WORKERS_PER_INSTANCE
         current_workers = max(int(instance.workers_count or 1), 1)
@@ -441,58 +515,27 @@ class Pricing(http.Controller):
             return {'error': 'Invalid workers quantity'}
         # At least 1, and never more than the remaining slots up to the per-instance cap.
         additional_workers = max(1, min(additional_workers, max_workers - current_workers))
-        is_annual = (subscription_type == 'yearly')
-        # Workers have ONE price: the same amount is charged on a monthly order and on an
-        # annual order (no x12, no annual discount).
-        multiplier = 1.0
 
-        worker_product = request.env['product.product'].sudo()._get_saas_worker_product()
-        if not worker_product or not worker_product.exists():
-            return {'error': 'Workers product not found'}
-
-        company = self._get_company()
-        worker_unit_price = round(company._saas_convert_price(float(worker_product.list_price or 100.0)) * multiplier, 2)
-
-        target_currency = company.currency_id
-
-        order_vals = request.website._prepare_sale_order_values(partner_sudo=partner)
-        order_vals.update({
-            'currency_id': target_currency.id,
-            'pricelist_id': False,
-            'is_saas_order': True,
-            'saas_order_type': 'buy_workers',
-            'instance_id': instance.id,
-            'subscription_type': subscription_type,
-            'workers_count': additional_workers,
-            'subdomain': instance.name,
-            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
-            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
-            'order_line': [(0, 0, {
-                'product_id': worker_product.id,
-                'name': '%s (+%d worker%s) (%s)' % (
-                    worker_product.name, additional_workers,
-                    's' if additional_workers > 1 else '',
-                    'Annual' if is_annual else 'Monthly'
-                ),
-                'product_uom_qty': additional_workers,
-                'product_uom': worker_product.uom_id.id,
-                'price_unit': worker_unit_price,
-                'tax_id': [(6, 0, worker_product.taxes_id.ids)],
-            })],
-        })
-
-        order = request.env['sale.order'].sudo().create(order_vals)
+        order, pricing, error = self._save_upgrade_order(
+            instance, 'buy_workers', additional_workers=additional_workers)
+        if error:
+            return {'error': error}
         request.session['sale_order_id'] = order.id
-        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
+        return {
+            'success': True, 'order_id': order.id, 'redirect': '/shop/cart',
+            'months': pricing['months'], 'prorated': pricing['prorated'],
+            'amount': pricing['worker_amount'],
+        }
 
     @http.route(['/saas/instance/buy-upgrade'], type='json', auth='user', website=True)
     def instance_buy_upgrade(self, instance_id, additional_workers=0, additional_gb=0,
                              subscription_type='monthly', **kwargs):
-        """Create a combined upgrade order (extra workers + extra storage only).
+        """Create a combined upgrade order (extra workers + extra storage).
 
         The base plan is NOT charged again and the subscription expiry is not
-        changed: only the resources added on top of what the instance already has
-        are billed. On payment both resources are applied to the instance.
+        changed: only the resources added on top of what the container already has
+        are billed, on ONE order/invoice with a separate line per resource. On
+        payment both resources are applied to the container.
         """
         instance = request.env['saas.odoo.instance'].sudo().browse(int(instance_id))
         if not instance.exists():
@@ -500,6 +543,10 @@ class Pricing(http.Controller):
         partner = request.env.user.partner_id
         if instance.partner_id != partner:
             return {'error': 'Access denied'}
+
+        # Upgrades are an annual-plan feature: monthly subscriptions can only be renewed.
+        if instance._get_subscription_cycle() != 'yearly':
+            return {'error': _('Upgrades are allowed only on annual plans. Switch this instance to an annual plan to add workers or storage.')}
 
         try:
             additional_workers = int(float(additional_workers or 0))
@@ -512,76 +559,23 @@ class Pricing(http.Controller):
         # Never exceed the remaining worker slots, and cap storage at 500 GB per purchase.
         additional_workers = max(0, min(additional_workers, max_workers - current_workers))
         additional_gb = max(0, min(additional_gb, 500))
+        # A storage upgrade is never smaller than 10 GB (0 = no storage upgrade).
+        if 0 < additional_gb < 10:
+            additional_gb = 10
         if additional_workers <= 0 and additional_gb <= 0:
             return {'error': 'Nothing to upgrade. Add at least one worker or GB.'}
 
-        is_annual = (subscription_type == 'yearly')
-        company = self._get_company()
-        target_currency = company.currency_id
-        order_lines = []
-
-        if additional_workers > 0:
-            worker_product = request.env['product.product'].sudo()._get_saas_worker_product()
-            if not worker_product or not worker_product.exists():
-                return {'error': 'Workers product not found'}
-            worker_unit_price = round(
-                company._saas_convert_price(float(worker_product.list_price or 100.0)), 2)
-            order_lines.append((0, 0, {
-                'product_id': worker_product.id,
-                'name': '%s (+%d worker%s) (%s)' % (
-                    worker_product.name, additional_workers,
-                    's' if additional_workers > 1 else '',
-                    'Annual' if is_annual else 'Monthly'
-                ),
-                'product_uom_qty': additional_workers,
-                'product_uom': worker_product.uom_id.id,
-                'price_unit': worker_unit_price,
-                'tax_id': [(6, 0, worker_product.taxes_id.ids)],
-            }))
-
-        if additional_gb > 0:
-            storage_product = False
-            try:
-                storage_product = request.env.ref('s_odoo_saas_master.product_saas_extra_storage').sudo()
-            except Exception:
-                pass
-            if not storage_product or not storage_product.exists():
-                storage_product = request.env['product.product'].sudo().search(
-                    [('default_code', '=ilike', 'saas_extra_storage'), ('active', '=', True)], limit=1)
-            if not storage_product or not storage_product.exists():
-                return {'error': 'Storage product not found'}
-            storage_unit_price = round(
-                company._saas_convert_price(float(storage_product.list_price or 220.0)), 2)
-            order_lines.append((0, 0, {
-                'product_id': storage_product.id,
-                'name': '%s (+%d GB storage) (%s)' % (
-                    storage_product.name, additional_gb,
-                    'Annual' if is_annual else 'Monthly'
-                ),
-                'product_uom_qty': additional_gb,
-                'product_uom': storage_product.uom_id.id,
-                'price_unit': storage_unit_price,
-                'tax_id': [(6, 0, storage_product.taxes_id.ids)],
-            }))
-
-        order_vals = request.website._prepare_sale_order_values(partner_sudo=partner)
-        order_vals.update({
-            'currency_id': target_currency.id,
-            'pricelist_id': False,
-            'is_saas_order': True,
-            'saas_order_type': 'buy_upgrade',
-            'instance_id': instance.id,
-            'subscription_type': subscription_type,
-            'storage_limit_gb': additional_gb,
-            'workers_count': additional_workers,
-            'subdomain': instance.name,
-            'based_domain_id': instance.based_domain_id.id if instance.based_domain_id else False,
-            'odoo_version_id': instance.odoo_version_id.id if instance.odoo_version_id else False,
-            'order_line': order_lines,
-        })
-        order = request.env['sale.order'].sudo().create(order_vals)
+        order, pricing, error = self._save_upgrade_order(
+            instance, 'buy_upgrade',
+            additional_workers=additional_workers, additional_gb=additional_gb)
+        if error:
+            return {'error': error}
         request.session['sale_order_id'] = order.id
-        return {'success': True, 'order_id': order.id, 'redirect': '/shop/cart'}
+        return {
+            'success': True, 'order_id': order.id, 'redirect': '/shop/cart',
+            'months': pricing['months'], 'prorated': pricing['prorated'],
+            'amount': pricing['worker_amount'] + pricing['storage_amount'],
+        }
 
     @http.route(['/pricing/checkout'], type='http', methods=['POST'], auth="public", website=True)
     def checkout(self, **post):
@@ -620,17 +614,26 @@ class Pricing(http.Controller):
         pricelist = request.website._get_current_pricelist()
         # The renew/upgrade wizard can post float-formatted values (e.g. "5.0"),
         # so parse through float() before casting to int.
-        num_users = int(float(post.pop('num_users', 1) or 1))
+        num_users = int(float(post.pop('num_users', 2) or 2))
         storage_gb = int(float(post.pop('storage_gb', 0) or 0))
         subscription_type = post.pop('price_by', 'yearly')
         plan_name = post.pop('plan', 'Standard')
         plan_product_id = post.pop('plan_product_id', False)
-        # Plan-only renewal: charge the plan for the period and extend the expiry,
-        # without re-charging workers/storage (those are handled by the Upgrade action).
-        plan_only_renew = post.pop('renew_plan_only', False) in (True, 'on', '1', 'true', 'True')
-        if plan_only_renew:
-            num_users = 0
-            storage_gb = 0
+        post.pop('renew_plan_only', None)  # legacy flag, renewal always re-bills resources
+
+        renew_instance = request.env['saas.odoo.instance']
+        if instance_id:
+            renew_instance = request.env['saas.odoo.instance'].sudo().browse(int(instance_id)).exists()
+        if renew_instance:
+            # A renewal re-bills the WHOLE running subscription, not just the plan:
+            # the plan + every worker/storage seat the container already owns + the
+            # ones added in the wizard. The wizard posts the number of EXTRA workers
+            # to add and the resulting storage total, so the quantities are rebuilt
+            # from the instance here (workers_count - included workers are billed).
+            num_users = int(renew_instance.workers_count or 0) + max(num_users, 0)
+            storage_gb = max(storage_gb, int(renew_instance.storage_limit_gb or 0))
+        else:
+            num_users = max(num_users, 2)
 
         if not plan_product_id:
             plan_product = self._get_plan_product(plan_name)

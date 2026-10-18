@@ -33,6 +33,16 @@ class Company(models.Model):
         help="Only used when a SaaS Price Currency is set. Number of units of that "
              "currency that equal one unit of the company currency. Example: company "
              "currency EUR and SaaS price currency XPF, 1 EUR = 119.3317 XPF.")
+    saas_worker_price_monthly = fields.Float(
+        string='Additional Worker Price (per month)', digits=(16, 2), default=0.0,
+        help="Recurring monthly price of one additional worker. Leave empty (0) to "
+             "use the 'Workers' product sale price. Annual upgrades are billed this "
+             "amount × 12 (prorated over the remaining subscription period).")
+    saas_storage_price_per_gb = fields.Float(
+        string='Extra Storage Price (per GB / month)', digits=(16, 4), default=0.0,
+        help="Recurring monthly price of one extra GB of storage. Leave empty (0) to "
+             "use the 'Extra Storage' product sale price. Annual upgrades are billed "
+             "this amount × 12 (prorated over the remaining subscription period).")
 
     def _saas_display_currency(self):
         """Currency in which SaaS prices must be shown / billed."""

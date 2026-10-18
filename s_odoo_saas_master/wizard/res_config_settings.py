@@ -17,3 +17,5 @@ class ResConfigSettings(models.TransientModel):
     github_client_secret = fields.Char(related='company_id.github_client_secret', readonly=False)
     saas_price_currency_id = fields.Many2one(related='company_id.saas_price_currency_id', readonly=False)
     saas_price_rate = fields.Float(related='company_id.saas_price_rate', readonly=False)
+    saas_worker_price_monthly = fields.Float(related='company_id.saas_worker_price_monthly', readonly=False)
+    saas_storage_price_per_gb = fields.Float(related='company_id.saas_storage_price_per_gb', readonly=False)

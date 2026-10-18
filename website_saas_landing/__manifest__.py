@@ -1,6 +1,6 @@
 {
     'name': 'Website SaaS Landing Page',
-    'version': '18.0.9.1.0',
+    'version': '18.0.9.3.0',
     'category': 'Website',
     'summary': 'Premium SaaS landing page, set as the website home page (/) - Odoo 18 compatible',
     'description': '''
@@ -49,6 +49,7 @@
         'views/saas_landing_template.xml',
         'views/saas_about_page.xml',
         'views/saas_services_page.xml',
+        'views/saas_mcp_page.xml',
         'views/saas_contact_page.xml',
         'views/saas_legal_pages.xml',
     ],

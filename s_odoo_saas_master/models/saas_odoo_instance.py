@@ -4,6 +4,7 @@ import os
 import re
 import shlex
 import subprocess
+from urllib.parse import quote
 import threading
 from datetime import datetime, timedelta, date
 from dateutil.relativedelta import relativedelta
@@ -32,6 +33,12 @@ WORKER_MEMORY_HARD = int(2.5 * 1024 * 1024 * 1024)   # 2.5 GB per worker
 # A single instance can never run more than this many workers (buy cap + validation).
 MAX_WORKERS_PER_INSTANCE = 4
 
+# The Standard plan includes 2 workers and Odoo does not run reliably with a single
+# worker (the cron/HTTP worker gets blocked and the UI times out), so new containers
+# are always created with at least 2. Legacy 1-worker containers are bumped to this
+# minimum on their next renewal only (see migration 18.0.0.91).
+MIN_WORKERS_PER_INSTANCE = 2
+
 # Installing this module turns a plain Community database into an Enterprise one. The
 # Enterprise addons themselves are never baked into the image: they are mounted inside the
 # container from the server's "standard extra addons" volume (/mnt/standard-extra-addons),
@@ -46,6 +53,11 @@ BACKUP_WATCHDOG_MINUTES = 20
 # Short lock timeout used when writing the backup state: waiting on a row locked by a
 # long cron/backup job must never hang the (short) progress transaction.
 BACKUP_STATE_LOCK_TIMEOUT = '5s'
+
+# A database name Odoo/PostgreSQL accepts: starts with a letter or an underscore, then
+# letters, digits, underscores and hyphens (63 chars max, the PostgreSQL identifier limit).
+# Letters only are allowed so the value stays safe as a ``dbfilter`` regex as well.
+DB_NAME_PATTERN = re.compile(r'^[A-Za-z_][A-Za-z0-9_\-]{0,62}$')
 
 
 def _is_db_concurrency_error(exc):
@@ -69,6 +81,7 @@ class OdooInstance(models.Model):
     # Expose the module constants on the model so a recordset can read them
     # (e.g. ``instance.MAX_WORKERS_PER_INSTANCE``).
     MAX_WORKERS_PER_INSTANCE = MAX_WORKERS_PER_INSTANCE
+    MIN_WORKERS_PER_INSTANCE = MIN_WORKERS_PER_INSTANCE
     WORKER_MEMORY_SOFT = WORKER_MEMORY_SOFT
     WORKER_MEMORY_HARD = WORKER_MEMORY_HARD
     ENTERPRISE_MODULE = ENTERPRISE_MODULE
@@ -119,6 +132,20 @@ class OdooInstance(models.Model):
              "``odoo.conf`` on the instance server and restarts the Odoo container so the new "
              "value takes effect.")
     db_name = fields.Char(string='Database Name', compute='_compute_db_name', store=True)
+    conf_staging_mode = fields.Boolean(
+        string='Test / Staging Mode (db_name + dbfilter commented out)',
+        default=False, copy=False, tracking=True,
+        help="When enabled, the generated odoo.conf writes ``#db_name`` and ``#dbfilter`` "
+             "instead of the real values, so the instance's /web/database/manager lists "
+             "every database and the customer can duplicate or restore a test database. "
+             "Turning it off restores both lines and locks the instance back to its own "
+             "database. Every change rewrites odoo.conf and restarts the Odoo container.")
+    staging_db_exists = fields.Boolean(
+        string='Staging Database Exists', default=False, copy=False, readonly=True,
+        help="Set as soon as the one-click staging copy is created on the server and "
+             "cleared when it is deleted (stopping the staging environment keeps the "
+             "copy, so this stays set). The portal uses it to show the Delete button "
+             "only when there is really a test database to delete.")
     domain_name_ids = fields.One2many('saas.odoo.instance.domain.name', 'instance_id', string='Domains Name')
     domain_name_count = fields.Integer(string="Domain Name Count", compute='_compute_domain_name_count')
     enable_autobackup = fields.Boolean(string="Enable Autobackup", default=True)
@@ -162,6 +189,16 @@ class OdooInstance(models.Model):
         'saas.odoo.instance.github.log', 'instance_id', string='GitHub Sync Logs')
     last_redeploy_date = fields.Datetime(string='Last Redeploy Date', readonly=True)
     last_sync_message = fields.Char(string='Last Sync Message')
+
+    # Passwordless "Connect Odoo": a one-time token + the live session created on
+    # the container, so the backend can open the customer instance as its admin
+    # user without ever exposing (or changing) the admin password.
+    connect_token = fields.Char(string='Connect Token', copy=False, groups='base.group_system')
+    connect_token_expiry = fields.Datetime(string='Connect Token Expiry', copy=False)
+    connect_session_sid = fields.Char(string='Connect Session', copy=False, groups='base.group_system')
+    connect_admin_login = fields.Char(string='Connect Admin Login', copy=False, readonly=True)
+    connect_last_at = fields.Datetime(string='Last Connect', copy=False, readonly=True)
+
     default_module = fields.Char(string='Default Modules', help="Modules are separated by commas")
     trial = fields.Boolean(string='Trial')
     expiration_date = fields.Date(string='Expiration Date', compute='_compute_expiration_date', store=True, readonly=False)
@@ -177,10 +214,13 @@ class OdooInstance(models.Model):
         compute='_compute_storage_usage', store=False)
     storage_database_gb = fields.Float(string='Database — pgdata (GB)',
         compute='_compute_storage_usage', store=False)
+    storage_image_gb = fields.Float(string='Docker image — Python libs (GB)',
+        compute='_compute_storage_usage', store=False)
     storage_percentage = fields.Float(string='Storage Usage %', compute='_compute_storage_usage', store=False)
-    workers_count = fields.Integer(string='Workers', default=1, required=True,
+    workers_count = fields.Integer(string='Workers', default=MIN_WORKERS_PER_INSTANCE, required=True,
         help="Number of Odoo worker processes the instance runs with. Also drives the "
-             "container memory allocation (2 GB soft / 2.5 GB hard per worker).")
+             "container memory allocation (2 GB soft / 2.5 GB hard per worker). A single "
+             "worker is not enough to run Odoo reliably, so the Standard plan starts at 2.")
     suspension_reason = fields.Selection([
         ('manual', 'Manual'),
         ('storage_full', 'Storage Full'),
@@ -460,27 +500,50 @@ class OdooInstance(models.Model):
         }
 
     def _compute_storage_usage(self):
-        """Used storage = instance folder (database, addons, backups) + odoo-web-data volume.
+        """Used storage = the whole instance folder (``/home/<technical_name>``) + the
+        private Docker image built for the customer's Python libraries / packages.
 
-        The volume is only mounted while the container exists, so it is measured in
-        addition to the folder and never double counts ``pgdata`` (which is a bind mount
-        inside the folder).
+        Everything the instance writes lives under ``/home/<technical_name>``
+        (``pgdata``, ``odoo-web-data``, custom addons, backups, logs), so that folder is
+        the storage the customer is charged for — plus the private image, which lives in
+        ``/var/lib/docker/overlay2`` and is read with ``docker image inspect`` after
+        every build.
+
+        ``saas_storage_management`` redefines ``storage_used_gb`` / ``storage_percentage``
+        as stored fields with its own compute (it measures the folder over SSH, as root).
+        When that module is installed this method must not touch those two fields,
+        otherwise reading a breakdown field would overwrite the stored total.
         """
+        owns_total = (
+            self._fields['storage_used_gb'].compute == '_compute_storage_usage')
+        private_images = {}
+        if self.ids:
+            private_images = {
+                image.instance_id.id: image
+                for image in self.env['saas.docker.image'].sudo().search(
+                    [('instance_id', 'in', self.ids)])
+            }
         for r in self:
-            used_gb = odoo_gb = pg_gb = 0.0
+            used_gb = odoo_gb = pg_gb = image_gb = 0.0
             if r.technical_name and r.state in ('deploy', 'suspend'):
                 try:
+                    private_image = private_images.get(r.id)
+                    image_gb = (private_image.size_gb or 0.0) if private_image else 0.0
                     paths = r._storage_paths()
                     odoo_gb = r._dir_size_gb(paths['odoo_web_data'])
                     pg_gb = r._dir_size_gb(paths['pgdata'])
-                    used_gb = round(r._dir_size_gb(paths['folder']) + odoo_gb, 2)
+                    used_gb = round(
+                        r._dir_size_gb(paths['folder']) + image_gb, 2)
                 except Exception as e:
                     _logger.warning('Storage usage compute failed for %s: %s', r.name, e)
             r.storage_odoo_data_gb = odoo_gb
             r.storage_database_gb = pg_gb
-            r.storage_used_gb = used_gb
-            limit = r.storage_limit_gb or 5.0
-            r.storage_percentage = round((used_gb / limit) * 100, 1) if limit > 0 else 0.0
+            r.storage_image_gb = image_gb
+            if owns_total:
+                r.storage_used_gb = used_gb
+                limit = r.storage_limit_gb or 5.0
+                r.storage_percentage = (
+                    round((used_gb / limit) * 100, 1) if limit > 0 else 0.0)
 
     @api.model
     def cron_check_storage_limits(self):
@@ -1069,7 +1132,7 @@ class OdooInstance(models.Model):
                     instance=r,
                     title=_("Your instance %s is ready") % r.name,
                     intro=_("Your hosting instance finished deploying and is online now."),
-                    rows=[('Workers', str(r.workers_count or 1)),
+                    rows=[('Workers', str(r.workers_count or MIN_WORKERS_PER_INSTANCE)),
                           ('Storage', '{:g} GB'.format(r.storage_limit_gb or 5)),
                           ('Odoo version', r.odoo_version_id.name or ''),
                           ('Subdomain', r.name or '')],
@@ -1665,8 +1728,8 @@ class OdooInstance(models.Model):
         self.docker_container_ids.action_restart()
         self._log_history(
             _("Instance restarted"), category='lifecycle', level='info', icon='fa-refresh',
-            summary=_("%s worker(s)") % (self.workers_count or 1),
-            description=_("The instance containers were restarted with %s worker(s).") % (self.workers_count or 1),
+            summary=_("%s worker(s)") % (self.workers_count or MIN_WORKERS_PER_INSTANCE),
+            description=_("The instance containers were restarted with %s worker(s).") % (self.workers_count or MIN_WORKERS_PER_INSTANCE),
         )
 
     def action_stop(self):
@@ -1688,8 +1751,8 @@ class OdooInstance(models.Model):
         self.write(vals)
         self._log_history(
             _("Instance started"), category='lifecycle', level='success', icon='fa-play-circle',
-            summary=_("%s worker(s)") % (self.workers_count or 1),
-            description=_("The instance was started with %s worker(s).") % (self.workers_count or 1),
+            summary=_("%s worker(s)") % (self.workers_count or MIN_WORKERS_PER_INSTANCE),
+            description=_("The instance was started with %s worker(s).") % (self.workers_count or MIN_WORKERS_PER_INSTANCE),
         )
 
     def action_suspend(self, has_extra=False):
@@ -2485,11 +2548,434 @@ class OdooInstance(models.Model):
             self.pserver_id._redeploy_odoo_instance_config(self)
         return True
 
+    def action_change_db_name(self, new_db_name):
+        """Change the database name this instance is locked to.
+
+        The value is written to the ``db_name`` and ``dbfilter`` rows of the generated
+        ``odoo.conf``, then the config file is rewritten and the Odoo container is
+        restarted (redeploy) so the instance immediately looks for the new name.
+
+        The PostgreSQL database itself is **not** renamed: the customer keeps the data
+        in the backup file and restores (or creates) it under the new name from
+        ``/web/database/manager`` — that is the self-service restore flow.
+        """
+        self.ensure_one()
+        new_db_name = (new_db_name or '').strip()
+        if not new_db_name:
+            raise UserError(_("The database name cannot be empty."))
+        if not DB_NAME_PATTERN.match(new_db_name):
+            raise UserError(_(
+                "Invalid database name. Use only letters, digits, underscores and "
+                "hyphens, start with a letter or an underscore, and keep it under "
+                "63 characters."
+            ))
+        old_db_name = self.db_name or self.technical_name
+        if new_db_name == old_db_name:
+            return True
+        duplicate = self.sudo().search([
+            ('db_name', '=', new_db_name),
+            ('id', '!=', self.id),
+        ], limit=1)
+        if duplicate:
+            raise UserError(_(
+                "The database name %(name)s is already used by another instance.",
+                name=new_db_name,
+            ))
+
+        config_model = self.env['saas.odoo.instance.config'].sudo()
+        for key in ('db_name', 'dbfilter'):
+            row = self.config_ids.filtered(lambda c: c.name == key)[:1]
+            if row:
+                row.write({'value': new_db_name})
+                continue
+            version_config = self.odoo_version_id.config_ids.filtered(
+                lambda c: c.name == key)[:1]
+            if not version_config or not version_config.section_id:
+                raise UserError(_(
+                    "Cannot change the database name: the %(key)s setting is missing "
+                    "from the Odoo version configuration.",
+                    key=key,
+                ))
+            config_model.create({
+                'instance_id': self.id,
+                'name': key,
+                'value': new_db_name,
+                'section_id': version_config.section_id.id,
+            })
+
+        # Guarantee BOTH rows carry the new name before touching odoo.conf. A mismatch
+        # between db_name and dbfilter hides the database from the manager, so never
+        # rewrite/restart with a half-applied change.
+        self.config_ids.flush_recordset(['name', 'value'])
+        applied = {
+            row.name: row.value
+            for row in self.config_ids
+            if row.name in ('db_name', 'dbfilter')
+        }
+        if any(applied.get(key) != new_db_name for key in ('db_name', 'dbfilter')):
+            raise UserError(_(
+                "The database name could not be applied to both db_name and dbfilter "
+                "(current values: %(values)s).",
+                values=applied,
+            ))
+
+        # The config rows are now the source of truth; rewrite odoo.conf and restart so
+        # the running Odoo looks for the new name instead of the old one.
+        if self.state == 'deploy':
+            if not self.pserver_id:
+                raise UserError(_(
+                    "The database name was saved, but this instance has no server to "
+                    "restart. Please redeploy the instance."
+                ))
+            self.pserver_id._redeploy_odoo_instance_config(self)
+
+        self._log_history(
+            _("Database name changed"),
+            category='restore',
+            level='warning',
+            icon='fa-database',
+            summary="%s → %s" % (old_db_name, new_db_name),
+            description=_(
+                "The instance now looks for the database %(new)s (odoo.conf: db_name + "
+                "dbfilter). Restore or create that database from /web/database/manager.",
+                new=new_db_name,
+            ),
+        )
+        return True
+
+    def _apply_db_staging_mode(self, enable, force=False):
+        """Comment out (or restore) ``db_name`` + ``dbfilter`` in the instance's odoo.conf.
+
+        Test-environment flow
+        ---------------------
+        Enabling the staging mode rewrites ``odoo.conf`` with ``#db_name=...`` and
+        ``#dbfilter=...`` and restarts the Odoo container. Odoo then starts without a
+        forced database, so ``/web/database/manager`` lists **every** database of the
+        instance and the customer can duplicate or restore the test database. Disabling
+        it restores both lines (values are kept in the config rows) and restarts again,
+        which locks the instance back to its own database.
+
+        Returns ``True`` when the Odoo container was restarted.
+        """
+        self.ensure_one()
+        enable = bool(enable)
+        if self.conf_staging_mode == enable and not force:
+            return False
+
+        # Save the flag first: odoo.conf is generated from it.
+        self.with_context(skip_db_staging_redeploy=True).write(
+            {'conf_staging_mode': enable})
+        self.flush_recordset(['conf_staging_mode'])
+
+        restarted = False
+        if self.state == 'deploy':
+            if not self.pserver_id:
+                raise UserError(_(
+                    "The staging mode was saved, but this instance has no server to "
+                    "rewrite odoo.conf on. Please redeploy the instance."))
+            self.pserver_id._redeploy_odoo_instance_config(self)
+            restarted = True
+
+        db_name = self._get_effective_db_name()
+        if enable:
+            self._log_history(
+                _("Test / staging mode enabled"),
+                category='restore',
+                level='warning',
+                icon='fa-unlock',
+                summary=_("db_name and dbfilter commented out"),
+                description=_(
+                    "odoo.conf now has #db_name and #dbfilter commented out, so "
+                    "/web/database/manager lists every database of this instance. "
+                    "Duplicate or restore the test database, then activate the DB name "
+                    "and DB filter again. Instance database: %(name)s.",
+                    name=db_name,
+                ),
+            )
+        else:
+            self._log_history(
+                _("DB name and DB filter activated"),
+                category='restore',
+                level='info',
+                icon='fa-lock',
+                summary=db_name,
+                description=_(
+                    "db_name and dbfilter are active again in odoo.conf: the instance is "
+                    "locked to the database %(name)s and the database manager only lists "
+                    "that database.",
+                    name=db_name,
+                ),
+            )
+        return restarted
+
+    def action_enable_db_staging(self):
+        """Portal/backend helper: comment out db_name + dbfilter and restart Odoo."""
+        self.ensure_one()
+        return self._apply_db_staging_mode(True)
+
+    def action_disable_db_staging(self):
+        """Portal/backend helper: restore db_name + dbfilter and restart Odoo."""
+        self.ensure_one()
+        return self._apply_db_staging_mode(False)
+
+    # ------------------------------------------------------------------
+    # One-click staging database (test copy of the instance database)
+    #
+    # The customer does not have to open the database manager and duplicate
+    # anything by hand: the copy is created on the server (``createdb`` with
+    # the production database as template, filestore included), then
+    # db_name/dbfilter are commented out so /web/database/selector lists both
+    # databases. "Stop Staging Database" drops the copy and locks the
+    # instance back to its own database.
+    # ------------------------------------------------------------------
+    STAGING_DB_SUFFIX = '_staging'
+    STAGING_DB_MAX_LENGTH = 63  # PostgreSQL identifier limit
+
+    def get_staging_db_name(self):
+        """Name of the test copy of this instance's database.
+
+        Public on purpose: the portal template prints it, and the create/stop
+        endpoints use the very same value.
+        """
+        self.ensure_one()
+        base = (self.db_name or self.technical_name or '').strip()
+        if not base:
+            return ''
+        name = re.sub(r'[^A-Za-z0-9_]', '_', base + self.STAGING_DB_SUFFIX)
+        return name[:self.STAGING_DB_MAX_LENGTH]
+
+    def _get_staging_db_names(self):
+        """Return ``(production_db, staging_db)`` after validating both names."""
+        self.ensure_one()
+        production = (self.db_name or self.technical_name or '').strip()
+        staging = self.get_staging_db_name()
+        if not production or not staging or production == staging:
+            raise UserError(_(
+                "This instance has no database name yet, so it cannot be copied."))
+        for name in (production, staging):
+            if not re.match(r'^[A-Za-z0-9_]+$', name):
+                raise UserError(_(
+                    "The database name %(name)s contains characters that cannot be "
+                    "used for a staging copy.", name=name))
+        return production, staging
+
+    def _get_psql_exec_prefix(self):
+        """``docker exec … psql`` prefix shared by the staging queries."""
+        self.ensure_one()
+        return 'docker exec -e PGPASSWORD=odoo %s psql -U odoo' % shlex.quote(
+            'psql_%s' % self.technical_name)
+
+    def action_create_staging_database(self, mode='duplicate'):
+        """Create the test copy of this instance's database in one click.
+
+        ``mode='duplicate'`` clones the production database (and its filestore);
+        ``mode='empty'`` creates a blank database the customer can restore a
+        backup into. In both cases db_name + dbfilter are commented out of
+        odoo.conf afterwards, so /web/database/selector lists the two databases
+        and the customer can open either one.
+        """
+        self.ensure_one()
+        if self.state != 'deploy' or not self.pserver_id:
+            raise UserError(_(
+                "Start the instance before creating a staging database."))
+        production, staging = self._get_staging_db_names()
+        mode = 'empty' if mode == 'empty' else 'duplicate'
+
+        psql_container = shlex.quote('psql_%s' % self.technical_name)
+        odoo_container = shlex.quote('odoo_%s' % self.technical_name)
+        filestore_root = '/home/%s/odoo-web-data/filestore' % self.technical_name
+        psql = self._get_psql_exec_prefix()
+
+        terminate = '%s -d postgres -At -c %s' % (psql, shlex.quote(
+            "SELECT pg_terminate_backend(pid) FROM pg_stat_activity "
+            "WHERE datname IN ('%s', '%s') AND pid <> pg_backend_pid()"
+            % (production, staging)))
+        drop = ('docker exec -e PGPASSWORD=odoo %s dropdb -U odoo --if-exists %s'
+                % (psql_container, shlex.quote(staging)))
+        if mode == 'empty':
+            create = ('docker exec -e PGPASSWORD=odoo %s createdb -U odoo %s'
+                      % (psql_container, shlex.quote(staging)))
+            filestore = 'rm -rf %s; ' % shlex.quote(
+                '%s/%s' % (filestore_root, staging))
+        else:
+            create = ('docker exec -e PGPASSWORD=odoo %s createdb -U odoo -T %s %s'
+                      % (psql_container, shlex.quote(production), shlex.quote(staging)))
+            filestore = (
+                'rm -rf %(target)s; '
+                'if [ -d %(root)s ]; then '
+                'cp -a %(root)s %(target)s; chmod -R 777 %(target)s; fi; ' % {
+                    'root': shlex.quote('%s/%s' % (filestore_root, production)),
+                    'target': shlex.quote('%s/%s' % (filestore_root, staging)),
+                })
+        # A copy must never send real e-mails or duplicate payments, so its
+        # scheduled actions are switched off (the customer can turn them back on
+        # from the test database itself).
+        disable_crons = '%s -d %s -c %s' % (
+            psql, shlex.quote(staging), shlex.quote('UPDATE ir_cron SET active = false'))
+
+        # Odoo has to be stopped while the database is cloned: PostgreSQL refuses
+        # CREATE DATABASE ... TEMPLATE when the template still has connections.
+        # The EXIT trap starts it again even when the clone fails half way, so a
+        # failed attempt can never leave the instance offline.
+        command = (
+            "trap 'docker start %(odoo)s >/dev/null 2>&1 || true' EXIT; "
+            'set -e; '
+            'docker stop %(odoo)s >/dev/null 2>&1 || true; '
+            '%(terminate)s >/dev/null 2>&1 || true; '
+            '%(drop)s >/dev/null 2>&1 || true; '
+            '%(create)s; '
+            '%(filestore)s'
+            '%(crons)s >/dev/null 2>&1 || true; '
+            'docker start %(odoo)s >/dev/null 2>&1 || true; '
+            'echo SAAS_STAGING_DB_READY'
+        ) % {
+            'odoo': odoo_container,
+            'terminate': terminate,
+            'drop': drop,
+            'create': create,
+            'filestore': filestore,
+            'crons': disable_crons,
+        }
+
+        ssh = self.pserver_id.sudo()._connect()
+        try:
+            exit_code, output = self.pserver_id._exec_capture(command, ssh)
+        finally:
+            ssh.close()
+        if exit_code or 'SAAS_STAGING_DB_READY' not in (output or ''):
+            raise UserError(_(
+                "The staging database could not be created: %(error)s",
+                error=(output or '').strip()[-500:] or _("Unknown error."),
+            ))
+
+        # Both databases must be listed now, so the lock is released. The flag is
+        # stored first: the portal only offers "Delete Staging Database" when a copy
+        # really exists (stopping the environment keeps it, deleting clears it).
+        self.write({'staging_db_exists': True})
+        self._apply_db_staging_mode(True)
+        self._log_history(
+            _("Staging database created"),
+            category='restore',
+            level='info',
+            icon='fa-flask',
+            summary=staging,
+            description=_(
+                "%(mode)s from %(production)s. db_name and dbfilter are commented out "
+                "so /web/database/selector lists both databases.",
+                mode=_("Duplicated") if mode != 'empty' else _("Empty database created"),
+                production=production,
+            ),
+        )
+        return {
+            'staging_db': staging,
+            'production_db': production,
+            'mode': mode,
+            'restarted': True,
+        }
+
+    def action_stop_staging_database(self):
+        """Lock the instance back to its own database, keeping the test copy.
+
+        Only odoo.conf is rewritten (``db_name`` + ``dbfilter`` are active again) and
+        Odoo restarted: the staging database and its filestore stay on the server, so
+        they can be reopened or deleted later with ``action_delete_staging_database``.
+        """
+        self.ensure_one()
+        production, staging = self._get_staging_db_names()
+        restarted = self._apply_db_staging_mode(False)
+        self._log_history(
+            _("Staging database stopped"),
+            category='restore',
+            level='info',
+            icon='fa-lock',
+            summary=staging,
+            description=_(
+                "db_name and dbfilter are active again: the instance is locked to "
+                "%(production)s. The test copy %(staging)s was kept on the server.",
+                production=production, staging=staging),
+        )
+        return {
+            'staging_db': staging,
+            'production_db': production,
+            'restarted': bool(restarted),
+        }
+
+    def action_delete_staging_database(self):
+        """Delete the staging database (and its filestore) for good.
+
+        The live database is never touched. When the instance is still unlocked
+        (staging mode on) it is locked back to its own database afterwards.
+        """
+        self.ensure_one()
+        production, staging = self._get_staging_db_names()
+        if self.state != 'deploy' or not self.pserver_id:
+            raise UserError(_(
+                "Start the instance before deleting the staging database."))
+
+        psql_container = shlex.quote('psql_%s' % self.technical_name)
+        filestore_path = shlex.quote(
+            '/home/%s/odoo-web-data/filestore/%s' % (self.technical_name, staging))
+        terminate = '%s -d postgres -At -c %s' % (self._get_psql_exec_prefix(), shlex.quote(
+            "SELECT pg_terminate_backend(pid) FROM pg_stat_activity "
+            "WHERE datname = '%s' AND pid <> pg_backend_pid()" % staging))
+        command = (
+            'set -e; '
+            '%(terminate)s >/dev/null 2>&1 || true; '
+            'docker exec -e PGPASSWORD=odoo %(psql)s dropdb -U odoo --if-exists %(db)s; '
+            'rm -rf %(filestore)s; '
+            'echo SAAS_STAGING_DB_REMOVED'
+        ) % {
+            'terminate': terminate,
+            'psql': psql_container,
+            'db': shlex.quote(staging),
+            'filestore': filestore_path,
+        }
+        ssh = self.pserver_id.sudo()._connect()
+        try:
+            exit_code, output = self.pserver_id._exec_capture(command, ssh)
+        finally:
+            ssh.close()
+        if exit_code or 'SAAS_STAGING_DB_REMOVED' not in (output or ''):
+            raise UserError(_(
+                "The staging database could not be deleted: %(error)s",
+                error=(output or '').strip()[-500:] or _("Unknown error."),
+            ))
+
+        # The copy is gone: the portal must stop offering to delete it.
+        self.write({'staging_db_exists': False})
+        restarted = False
+        if self.conf_staging_mode:
+            restarted = self._apply_db_staging_mode(False)
+        self._log_history(
+            _("Staging database deleted"),
+            category='restore',
+            level='warning',
+            icon='fa-trash',
+            summary=staging,
+            description=_(
+                "The test copy %(staging)s and its attachments were deleted. The live "
+                "database %(production)s was not touched.", staging=staging,
+                production=production),
+        )
+        return {
+            'staging_db': staging,
+            'production_db': production,
+            'restarted': bool(restarted),
+        }
+
     def write(self, vals):
         res = super().write(vals)
         if 'admin_pass' in vals and not self.env.context.get('skip_admin_pass_sync'):
             for instance in self:
                 instance._apply_admin_password(instance.admin_pass)
+        # A flag changed from the backend form (or by an integration) must also hit
+        # odoo.conf, otherwise the DB row would say "staging" while the instance still
+        # runs locked to its own database.
+        if ('conf_staging_mode' in vals
+                and not self.env.context.get('skip_db_staging_redeploy')):
+            for instance in self:
+                instance._apply_db_staging_mode(
+                    instance.conf_staging_mode, force=True)
         return res
 
 
@@ -2506,6 +2992,28 @@ class OdooInstance(models.Model):
         addons_path += self.custom_addon_ids.mapped('container_path')
         return ','.join(dict.fromkeys(filter(None, addons_path)))
 
+    def _get_effective_db_name(self):
+        """The one database name this instance must use for ``db_name`` and ``dbfilter``.
+
+        Order of precedence:
+
+        1. the value already stored on the instance — the customer may have changed it
+           from the portal, and regenerating odoo.conf must never silently revert it;
+        2. the template instance's database name, when this instance is a copy;
+        3. the generated technical name (``name_domain_date``), used on the first deploy.
+        """
+        self.ensure_one()
+        current = self.config_ids.filtered(
+            lambda c: c.name == 'db_name' and c.value and c.value != 'False')[:1]
+        if current:
+            return current.value
+        if self.template_instance_id:
+            template_config = self.template_instance_id.config_ids.filtered(
+                lambda c: c.name == 'db_name' and c.value and c.value != 'False')[:1]
+            if template_config:
+                return template_config.value
+        return self.technical_name
+
     def _prepare_conf_vals_list(self):
         conf_vals_list = []
         for conf in self.odoo_version_id.config_ids:
@@ -2518,35 +3026,25 @@ class OdooInstance(models.Model):
                     random.choice(string.ascii_lowercase) for i in range(32))
             elif conf.name == 'data_dir':
                 value = '/var/lib/odoo'
-            elif conf.name == 'db_name':
-                if not self.template_instance_id:
-                    value = self.technical_name
-                else:
-                    db_name_configs = self.template_instance_id.config_ids.filtered(lambda c: c.name == 'db_name')
-                    if db_name_configs:                        
-                        value = db_name_configs[0].value
-                    else:
-                        value = self.technical_name
-            elif conf.name == 'dbfilter':
-                if not self.template_instance_id:
-                    value = self.technical_name
-                else:
-                    db_name_configs = self.template_instance_id.config_ids.filtered(lambda c: c.name == 'db_name')
-                    if db_name_configs:                        
-                        value = db_name_configs[0].value
-                    else:
-                        value = self.technical_name
+            elif conf.name in ('db_name', 'dbfilter'):
+                # ``db_name`` and ``dbfilter`` must ALWAYS carry the same value: Odoo
+                # only starts on the database named by db_name and only lists that one
+                # through dbfilter. Keep a name the customer already changed from the
+                # portal ("Change Database Name"); only fall back to the generated name
+                # on the first deployment (or on a copy of a template instance).
+                value = self._get_effective_db_name()
             elif conf.name == 'logfile':
                 value = '/var/log/odoo/odoo.log'
             elif conf.name == 'without_demo':
                 value = not self.user_demo_data
             elif conf.name == 'workers':
-                # Always deploy exactly the number of workers the customer owns.
-                value = max(self.workers_count or 1, 1)
+                # Always deploy exactly the number of workers the customer owns, never
+                # less than the 2-worker minimum Odoo needs to run correctly.
+                value = max(self.workers_count or MIN_WORKERS_PER_INSTANCE, MIN_WORKERS_PER_INSTANCE)
             elif conf.name == 'limit_memory_soft':
-                value = max(self.workers_count or 1, 1) * WORKER_MEMORY_SOFT
+                value = max(self.workers_count or MIN_WORKERS_PER_INSTANCE, MIN_WORKERS_PER_INSTANCE) * WORKER_MEMORY_SOFT
             elif conf.name == 'limit_memory_hard':
-                value = max(self.workers_count or 1, 1) * WORKER_MEMORY_HARD
+                value = max(self.workers_count or MIN_WORKERS_PER_INSTANCE, MIN_WORKERS_PER_INSTANCE) * WORKER_MEMORY_HARD
 
             conf_vals_list.append({
                 'instance_id': self.id,
@@ -2680,7 +3178,7 @@ class OdooInstance(models.Model):
         file_content += '            - "' + self.docker_xmlrpcs_expose_port + ':' + self.docker_xmlrpcs_container_port + '"\n'
         file_content += '            - "' + self.docker_longpolling_expose_port + ':' + self.docker_longpolling_container_port + '"\n'
         file_content += '        restart: unless-stopped\n'
-        workers = max(self.workers_count or 1, 1)
+        workers = max(self.workers_count or MIN_WORKERS_PER_INSTANCE, MIN_WORKERS_PER_INSTANCE)
         file_content += '        mem_limit: %dm\n' % (workers * WORKER_MEMORY_HARD // (1024 * 1024))
         file_content += '        mem_reservation: %dm\n' % (workers * WORKER_MEMORY_SOFT // (1024 * 1024))
         if self.docker_compose_volume_ids:
@@ -2806,6 +3304,321 @@ class OdooInstance(models.Model):
         """Enforce the retention policy: keep only the newest ``backup_limit`` backups."""
         for instance in self.search([('backup_limit', '>', 0)]):
             instance._enforce_backup_retention()
+
+    # ------------------------------------------------------------------
+    # Passwordless "Connect Odoo" (open the container as its admin user)
+    # ------------------------------------------------------------------
+    def _connect_sql(self, query, single=False, db_name=None):
+        """Run ``query`` in this container's PostgreSQL database over SSH.
+
+        Uses ``psql -At -F '|'`` so a ``SELECT`` returns one unaligned row per line,
+        which is all the connection flow needs (read the admin login / password
+        hash, swap it for a temporary one, restore it). ``db_name`` targets another
+        database of the same container (the staging copy).
+        """
+        self.ensure_one()
+        container = shlex.quote('psql_%s' % self.technical_name)
+        database = shlex.quote(db_name or self.db_name or self.technical_name)
+        command = (
+            "docker exec -e PGPASSWORD=odoo %s psql -U odoo -d %s -At -F '|' -c %s"
+            % (container, database, shlex.quote(query))
+        )
+        ssh = self.pserver_id.sudo()._connect()
+        try:
+            exit_code, output = self.pserver_id._exec_capture(command, ssh)
+        finally:
+            ssh.close()
+        if exit_code:
+            raise UserError(
+                _("Database query failed on %(instance)s: %(error)s") % {
+                    'instance': self.display_name,
+                    'error': (output or '').strip()[-500:] or _("unknown error"),
+                }
+            )
+        lines = [line for line in (output or '').splitlines() if line.strip()]
+        if single:
+            return lines[0] if lines else ''
+        return lines
+
+    def _get_connect_admin(self, db_name=None):
+        """Return ``(uid, login, password_hash)`` of the container's admin user.
+
+        The lowest-id internal (non-share) active user is the administrator the
+        instance was created with (``admin`` / the customer's own admin account).
+        """
+        self.ensure_one()
+        row = self._connect_sql(
+            "SELECT id, login, COALESCE(password, '') FROM res_users "
+            "WHERE active AND NOT share AND id > 1 ORDER BY id LIMIT 1",
+            single=True,
+            db_name=db_name,
+        )
+        if not row:
+            raise UserError(
+                _("No active administrator was found in the database of %s.") % self.display_name)
+        uid, login, password_hash = row.split('|', 2)
+        return int(uid), login, password_hash
+
+    def _create_tenant_admin_session(self, db_name=None):
+        """Open a real (passwordless) session on the container as its admin user.
+
+        The admin password hash is swapped for a random temporary one, the login is
+        performed through the container's own ``/web/session/authenticate`` JSON
+        endpoint, and the original hash is restored immediately: Odoo sessions do
+        not depend on the password, so the created session stays valid.
+
+        ``db_name`` opens the session on another database of the same container
+        (the staging copy) instead of the instance's own database.
+        """
+        self.ensure_one()
+        import requests
+
+        if self.state != 'deploy':
+            raise UserError(_("The instance must be deployed before you can connect to it."))
+        if not self.url:
+            raise UserError(_("The instance has no URL yet."))
+
+        target_db = db_name or self.db_name or self.technical_name
+        uid, login, password_hash = self._get_connect_admin(target_db)
+        temporary_password = 'Sx' + secrets.token_urlsafe(24)
+        crypt_context = self.env['res.users']._crypt_context()
+        temporary_hash = crypt_context.hash(temporary_password)
+
+        def _sql_literal(value):
+            # ``standard_conforming_strings`` is on by default: only single quotes
+            # need doubling (the hashes are base64-ish, no backslashes).
+            return "'%s'" % (value or '').replace("'", "''")
+
+        self._connect_sql(
+            "UPDATE res_users SET password = %s WHERE id = %d"
+            % (_sql_literal(temporary_hash), uid), db_name=target_db)
+        sid = None
+        try:
+            session = requests.Session()
+            response = session.post(
+                self.url.rstrip('/') + '/web/session/authenticate',
+                json={
+                    'jsonrpc': '2.0',
+                    'params': {
+                        'db': target_db,
+                        'login': login,
+                        'password': temporary_password,
+                    },
+                },
+                timeout=30,
+            )
+            try:
+                payload = response.json()
+            except ValueError:
+                raise UserError(_(
+                    "Unexpected answer from %(url)s (HTTP %(code)s).") % {
+                        'url': self.url, 'code': response.status_code})
+            result = payload.get('result') or {}
+            if not result.get('uid'):
+                error = (payload.get('error') or {}).get('message') or _("unknown error")
+                raise UserError(
+                    _("Could not open a session on %(url)s: %(error)s") % {
+                        'url': self.url, 'error': error})
+            sid = session.cookies.get('session_id')
+            if not sid:
+                raise UserError(
+                    _("The instance did not return a session cookie. Check the session settings of %s.")
+                    % self.display_name)
+            return int(result['uid']), login, sid
+        except requests.RequestException as exc:
+            raise UserError(
+                _("Cannot reach %(url)s: %(error)s") % {'url': self.url, 'error': exc}) from exc
+        finally:
+            # Restore the original password hash, even when the login failed.
+            self._connect_sql(
+                "UPDATE res_users SET password = %s WHERE id = %d"
+                % (_sql_literal(password_hash), uid), db_name=target_db)
+            if sid:
+                # Odoo derives the session token from the admin password hash: the
+                # session created above is bound to the temporary password. Recompute
+                # it for the restored hash and clear the workers' caches, otherwise
+                # the session is rejected on the very next request (the customer sees
+                # the dashboard once, then gets logged out on refresh).
+                self._refresh_tenant_session(uid, sid, target_db)
+
+    def _get_tenant_session_token(self, uid, sid, db_name=None):
+        """Ask the container's own Odoo for the session token of ``sid``.
+
+        The token algorithm (and the fields feeding it, e.g. ``totp_secret`` when
+        2FA is installed) changes between Odoo versions and modules, so the
+        container itself computes it — that is always correct.
+        """
+        container = shlex.quote('odoo_%s' % self.technical_name)
+        database = shlex.quote(db_name or self.db_name or self.technical_name)
+        script = (
+            "u = env['res.users'].browse(%d)\n"
+            "print('SAAS_SESSION_TOKEN:' + (u._compute_session_token(%r) or ''))\n"
+            "env.cr.rollback()\n"
+        ) % (int(uid), sid)
+        command = (
+            "docker exec -i %s odoo shell -c /etc/odoo/odoo.conf -d %s "
+            "--db_host db --db_user odoo --db_password odoo --no-http --logfile=/dev/null"
+            % (container, database)
+        )
+        ssh = self.pserver_id.sudo()._connect()
+        try:
+            _exit_code, output = self.pserver_id._exec_capture(
+                command, ssh, arguments=[script], close_stdin=True)
+        finally:
+            ssh.close()
+        for line in (output or '').splitlines():
+            if line.startswith('SAAS_SESSION_TOKEN:'):
+                token = line.split(':', 1)[1].strip()
+                if token:
+                    return token
+        raise UserError(
+            _("Could not compute the session token of %(instance)s: %(error)s") % {
+                'instance': self.display_name,
+                'error': (output or '').strip()[-400:] or _("unknown error"),
+            }
+        )
+
+    def _refresh_tenant_session(self, uid, sid, db_name=None):
+        """Re-bind the live session to the restored password and invalidate caches."""
+        token = self._get_tenant_session_token(uid, sid, db_name)
+        container = 'odoo_%s' % self.technical_name
+        script = (
+            "import json, os, pickle\n"
+            "sid = %r\n"
+            "token = %r\n"
+            "paths = ['/var/lib/odoo/sessions/' + sid[:2] + '/' + sid,\n"
+            "         '/var/lib/odoo/sessions/' + sid]\n"
+            "path = next((p for p in paths if os.path.exists(p)), None)\n"
+            "if not path:\n"
+            "    raise SystemExit('session file not found')\n"
+            "raw = open(path, 'rb').read()\n"
+            "if raw[:1] == b'{':\n"
+            "    data = json.loads(raw.decode('utf-8'))\n"
+            "    data['session_token'] = token\n"
+            "    with open(path, 'w', encoding='utf-8') as fh:\n"
+            "        json.dump(data, fh)\n"
+            "else:\n"
+            "    session = pickle.loads(raw)\n"
+            "    if isinstance(session, dict):\n"
+            "        session['session_token'] = token\n"
+            "    else:\n"
+            "        session.session_token = token\n"
+            "    with open(path, 'wb') as fh:\n"
+            "        fh.write(pickle.dumps(session))\n"
+            "print('SESSION_TOKEN_OK')\n"
+        ) % (sid, token)
+        ssh = self.pserver_id.sudo()._connect()
+        try:
+            commands = [
+                "docker exec -u odoo %s python3 -c %s" % (shlex.quote(container), shlex.quote(script)),
+                "docker exec %s python3 -c %s" % (shlex.quote(container), shlex.quote(script)),
+            ]
+            output, exit_code = '', 1
+            for command in commands:
+                exit_code, output = self.pserver_id._exec_capture(command, ssh)
+                if not exit_code:
+                    break
+        finally:
+            ssh.close()
+        if exit_code:
+            raise UserError(
+                _("Could not refresh the session of %(instance)s: %(error)s") % {
+                    'instance': self.display_name,
+                    'error': (output or '').strip()[-400:] or _("unknown error"),
+                }
+            )
+        # Invalidate the ORM caches of every worker so none of them keeps using the
+        # token computed with the temporary password. Odoo <= 18 signals through
+        # ``base_cache_signaling_*`` sequences, Odoo >= 19 through ``orm_signaling_*``
+        # tables (the registry signal is left untouched: only caches are cleared).
+        self._connect_sql(
+            "DO $$\n"
+            "DECLARE r record;\n"
+            "BEGIN\n"
+            "  FOR r IN SELECT table_name AS n FROM information_schema.tables\n"
+            "           WHERE table_schema = current_schema AND table_name LIKE 'orm_signaling_%'\n"
+            "             AND table_name <> 'orm_signaling_registry'\n"
+            "  LOOP EXECUTE 'INSERT INTO ' || quote_ident(r.n) || ' DEFAULT VALUES'; END LOOP;\n"
+            "  FOR r IN SELECT sequence_name AS n FROM information_schema.sequences\n"
+            "           WHERE sequence_schema = current_schema\n"
+            "             AND sequence_name LIKE 'base_cache_signaling_%'\n"
+            "  LOOP EXECUTE 'SELECT nextval(' || quote_literal(r.n) || ')'; END LOOP;\n"
+            "END $$;",
+            db_name=db_name,
+        )
+
+    def action_connect_odoo(self):
+        """Backend button: log into this container as its admin user, without password.
+
+        A one-time token is stored on the instance and the browser is sent to
+        ``<instance>/_saas_connect?token=...``. nginx proxies that location back to
+        this Odoo (same origin as the instance), which sets the container's session
+        cookie and redirects to its backend.
+        """
+        self.ensure_one()
+        return self._build_connect_action()
+
+    def action_connect_odoo_staging(self):
+        """Same passwordless hand-over, but the session opens the staging database.
+
+        Used by the "Connect Staging" button of the staging tab: the browser lands
+        straight in the test copy of the instance, without a password and without
+        going through the database selector.
+        """
+        self.ensure_one()
+        if not self.conf_staging_mode:
+            raise UserError(_(
+                "Turn the staging environment on before connecting to the staging database."))
+        staging_db = self.get_staging_db_name()
+        try:
+            return self._build_connect_action(staging_db, staging=True)
+        except UserError as error:
+            raise UserError(_(
+                "Could not open a session on the staging database %(db)s. If the test "
+                "database is still empty, open it once from the database selector to "
+                "initialize it.\n\n%(error)s", db=staging_db, error=str(error)))
+
+    def _build_connect_action(self, db_name=None, staging=False):
+        """Create the one-time session + token and return the redirect action."""
+        self.ensure_one()
+        _uid, login, sid = self._create_tenant_admin_session(db_name)
+        token = secrets.token_urlsafe(32)
+        self.write({
+            'connect_token': token,
+            'connect_token_expiry': fields.Datetime.now() + timedelta(minutes=5),
+            'connect_session_sid': sid,
+            'connect_admin_login': login,
+            'connect_last_at': fields.Datetime.now(),
+        })
+        if staging:
+            self._log_history(
+                _("Staging connection opened"), category='restore', level='info',
+                icon='fa-flask', summary=_("Connected to %s as %s") % (
+                    self.get_staging_db_name(), login),
+                description=_(
+                    "A one-time passwordless login session was generated for the test "
+                    "database %(db)s as %(login)s.",
+                    db=self.get_staging_db_name(), login=login),
+            )
+        else:
+            self._log_history(
+                _("Odoo connection opened"), category='lifecycle', level='info',
+                icon='fa-external-link', summary=_("Connected as %s") % login,
+                description=_(
+                    "A one-time passwordless login session was generated for %s.") % login,
+            )
+        connect_url = '%s/_saas_connect?token=%s' % (
+            self.url.rstrip('/'), quote(token, safe=''))
+        return {'type': 'ir.actions.act_url', 'url': connect_url, 'target': 'new'}
+
+    def action_refresh_connect_route(self):
+        """Regenerate the nginx vhosts of this instance (adds the /_saas_connect proxy)."""
+        self.ensure_one()
+        domain_names = self.domain_name_ids.filtered(lambda d: d.state == 'deploy')
+        if not domain_names:
+            raise UserError(_("This instance has no deployed domain name."))
+        self.pserver_id.sudo()._refresh_nginx_file(domain_names)
+        return True
 
     def action_get_active_users(self):
         results = {}
@@ -3091,11 +3904,12 @@ class OdooInstance(models.Model):
         expiration_date = self._get_expiration_date(subscription_type, trial=trial)
         backup_limit = self._default_backup_limit()
         storage_limit_gb = data.get('storage_limit_gb') or data.get('storage_gb') or 5.0
-        workers_count = data.get('workers_count') or data.get('num_users') or data.get('users_count') or 1
+        workers_count = (data.get('workers_count') or data.get('num_users')
+                         or data.get('users_count') or MIN_WORKERS_PER_INSTANCE)
         try:
-            workers_count = max(int(workers_count), 1)
+            workers_count = max(int(workers_count), MIN_WORKERS_PER_INSTANCE)
         except (TypeError, ValueError):
-            workers_count = 1
+            workers_count = MIN_WORKERS_PER_INSTANCE
         workers_count = min(workers_count, self.MAX_WORKERS_PER_INSTANCE)
         partner_id = partner.id if hasattr(partner, 'id') else (partner or False)
 
@@ -3230,18 +4044,23 @@ class OdooInstance(models.Model):
 
     def _prepare_renew_so_vals(self, buy_extra):
         order_lines = []
+        cycle_months = 12.0 if self._get_subscription_cycle() == 'yearly' else 1.0
 
         product_user = self.env['product.product']
+        worker_qty = 0
         if not buy_extra:
             product_user = self.env['product.product']._get_saas_worker_product()
+            # Workers above the one included in the base plan are re-billed.
+            worker_qty = max(0, max(self.active_user, self.paid_user) - int(self.base_workers or 1))
         elif (self.active_user - self.paid_user) > 0:
             product_user = self.env['product.product']._get_saas_worker_product()
-        if product_user:
+            worker_qty = max(0, self.active_user - self.paid_user)
+        if product_user and worker_qty:
             order_lines.append((0, 0, {
                 'product_id': product_user.id,
                 'product_uom': product_user.uom_id.id,
-                'price_unit': product_user.list_price,
-                'product_uom_qty': max(self.active_user, self.paid_user) if not buy_extra else (self.active_user - self.paid_user),
+                'price_unit': round(self._get_worker_monthly_price() * cycle_months, 2),
+                'product_uom_qty': worker_qty,
             }))
 
         apps = self.env['saas.odoo.instance.installed.app']

@@ -48,11 +48,15 @@ class SSHMixin(models.AbstractModel):
         if not without_return:
             return stdout.readlines()
 
-    def _exec_capture(self, command, ssh, arguments=False):
+    def _exec_capture(self, command, ssh, arguments=False, close_stdin=False):
         """Run a command and return ``(exit_code, stdout + stderr)``.
 
         Unlike :meth:`_exec_cmd` this keeps what the command printed, which is what lets the
         portal show the exact text git produced (files changed, ``+``/``-``, ...).
+
+        ``close_stdin`` sends EOF once ``arguments`` have been written, which is
+        required by interactive commands such as ``odoo shell`` (they wait for
+        stdin to end before exiting).
         """
         self._check_ssh_connection(ssh)
         command = command.strip()
@@ -63,6 +67,8 @@ class SSHMixin(models.AbstractModel):
             for arg in arguments:
                 stdin.write('%s\n' % arg)
             stdin.flush()
+        if close_stdin:
+            stdin.channel.shutdown_write()
         exit_status = stdout.channel.recv_exit_status()
         out = stdout.read().decode('utf-8', errors='replace')
         err = stderr.read().decode('utf-8', errors='replace')

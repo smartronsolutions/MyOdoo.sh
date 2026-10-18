@@ -40,6 +40,13 @@ class SaleOrder(models.Model):
                                    help="Number of additional workers purchased on this order.")
     workers_applied = fields.Boolean(string="Workers Applied", default=False, copy=False,
                                      help="Idempotency guard: True once the extra workers have been applied to the instance.")
+    # Billing period of an upgrade: annual upgrades are billed monthly × 12, prorated
+    # over the remaining subscription period when the upgrade happens mid-term.
+    saas_period_start = fields.Date(string="Subscription Period Start", copy=False)
+    saas_period_end = fields.Date(string="Subscription Period End", copy=False)
+    saas_upgrade_months = fields.Float(string="Billed Months", copy=False,
+                                       help="Number of months billed on this upgrade order.")
+    saas_upgrade_prorated = fields.Boolean(string="Prorated Upgrade", copy=False)
     # Chosen on the pricing card / order: the deployed instance picks the matching server.
     odoo_version_id = fields.Many2one('saas.odoo.version', string='Odoo Version', copy=False)
     version_type = fields.Selection([
@@ -60,10 +67,13 @@ class SaleOrder(models.Model):
 
     @api.constrains('is_saas_order', 'order_line')
     def _check_saas_order_line(self):
-        # ``renew`` may be a plan-only renewal (no Workers line), and ``buy_upgrade``
-        # may be storage-only, so neither is required to carry a SaaS User product.
+        # The base plan now includes TWO workers (one is not enough for Odoo to run
+        # reliably), so a container can be bought with the plan line only (extra
+        # workers are optional). ``renew`` may be a plan-only renewal, and
+        # ``buy_upgrade`` may be storage-only, so none of them is required to carry a
+        # SaaS User product.
         allowed_without_user = (
-            'buy_extra', 'buy_plan_extra', 'buy_storage', 'buy_workers',
+            'buy_new', 'buy_extra', 'buy_plan_extra', 'buy_storage', 'buy_workers',
             'buy_upgrade', 'renew',
         )
         for r in self:
@@ -97,16 +107,19 @@ class SaleOrder(models.Model):
                         'expiration_date': expiration_date,
                         'trial': False,
                         'subscription_type': r.subscription_type,
+                        'last_renewal_date': fields.Date.context_today(r),
                     }
                     if r.storage_limit_gb and r.storage_limit_gb > (r.instance_id.storage_limit_gb or 0):
                         renew_vals['storage_limit_gb'] = r.storage_limit_gb
                     # Workers upgrade chosen in the "Renew & Upgrade Plan" wizard: the
-                    # worker line quantity is the desired TOTAL number of workers, so it
-                    # must be applied to the instance (only upgrades, never a downgrade).
-                    ordered_workers = max(int(sum(
+                    # worker line quantity is the number of EXTRA workers on top of the
+                    # included ones in the base plan, so the total is base + extras
+                    # (only upgrades, never a downgrade).
+                    ordered_workers = int(sum(
                         float(line.product_uom_qty or 0.0)
                         for line in r.order_line if line.product_id.is_saas_user
-                    )), 1)
+                    )) + int(r.instance_id.base_workers or 2)
+                    ordered_workers = max(ordered_workers, 2)
                     ordered_workers = min(ordered_workers, InstanceObj.MAX_WORKERS_PER_INSTANCE)
                     workers_changed = ordered_workers > (r.instance_id.workers_count or 1)
                     if workers_changed:
@@ -128,6 +141,42 @@ class SaleOrder(models.Model):
                         except Exception:
                             pass
         return res
+
+    def _get_upgrade_invoice(self):
+        """First non-cancelled invoice linked to this SaaS order, if any."""
+        self.ensure_one()
+        invoices = self.invoice_ids.filtered(lambda m: m.state != 'cancel')
+        return invoices[:1]
+
+    def _record_upgrade_history(self, upgrade_type, quantity):
+        """Persist one purchased upgrade in the container's upgrade history."""
+        self.ensure_one()
+        instance = self.instance_id
+        if not instance or not quantity:
+            return self.env['saas.subscription.upgrade']
+        if upgrade_type == 'workers':
+            line = self.order_line.filtered(lambda l: l.product_id.is_saas_user)[:1]
+            monthly_unit = instance._get_worker_monthly_price()
+        else:
+            line = self.order_line.filtered(
+                lambda l: (l.product_id.default_code or '').lower() == 'saas_extra_storage')[:1]
+            monthly_unit = instance._get_storage_monthly_price_per_gb()
+        unit_price = line.price_unit if line else 0.0
+        months = self.saas_upgrade_months or instance._get_upgrade_billing_months()
+        start = self.saas_period_start or instance.expiration_date
+        end = self.saas_period_end or instance.expiration_date
+        return instance._create_upgrade_history(
+            upgrade_type,
+            quantity,
+            monthly_unit,
+            unit_price,
+            start,
+            end,
+            months,
+            self.saas_upgrade_prorated,
+            sale_order=self,
+            invoice=self._get_upgrade_invoice(),
+        )
 
     def _apply_storage_upgrade(self):
         """Idempotently apply the additional storage purchased on this order.
@@ -188,8 +237,19 @@ class SaleOrder(models.Model):
         new_limit = round((instance.storage_limit_gb or 0.0) + additional_gb, 2)
         was_storage_full = instance.suspension_reason == 'storage_full'
         instance.write({'storage_limit_gb': new_limit})
+        # Recompute the usage right away (no cron anymore) so the percentage is correct
+        # *before* the instance is started again — otherwise the storage guard would still
+        # see 100% from the old limit and refuse to start it.
+        refresh = getattr(instance, '_refresh_storage_usage', None)
+        if refresh:
+            try:
+                refresh()
+            except Exception as error:
+                _logger.warning(
+                    "Storage refresh after upgrade failed for %s: %s", instance.name, error)
         resumed = instance._resume_after_storage_upgrade() if was_storage_full else False
         self.sudo().write({'storage_applied': True})
+        self.sudo()._record_upgrade_history('storage', additional_gb)
         instance._log_history(
             _("Storage upgraded"),
             category='storage',
@@ -273,6 +333,7 @@ class SaleOrder(models.Model):
         )
         instance.write({'workers_count': new_count})
         self.sudo().write({'workers_applied': True})
+        self.sudo()._record_upgrade_history('workers', additional_workers)
         instance._log_history(
             _("Workers upgraded"),
             category='workers',
@@ -358,16 +419,23 @@ class SaleOrder(models.Model):
         default_modules = [line.product_id.technical_name for line in self.order_line if not line.product_id.is_saas_user and line.product_id.technical_name]
         
         plan = 'Standard'
+        plan_product = self.env['product.product']
         for line in self.order_line:
             code = (line.product_id.default_code or '').lower()
             name = (line.product_id.name or '').lower()
             if 'growth' in code or 'growth' in name:
                 plan = 'Growth'
+                plan_product = line.product_id
                 break
             elif 'standard' in code or 'standard' in name or 'essential' in code or 'essential' in name:
                 plan = 'Standard'
+                plan_product = line.product_id
+        if not plan_product:
+            plan_product = self.env['saas.odoo.instance']._get_base_plan_product()
+            plan = plan_product.name or plan
 
-        base_storage = 20.0 if plan == 'Growth' else 5.0
+        # Standard and Growth ship the same base container: 2 workers + 5 GB.
+        base_storage = 5.0
         extra_storage = 0.0
         for line in self.order_line:
             code = (line.product_id.default_code or '').lower()
@@ -377,12 +445,15 @@ class SaleOrder(models.Model):
 
         total_storage = self.storage_limit_gb if (self.storage_limit_gb and self.storage_limit_gb > 0) else (base_storage + extra_storage)
 
-        # Deployed workers = quantity of paid Workers seats on the order.
-        workers_count = sum(
+        # Deployed workers = the 2 workers INCLUDED in the Standard plan + the extra
+        # Workers seats bought on the order. A single worker is not enough for Odoo
+        # to run reliably, so the floor is 2.
+        base_workers = 2
+        extra_workers = sum(
             float(line.product_uom_qty or 0.0)
             for line in self.order_line if line.product_id.is_saas_user
         )
-        workers_count = max(int(workers_count), 1)
+        workers_count = max(base_workers + int(extra_workers), 2)
 
         data = {
             'sub_domain': self.subdomain,
@@ -402,8 +473,47 @@ class SaleOrder(models.Model):
             'version_type': self.version_type or 'community',
         }
         instance_vals = self.env['saas.odoo.instance']._prepare_instance_val_to_create(data)
-        instance = self.env['saas.odoo.instance'].sudo().create(instance_vals)        
+        instance = self.env['saas.odoo.instance'].sudo().create(instance_vals)
+        # Seed the subscription metadata: base price, included resources and the
+        # start of the first subscription period.
+        company = self.company_id or self.env.company
+        base_price = 0.0
+        if plan_product:
+            base_price = company._saas_convert_price(float(plan_product.list_price or 0.0))
+        instance.sudo().write({
+            'base_plan_product_id': plan_product.id if plan_product else False,
+            'base_price_monthly': base_price,
+            'base_workers': 2,
+            'base_storage_gb': base_storage,
+            'subscription_start_date': fields.Date.context_today(self),
+        })
         return instance
+
+    def _saas_invoice_narration(self):
+        """Human readable header of a SaaS invoice: container, period and resources."""
+        self.ensure_one()
+        instance = self.instance_id
+        if not instance:
+            return False
+        start = self.saas_period_start or fields.Date.context_today(self)
+        end = self.saas_period_end or instance.expiration_date
+        type_labels = dict(self._fields['saas_order_type'].selection)
+        kind = type_labels.get(self.saas_order_type, '') if self.saas_order_type else ''
+        parts = [
+            _("<b>SaaS container:</b> %s") % (instance.name or ''),
+            _("<b>Invoice type:</b> %s") % kind,
+        ]
+        if start and end:
+            parts.append(_("<b>Subscription period:</b> %s → %s") % (start, end))
+        if self.saas_upgrade_months:
+            months = self.saas_upgrade_months
+            parts.append(_("<b>Billed period:</b> %s month(s)%s") % (
+                ('%g' % months), _(' (prorated)') if self.saas_upgrade_prorated else ''))
+        parts.append(_("<b>Workers:</b> %s (included: %s)") % (
+            instance.workers_count or 2, instance.base_workers or 2))
+        parts.append(_("<b>Storage:</b> %g GB (included: %g GB)") % (
+            instance.storage_limit_gb or 0.0, instance.base_storage_gb or 0.0))
+        return "<br/>".join(parts)
 
     def _create_saas_invoice(self):
         make_invoice = self.env['sale.advance.payment.inv'].create({
@@ -412,6 +522,10 @@ class SaleOrder(models.Model):
         })
         invoice = make_invoice._create_invoices(make_invoice.sale_order_ids)
         for inv in invoice:
+            # Reference the container and the billed period directly on the invoice.
+            order = inv.line_ids.sale_line_ids.order_id.filtered('is_saas_order')[:1] or self[:1]
+            if order:
+                inv.write({'narration': order._saas_invoice_narration() or ''})
             partner = inv.partner_id or self.partner_id
             if partner and inv.amount_total:
                 partner._saas_notify(

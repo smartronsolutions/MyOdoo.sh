@@ -2,6 +2,13 @@
 <odoo>
 <data>
 
+<!-- Page <title> format: "<Page name> - <Website name>" (e.g. "About Us - My Odoo SH") -->
+<template id="mo_title_format" name="My Odoo SH: page title format" inherit_id="website.layout">
+  <xpath expr="//t[@t-set='default_title']" position="after">
+    <t t-set="default_title" t-translation="off" t-value="(additional_title + ' - ' if additional_title else '') + website.name"/>
+  </xpath>
+</template>
+
 <!-- Shared CTA band — reused by Home, About, Services, Contact Us -->
 <template id="mo_cta" name="My Odoo SH Shared CTA">
 <section class="cta"><div class="container cta-box">
@@ -41,6 +48,7 @@
       <div class="footer-title" data-i18n="footer_solutions">Platform</div>
       <div class="footer-links">
         <a href="/services#services" data-i18n="footer_hosting">Managed hosting</a>
+        <a href="/mcp-odoo" data-i18n="footer_mcp">MCP Odoo</a>
         <a href="/services#deployment" data-i18n="footer_deploy">Deployment workflows</a>
         <a href="/services#backups" data-i18n="footer_backups">Backups &amp; recovery</a>
         <a href="/services#plans" data-i18n="footer_plans">Plans &amp; pricing</a>

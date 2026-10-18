@@ -1,0 +1,188 @@
+/**
+ * Premium scrollbars — one design for the whole website.
+ *
+ * Replaces the default browser scrollbar everywhere (page, modals & popups, forms,
+ * textareas, tables, code/terminal panes) with a thin, rounded, smooth thumb:
+ *
+ *  - one set of CSS variables drives every scrollbar, so light surfaces and dark
+ *    surfaces (terminal / code editor) stay consistent;
+ *  - WebKit/Blink use ::-webkit-scrollbar-*, Firefox uses `scrollbar-width` +
+ *    `scrollbar-color` (kept in sync through the same variables);
+ *  - the thumb is padded through `background-clip: content-box`, which gives the
+ *    floating "pill" look without changing the scroll area;
+ *  - scrolling behaviour is untouched: no `overflow`, `scroll-behavior` or
+ *    `overscroll-behavior` is changed here.
+ */
+
+:root {
+    /* Scrollbar geometry */
+    --sb-size: 10px;
+    --sb-size-thin: 7px;
+    /* Light surfaces (default) */
+    --sb-thumb: rgba(11, 46, 51, .20);
+    --sb-thumb-hover: rgba(15, 168, 160, .55);
+    --sb-thumb-active: rgba(15, 168, 160, .78);
+    --sb-track: rgba(11, 46, 51, .045);
+    --sb-track-hover: rgba(11, 46, 51, .075);
+}
+
+/* Dark surfaces — terminal, code editors, and any explicit dark theme. */
+.sb-dark,
+pre.console,
+.shell-screen,
+.config-code,
+.code-editor,
+.editor-shell,
+[data-theme="dark"],
+body.o_dark,
+body.dark-mode {
+    --sb-thumb: rgba(214, 235, 232, .22);
+    --sb-thumb-hover: rgba(15, 168, 160, .70);
+    --sb-thumb-active: rgba(15, 168, 160, .90);
+    --sb-track: rgba(255, 255, 255, .05);
+    --sb-track-hover: rgba(255, 255, 255, .09);
+}
+
+/* Inner panels (modals, popups, tables, inputs) get the thinner variant. */
+.modal,
+.modal-card,
+.modal-body,
+.modal-content,
+.dropdown-menu,
+.offcanvas,
+.offcanvas-body,
+.table-responsive,
+.instance-table,
+.python-lib-list,
+.mail-items,
+.mail-preview,
+.file-tree,
+textarea,
+select,
+.o_wsale_products_grid,
+.saas-instance-list {
+    --sb-size: var(--sb-size-thin);
+}
+
+/* ---------- Firefox / standards ---------- */
+html,
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sb-thumb) transparent;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sb-thumb) transparent;
+}
+
+/* ---------- WebKit / Blink (Chrome, Edge, Safari, Opera) ---------- */
+::-webkit-scrollbar {
+    width: var(--sb-size);
+    height: var(--sb-size);
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: var(--sb-track);
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 44px;
+    min-width: 44px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: var(--sb-thumb);
+    background-clip: content-box;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sb-thumb-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--sb-thumb-active);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Native arrow buttons are part of the "old" look: hide them. */
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Dark panes: the track is drawn so the thumb never floats on a dark background. */
+pre.console::-webkit-scrollbar-track,
+.shell-screen::-webkit-scrollbar-track,
+.config-code::-webkit-scrollbar-track,
+.code-editor::-webkit-scrollbar-track,
+.editor-shell::-webkit-scrollbar-track,
+.sb-dark::-webkit-scrollbar-track,
+[data-theme="dark"] ::-webkit-scrollbar-track,
+body.o_dark ::-webkit-scrollbar-track,
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--sb-track);
+}
+
+/* ---------- Mobile / touch ---------- */
+@media (max-width: 600px) {
+    :root {
+        --sb-size: 6px;
+        --sb-size-thin: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-width: 1px;
+    }
+}
+
+/* Odoo ships its own 5px grey scrollbar for mobile (`.o_is_mobile`): keep the thin
+   size but apply the premium colours, otherwise phones fall back to the grey bar. */
+.o_is_mobile,
+.o_is_mobile .modal {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sb-thumb) transparent;
+}
+
+.o_is_mobile::-webkit-scrollbar,
+.o_is_mobile .modal::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+}
+
+.o_is_mobile::-webkit-scrollbar-thumb,
+.o_is_mobile .modal::-webkit-scrollbar-thumb {
+    min-height: 36px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background-color: var(--sb-thumb);
+    background-clip: content-box;
+}
+
+.o_is_mobile::-webkit-scrollbar-thumb:hover,
+.o_is_mobile .modal::-webkit-scrollbar-thumb:hover {
+    background-color: var(--sb-thumb-hover);
+}
+
+.o_is_mobile::-webkit-scrollbar-track,
+.o_is_mobile .modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+    ::-webkit-scrollbar-thumb {
+        transition: none;
+    }
+}

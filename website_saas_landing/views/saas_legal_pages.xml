@@ -6,7 +6,7 @@
      Privacy Policy
      ============================================================ -->
 <record id="saas_privacy_page" model="website.page">
-  <field name="name">Privacy Policy (My Odoo SH)</field>
+  <field name="name">Privacy Policy</field>
   <field name="url">/privacy</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -14,7 +14,7 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_privacy_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo SH — Privacy Policy</t>
+<t t-set="additional_title">Privacy Policy</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
 <div class="mo_site mo_legal_page">
@@ -58,7 +58,7 @@
      Terms of Service
      ============================================================ -->
 <record id="saas_terms_page" model="website.page">
-  <field name="name">Terms of Service (My Odoo SH)</field>
+  <field name="name">Terms of Service</field>
   <field name="url">/terms</field>
   <field name="type">qweb</field>
   <field name="is_published">True</field>
@@ -66,7 +66,7 @@
   <field name="arch" type="xml">
 <t t-name="website_saas_landing.saas_terms_page">
 <t t-call="website.layout">
-<t t-set="additional_title">My Odoo SH — Terms of Service</t>
+<t t-set="additional_title">Terms of Service</t>
 <t t-set="no_footer" t-value="true"/>
 <div id="wrap">
 <div class="mo_site mo_legal_page">

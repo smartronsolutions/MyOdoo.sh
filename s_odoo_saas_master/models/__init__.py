@@ -28,6 +28,7 @@ from . import saas_odoo_instance_custom_addon
 from . import saas_odoo_instance_installed_app
 from . import res_partner
 from . import product_product
+from . import saas_subscription_upgrade
 from . import product_template
 from . import product_pricelist
 from . import product_pricelist_item

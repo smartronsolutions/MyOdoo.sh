@@ -23,7 +23,7 @@
     <t t-set="user" t-value="data['user']"/>
     <div class="openerp_enterprise_pricing_step_body d-flex align-items-stretch form-inline">
       <input class="openerp_enterprise_pricing_users form-control border text-right pr-2" id="users" name="num_users"
-             type="number" style="max-width: 100px;" min="1" value="1" t-attf-data-app_id="{{ user['id'] }}"/>
+             type="number" style="max-width: 100px;" min="2" value="2" t-attf-data-app_id="{{ user['id'] }}"/>
       <label class="p-2 mr-1 mb-0 bg-200 border-top border-start border-end border-bottom">Workers</label>
       <label class="p-2">
         <b class="openerp_enterprise_user_pricing_monthly d-none">

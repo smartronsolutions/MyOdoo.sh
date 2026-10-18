@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-10-12 04:47+1100\n"
+"PO-Revision-Date: 2026-10-19 04:45+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "2 dedicated workers"
-msgstr "عاملان متفرغان"
+msgstr "2 Workers مخصصان"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -77,7 +77,7 @@ msgid ""
 "data-i18n=\"arch_support_text\">Training and improvement</small>"
 msgstr ""
 "<b data-i18n=\"arch_support\">الدعم</b><small "
-"data-i18n=\"arch_support_text\">التدريب والتحسين</small>"
+"data-i18n=\"arch_support_text\">Training and improvement</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -204,6 +204,8 @@ msgid ""
 "<b data-i18n=\"dia_monitor\">Monitoring</b><small "
 "data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 msgstr ""
+"<b data-i18n=\"dia_monitor\">المراقبة</b><small "
+"data-i18n=\"dia_monitor_text\">Resource &amp; health checks</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -235,7 +237,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<b data-i18n=\"dl5\">Monitoring</b>"
-msgstr "<b data-i18n=\"dl5\">الرصد</b>"
+msgstr "<b data-i18n=\"dl5\">المراقبة</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -260,7 +262,7 @@ msgstr "<b data-i18n=\"eco_acc\">المحاسبة</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_custom\">Custom Modules</b>"
-msgstr "<b data-i18n=\"eco_custom\">الطرائق العرفية</b>"
+msgstr "<b data-i18n=\"eco_custom\">وحدات مخصصة</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -270,7 +272,7 @@ msgstr "<b data-i18n=\"eco_ecom\">التجارة الإلكترونية</b>"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b data-i18n=\"eco_hr\">HR</b>"
-msgstr "<b data-i18n=\"eco_hr\">HR</b>"
+msgstr "<b data-i18n=\"eco_hr\">الموارد البشرية</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -300,11 +302,10 @@ msgid ""
 "        <span><i class=\"ok\"/><span data-i18n=\"ed_l2\">Unlimited apps</span></span>\n"
 "        <span><i class=\"ok\"/><span data-i18n=\"ed_l3\">Dedicated environment</span></span>"
 msgstr ""
-"<b data-i18n=\"ed_limits\">لا حدود للمنصات الاصطناعية</b><span><i "
-"class=\"ok\"></i><span data-i18n=\"ed_l1\">الاستخدامات غير "
-"المحدودة</span></span><span><i class=\"ok\"></i><span "
-"data-i18n=\"ed_l2\">تطبيقات غير محدودة</span></span><span><i "
-"class=\"ok\"></i><span data-i18n=\"ed_l3\">البيئة المخصصة</span></span>"
+"<b data-i18n=\"ed_limits\">لا حدود منصة مصطنعة.</b>\n"
+"          <span><i class=\"ok\"/><span data-i18n=\"ed_l1\">Unlimited uses</span></span>\n"
+"        <span><i class=\"ok\"/><span data-i18n=\"ed_l2\">Unlimited apps</span></span>\n"
+"        <span><i class=\"ok\"/><span data-i18n=\"ed_l3\">Dedicated environment</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -314,6 +315,148 @@ msgid ""
 msgstr ""
 "<b data-i18n=\"location\">تركيز السوق</b><small "
 "data-i18n=\"location_value\">الأعمال التجارية في جميع أنحاء العالم</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_node_bridge\">MCP Bridge</b>"
+msgstr "<b data-i18n=\"mcp_node_bridge\">جسر MCP</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf1\">50 MCP calls per day</b>"
+msgstr "<b data-i18n=\"mcp_pf1\">50 مكالمة هاتفية في اليوم</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf2\">Unlimited connections</b>"
+msgstr "<b data-i18n=\"mcp_pf2\">الاتصالات غير المحدودة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf3\">Team access</b>"
+msgstr "<b data-i18n=\"mcp_pf3\">وصول الفريق</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf4\">All 12 MCP Odoo tools</b>"
+msgstr "<b data-i18n=\"mcp_pf4\">مجموع 12 ميغاواط أدوات Odoo</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf5\">Odoo 16, 17 and 19 support</b>"
+msgstr "<b data-i18n=\"mcp_pf5\">الدعم 16 و 17 و 19</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf6\">Standard support</b>"
+msgstr "<b data-i18n=\"mcp_pf6\">الدعم المعياري</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp1\">500 MCP calls per day</b>"
+msgstr "<b data-i18n=\"mcp_pp1\">500 مكالمة هاتفية في اليوم</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp2\">Unlimited connections</b>"
+msgstr "<b data-i18n=\"mcp_pp2\">الاتصالات غير المحدودة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp3\">Team access</b>"
+msgstr "<b data-i18n=\"mcp_pp3\">وصول الفريق</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp4\">All 12 MCP Odoo tools</b>"
+msgstr "<b data-i18n=\"mcp_pp4\">مجموع 12 ميغاواط أدوات Odoo</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp5\">Priority SSE endpoint</b>"
+msgstr "<b data-i18n=\"mcp_pp5\">نقطة النهاية ذات الأولوية</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp6\">Usage analytics dashboard</b>"
+msgstr "<b data-i18n=\"mcp_pp6\">لوحات تحليلية</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp7\">99.9% uptime SLA</b>"
+msgstr "<b data-i18n=\"mcp_pp7\">99.9 في المائة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps1\">200 MCP calls per day</b>"
+msgstr "<b data-i18n=\"mcp_ps1\">200 مكالمة هاتفية في اليوم</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps2\">Unlimited connections</b>"
+msgstr "<b data-i18n=\"mcp_ps2\">الاتصالات غير المحدودة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps3\">Team access</b>"
+msgstr "<b data-i18n=\"mcp_ps3\">وصول الفريق</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps4\">All 12 MCP Odoo tools</b>"
+msgstr "<b data-i18n=\"mcp_ps4\">مجموع 12 ميغاواط أدوات Odoo</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps5\">Odoo 16, 17 and 19 support</b>"
+msgstr "<b data-i18n=\"mcp_ps5\">الدعم 16 و 17 و 19</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps6\">Standard support</b>"
+msgstr "<b data-i18n=\"mcp_ps6\">الدعم المعياري</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu1\">Unlimited MCP calls</b>"
+msgstr ""
+"<b data-i18n=\"mcp_pu1\">المكالمات غير المحدودة من الفينول الخماسي "
+"الكلور</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu2\">Unlimited connections</b>"
+msgstr "<b data-i18n=\"mcp_pu2\">الاتصالات غير المحدودة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu3\">Team access</b>"
+msgstr "<b data-i18n=\"mcp_pu3\">وصول الفريق</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu4\">All 12 MCP Odoo tools</b>"
+msgstr "<b data-i18n=\"mcp_pu4\">مجموع 12 ميغاواط أدوات Odoo</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu5\">Dedicated SSE endpoint</b>"
+msgstr "<b data-i18n=\"mcp_pu5\">نقطة نهاية مخصصة</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu6\">Advanced analytics</b>"
+msgstr "<b data-i18n=\"mcp_pu6\">التحليل المتقدم</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu7\">Priority support</b>"
+msgstr "<b data-i18n=\"mcp_pu7\">الدعم ذي الأولوية</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu8\">99.9% uptime SLA</b>"
+msgstr "<b data-i18n=\"mcp_pu8\">99.9 في المائة</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -362,7 +505,9 @@ msgstr ""
 msgid ""
 "<b>2 dedicated workers</b><small>Isolated compute you can upgrade as your "
 "team grows.</small>"
-msgstr "<b>عاملان متفرغان</b><small>يمكن أن تتحسن مع نمو فريقك</small>"
+msgstr ""
+"<b>2 Workers مخصصان</b><small>موارد حوسبة معزولة يمكنك ترقيتها مع نمو "
+"فريقك.</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -399,7 +544,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<b>Custom Modules</b>"
-msgstr "<b>الطرائق العرفية</b>"
+msgstr "<b>وحدات مخصصة</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -592,8 +737,8 @@ msgid ""
 "<b>Production</b>\n"
 "            <span class=\"mh-badge ok\"><i/><span data-i18n=\"pp_running\">Running</span></span>"
 msgstr ""
-"<b>الإنتاج</b><span class=\"mh-badge ok\"><i></i><span "
-"data-i18n=\"pp_running\">تشغيل</span></span>"
+"<b>Production</b>\n"
+"            <span class=\"mh-badge ok\"><i/><span data-i18n=\"pp_running\">قيد التشغيل</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -714,6 +859,15 @@ msgstr ""
 " </a></p></div>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i class=\"mh-pulse\"/>\n"
+"              <span data-i18n=\"mcp_log\">Claude just searched 12 records and created 3 invoices in your Odoo database.</span>"
+msgstr ""
+"<i class=\"mh-pulse\"></i><span data-i18n=\"mcp_log\">(كلود) قام بتفتيش 12 "
+"سجلاً وأنشأ 3 فواتير في قاعدة بيانات (أودو).</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 msgid ""
 "<i class=\"mh-pulse\"/><span data-i18n=\"cf_trust\">Enquiries reviewed by "
@@ -753,7 +907,7 @@ msgstr "<i class=\"ok\"></i>SSL active"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<i class=\"ok\"/>Workers healthy"
-msgstr "<i class=\"ok\"></i>العمال الصحيون"
+msgstr "<i class=\"ok\"/>Workers تعمل بشكل سليم"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -847,8 +1001,7 @@ msgid ""
 "<i>✓</i><span data-i18n=\"data_c1\">Dedicated database and file "
 "storage</span>"
 msgstr ""
-"<i>√</i><span data-i18n=\"data_c1\">قاعدة البيانات المخصصة وتخزين "
-"الملفات</span>"
+"<i>✓</i><span data-i18n=\"data_c1\">قاعدة بيانات وتخزين ملفات مخصصان</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -856,13 +1009,58 @@ msgid ""
 "<i>✓</i><span data-i18n=\"data_c2\">Scheduled backups with a defined "
 "recovery process</span>"
 msgstr ""
-"<i>√</i><span data-i18n=\"data_c2\">الدعم المقرر مع عملية استرداد "
+"<i>✓</i><span data-i18n=\"data_c2\">نسخ احتياطي مجدول مع عملية استعادة "
 "محددة</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<i>✓</i><span data-i18n=\"data_c3\">HTTPS on your own domain</span>"
-msgstr "<i>√</i><span data-i18n=\"data_c3\">HTTPS على نطاقك الخاص</span>"
+msgstr "<i>✓</i><span data-i18n=\"data_c3\">HTTPS على نطاقك الخاص</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c1\">Increased productivity: automate "
+"routine tasks so your team can focus on strategic work.</span>"
+msgstr ""
+"<i>√</i><span data-i18n=\"mcp_why_c1\">زيادة الإنتاجية: المهام الروتينية "
+"الآلية حتى يتمكن فريقك من التركيز على العمل الاستراتيجي.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c2\">Better decisions: get AI-powered "
+"insights from your Odoo data.</span>"
+msgstr ""
+"<i>√</i><span data-i18n=\"mcp_why_c2\">قرارات أفضل: الحصول على رؤية قوية من "
+"بيانات Odoo الخاص بك.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c3\">Lower costs: reduce manual data entry"
+" and avoid avoidable errors.</span>"
+msgstr ""
+"<i>√</i><span data-i18n=\"mcp_why_c3\">انخفاض التكاليف: خفض إدخال البيانات "
+"يدويا وتجنب الأخطاء التي يمكن تجنبها.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c4\">Enterprise security: TLS 1.3 "
+"encryption with token-based authentication.</span>"
+msgstr ""
+"<i>√</i><span data-i18n=\"mcp_why_c4\">أمن المؤسسات: 1.3 مشفرة مع التوثيق "
+"القائم على الكسور.</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c5\">Instant setup: no server "
+"configuration, connected in under five minutes.</span>"
+msgstr ""
+"<i>√</i><span data-i18n=\"mcp_why_c5\">Instant setup: no server formation, "
+"connected in under five minutes.</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -978,7 +1176,57 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<small data-i18n=\"data_recovery\">Recovery Point</small><b>03:00</b>"
-msgstr "<small data-i18n=\"data_recovery\">نقطة الانعاش</small><b>03: 00</b>"
+msgstr "<small data-i18n=\"data_recovery\">نقطة الاستعادة</small><b>03:00</b>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r1\">Faster task completion</small>"
+msgstr "<small data-i18n=\"mcp_r1\">إنجاز المهمة على وجه السرعة</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r2\">Less manual data entry</small>"
+msgstr "<small data-i18n=\"mcp_r2\">مطروحا منه إدخال البيانات اليدوية</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r3\">To connect</small>"
+msgstr "<small data-i18n=\"mcp_r3\">التواصل</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r4\">Adoption in the first week</small>"
+msgstr "<small data-i18n=\"mcp_r4\">التبني في الأسبوع الأول</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool1\">Get server information and status</small>"
+msgstr "<small data-i18n=\"mcp_tool1\">الحصول على معلومات الخادم ومركزه</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool2\">List all available Odoo models</small>"
+msgstr "<small data-i18n=\"mcp_tool2\">قائمة بجميع النماذج المتاحة</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool3\">Search and retrieve records</small>"
+msgstr "<small data-i18n=\"mcp_tool3\">سجلات البحث والاسترجاع</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool4\">Create new records in Odoo</small>"
+msgstr "<small data-i18n=\"mcp_tool4\">إنشاء سجلات جديدة في أودو</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool5\">Update existing records</small>"
+msgstr "<small data-i18n=\"mcp_tool5\">تحديث السجلات القائمة</small>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool6\">Execute custom Odoo methods</small>"
+msgstr "<small data-i18n=\"mcp_tool6\">(د) أساليب أودو التصريف</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1020,7 +1268,7 @@ msgstr "<small data-i18n=\"obs_req\">الطلبات</small><b>1.4k/h</b>"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<small data-i18n=\"obs_rt\">Response Time</small><b>118 ms</b>"
-msgstr "<small data-i18n=\"obs_rt\">الوقت</small><b>118 ms</b>"
+msgstr "<small data-i18n=\"obs_rt\">زمن الاستجابة</small><b>118 ms</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1030,10 +1278,9 @@ msgid ""
 "data-i18n=\"obs_monitored\">Monitored</span></b><small class=\"mh-obs-note\""
 " data-i18n=\"obs_uptime_note\">Continuous monitoring</small>"
 msgstr ""
-"<small data-i18n=\"obs_uptime\">العمل الإضافي</small><b "
-"class=\"ok\"><i></i><span "
-"data-i18n=\"obs_monitored\">المرصد</span></b><small class=\"mh-obs-note\" "
-"data-i18n=\"obs_uptime_note\">الرصد المستمر</small>"
+"<small data-i18n=\"obs_uptime\">مدة التشغيل</small><b class=\"ok\"><i/><span"
+" data-i18n=\"obs_monitored\">Monitored</span></b><small class=\"mh-obs-"
+"note\" data-i18n=\"obs_uptime_note\">Continuous monitoring</small>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1041,15 +1288,16 @@ msgid ""
 "<small data-i18n=\"pp_backup\">Backup</small><b "
 "data-i18n=\"pp_backup_val\">Scheduled daily</b>"
 msgstr ""
-"<small data-i18n=\"pp_backup\">الدعم</small><b "
-"data-i18n=\"pp_backup_val\">اليومية المقررة</b>"
+"<small data-i18n=\"pp_backup\">نسخة احتياطية</small><b "
+"data-i18n=\"pp_backup_val\">Scheduled daily</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "<small data-i18n=\"pp_deploy\">Latest deployment</small><b>main · "
 "successful</b>"
-msgstr "<small data-i18n=\"pp_deploy\">آخر نشر</small><b>النجاح</b>"
+msgstr ""
+"<small data-i18n=\"pp_deploy\">آخر عملية نشر</small><b>main · successful</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1072,12 +1320,12 @@ msgid ""
 "data-i18n=\"sup_lang_val\">Multi Languages</b>"
 msgstr ""
 "<small data-i18n=\"sup_lang\">اللغات</small><b "
-"data-i18n=\"sup_lang_val\">اللغات المتعددة</b>"
+"data-i18n=\"sup_lang_val\">Multi Languages</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<small data-i18n=\"sup_resp\">Average response</small><b>12 min</b>"
-msgstr "<small data-i18n=\"sup_resp\">متوسط الاستجابة</small><b>12 دقيقة</b>"
+msgstr "<small data-i18n=\"sup_resp\">متوسط زمن الاستجابة</small><b>12 min</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1085,8 +1333,8 @@ msgid ""
 "<small data-i18n=\"sup_tz\">Timezone</small><b data-i18n=\"sup_tz_val\">Your"
 " local timezone</b>"
 msgstr ""
-"<small data-i18n=\"sup_tz\">Timezone</small><b data-i18n=\"sup_tz_val\">وقتك"
-" المحلي</b>"
+"<small data-i18n=\"sup_tz\">المنطقة الزمنية</small><b "
+"data-i18n=\"sup_tz_val\">Your local timezone</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1196,9 +1444,9 @@ msgid ""
 "          <span><i class=\"mh-dot-stg\"/>Staging</span>\n"
 "          <span><i class=\"mh-dot-dev\"/>Development</span>"
 msgstr ""
-"<span class=\"is-active\"><i class=\"mh-dot-"
-"prod\"></i>الإنتاج</span><span><i class=\"mh-dot-"
-"stg\"></i>الطعن</span><span><i class=\"mh-dot-dev\"></i>التنمية</span>"
+"<span class=\"is-active\"><i class=\"mh-dot-prod\"/>الإنتاج</span>\n"
+"          <span><i class=\"mh-dot-stg\"/>Staging</span>\n"
+"          <span><i class=\"mh-dot-dev\"/>التطوير</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1224,14 +1472,80 @@ msgstr ""
 "dev\"><i></i>التنمية<small>dev</small></span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-bridge-tag\" data-i18n=\"mcp_preview\">Live bridge</span>"
+msgstr "<span class=\"mcp-bridge-tag\" data-i18n=\"mcp_preview\">جسر حي</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-link\" aria-hidden=\"true\"><em/><i "
+"data-i18n=\"mcp_rpc\">Odoo RPC</i></span>"
+msgstr ""
+"<span aria-hidden=\"true\" class=\"mcp-link\"><em></em><i "
+"data-i18n=\"mcp_rpc\">Odoo RPC</i></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-link\" aria-hidden=\"true\"><em/><i "
+"data-i18n=\"mcp_stream\">SSE stream</i></span>"
+msgstr ""
+"<span aria-hidden=\"true\" class=\"mcp-link\"><em></em><i "
+"data-i18n=\"mcp_stream\">SSE stream</i></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p1_tag\">Claude API</span>"
+msgstr "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p1_tag\">كلود</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p2_tag\">GPT API</span>"
+msgstr "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p2_tag\">GPT API</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p3_tag\">Low-cost "
+"models</span>"
+msgstr ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p3_tag\">نماذج منخفضة "
+"التكلفة</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p4_tag\">Fast · Free "
+"tier</span>"
+msgstr "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p4_tag\">المستوى الحر</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p5_tag\">Local · No API "
+"key</span>"
+msgstr ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p5_tag\">المحليون: لا يوجد "
+"مفتاح للتحالف</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p6_tag\">SSE · Live "
+"tools</span>"
+msgstr ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p6_tag\">الأدوات "
+"الحية</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "<span class=\"mh-badge ok\"><i/><span data-i18n=\"sup_online\">Support Online</span></span>\n"
 "          <span class=\"mh-sup-note\" data-i18n=\"sup_hours_note\">Hours defined by your plan</span>"
 msgstr ""
-"<span class=\"mh-badge ok\"><i></i><span data-i18n=\"sup_online\">الدعم "
-"المباشر</span></span><span class=\"mh-sup-note\" "
-"data-i18n=\"sup_hours_note\">ساعات تحددها خطتك</span>"
+"<span class=\"mh-badge ok\"><i/><span data-i18n=\"sup_online\">الدعم عبر الإنترنت</span></span>\n"
+"          <span class=\"mh-sup-note\" data-i18n=\"sup_hours_note\">Hours defined by your plan</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -1241,9 +1555,26 @@ msgstr ""
 "SH</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_plan_popular\">Most popular</span>"
+msgstr "<span class=\"mh-badge\" data-i18n=\"mcp_plan_popular\">الأكثر شيوعًا</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_setup_badge\">MCP SSE endpoint</span>"
+msgstr ""
+"<span class=\"mh-badge\" data-i18n=\"mcp_setup_badge\">نقطة نهاية MCP "
+"SSE</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_tools_badge\">Available tools</span>"
+msgstr "<span class=\"mh-badge\" data-i18n=\"mcp_tools_badge\">الأدوات المتاحة</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span class=\"mh-badge\" data-i18n=\"price_popular\">Most popular</span>"
-msgstr "<span class=\"mh-badge\" data-i18n=\"price_popular\">الأكثر شعبية</span>"
+msgstr "<span class=\"mh-badge\" data-i18n=\"price_popular\">الأكثر شيوعًا</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1262,10 +1593,9 @@ msgid ""
 "              <span class=\"mh-url\">app.myodoo.sh/my-company</span>\n"
 "              <span class=\"mh-preview-tag\" data-i18n=\"mh_preview\">Platform preview</span>"
 msgstr ""
-"<span aria-hidden=\"true\" class=\"mh-"
-"dots\"><i></i><i></i><i></i></span><span class=\"mh-"
-"url\">التطبيق</span><span class=\"mh-preview-tag\" "
-"data-i18n=\"mh_preview\">استعراض أولي للمنبر</span>"
+"<span class=\"mh-dots\" aria-hidden=\"true\"><i/><i/><i/></span>\n"
+"              <span class=\"mh-url\">app.myodoo.sh/my-company</span>\n"
+"              <span class=\"mh-preview-tag\" data-i18n=\"mh_preview\">معاينة المنصة</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1293,9 +1623,8 @@ msgid ""
 "<span class=\"mh-eco-hub\"><i/><b data-i18n=\"eco_hub\">Your Odoo Instance</b><small data-i18n=\"eco_hub_text\">Managed environment</small></span>\n"
 "          <span class=\"mh-eco-extra\" data-i18n=\"eco_extra\">Custom Apps</span>"
 msgstr ""
-"<span class=\"mh-eco-hub\"><i></i><b data-i18n=\"eco_hub\">أودو</b><small "
-"data-i18n=\"eco_hub_text\">البيئة المنظمة</small></span><span class=\"mh-"
-"eco-extra\" data-i18n=\"eco_extra\">التطبيقات العرفية</span>"
+"<span class=\"mh-eco-hub\"><i/><b data-i18n=\"eco_hub\">نسخة Odoo الخاصة بك</b><small data-i18n=\"eco_hub_text\">Managed environment</small></span>\n"
+"          <span class=\"mh-eco-extra\" data-i18n=\"eco_extra\">Custom Apps</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1306,6 +1635,19 @@ msgstr "<span class=\"mh-ed-chip\">المجتمع</span>"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span class=\"mh-ed-chip\">Enterprise</span>"
 msgstr "<span class=\"mh-ed-chip\">المؤسسة</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mh-float mh-f1\" aria-hidden=\"true\"><i class=\"mh-pulse\"/><span data-i18n=\"mcp_live\">Live connection</span></span>\n"
+"          <span class=\"mh-float mh-f3\">TLS 1.3</span>\n"
+"          <span class=\"mh-float mh-f5\"><span data-i18n=\"mcp_float_tools\">12 MCP tools</span></span>"
+msgstr ""
+"<span aria-hidden=\"true\" class=\"mh-float mh-f1\"><i class=\"mh-"
+"pulse\"></i><span data-i18n=\"mcp_live\">اتصال مباشر</span></span><span "
+"class=\"mh-float mh-f3\">TLS 1.3</span><span class=\"mh-float mh-f5\"><span "
+"data-i18n=\"mcp_float_tools\">12 من أدوات الفينول الخماسي "
+"الكلور</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1354,9 +1696,18 @@ msgid ""
 "<span class=\"mh-obs-status\"><i class=\"mh-pulse\"/><span data-i18n=\"obs_ok\">All systems operational</span></span>\n"
 "          <span class=\"mh-obs-sample\" data-i18n=\"obs_sample\">Sample data</span>"
 msgstr ""
-"<span class=\"mh-obs-status\"><i class=\"mh-pulse\"></i><span "
-"data-i18n=\"obs_ok\">تشغيل جميع النظم</span></span><span class=\"mh-obs-"
-"sample\" data-i18n=\"obs_sample\">البيانات العينية</span>"
+"<span class=\"mh-obs-status\"><i class=\"mh-pulse\"/><span data-i18n=\"obs_ok\">جميع الأنظمة تعمل</span></span>\n"
+"          <span class=\"mh-obs-sample\" data-i18n=\"obs_sample\">Sample data</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mh-pill\" data-reveal=\"1\"><i/><span "
+"data-i18n=\"mcp_pill\">MCP Protocol · Real-time · Secure</span></span>"
+msgstr ""
+"<span class=\"mh-pill\" data-reveal=\"1\"><i></i><span "
+"data-i18n=\"mcp_pill\">بروتوكول الفينول الخماسي الكلور - الوقت الحقيقي - "
+"الضمان</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1364,8 +1715,8 @@ msgid ""
 "<span class=\"mh-pill\" data-reveal=\"1\"><i/><span "
 "data-i18n=\"mh_pill\">Odoo Cloud Platform</span></span>"
 msgstr ""
-"<span class=\"mh-pill\" data-reveal=\"1\"><i></i><span "
-"data-i18n=\"mh_pill\">منصة Odoo السحابية</span></span>"
+"<span class=\"mh-pill\" data-reveal=\"1\"><i/><span "
+"data-i18n=\"mh_pill\">منصة Odoo Cloud</span></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -1413,11 +1764,9 @@ msgid ""
 "          <span class=\"mh-tl-row\"><i class=\"ok\"/><b data-i18n=\"data_t2\">Yesterday · 03:00</b><em>✓</em></span>\n"
 "          <span class=\"mh-tl-row\"><i class=\"ok\"/><b data-i18n=\"data_t3\">Earlier copy</b><em>✓</em></span>"
 msgstr ""
-"<span class=\"mh-tl-row\"><i class=\"ok\"></i><b data-i18n=\"data_t1\">اليوم"
-" 03: 00</b><em>√</em></span><span class=\"mh-tl-row\"><i class=\"ok\"></i><b"
-" data-i18n=\"data_t2\">أمس 03: 00</b><em>√</em></span><span class=\"mh-tl-"
-"row\"><i class=\"ok\"></i><b data-i18n=\"data_t3\">نسخة "
-"سابقة</b><em>√</em></span>"
+"<span class=\"mh-tl-row\"><i class=\"ok\"/><b data-i18n=\"data_t1\">اليوم · 03:00</b><em>✓</em></span>\n"
+"          <span class=\"mh-tl-row\"><i class=\"ok\"/><b data-i18n=\"data_t2\">Yesterday · 03:00</b><em>✓</em></span>\n"
+"          <span class=\"mh-tl-row\"><i class=\"ok\"/><b data-i18n=\"data_t3\">Earlier copy</b><em>✓</em></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
@@ -1456,9 +1805,9 @@ msgid ""
 "          <span class=\"pp-tab\" data-i18n=\"pp_staging\">Staging</span>\n"
 "          <span class=\"pp-tab is-active\" data-i18n=\"pp_prod\">Production</span>"
 msgstr ""
-"<span class=\"pp-tab\" data-i18n=\"pp_dev\">التنمية</span><span class=\"pp-"
-"tab\" data-i18n=\"pp_staging\">الطعن</span><span class=\"pp-tab is-active\" "
-"data-i18n=\"pp_prod\">الإنتاج</span>"
+"<span class=\"pp-tab\" data-i18n=\"pp_dev\">التطوير</span>\n"
+"          <span class=\"pp-tab\" data-i18n=\"pp_staging\">Staging</span>\n"
+"          <span class=\"pp-tab is-active\" data-i18n=\"pp_prod\">Production</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1466,8 +1815,8 @@ msgid ""
 "<span class=\"pp-tag\" data-i18n=\"pp_tag\">Platform preview</span>\n"
 "          <span class=\"pp-project\">My Company</span>"
 msgstr ""
-"<span class=\"pp-tag\" data-i18n=\"pp_tag\">استعراض أولي للمنبر</span><span "
-"class=\"pp-project\">شركتي</span>"
+"<span class=\"pp-tag\" data-i18n=\"pp_tag\">معاينة المنصة</span>\n"
+"          <span class=\"pp-project\">My Company</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1585,7 +1934,7 @@ msgid ""
 "<span data-i18n=\"faq_q1\">Do I need technical skills to use it?</span><span"
 " class=\"faq-icon\">+</span>"
 msgstr ""
-"<span data-i18n=\"faq_q1\">هل أحتاج مهارات تقنية لأستخدمها؟</span><span "
+"<span data-i18n=\"faq_q1\">هل أحتاج إلى مهارات تقنية لاستخدامه؟</span><span "
 "class=\"faq-icon\">+</span>"
 
 #. module: website_saas_landing
@@ -1594,8 +1943,8 @@ msgid ""
 "<span data-i18n=\"faq_q2\">Can I migrate my existing Odoo "
 "database?</span><span class=\"faq-icon\">+</span>"
 msgstr ""
-"<span data-i18n=\"faq_q2\">هل يمكنني هجر قاعدة بياناتي الحالية؟</span><span "
-"class=\"faq-icon\">+</span>"
+"<span data-i18n=\"faq_q2\">هل يمكنني ترحيل قاعدة بيانات Odoo "
+"الحالية؟</span><span class=\"faq-icon\">+</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1603,7 +1952,7 @@ msgid ""
 "<span data-i18n=\"faq_q3\">Can I use my own domain?</span><span class=\"faq-"
 "icon\">+</span>"
 msgstr ""
-"<span data-i18n=\"faq_q3\">هل يمكنني استخدام مجالي الخاص؟</span><span "
+"<span data-i18n=\"faq_q3\">هل يمكنني استخدام نطاقي الخاص؟</span><span "
 "class=\"faq-icon\">+</span>"
 
 #. module: website_saas_landing
@@ -1621,10 +1970,8 @@ msgid ""
 "<span data-i18n=\"footer_copyright\">© 2026 My Odoo SH. All rights reserved.</span>\n"
 "    <span data-i18n=\"footer_trademark\">MyOdoo.sh is an independent service and is not affiliated with Odoo S.A. Odoo is a trademark of Odoo S.A.</span>"
 msgstr ""
-"<span data-i18n=\"footer_copyright\">2026 بلدي Odoo SH. جميع الحقوق "
-"محجوزة</span><span data-i18n=\"footer_trademark\">MyOdoo.sh is an "
-"independent service and is not affiliated with Odoo S.A. Odoo is a trademark"
-" of Odoo S.A.</span>"
+"<span data-i18n=\"footer_copyright\">© 2026 My Odoo SH. جميع الحقوق محفوظة.</span>\n"
+"    <span data-i18n=\"footer_trademark\">MyOdoo.sh is an independent service and is not affiliated with Odoo S.A. Odoo is a trademark of Odoo S.A.</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -1661,13 +2008,120 @@ msgid "<span data-i18n=\"label_support\">Technical Support</span>"
 msgstr "<span data-i18n=\"label_support\">الدعم التقني</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q1\">What is the Model Context "
+"Protocol?</span><span class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q1\">ما هو بروتوكول السياق النموذجي؟</span><span "
+"class=\"faq-icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q2\">Do I need an API key for Claude?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q2\">هل أحتاج لمفتاح (كلود)؟</span><span "
+"class=\"faq-icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q3\">Which Odoo versions are "
+"supported?</span><span class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q3\">أي نسخ أودو مدعومة؟</span><span class=\"faq-"
+"icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q4\">Is my data secure?</span><span class=\"faq-"
+"icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q4\">هل بياناتي آمنة؟</span><span class=\"faq-"
+"icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q5\">How long does setup take?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q5\">كم من الوقت يستغرق التجهيز؟</span><span "
+"class=\"faq-icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q6\">Can I use my own AI provider?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q6\">هل يمكنني استخدام مزودي الخاص؟</span><span "
+"class=\"faq-icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q7\">Is there a free plan?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+"<span data-i18n=\"mcp_faq_q7\">هل هناك خطة مجانية؟</span><span class=\"faq-"
+"icon\">+</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_free_sub\">Free forever</span>"
+msgstr "<span data-i18n=\"mcp_plan_free_sub\">حر للأبد</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_pro_sub\">Per user / month · ex VAT</span>"
+msgstr ""
+"<span data-i18n=\"mcp_plan_pro_sub\">لكل مستعمل/شهر؛ مقتطف من ضريبة القيمة "
+"المضافة</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_starter_sub\">Per user / month · ex VAT</span>"
+msgstr ""
+"<span data-i18n=\"mcp_plan_starter_sub\">لكل مستعمل/شهر؛ مقتطف من ضريبة "
+"القيمة المضافة</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust1\">TLS 1.3 encryption</span>"
+msgstr "<span data-i18n=\"mcp_trust1\">TLS 1.3 التشفير</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust2\">Token-based authentication</span>"
+msgstr "<span data-i18n=\"mcp_trust2\">التوثيق على أساس رمزي</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust3\">Real-time sync</span>"
+msgstr "<span data-i18n=\"mcp_trust3\">التوقيت الحقيقي</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust4\">All Odoo versions</span>"
+msgstr "<span data-i18n=\"mcp_trust4\">جميع نسخ Odoo</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust5\">Works with MyOdoo.sh</span>"
+msgstr "<span data-i18n=\"mcp_trust5\">يعمل مع (مايدو)</span>"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span data-i18n=\"pp_backup\">Backup</span><b "
 "data-i18n=\"pp_backup_val\">Scheduled daily</b>"
 msgstr ""
-"<span data-i18n=\"pp_backup\">الدعم</span><b "
-"data-i18n=\"pp_backup_val\">اليومية المقررة</b>"
+"<span data-i18n=\"pp_backup\">نسخة احتياطية</span><b "
+"data-i18n=\"pp_backup_val\">Scheduled daily</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1675,8 +2129,8 @@ msgid ""
 "<span data-i18n=\"pp_deploy\">Latest deployment</span><b "
 "data-i18n=\"pp_branch\">Deployed from main branch</b>"
 msgstr ""
-"<span data-i18n=\"pp_deploy\">آخر نشر</span><b data-i18n=\"pp_branch\">من "
-"الفرع الرئيسي</b>"
+"<span data-i18n=\"pp_deploy\">آخر عملية نشر</span><b "
+"data-i18n=\"pp_branch\">Deployed from main branch</b>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -1685,9 +2139,9 @@ msgid ""
 "                    <span data-i18n=\"pp_staging\">Staging</span>\n"
 "                    <span class=\"is-active\" data-i18n=\"pp_prod\">Production</span>"
 msgstr ""
-"<span data-i18n=\"pp_dev\">التنمية</span><span "
-"data-i18n=\"pp_staging\">الطعن</span><span class=\"is-active\" "
-"data-i18n=\"pp_prod\">الإنتاج</span>"
+"<span data-i18n=\"pp_dev\">التطوير</span>\n"
+"                    <span data-i18n=\"pp_staging\">Staging</span>\n"
+"                    <span class=\"is-active\" data-i18n=\"pp_prod\">Production</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1703,7 +2157,7 @@ msgid ""
 "style=\"width:42%\"/><i style=\"width:64%\"/></span>"
 msgstr ""
 "<span data-i18n=\"pp_res\">استخدام الموارد</span><span class=\"pp-bars\"><i "
-"style=\"width:42%\"></i><i style=\"width:64%\"></i></span>"
+"style=\"width:42%\"/><i style=\"width:64%\"/></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1780,27 +2234,45 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span data-i18n=\"trust1\">Git Deployment</span>"
-msgstr "<span data-i18n=\"trust1\">توزيع الهدايا</span>"
+msgstr "<span data-i18n=\"trust1\">النشر عبر Git</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span data-i18n=\"trust2\">Isolated Environments</span>"
-msgstr "<span data-i18n=\"trust2\">البيئات المعزولة</span>"
+msgstr "<span data-i18n=\"trust2\">بيئات معزولة</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span data-i18n=\"trust3\">Automated Backups</span>"
-msgstr "<span data-i18n=\"trust3\">الدعم الآلي</span>"
+msgstr "<span data-i18n=\"trust3\">نسخ احتياطي تلقائي</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span data-i18n=\"trust4\">Monitoring</span>"
-msgstr "<span data-i18n=\"trust4\">الرصد</span>"
+msgstr "<span data-i18n=\"trust4\">المراقبة</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<span data-i18n=\"trust5\">Support</span>"
 msgstr "<span data-i18n=\"trust5\">الدعم</span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span><b data-i18n=\"mcp_node_ai\">Claude "
+"AI</b><small>Anthropic</small></span>"
+msgstr ""
+"<span><b data-i18n=\"mcp_node_ai\">كلود "
+"آي</b><small>Anthropic</small></span>"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span><b data-i18n=\"mcp_node_odoo\">Odoo ERP</b><small "
+"data-i18n=\"mcp_node_odoo_sub\">Your instance</small></span>"
+msgstr ""
+"<span><b data-i18n=\"mcp_node_odoo\">Odoo ERP</b><small "
+"data-i18n=\"mcp_node_odoo_sub\">مثالك</small></span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1870,7 +2342,14 @@ msgstr "خريطة طريق واضحة تبقي المشروع يركز على �
 msgid ""
 "A managed platform for your application, database and files — with "
 "deployment, backups and monitoring built in."
-msgstr "منبر منظم لتطبيقك وقاعدة البيانات والملفات - مع نشرها ودعمها ورصدها."
+msgstr ""
+"منصة مُدارة لتطبيقك وقاعدة بياناتك وملفاتك — مع نشر ونسخ احتياطي ومراقبة "
+"مدمجة."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "AI automation"
+msgstr "التشغيل الآلي"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
@@ -1886,6 +2365,11 @@ msgstr "إدماج الأطراف الثالثة"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "About"
+msgstr "من نحن"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "About Us"
 msgstr "من نحن"
 
 #. module: website_saas_landing
@@ -1924,14 +2408,32 @@ msgid "Activity Type Icon"
 msgstr "النوع Icon"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Add the endpoint to your AI client settings and start using AI-powered Odoo "
+"features immediately."
+msgstr ""
+"أضف نقطة النهاية لزبائنك و ابدأ باستخدام ملامح (أودو) التي تعمل بطاقتها."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr "التخزين الإضافي"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Advanced analytics"
+msgstr "التحليل المتقدم"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Agreed in your plan"
 msgstr "موافق في خطتك"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Anthropic"
+msgstr "خبيث"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -1972,7 +2474,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Ask our team"
-msgstr "إسأل فريقنا"
+msgstr "اسأل فريقنا"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__user_id
@@ -1993,7 +2495,7 @@ msgstr "مراجعة الحسابات"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Automatic Backups"
-msgstr "الدعم الآلي"
+msgstr "نسخ احتياطي تلقائي"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -2022,7 +2524,7 @@ msgstr "العودة إلى صفحة الاستقبال"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Backup"
-msgstr "الدعم"
+msgstr "نسخة احتياطية"
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__backup_recovery
@@ -2098,13 +2600,13 @@ msgstr "الكتاب(أ)"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Book a Demo"
-msgstr "كتاب تجريبي"
+msgstr "اطلب عرضًا توضيحيًا"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Book a demo"
-msgstr "احجز عرضًا"
+msgstr "اطلب عرضًا توضيحيًا"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2115,6 +2617,11 @@ msgstr "كلا الإصدارين لا حدود للإستعمال."
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Branch"
 msgstr "الفرع"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Bridge Claude AI<br/><span class=\"mh-grad\">to your Odoo ERP</span>"
+msgstr "موصل Claude AI<br/><span class=\"mh-grad\">إلى Odoo ERP الخاص بك</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2171,8 +2678,8 @@ msgid ""
 "CPU, memory, disk, requests and database connections — with status "
 "indicators for each environment."
 msgstr ""
-"CPU, memory, disk, requests and database connections - with status "
-"indicators for each environment."
+"المعالج والذاكرة والقرص والطلبات واتصالات قاعدة البيانات — مع مؤشرات حالة "
+"لكل بيئة."
 
 #. module: website_saas_landing
 #. odoo-python
@@ -2189,7 +2696,7 @@ msgstr "قيادة الآلية"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Can you review our staging deployment?"
-msgstr "هل يمكنك مراجعة نشرنا؟?"
+msgstr "هل يمكنكم مراجعة نشر staging لدينا؟"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -2204,7 +2711,7 @@ msgstr "القنوات"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Choose Standard"
-msgstr "معيار الاختيار"
+msgstr "اختر Standard"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2221,6 +2728,20 @@ msgstr ""
 "المستمر."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Claude MCP"
+msgstr "Claude MCP"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Claude, Anthropic, OpenAI, DeepSeek, Groq and Ollama are trademarks of their"
+" respective owners. MCP Odoo is an independent service."
+msgstr ""
+"كلود، أنثروبك، أوبن آي، ديبسيك، غروك، أولاما علامات تجارية لمالكيهم. MCP "
+"Odoo هو خدمة مستقلة."
+
+#. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__state__closed
 msgid "Closed"
 msgstr "مغلق"
@@ -2229,7 +2750,7 @@ msgstr "مغلق"
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__company_id
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Company"
-msgstr "شركة"
+msgstr "الشركة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
@@ -2272,7 +2793,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Compare plan details →"
-msgstr "تفاصيل خطة مقارنة"
+msgstr "قارن تفاصيل الخطط →"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2285,6 +2806,14 @@ msgstr ""
 "تحتاج بعض الوحدات إلى مزيد من المعالين أو إلى استعراض تقني."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Compatible with Odoo Community and Enterprise, versions 16, 17 and 19 — and "
+"it works with MyOdoo.sh out of the box."
+msgstr ""
+"ومنسجم مع جماعة أودو ومؤسسة أودو، والنسخ ١٦ و ١٧ و ١٩، وهي تعمل مع ميودو."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Compute resources"
 msgstr "الموارد المحسوبة"
@@ -2293,6 +2822,11 @@ msgstr "الموارد المحسوبة"
 #: model:ir.model,name:website_saas_landing.model_res_config_settings
 msgid "Config Settings"
 msgstr "Conig Settings"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Configure Odoo"
+msgstr "أودو"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2310,11 +2844,73 @@ msgid "Confirmed in your plan"
 msgstr "تم تأكيد خطتك"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connect Claude"
+msgstr "وصلة كلود"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect Claude directly through the Model Context Protocol, or use API-based"
+" providers for chat, automation and ERP workflows."
+msgstr ""
+"Connect Claude directly through the Model Context Protocol, or use API-based"
+" providers for conversation, functioning and ERP workflows."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect Claude.ai or Claude Desktop straight to Odoo with a single URL. No "
+"API key and no code — Claude gets live Odoo tools instantly."
+msgstr ""
+"(إتصل بـ (كلود أي أو (كلود ديسبتوب مباشرة إلى (أودو) مع (يورل لا مفتاح "
+"للتسجيلات الرسمية ولا رمز - كلود يحصل على أدوات أودو مباشرة."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect OpenAI models for fast assistant workflows, analytics and structured"
+" ERP operations."
+msgstr ""
+"Connect OpenAI models for fast Assistant workflows, analytics and structured"
+" ERP operations."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect in under five minutes. Paste the SSE endpoint into your AI client — "
+"no server setup required."
+msgstr ""
+"اتصل في أقل من خمس دقائق استولي على نقطة نهاية إس إس إس إلى عميلك - لا حاجة "
+"لتشكيل الخادم."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connect the AI stack you already use"
+msgstr "\"إتصلي بـ \"أي آي"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect your Odoo instance to Claude through the Model Context Protocol. "
+"Automate workflows, enhance decisions and unlock AI-powered insights with "
+"one secure connection."
+msgstr ""
+"إربطْ كمثالكَ Odoo إلى كلود خلال بروتوكولِ السياقِ النموذجيِ. Automate "
+"workflows, enhance decisions and unlock AI-powered insights with one secure "
+"connection."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Connect your repository and move approved updates through staging into "
 "production."
-msgstr "اتصلوا بمستودعكم وحركوا تحديثات معتمدة من خلال التعبئة إلى الإنتاج."
+msgstr "اربط مستودعك وانقل التحديثات المعتمدة من staging إلى production."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connection setup"
+msgstr "إنشاء الاتصال"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -2341,14 +2937,21 @@ msgid "Contact Our Team"
 msgstr "فريق الاتصال"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Contact Us"
 msgstr "اتصل بنا"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
 msgid "Contact us"
 msgstr "اتصل بنا"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Contact us for unlimited usage"
+msgstr "اتصل بنا لاستعمال غير محدود"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -2356,13 +2959,18 @@ msgid ""
 "Contact us to review storage, memory and compute requirements. Available "
 "upgrade options depend on your environment."
 msgstr ""
-"اتصل بنا لاستعراض متطلبات التخزين والذاكرة والحساب. خيارات التطوير المتاحة "
-"تعتمد على بيئتك."
+"اتصل بنا لمراجعة متطلبات التخزين والذاكرة والحوسبة. تعتمد خيارات الترقية "
+"المتاحة على بيئتك."
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__state__contacted
 msgid "Contacted"
 msgstr "اتصل"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Copy endpoint"
+msgstr "نقطة النهاية"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__country
@@ -2374,6 +2982,11 @@ msgstr "البلد"
 #: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
 msgid "Country (Enquiry)"
 msgstr "البلد (الاستقصاء)"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Create account"
+msgstr "حساب الإنشاءات"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2436,7 +3049,7 @@ msgstr "النماذج العرفية، وسير العمل، والتقارير
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Custom tailored quote"
-msgstr "اقتباسات مصممة حسب التعريف"
+msgstr "عرض سعر مخصص"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2478,10 +3091,15 @@ msgstr ""
 "الحدود المشتركة."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "DeepSeek"
+msgstr "بسكويت عميق"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Deploy"
-msgstr "النشر"
+msgstr "نشر"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2520,7 +3138,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Deployment workflows"
-msgstr "تدفقات عمل النشر"
+msgstr "مسارات النشر"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2535,6 +3153,15 @@ msgid ""
 msgstr ""
 "Diagram: Odoo apps, PostgreSQL and filestore flow into an encryptedback and "
 "then a recovery point."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Diagram: an AI assistant connects through the MCP Odoo bridge to your Odoo "
+"ERP, with a live status line."
+msgstr ""
+"Diagram: an AI Assistant connects through the MCP Odoo bridge to your Odoo "
+"ERP, with a live status line."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -2611,6 +3238,11 @@ msgid "Domain &amp; HTTPS"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Done — the Odoo tools appear immediately."
+msgstr "تم.."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "EN"
 msgstr "EN"
@@ -2623,6 +3255,11 @@ msgid ""
 msgstr ""
 "كل مشروع يتبع تسلسلاً عملياً حتى تبقى القرارات واضحة وفريقك جاهز قبل "
 "الإطلاق."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Easy integration"
+msgstr "الإدماج السهل"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__email
@@ -2683,6 +3320,15 @@ msgid "Enquiry Number"
 msgstr "العدد"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Enterprise-grade TLS 1.3 encryption with token-based authentication. Your "
+"data stays inside your own infrastructure."
+msgstr ""
+"1.3 encryption with token-based authentication. بياناتك تبقى داخل البنية "
+"التحتية الخاصة بك."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Environment availability, access, platform configuration and hosting "
@@ -2711,16 +3357,21 @@ msgid "Estimated Users <span class=\"cf-optional\">(optional)</span>"
 msgstr "المستعملون المقدرون <span class=\"cf-optional\">(اختياري)</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Every Odoo version"
+msgstr "كل نسخة أودو"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Every change is built, tested and reviewed before your team and customers "
 "see it."
-msgstr "كل تغيير يتم بناؤه واختباره واستعراضه قبل أن يراه فريقك وزبائنك."
+msgstr "يتم بناء كل تغيير واختباره ومراجعته قبل أن يراه فريقك وعملاؤك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Every environment, one place."
-msgstr "كل بيئة، مكان واحد."
+msgstr "كل البيئات في مكان واحد."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -2735,7 +3386,16 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Everything Odoo needs"
-msgstr "كل ما يحتاجه (أودو)"
+msgstr "كل ما يحتاجه Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Everything you need to connect AI with your Odoo ERP — securely, in real "
+"time and without a complex setup."
+msgstr ""
+"كُلّ شيء تَحتاجُ لربط AI مَع Odoo ERP - بأمان، في الوقت الحقيقي وبدون a "
+"تركيبة معقدة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
@@ -2823,6 +3483,16 @@ msgid "Forgot password"
 msgstr "نسيت كلمة المرور"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Four simple steps to connect AI to your Odoo instance."
+msgstr "أربع خطوات بسيطة لربط (آي آي) بمثالك."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Free"
+msgstr "مجانا"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr "Subdomain + SSL"
@@ -2844,7 +3514,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "From git push to production."
-msgstr "من \"جيت\" إلى الإنتاج."
+msgstr "من git push إلى production."
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__full_name
@@ -2867,6 +3537,11 @@ msgid "Functional support and troubleshooting"
 msgstr "الدعم الوظيفي والتشويش"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Generate endpoint"
+msgstr "نقطة النهاية"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Get Demo"
 msgstr "اطلب عرضًا"
@@ -2884,6 +3559,36 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Get back to work in under 2 minutes"
 msgstr "عودي للعمل في أقل من دقيقتين"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started"
+msgstr "ابدأ الآن"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started free"
+msgstr "ابدأوا"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started free →"
+msgstr "ابدأوا بالمجان"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get your MCP SSE endpoint and connect AI to Odoo in minutes."
+msgstr ""
+"إحصلْ على نقطة نهاية إس إس إس إس إس إس إس إس إس ووصلْ AI إلى Odoo في دقائقِ."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Get your unique SSE endpoint URL — the secure token that bridges AI to your "
+"Odoo data."
+msgstr ""
+"الحصول على نقطة نهاية فريدة SSE URL - آمنة أن الجسور AI إلى بيانات Odoo "
+"الخاص بك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2908,6 +3613,11 @@ msgid ""
 msgstr ""
 "اذهب بعيدا عن الاستضافة مع الخدمات التي تساعد في تشكيل أودو حول عملياتك، ربط"
 " نظمك وإعداد فريقك للاستخدام اليومي."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Groq"
+msgstr "Groq"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.view_website_saas_enquiry_search
@@ -2935,6 +3645,7 @@ msgstr "الرعاية الصحية"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -2944,8 +3655,8 @@ msgid ""
 "Host, deploy and manage Odoo with staging environments, automated backups "
 "and monitoring—all from one platform."
 msgstr ""
-"استضافة أودو ونشره وإدارته مع بيئات التعبئة، والدعم الآلي، والرصد - كل من من"
-" منصة واحدة."
+"استضف Odoo وانشره وأدره مع بيئات staging ونسخ احتياطي تلقائي ومراقبة — كل "
+"ذلك من منصة واحدة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -2990,12 +3701,22 @@ msgstr "المضيف بالإضافة إلى النطاق التقني والو�
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "How can we help with your environment today?"
-msgstr "كيف يمكننا المساعدة في بيئتك اليوم؟?"
+msgstr "كيف يمكننا مساعدتك في بيئتك اليوم؟"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
 msgid "How information is used"
 msgstr "كيفية استخدام المعلومات"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "How it works"
+msgstr "كيف يعمل"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "How to connect AI to Odoo"
+msgstr "كيف تربط أي مع دودو"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -3077,8 +3798,8 @@ msgid ""
 "Implementation, hosting, customisation, training and long-term Odoo support "
 "for businesses anywhere in the world."
 msgstr ""
-"التنفيذ، والاستضافة، والتكييف، والتدريب، والدعم الطويل الأجل للأعمال "
-"التجارية في أي مكان في العالم."
+"تنفيذ واستضافة وتخصيص وتدريب ودعم Odoo طويل الأمد للشركات في أي مكان في "
+"العالم."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3104,7 +3825,7 @@ msgstr "المخزن المشمول"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Included with your worker allocation"
-msgstr "مشمولة بمخصصات العمال"
+msgstr "مشمولة بمخصصات Workers"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3134,6 +3855,22 @@ msgstr "المعلومات التي نعالجها"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Initial data and go-live support"
 msgstr "البيانات الأولية ودعم المعيشة"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Install the MCP module in your Odoo instance and follow the guided setup "
+"wizard."
+msgstr "ضع وحدة برنامج (إم بي سي) في مكتبك وتتبع الساحر المرشد."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Instant synchronisation between AI and Odoo with an average latency under 12"
+" ms — no waiting for batch jobs."
+msgstr ""
+"Instant coincidehronisation between AI and Odoo with an average latency "
+"under 12 ms — no waiting for batch jobs."
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
@@ -3168,7 +3905,7 @@ msgstr "هو المتابع"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Isolated Environments"
-msgstr "البيئات المعزولة"
+msgstr "بيئات معزولة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3214,7 +3951,7 @@ msgstr "آخر تحديث"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Last deployment"
-msgstr "آخر نشر"
+msgstr "آخر عملية نشر"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3225,6 +3962,15 @@ msgstr ""
 #: model:ir.model,name:website_saas_landing.model_crm_lead
 msgid "Lead/Opportunity"
 msgstr "الرصاص/الاستحقاق"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Let AI automate routine work — create invoices, search records and trigger "
+"business logic on request."
+msgstr ""
+"دع منظمة العفو الدولية تعمل بشكل روتيني آلي - تخلق الفواتير وسجلات البحث "
+"وتثير منطق العمل عند الطلب."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3239,6 +3985,22 @@ msgid ""
 msgstr "فهم محلي<br/><span class=\"mh-grad\">متصل بتكنولوجيا الأعمال.</span>"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Local · Free · Private"
+msgstr "محلي - مجاني - خاص"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Log in to the MCP Odoo web platform with your own API key. Supported "
+"providers include Anthropic, OpenAI, DeepSeek and Groq. Chat with your Odoo "
+"directly in the browser."
+msgstr ""
+"أدخل إلى منصة (إم بي سي أودو) على الإنترنت بمفتاحك الخاص ومن بين مقدمي "
+"الخدمات المدعمين أنثروبيك، ومؤسسة \" أوف آي \" ، و \" ديبيك \" ، و \" غروك "
+"\" . ثرثرة مع أودو مباشرة في بروزر."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Log out"
 msgstr "تسجيل الخروج"
@@ -3246,12 +4008,24 @@ msgstr "تسجيل الخروج"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Logs"
-msgstr "اللوز"
+msgstr "السجلات"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>."
 msgstr "فقدان الدخول يحدث<br/>العودة <em>لا يجب أن يكون صعباً</em>."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "MCP Odoo"
+msgstr "MCP Odoo"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "MCP SSE · Direct"
+msgstr "MCP SSE ; Direct"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3271,7 +4045,7 @@ msgstr "إدارة أودو المضيفة"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Managed PostgreSQL"
-msgstr "ما بعد التشغيل"
+msgstr "PostgreSQL مُدار"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3281,7 +4055,7 @@ msgstr "إدارة البيئات مع الدعم و الدخول المراقب
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Managed hosting"
-msgstr "إدارة الاستضافة"
+msgstr "استضافة مُدارة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3341,12 +4115,12 @@ msgstr "الهجرة والأمن والقدرات والدعم - الإجابا
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Monitoring"
-msgstr "الرصد"
+msgstr "المراقبة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Monitoring Included"
-msgstr "الرصد"
+msgstr "مراقبة مشمولة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3365,6 +4139,15 @@ msgid ""
 msgstr ""
 "لوحة رصد مع بيانات العينات: cpu, memory, disk, response time, requests, "
 "database connections and uptime, all operational."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Most connections are live in under five minutes — add the SSE endpoint to "
+"your AI client and the Odoo tools appear immediately."
+msgstr ""
+"وتعيش معظم الاتصالات في أقل من خمس دقائق - أي إضافة نقطة نهاية SSE إلى موكلك"
+" AI وأدوات Odoo تظهر على الفور."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3413,36 +4196,6 @@ msgstr ""
 "ويساعد بلدي Odoo SH الأعمال التجارية على تنفيذ واستضافة ومواءمة وتحسين Odoo "
 "من خلال نهج عملي وحادي للأعمال التجارية - من أول محادثة للعملية إلى الدعم "
 "الطويل الأجل."
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
-msgid "My Odoo SH — About"
-msgstr "بلدي Odoo SH - حول"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
-msgid "My Odoo SH — Contact Us"
-msgstr "بلدي Odoo SH - الاتصال بنا"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
-msgid "My Odoo SH — Home"
-msgstr "بلدي Odoo SH - البيت"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
-msgid "My Odoo SH — Privacy Policy"
-msgstr "بلدي Odoo SH - سياسة الخصوصية"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
-msgid "My Odoo SH — Services"
-msgstr "بلدي Odoo SH الخدمات"
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
-msgid "My Odoo SH — Terms of Service"
-msgstr "بلدي Odoo SH - شروط الخدمة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3512,13 +4265,24 @@ msgid "No enquiries yet"
 msgstr "لا تحقيقات بعد"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"No. The direct MCP connection uses an SSE endpoint added as a connector in "
+"Claude — no API key is required. API keys are only needed for API-based "
+"providers."
+msgstr ""
+"لا The direct MCP connection uses an SSE endpoint added as a connector in "
+"Claude — no API key is required. ولا توجد حاجة إلا لمفاتيح نظام المعلومات "
+"المسبقة عن علم بالنسبة لمقدمي الخدمات القائمين على تطبيق المعايير."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "No. Your environment is deployed, monitored and updated for you, and our "
 "team is available for hosting and platform questions."
 msgstr ""
-"لا إن بيئتك منتشرة ومُراقبة ومُحدّثة بالنسبة لك، وفريقنا مُتاح للإستضافة "
-"وطرح الأسئلة."
+"لا. نقوم بنشر بيئتك ومراقبتها وتحديثها نيابةً عنك، وفريقنا متاح لأسئلة "
+"الاستضافة والمنصة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3562,6 +4326,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Odoo Community"
 msgstr "جماعة أودو"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Odoo Community and Enterprise, versions 16, 17 and 19, including "
+"environments hosted on MyOdoo.sh."
+msgstr ""
+"Odoo Community and Enterprise, versions 16, 17 and 19, including "
+"environments hosted on MyOdoo.sh."
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__customisation
@@ -3624,7 +4397,7 @@ msgstr "تصريحات مستخدمي الأودو"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Odoo version"
-msgstr "نسخة أودو"
+msgstr "إصدار Odoo"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3632,20 +4405,25 @@ msgid ""
 "Official applications and upgrades on the same managed platform, subject to "
 "the required Odoo Enterprise subscription."
 msgstr ""
-"الطلبات الرسمية والتحسينات على نفس المنهاج المنظم، رهناً بالاشتراك المطلوب "
-"من مؤسسة أودو."
+"تطبيقات رسمية وترقيات على المنصة المُدارة نفسها، وفق اشتراك Odoo Enterprise "
+"المطلوب."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Ollama"
+msgstr "أولاما"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "One instance. Every app."
-msgstr "حالة واحدة كل تطبيق."
+msgstr "نسخة واحدة. كل التطبيقات."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "One managed plan to start with, and dedicated infrastructure when you "
 "outgrow it."
-msgstr "خطة واحدة نجحت في البدء بها، وبنية تحتية مكرسة عندما تتخلص منها."
+msgstr "خطة مُدارة للبدء، وبنية تحتية مخصصة عند الحاجة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3656,6 +4434,16 @@ msgstr "شريك واحد لرحلة أودو كاملة."
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Ongoing Support"
 msgstr "الدعم المستمر"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Open your AI client settings and add a connector."
+msgstr "افتحي عملائكِ و أضيفي موصل."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "OpenAI"
+msgstr "OpenAI"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -3698,10 +4486,24 @@ msgid "POS • Inventory • CRM"
 msgstr "POS. Inventory • CRM"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Paste the SSE endpoint URL above."
+msgstr "قُدّمْ نقطة نهايةِ SSE فوق."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Paste the SSE endpoint into Claude connectors and Claude can use your Odoo "
+"tools directly."
+msgstr ""
+"إستعير نقطة نهاية إس إس إس إلى كلود موصلات و كلود يمكن أن تستخدم أدواتك Odoo"
+" مباشرة."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Pay as you go"
-msgstr "ادفع كما تذهب"
+msgstr "الدفع حسب الاستخدام"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__phone
@@ -3756,7 +4558,7 @@ msgstr "الخطط والنطاق"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 msgid "Platform"
-msgstr "منهاج العمل"
+msgstr "المنصة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -3766,7 +4568,7 @@ msgid ""
 "deploy, restart, backup and logs actions."
 msgstr ""
 "وصلة بينية للمنبر: بيئات الإنتاج والتعبئة والتنمية مع الفرع، ونسخة Odoo، "
-"والعمال، والتخزين، وقاعدة البيانات، والنشر الأخير، بالإضافة إلى عمليات "
+"وWorkers، والتخزين، وقاعدة البيانات، والنشر الأخير، بالإضافة إلى عمليات "
 "النشر، واعادة التشغيل، والمساندة، وقطع الأخشاب."
 
 #. module: website_saas_landing
@@ -3801,6 +4603,20 @@ msgid "PostgreSQL"
 msgstr "PostgreSQL"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Powerful features"
+msgstr "السمات القوية"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Prices exclude VAT. Plan limits and service levels are defined by your "
+"selected offer. Purchases are handled through our support team."
+msgstr ""
+"الأسعار تستبعد ضريبة القيمة المضافة. حدود الخطة ومستويات الخدمة يحددها عرضك "
+"المختار يتم التعامل مع المشتريات من خلال فريق الدعم لدينا."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Pricing"
 msgstr "الأسعار"
@@ -3811,6 +4627,11 @@ msgstr "الأسعار"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Pro"
+msgstr "محترف"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3867,7 +4688,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Push to Deploy"
-msgstr "دفع إلى النشر"
+msgstr "Push للنشر"
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__state__qualified
@@ -3878,6 +4699,11 @@ msgstr "المؤهلات"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Questions About Hosting Your Odoo Environment"
 msgstr "أسئلة عن استضافة بيئة أودوك"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Questions about MCP Odoo"
+msgstr "أسئلة عن برنامج MCP Odoo"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -3909,9 +4735,21 @@ msgid "Quoted separately"
 msgstr "مخصصة بصورة منفصلة"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "REST API · Web platform"
+msgstr "منصة على الإنترنت"
+
+#. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
 msgid "Ratings"
 msgstr "التقييمات"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Read and aggregate your Odoo data to produce summaries, reports and insights"
+" on demand."
+msgstr "اقرأ واجمع بيانات مكتبك لإنتاج ملخصات وتقارير ورؤى عن الطلب."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3922,12 +4760,22 @@ msgstr "مستعد لاستضافة مشروعك؟?"
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 msgid "Ready to Launch Your Odoo Environment?"
-msgstr "هل أنت مستعد لإطلاق بيئتك؟?"
+msgstr "هل أنت مستعد لإطلاق بيئة Odoo؟"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Ready to bring AI into your Odoo?"
+msgstr "هل أنت مستعد لجلب (آي) إلى مكتبك؟?"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Real-time analytics dashboards"
 msgstr "لوحات تحليلية في الوقت الحقيقي"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Real-time sync"
+msgstr "التوقيت الحقيقي"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3947,7 +4795,7 @@ msgstr "الدمج الودي"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Request Custom Quote"
-msgstr "الطلب"
+msgstr "اطلب عرض سعر مخصص"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -3967,7 +4815,7 @@ msgstr "تنتهي صلاحيتها تلقائياً"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Resource usage and application health in one view."
-msgstr "استخدام الموارد وتطبيق الصحة من وجهة نظر واحدة."
+msgstr "استخدام الموارد وصحة التطبيق في عرض واحد."
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__activity_user_id
@@ -3977,7 +4825,7 @@ msgstr "المستعمل المسؤول"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Restart"
-msgstr "العودة"
+msgstr "إعادة التشغيل"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4003,6 +4851,25 @@ msgid ""
 msgstr "استعراض متطلبات التخزين والذاكرة والحساب، وقياس بيئتك عند الحاجة."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run local models with Ollama for private, no-cloud AI workflows on your own "
+"server."
+msgstr ""
+"تشغيل النماذج المحلية مع Ollama ل الخاص، لا cloud AI تدفق العمل على خادم "
+"الخاص بك."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run open-source AI on your own hardware. Zero API cost and complete data "
+"privacy — ideal for on-premise Odoo where nothing leaves your network."
+msgstr ""
+"تشغيل المصدر المفتوح AI على معداتك الخاصة. لا يكلّف نظام المعلومات المسبقة "
+"عن علم ويكمل خصوصية البيانات - مثالية لـ (أودو) على الأقل حيث لا شيء يترك "
+"شبكتك."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Run the open-source community core or the full enterprise edition — every "
@@ -4017,8 +4884,17 @@ msgid ""
 "Run the open-source core or the full enterprise edition on the same managed "
 "platform."
 msgstr ""
-"تشغيل قاعدة الموارد المفتوحة أو الطبعة الكاملة للمؤسسة على نفس المنبر "
-"المنظم."
+"شغّل النواة مفتوحة المصدر أو إصدار Enterprise الكامل على المنصة المُدارة "
+"نفسها."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run ultra-fast inference with Groq free-tier friendly models for quick ERP "
+"questions and actions."
+msgstr ""
+"(ج) أن تجري بحثاً مكثفاً مع نماذج (غروق) الصديقة المجانية لمسائل وإجراءات "
+"تخطيط الموارد في المؤسسة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4103,7 +4979,7 @@ msgstr "الدعم المقرر"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Scheduled copies of your database and files."
-msgstr "نسخ من قاعدة بياناتك وملفاتك."
+msgstr "نسخ مجدولة لقاعدة بياناتك وملفاتك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4126,6 +5002,11 @@ msgid "Secure cloud hosting &amp; automatic backups"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Secure connection"
+msgstr "الاتصال الآمن"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
 msgstr ""
@@ -4133,7 +5014,12 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "See full plan details →"
-msgstr "انظر تفاصيل الخطة الكاملة"
+msgstr "اطّلع على تفاصيل الخطة الكاملة →"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "See how it works"
+msgstr "انظر كيف يعمل"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4143,7 +5029,7 @@ msgstr "نرى خدماتنا"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "See what your Odoo is doing."
-msgstr "انظر ماذا يفعل (أودو)."
+msgstr "اطّلع على ما يقوم به Odoo لديك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4158,11 +5044,12 @@ msgstr "طلب إرسال"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Separate environments for production, staging and development."
-msgstr "بيئات منفصلة للإنتاج والتعبئة والتنمية."
+msgstr "بيئات منفصلة لـ production وstaging والتطوير."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Services"
 msgstr "الخدمات"
 
@@ -4184,7 +5071,12 @@ msgstr "التقاسم"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Short answers about hosting, migration and support."
-msgstr "ردود قصيرة بشأن الاستضافة والهجرة والدعم."
+msgstr "إجابات موجزة حول الاستضافة والترحيل والدعم."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Short answers about the connection, security and plans."
+msgstr "أجوبة قصيرة عن الصلة والأمن والخطط."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
@@ -4197,9 +5089,23 @@ msgid "Sign up"
 msgstr "إنشاء حساب"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Sign up and access your MCP Odoo dashboard with connection tools and usage "
+"analytics."
+msgstr ""
+"وقّعْ وَصْولُ على لوحةِ غطّاءِ Odoo خاصّتكَ بأدواتِ الإتّصالِ ومحلّلينَ "
+"إستعمالِ."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
 msgstr "تسعير بسيط للبنية التحتية."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Simple pricing"
+msgstr "تسعير بسيط"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4258,19 +5164,37 @@ msgstr "ابدأ مشروعك"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Start Your Project →"
-msgstr "ابدأ مشروعك"
+msgstr "ابدأ مشروعك →"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_cta
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 msgid ""
 "Start a new project or talk to us about moving your existing Odoo setup."
-msgstr "ابدأ مشروعاً جديداً أو تحدثنا عن تحريك أودو."
+msgstr "ابدأ مشروعًا جديدًا أو تحدّث إلينا حول نقل إعداد Odoo الحالي."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Start for free →"
+msgstr "ابدأ بالمجان"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Start free and upgrade when you need more. No credit card required."
+msgstr "ابدأوا بالمجان والارتقاء عندما تحتاجون المزيد لا حاجة لبطاقة إئتمان."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Start free forever and scale when you need more. All prices exclude VAT."
+msgstr ""
+"ابدأي بالمجان إلى الأبد و ابدأي عندما تحتاجين المزيد جميع الأسعار تستبعد "
+"ضريبة القيمة المضافة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Start with Git. Deploy automatically. Scale when you need it."
-msgstr "ابدأ بـ (جيت) ، انتشر تلقائياً سكالي عندما تحتاجه."
+msgstr "ابدأ باستخدام Git. انشر تلقائيًا. توسّع عند الحاجة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4278,6 +5202,11 @@ msgid ""
 "Start with your processes — we will design, deploy and look after the "
 "environment that fits them."
 msgstr "وابتداء من عملياتكم - سنصمم وننشر ونعتني بالبيئة التي تناسبها."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Starter"
+msgstr "مبدئي"
 
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__state
@@ -4382,19 +5311,24 @@ msgstr "ساعات الدعم"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Supported locally, in your timezone."
-msgstr "مدعومة محلياً في زمانك."
+msgstr "دعم محلي، حسب منطقتك الزمنية."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Sure — checking the logs now."
-msgstr "بالتأكيد - أفحص السجلات الآن -."
+msgstr "بالتأكيد — أتحقق من السجلات الآن."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Switch between production, staging and development, and act on each one "
 "directly."
-msgstr "التبديل بين الإنتاج والتعبئة والتنمية، والعمل مباشرة على كل واحد."
+msgstr "تنقّل بين production وstaging والتطوير، وتصرّف مباشرةً في كل منها."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Talk to our team"
+msgstr "تحدث إلى فريقنا"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4407,8 +5341,8 @@ msgid ""
 "Talk to people who know Odoo. Your environment is hosted in secure data "
 "centres — support is provided by our own team in multiple languages."
 msgstr ""
-"(تحدثي إلى أشخاص يعرفون (أودو إن بيئتكم تستضيف في مراكز بيانات آمنة - يقدم "
-"فريقنا الدعم بلغات متعددة."
+"تحدّث مع أشخاص يعرفون Odoo. تُستضاف بيئتك في مراكز بيانات آمنة — ويقدّم "
+"فريقنا الدعم بعدة لغات."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4477,7 +5411,7 @@ msgstr "أخبرنا بنسخة (أودو)، طبعة، مستعملين، إح�
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
 msgid "Terms of Service"
-msgstr "مدة الخدمة"
+msgstr "شروط الخدمة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4490,12 +5424,22 @@ msgid "Thank you. Your enquiry has been received."
 msgstr "شكراً لك لقد تم إستجوابك."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"The Model Context Protocol is an open standard that lets AI assistants use "
+"external tools. Here it connects your AI client securely to your Odoo data."
+msgstr ""
+"ويشكل بروتوكول السياق النموذجي معياراً مفتوحاً يسمح للمساعدين في مجال "
+"التنفيذ باستخدام أدوات خارجية. ها هو يربط عميلك في المخابرات بأمان مع "
+"بياناتك."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "The complete Odoo hosting plan — everything you need to launch and grow, "
 "without the enterprise price tag."
 msgstr ""
-"خطة استضافة (أودو) كاملة - كل ما تحتاجه لتنطلق وتنمو بدون بطاقة سعر المؤسسة."
+"خطة استضافة Odoo الكاملة — كل ما تحتاجه للانطلاق والنمو، دون سعر المؤسسات."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4503,8 +5447,14 @@ msgid ""
 "The complete open-source core, with compatible Community modules and custom "
 "developments."
 msgstr ""
-"The complete open-source core, with compatible Community modules and custom "
-"developments."
+"النواة الكاملة مفتوحة المصدر، مع وحدات Community متوافقة وتطويرات مخصصة."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"The connection uses TLS 1.3 encryption and token-based authentication, and "
+"your Odoo data stays inside your own infrastructure."
+msgstr "الإرتباط يستعمل 1.3 تشفير و التوثيق المكسور."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -4553,6 +5503,17 @@ msgstr ""
 "واستكمالها مع مراجع المنظمة القانونية والمتعلقة بحماية البيانات قبل نشرها."
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Three ways to plug AI into your Odoo: Claude directly via MCP, any API "
+"provider through the platform, or free local AI with Ollama — all bridged to"
+" your live Odoo data."
+msgstr ""
+"Three ways to plug AI into your Odoo: Claude directly via MCP, any API "
+"provider through the platform, or free local AI with Ollama - all bridged to"
+" your live Odoo data."
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Training, troubleshooting and continuous improvement."
 msgstr "التدريب والتشويش والتحسين المستمر."
@@ -4566,6 +5527,11 @@ msgstr "التدريب، والتشويه، والارتقاء الأمثل، و
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Transfer"
 msgstr "التحويل"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Turn your Odoo data into an AI-powered workspace."
+msgstr "حوّلْ بياناتَكَ Odoo إلى a AI powered مكان عمل."
 
 #. module: website_saas_landing
 #: model:ir.model.fields,help:website_saas_landing.field_website_saas_enquiry__activity_exception_decoration
@@ -4591,6 +5557,29 @@ msgid ""
 msgstr ""
 "فهم استخدام الموارد، واستعراض صحة التطبيق، وتحديد متى تحتاج البيئة إلى "
 "الاهتمام أو إلى قدرات إضافية."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Unlimited"
+msgstr "غير محدود"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Use Claude models by API for chat, reasoning and Odoo actions with managed "
+"Anthropic access."
+msgstr ""
+"استخدام نماذج كلود من قبل مكتب المدعي العام للدردشة، والتفسير، وإجراءات أودو"
+" مع إدارة وصول الأنثروبيك."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Use DeepSeek chat and reasoning models for low-cost AI automation connected "
+"to your Odoo data."
+msgstr ""
+"استخدام الدردشة العميقة ونماذج التعليل للتشغيل الآلي منخفض التكلفة AI متصلاً"
+" ببيانات أودو الخاصة بك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4676,6 +5665,11 @@ msgid "What we actually deliver"
 msgstr "ما نقوم به"
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "What your assistant can do"
+msgstr "ما يمكن أن يفعله مساعدك"
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "What's included"
 msgstr "ما هو مشمول"
@@ -4693,6 +5687,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Wholesale"
 msgstr "البيع بالجملة"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Why choose MCP Odoo?"
+msgstr "لماذا تختار (إم سي أودو)؟?"
 
 #. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__state__won
@@ -4717,7 +5716,16 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Yes. Connect your domain and HTTPS is configured for your environment."
-msgstr "نعم إربطْ مجالَكَ وHTTPS مهيأة لبيئةِكَ."
+msgstr "نعم. اربط نطاقك وسيتم إعداد HTTPS لبيئتك."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Yes. In addition to Claude over MCP, the platform supports Anthropic, "
+"OpenAI, DeepSeek and Groq by API key, and free local models with Ollama."
+msgstr ""
+"نعم In addition to Claude over MCP, the platform supports Anthropic, OpenAI,"
+" DeepSeek and Groq by API key, and free local models with Ollama."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
@@ -4735,8 +5743,8 @@ msgid ""
 "Yes. Migration starts with a review of your Odoo version, database, files "
 "and custom modules to establish compatibility and the transfer process."
 msgstr ""
-"نعم وتبدأ الهجرة بإجراء استعراض لصيغة أودو الخاصة بك، وقاعدة البيانات، "
-"والملفات، والنماذج العرفية لتحديد التوافق وعملية النقل."
+"نعم. يبدأ الترحيل بمراجعة إصدار Odoo وقاعدة بياناتك وملفاتك ووحداتك المخصصة "
+"لتحديد التوافق وعملية النقل."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
@@ -4746,6 +5754,15 @@ msgid ""
 msgstr ""
 "نعم ويمكن ربط المكتب بمنصات الدفع والاتصال والإنتاجية والتجارة الإلكترونية "
 "والتشغيل الآلي حسب احتياجات المشروع."
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Yes. The Free plan includes 50 MCP calls per day, unlimited connections and "
+"all available tools, and can be used free forever."
+msgstr ""
+"نعم The Free plan includes 50 MCP calls per day, unlimited connections and "
+"all available tools, and can be used free forever."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
@@ -4782,12 +5799,12 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Your Odoo cloud.<br/><span class=\"mh-grad\">Live in minutes.</span>"
-msgstr "سحابتك<br/><span class=\"mh-grad\">يعيش في دقائق</span>"
+msgstr "سحابة Odoo الخاصة بك.<br/><span class=\"mh-grad\">جاهز خلال دقائق.</span>"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Your Odoo. Your edition."
-msgstr "أودو طبعتك."
+msgstr "Odoo الخاص بك. نسختك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4795,8 +5812,8 @@ msgid ""
 "Your application, database and files run in one environment, with backups "
 "stored according to your plan."
 msgstr ""
-"تطبيقك، قاعدة البيانات والملفات تعمل في بيئة واحدة، مع احتياطيات مخزنة وفقا "
-"لخطتك."
+"يعمل تطبيقك وقاعدة بياناتك وملفاتك في بيئة واحدة، مع تخزين النسخ الاحتياطي "
+"وفق خطتك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
@@ -4804,7 +5821,7 @@ msgid ""
 "Your applications run on the same environment as your data, so everything "
 "stays connected."
 msgstr ""
-"تطبيقاتك تعمل على نفس البيئة التي تعمل بها بياناتك لذا كل شيء يبقى متصلاً."
+"تعمل تطبيقاتك في البيئة نفسها التي تعمل فيها بياناتك، فيبقى كل شيء متصلًا."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -4819,13 +5836,13 @@ msgstr "بياناتك تبقى مشفرة من النهاية إلى النها
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Your data stays yours."
-msgstr "بياناتك تبقى لك."
+msgstr "تبقى بياناتك ملكًا لك."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Your database runs alongside your application, included in the environment."
-msgstr "قاعدة بياناتك تعمل جنباً إلى جنب مع تطبيقك متضمنة في البيئة."
+msgstr "تعمل قاعدة بياناتك إلى جانب تطبيقك، وهي مشمولة في البيئة."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
@@ -4847,7 +5864,7 @@ msgstr "اسمك"
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Your next Odoo environment is minutes away."
-msgstr "بيئة (أودو) التالية على بعد دقائق."
+msgstr "بيئة Odoo التالية على بُعد دقائق."
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
@@ -4867,6 +5884,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
 msgid "Your responsibilities"
 msgstr "مسؤولياتك"
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Your secure endpoint"
+msgstr "نقطة النهاية الآمنة"
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
@@ -4936,4 +5958,4 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "🔒 <span data-i18n=\"data_encrypted\">Encrypted Backup</span>"
-msgstr "? <span data-i18n=\"data_encrypted\">الدعم المشفر</span>"
+msgstr "🔒 <span data-i18n=\"data_encrypted\">نسخة احتياطية مشفّرة</span>"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 17:41+0000\n"
-"PO-Revision-Date: 2026-10-11 17:41+0000\n"
+"POT-Creation-Date: 2026-10-18 17:37+0000\n"
+"PO-Revision-Date: 2026-10-18 17:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -273,6 +273,146 @@ msgstr ""
 msgid ""
 "<b data-i18n=\"location\">Market focus</b><small "
 "data-i18n=\"location_value\">Businesses worldwide</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_node_bridge\">MCP Bridge</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf1\">50 MCP calls per day</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf2\">Unlimited connections</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf3\">Team access</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf4\">All 12 MCP Odoo tools</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf5\">Odoo 16, 17 and 19 support</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pf6\">Standard support</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp1\">500 MCP calls per day</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp2\">Unlimited connections</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp3\">Team access</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp4\">All 12 MCP Odoo tools</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp5\">Priority SSE endpoint</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp6\">Usage analytics dashboard</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pp7\">99.9% uptime SLA</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps1\">200 MCP calls per day</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps2\">Unlimited connections</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps3\">Team access</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps4\">All 12 MCP Odoo tools</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps5\">Odoo 16, 17 and 19 support</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_ps6\">Standard support</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu1\">Unlimited MCP calls</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu2\">Unlimited connections</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu3\">Team access</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu4\">All 12 MCP Odoo tools</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu5\">Dedicated SSE endpoint</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu6\">Advanced analytics</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu7\">Priority support</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<b data-i18n=\"mcp_pu8\">99.9% uptime SLA</b>"
 msgstr ""
 
 #. module: website_saas_landing
@@ -623,6 +763,13 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i class=\"mh-pulse\"/>\n"
+"              <span data-i18n=\"mcp_log\">Claude just searched 12 records and created 3 invoices in your Odoo database.</span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 msgid ""
 "<i class=\"mh-pulse\"/><span data-i18n=\"cf_trust\">Enquiries reviewed by "
@@ -748,6 +895,41 @@ msgid "<i>✓</i><span data-i18n=\"data_c3\">HTTPS on your own domain</span>"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c1\">Increased productivity: automate "
+"routine tasks so your team can focus on strategic work.</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c2\">Better decisions: get AI-powered "
+"insights from your Odoo data.</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c3\">Lower costs: reduce manual data entry"
+" and avoid avoidable errors.</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c4\">Enterprise security: TLS 1.3 "
+"encryption with token-based authentication.</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<i>✓</i><span data-i18n=\"mcp_why_c5\">Instant setup: no server "
+"configuration, connected in under five minutes.</span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "<i>✓</i><span data-i18n=\"pv_config\">Configuration</span><em>done</em>"
 msgstr ""
@@ -848,6 +1030,56 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "<small data-i18n=\"data_recovery\">Recovery Point</small><b>03:00</b>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r1\">Faster task completion</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r2\">Less manual data entry</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r3\">To connect</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_r4\">Adoption in the first week</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool1\">Get server information and status</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool2\">List all available Odoo models</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool3\">Search and retrieve records</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool4\">Create new records in Odoo</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool5\">Update existing records</small>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<small data-i18n=\"mcp_tool6\">Execute custom Odoo methods</small>"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1049,6 +1281,63 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-bridge-tag\" data-i18n=\"mcp_preview\">Live bridge</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-link\" aria-hidden=\"true\"><em/><i "
+"data-i18n=\"mcp_rpc\">Odoo RPC</i></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-link\" aria-hidden=\"true\"><em/><i "
+"data-i18n=\"mcp_stream\">SSE stream</i></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p1_tag\">Claude API</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p2_tag\">GPT API</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p3_tag\">Low-cost "
+"models</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p4_tag\">Fast · Free "
+"tier</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p5_tag\">Local · No API "
+"key</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mcp-provider-tag\" data-i18n=\"mcp_p6_tag\">SSE · Live "
+"tools</span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "<span class=\"mh-badge ok\"><i/><span data-i18n=\"sup_online\">Support Online</span></span>\n"
@@ -1058,6 +1347,21 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "<span class=\"mh-badge\" data-i18n=\"ab_story_badge\">Why My Odoo SH</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_plan_popular\">Most popular</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_setup_badge\">MCP SSE endpoint</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span class=\"mh-badge\" data-i18n=\"mcp_tools_badge\">Available tools</span>"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1115,6 +1419,14 @@ msgid "<span class=\"mh-ed-chip\">Enterprise</span>"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mh-float mh-f1\" aria-hidden=\"true\"><i class=\"mh-pulse\"/><span data-i18n=\"mcp_live\">Live connection</span></span>\n"
+"          <span class=\"mh-float mh-f3\">TLS 1.3</span>\n"
+"          <span class=\"mh-float mh-f5\"><span data-i18n=\"mcp_float_tools\">12 MCP tools</span></span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "<span class=\"mh-float mh-f1\" aria-hidden=\"true\"><i class=\"mh-pulse\"/>Production · Running</span>\n"
@@ -1147,6 +1459,13 @@ msgstr ""
 msgid ""
 "<span class=\"mh-obs-status\"><i class=\"mh-pulse\"/><span data-i18n=\"obs_ok\">All systems operational</span></span>\n"
 "          <span class=\"mh-obs-sample\" data-i18n=\"obs_sample\">Sample data</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span class=\"mh-pill\" data-reveal=\"1\"><i/><span "
+"data-i18n=\"mcp_pill\">MCP Protocol · Real-time · Secure</span></span>"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1390,6 +1709,95 @@ msgid "<span data-i18n=\"label_support\">Technical Support</span>"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q1\">What is the Model Context "
+"Protocol?</span><span class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q2\">Do I need an API key for Claude?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q3\">Which Odoo versions are "
+"supported?</span><span class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q4\">Is my data secure?</span><span class=\"faq-"
+"icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q5\">How long does setup take?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q6\">Can I use my own AI provider?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span data-i18n=\"mcp_faq_q7\">Is there a free plan?</span><span "
+"class=\"faq-icon\">+</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_free_sub\">Free forever</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_pro_sub\">Per user / month · ex VAT</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_plan_starter_sub\">Per user / month · ex VAT</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust1\">TLS 1.3 encryption</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust2\">Token-based authentication</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust3\">Real-time sync</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust4\">All Odoo versions</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "<span data-i18n=\"mcp_trust5\">Works with MyOdoo.sh</span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span data-i18n=\"pp_backup\">Backup</span><b "
@@ -1507,6 +1915,20 @@ msgid "<span data-i18n=\"trust5\">Support</span>"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span><b data-i18n=\"mcp_node_ai\">Claude "
+"AI</b><small>Anthropic</small></span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"<span><b data-i18n=\"mcp_node_odoo\">Odoo ERP</b><small "
+"data-i18n=\"mcp_node_odoo_sub\">Your instance</small></span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "<span><em>class</em> CustomReport(models.Model):</span>\n"
@@ -1571,6 +1993,11 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "AI automation"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "AI-powered automation &amp; smart insights"
 msgstr ""
@@ -1584,6 +2011,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "About"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
+msgid "About Us"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1622,13 +2054,30 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Add the endpoint to your AI client settings and start using AI-powered Odoo "
+"features immediately."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Additional storage"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Advanced analytics"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Agreed in your plan"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Anthropic"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1799,6 +2248,11 @@ msgid "Branch"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Bridge Claude AI<br/><span class=\"mh-grad\">to your Odoo ERP</span>"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Bring your Odoo application, PostgreSQL database and uploaded files together"
@@ -1892,6 +2346,18 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Claude MCP"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Claude, Anthropic, OpenAI, DeepSeek, Groq and Ollama are trademarks of their"
+" respective owners. MCP Odoo is an independent service."
+msgstr ""
+
+#. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__state__closed
 msgid "Closed"
 msgstr ""
@@ -1953,6 +2419,13 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Compatible with Odoo Community and Enterprise, versions 16, 17 and 19 — and "
+"it works with MyOdoo.sh out of the box."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Compute resources"
 msgstr ""
@@ -1960,6 +2433,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model:ir.model,name:website_saas_landing.model_res_config_settings
 msgid "Config Settings"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Configure Odoo"
 msgstr ""
 
 #. module: website_saas_landing
@@ -1978,10 +2456,61 @@ msgid "Confirmed in your plan"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connect Claude"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect Claude directly through the Model Context Protocol, or use API-based"
+" providers for chat, automation and ERP workflows."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect Claude.ai or Claude Desktop straight to Odoo with a single URL. No "
+"API key and no code — Claude gets live Odoo tools instantly."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect OpenAI models for fast assistant workflows, analytics and structured"
+" ERP operations."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect in under five minutes. Paste the SSE endpoint into your AI client — "
+"no server setup required."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connect the AI stack you already use"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Connect your Odoo instance to Claude through the Model Context Protocol. "
+"Automate workflows, enhance decisions and unlock AI-powered insights with "
+"one secure connection."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Connect your repository and move approved updates through staging into "
 "production."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Connection setup"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2009,13 +2538,20 @@ msgid "Contact Our Team"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Contact Us"
 msgstr ""
 
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
 msgid "Contact us"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Contact us for unlimited usage"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2031,6 +2567,11 @@ msgid "Contacted"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Copy endpoint"
+msgstr ""
+
+#. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__country
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 msgid "Country"
@@ -2039,6 +2580,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_crm_lead__saas_country
 msgid "Country (Enquiry)"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Create account"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2142,6 +2688,11 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "DeepSeek"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Deploy"
@@ -2189,6 +2740,13 @@ msgstr ""
 msgid ""
 "Diagram: Odoo apps, PostgreSQL and filestore flow into an encrypted backup "
 "and then a recovery point."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Diagram: an AI assistant connects through the MCP Odoo bridge to your Odoo "
+"ERP, with a live status line."
 msgstr ""
 
 #. module: website_saas_landing
@@ -2252,6 +2810,11 @@ msgid "Domain &amp; HTTPS"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Done — the Odoo tools appear immediately."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "EN"
 msgstr ""
@@ -2261,6 +2824,11 @@ msgstr ""
 msgid ""
 "Each project follows a practical sequence so decisions stay clear and your "
 "team is ready before launch."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Easy integration"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2316,6 +2884,13 @@ msgid "Enquiry Number"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Enterprise-grade TLS 1.3 encryption with token-based authentication. Your "
+"data stays inside your own infrastructure."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Environment availability, access, platform configuration and hosting "
@@ -2342,6 +2917,11 @@ msgid "Estimated Users <span class=\"cf-optional\">(optional)</span>"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Every Odoo version"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "Every change is built, tested and reviewed before your team and customers "
@@ -2364,6 +2944,13 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Everything Odoo needs"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Everything you need to connect AI with your Odoo ERP — securely, in real "
+"time and without a complex setup."
 msgstr ""
 
 #. module: website_saas_landing
@@ -2450,6 +3037,16 @@ msgid "Forgot password"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Four simple steps to connect AI to your Odoo instance."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Free"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Free subdomain + SSL"
 msgstr ""
@@ -2492,6 +3089,11 @@ msgid "Functional support and troubleshooting"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Generate endpoint"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Get Demo"
 msgstr ""
@@ -2506,6 +3108,33 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Get back to work in under 2 minutes"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started free"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get started free →"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Get your MCP SSE endpoint and connect AI to Odoo in minutes."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Get your unique SSE endpoint URL — the secure token that bridges AI to your "
+"Odoo data."
 msgstr ""
 
 #. module: website_saas_landing
@@ -2528,6 +3157,11 @@ msgstr ""
 msgid ""
 "Go beyond hosting with services that help configure Odoo around your "
 "processes, connect your systems and prepare your team for daily use."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Groq"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2555,6 +3189,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Home"
 msgstr ""
 
@@ -2608,6 +3243,16 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
 msgid "How information is used"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "How it works"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "How to connect AI to Odoo"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2737,6 +3382,20 @@ msgid "Initial data and go-live support"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Install the MCP module in your Odoo instance and follow the guided setup "
+"wizard."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Instant synchronisation between AI and Odoo with an average latency under 12"
+" ms — no waiting for batch jobs."
+msgstr ""
+
+#. module: website_saas_landing
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__crm_lead__saas_interested_in__integration
 #: model:ir.model.fields.selection,name:website_saas_landing.selection__website_saas_enquiry__interested_in__integration
 msgid "Integration / API"
@@ -2824,6 +3483,13 @@ msgid "Lead/Opportunity"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Let AI automate routine work — create invoices, search records and trigger "
+"business logic on request."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Let's build the right Odoo setup for your business."
 msgstr ""
@@ -2833,6 +3499,19 @@ msgstr ""
 msgid ""
 "Local understanding.<br/><span class=\"mh-grad\">Connected business "
 "technology.</span>"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Local · Free · Private"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Log in to the MCP Odoo web platform with your own API key. Supported "
+"providers include Anthropic, OpenAI, DeepSeek and Groq. Chat with your Odoo "
+"directly in the browser."
 msgstr ""
 
 #. module: website_saas_landing
@@ -2848,6 +3527,18 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Losing access happens.<br/>Getting back in <em>shouldn't be hard</em>."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "MCP Odoo"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "MCP SSE · Direct"
 msgstr ""
 
 #. module: website_saas_landing
@@ -2955,6 +3646,13 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Most connections are live in under five minutes — add the SSE endpoint to "
+"your AI client and the Odoo tools appear immediately."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Move Your Existing Odoo Setup to MyOdoo.sh"
 msgstr ""
@@ -2997,36 +3695,6 @@ msgid ""
 "My Odoo SH helps businesses implement, host, customise and improve Odoo "
 "through a practical, business-first approach — from the first process "
 "conversation to long-term support."
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
-msgid "My Odoo SH — About"
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
-msgid "My Odoo SH — Contact Us"
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
-msgid "My Odoo SH — Home"
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
-msgid "My Odoo SH — Privacy Policy"
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
-msgid "My Odoo SH — Services"
-msgstr ""
-
-#. module: website_saas_landing
-#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
-msgid "My Odoo SH — Terms of Service"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3093,6 +3761,14 @@ msgid "No enquiries yet"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"No. The direct MCP connection uses an SSE endpoint added as a connector in "
+"Claude — no API key is required. API keys are only needed for API-based "
+"providers."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "No. Your environment is deployed, monitored and updated for you, and our "
@@ -3139,6 +3815,13 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Odoo Community"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Odoo Community and Enterprise, versions 16, 17 and 19, including "
+"environments hosted on MyOdoo.sh."
 msgstr ""
 
 #. module: website_saas_landing
@@ -3210,6 +3893,11 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Ollama"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "One instance. Every app."
 msgstr ""
@@ -3229,6 +3917,16 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Ongoing Support"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Open your AI client settings and add a connector."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "OpenAI"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3267,6 +3965,18 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "POS • Inventory • CRM"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Paste the SSE endpoint URL above."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Paste the SSE endpoint into Claude connectors and Claude can use your Odoo "
+"tools directly."
 msgstr ""
 
 #. module: website_saas_landing
@@ -3362,6 +4072,18 @@ msgid "PostgreSQL"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Powerful features"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Prices exclude VAT. Plan limits and service levels are defined by your "
+"selected offer. Purchases are handled through our support team."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Pricing"
 msgstr ""
@@ -3371,6 +4093,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_contact_page_ir_ui_view
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_privacy_page_ir_ui_view
 msgid "Privacy Policy"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Pro"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3439,6 +4166,11 @@ msgid "Questions About Hosting Your Odoo Environment"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Questions about MCP Odoo"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
 msgid ""
 "Questions about these terms can be sent to our team through the contact "
@@ -3468,8 +4200,20 @@ msgid "Quoted separately"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "REST API · Web platform"
+msgstr ""
+
+#. module: website_saas_landing
 #: model:ir.model.fields,field_description:website_saas_landing.field_website_saas_enquiry__rating_ids
 msgid "Ratings"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Read and aggregate your Odoo data to produce summaries, reports and insights"
+" on demand."
 msgstr ""
 
 #. module: website_saas_landing
@@ -3484,8 +4228,18 @@ msgid "Ready to Launch Your Odoo Environment?"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Ready to bring AI into your Odoo?"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_auth_split_layout
 msgid "Real-time analytics dashboards"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Real-time sync"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3562,6 +4316,20 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run local models with Ollama for private, no-cloud AI workflows on your own "
+"server."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run open-source AI on your own hardware. Zero API cost and complete data "
+"privacy — ideal for on-premise Odoo where nothing leaves your network."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Run the open-source community core or the full enterprise edition — every "
@@ -3573,6 +4341,13 @@ msgstr ""
 msgid ""
 "Run the open-source core or the full enterprise edition on the same managed "
 "platform."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Run ultra-fast inference with Groq free-tier friendly models for quick ERP "
+"questions and actions."
 msgstr ""
 
 #. module: website_saas_landing
@@ -3679,6 +4454,11 @@ msgid "Secure cloud hosting &amp; automatic backups"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Secure connection"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Security &amp; SSL"
 msgstr ""
@@ -3686,6 +4466,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "See full plan details →"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "See how it works"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3716,6 +4501,7 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.mo_footer
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Services"
 msgstr ""
 
@@ -3740,6 +4526,11 @@ msgid "Short answers about hosting, migration and support."
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Short answers about the connection, security and plans."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_global_header
 msgid "Sign in"
 msgstr ""
@@ -3750,8 +4541,20 @@ msgid "Sign up"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Sign up and access your MCP Odoo dashboard with connection tools and usage "
+"analytics."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Simple infrastructure pricing."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Simple pricing"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3819,6 +4622,22 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Start for free →"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Start free and upgrade when you need more. No credit card required."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Start free forever and scale when you need more. All prices exclude VAT."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid "Start with Git. Deploy automatically. Scale when you need it."
 msgstr ""
@@ -3828,6 +4647,11 @@ msgstr ""
 msgid ""
 "Start with your processes — we will design, deploy and look after the "
 "environment that fits them."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Starter"
 msgstr ""
 
 #. module: website_saas_landing
@@ -3937,6 +4761,11 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Talk to our team"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Talk to our team →"
 msgstr ""
@@ -4022,6 +4851,13 @@ msgid "Thank you. Your enquiry has been received."
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"The Model Context Protocol is an open standard that lets AI assistants use "
+"external tools. Here it connects your AI client securely to your Odoo data."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_landing_page_ir_ui_view
 msgid ""
 "The complete Odoo hosting plan — everything you need to launch and grow, "
@@ -4033,6 +4869,13 @@ msgstr ""
 msgid ""
 "The complete open-source core, with compatible Community modules and custom "
 "developments."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"The connection uses TLS 1.3 encryption and token-based authentication, and "
+"your Odoo data stays inside your own infrastructure."
 msgstr ""
 
 #. module: website_saas_landing
@@ -4074,6 +4917,14 @@ msgid ""
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Three ways to plug AI into your Odoo: Claude directly via MCP, any API "
+"provider through the platform, or free local AI with Ollama — all bridged to"
+" your live Odoo data."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Training, troubleshooting and continuous improvement."
 msgstr ""
@@ -4086,6 +4937,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "Transfer"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Turn your Odoo data into an AI-powered workspace."
 msgstr ""
 
 #. module: website_saas_landing
@@ -4109,6 +4965,25 @@ msgstr ""
 msgid ""
 "Understand resource usage, review application health and identify when your "
 "environment needs attention or additional capacity."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Unlimited"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Use Claude models by API for chat, reasoning and Odoo actions with managed "
+"Anthropic access."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Use DeepSeek chat and reasoning models for low-cost AI automation connected "
+"to your Odoo data."
 msgstr ""
 
 #. module: website_saas_landing
@@ -4189,6 +5064,11 @@ msgid "What we actually deliver"
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "What your assistant can do"
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid "What's included"
 msgstr ""
@@ -4203,6 +5083,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_about_page_ir_ui_view
 msgid "Wholesale"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Why choose MCP Odoo?"
 msgstr ""
 
 #. module: website_saas_landing
@@ -4229,6 +5114,13 @@ msgid "Yes. Connect your domain and HTTPS is configured for your environment."
 msgstr ""
 
 #. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Yes. In addition to Claude over MCP, the platform supports Anthropic, "
+"OpenAI, DeepSeek and Groq by API key, and free local models with Ollama."
+msgstr ""
+
+#. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_services_page_ir_ui_view
 msgid ""
 "Yes. Migration starts with a review of your Odoo version, database, file "
@@ -4248,6 +5140,13 @@ msgstr ""
 msgid ""
 "Yes. Odoo can be connected with payment, communication, productivity, "
 "eCommerce and automation platforms depending on project requirements."
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid ""
+"Yes. The Free plan includes 50 MCP calls per day, unlimited connections and "
+"all available tools, and can be used free forever."
 msgstr ""
 
 #. module: website_saas_landing
@@ -4353,6 +5252,11 @@ msgstr ""
 #. module: website_saas_landing
 #: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_terms_page_ir_ui_view
 msgid "Your responsibilities"
+msgstr ""
+
+#. module: website_saas_landing
+#: model_terms:ir.ui.view,arch_db:website_saas_landing.saas_mcp_page_ir_ui_view
+msgid "Your secure endpoint"
 msgstr ""
 
 #. module: website_saas_landing

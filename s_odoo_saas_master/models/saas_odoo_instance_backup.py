@@ -128,7 +128,26 @@ class OdooInstanceBackup(models.Model):
 
         threading.Thread(target=run_restore, daemon=True).start()
 
+    def _refresh_storage_live(self):
+        """Recompute the storage usage of the instances behind these backups, at once."""
+        for instance in self.mapped('instance_id'):
+            refresh = getattr(instance, '_refresh_storage_usage', None)
+            if refresh:
+                try:
+                    refresh()
+                except Exception:  # never break a backup because of a size refresh
+                    pass
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        # Live storage: a new backup file must show up in the customer's usage at once
+        # (the hourly storage cron is gone).
+        records._refresh_storage_live()
+        return records
+
     def unlink(self):
+        instances = self.mapped('instance_id')
         files_to_delete = []
         for rec in self:
             if rec.file_path and os.path.exists(rec.file_path):
@@ -137,6 +156,14 @@ class OdooInstanceBackup(models.Model):
         result = super(OdooInstanceBackup, self).unlink()
         for file in files_to_delete:
             os.remove(file)
+        # The file is gone: refresh the usage of the instance it belonged to.
+        for instance in instances:
+            refresh = getattr(instance, '_refresh_storage_usage', None)
+            if refresh:
+                try:
+                    refresh()
+                except Exception:
+                    pass
         return result
 
     def action_download(self):

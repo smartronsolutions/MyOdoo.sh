@@ -39,6 +39,9 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="instance_id"
+                                   options="{'no_create': True}"
+                                   help="Instance this image is built for: the Odoo version and the edition are copied from it."/>
                             <field name="odoo_version_id"/>
                             <field name="tag_id"/>
                             <field name="edition"/>

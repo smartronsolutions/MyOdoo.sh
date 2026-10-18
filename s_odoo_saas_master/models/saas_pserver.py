@@ -505,6 +505,17 @@ class PServer(models.Model):
         self._create_nginx_file(domain_name_ids, ssh)
         ssh.close()
 
+    def _refresh_nginx_file(self, domain_name_ids):
+        """Rewrite the vhosts and reload nginx, re-applying the certbot SSL block.
+
+        The generated file does not contain certbot's ``listen 443`` / certificate
+        directives (certbot appends them), so the refresh has to go through
+        :meth:`_create_nginx_file` — skipping certbot would drop HTTPS.
+        """
+        ssh = self._connect()
+        self._create_nginx_file(domain_name_ids, ssh)
+        ssh.close()
+
     def _clone_customer_addons(self, custom_addons):
         ssh = self._connect()
         self._create_custom_addons(custom_addons, ssh)

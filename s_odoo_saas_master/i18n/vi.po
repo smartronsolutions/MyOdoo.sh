@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-10-12 04:45+1100\n"
+"PO-Revision-Date: 2026-10-19 04:42+1100\n"
 "Last-Translator: auto_translate / LibreTranslate (machine translated)\n"
 "Language-Team: vi\n"
 "Language: vi\n"
@@ -21,9 +21,51 @@ msgstr "(chưa cấu hình trình phục vụ thư đi đâu, thư đã xếp h�
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid " (prorated)"
+msgstr "(được phóng thích)"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid " more · 0 = no upgrade."
+msgstr "không nâng cấp."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid " worker(s) · up to "
+msgstr "nhân công · đến"
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "\"%s\" cannot be installed or replaced inside your instance."
 msgstr "« %s » không thể được cài đặt hoặc thay thế trong thể hiện của bạn."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"\"%s\" is not a valid system package name. Use a plain APT package name, for"
+" example \"python3-xmlsec\" or \"libxml2-dev\"."
+msgstr ""
+"« %s » không phải là một tên gói hệ thống hợp lệ. Dùng một tên gói APT, "
+"chẳng hạn \"python3- xmlsec\" hay \"lixml2-dev\"."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"\"%s\" was not found on PyPI (or has no release for this Python version), so"
+" it was not installed. Check the exact package name — for example "
+"\"pandas\", \"psyquartz\" or \"python-escpos==3.1\". A library hosted on "
+"GitHub or a private index cannot be installed from this form."
+msgstr ""
+"« %s » không tìm thấy trên PyPI (hoặc không có phát hành cho phiên bản "
+"Python này), vì vậy nó chưa được cài đặt. Kiểm tra tên gói chính xác — ví dụ"
+" \"pandas\", \"psyquartz\" hoặc \"python-escpos3.1\". Không thể cài đặt một "
+"thư viện có trên mẫu này."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -80,6 +122,13 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"%(python)s and %(count)s system package(s) are installed in image %(image)s."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%.2f / %.2f GB"
 msgstr "%. 2f / %.2f GB"
@@ -89,6 +138,18 @@ msgstr "%. 2f / %.2f GB"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%.2f / %.2f GB (%.1f%%)"
 msgstr "%.2f / %.2f GB (%.1f%)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s (+%g GB) — Annual renewal %s"
+msgstr "%s (+%g GB) — thay đổi định kỳ %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s (+%s workers) — Annual renewal %s"
+msgstr "%s (+%s nhân công) — thay đổi định kỳ %s"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -105,12 +166,6 @@ msgstr "miền %s đã lấy"
 
 #. module: s_odoo_saas_master
 #. odoo-python
-#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s in requirements.txt"
-msgstr "%s trong yêu cầu.txt"
-
-#. module: s_odoo_saas_master
-#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_portal_security.py:0
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 msgid "%s is already used by another user."
@@ -119,14 +174,20 @@ msgstr "%s đã được dùng bởi người dùng khác."
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s is installed."
-msgstr "%s đã được cài đặt."
+msgid "%s is installed in image %s."
+msgstr "%s đã được cài đặt trong ảnh %s."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "%s is uninstalled and removed from requirements.txt."
-msgstr "%s chưa cài đặt và gỡ bỏ khỏi yêu cầu.txt."
+msgid "%s is removed from the instance image."
+msgstr "%s bị gỡ bỏ khỏi ảnh thể hiện."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "%s is uninstalled and removed from the instance image."
+msgstr "%s chưa cài đặt và gỡ bỏ khỏi ảnh thể hiện."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -143,18 +204,20 @@ msgstr "%s gói (s)"
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid ""
-"%s was removed from requirements.txt, but pip could not uninstall it: it is "
-"provided by the base image and stays available to your Odoo."
-msgstr ""
-"%s đã bị gỡ bỏ khỏi yêu cầu.txt, nhưng ống dẫn không thể gỡ bỏ nó: nó được "
-"cung cấp bởi ảnh cơ bản và vẫn còn sẵn sàng cho mục Odoo của bạn."
+msgid "%s system package(s) are installed in image %s."
+msgstr "%s gói hệ thống (s) đã được cài đặt vào ảnh %s."
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "%s worker(s)"
-msgstr "%s công nhân"
+msgstr "%s Worker"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "%s — Annual subscription %s (%s → %s)"
+msgstr "%s — Gọi dài hạn %s (%s %s)"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -193,6 +256,26 @@ msgstr ""
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "'%s' is a reserved subdomain. Please choose another one."
 msgstr "'%s' là một phần phụ dành riêng. Xin hãy chọn cái khác."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"(<b>db_name</b> + <b>dbfilter</b> in odoo.conf), so the\n"
+"                                            database manager only lists that single database. To duplicate or\n"
+"                                            restore a <b>test database</b>, unlock it first."
+msgstr ""
+"(Tiếng cười)<b>db  name</b> + <b>dbSQL</b> trong odoo.conf, vì vậy\n"
+"Bộ quản lý cơ sở dữ liệu chỉ liệt kê một cơ sở dữ liệu. Để sao chép hoặc\n"
+"Phục hồi a <b>Cơ sở dữ liệu thử</b>Mở khóa trước."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"(odoo.conf <b>db_name</b> + <b>dbfilter</b>). If you restore under a\n"
+"                                different name, the instance URL and this panel will not find your data."
+msgstr ""
+"(odoo.conf. <b>db  name</b> + <b>dbSQL</b>). Nếu bạn phục hồi dưới một\n"
+"Tên khác, hiển thị URL và bảng điều khiển này sẽ không tìm thấy dữ liệu của bạn."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -255,13 +338,13 @@ msgstr "+25 GB"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "+5 GB"
-msgstr "+ 5 GB"
+msgid "+50 GB"
+msgstr "+ 50 gb"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "+50 GB"
-msgstr "+ 50 gb"
+msgid "- My Odoo SH"
+msgstr "- Odoo SH của tôi"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -317,9 +400,34 @@ msgstr "tháng"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "/ worker / month"
-msgstr "/ công nhân / tháng"
+msgstr "/ Worker / tháng"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/month"
+msgstr "tháng"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/web/database/manager"
+msgstr "/web/data base/manager"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/web/login"
+msgstr "/web/login"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "/year"
+msgstr "năm"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "0 = no extra storage · any storage upgrade starts at 10 GB."
+msgstr ""
+"0 = Không có kho lưu trữ thêm # bất kỳ nâng cấp nào bắt đầu lúc 10 giờ GB."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -327,14 +435,9 @@ msgid "1 production instance"
 msgstr "1 ví dụ sản xuất"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "1 worker (upgradable)"
-msgstr "1 công nhân (có thể nâng cấp)"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "10 additional gigabytes"
-msgstr "thêm 10 hàm"
+msgid "10 additional gigabytes · minimum"
+msgstr "10 gi- gi- a- byte tối thiểu"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -345,6 +448,11 @@ msgstr "Comment"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "2 GB RAM each &amp;middot;"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "2 workers included (upgradable)"
+msgstr "2 công nhân bao gồm (có thể nâng cấp)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -385,11 +493,6 @@ msgstr "5 GB bao gồm · +"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "5 GB included, expandable"
 msgstr "5 GB bao gồm, mở rộng"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "5 additional gigabytes"
-msgstr "thêm 5 hàm"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -455,10 +558,10 @@ msgid ""
 msgstr ""
 "<b class=\"openerp_enterprise_user_pricing_monthly d-none\"><span "
 "class=\"openerp_enterprise_pricing_user_amount_monthly\">KỂ LẠI</span><small"
-" class=\"fw_semibold\">/ Công nhân/ tháng</small></b><b "
+" class=\"fw_semibold\">/ Worker/ tháng</small></b><b "
 "class=\"openerp_enterprise_user_pricing_yearly\"><span "
 "class=\"openerp_enterprise_pricing_user_amount_yearly\">KỂ LẠI</span><small "
-"class=\"fw_semibold\">/ Công nhân/ tháng</small></b>"
+"class=\"fw_semibold\">/ Worker/ tháng</small></b>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -499,6 +602,36 @@ msgid "<b>Billed annually</b>"
 msgstr "<b>Trả tiền hàng năm</b>"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Billed period:</b> %s month(s)%s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Invoice type:</b> %s"
+msgstr "<b>Kiểu hóa đơn:</b> %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>SaaS container:</b> %s"
+msgstr "<b>Thùng SaaS:</b> %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Storage:</b> %g GB (included: %g GB)"
+msgstr "<b>Lưu trữ:</b> %g GB (incded: %g GB)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Subscription period:</b> %s → %s"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "<b>Total / month</b>"
 msgstr "<b>Tổng / Tháng</b>"
@@ -507,6 +640,28 @@ msgstr "<b>Tổng / Tháng</b>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "<b>Total</b> / month"
 msgstr "<b>Tổng</b> Tháng"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<b>Upgrades are allowed only on annual plans.</b><br/>\n"
+"                                Monthly plans can be renewed only. Switch to <b>Annual &amp;middot; billed yearly</b> to add workers or storage."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/sale_order.py:0
+msgid "<b>Workers:</b> %s (included: %s)"
+msgstr "<b>Worker:</b> %s (trong miệng: %s)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<br/><b>Upgrades are allowed only on annual plans</b> — monthly "
+"subscriptions can be renewed only."
+msgstr ""
+"<br/><b>Nâng cấp chỉ được phép trong các dự định hàng năm</b> — Chỉ có thể "
+"đăng ký hàng tháng."
 
 #. module: s_odoo_saas_master
 #: model:mail.template,body_html:s_odoo_saas_master.deploy_instance_mail_template
@@ -671,7 +826,7 @@ msgstr "<em>Name</em>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<em>Workers available</em>"
-msgstr "<em>Công nhân sẵn sàng</em>"
+msgstr "<em>Worker sẵn sàng</em>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -684,6 +839,11 @@ msgstr "<i class=\"fa fa-arrow-circle-up\"></i>Tới kho chứa nâng cấp than
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-arrow-circle-up\"/> Buy Extra Storage &amp; Continue"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-arrow-circle-up\"/> Upgrade History"
+msgstr "<i class=\"fa fa-arrow-circle-up\"></i> Nâng cấp lịch sử"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -750,17 +910,26 @@ msgstr "<i class=\"fa fa-credit-card me-1\"></i> Thử lại / chuyển bài"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<i class=\"fa fa-cube\" aria-hidden=\"true\"/>\n"
-"                                <span class=\"shell-tip-text\">To install a Python library in this\n"
-"                                    container, run</span>"
+"                                <span class=\"shell-tip-text\">Need a Python or system package that stays after a\n"
+"                                    redeploy? Use <b>Overview → Install Python &amp; System Packages</b>\n"
+"                                    instead of installing it by hand.</span>"
 msgstr ""
-"<i aria-hidden=\"true\" class=\"fa fa-cube\"></i><span class=\"shell-tip-text\">Để cài đặt thư viện Python vào đây\n"
-"container, chạy</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-cube\"/> Current subscription"
 msgstr "<i class=\"fa fa-cube\"></i> Đăng ký hiện thời"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-database\"/> Open Database Manager"
+msgstr "<i class=\"fa fa-database\"></i> Mở trình quản lý co sở dữ liệu"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-download\"/> Download latest backup"
+msgstr "<i class=\"fa fa-download\"></i> Tải bản sao lưu mới nhất"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -802,6 +971,26 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"/>\n"
+"                                        <b>Staging mode is ON.</b> <b>db_name</b> and <b>dbfilter</b> are\n"
+"                                        commented out in odoo.conf, so"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"></i><b>Chế độ ổn định đã bật.</b> <b>db  name</b> và <b>dbSQL</b> là\n"
+"bình luận trong odoo.conf, vì vậy"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-right:6px\"/>\n"
+"                                <b>Important:</b> this instance only sees the database whose name matches"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\" style=\"color:#b47611;margin-"
+"right:6px\"></i><b>Quan trọng:</b> Ví dụ này chỉ nhìn thấy cơ sở dữ liệu có "
+"tên trùng khớp"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-expand\"/> <span>Fullscreen</span>"
 msgstr "<i class=\"fa fa-expand\"></i> <span>Toàn màn hình</span>"
 
@@ -835,6 +1024,11 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-lock\"/> Activate DB Name &amp; DB Filter"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<i class=\"fa fa-play-circle me-1\"/> Your instance has been resumed "
 "automatically."
@@ -846,6 +1040,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<i class=\"fa fa-refresh me-1\"/> Retry deployment"
 msgstr "<i class=\"fa fa-refresh me-1\"></i> Thử lại"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-refresh\"/> Change &amp; Restart Odoo"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-refresh\"/> Renew Subscription"
+msgstr "<i class=\"fa fa-refresh\"></i> Đăng ký lại"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_lines_inherit_saas
@@ -886,6 +1090,16 @@ msgid "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"/>Backup run
 msgstr ""
 "<i class=\"fa fa-spinner fa-spin\" style=\"margin-right:6px\"></i>Đang sao "
 "lưu..."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-unlock\"/> Remove DB Filter &amp; DB Name"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<i class=\"fa fa-unlock\"/> Staging active"
+msgstr "<i class=\"fa fa-unlock\"></i> Comment"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -1101,7 +1315,7 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 msgid "<small>Active Workers</small>"
-msgstr "<small>Công nhân tích cực</small>"
+msgstr "<small>Worker tích cực</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
@@ -1131,7 +1345,7 @@ msgstr "<small>Kế hoạch hiện tại</small>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "<small>Included Workers</small>"
-msgstr "<small>Công nhân</small>"
+msgstr "<small>Worker</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1284,11 +1498,9 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span class=\"ctrl-btn-title\">Install Python Library</span>\n"
-"                                        <span class=\"ctrl-btn-desc\">Add a pip package to your instance.</span>"
+"<span class=\"ctrl-btn-title\">Install Python &amp; System Packages</span>\n"
+"                                        <span class=\"ctrl-btn-desc\">Add pip and apt packages to your instance.</span>"
 msgstr ""
-"<span class=\"ctrl-btn-title\">Cài đặt Thư viện Python</span><span "
-"class=\"ctrl-btn-desc\">Thêm một gói ống vào ví dụ của bạn.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1394,6 +1606,15 @@ msgstr "<span class=\"eyebrow\">Tùy thích vùng làm việc</span>"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
+"<span class=\"healthy\" style=\"color:#b47611\"><i class=\"fa fa-lock\"/> "
+"Annual plan only</span>"
+msgstr ""
+"<span class=\"healthy\" style=\"color:#b47611\"><i class=\"fa fa-lock\"></i>"
+" Chỉ lên kế hoạch thường niên</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
 "<span class=\"healthy\"><i class=\"fa fa-plus-circle\"/> Upgrade "
 "Workers</span>"
 msgstr ""
@@ -1486,6 +1707,16 @@ msgstr ""
 " </span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                            Upgrades\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_stat_text\">Nâng cấp\n"
+" </span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"popular-badge\">Most Popular</span>"
 msgstr "<span class=\"popular-badge\">Nổi tiếng nhất</span>"
@@ -1494,10 +1725,10 @@ msgstr "<span class=\"popular-badge\">Nổi tiếng nhất</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<span class=\"python-lib-spin\">↻</span>\n"
-"                            <span>Installing… pip is resolving and downloading the package, this can take up to a minute.</span>"
+"                            <span>Installing… rebuilding the instance Docker image with the packages, this can take a minute or two.</span>"
 msgstr ""
-"<span class=\"python-lib-spin\">teppi82</span><span>Cài đặt... ống dẫn đang "
-"giải quyết và tải gói, nó có thể mất đến một phút.</span>"
+"<span class=\"python-lib-spin\">teppi82</span><span>Cài đặt... xây dựng lại "
+"hình ảnh Docker với các gói, có thể mất một hoặc hai phút.</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1525,17 +1756,6 @@ msgid "<span class=\"saas-spinner-icon\">🚀</span>"
 msgstr "<span class=\"saas-spinner-icon\">teppi82</span>"
 
 #. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"<span class=\"state-pill\" id=\"renewSummaryCycleBadge\" "
-"style=\"background:rgba(15,168,160,0.15);color:var(--deep);font-"
-"weight:800\">Monthly</span>"
-msgstr ""
-"<span class=\"state-pill\" id=\"renewSummaryCycleBadge\" "
-"style=\"background:rgba(15,168,160,0.15);color:var(--deep);font-"
-"weight:800\">Hàng tháng</span>"
-
-#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span class=\"status\">Instant Setup</span>"
 msgstr "<span class=\"status\">Cài đặt Ngay</span>"
@@ -1557,7 +1777,7 @@ msgid ""
 "                                <span class=\"step-text\">Applying your worker settings</span>"
 msgstr ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
-"class=\"step-text\">Áp dụng thiết lập công nhân</span>"
+"class=\"step-text\">Áp dụng thiết lập Worker</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -1630,7 +1850,7 @@ msgid ""
 "                                <span class=\"step-text\">Restarting your instance with the new workers</span>"
 msgstr ""
 "<span class=\"step-bullet\"><i class=\"fa fa-circle\"></i></span><span "
-"class=\"step-text\">Khởi động lại ví dụ của bạn với công nhân mới</span>"
+"class=\"step-text\">Khởi động lại ví dụ của bạn với Worker mới</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1681,6 +1901,31 @@ msgstr ""
 "spin\"></i></span><span class=\"step-text\">Comment</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">1</span>"
+msgstr "<span class=\"step-num\">1</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">2</span>"
+msgstr "<span class=\"step-num\">2</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">3</span>"
+msgstr "<span class=\"step-num\">3</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">4</span>"
+msgstr "<span class=\"step-num\">4</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"step-num\">5</span>"
+msgstr "<span class=\"step-num\">5</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<span class=\"sub\">All invoices issued to your account</span>"
 msgstr "<span class=\"sub\">Tất cả hóa đơn được gửi đến tài khoản của anh</span>"
@@ -1694,6 +1939,11 @@ msgstr "<span class=\"sub\">Mọi đơn đặt hàng bán trong tài khoản nà
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 msgid "<span class=\"sub\">Every sale order placed on your account</span>"
 msgstr "<span class=\"sub\">Tất cả các đơn đặt trong tài khoản của anh</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span class=\"sub\">Worker and storage upgrades of this container</span>"
+msgstr "<span class=\"sub\">Bộ làm việc và lưu trữ nâng cấp thùng này</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1739,8 +1989,12 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "<span id=\"orderWorkerLineLabel\">1 Worker</span>"
-msgstr "<span id=\"orderWorkerLineLabel\">1 người làm việc</span>"
+msgid ""
+"<span id=\"orderWorkerLineLabel\">2 Workers included</span>\n"
+"                                                <strong id=\"orderWorkerLinePrice\">Included</strong>"
+msgstr ""
+"<span id=\"orderWorkerLineLabel\">2 Công nhân</span><strong "
+"id=\"orderWorkerLinePrice\">Đã bao gồm</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1798,12 +2052,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"<span style=\"font-size:12px;color:var(--muted);\">GB additional storage</span>\n"
+"<span style=\"font-size:12px;color:var(--muted);\">GB additional storage (min. 10 GB)</span>\n"
 "                                    <span id=\"storageCustomPriceDisplay\" style=\"font-size:14px;font-weight:700;color:var(--teal);margin-left:auto;\"/>"
 msgstr ""
-"<span style=\"font-size:12px;color:var(--muted);\">Name</span><span "
-"id=\"storageCustomPriceDisplay\" style=\"font-size:14px;font-"
-"weight:700;color:var(--teal);margin-left:auto;\"></span>"
+"<span style=\"font-size:12px;color:var(--muted);\">Lưu trữ thêm GB (min 10 "
+"GB)</span><span id=\"storageCustomPriceDisplay\" style=\"font-"
+"size:14px;font-weight:700;color:var(--teal);margin-left:auto;\"></span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -1814,10 +2068,10 @@ msgstr "<span style=\"font-size:12px;color:var(--muted);\">Giá cả mỗi GB:</
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<span style=\"font-size:12px;color:var(--muted);\">Selected:</span>\n"
-"                                    <strong id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">5 GB</strong>"
+"                                    <strong id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">10 GB</strong>"
 msgstr ""
 "<span style=\"font-size:12px;color:var(--muted);\">Đã chọn:</span><strong "
-"id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">5 "
+"id=\"storageSummaryGb\" style=\"font-size:14px;color:var(--navy);\">10 "
 "GB</strong>"
 
 #. module: s_odoo_saas_master
@@ -1826,7 +2080,7 @@ msgid ""
 "<span style=\"font-size:12px;color:var(--muted);\">Workers after upgrade:</span>\n"
 "                                <strong id=\"workersSummaryTotal\" style=\"font-size:15px;color:var(--navy);\">--</strong>"
 msgstr ""
-"<span style=\"font-size:12px;color:var(--muted);\">Công nhân sau khi nâng "
+"<span style=\"font-size:12px;color:var(--muted);\">Worker sau khi nâng "
 "cấp:</span><strong id=\"workersSummaryTotal\" style=\"font-"
 "size:15px;color:var(--navy);\">--</strong>"
 
@@ -1885,6 +2139,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "<span style=\"font-weight:700;color:var(--muted)\">.</span>"
 msgstr "<span style=\"font-weight:700;color:var(--muted)\">.</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Annual price</span>"
+msgstr "<span>Giá hàng năm</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2037,6 +2296,11 @@ msgid "<span>My Live Instance</span><strong class=\"ok\">Operational</strong>"
 msgstr "<span>Bản chất sống của tôi</span><strong class=\"ok\">Hoạt động</strong>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Next renewal date</span>"
+msgstr "<span>Ngày thay đổi</span>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_view_form
 msgid "<span>Odoo Config</span>"
 msgstr "<span>Cấu hình Odoo</span>"
@@ -2051,6 +2315,11 @@ msgstr "<span>Comment</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Outstanding</span>"
 msgstr "<span>Xuất sắc</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Payment status</span>"
+msgstr "<span>Trạng thái thanh toán</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -2090,7 +2359,6 @@ msgstr "<span>Kiểu thu</span><strong>CNAME</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Renews on</span>"
 msgstr "<span>Comment</span>"
 
@@ -2115,6 +2383,16 @@ msgstr "<span>IP máy phục vụ</span>"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "<span>Storage</span>"
 msgstr "<span>Lưu trữ</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Subscription price</span>"
+msgstr "<span>Giá dưới quyền</span>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<span>Subscription start</span>"
+msgstr "<span>Đăng ký</span>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2216,6 +2494,24 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Change Database "
+"Name</strong>"
+msgstr ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Đổi tên co sở dữ "
+"liệu</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Database Access — Test / "
+"Staging</strong>"
+msgstr ""
+"<strong style=\"font-size:13px;color:var(--navy)\">Truy cập cơ sở dữ liệu — "
+"Kiểm tra / định vị trí</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
 "<strong style=\"font-size:13px;color:var(--navy)\">Odoo Master "
 "Password</strong>"
 msgstr "<strong style=\"font-size:13px;color:var(--navy)\">Comment</strong>"
@@ -2242,11 +2538,12 @@ msgstr ""
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
-"<strong>1 dedicated worker</strong><small>Isolated compute you can upgrade "
-"as your team grows.</small>"
+"<strong>2 dedicated workers</strong><small>A single worker cannot run Odoo "
+"reliably — two are included, upgrade anytime.</small>"
 msgstr ""
-"<strong>1 nhân viên tận tụy</strong><small>Tính toán tách biệt bạn có thể "
-"nâng cấp khi đội của bạn phát triển.</small>"
+"<strong>2 Các công nhân tận tụy</strong><small>Một công nhân độc thân không "
+"thể chạy Odoo đáng tin cậy — trong đó có hai người, nâng cấp bất cứ lúc "
+"nào.</small>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2293,6 +2590,11 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Activate the DB name and DB filter again</strong>"
+msgstr "<strong>Kích hoạt lại tên máy DB và bộ lọc DB</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<strong>Active</strong>\n"
 "                                    <span class=\"healthy\">No expiry</span>"
@@ -2321,7 +2623,7 @@ msgid ""
 "<strong>Almost there!</strong>\n"
 "                                <span>Your new workers will be live in just a moment.</span>"
 msgstr ""
-"<strong>Sắp tới rồi!</strong><span>Công nhân mới của anh sẽ sống ngay "
+"<strong>Sắp tới rồi!</strong><span>Worker mới của anh sẽ sống ngay "
 "thôi.</span>"
 
 #. module: s_odoo_saas_master
@@ -2389,10 +2691,20 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Delete the current database first</strong>"
+msgstr "<strong>Xoá cơ sở dữ liệu hiện thời trước</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "<strong>Developer</strong> — only <b>GitHub</b>, <b>GitHub Sync &amp; Deploy</b>, <b>Shell</b> (instance + PostgreSQL) and <b>Odoo Logs</b> of this instance.<br/>\n"
 "                                    <strong>Administrator</strong> — full access to this instance: billing, workers, storage, backups, GitHub, Shell and all logs."
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Duplicate or restore your test database</strong>"
+msgstr "<strong>@ info/ rich</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -2448,11 +2760,21 @@ msgstr ""
 "được triển khai với cảm giác đầy đủ. Trang này sẽ tự động cập nhật.</span>"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>If the restore does not succeed</strong>"
+msgstr "<strong>Nếu việc khôi phục không thành công</strong>"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_layout_inherit_saas
 msgid ""
 "<strong>Instant Automated Setup</strong>\n"
 "                            <small>Isolated Docker container provisioned in seconds</small>"
 msgstr "<strong>Cài đặt tự động ngay</strong><small>Comment</small>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Log in again</strong>"
+msgstr "<strong>Lại đăng nhập</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -2485,6 +2807,28 @@ msgid ""
 msgstr ""
 "<strong>Ghi chú:</strong> Chỉ người dùng Chủ SaaS có thể sửa đổi đường dẫn SSL.\n"
 "Hãy liên lạc với SaaS Master nếu bạn cần thay đổi."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Open the database manager</strong>"
+msgstr "<strong>Mở trình quản lý cơ sở dữ liệu</strong>"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong>Remove the DB filter and DB name</strong>\n"
+"                                                <small>\n"
+"                                                    Click <b>Remove DB Filter &amp; DB Name</b> below. This writes\n"
+"                                                    <span class=\"restore-code\">#db_name</span> and\n"
+"                                                    <span class=\"restore-code\">#dbfilter</span> (commented out)\n"
+"                                                    into the instance's <b>odoo.conf</b> and restarts Odoo.\n"
+"                                                </small>"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "<strong>Restore your backup file</strong>"
+msgstr "<strong>Phục hồi tập tin sao lưu của bạn</strong>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -2537,6 +2881,19 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"<strong>Wait until the instance is up</strong>\n"
+"                                                <small>\n"
+"                                                    Do not open the database manager yet — wait for the\n"
+"                                                    <b>“Your instance is running”</b> confirmation (about 30 seconds).\n"
+"                                                </small>"
+msgstr ""
+"<strong>Đợi đến khi xong việc</strong><small>Chưa mở trình quản lý cơ sở dữ liệu — đợi\n"
+" <b>“ Trường hợp của anh chị đang chạy trên đường</b> Xác nhận (khoảng 30 giây).\n"
+" </small>"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid ""
@@ -2574,6 +2931,12 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "A one-time passwordless login session was generated for %s."
+msgstr "Phiên chạy đăng nhập không mật khẩu một lần đã được tạo ra cho %s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_backup.py:0
 msgid "A restore for this backup is already in progress."
 msgstr "Việc khôi phục lại bản sao lưu này đang diễn ra."
@@ -2582,11 +2945,6 @@ msgstr "Việc khôi phục lại bản sao lưu này đang diễn ra."
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "ACCOUNT EMAIL"
 msgstr "NHÓM VIỆT HOÁ KDEEMAIL OF TRANSLATORS"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "ADD WORKERS"
-msgstr "CÔNG VIỆC A - ĐAM"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__system_packages
@@ -2657,6 +3015,17 @@ msgstr "Hành động"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Activating rewrites odoo.conf with\n"
+"                                        <span class=\"restore-code\">db_name</span> and\n"
+"                                        <span class=\"restore-code\">dbfilter</span> and restarts Odoo (about 30 seconds)."
+msgstr ""
+"Kích hoạt viết lại odoo.conf với\n"
+" <span class=\"restore-code\">db  name</span> và\n"
+" <span class=\"restore-code\">dbSQL</span> và khởi động lại Odoo (khoảng 30 giây)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Activating subscription, applying resources, and restarting Odoo..."
 msgstr "Kích hoạt đăng ký, áp dụng tài nguyên, và khởi động lại Odoo..."
 
@@ -2695,7 +3064,7 @@ msgstr "Người dùng hoạt động"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 msgid "Active Workers"
-msgstr "Công nhân tích cực"
+msgstr "Worker tích cực"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__activity_ids
@@ -2734,10 +3103,33 @@ msgid "Add Instance"
 msgstr "Thêm mục nhập"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Add a <b>pip</b> library and/or <b>APT</b> system packages (for\n"
+"                            example <b>python3-xmlsec</b>). Both are baked into your instance's\n"
+"                            <b>Docker image</b>: the Dockerfile gets a <b>pip install</b> and/or\n"
+"                            <b>apt-get install</b> line, the image is rebuilt and the instance is\n"
+"                            recreated from it. That keeps the packages available after a restart,\n"
+"                            a redeploy and even a container recreate."
+msgstr ""
+"Thêm <b>Tiếng Trung Quốc</b> thư viện và/hoặc <b>APT</b> Gói hệ thống (cho\n"
+"ví dụ <b>python3- xmlsec</b>). Cả hai đều được nướng vào trường hợp của bạn\n"
+" <b>Docker ảnh</b>: tập tin Docker nhận được a <b>ống cài đặt</b> và/hoặc\n"
+" <b>apt-get install</b> dòng, ảnh được xây dựng lại và thể hiện\n"
+"Được tái tạo từ nó. Giữ các gói sẵn sàng sau khi khởi động lại,\n"
+"Một vụ nổ lại và thậm chí là tái tạo container."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Add a notification email address first, then send the test again."
 msgstr "Trước tiên hãy thêm địa chỉ thư điện tử, rồi gửi lại bài kiểm tra."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Add at least one worker to upgrade."
+msgstr "Thêm ít nhất một Worker để nâng cấp."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -2753,6 +3145,17 @@ msgstr "Thêm các tiến trình lao động vào"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Add-on"
 msgstr "Thêm vào"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
+msgid "Additional Worker Price"
+msgstr "Giá công việc thêm"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__saas_worker_price_monthly
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__saas_worker_price_monthly
+msgid "Additional Worker Price (per month)"
+msgstr "Giá thêm nhân công (tháng)"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_custom_addon__addon_path
@@ -2850,6 +3253,7 @@ msgid "Already up to date"
 msgstr "Mới cập nhật"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__amount
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -2872,12 +3276,23 @@ msgstr "Gặp lỗi khi tạo tiến trình thử ra. Xin hãy thử lại."
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "An instance can run between 1 and %s workers."
-msgstr "Một ví dụ có thể chạy giữa 1 và %s công nhân."
+msgstr "Một ví dụ có thể chạy giữa 1 và %s Worker."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_subscription_upgrade_upgrade_order_type_uniq
+msgid "An upgrade order can only be tracked once per resource type."
+msgstr "Lệnh nâng cấp chỉ có thể theo dõi một lần mỗi kiểu tài nguyên."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Annual"
+msgstr "Hằng năm"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Annual &amp;middot; Save 15%"
+msgid "Annual &amp;middot; billed yearly"
 msgstr ""
 
 #. module: s_odoo_saas_master
@@ -2904,6 +3319,17 @@ msgstr "Áp dụng"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_template__ecom_category_id
 msgid "App. Category"
 msgstr "Phụ đề"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__applied
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+msgid "Applied"
+msgstr "Ứng dụng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__applied_date
+msgid "Applied On"
+msgstr "Áp dụng"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_form
@@ -2938,6 +3364,12 @@ msgid ""
 msgstr ""
 "Áp dụng thiết lập nhân viên và chỉ tiêu bộ nhớ, rồi khởi động lại thể hiện "
 "của bạn. Chỉ mất vài giây thôi."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Applying…"
+msgstr "Đang áp dụng.."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -3251,6 +3683,11 @@ msgid "Backup file not found on disk: %s"
 msgstr "Không tìm thấy tập tin sao lưu trên đĩa: %s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Backup files"
+msgstr "Sao lưu tập tin"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Backup interrupted"
@@ -3284,14 +3721,35 @@ msgid "Backups &amp; Recovery"
 msgstr ""
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Baked into image %s"
+msgstr "Đã nướng thành ảnh %s"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__base_image
 msgid "Base Image"
 msgstr "Ảnh cơ bản"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_plan_product_id
+msgid "Base Plan"
+msgstr "Kế hoạch cơ bản"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_price_monthly
+msgid "Base Subscription Price (Monthly)"
+msgstr "Chi phí dưới quyền cơ bản"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__base_image
 msgid "Base image used as FROM, e.g. 'odoo:19.0'."
 msgstr "Ảnh cơ bản được dùng là FROM, e.g. 'odoo:19.0'."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Base subscription"
+msgstr "Đăng ký cơ sở"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_blocked_domain__based_domain_id
@@ -3323,6 +3781,26 @@ msgid "Before"
 msgstr "Trước"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_upgrade_months
+msgid "Billed Months"
+msgstr "Hàng tháng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__unit_price
+msgid "Billed Unit Price"
+msgstr "Giá đơn vị"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Billed for the subscription period"
+msgstr "Hóa đơn cho thời gian đăng ký"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Billed period"
+msgstr "Chu kỳ Billed"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__billing
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.myodoo_topbar
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -3331,19 +3809,24 @@ msgid "Billing"
 msgstr "Thanh toán"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
+msgid "Billing - My Odoo SH"
+msgstr "Billing - Odoo của tôi"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.billing_address_row_inherit_saas
 msgid "Billing Address"
 msgstr "Địa chỉ"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Billing period"
+msgstr "Chu kỳ tính tiền"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_note
 msgid "Billing space"
 msgstr "Miền màu"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
-msgid "Billing — myodoo.nc"
-msgstr "Billing — myodoo.c"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_blocked_domain_view_form
@@ -3561,9 +4044,18 @@ msgstr "Thôi nhập"
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__state__cancel
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_domain_name__state__cancel
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__cancelled
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
 msgid "Cancelled"
 msgstr "Đã hủy"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"Cannot change the database name: the %(key)s setting is missing from the "
+"Odoo version configuration."
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -3646,6 +4138,12 @@ msgstr "Không tìm thấy đường dẫn tới tập tin cấu hình."
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Cannot reach %(url)s: %(error)s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid ""
 "Cannot write backup file to '%s'. Ensure the Odoo process can write to this "
 "directory."
@@ -3712,6 +4210,19 @@ msgid ""
 msgstr ""
 "Hãy chọn phương pháp thanh toán bảo mật bên dưới để hoàn tất việc đăng ký và"
 " cung cấp chứng nhận của bạn."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Click <b>Restore Database</b>, choose the backup file you\n"
+"                                            downloaded from the <b>Backups</b> tab (the <b>.zip</b> keeps\n"
+"                                            the filestore, <b>.sql</b>/<b>.dump</b> are also accepted),\n"
+"                                            then set the <b>Database Name</b> to exactly"
+msgstr ""
+"Ấn <b>Cơ sở dữ liệu phục hồi</b>chọn tập tin sao lưu\n"
+"Tải về từ <b>Sao lưu</b> tab (the <b>. khách hàng</b> giữ\n"
+"Các hồ sơ, <b>.sql</b>/<b>.dump</b> cũng được chấp nhận\n"
+"Sau đó đặt các <b>Tên co sở dữ liệu</b> Chính xác"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3808,6 +4319,13 @@ msgstr ""
 "%s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid ""
+"Comment db_name and dbfilter out of odoo.conf so /web/database/manager lists"
+" every database (test / staging restore)."
+msgstr "Comment."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__commits
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Commits"
@@ -3861,6 +4379,7 @@ msgstr "Các công ty"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__company_id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__company_id
 msgid "Company"
 msgstr "Công ti"
 
@@ -3922,9 +4441,35 @@ msgid "Connect"
 msgstr "Kết nối"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_admin_login
+msgid "Connect Admin Login"
+msgstr "Đăng nhập Quản trị Kết nối"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Connect GitHub"
 msgstr "Kết nối GitHub"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid "Connect Odoo"
+msgstr "Kết nối Odoo"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_session_sid
+msgid "Connect Session"
+msgstr "Kết nối"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_token
+msgid "Connect Token"
+msgstr "Kết nối"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_token_expiry
+msgid "Connect Token Expiry"
+msgstr "Name"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -3971,6 +4516,12 @@ msgid "Connected as"
 msgstr "Đã kết nối"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Connected as %s"
+msgstr "Đã kết nối thành %s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Connected as @"
 msgstr "Kết nối"
@@ -4009,8 +4560,11 @@ msgid "Contacts"
 msgstr "Contact & mới"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_compose_volume_view_tree
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Container"
 msgstr "Chứa"
 
@@ -4041,9 +4595,30 @@ msgid "Container Path"
 msgstr "Đường dẫn ngăn chứa"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__container_ref
+msgid "Container Reference"
+msgstr "Comment"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_new
+msgid "Container Subscription"
+msgstr "Comment"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_docker_container__container_type
 msgid "Container Type"
 msgstr "Comment"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Container Upgrade"
+msgstr "Nâng cấp chứa"
+
+#. module: s_odoo_saas_master
+#: model:ir.actions.act_window,name:s_odoo_saas_master.saas_subscription_upgrade_action
+#: model:ir.ui.menu,name:s_odoo_saas_master.saas_menu_subscription_upgrade
+msgid "Container Upgrades"
+msgstr "Nâng cấp chứa"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -4065,8 +4640,19 @@ msgstr "Tiếp tục"
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Copied to clipboard."
+msgstr "Sao chép thành bảng nháp."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Copied."
 msgstr "Bắt chước."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Copy"
+msgstr "Chép"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4093,8 +4679,26 @@ msgstr "Không thể thêm thành viên nhóm."
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not change the database access mode."
+msgstr "Không thể thay đổi chế độ truy cập cơ sở dữ liệu."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Could not change the database name."
+msgstr "Không thể thay đổi tên cơ sở dữ liệu."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Could not change the login email."
 msgstr "Không thể thay đổi email đăng nhập."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not compute the session token of %(instance)s: %(error)s"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -4107,6 +4711,18 @@ msgstr "Không thể lấy bản ghi: %s"
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Could not load the library list."
 msgstr "Không thể nạp danh sách thư viện."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not open a session on %(url)s: %(error)s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Could not refresh the session of %(instance)s: %(error)s"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -4219,6 +4835,7 @@ msgstr "Tạo"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__create_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__create_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__create_uid
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__create_uid
 msgid "Created by"
 msgstr "Tạo bởi"
 
@@ -4258,6 +4875,7 @@ msgstr "Tạo bởi"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__create_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__create_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__create_date
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__create_date
 msgid "Created on"
 msgstr "Tạo vào"
 
@@ -4267,9 +4885,30 @@ msgid "Creating Your Trial Instance"
 msgstr "Tạo ra sự cố gắng"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__currency_id
+msgid "Currency"
+msgstr "Tiền tệ"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_duplicate_wizard__current_subdomain
 msgid "Current Subdomain"
 msgstr "Phần phụ hiện tại"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Current resources"
+msgstr "Nguồn tài nguyên hiện thời"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Currently"
+msgstr "Hiện tại"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Currently "
+msgstr "Hiện tại"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4296,8 +4935,8 @@ msgstr "Thêm"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Custom Amount (GB)"
-msgstr "Tự chọn Amount (GB)"
+msgid "Custom Amount (GB) — minimum 10 GB"
+msgstr "Tự chọn"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__docker_image_id
@@ -4336,6 +4975,7 @@ msgstr "Tự chọn miền + phần phụ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__partner_id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__partner_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_invoice_document
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_document
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
@@ -4351,6 +4991,53 @@ msgstr "Địa chỉ Mạng riêng"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "DATABASE (pgdata)"
 msgstr "Cơ sở dữ liệu (pgdata)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "DATABASE NAME"
+msgstr "TÊN DATABASE"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB filter removed — wait until the instance is running, then duplicate or "
+"restore your test database."
+msgstr ""
+"Bộ lọc DB đã gỡ bỏ — đợi cho đến khi tiến hành tiến trình, rồi sao chép hoặc"
+" phục hồi cơ sở dữ liệu thử nghiệm."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB filter removed. Wait until the instance is running, then duplicate or "
+"restore your test database."
+msgstr ""
+"Bộ lọc DB đã gỡ bỏ. Đợi đến khi tiến hành tiến hành tiến trình, rồi sao chép"
+" hoặc phục hồi cơ sở dữ liệu kiểm tra."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "DB name and DB filter activated"
+msgstr "Comment"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"DB name and DB filter activated — Odoo is restarting and locked to your "
+"database."
+msgstr ""
+"Tên DB và bộ lọc DB được kích hoạt — Odoo đang khởi động lại và khóa vào cơ "
+"sở dữ liệu của bạn."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "DB name and DB filter activated. Odoo is restarting."
+msgstr "Tên DB và bộ lọc DB đã kích hoạt. Đang khởi động lại."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -4434,6 +5121,30 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Database name changed"
+msgstr "Tên co sở dữ liệu đã thay đổi"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Database name updated."
+msgstr "Tên co sở dữ liệu được cập nhật."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Database name updated. Odoo is restarting."
+msgstr "Tên co sở dữ liệu được cập nhật. Đang khởi động lại."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Database query failed on %(instance)s: %(error)s"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_pserver.py:0
 msgid "Database restore error for %s: %s"
 msgstr "Lỗi phục hồi co sở dữ liệu cho %s: %s"
@@ -4504,7 +5215,7 @@ msgstr "Cơ sở hạ tầng được hiến dâng"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Dedicated workers"
-msgstr "Những công nhân đã dâng mình"
+msgstr "Workers chuyên dụng"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -4805,6 +5516,7 @@ msgstr "Thảo luận"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__display_name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__display_name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__display_name
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__display_name
 msgid "Display Name"
 msgstr "Hiện tên"
 
@@ -4895,6 +5607,12 @@ msgstr "Lỗi xây dựng ảnh Docker trên: %s"
 #: model:ir.model.constraint,message:s_odoo_saas_master.constraint_saas_docker_image_image_name_uniq
 msgid "Docker image name must be unique!"
 msgstr "Tên ảnh chơi gõ phải là duy nhất!"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Docker returned no output."
+msgstr "Docker không trả lại kết xuất."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__dockerfile_content
@@ -5080,8 +5798,13 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "EXTRA STORAGE (GB)"
-msgstr "DUNG LƯỢNG LƯU TRỮ THÊM (GB)"
+msgid "EXTRA STORAGE (GB) · MINIMUM 10 GB"
+msgstr "[TIẾNG CÒI] [GB] .MINIMM 10 GB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "EXTRA WORKERS TO ADD (MAX"
+msgstr "MỘT SỐ CÔNG VIỆC ĐỂ ADD (MAX"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5172,6 +5895,14 @@ msgid "Enter Client ID and Client Secret"
 msgstr "Nhập mã nhận diện khách hàng và mật mã khách hàng"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Enter a Python package, a system package, or both."
+msgstr "Hãy nhập một gói Python, một gói hệ thống, hoặc cả hai."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Enter a domain like erp.mycompany.com or mycompany.com."
@@ -5193,10 +5924,8 @@ msgid "Enter a valid email address."
 msgstr "Nhập một địa chỉ email hợp lệ."
 
 #. module: s_odoo_saas_master
-#. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Enter the name of the Python library to install."
 msgstr "Hãy nhập tên của thư viện Python cần cài đặt."
 
@@ -5347,9 +6076,20 @@ msgid "Extra Addons"
 msgstr "Thêm"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_extra
+msgid "Extra Apps"
+msgstr "Ứng dụng phụ"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_extra_storage_product_template
 msgid "Extra Storage (per GB)"
 msgstr "Lưu trữ thêm (per GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_company__saas_storage_price_per_gb
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_config_settings__saas_storage_price_per_gb
+msgid "Extra Storage Price (per GB / month)"
+msgstr "Thêm giá trị lưu trữ (per GB / tháng)"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -5358,10 +6098,15 @@ msgid "Extra storage added to %s"
 msgstr "Kho thêm vào %s"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
+msgid "Extra worker:"
+msgstr "Công nhân phụ:"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "Extra workers added to %s"
-msgstr "Công nhân thêm vào %s"
+msgstr "Worker thêm vào %s"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -5490,8 +6235,8 @@ msgstr ""
 msgid ""
 "Full access: billing, workers, storage, backups, GitHub, Shell and logs."
 msgstr ""
-"Truy cập đầy đủ: hóa đơn, công nhân, kho lưu trữ, dự phòng, GitHub, Shell và"
-" nhật ký."
+"Truy cập đầy đủ: hóa đơn, Worker, kho lưu trữ, dự phòng, GitHub, Shell và "
+"nhật ký."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__image_name
@@ -5507,6 +6252,8 @@ msgid "Full name"
 msgstr "Tên đầy đủ"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
@@ -5517,6 +6264,11 @@ msgstr "Tên đầy đủ"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "GB"
 msgstr "GB"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB ("
+msgstr "GB ("
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
@@ -5533,6 +6285,11 @@ msgstr "GB phân phát"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "GB included · +"
 msgstr "GB bao gồm · +"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "GB included)"
+msgstr "GB bao gồm"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -5767,6 +6524,11 @@ msgid "Give people access to"
 msgstr "Cho mọi người truy cập vào"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Go to"
+msgstr "Tới"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Go to My Instances"
 msgstr "Hãy đến với những gì tôi thể hiện"
@@ -5792,6 +6554,7 @@ msgstr "Rất vui được biết"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_version_config_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Group By"
 msgstr "Nhóm theo"
 
@@ -5827,6 +6590,12 @@ msgid "Here is the latest update about your hosting."
 msgstr "Đây là bản cập nhật mới nhất về người tổ chức."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Hide"
+msgstr "Ẩn"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "History"
 msgstr "Lịch sử"
@@ -5854,7 +6623,7 @@ msgid ""
 "5 backups "
 msgstr ""
 "Máy\n"
-"2 công nhân\n"
+"2 Worker\n"
 "5 Đi lưu trữ\n"
 "5 bản sao lưu"
 
@@ -5870,8 +6639,8 @@ msgstr "Xem toàn cảnh máy"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
-msgid "Hosting Overview — myodoo.nc"
-msgstr "Tiếp đón Overview — Myodoo.c"
+msgid "Hosting Overview - My Odoo SH"
+msgstr "Tiếp đón toàn cảnh - Odoo SH"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_history__source
@@ -5889,6 +6658,15 @@ msgstr "Nguồn nhân lực"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_cancel_wizard_form
 msgid "I am sure delete the instance"
 msgstr "Tôi chắc chắn xóa các trường hợp"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"I understand that Odoo will restart and that the existing database\n"
+"                                    will not be renamed."
+msgstr ""
+"Tôi được biết rằng Odoo sẽ khởi động lại cơ sở dữ liệu tồn tại\n"
+"sẽ không được đổi tên."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__id
@@ -5926,8 +6704,14 @@ msgstr "Tôi chắc chắn xóa các trường hợp"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__id
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__id
 msgid "ID"
 msgstr "ID"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "INSTANCE / DOMAIN"
+msgstr "DÂN SỐ / CÂU HỎI"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -6072,22 +6856,34 @@ msgid "Included + audit history"
 msgstr "Đã bao gồm + lịch sử kiểm toán"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_storage_gb
+msgid "Included Storage (GB)"
+msgstr "Lưu trữ đã bao gồm (GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__base_workers
+msgid "Included Workers"
+msgstr "Worker"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"Includes 5 GB base storage &amp;middot; workers &amp; extra storage billed "
-"below"
+"Includes 2 workers &amp; 5 GB base storage &amp;middot; extra resources "
+"billed below"
 msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Increase the values below to upgrade your instance."
-msgstr "Tăng giá trị bên dưới để nâng cấp thể hiện."
+msgid ""
+"Increase the values below to upgrade your instance (annual plans only)."
+msgstr ""
+"Tăng giá trị bên dưới để nâng cấp thể hiện (chỉ lên kế hoạch hàng năm)."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Increase workers or storage to upgrade."
-msgstr "Tăng công nhân hoặc kho lưu trữ để nâng cấp."
+msgstr "Tăng Worker hoặc kho lưu trữ để nâng cấp."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__level__info
@@ -6123,17 +6919,17 @@ msgstr "Cài đặt Module"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Install Python Library"
-msgstr "Cài đặt Thư viện Python"
+msgid "Install Python &amp; System Packages"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"Install extra Python packages (pip) inside your instance and keep them in "
-"requirements.txt."
+"Install extra Python (pip) and system (apt) packages in your instance. Both "
+"are baked into the Docker image."
 msgstr ""
-"Cài đặt các gói Python thêm (pip) bên trong ví dụ của bạn và giữ chúng trong"
-" yêu cầu.txt."
+"Cài đặt các gói Python thêm (pip) và hệ thống (pt) trong ví dụ của bạn. Cả "
+"hai đều được nướng thành hình Docker."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6161,8 +6957,13 @@ msgstr "Đã cài đặt"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Installed libraries"
-msgstr "Các thư viện đã cài đặt"
+msgid "Installed Python packages"
+msgstr "Các gói Python đã cài đặt"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Installed system packages"
+msgstr "Các gói hệ thống đã cài đặt"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6171,6 +6972,7 @@ msgid "Installing…"
 msgstr "Đang cài đặt.."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__instance_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__instance_id
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_history__instance_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
@@ -6283,6 +7085,7 @@ msgstr "Phải triển khai lại quân đội."
 #. module: s_odoo_saas_master
 #. odoo-javascript
 #. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
 #: code:addons/s_odoo_saas_master/models/saas_portal_team.py:0
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Instance not found."
@@ -6335,6 +7138,15 @@ msgid "Instance suspended"
 msgstr "Comment"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
+msgid ""
+"Instance this image is built for: the Odoo version and the edition are "
+"copied from it."
+msgstr ""
+"Hình ảnh này được xây dựng cho: phiên bản Odoo và phiên bản được sao chép từ"
+" nó."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Instance will be hosted at this URL."
 msgstr "Định dạng:."
@@ -6364,9 +7176,25 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"Invalid database name. Use only letters, digits, underscores and hyphens, "
+"start with a letter or an underscore, and keep it under 63 characters."
+msgstr ""
+"Tên cơ sở dữ liệu không hợp lệ Chỉ dùng chữ cái, chữ số, dấu gạch nối và dấu"
+" gạch nối, bắt đầu với chữ hoặc lời nhấn mạnh, và giữ chữ dưới 63 chữ cái."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Invalid library name."
 msgstr "Tên thư viện không hợp lệ."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Invalid system package name."
+msgstr "Tên gói hệ thống không hợp lệ."
 
 #. module: s_odoo_saas_master
 #: model:product.public.category,name:s_odoo_saas_master.product_public_category_inventory
@@ -6470,17 +7298,17 @@ msgid "Jump to the newest output"
 msgstr "Nhảy đến đầu ra mới nhất"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Keep this exact instance / domain — do not change it."
+msgstr "Đừng thay đổi trường hợp này."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_config__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_resource_package_line__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_version_config__name
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__name
 msgid "Key"
 msgstr "Khóa:"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "LIBRARY NAME"
-msgstr "SONG SONG"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -6498,9 +7326,19 @@ msgid "Last Backup"
 msgstr "Sao lưu cuối"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__connect_last_at
+msgid "Last Connect"
+msgstr "Kết nối"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_redeploy_date
 msgid "Last Redeploy Date"
 msgstr "Ngày làm việc lại cuối"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_renewal_date
+msgid "Last Renewal Date"
+msgstr "Comment"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__last_sync_message
@@ -6543,6 +7381,7 @@ msgstr "Comment"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__write_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__write_uid
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__write_uid
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__write_uid
 msgid "Last Updated by"
 msgstr "Cập nhật cuối bởi"
 
@@ -6582,6 +7421,7 @@ msgstr "Cập nhật cuối bởi"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package__write_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__write_date
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__write_date
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__write_date
 msgid "Last Updated on"
 msgstr "Cập nhật cuối cùng"
 
@@ -6606,12 +7446,6 @@ msgstr "Nguồn mới nhất lấy từ GitHub, theo từng dòng:"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_history__level
 msgid "Level"
 msgstr "Trình độ"
-
-#. module: s_odoo_saas_master
-#. odoo-javascript
-#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "Library installed."
-msgstr "Thư viện đã cài đặt."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -6770,8 +7604,8 @@ msgstr "Quản lý miền"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Manage Libraries"
-msgstr "Quản lý thư mục"
+msgid "Manage Packages"
+msgstr "Quản lý gói"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -6806,6 +7640,13 @@ msgstr "Quản lý IP"
 msgid ""
 "Manifest updated automatically: <b class=\"mono\" "
 "id=\"pythonLibPath\">/home/&lt;instance&gt;/requirements.txt</b>"
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Manifest updated automatically: <b class=\"mono\" "
+"id=\"systemPkgPath\">/home/&lt;instance&gt;/system-packages.txt</b>"
 msgstr ""
 
 #. module: s_odoo_saas_master
@@ -6941,6 +7782,8 @@ msgid "Monitoring"
 msgstr "Theo dõi"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__product_pricelist_item__subscription_type__monthly
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__subscription_type__monthly
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__subscription_type__monthly
@@ -6948,6 +7791,28 @@ msgstr "Theo dõi"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
 msgid "Monthly"
+msgstr "Hàng tháng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__monthly_unit_price
+msgid "Monthly Unit Price"
+msgstr "Giá trị đơn vị hàng tháng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_price_monthly
+msgid "Monthly price of the base subscription. Billed annually (× 12)."
+msgstr "Giá hàng tháng từ căn cứ đăng ký. Trả tiền mỗi năm (× 12)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Monthly subscriptions can be <b>renewed only</b>. To add storage (or workers), switch this\n"
+"                                instance to an <b>Annual &amp;middot; billed yearly</b> plan from the Renew &amp; Upgrade wizard."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__months_billed
+msgid "Months Billed"
 msgstr "Hàng tháng"
 
 #. module: s_odoo_saas_master
@@ -6979,13 +7844,18 @@ msgstr "Bản năng của tôi"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_my_instances
-msgid "My Instances — myodoo.nc"
-msgstr "Bản năng của tôi — Myodoo.c"
+msgid "My Instances - My Odoo SH"
+msgstr "Đồ chơi của tôi.."
 
 #. module: s_odoo_saas_master
 #: model:ir.ui.menu,name:s_odoo_saas_master.saas_menu_root
 msgid "My Odoo SH"
 msgstr "(Tiếng Tây Ban Nha)"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "NEW DATABASE NAME"
+msgstr "NEW DATABASE NAME OF TRANSLATORS"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -7000,13 +7870,8 @@ msgstr "TÊN"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "NUMBER OF WORKERS"
+msgid "NUMBER OF WORKERS (2 INCLUDED)"
 msgstr "SỐ NGƯỜI CÔNG VIỆC"
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "NUMBER OF WORKERS (TOTAL)"
-msgstr "SỐ NGƯỜI CÔNG VIỆC (TOTAL)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -7114,6 +7979,11 @@ msgid "Next Activity Type"
 msgstr "Kiểu hoạt động kế"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__next_renewal_date
+msgid "Next Renewal Date"
+msgstr "Ngày kế của Renewal"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_server__nginx_server_id
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_server_view_search
 msgid "Nginx Server"
@@ -7156,10 +8026,21 @@ msgid "No Index"
 msgstr "Không có chỉ mục"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__no_invoice
+msgid "No Invoice"
+msgstr "Không có hóa đơn"
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
-msgid "No Python library installed yet."
-msgstr "Chưa cài đặt thư viện Python."
+msgid "No Python package installed yet."
+msgstr "Chưa cài đặt gói Python."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "No active administrator was found in the database of %s."
+msgstr "Không tìm thấy nhà quản trị hoạt động trong cơ sở dữ liệu của %s."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7170,6 +8051,15 @@ msgstr "Chưa có ghi âm."
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "No backups created yet. Click above to create your first backup."
 msgstr "Chưa tạo bản sao lưu. Nhấn vào trên để tạo bản sao lưu đầu tiên."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"No business typology is configured: the Python library image cannot be "
+"built."
+msgstr ""
+"Không có cấu hình khả năng in riêng: không thể xây dựng ảnh thư viện Python."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__status__nochange
@@ -7183,6 +8073,19 @@ msgid "No container backup is linked to this database backup."
 msgstr ""
 "Không có bản sao lưu container nào được liên kết đến bản sao lưu cơ sở dữ "
 "liệu này."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "No data has been lost."
+msgstr "Không có dữ liệu nào bị mất."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No extra storage selected · any storage upgrade starts at 10 GB."
+msgstr ""
+"Không có kho lưu trữ thêm đã chọn. Bất kỳ nâng cấp lưu trữ nào bắt đầu lúc "
+"10 giờ GB."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -7247,6 +8150,25 @@ msgid "No server is available for this version yet."
 msgstr "Chưa có trình phục vụ nào cho phiên bản này."
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "No system package installed yet."
+msgstr "Chưa cài đặt gói hệ thống."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.actions.act_window,help:s_odoo_saas_master.saas_subscription_upgrade_action
+msgid "No upgrade yet"
+msgstr "Chưa nâng cấp"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"No upgrade yet. Upgrade workers or storage above to grow this container."
+msgstr ""
+"Vẫn chưa được nâng cấp. Nâng cấp Worker hoặc kho bên trên để phát triển "
+"container này."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid ""
@@ -7299,9 +8221,38 @@ msgid "Not Restored"
 msgstr "Chưa phục hồi"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Not set — open Instance Settings"
+msgstr "Chưa đặt — Thiết lập nội dung mở"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_port_view_search
 msgid "Not used"
 msgstr "Không dùng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__note
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Note"
+msgstr "Ghi chú"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Nothing to copy."
+msgstr "Không có gì để sao chép."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Nothing to renew for this container."
+msgstr "Không có gì để làm mới cái container này."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Nothing to upgrade. Add at least one worker or GB."
+msgstr "Không có gì để nâng cấp. Thêm ít nhất một Worker hoặc GB."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_res_partner__saas_notify_email
@@ -7400,15 +8351,17 @@ msgstr "Số Hành động"
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__workers_count
 msgid ""
 "Number of Odoo worker processes the instance runs with. Also drives the "
-"container memory allocation (2 GB soft / 2.5 GB hard per worker)."
+"container memory allocation (2 GB soft / 2.5 GB hard per worker). A single "
+"worker is not enough to run Odoo reliably, so the Standard plan starts at 2."
 msgstr ""
 "Số người làm công Odoo xử lý trường hợp này. Cũng ổ đĩa bộ nhớ mã hóa (GB "
-"mềm / 2.5 GB làm việc chăm chỉ)."
+"mềm / 2.5 GB làm việc chăm chỉ). Một công nhân đơn lẻ không đủ để chạy Odoo "
+"đáng tin cậy, nên kế hoạch chuẩn bắt đầu lúc 2 giờ."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_sale_order__workers_count
 msgid "Number of additional workers purchased on this order."
-msgstr "Số công nhân được mua thêm theo thứ tự này."
+msgstr "Số Worker được mua thêm theo thứ tự này."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__message_has_error_counter
@@ -7426,6 +8379,11 @@ msgid "Number of messages with delivery error"
 msgstr "Số lần thử lại:"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_sale_order__saas_upgrade_months
+msgid "Number of months billed on this upgrade order."
+msgstr "Số tháng tính theo yêu cầu nâng cấp này."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "Number of notification days before expiration date."
 msgstr "Số ngày thông báo trước hạn sử dụng."
@@ -7436,6 +8394,15 @@ msgid "Number of revoke odoo instance days after expiration date."
 msgstr "Số ngày bị hủy bỏ sau hạn sử dụng."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_workers
+msgid ""
+"Number of workers included in the base subscription. The Standard plan "
+"includes 2 workers (Odoo does not run reliably on a single worker)."
+msgstr ""
+"Số người làm việc trong căn cứ đăng ký dài hạn. Kế hoạch tiêu chuẩn gồm 2 "
+"công nhân (Odoo không chạy trên một công nhân)."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "OAuth Redirect ↗"
 msgstr "Name"
@@ -7444,6 +8411,11 @@ msgstr "Name"
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_ocr
 msgid "OCR"
 msgstr "NHẬN DẠNG KÍ TỰ"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "ODOO MASTER PASSWORD"
+msgstr "ODOO MASTER PSSWORD"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -7472,9 +8444,9 @@ msgid ""
 "company currency before being shown or billed."
 msgstr ""
 "Độ chính xác. Để trống (mặc định) để sử dụng giá bán sản phẩm là, trong tiền"
-" tệ công ty. Chỉ đặt một tiền tệ ở đây khi chương trình / công nhân / kho "
-"chứa giá cả được nhập vào một loại tiền tệ khác và phải được chuyển đổi sang"
-" tiền tệ công ty trước khi được hiển thị hoặc thanh toán."
+" tệ công ty. Chỉ đặt một tiền tệ ở đây khi chương trình / Worker / kho chứa "
+"giá cả được nhập vào một loại tiền tệ khác và phải được chuyển đổi sang tiền"
+" tệ công ty trước khi được hiển thị hoặc thanh toán."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__container_type__odoo
@@ -7645,6 +8617,12 @@ msgid "Odoo Versions"
 msgstr "Phiên bản Odoo"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Odoo connection opened"
+msgstr "Name"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_odoo_data_gb
 msgid "Odoo data — odoo-web-data (GB)"
 msgstr "Dữ liệu Odoo — odoo-web-data (GB)"
@@ -7657,15 +8635,15 @@ msgstr "Comment"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__edition
 msgid ""
-"Odoo edition baked into this image. Image tag code: 'cmy' = Community, 'ent'"
-" = Enterprise. Enterprise images embed the enterprise addons; community "
-"images are based on the official community image (enterprise addons mounted "
-"at runtime, if any)."
+"Odoo edition baked into this image. Defaults to the edition (version type) "
+"of the instance the image is built for. Enterprise images embed the "
+"enterprise addons; community images are based on the official community "
+"image (enterprise addons mounted at runtime, if any)."
 msgstr ""
-"Phiên bản Odoo được đóng thành hình này. Mã thẻ ảnh: 'cmy' = cộng đồng, "
-"'ent' = Enterprise. Hình ảnh của Enterprise gắn liền với công ty addons; "
-"hình ảnh cộng đồng được dựa trên hình ảnh cộng đồng chính thức (thành phần "
-"phụ lục được gắn vào lúc chạy, nếu có)."
+"Phiên bản Odoo được đóng thành hình này. Mặc định là phiên bản (kiểu phiên "
+"bản) của tiến trình in ảnh. Hình ảnh của Enterprise gắn liền với công ty "
+"addons; hình ảnh cộng đồng được dựa trên hình ảnh cộng đồng chính thức "
+"(thành phần phụ lục được gắn vào lúc chạy, nếu có)."
 
 #. module: s_odoo_saas_master
 #: model:mail.template,subject:s_odoo_saas_master.instance_expiration_notify_mail_template
@@ -7714,6 +8692,15 @@ msgid "Onboarding"
 msgstr "Đang trên máy bay"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"One APT package per line. They are installed with\n"
+"                                <b>apt-get install</b> in the same Dockerfile, before the pip step."
+msgstr ""
+"Mỗi đường dây một gói. Chúng đã được cài đặt với\n"
+" <b>apt-get install</b> trong cùng một tập tin Docker, trước bước ống."
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_website_hr_recruitment_product_template
 msgid "Online Jobs"
 msgstr "Công việc trên mạng"
@@ -7727,6 +8714,32 @@ msgid ""
 msgstr ""
 "Chỉ chấp nhận một tên thư viện bình thường, tùy chọn với một phiên bản — ví "
 "dụ \"pandas\", \"pandas [excel]\" hoặc \"python-escpos3.1\"."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Only needed when the backup must live under another name. Saving\n"
+"                                    rewrites the instance's <b>odoo.conf</b> (<b>db_name</b> and\n"
+"                                    <b>dbfilter</b>) and <b>redeploys / restarts</b> Odoo so the new name\n"
+"                                    is used immediately. The PostgreSQL database itself is not renamed —\n"
+"                                    after the restart, restore or create the database with the new name\n"
+"                                    in the database manager.\n"
+"                                    <br/>\n"
+"                                    <b>Tip:</b> if the old database is no longer needed, delete it in\n"
+"                                    the database manager <b>before</b> saving the new name — as soon as\n"
+"                                    odoo.conf uses the new name, the old one no longer appears in that\n"
+"                                    list (support can still remove it on request)."
+msgstr ""
+"Chỉ cần khi nào hỗ trợ phải sống dưới một cái tên khác. Đang lưu\n"
+"Viết lại thể hiện <b># Odoo.conf #</b> (Tiếng cười)<b>db  name</b> và\n"
+" <b>dbSQL</b>) và <b>& Khởi động lại</b> Tên mới của nó là Odoo\n"
+"được sử dụng ngay lập tức. Bản thân cơ sở dữ liệu PostgreSQL không được đổi tên —\n"
+"sau khi khởi chạy lại, phục hồi hoặc tạo cơ sở dữ liệu với tên mới\n"
+"trong bộ quản lý dữ liệu.\n"
+" <br/><b>Mẹo:</b> Nếu cơ sở dữ liệu cũ không còn cần thiết nữa, hãy xoá nó vào\n"
+"Bộ quản lý cơ sở dữ liệu <b>trước</b> lưu tên mới — càng sớm càng tốt\n"
+"Odoo.conf sử dụng tên mới, cũ không còn xuất hiện trong đó\n"
+"Danh sách (sự hỗ trợ vẫn có thể gỡ bỏ nó khi yêu cầu)."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7775,6 +8788,11 @@ msgid "Oops! Your payment was declined."
 msgstr "Oops! Tiền công của anh đã bị từ chối."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Open"
+msgstr "Mở"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid ""
 "Open Google Authenticator, Microsoft Authenticator or Authy, tap\n"
@@ -7792,8 +8810,8 @@ msgstr "Mở mục nhập"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Open Odoo"
-msgstr "Mở ô cửa"
+msgid "Open Instance Settings"
+msgstr "Thiết lập nội dung mở"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_my_instances
@@ -7813,6 +8831,11 @@ msgstr "Mở thẻ sao lưu"
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Open the hosting portal"
 msgstr "Mở cổng tổ chức"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
+msgid "Open this container's backend as its administrator, without a password"
+msgstr "Mở hậu phương của container này làm quản trị, không có mật khẩu"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7934,6 +8957,11 @@ msgid "PSQL Versions"
 msgstr "Phiên bản mặc định"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "PYTHON PACKAGES (PIP)"
+msgstr "NHỮNG CÂU CHUYỆN PYTHON (PIP)"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_resource_package_line__package_id
 msgid "Package"
 msgstr "Gói"
@@ -7943,6 +8971,18 @@ msgstr "Gói"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_resource_package_view_form
 msgid "Package Lines"
 msgstr "Đường gói"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Package installation failed: %s"
+msgstr "Việc cài đặt gói thất bại: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Packages installed."
+msgstr "Đã cài đặt gói hàng."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -7956,9 +8996,19 @@ msgid "Pagespeed Cache Path"
 msgstr "Đường dẫn bộ nhớ tạm tốc độ trang"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__paid
+msgid "Paid"
+msgstr "Trả"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__paid_user
 msgid "Paid User"
 msgstr "Người dùng trả tiền"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__partial
+msgid "Partially Paid"
+msgstr "Trả một phần"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8032,6 +9082,11 @@ msgid "Payment &amp;amp; Final Activation"
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__payment_status
+msgid "Payment Status"
+msgstr "Trạng thái thanh toán"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Payment Status — myodoo.nc"
 msgstr "Trạng thái thanh toán — Myodoo.c"
@@ -8047,9 +9102,30 @@ msgid "Payment confirmed!"
 msgstr "Đã xác nhận!"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Payment not confirmed yet."
+msgstr "Thanh toán chưa được xác nhận."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
 msgid "Payment status"
 msgstr "Trạng thái thanh toán"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+msgid "Pending"
+msgstr "Đang đợi"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__state__pending
+msgid "Pending Payment"
+msgstr "Đang đợi tiền lương"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Period & status"
+msgstr "Trạng thái chu kỳ"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__github_token
@@ -8085,6 +9161,17 @@ msgid "Placed on"
 msgstr "Đã đặt"
 
 #. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Plan "
+msgstr "PlanName"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_plan_product_id
+msgid "Plan product this container's base subscription is billed from."
+msgstr "Kế hoạch sản xuất của container này đã được thanh toán."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Plan:"
 msgstr "Kế hoạch:"
@@ -8102,6 +9189,12 @@ msgstr "Hãy nhập \"Có\" trong hộp xác nhận trước khi thôi tiến tr
 msgid ""
 "Please enter 'yes' in the confirmation box before restoring the backup."
 msgstr "Hãy nhập \"Có\" vào hộp xác nhận trước khi khôi phục dự phòng."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/portal.py:0
+msgid "Please enter a database name."
+msgstr "Hãy nhập tên cơ sở dữ liệu."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -8279,8 +9372,8 @@ msgstr "Chạy"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
-msgid "Pricing — myodoo.nc"
-msgstr "Chạy — Myodoo.c"
+msgid "Pricing - My Odoo SH"
+msgstr "(music)"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__private_key_id
@@ -8336,6 +9429,16 @@ msgstr ""
 #: model:product.template,name:s_odoo_saas_master.product_app_project_product_template
 msgid "Project"
 msgstr "Chổi"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__prorated
+msgid "Prorated"
+msgstr "Tiên đoán"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_upgrade_prorated
+msgid "Prorated Upgrade"
+msgstr "Nâng cấp đã cập nhật"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__public_key_id
@@ -8410,6 +9513,16 @@ msgstr ""
 "(s)."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__extra_storage_total
+msgid "Purchased Extra Storage (GB)"
+msgstr "Kho chứa thêm mua (GB)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__extra_workers_total
+msgid "Purchased Extra Workers"
+msgstr "Những Worker được mua thêm"
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_github_log__trigger__webhook
 msgid "Push (webhook)"
 msgstr "Đẩy ( biện pháp)"
@@ -8421,8 +9534,8 @@ msgstr "Python"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Python Libraries"
-msgstr "Thư mục Python"
+msgid "Python &amp; System Packages"
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_docker_image__python_requirements
@@ -8433,20 +9546,32 @@ msgstr "Yêu cầu Python"
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
-msgid "Python library installation failed: %s"
-msgstr "Việc cài đặt thư viện Python thất bại: %s"
-
-#. module: s_odoo_saas_master
-#. odoo-python
-#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Python library installed: %s"
 msgstr "Thư viện Python đã cài đặt: %s"
 
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python library removal failed: %s"
+msgstr "Việc gỡ bỏ thư viện Python thất bại: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
 msgid "Python library removed: %s"
 msgstr "Thư viện Python đã gỡ bỏ: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "Python libs - %s"
+msgstr "Libs Python - %s"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__quantity
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Quantity"
+msgstr "Số lượng"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__deployment_state__pending
@@ -8509,6 +9634,46 @@ msgstr "Hoạt động gần đây"
 #: model:product.template,name:s_odoo_saas_master.product_app_hr_recruitment_product_template
 msgid "Recruitment"
 msgstr "Chọn"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
+msgid ""
+"Recurring monthly price of one additional worker. Annual upgrades are billed"
+" × 12, prorated over the remaining subscription period. Leave 0 to use the "
+"'Workers' product price."
+msgstr ""
+"Lấy lại giá hàng tháng của thêm một Worker. Những bản nâng cấp hàng năm được"
+" tính trước trong thời gian đăng ký còn lại. Để lại 0 để sử dụng giá sản "
+"phẩm của nhân viên."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_company__saas_worker_price_monthly
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_config_settings__saas_worker_price_monthly
+msgid ""
+"Recurring monthly price of one additional worker. Leave empty (0) to use the"
+" 'Workers' product sale price. Annual upgrades are billed this amount × 12 "
+"(prorated over the remaining subscription period)."
+msgstr ""
+"Lấy lại giá hàng tháng của thêm một Worker. Để trống (0) để sử dụng giá bán "
+"sản phẩm của công ty. Chi phí nâng cấp hàng năm là × 12 (được phát hành "
+"trong thời gian còn lại)."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_company__saas_storage_price_per_gb
+#: model:ir.model.fields,help:s_odoo_saas_master.field_res_config_settings__saas_storage_price_per_gb
+msgid ""
+"Recurring monthly price of one extra GB of storage. Leave empty (0) to use "
+"the 'Extra Storage' product sale price. Annual upgrades are billed this "
+"amount × 12 (prorated over the remaining subscription period)."
+msgstr ""
+"Lấy lại giá hàng tháng là thêm một GB. Để trống (0) để sử dụng giá bán sản "
+"phẩm của \"Extra ente\". Chi phí nâng cấp hàng năm là × 12 (được phát hành "
+"trong thời gian còn lại)."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_subscription_upgrade__monthly_unit_price
+msgid "Recurring monthly price of one unit (worker or GB) before proration."
+msgstr "Lấy lại giá hàng tháng của một đơn vị (hoặc GB) trước khi tuyển dụng."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_redeploy_wizard_form
@@ -8593,6 +9758,7 @@ msgid "Redirects to GitHub for one-click authorization"
 msgstr "Chuyển đổi sang GitHub để có quyền nhấn chuột một lần"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__name
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_payment_status
@@ -8658,10 +9824,24 @@ msgid ""
 msgstr ""
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Renew Subscription"
+msgstr "Đăng ký lại"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Renew now"
 msgstr "Lại nữa rồi"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Renew now to unlock full cloud resources and keep your database permanent.\n"
+"                                                <b>Upgrades are allowed only on annual plans.</b>"
+msgstr ""
+"Tái lập lại bây giờ để mở khóa toàn bộ tài nguyên đám mây và giữ cơ sở dữ liệu của bạn vĩnh viễn.\n"
+" <b>Nâng cấp chỉ được phép theo kế hoạch hàng năm.</b>"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8671,6 +9851,12 @@ msgid ""
 msgstr ""
 "Tái tạo hoặc nâng cấp bây giờ để mở khóa nguồn tài nguyên đám mây đầy đủ và "
 "giữ cơ sở dữ liệu của bạn vĩnh viễn."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Renewal Quotation"
+msgstr "Chỉ trích Renewal"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8774,6 +9960,11 @@ msgid "Resource Packages"
 msgstr "Gói tài nguyên"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_upgrade
+msgid "Resource Upgrade"
+msgstr "Nâng cấp tài nguyên"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Resources"
 msgstr "Tài nguyên"
@@ -8800,7 +9991,7 @@ msgstr "Chạy lại"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Restart Odoo HTTP worker containers gracefully."
-msgstr "Khởi động lại các thùng công nhân HTTP một cách gọn gàng."
+msgstr "Khởi động lại các thùng Worker HTTP một cách gọn gàng."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -8822,10 +10013,16 @@ msgstr "Nhà hàng"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__restore
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_view_tree
 msgid "Restore"
 msgstr "Phục hồi"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Restore (or create) the database with exactly this name."
+msgstr "Phục hồi (hoặc tạo) cơ sở dữ liệu với tên chính xác."
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_action
@@ -8864,6 +10061,11 @@ msgstr "Comment"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_backup_restore_wizard__instance_id
 msgid "Restore To Instance"
 msgstr "Phục hồi nội dung"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Restore a Backup"
+msgstr "Phục hồi sự sao lưu"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_backup_restore_wizard_form
@@ -8905,6 +10107,17 @@ msgid "Restoring"
 msgstr "Đang phục hồi"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Restoring is done from your own instance, in Odoo's\n"
+"                                <b>database manager</b>. Use the values below — they are the domain,\n"
+"                                the master password and the database name this instance is locked to."
+msgstr ""
+"Phục hồi được thực hiện từ trường hợp riêng của bạn, trong Odoo's\n"
+" <b>Bộ quản lý cơ sở dữ liệu</b>.. sử dụng các giá trị bên dưới — chúng là các miền,\n"
+"mật khẩu chính và tên cơ sở dữ liệu bị khóa."
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_based_domain__reverse_ip
 msgid "Reverse IP"
 msgstr "IP ngược"
@@ -8925,8 +10138,8 @@ msgid ""
 "Review and manage your instance package, worker licences, and storage "
 "allocations before proceeding."
 msgstr ""
-"Hãy xem lại và quản lý kiện hàng, giấy phép công nhân và việc lưu trữ trước "
-"khi tiến hành."
+"Hãy xem lại và quản lý kiện hàng, giấy phép Worker và việc lưu trữ trước khi"
+" tiến hành."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -8940,8 +10153,8 @@ msgid ""
 "Review your selected cloud package, worker licences, and extra storage "
 "before checkout."
 msgstr ""
-"Hãy xem lại gói đám mây đã chọn, giấy phép công nhân và kho thêm trước khi "
-"đăng ký."
+"Hãy xem lại gói đám mây đã chọn, giấy phép Worker và kho thêm trước khi đăng"
+" ký."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -8968,6 +10181,12 @@ msgstr "Thu hút sự chú ý"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.res_config_settings_view_form
 msgid "Revoke Odoo Instance Days"
 msgstr "Hồi sinh những ngày tháng"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Rewriting odoo.conf and restarting Odoo…"
+msgstr "Viết lại odoo.conf và khởi động lại Odoo.."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9066,6 +10285,11 @@ msgid "STORAGE USED / LIMIT"
 msgstr "CÂU HỎI:"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "SYSTEM PACKAGES (APT)"
+msgstr "NHỮNG SYSTEM"
+
+#. module: s_odoo_saas_master
 #: model:uom.category,name:s_odoo_saas_master.product_uom_categ_saas_app
 msgid "SaaS App"
 msgstr "Phụ SaaS"
@@ -9088,6 +10312,13 @@ msgid "SaaS Blocked Domain"
 msgstr "Miền SaaS bị chặn"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_container_ref
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_container_ref
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__instance_id
+msgid "SaaS Container"
+msgstr "Comment"
+
+#. module: s_odoo_saas_master
 #: model:ir.model,name:s_odoo_saas_master.model_saas_docker_image
 msgid "SaaS Docker Image"
 msgstr "Ảnh của SaaS Docker"
@@ -9096,6 +10327,12 @@ msgstr "Ảnh của SaaS Docker"
 #: model:ir.model,name:s_odoo_saas_master.model_saas_instance_tag
 msgid "SaaS Instance Tag"
 msgstr "Thẻ bảo mật SaaS"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_order_type
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_order_type
+msgid "SaaS Invoice Type"
+msgstr "Name"
 
 #. module: s_odoo_saas_master
 #: model:res.groups,name:s_odoo_saas_master.group_odoo_saas_master
@@ -9374,6 +10611,11 @@ msgid "SaaS Service Mixin"
 msgstr "Name"
 
 #. module: s_odoo_saas_master
+#: model:ir.model,name:s_odoo_saas_master.model_saas_subscription_upgrade
+msgid "SaaS Subscription Upgrade"
+msgstr "Nâng cấp con SaaS"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_user_product_template
 msgid "SaaS User (legacy)"
 msgstr "Chủ đề"
@@ -9426,6 +10668,15 @@ msgstr "Sắp xếp hàng bán hàng"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Same value as <b>Instance Settings → My Instance →\n"
+"                                        Odoo Master Password</b>."
+msgstr ""
+"Giá trị bằng <b>Thiết lập nội dung của tôi\n"
+"Comment</b>."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Save &amp; Connect"
 msgstr ""
 
@@ -9438,6 +10689,30 @@ msgstr "Lưu thay đổi"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "Save notification settings"
 msgstr "Lưu thiết lập thông báo"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Saved. It will be applied the next time this instance is deployed."
+msgstr "Được cứu. Nó sẽ được áp dụng lần tiếp theo khi triển khai."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Saved. odoo.conf was rewritten — Odoo is restarting with the new database "
+"name."
+msgstr ""
+"Được cứu. doo.conf được viết lại — Odoo đang khởi động lại với tên cơ sở dữ "
+"liệu mới."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Saved. odoo.conf will use the new name the next time this instance is "
+"deployed."
+msgstr "Được cứu. doo.conf sẽ sử dụng tên mới trong lần tiếp theo tiến hành."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9605,15 +10880,15 @@ msgid "Settings"
 msgstr "Thiết lập"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
+msgid "Settings - My Odoo SH"
+msgstr "Thiết lập"
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Settings saved successfully."
 msgstr "Thiết lập đã lưu thành công."
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
-msgid "Settings — myodoo.nc"
-msgstr "Thiết lập — myodoo.c"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
@@ -9634,7 +10909,14 @@ msgstr "Phiên họp kết thúc. Nhấn vào để kết nối lại để bắ
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance_history__summary
 msgid "Short one-line value, e.g. '1 → 3 workers'."
-msgstr "Giá trị một dòng ngắn, e.g. '1' 3 công nhân'."
+msgstr "Giá trị một dòng ngắn, e.g. '1' 3 Worker'."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Show"
+msgstr "Hiện"
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -9730,6 +11012,21 @@ msgid "Stage"
 msgstr "Giai đoạn"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging"
+msgstr "Trạng thái"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging tab"
+msgstr "Thanh tác vụ"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Staging — Test Environment"
+msgstr "Hình ảnh động — Môi trường thử nghiệm"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_saas_plan_essential_product_template
 #: model:saas.instance.tag,name:s_odoo_saas_master.saas_instance_tag_standard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -9764,7 +11061,7 @@ msgstr "Bắt đầu nội dung"
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Start Odoo, workers and public web services?"
-msgstr "Khởi động Odoo, công nhân và dịch vụ mạng công cộng?"
+msgstr "Khởi động Odoo, Worker và dịch vụ mạng công cộng?"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -9785,6 +11082,12 @@ msgid "Start the instance before opening a shell."
 msgstr "Bắt đầu tiến hành trước khi mở vỏ trứng."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Start the instance first: odoo.conf is rewritten and Odoo restarted."
+msgstr ""
+"Bắt đầu ví dụ đầu tiên: odoo.conf được viết lại và Odoo được khởi động lại."
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
@@ -9799,12 +11102,19 @@ msgstr "Bắt đầu hỗ trợ.."
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_docker_container__state
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_domain_name__state
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_github_log__status
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__state
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Status"
 msgstr "Trạng thái"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__state_label
+msgid "Status Label"
+msgstr "Nhãn trạng thái"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__activity_state
@@ -9847,9 +11157,13 @@ msgid "Stopped"
 msgstr "Bị dừng"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__storage
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__upgrade_type__storage
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Storage"
 msgstr "Lưu trữ"
 
@@ -9880,11 +11194,22 @@ msgid "Storage Path"
 msgstr "Đường dẫn lưu trữ"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_storage
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.cart_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.checkout_inherit_saas
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.payment_inherit_saas
 msgid "Storage Upgrade"
 msgstr "Nâng cấp lưu trữ"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_upgrade_count
+msgid "Storage Upgrade Count"
+msgstr "Đếm kho lưu trữ"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_upgrade_ids
+msgid "Storage Upgrades History"
+msgstr "Lưu trữ lịch sử"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__storage_percentage
@@ -9897,6 +11222,11 @@ msgid "Storage Used (GB)"
 msgstr "Lưu trữ (GB)"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__base_storage_gb
+msgid "Storage included in the base subscription."
+msgstr "Trong đó có cả căn cứ đăng ký."
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Storage is running out on %s"
@@ -9907,6 +11237,12 @@ msgstr "Kho lưu đang chạy trên %s"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "Storage limit exceeded — %s was stopped"
 msgstr "Giới hạn kho quá — %s đã dừng"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Storage product not found"
+msgstr "Không tìm thấy sản phẩm lưu trữ"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10004,9 +11340,50 @@ msgstr ""
 " đầu hoặc kết thúc bằng dấu gạch nối."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Subscription"
+msgstr "Đăng ký"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__period_end
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_period_end
+msgid "Subscription Period End"
+msgstr "Cuối kỳ phục tùng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_bank_statement_line__saas_period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_account_move__saas_period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__period_start
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__saas_period_start
+msgid "Subscription Period Start"
+msgstr "Thời gian phục tùng bắt đầu"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_annual_price
+msgid "Subscription Price (Annual)"
+msgstr "Giá dưới quyền (Anal)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_monthly_price
+msgid "Subscription Price (Monthly)"
+msgstr "Giá dưới quyền ( theo thứ tự)"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__renew
+msgid "Subscription Renewal"
+msgstr "Renewal phục tùng"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Subscription Renewal Notice"
 msgstr "Thông báo phục tùng Renewal"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__subscription_start_date
+msgid "Subscription Start Date"
+msgstr "Comment"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_product_pricelist_item__subscription_type
@@ -10113,9 +11490,38 @@ msgid "System Packages"
 msgstr "Gói hệ thống"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System package removal failed: %s"
+msgstr "Việc gỡ bỏ gói hệ thống thất bại: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "System package removed."
+msgstr "Gói hệ thống đã bị gỡ bỏ."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System package removed: %s"
+msgstr "Gói hệ thống đã gỡ bỏ: %s"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "System packages installed: %s"
+msgstr "Các gói hệ thống đã cài đặt: %s"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "TIMEZONE"
 msgstr "TEZONE"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "TOTAL)"
+msgstr "Tổng số)"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
@@ -10219,6 +11625,17 @@ msgid "Template instance %s has not deployed yet. Please deploy it first."
 msgstr "Thí dụ mẫu %s chưa được triển khai. Xin hãy triển khai nó trước."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__conf_staging_mode
+msgid "Test / Staging Mode (db_name + dbfilter commented out)"
+msgstr "Kiểm tra / Chế độ văn bản (db  name + db liệt kê ra)"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Test / staging mode enabled"
+msgstr "Comment"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_pserver_view_form
 msgid "Test Connection"
 msgstr "Kết nối"
@@ -10244,6 +11661,11 @@ msgstr "Thử thư điện tử gửi cho %s."
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "Test email — your hosting notifications work"
 msgstr "Name"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Testing a database? Open the"
+msgstr "Kiểm tra cơ sở dữ liệu? Mở cửa"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.report_invoice_note
@@ -10295,6 +11717,21 @@ msgid "That library name is too long (100 characters maximum)."
 msgstr "Tên thư viện đó quá dài (100 ký tự tối đa)."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid "That system package name is too long (100 characters maximum)."
+msgstr "Tên gói hệ thống đó quá dài (100 ký tự tối đa)."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The Docker image %(image)s could not be built, so the packages were not installed.\n"
+"\n"
+"%(log)s"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "The GitHub account will be <b>unlinked</b> from your profile."
 msgstr "Tài khoản GitHub sẽ là <b>Chưa kết nối</b> từ hồ sơ của anh."
@@ -10304,6 +11741,16 @@ msgstr "Tài khoản GitHub sẽ là <b>Chưa kết nối</b> từ hồ sơ củ
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "The GitHub repository was disconnected and the custom source removed."
 msgstr "Kho GitHub đã bị ngắt kết nối và nguồn tự chọn bị gỡ bỏ."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The Odoo version of this instance is not set: the Python library image "
+"cannot be built."
+msgstr ""
+"Phiên bản Odoo của ví dụ này chưa được đặt: không thể xây dựng ảnh thư viện "
+"Python."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10358,6 +11805,36 @@ msgstr ""
 " triển, mà không cần bảng giá doanh nghiệp."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The database name %(name)s is already used by another instance."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The database name cannot be empty."
+msgstr "Tên cơ sở dữ liệu không thể rỗng."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The database name could not be applied to both db_name and dbfilter (current"
+" values: %(values)s)."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The database name was saved, but this instance has no server to restart. "
+"Please redeploy the instance."
+msgstr ""
+"Tên cơ sở dữ liệu đã được lưu, nhưng tiến trình này không có trình phục vụ "
+"cần khởi chạy lại. Xin hãy làm lại vụ án."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid ""
 "The full breakdown of what each plan includes — including the GitHub "
@@ -10370,7 +11847,23 @@ msgstr ""
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "The instance containers were restarted with %s worker(s)."
-msgstr "Hộp ví dụ đã được khởi chạy lại với %s công nhân."
+msgstr "Hộp ví dụ đã được khởi chạy lại với %s Worker."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The instance did not return a session cookie. Check the session settings of "
+"%s."
+msgstr ""
+"Trường hợp này đã không trả lại một cookie phiên chạy. Kiểm tra thiết lập "
+"phiên chạy của %s."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The instance has no URL yet."
+msgstr "Ví dụ chưa có URL."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -10382,8 +11875,22 @@ msgstr ""
 #. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "The instance must be deployed before you can connect to it."
+msgstr "Trường hợp phải được triển khai trước khi bạn có thể kết nối với nó."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The instance now looks for the database %(new)s (odoo.conf: db_name + "
+"dbfilter). Restore or create that database from /web/database/manager."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "The instance was started with %s worker(s)."
-msgstr "Thí dụ đã bắt đầu với %s công nhân."
+msgstr "Thí dụ đã bắt đầu với %s Worker."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10511,12 +12018,34 @@ msgstr ""
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"The staging mode was saved, but this instance has no server to rewrite "
+"odoo.conf on. Please redeploy the instance."
+msgstr ""
+"Chế độ dàn xếp đã được lưu, nhưng tiến trình này không có trình phục vụ để "
+"viết lại odoo.conf. Xin hãy làm lại vụ án."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/wizard/saas_odoo_instance_duplicate_wizard.py:0
 msgid ""
 "The subdomain \"%s\" already exists for domain \"%s\". Please choose a "
 "different name."
 msgstr ""
 "Tên tập tin con « %s » đã tồn tại cho miền « %s ». Xin hãy chọn tên khác."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance_python_library.py:0
+msgid ""
+"The system package \"%s\" is not available in the APT repositories of this "
+"Odoo image, so it was not installed. Check the exact package name — for "
+"example \"python3-xmlsec\" or \"libxml2-dev\"."
+msgstr ""
+"Gói « %s » hệ thống không sẵn sàng trong kho phần mềm phục hồi của ảnh Odoo "
+"này, vì vậy nó chưa được cài đặt. Kiểm tra tên gói chính xác — ví dụ "
+"\"python3-xmlsec\" hoặc \"lixml2-dev\"."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10631,6 +12160,12 @@ msgstr "Trường hợp này không thể bị đình chỉ trong tình trạng 
 
 #. module: s_odoo_saas_master
 #. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "This instance has no deployed domain name."
+msgstr "Trường hợp này không có tên miền đã triển khai."
+
+#. module: s_odoo_saas_master
+#. odoo-python
 #: code:addons/s_odoo_saas_master/controllers/portal.py:0
 msgid "This instance is already deployed."
 msgstr "Trường hợp này đã được triển khai."
@@ -10639,6 +12174,11 @@ msgstr "Trường hợp này đã được triển khai."
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "This instance is currently on a 15-day free trial."
 msgstr "Thí dụ này hiện đang được xét xử tự do 15 ngày."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "This instance is locked to"
+msgstr "Name"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10672,6 +12212,12 @@ msgid ""
 msgstr ""
 "Đây là thông điệp thử nghiệm từ cổng chủ nhà. Nếu bạn có thể đọc được, mọi "
 "thông báo bạn đã bật sẽ đến địa chỉ này."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "This is already the current database name."
+msgstr "Đây là tên cơ sở dữ liệu hiện thời."
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10744,6 +12290,11 @@ msgstr ""
 " bắt đầu lại."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Tick the box next to"
+msgstr "Đánh dấu ô cạnh"
+
+#. module: s_odoo_saas_master
 #: model:product.template,name:s_odoo_saas_master.product_app_hr_holidays_product_template
 msgid "Time Off"
 msgstr "Hết giờ"
@@ -10765,6 +12316,8 @@ msgstr "Công cụ"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_invoice_document
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_tree
 msgid "Total"
 msgstr "Tổng"
 
@@ -10855,11 +12408,13 @@ msgstr "Khả năng xác thực hai mặt bị tắt"
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance_upgrade_module_wizard__type
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_pserver_ip__type
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_ssh_keypair__type
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__upgrade_type_label
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_compose_volume_view_tree
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_docker_container_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_ssh_keypair_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 msgid "Type"
 msgstr "Kiểu"
 
@@ -10872,21 +12427,6 @@ msgstr "Gõ « Có » để xác nhận"
 #: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "Loại hoạt động ngoại lệ được ghi nhận."
-
-#. module: s_odoo_saas_master
-#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid ""
-"Type the name of the Python package you need (a\n"
-"                            <b>pip</b> library) and press Install. It is installed inside your\n"
-"                            instance container with <b>pip --user</b>, so it stays available after\n"
-"                            a restart or a redeploy. Restart the instance if the library is used by a\n"
-"                            module that is already loaded."
-msgstr ""
-"Gõ tên của gói Python mà bạn cần (a\n"
-" <b>Tiếng Trung Quốc</b> thư viện) và cài đặt ấn. Nó được cài vào bên trong của bạn\n"
-"hộp thể hiện <b>Pip --user</b>Vì vậy nó vẫn còn tồn tại sau\n"
-"một khởi động lại hoặc tái khám phá. Khởi động lại tiến trình này nếu thư viện được dùng bởi a\n"
-"Mô- đun đã được nạp."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__url
@@ -10904,10 +12444,26 @@ msgid "Unavailable while storage is full"
 msgstr "Không thể quyết định trong khi kho đầy"
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "Unexpected answer from %(url)s (HTTP %(code)s)."
+msgstr ""
+
+#. module: s_odoo_saas_master
 #. odoo-javascript
 #: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
 msgid "Uninstall %s from this instance?"
 msgstr "Hủy cài đặt %s trong tiến trình này?"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__uom_label
+msgid "Unit"
+msgstr "Đơn vị"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_subscription_upgrade__unit_price
+msgid "Unit price actually invoiced, prorated for the remaining period."
+msgstr "Giá đơn vị thực sự tăng, tăng lên trong thời gian còn lại."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_docker_container__state__unknown
@@ -10939,7 +12495,12 @@ msgstr "Tùy chọn"
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Unlimited workers"
-msgstr "Công nhân vô hạn"
+msgstr "Workers không giới hạn"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance__payment_status__unpaid
+msgid "Unpaid"
+msgstr "Không trả"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -10970,9 +12531,36 @@ msgstr "Cập nhật"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_form
+msgid "Upgrade"
+msgstr "Nâng cấp"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
 "Upgrade &amp;middot; <span id=\"renewUpgradeBtnAmount\">0</span> &amp;rarr;"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__upgrade_ids
+msgid "Upgrade History"
+msgstr "Nâng cấp lịch sử"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__invoice_id
+msgid "Upgrade Invoice"
+msgstr "Hóa đơn nâng cấp"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+msgid "Upgrade Invoices"
+msgstr "Nâng cấp hoá đơn"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Upgrade Invoices — %s"
+msgstr "Nâng cấp hoá đơn — %s"
 
 #. module: s_odoo_saas_master
 #: model:ir.actions.act_window,name:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_action
@@ -10980,6 +12568,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_upgrade_module_wizard_form
 msgid "Upgrade Module"
 msgstr "Môđun nâng cấp"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__sale_order_id
+msgid "Upgrade Order"
+msgstr "Thứ tự nâng cấp"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__saas_order_type__buy_upgrade
@@ -10990,6 +12583,11 @@ msgstr "Nâng cấp tài nguyên"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Upgrade Storage"
 msgstr "Nâng cấp kho lưu trữ"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_subscription_upgrade__upgrade_type
+msgid "Upgrade Type"
+msgstr "Kiểu nâng cấp"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__sale_order__saas_order_type__buy_workers
@@ -11003,14 +12601,100 @@ msgid "Upgrade add-ons — due today"
 msgstr "Nâng cấp phụ phí — đến hôm nay"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__upgrade_count
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_view_form_subscription
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_tree
+msgid "Upgrades"
+msgstr "Nâng cấp"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "Upgrades apply instantly"
-msgstr "Nâng cấp áp dụng ngay"
+msgid "Upgrades are allowed only on annual plans"
+msgstr "Nâng cấp chỉ được phép trong các dự định hàng năm"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Upgrades are allowed only on annual plans — switch your subscription\n"
+"                                            to <b>Annual</b> and buy extra storage; your instance starts again automatically."
+msgstr ""
+"Nâng cấp chỉ được phép theo kế hoạch hàng năm — đổi giấy đăng ký\n"
+"phải <b>Hằng năm</b> Và mua thêm kho; trường hợp của bạn bắt đầu lại tự động."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add storage."
+msgstr ""
+"Nâng cấp chỉ được phép theo kế hoạch hàng năm. Chuyển trường hợp này sang kế"
+" hoạch lưu trữ hàng năm."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add workers or storage."
+msgstr ""
+"Nâng cấp chỉ được phép theo kế hoạch hàng năm. Hãy chuyển trường hợp này "
+"sang kế hoạch hàng năm để thêm Worker hoặc nhà kho."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch this instance to an annual"
+" plan to add workers."
+msgstr ""
+"Nâng cấp chỉ được phép theo kế hoạch hàng năm. Hãy chuyển trường hợp này "
+"sang kế hoạch gia tăng nhân công hàng năm."
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Upgrades are allowed only on annual plans. Switch to Annual to add workers "
+"or storage."
+msgstr ""
+"Nâng cấp chỉ được phép theo kế hoạch hàng năm. Chuyển sang lưu trữ hàng năm."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
+msgid ""
+"Upgrades are allowed only on annual plans; this monthly subscription can be "
+"renewed only."
+msgstr ""
+"Việc nâng cấp chỉ được phép trong các dự định hàng năm; việc đặt mua dài hạn"
+" mỗi tháng chỉ có thể được làm mới lại."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+msgid "Upgrades — %s"
+msgstr "Nâng cấp — %s"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Uptime SLA"
 msgstr "Comment"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "Use <b>Create Database</b> with the same name"
+msgstr "Dùng <b>Tạo cơ sở dữ liệu</b> cùng tên"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Use <b>Duplicate</b> to copy a database, or <b>Restore Database</b>\n"
+"                                                    to upload your test backup. Do not delete"
+msgstr ""
+"Dùng <b>Lặp lại</b> để sao chép một cơ sở dữ liệu, hoặc <b>Cơ sở dữ liệu "
+"phục hồi</b>để tải bản sao lưu của bạn lên. Đừng xoá"
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__user_demo_data
@@ -11027,6 +12711,31 @@ msgstr "Dùng mẫu"
 msgid "Use another instance's database, file store,... as a template"
 msgstr ""
 "Dùng cơ sở dữ liệu của một thể hiện khác, cửa hàng tập tin,... như một mẫu"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid ""
+"Use letters, digits, underscores or hyphens, and start with a letter or an "
+"underscore (63 characters max)."
+msgstr ""
+"Dùng chữ cái, chữ số, dấu gạch nối hoặc dấu gạch nối, rồi bắt đầu với chữ "
+"cái hoặc lời nhấn mạnh tối đa (63 ký tự)."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"Use this tab only for a <b>test environment</b>. Removing the\n"
+"                                <b>db_name</b> and <b>dbfilter</b> lines from this instance's\n"
+"                                <b>odoo.conf</b> unlocks the database manager, so you can\n"
+"                                <b>duplicate</b> or <b>restore</b> a test database. Activate them\n"
+"                                again when you are done and the instance goes back to its own database."
+msgstr ""
+"Dùng thẻ này chỉ cho a <b>Môi trường thử ra</b>Gỡ bỏ\n"
+" <b>db  name</b> và <b>dbSQL</b> dòng từ trường hợp này\n"
+" <b># Odoo.conf #</b> Mở khóa trình quản lý cơ sở dữ liệu, để bạn có thể\n"
+" <b>Lặp lại</b> hay <b>Phục hồi</b> Một cơ sở dữ liệu kiểm tra. Kích hoạt chúng\n"
+"Một lần nữa khi bạn đã hoàn thành và ví dụ quay trở lại cơ sở dữ liệu của chính nó."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_odoo_instance_port_view_search
@@ -11177,6 +12886,11 @@ msgid "WORKERS"
 msgstr "CÔNG VIỆC"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "WORKERS TO ADD (0 = NO UPGRADE)"
+msgstr "SỐ NGƯỜI CÔNG VIỆC ĐẾN (0 = KHÔNG CÂU DO)"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "WORKSPACE NAME"
 msgstr "TÊN CÔNG VIỆC"
@@ -11308,6 +13022,40 @@ msgstr ""
 "UTC."
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_odoo_instance__conf_staging_mode
+msgid ""
+"When enabled, the generated odoo.conf writes ``#db_name`` and ``#dbfilter`` "
+"instead of the real values, so the instance's /web/database/manager lists "
+"every database and the customer can duplicate or restore a test database. "
+"Turning it off restores both lines and locks the instance back to its own "
+"database. Every change rewrites odoo.conf and restarts the Odoo container."
+msgstr ""
+"Khi được chọn, người được tạo ra odoo.conf viết «#db name` và` db » thay vì "
+"giá trị thật, vậy thể hiện là /web/datase/manger liệt kê mọi cơ sở dữ liệu "
+"và khách hàng có thể sao chép hoặc phục hồi một cơ sở dữ liệu thử nghiệm. "
+"Tắt nó đi khôi phục lại cả hai dòng và khóa lại cơ sở dữ liệu của chính nó. "
+"Mỗi thay đổi viết lại odoo.conf và khởi động lại công-ten-nơ Odoo."
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,help:s_odoo_saas_master.field_saas_docker_image__instance_id
+msgid ""
+"When set, this is the private image of that instance: every Python library "
+"the customer installs from the portal is baked into it (Dockerfile + "
+"rebuild), so it survives restarts and redeploys."
+msgstr ""
+"Khi thiết lập, đây là hình ảnh riêng của ví dụ này: mỗi thư viện Python mà "
+"khách hàng cài đặt từ cổng được nướng vào nó (Dockerfile + tái xây dựng), vì"
+" vậy nó sống sót khi khởi động lại và làm lại."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"When you are done, click <b>Activate DB Name &amp; DB Filter</b>.\n"
+"                                                    odoo.conf is rewritten with the real values and Odoo restarts,\n"
+"                                                    locked back to"
+msgstr ""
+
+#. module: s_odoo_saas_master
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_partner__saas_notify_email
 #: model:ir.model.fields,help:s_odoo_saas_master.field_res_users__saas_notify_email
 msgid ""
@@ -11330,14 +13078,35 @@ msgid "Worker"
 msgstr "Bộ làm việc"
 
 #. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__worker_upgrade_count
+msgid "Worker Upgrade Count"
+msgstr "Đếm nâng cấp người làm việc"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__worker_upgrade_ids
+msgid "Worker Upgrades History"
+msgstr "Người làm việc nâng cấp lịch sử"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.actions.act_window,help:s_odoo_saas_master.saas_subscription_upgrade_action
+msgid ""
+"Worker and storage upgrades purchased for a SaaS container appear here."
+msgstr ""
+"Worker và các bản nâng cấp được mua cho một container SaaS xuất hiện ở đây."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_odoo_instance__workers_count
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__workers_count
 #: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_odoo_instance_history__category__workers
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__saas_subscription_upgrade__upgrade_type__workers
 #: model:product.public.category,name:s_odoo_saas_master.public_category_saas_user
 #: model:product.template,name:s_odoo_saas_master.product_saas_worker_product_template
 #: model:uom.category,name:s_odoo_saas_master.product_uom_categ_saas_user
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.pricing_board
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_subscription_upgrade_view_search
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.users_pricing
 msgid "Workers"
 msgstr "Nhân công"
@@ -11345,14 +13114,31 @@ msgstr "Nhân công"
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_sale_order__workers_applied
 msgid "Workers Applied"
-msgstr "Công nhân được áp dụng"
+msgstr "Worker được áp dụng"
+
+#. module: s_odoo_saas_master
+#: model:ir.model.fields.selection,name:s_odoo_saas_master.selection__account_move__saas_order_type__buy_workers
+msgid "Workers Upgrade"
+msgstr "Nâng cấp Worker"
+
+#. module: s_odoo_saas_master
+#. odoo-javascript
+#: code:addons/s_odoo_saas_master/static/src/js/myodoo_portal.js:0
+msgid "Workers after upgrade: "
+msgstr "Worker sau khi nâng cấp:"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
 msgid "Workers and extra storage can be added at any time from your portal."
 msgstr ""
-"Công nhân và kho dự trữ thêm có thể được thêm vào bất cứ lúc nào từ cổng của"
-" bạn."
+"Worker và kho dự trữ thêm có thể được thêm vào bất cứ lúc nào từ cổng của "
+"bạn."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "Workers product not found"
+msgstr "Không tìm thấy sản phẩm lao động"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -11364,12 +13150,12 @@ msgstr "Không tìm thấy lệnh nhân công nâng cấp."
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "Workers upgraded"
-msgstr "Công nhân được nâng cấp"
+msgstr "Worker được nâng cấp"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "Workers upgraded successfully."
-msgstr "Công nhân được nâng cấp thành công."
+msgstr "Worker được nâng cấp thành công."
 
 #. module: s_odoo_saas_master
 #: model:ir.model.fields,field_description:s_odoo_saas_master.field_saas_nginx_server__working_ip_id
@@ -11561,6 +13347,15 @@ msgstr ""
 #: code:addons/s_odoo_saas_master/models/sale_order.py:0
 msgid "You must selection Subscription Type."
 msgstr "Bạn phải chọn Kiểu Đăng ký."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"You need to buy extra storage to continue — choose a package below and\n"
+"                                            complete checkout; your instance starts again automatically."
+msgstr ""
+"Bạn cần phải mua thêm kho để tiếp tục — chọn gói bên dưới và\n"
+"Hoàn tất kiểm tra; tiến trình của bạn bắt đầu lại tự động."
 
 #. module: s_odoo_saas_master
 #. odoo-javascript
@@ -11925,8 +13720,8 @@ msgid ""
 "Your workers upgrade is active and the instance was restarted with the new "
 "capacity."
 msgstr ""
-"Công nhân của ông đã nâng cấp và tiến trình đã được khởi động lại với khả "
-"năng mới."
+"Worker của ông đã nâng cấp và tiến trình đã được khởi động lại với khả năng "
+"mới."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11934,9 +13729,39 @@ msgid "almost full — buy extra storage before the instance stops"
 msgstr "gần đầy — hãy mua thêm kho trước khi trường hợp này chấm dứt"
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"and click <b>Delete</b>, then confirm. Odoo cannot restore\n"
+"                                            over a database that already exists under the same name, so\n"
+"                                            it must be removed before the restore."
+msgstr ""
+"rồi nhấn <b>Xoá</b>sau đó xác nhận. Name\n"
+"trên một cơ sở dữ liệu đã có cùng tên, vì vậy\n"
+"Nó phải được gỡ bỏ trước khi hồi phục."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "and confirm."
+msgstr "và xác nhận."
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_team_password_page
 msgid "and continue to your hosting portal."
 msgstr "và tiếp tục đến cổng chủ nhà."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "and enter the master password above."
+msgstr "và nhập mật khẩu chủ ở trên."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"and enter the master password above. All the databases of this\n"
+"                                                    instance are now listed (that is normal — the filter is off)."
+msgstr ""
+"và nhập mật khẩu chủ ở trên. Tất cả cơ sở dữ liệu của điều này\n"
+"bây giờ người ta liệt kê các trường hợp (bình thường — bộ lọc này không còn)."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -11988,6 +13813,20 @@ msgstr "ngày"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "days left"
 msgstr "những ngày còn lại"
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"db_name and dbfilter are active again in odoo.conf: the instance is locked "
+"to the database %(name)s and the database manager only lists that database."
+msgstr ""
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "db_name and dbfilter commented out"
+msgstr "db  name và dbspra bình luận"
 
 #. module: s_odoo_saas_master
 #. odoo-python
@@ -12132,6 +13971,11 @@ msgid "in progress..."
 msgstr "đang tiến hành..."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "included)"
+msgstr "bao gồm"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_billing_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "instance(s)"
@@ -12144,16 +13988,17 @@ msgstr "điển hình"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "limit."
+msgstr "giới hạn."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid ""
-"limit.\n"
-"                                        You need to buy extra storage to continue — choose a package below and\n"
-"                                        complete checkout; your instance starts again automatically.\n"
-"                                        No data has been lost."
+"lists <b>every</b> database of this instance. Duplicate or restore your\n"
+"                                        test database there, then lock the instance again."
 msgstr ""
-"giới hạn.\n"
-"Bạn cần phải mua thêm kho để tiếp tục — chọn gói bên dưới và\n"
-"Hoàn tất kiểm tra; tiến trình của bạn bắt đầu lại tự động.\n"
-"Không có dữ liệu nào bị mất."
+"danh sách <b>mỗi</b> Cơ sở dữ liệu của ví dụ này. Lặp lại hoặc khôi phục\n"
+"Cơ sở dữ liệu ở đó, rồi khóa lại."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_customer_dashboard
@@ -12174,6 +14019,20 @@ msgstr "mật khẩu chủ"
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "member@example.com"
 msgstr "thành viên"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "mo billed"
+msgstr "mo billed"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"more can be added ·\n"
+"                                    0 = no upgrade."
+msgstr ""
+"thêm nữa có thể thêm ·\n"
+"0 = không nâng cấp."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_pricing_page
@@ -12204,6 +14063,16 @@ msgstr "odoo.conf: %s"
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "odoo.conf : contenu vide (aucune config générée)."
 msgstr "odoo.conf : contenu vide (auucune cominérée)."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid ""
+"odoo.conf now has #db_name and #dbfilter commented out, so "
+"/web/database/manager lists every database of this instance. Duplicate or "
+"restore the test database, then activate the DB name and DB filter again. "
+"Instance database: %(name)s."
+msgstr ""
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12260,6 +14129,12 @@ msgid "pip did not report a reason."
 msgstr "pip không báo cáo một lý do."
 
 #. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/controllers/pricing.py:0
+msgid "prorated %g month(s) left"
+msgstr "đã thông báo %g tháng bên trái"
+
+#. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
 msgid ""
 "python3-dev\n"
@@ -12271,6 +14146,15 @@ msgstr ""
 "cần thiết xây dựng\n"
 "libcairo2\n"
 "..."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"python3-xmlsec\n"
+"libxml2-dev"
+msgstr ""
+"python3- xmlsec\n"
+"libxml2-dev"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.saas_docker_image_view_form
@@ -12295,6 +14179,31 @@ msgstr ""
 "Không có dữ liệu nào bị mất."
 
 #. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"to get a clean instance, then open the database manager again\n"
+"                                            and restore the file over it. If it still fails, send the\n"
+"                                            backup <b>file name</b> to support."
+msgstr ""
+"để có một ví dụ rõ ràng, sau đó mở trình quản lý cơ sở dữ liệu một lần nữa\n"
+"và khôi phục lại tập tin. Nếu nó vẫn thất bại, gửi\n"
+"sao lưu <b>Tên tập tin</b> để hỗ trợ."
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid ""
+"to remove <b>db_name</b> + <b>dbfilter</b> and reach the database manager."
+msgstr ""
+"gỡ bỏ <b>db  name</b> + <b>dbSQL</b> và liên lạc với bộ quản lý cơ sở dữ "
+"liệu."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
+msgid "unknown error"
+msgstr "lỗi không rõ"
+
+#. module: s_odoo_saas_master
 #. odoo-python
 #: code:addons/s_odoo_saas_master/models/saas_odoo_instance.py:0
 msgid "unknown reason"
@@ -12307,15 +14216,27 @@ msgstr "đã dùng"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "with the administrator credentials of the restored database."
+msgstr "với chứng nhận quản trị của cơ sở dữ liệu đã phục hồi."
+
+#. module: s_odoo_saas_master
+#. odoo-python
+#: code:addons/s_odoo_saas_master/models/saas_subscription_upgrade.py:0
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "worker(s)"
-msgstr "công nhân"
+msgstr "Worker"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_settings_page
 msgid "worker(s) &amp;middot;"
 msgstr ""
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "worker(s) ·"
+msgstr "Worker ·"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
@@ -12358,8 +14279,8 @@ msgstr "- tất cả ở một chỗ."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
-msgid "— myodoo.nc"
-msgstr "- myodoo.c"
+msgid "— it is this instance's live database."
+msgstr "- nó là dữ liệu trực tiếp của trường hợp này."
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_sale_order_note
@@ -12408,8 +14329,18 @@ msgstr "⚡ Gia hạn &amp; nâng cấp gói"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "⚡ Renew / Switch to Annual"
+msgstr "▪ Đổi mới / Chuyển sang năm"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
 msgid "⚡ Renew / Upgrade Plan"
 msgstr "teppi82@ gmail. com"
+
+#. module: s_odoo_saas_master
+#: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page
+msgid "⚡ Renew Plan"
+msgstr "▪ Kế hoạch mới"
 
 #. module: s_odoo_saas_master
 #: model_terms:ir.ui.view,arch_db:s_odoo_saas_master.portal_instance_page

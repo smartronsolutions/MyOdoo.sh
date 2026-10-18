@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Upgrade history tree -->
+    <record id="saas_subscription_upgrade_view_tree" model="ir.ui.view">
+        <field name="name">saas.subscription.upgrade.view.tree</field>
+        <field name="model">saas.subscription.upgrade</field>
+        <field name="arch" type="xml">
+            <list string="Upgrades" create="false" edit="false">
+                <field name="applied_date"/>
+                <field name="container_ref"/>
+                <field name="upgrade_type"/>
+                <field name="quantity"/>
+                <field name="uom_label" optional="hide"/>
+                <field name="period_start"/>
+                <field name="period_end"/>
+                <field name="months_billed"/>
+                <field name="prorated"/>
+                <field name="unit_price"/>
+                <field name="amount" sum="Total"/>
+                <field name="currency_id" groups="base.group_multi_currency"/>
+                <field name="sale_order_id"/>
+                <field name="invoice_id"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'applied'"
+                       decoration-warning="state == 'pending'"
+                       decoration-danger="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Upgrade history form -->
+    <record id="saas_subscription_upgrade_view_form" model="ir.ui.view">
+        <field name="name">saas.subscription.upgrade.view.form</field>
+        <field name="model">saas.subscription.upgrade</field>
+        <field name="arch" type="xml">
+            <form string="Container Upgrade" create="false" edit="false">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Upgrade">
+                            <field name="instance_id"/>
+                            <field name="upgrade_type"/>
+                            <field name="quantity"/>
+                            <field name="monthly_unit_price"/>
+                            <field name="unit_price"/>
+                            <field name="amount"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="state"/>
+                            <field name="applied_date"/>
+                        </group>
+                        <group string="Billing period">
+                            <field name="period_start"/>
+                            <field name="period_end"/>
+                            <field name="months_billed"/>
+                            <field name="prorated"/>
+                            <field name="sale_order_id"/>
+                            <field name="invoice_id"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="Note"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Upgrade history search -->
+    <record id="saas_subscription_upgrade_view_search" model="ir.ui.view">
+        <field name="name">saas.subscription.upgrade.view.search</field>
+        <field name="model">saas.subscription.upgrade</field>
+        <field name="arch" type="xml">
+            <search string="Upgrades">
+                <field name="container_ref"/>
+                <field name="instance_id"/>
+                <field name="invoice_id"/>
+                <filter name="workers" string="Workers" domain="[('upgrade_type', '=', 'workers')]"/>
+                <filter name="storage" string="Storage" domain="[('upgrade_type', '=', 'storage')]"/>
+                <separator/>
+                <filter name="applied" string="Applied" domain="[('state', '=', 'applied')]"/>
+                <filter name="pending" string="Pending" domain="[('state', '=', 'pending')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_container" string="Container" context="{'group_by': 'instance_id'}"/>
+                    <filter name="group_type" string="Type" context="{'group_by': 'upgrade_type'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="saas_subscription_upgrade_action" model="ir.actions.act_window">
+        <field name="name">Container Upgrades</field>
+        <field name="res_model">saas.subscription.upgrade</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="saas_subscription_upgrade_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No upgrade yet</p>
+            <p>Worker and storage upgrades purchased for a SaaS container appear here.</p>
+        </field>
+    </record>
+
+    <menuitem
+        id="saas_menu_subscription_upgrade"
+        name="Container Upgrades"
+        parent="saas_menu_root"
+        action="saas_subscription_upgrade_action"
+        sequence="2"
+        groups="s_odoo_saas_master.group_odoo_saas_user"/>
+
+    <!-- Container form: upgrade smart button + Subscription page -->
+    <record id="saas_odoo_instance_view_form_subscription" model="ir.ui.view">
+        <field name="name">saas.odoo.instance.form.inherit.subscription</field>
+        <field name="model">saas.odoo.instance</field>
+        <field name="inherit_id" ref="saas_odoo_instance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_account_move']" position="after">
+                <button class="oe_stat_button" type="object"
+                        name="action_view_upgrades"
+                        invisible="not upgrade_count"
+                        groups="s_odoo_saas_master.group_odoo_saas_user"
+                        icon="fa-arrow-circle-up">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="upgrade_count"/>
+                        </span>
+                        <span class="o_stat_text">
+                            Upgrades
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="subscription" string="Subscription"
+                      groups="s_odoo_saas_master.group_odoo_saas_user">
+                    <group>
+                        <group string="Base subscription">
+                            <field name="base_plan_product_id"/>
+                            <field name="base_price_monthly"/>
+                            <field name="base_workers"/>
+                            <field name="base_storage_gb"/>
+                            <field name="subscription_type"/>
+                        </group>
+                        <group string="Period &amp; status">
+                            <field name="subscription_start_date"/>
+                            <field name="last_renewal_date"/>
+                            <field name="next_renewal_date"/>
+                            <field name="subscription_monthly_price"/>
+                            <field name="subscription_annual_price"/>
+                            <field name="payment_status" widget="badge"
+                                   decoration-success="payment_status == 'paid'"
+                                   decoration-danger="payment_status == 'unpaid'"/>
+                        </group>
+                    </group>
+                    <group string="Current resources">
+                        <field name="workers_count"/>
+                        <field name="storage_limit_gb"/>
+                        <field name="extra_workers_total"/>
+                        <field name="extra_storage_total"/>
+                    </group>
+                    <div class="oe_button_box" name="subscription_buttons">
+                        <button name="action_create_renewal_order" type="object"
+                                string="Renew Subscription" class="oe_stat_button"
+                                icon="fa-refresh"/>
+                        <button name="action_view_upgrade_invoices" type="object"
+                                string="Upgrade Invoices" class="oe_stat_button"
+                                icon="fa-file-text-o"/>
+                    </div>
+                    <field name="upgrade_ids" readonly="1">
+                        <list string="Upgrades" create="false">
+                            <field name="applied_date"/>
+                            <field name="upgrade_type"/>
+                            <field name="quantity"/>
+                            <field name="period_start"/>
+                            <field name="period_end"/>
+                            <field name="months_billed"/>
+                            <field name="prorated"/>
+                            <field name="amount" sum="Total"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="invoice_id"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

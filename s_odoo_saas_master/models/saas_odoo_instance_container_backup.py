@@ -1,6 +1,6 @@
 import os
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class OdooInstanceContainerBackup(models.Model):
@@ -24,7 +24,25 @@ class OdooInstanceContainerBackup(models.Model):
             'url': '/saas_container_backup/download/%s' % self.id,
         }
 
+    def _refresh_storage_live(self):
+        """Recompute the storage usage of the instances behind these backups, at once."""
+        for instance in self.mapped('instance_id'):
+            refresh = getattr(instance, '_refresh_storage_usage', None)
+            if refresh:
+                try:
+                    refresh()
+                except Exception:  # never break a backup because of a size refresh
+                    pass
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        # Live storage: a new container backup counts in the usage immediately.
+        records._refresh_storage_live()
+        return records
+
     def unlink(self):
+        instances = self.mapped('instance_id')
         files_to_delete = [
             record.file_path for record in self
             if record.file_path and os.path.isfile(record.file_path)
@@ -35,4 +53,11 @@ class OdooInstanceContainerBackup(models.Model):
                 os.remove(file_path)
             except FileNotFoundError:
                 pass
+        for instance in instances:
+            refresh = getattr(instance, '_refresh_storage_usage', None)
+            if refresh:
+                try:
+                    refresh()
+                except Exception:
+                    pass
         return result

@@ -20,6 +20,12 @@
         	<field name="partner_shipping_id" position="after">
         		<field name="instance_id" readonly="state != 'draft'" invisible="not instance_id" 
         			groups="s_odoo_saas_master.group_odoo_saas_user"/>
+        		<field name="saas_order_type" invisible="not instance_id"
+        			groups="s_odoo_saas_master.group_odoo_saas_user"/>
+        		<field name="saas_period_start" invisible="not saas_period_start"
+        			groups="s_odoo_saas_master.group_odoo_saas_user"/>
+        		<field name="saas_period_end" invisible="not saas_period_end"
+        			groups="s_odoo_saas_master.group_odoo_saas_user"/>
         	</field>
         </field>
     </record>

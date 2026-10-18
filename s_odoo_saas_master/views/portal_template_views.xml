@@ -71,7 +71,7 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title">Hosting Overview — myodoo.nc</t>
+            <t t-set="title">Hosting Overview - My Odoo SH</t>
             
             <div class="myodoo-portal-root">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
@@ -317,7 +317,7 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title">My Instances — myodoo.nc</t>
+            <t t-set="title">My Instances - My Odoo SH</t>
 
             <div class="myodoo-portal-root">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
@@ -390,7 +390,7 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title"><t t-esc="instance.name"/> — myodoo.nc</t>
+            <t t-set="title"><t t-esc="instance.name"/> - My Odoo SH</t>
 
             <div t-attf-class="myodoo-portal-root {{ 'instance-removed' if instance.state == 'cancel' else '' }}">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
@@ -432,7 +432,13 @@
                                             <t t-elif="days_left == 0">
                                                 Expires <b>today</b>!
                                             </t>
-                                            Renew or upgrade now to unlock full cloud resources and keep your database permanent.
+                                            <t t-if="instance_subscription_type == 'monthly'">
+                                                Renew now to unlock full cloud resources and keep your database permanent.
+                                                <b>Upgrades are allowed only on annual plans.</b>
+                                            </t>
+                                            <t t-else="">
+                                                Renew or upgrade now to unlock full cloud resources and keep your database permanent.
+                                            </t>
                                         </div>
                                     </t>
                                     <t t-else="">
@@ -445,7 +451,8 @@
                             </div>
                             <div class="trial-banner-right">
                                 <button type="button" class="primary renew-btn-glow" id="btnOpenRenewModal">
-                                    ⚡ Renew / Upgrade Plan
+                                    <t t-if="instance_subscription_type == 'monthly'">⚡ Renew Plan</t>
+                                    <t t-else="">⚡ Renew / Upgrade Plan</t>
                                 </button>
                             </div>
                         </div>
@@ -461,7 +468,7 @@
                             <t t-esc="'Running' if instance.operation_state == 'run' else 'Suspended'"/>
                         </span>
                         <div class="actions">
-                            <button type="button" class="primary" id="btnOpenRenewModalHeader" style="background:linear-gradient(135deg,#ff9800,#f57c00);border:0;display:inline-flex;align-items:center;gap:6px">⚡ Renew &amp; Upgrade Plan</button>
+                            <button type="button" class="primary" id="btnOpenRenewModalHeader" style="background:linear-gradient(135deg,#ff9800,#f57c00);border:0;display:inline-flex;align-items:center;gap:6px"><t t-if="instance_subscription_type == 'monthly'">⚡ Renew Plan</t><t t-else="">⚡ Renew &amp; Upgrade Plan</t></button>
                             <button class="ghost" data-confirm="restart">Restart</button>
                             <button class="ghost" data-action="backup">Create Backup</button>
                             <t t-if="instance.github_connected or partner.github_login or partner.github_oauth_token">
@@ -479,7 +486,7 @@
                                         Connect GitHub
                                     </button>
                                 </t>
-                            <a t-att-href="instance.url" target="_blank" class="primary" style="text-decoration:none">Open Odoo</a>
+                            <a t-attf-href="/my/saas/odoo-instance/{{ instance.id }}/connect" target="_blank" rel="noopener" class="primary pink" style="text-decoration:none"><i class="fa fa-sign-in"/> Connect Odoo</a>
                         </div>
                     </section>
 
@@ -500,6 +507,8 @@
                             <button data-tab="history">History</button>
                             <button data-tab="logs">Logs</button>
                             <button data-tab="ghlogs">GitHub Sync &amp; Deploy</button>
+                            <button data-tab="restore">Restore</button>
+                            <button data-tab="staging">Staging</button>
                             <button data-tab="backups">Backups</button>
                             <button data-tab="tools">Tools</button>
                             <button data-tab="domains">Domains</button>
@@ -536,23 +545,39 @@
                             </div>
                         </t>
 
-                        <!-- Live instance status: running / suspended / restarting -->
-                        <div t-attf-class="instance-status-banner #{'is-running' if instance.operation_state == 'run' else 'is-suspended'}"
+                        <!-- Live instance status: running / suspended / storage full / restarting -->
+                        <t t-set="storage_full_stop" t-value="instance.suspension_reason == 'storage_full'"/>
+                        <div t-attf-class="instance-status-banner #{'is-storage-full' if (storage_full_stop and instance.operation_state != 'run') else ('is-running' if instance.operation_state == 'run' else 'is-suspended')}"
                              id="instanceStatusBanner"
-                             t-attf-data-state="#{'running' if instance.operation_state == 'run' else 'suspended'}">
+                             t-attf-data-state="#{'storage_full' if (storage_full_stop and instance.operation_state != 'run') else ('running' if instance.operation_state == 'run' else 'suspended')}">
                             <span class="isb-icon">
-                                <i t-attf-class="fa #{'fa-check-circle' if instance.operation_state == 'run' else 'fa-pause-circle'}"></i>
+                                <i t-if="storage_full_stop and instance.operation_state != 'run'" class="fa fa-exclamation-triangle"/>
+                                <i t-elif="instance.operation_state == 'run'" class="fa fa-check-circle"/>
+                                <i t-else="" class="fa fa-pause-circle"/>
                             </span>
                             <div class="isb-body">
                                 <strong class="isb-title" id="instanceStatusTitle">
-                                    <t t-if="instance.operation_state == 'run'">Your instance is running</t>
+                                    <t t-if="storage_full_stop and instance.operation_state != 'run'">Instance stopped — storage full</t>
+                                    <t t-elif="instance.operation_state == 'run'">Your instance is running</t>
                                     <t t-else="">Your instance is suspended</t>
                                 </strong>
                                 <span class="isb-sub" id="instanceStatusSub">
-                                    <t t-if="instance.operation_state == 'run'">All services are online and reachable.</t>
+                                    <t t-if="storage_full_stop and instance.operation_state != 'run'">
+                                        Your instance was stopped because it reached its storage limit
+                                        (<t t-esc="'%.2f' % (instance.storage_used_gb or 0)"/> of
+                                        <t t-esc="'%.0f' % (instance.storage_limit_gb or 0)"/> GB used).
+                                        Buy extra storage to start it again instantly, or contact support.
+                                    </t>
+                                    <t t-elif="instance.operation_state == 'run'">All services are online and reachable.</t>
                                     <t t-else="">Public access and background workers are stopped. Start the instance to bring it back online.</t>
                                 </span>
                             </div>
+                            <t t-if="storage_full_stop and instance.operation_state != 'run'">
+                                <button type="button" class="primary" data-tab-jump="storage"
+                                        style="background:linear-gradient(135deg,#dc2626,#b91c1c);border-color:transparent;white-space:nowrap;">
+                                    <i class="fa fa-arrow-circle-up"/> Increase storage
+                                </button>
+                            </t>
                             <span class="isb-pulse" aria-hidden="true"></span>
                         </div>
 
@@ -671,16 +696,18 @@
                                     </div>
                                 </button>
 
-                                <!-- 7. Install Python Library (Violet) — opens the wizard where
-                                     the customer types a package name; it is pip-installed inside
-                                     the container and recorded in requirements.txt. -->
+                                <!-- 7. Install Python & System Packages (Violet) — opens the
+                                     wizard where the customer types a pip package and/or APT
+                                     packages; both are baked into the instance Dockerfile
+                                     (pip install / apt-get install) and recorded in the
+                                     requirements.txt and system-packages.txt manifests. -->
                                 <button type="button" class="control-btn ctrl-action-btn btn-ctrl-python" data-action="python-libs">
                                     <div class="ctrl-btn-icon">
                                         <i class="fa fa-cube"></i>
                                     </div>
                                     <div class="ctrl-btn-content">
-                                        <span class="ctrl-btn-title">Install Python Library</span>
-                                        <span class="ctrl-btn-desc">Add a pip package to your instance.</span>
+                                        <span class="ctrl-btn-title">Install Python &amp; System Packages</span>
+                                        <span class="ctrl-btn-desc">Add pip and apt packages to your instance.</span>
                                     </div>
                                     <div class="ctrl-btn-chevron">
                                         <i class="fa fa-chevron-right"></i>
@@ -713,11 +740,22 @@
                                     <t t-else="">View storage details</t>
                                 </span>
                             </div>
-                            <div class="glass detail-card" id="instanceWorkersCard" style="cursor:pointer;" title="Upgrade Workers"
+                            <!-- Annual plans can buy extra workers straight away; monthly
+                                 plans can only be renewed, so the card just opens the
+                                 Renew & Upgrade wizard instead of the upgrade modal. -->
+                            <div t-if="instance_subscription_type != 'monthly'"
+                                 class="glass detail-card" id="instanceWorkersCard" style="cursor:pointer;" title="Upgrade Workers"
                                  onclick="document.getElementById('workersUpgradeModal') &amp;&amp; document.getElementById('workersUpgradeModal').classList.add('show')">
                                 <small>Workers</small>
                                 <strong><t t-esc="instance.workers_count or 1"/> Active</strong>
                                 <span class="healthy"><i class="fa fa-plus-circle"></i> Upgrade Workers</span>
+                            </div>
+                            <div t-else="" class="glass detail-card" id="instanceWorkersCard" style="cursor:pointer;"
+                                 title="Upgrades are allowed only on annual plans"
+                                 onclick="document.getElementById('btnOpenRenewModal') &amp;&amp; document.getElementById('btnOpenRenewModal').click()">
+                                <small>Workers</small>
+                                <strong><t t-esc="instance.workers_count or 1"/> Active</strong>
+                                <span class="healthy" style="color:#b47611"><i class="fa fa-lock"></i> Annual plan only</span>
                             </div>
                             <div class="glass detail-card">
                                 <small>Plan Renewal</small>
@@ -863,9 +901,9 @@
                             </div>
                             <div class="sub shell-tip">
                                 <i class="fa fa-cube" aria-hidden="true"/>
-                                <span class="shell-tip-text">To install a Python library in this
-                                    container, run</span>
-                                <code class="shell-cmd" t-translation="off">pip install 'package-name' --break-system-packages</code>
+                                <span class="shell-tip-text">Need a Python or system package that stays after a
+                                    redeploy? Use <b>Overview → Install Python &amp; System Packages</b>
+                                    instead of installing it by hand.</span>
                             </div>
                         </div>
                     </section>
@@ -887,6 +925,10 @@
                                     <small>Current plan</small>
                                     <strong><t t-esc="billing_subscription['plan']"/></strong>
                                 </div>
+                                <button type="button" class="primary" id="btnRenewSubscription"
+                                        style="margin-top:10px;font-size:12px;padding:8px 14px">
+                                    <i class="fa fa-refresh"/> Renew Subscription
+                                </button>
                             </div>
                         </div>
 
@@ -947,10 +989,14 @@
                                 <div class="billing-rows">
                                     <div><span>Plan</span><strong t-esc="billing_subscription['plan']"/></div>
                                     <div><span>Version</span><strong t-esc="billing_subscription['version']"/></div>
-                                    <div><span>Workers</span><strong><t t-esc="billing_subscription['workers']"/></strong></div>
-                                    <div><span>Storage</span><strong><t t-esc="billing_subscription['storage']"/> GB</strong></div>
+                                    <div><span>Subscription price</span><strong><t t-esc="billing_subscription['monthly_price']"/> <t t-esc="billing_subscription['currency']"/>/month</strong></div>
+                                    <div><span>Annual price</span><strong><t t-esc="billing_subscription['annual_price']"/> <t t-esc="billing_subscription['currency']"/>/year</strong></div>
+                                    <div><span>Workers</span><strong><t t-esc="billing_subscription['workers']"/> (<t t-esc="billing_subscription['base_workers']"/> included)</strong></div>
+                                    <div><span>Storage</span><strong><t t-esc="billing_subscription['storage']"/> GB (<t t-esc="billing_subscription['base_storage']"/> GB included)</strong></div>
                                     <div><span>Billing cycle</span><strong t-esc="billing_subscription['cycle']"/></div>
-                                    <div><span>Renews on</span><strong t-esc="billing_subscription['expiry']"/></div>
+                                    <div><span>Subscription start</span><strong><t t-esc="instance.subscription_start_date or '—'"/></strong></div>
+                                    <div><span>Next renewal date</span><strong t-esc="billing_subscription['next_renewal']"/></div>
+                                    <div><span>Payment status</span><strong t-esc="billing_subscription['payment_status'] or '—'"/></div>
                                 </div>
                                 <div t-attf-class="billing-badge-row">
                                     <span class="mini-badge"><i class="fa fa-server"/> <t t-esc="instance.odoo_version_id.name"/></span>
@@ -962,6 +1008,50 @@
                                         </span>
                                     </t>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="glass panel">
+                            <div class="section-title">
+                                <h2><i class="fa fa-arrow-circle-up"/> Upgrade History</h2>
+                                <div class="actions"><span class="sub">Worker and storage upgrades of this container</span></div>
+                            </div>
+                            <div class="instance-table">
+                                <table class="billing-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Upgrade</th>
+                                            <th>Quantity</th>
+                                            <th>Billed period</th>
+                                            <th>Amount</th>
+                                            <th>Invoice</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-if="not upgrade_history">
+                                            <tr><td colspan="7" class="empty-state"><p>No upgrade yet. Upgrade workers or storage above to grow this container.</p></td></tr>
+                                        </t>
+                                        <t t-foreach="upgrade_history" t-as="upg">
+                                            <tr>
+                                                <td><t t-esc="upg.applied_date or upg.create_date"/></td>
+                                                <td><t t-esc="upg.upgrade_type_label"/></td>
+                                                <td class="mono">+<t t-esc="'%g' % upg.quantity"/> <t t-esc="upg.uom_label"/></td>
+                                                <td>
+                                                    <t t-esc="upg.period_start or ''"/> → <t t-esc="upg.period_end or ''"/>
+                                                    <t t-if="upg.prorated"> <span class="mini-badge warn"><t t-esc="'%g' % upg.months_billed"/> mo billed</span></t>
+                                                </td>
+                                                <td class="mono"><t t-esc="'%.2f' % upg.amount"/> <t t-esc="upg.currency_id.symbol or ''"/></td>
+                                                <td>
+                                                    <a t-if="upg.invoice_id" t-att-href="'/my/invoices/%s' % upg.invoice_id.id" class="ghost" style="text-decoration:none"><t t-esc="upg.invoice_id.name"/></a>
+                                                    <span t-else="">—</span>
+                                                </td>
+                                                <td><span t-attf-class="status #{'ok' if upg.state == 'applied' else 'warning'}"><t t-esc="upg.state_label"/></span></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -1233,6 +1323,326 @@
                         </div>
                     </section>
 
+                    <!-- Tab: Staging (test environment) — one button copies the live
+                         database and unlocks db_name + dbfilter so both databases are
+                         listed in /web/database/selector. -->
+                    <section class="tab-pane" id="staging"
+                             t-att-data-staging="1 if instance.conf_staging_mode else 0">
+                        <div class="glass panel">
+                            <div class="section-title">
+                                <h2>Staging — Test Environment</h2>
+                                <div class="actions">
+                                    <a t-attf-href="{{ instance.url }}/web/database/selector"
+                                       target="_blank" rel="noopener" class="ghost pink"
+                                       style="text-decoration:none">
+                                        <i class="fa fa-database"/> Open Database Manager
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="sub" style="padding:0 18px 16px;margin:0;line-height:1.65">
+                                Try changes on a copy before they reach your live data.
+                            </p>
+
+                            <div class="restore-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+                                <div class="field">
+                                    <label>INSTANCE / DOMAIN</label>
+                                    <div class="restore-value">
+                                        <input id="stagingDomain" readonly="readonly"
+                                               t-att-value="instance.url"/>
+                                        <button type="button" class="ghost restore-copy"
+                                                data-copy-target="stagingDomain">Copy</button>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>ODOO MASTER PASSWORD</label>
+                                    <div class="restore-value">
+                                        <input id="stagingMasterPassword" type="password"
+                                               readonly="readonly" autocomplete="off" spellcheck="false"
+                                               t-att-value="instance.admin_pass or ''"
+                                               placeholder="Not set — open Instance Settings"/>
+                                        <button type="button" class="ghost restore-copy"
+                                                id="stagingTogglePassword">Show</button>
+                                        <button type="button" class="ghost restore-copy"
+                                                data-copy-target="stagingMasterPassword">Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="restore-staging-box" id="restoreStagingBox"
+                                 style="margin:0 18px 18px"
+                                 t-att-data-staging="1 if instance.conf_staging_mode else 0"
+                                 t-att-data-staging-db="instance.get_staging_db_name()"
+                                 t-att-data-db-name="instance.db_name or instance.technical_name">
+                                <div class="restore-staging-head">
+                                    <i class="fa fa-flask"/>
+                                    <div style="flex:1;min-width:240px">
+                                        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                            <strong style="font-size:13px;color:var(--navy)">Staging Database</strong>
+                                            <span class="restore-staging-badge" id="restoreStagingBadge"
+                                                  t-att-style="'' if instance.conf_staging_mode else 'display:none'">
+                                                <i class="fa fa-flask"/> Staging active
+                                            </span>
+                                        </div>
+                                        <div class="sub" style="font-size:11px;margin-top:4px;line-height:1.7">
+                                            A test copy of
+                                            <span class="restore-code" data-restore-db-name="1"><t t-esc="instance.db_name or instance.technical_name"/></span>
+                                            created in one click on the server — your live data is never touched.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- State 1: no staging database yet — one button opens the wizard -->
+                                <div id="restoreStagingSetup"
+                                     t-att-style="'display:none' if instance.conf_staging_mode else ''">
+                                    <div class="restore-staging-dbname">
+                                        <span>Test database</span>
+                                        <span class="restore-code" id="restoreStagingDbName"><t t-esc="instance.get_staging_db_name()"/></span>
+                                    </div>
+                                    <div class="restore-staging-actions">
+                                        <button type="button" class="primary dark" id="restoreCreateStagingDb"
+                                                t-att-disabled="None if instance.state == 'deploy' else 'disabled'">
+                                            <i class="fa fa-plus"/> Create Staging Database
+                                        </button>
+                                        <button type="button" class="ghost danger" data-staging-delete="1"
+                                                t-att-style="'' if instance.staging_db_exists else 'display:none'"
+                                                t-att-disabled="None if instance.state == 'deploy' else 'disabled'">
+                                            <i class="fa fa-trash"/> Delete Staging Database
+                                        </button>
+                                        <span class="sub" id="restoreStagingStatus" style="font-size:11px;margin:0"></span>
+                                    </div>
+                                    <div class="sub" t-if="instance.state != 'deploy'"
+                                         style="font-size:10px;margin-top:6px">
+                                        Start the instance first: the copy is made on the server.
+                                    </div>
+                                    <div class="sub" t-if="not instance.staging_db_exists"
+                                         style="font-size:10px;margin-top:6px">
+                                        Create the test copy first — the delete button appears once it exists.
+                                    </div>
+                                    <div class="sub" t-if="instance.staging_db_exists"
+                                         style="font-size:10px;margin-top:6px">
+                                        A test copy already exists (stopped). Creating a new one replaces it.
+                                    </div>
+                                </div>
+
+                                <!-- State 2: staging active — the action buttons, no explanatory block -->
+                                <div id="restoreStagingActive"
+                                     t-att-style="'' if instance.conf_staging_mode else 'display:none'">
+                                    <div class="restore-staging-actions" style="margin-top:14px">
+                                        <a t-attf-href="{{ instance.url }}/web/database/selector"
+                                           target="_blank" rel="noopener" class="primary pink"
+                                           style="text-decoration:none">
+                                            <i class="fa fa-database"/> Open Database Manager
+                                        </a>
+                                        <a t-attf-href="/my/saas/odoo-instance/{{ instance.id }}/connect-staging"
+                                           target="_blank" rel="noopener" class="primary"
+                                           style="text-decoration:none">
+                                            <i class="fa fa-sign-in"/> Connect Staging
+                                        </a>
+                                        <button type="button" class="ghost" id="restoreStopStagingDb">
+                                            <i class="fa fa-stop-circle"/> Stop Staging Database
+                                        </button>
+                                        <button type="button" class="ghost danger" data-staging-delete="1"
+                                                t-att-style="'' if instance.staging_db_exists else 'display:none'">
+                                            <i class="fa fa-trash"/> Delete Staging Database
+                                        </button>
+                                        <span class="sub" id="restoreStagingStatusActive" style="font-size:11px;margin:0"></span>
+                                    </div>
+                                    <div class="sub" style="font-size:10px;margin-top:6px">
+                                        <b>Stop</b> locks the instance back to your live database and keeps the test
+                                        copy. <b>Delete</b> removes the test copy and its attachments for good.
+                                        Both rewrite odoo.conf, so Odoo restarts (about 30 seconds).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Tab: Restore (self-service restore through the instance's own Odoo database manager) -->
+                    <section class="tab-pane" id="restore"
+                             t-att-data-db-name="instance.db_name or instance.technical_name">
+                        <div class="glass panel">
+                            <div class="section-title">
+                                <h2>Restore a Backup</h2>
+                                <div class="actions">
+                                    <a t-attf-href="/my/instance/{{ instance.id }}/download-backup"
+                                       class="ghost" style="text-decoration:none">
+                                        <i class="fa fa-download"/> Download latest backup
+                                    </a>
+                                    <button class="ghost" data-tab-jump="backups">Backup files</button>
+                                </div>
+                            </div>
+
+                            <p class="sub" style="padding:0 18px 16px;margin:0;line-height:1.65">
+                                Restoring is done from your own instance, in Odoo's
+                                <b>database manager</b>. Use the values below — they are the domain,
+                                the master password and the database name this instance is locked to.
+                            </p>
+
+                            <div class="sub" style="padding:0 18px 16px;margin:0;font-size:11px;line-height:1.7">
+                                Testing a database? Open the
+                                <button type="button" class="restore-link" data-tab-jump="staging">Staging tab</button>
+                                to remove <b>db_name</b> + <b>dbfilter</b> and reach the database manager.
+                            </div>
+
+                            <div class="restore-grid">
+                                <div class="field">
+                                    <label>INSTANCE / DOMAIN</label>
+                                    <div class="restore-value">
+                                        <input id="restoreDomain" readonly="readonly"
+                                               t-att-value="instance.url"/>
+                                        <button type="button" class="ghost restore-copy"
+                                                data-copy-target="restoreDomain">Copy</button>
+                                    </div>
+                                    <div class="sub" style="font-size:10px;margin-top:6px">
+                                        Keep this exact instance / domain — do not change it.
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>DATABASE NAME</label>
+                                    <div class="restore-value">
+                                        <input id="restoreDbName" class="mono" readonly="readonly"
+                                               t-att-value="instance.db_name or instance.technical_name"/>
+                                        <button type="button" class="ghost restore-copy"
+                                                data-copy-target="restoreDbName">Copy</button>
+                                    </div>
+                                    <div class="sub" style="font-size:10px;margin-top:6px">
+                                        Restore (or create) the database with exactly this name.
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>ODOO MASTER PASSWORD</label>
+                                    <div class="restore-value">
+                                        <input id="restoreMasterPassword" type="password"
+                                               readonly="readonly" autocomplete="off" spellcheck="false"
+                                               t-att-value="instance.admin_pass or ''"
+                                               placeholder="Not set — open Instance Settings"/>
+                                        <button type="button" class="ghost restore-copy"
+                                                id="restoreTogglePassword">Show</button>
+                                        <button type="button" class="ghost restore-copy"
+                                                data-copy-target="restoreMasterPassword">Copy</button>
+                                    </div>
+                                    <div class="sub" style="font-size:10px;margin-top:6px">
+                                        Same value as <b>Instance Settings → My Instance →
+                                        Odoo Master Password</b>.
+                                        <button type="button" class="restore-link"
+                                                data-tab-jump="configuration">Open Instance Settings</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="restore-steps">
+                                <div class="upgrade-step">
+                                    <span class="step-num">1</span>
+                                    <div>
+                                        <strong>Open the database manager</strong>
+                                        <small>
+                                            Go to
+                                            <a t-attf-href="{{ instance.url }}/web/database/manager"
+                                               target="_blank" rel="noopener" class="restore-code"><t t-esc="instance.url"/>/web/database/manager</a>
+                                            and enter the master password above.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="upgrade-step">
+                                    <span class="step-num">2</span>
+                                    <div>
+                                        <strong>Delete the current database first</strong>
+                                        <small>
+                                            Tick the box next to
+                                            <span class="restore-code" data-restore-db-name="1"><t t-esc="instance.db_name or instance.technical_name"/></span>
+                                            and click <b>Delete</b>, then confirm. Odoo cannot restore
+                                            over a database that already exists under the same name, so
+                                            it must be removed before the restore.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="upgrade-step">
+                                    <span class="step-num">3</span>
+                                    <div>
+                                        <strong>Restore your backup file</strong>
+                                        <small>
+                                            Click <b>Restore Database</b>, choose the backup file you
+                                            downloaded from the <b>Backups</b> tab (the <b>.zip</b> keeps
+                                            the filestore, <b>.sql</b>/<b>.dump</b> are also accepted),
+                                            then set the <b>Database Name</b> to exactly
+                                            <span class="restore-code" data-restore-db-name="1"><t t-esc="instance.db_name or instance.technical_name"/></span>
+                                            and confirm.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="upgrade-step">
+                                    <span class="step-num">4</span>
+                                    <div>
+                                        <strong>If the restore does not succeed</strong>
+                                        <small>
+                                            Use <b>Create Database</b> with the same name
+                                            <span class="restore-code" data-restore-db-name="1"><t t-esc="instance.db_name or instance.technical_name"/></span>
+                                            to get a clean instance, then open the database manager again
+                                            and restore the file over it. If it still fails, send the
+                                            backup <b>file name</b> to support.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="upgrade-step">
+                                    <span class="step-num">5</span>
+                                    <div>
+                                        <strong>Log in again</strong>
+                                        <small>
+                                            Open
+                                            <a t-attf-href="{{ instance.url }}/web/login" target="_blank"
+                                               rel="noopener" class="restore-code"><t t-esc="instance.url"/>/web/login</a>
+                                            with the administrator credentials of the restored database.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="restore-warning">
+                                <i class="fa fa-exclamation-triangle" style="color:#b47611;margin-right:6px"/>
+                                <b>Important:</b> this instance only sees the database whose name matches
+                                <span class="restore-code" data-restore-db-name="1"><t t-esc="instance.db_name or instance.technical_name"/></span>
+                                (odoo.conf <b>db_name</b> + <b>dbfilter</b>). If you restore under a
+                                different name, the instance URL and this panel will not find your data.
+                            </div>
+
+                            <div class="restore-change-box">
+                                <strong style="font-size:13px;color:var(--navy)">Change Database Name</strong>
+                                <div class="sub" style="margin:6px 0 14px;line-height:1.6">
+                                    Only needed when the backup must live under another name. Saving
+                                    rewrites the instance's <b>odoo.conf</b> (<b>db_name</b> and
+                                    <b>dbfilter</b>) and <b>redeploys / restarts</b> Odoo so the new name
+                                    is used immediately. The PostgreSQL database itself is not renamed —
+                                    after the restart, restore or create the database with the new name
+                                    in the database manager.
+                                    <br/>
+                                    <b>Tip:</b> if the old database is no longer needed, delete it in
+                                    the database manager <b>before</b> saving the new name — as soon as
+                                    odoo.conf uses the new name, the old one no longer appears in that
+                                    list (support can still remove it on request).
+                                </div>
+                                <div class="restore-change-row">
+                                    <div class="field" style="flex:1;min-width:220px;margin:0">
+                                        <label>NEW DATABASE NAME</label>
+                                        <input id="restoreNewDbName" type="text" spellcheck="false"
+                                               autocomplete="off"
+                                               t-att-placeholder="instance.db_name or instance.technical_name"/>
+                                    </div>
+                                    <button type="button" class="primary dark" id="saveRestoreDbName"
+                                            disabled="disabled">
+                                        <i class="fa fa-refresh"/> Change &amp; Restart Odoo
+                                    </button>
+                                </div>
+                                <label class="restore-confirm">
+                                    <input type="checkbox" id="restoreDbNameConfirm"/>
+                                    I understand that Odoo will restart and that the existing database
+                                    will not be renamed.
+                                </label>
+                                <div class="sub" id="restoreDbNameStatus" style="margin-top:8px;min-height:14px"></div>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Tab: Backups -->
                     <section class="tab-pane" id="backups">
                         <div class="glass panel">
@@ -1390,9 +1800,9 @@
                                 <button class="ghost" data-confirm="restart">Restart</button>
                             </div>
                             <div class="glass tool-card">
-                                <h3>Python Libraries</h3>
-                                <p>Install extra Python packages (pip) inside your instance and keep them in requirements.txt.</p>
-                                <button class="ghost" data-action="python-libs">Manage Libraries</button>
+                                <h3>Python &amp; System Packages</h3>
+                                <p>Install extra Python (pip) and system (apt) packages in your instance. Both are baked into the Docker image, and the image size uses your own storage.</p>
+                                <button class="ghost" data-action="python-libs">Manage Packages</button>
                             </div>
                         </div>
                     </section>
@@ -1502,7 +1912,7 @@
                     <section class="tab-pane" id="configuration" t-att-data-instance-id="instance.id">
                         <div class="glass form">
                             <h2>Instance Settings</h2>
-                            <p>What this instance is running with. Everything here is read-only — these resources come from your plan, so use the upgrade button to change them.</p>
+                            <p>What this instance is running with. Everything here is read-only — these resources come from your plan, so use the upgrade button to change them. <t t-if="instance_subscription_type == 'monthly'">Upgrades are allowed only on annual plans; this monthly subscription can be renewed only.</t></p>
                             <div class="form-grid">
                                 <div class="field">
                                     <label>INSTANCE SUBDOMAIN</label>
@@ -1571,6 +1981,9 @@
                              t-att-data-instance-id="instance.id"
                              t-att-data-storage-price-monthly="extra_storage_monthly_price or 220"
                              t-att-data-storage-price-monthly-fmt="extra_storage_monthly_price_formatted or '220'"
+                             t-att-data-upgrade-months="upgrade_months"
+                             t-att-data-upgrade-prorated="'true' if upgrade_prorated else 'false'"
+                             t-att-data-subscription-type="instance_subscription_type"
                              t-att-data-currency-symbol="currency_symbol">
 
                         <!-- Storage Full Banner (inside storage tab) -->
@@ -1583,8 +1996,14 @@
                                         Your instance has been stopped because it used
                                         <b><t t-esc="'%.1f' % (instance.storage_used_gb or 0)"/> GB</b> of its
                                         <b><t t-esc="'%.0f' % (instance.storage_limit_gb or 5)"/> GB</b> limit.
-                                        You need to buy extra storage to continue — choose a package below and
-                                        complete checkout; your instance starts again automatically.
+                                        <t t-if="instance_subscription_type == 'monthly'">
+                                            Upgrades are allowed only on annual plans — switch your subscription
+                                            to <b>Annual</b> and buy extra storage; your instance starts again automatically.
+                                        </t>
+                                        <t t-else="">
+                                            You need to buy extra storage to continue — choose a package below and
+                                            complete checkout; your instance starts again automatically.
+                                        </t>
                                         No data has been lost.
                                     </p>
                                 </div>
@@ -1594,7 +2013,12 @@
                         <!-- Storage Dashboard -->
                         <div class="glass" style="padding:28px;margin-bottom:18px;">
                             <h2 style="margin:0 0 6px;font-size:20px;">Storage Management</h2>
-                            <p style="margin:0 0 24px;font-size:12px;color:var(--muted);">Monitor your storage usage and upgrade capacity at any time without interrupting your plan.</p>
+                            <p style="margin:0 0 24px;font-size:12px;color:var(--muted);">
+                                Monitor your storage usage and upgrade capacity at any time without interrupting your plan.
+                                <t t-if="instance_subscription_type == 'monthly'">
+                                    <br/><b>Upgrades are allowed only on annual plans</b> — monthly subscriptions can be renewed only.
+                                </t>
+                            </p>
 
                             <!-- Storage Gauges Row -->
                             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:28px;">
@@ -1615,13 +2039,13 @@
                                     <small style="color:var(--muted);">allocated</small>
                                 </div>
                                 <div class="glass detail-card" style="text-align:center;padding:20px 14px;">
-                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;">Free</small>
+                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;">Available</small>
                                     <t t-set="free_gb" t-value="max(0.0, (instance.storage_limit_gb or 5.0) - (instance.storage_used_gb or 0.0))"/>
                                     <div t-attf-style="font-size:26px;font-weight:800;color:{{ '#dc2626' if free_gb &lt;= 0 else ('#f59e0b' if free_gb &lt; 1 else '#16a34a') }};margin:6px 0 2px;">
                                         <t t-esc="'%.1f' % free_gb"/>
                                         <span style="font-size:13px;font-weight:600;color:var(--muted);">GB</span>
                                     </div>
-                                    <small style="color:var(--muted);">available</small>
+                                    <small style="color:var(--muted);">currently available</small>
                                 </div>
                                 <div class="glass detail-card" style="text-align:center;padding:20px 14px;">
                                     <small style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;">Usage</small>
@@ -1634,23 +2058,24 @@
                                 </div>
                             </div>
 
-                            <!-- Where the space is going: the odoo-web-data volume + pgdata -->
+                            <!-- Where the space is going: the whole instance usage + the
+                                 private Docker image (both are part of the quota) -->
                             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
                                 <div style="flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.6)">
-                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">odoo-web-data</small>
+                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Instance Usage</small>
                                     <div style="font-size:16px;font-weight:800;color:var(--navy)">
-                                        <t t-esc="'%.2f' % (instance.storage_odoo_data_gb or 0)"/>
+                                        <t t-esc="'%.2f' % (instance.storage_folder_gb or 0)"/>
                                         <span style="font-size:11px;font-weight:600;color:var(--muted)">GB</span>
                                     </div>
-                                    <small style="color:var(--muted);font-size:10px">attachments &amp; filestore · Docker volume</small>
+                                    <small style="color:var(--muted);font-size:10px">database, attachments, addons, backups</small>
                                 </div>
                                 <div style="flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.6)">
-                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">pgdata</small>
+                                    <small style="font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">docker image</small>
                                     <div style="font-size:16px;font-weight:800;color:var(--navy)">
-                                        <t t-esc="'%.2f' % (instance.storage_database_gb or 0)"/>
+                                        <t t-esc="'%.2f' % (instance.storage_image_gb or 0)"/>
                                         <span style="font-size:11px;font-weight:600;color:var(--muted)">GB</span>
                                     </div>
-                                    <small style="color:var(--muted);font-size:10px">PostgreSQL database</small>
+                                    <small style="color:var(--muted);font-size:10px">Python libs &amp; system packages</small>
                                 </div>
                             </div>
 
@@ -1673,8 +2098,19 @@
                             </div>
                         </div>
 
-                        <!-- Upgrade Packages -->
-                        <div class="glass" style="padding:28px;margin-bottom:18px;" id="storageUpgradeSection">
+                        <!-- Upgrade Packages: buying extra storage is an annual-plan feature. -->
+                        <div t-if="instance_subscription_type == 'monthly'" class="glass" style="padding:28px;margin-bottom:18px;">
+                            <h2 style="margin:0 0 6px;font-size:18px;">Upgrades are allowed only on annual plans</h2>
+                            <p style="margin:0 0 18px;font-size:12px;color:var(--muted);">
+                                Monthly subscriptions can be <b>renewed only</b>. To add storage (or workers), switch this
+                                instance to an <b>Annual &amp;middot; billed yearly</b> plan from the Renew &amp; Upgrade wizard.
+                            </p>
+                            <button type="button" class="primary" style="padding:12px 18px;font-size:13px"
+                                    onclick="document.getElementById('btnOpenRenewModal') &amp;&amp; document.getElementById('btnOpenRenewModal').click()">
+                                ⚡ Renew / Switch to Annual
+                            </button>
+                        </div>
+                        <div t-else="" class="glass" style="padding:28px;margin-bottom:18px;" id="storageUpgradeSection">
                             <h2 style="margin:0 0 6px;font-size:18px;">Upgrade Storage</h2>
                             <p style="margin:0 0 20px;font-size:12px;color:var(--muted);">
                                 Purchase additional storage. Your current plan <strong>will not be charged again</strong>.
@@ -1683,25 +2119,15 @@
 
                             <!-- Package Cards -->
                             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px;" id="storagePackageGrid">
-                                <div class="storage-pkg-card" data-gb="5"
-                                     style="border:2px solid var(--teal);border-radius:14px;padding:18px 14px;text-align:center;cursor:pointer;background:rgba(15,168,160,0.06);transition:all 0.2s;">
-                                    <div style="font-size:22px;font-weight:800;color:var(--teal);">+5 GB</div>
-                                    <div style="font-size:11px;color:var(--muted);margin:4px 0 10px;">5 additional gigabytes</div>
-                                    <div class="storage-pkg-price" style="font-size:13px;font-weight:700;color:var(--navy);">
-                                        <t t-esc="extra_storage_monthly_price_formatted or '220'"/> <t t-esc="currency_symbol"/> × 5
-                                    </div>
-                                    <div class="storage-pkg-total" style="font-size:18px;font-weight:800;color:var(--teal);margin-top:4px;">
-                                        = <t t-esc="'%g' % ((extra_storage_monthly_price or 220) * 5)"/> <t t-esc="currency_symbol"/>
-                                    </div>
-                                </div>
+                                <!-- The smallest storage upgrade is 10 GB, and it is the default selection. -->
                                 <div class="storage-pkg-card" data-gb="10"
-                                     style="border:1.5px solid var(--line);border-radius:14px;padding:18px 14px;text-align:center;cursor:pointer;background:rgba(255,255,255,0.7);transition:all 0.2s;">
-                                    <div style="font-size:22px;font-weight:800;color:var(--navy);">+10 GB</div>
-                                    <div style="font-size:11px;color:var(--muted);margin:4px 0 10px;">10 additional gigabytes</div>
+                                     style="border:2px solid var(--teal);border-radius:14px;padding:18px 14px;text-align:center;cursor:pointer;background:rgba(15,168,160,0.06);transition:all 0.2s;">
+                                    <div style="font-size:22px;font-weight:800;color:var(--teal);">+10 GB</div>
+                                    <div style="font-size:11px;color:var(--muted);margin:4px 0 10px;">10 additional gigabytes · minimum</div>
                                     <div class="storage-pkg-price" style="font-size:13px;font-weight:700;color:var(--navy);">
                                         <t t-esc="extra_storage_monthly_price_formatted or '220'"/> <t t-esc="currency_symbol"/> × 10
                                     </div>
-                                    <div class="storage-pkg-total" style="font-size:18px;font-weight:800;color:var(--navy);margin-top:4px;">
+                                    <div class="storage-pkg-total" style="font-size:18px;font-weight:800;color:var(--teal);margin-top:4px;">
                                         = <t t-esc="'%g' % ((extra_storage_monthly_price or 220) * 10)"/> <t t-esc="currency_symbol"/>
                                     </div>
                                 </div>
@@ -1732,13 +2158,13 @@
 
                             <!-- Custom GB Input -->
                             <div style="border:1.5px dashed rgba(15,168,160,0.3);border-radius:12px;padding:18px;margin-bottom:24px;background:rgba(15,168,160,0.03);">
-                                <label style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);display:block;margin-bottom:10px;">Custom Amount (GB)</label>
+                                <label style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);display:block;margin-bottom:10px;">Custom Amount (GB) — minimum 10 GB</label>
                                 <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
                                     <button type="button" id="storageBtnMinus" style="width:36px;height:36px;border:1.5px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.8);font-size:18px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;">−</button>
-                                    <input type="number" id="storageCustomGb" min="1" max="500" value="5"
+                                    <input type="number" id="storageCustomGb" min="10" max="500" value="10"
                                            style="width:80px;text-align:center;padding:8px;border:1.5px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.85);color:var(--ink);font-weight:800;font-size:14px;"/>
                                     <button type="button" id="storageBtnPlus" style="width:36px;height:36px;border:1.5px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.8);font-size:18px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;">+</button>
-                                    <span style="font-size:12px;color:var(--muted);">GB additional storage</span>
+                                    <span style="font-size:12px;color:var(--muted);">GB additional storage (min. 10 GB)</span>
                                     <span id="storageCustomPriceDisplay" style="font-size:14px;font-weight:700;color:var(--teal);margin-left:auto;"></span>
                                 </div>
                             </div>
@@ -1747,7 +2173,7 @@
                             <div style="background:rgba(15,168,160,0.06);border:1.5px solid rgba(15,168,160,0.2);border-radius:14px;padding:18px;margin-bottom:18px;" id="storageOrderSummary">
                                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                                     <span style="font-size:12px;color:var(--muted);">Selected:</span>
-                                    <strong id="storageSummaryGb" style="font-size:14px;color:var(--navy);">5 GB</strong>
+                                    <strong id="storageSummaryGb" style="font-size:14px;color:var(--navy);">10 GB</strong>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
                                     <span style="font-size:12px;color:var(--muted);">Price per GB:</span>
@@ -1757,7 +2183,7 @@
                                 <div style="display:flex;justify-content:space-between;align-items:center;">
                                     <span style="font-size:13px;font-weight:700;color:var(--navy);">Total:</span>
                                     <strong id="storageSummaryTotal" style="font-size:18px;font-weight:800;color:var(--teal);">
-                                        <t t-esc="'%g' % ((extra_storage_monthly_price or 220) * 5)"/> <t t-esc="currency_symbol"/>
+                                        <t t-esc="'%g' % ((extra_storage_monthly_price or 220) * 10)"/> <t t-esc="currency_symbol"/>
                                     </strong>
                                 </div>
                             </div>
@@ -1812,6 +2238,95 @@
                         <div class="modal-actions">
                             <button class="ghost" id="cancelAction">Cancel</button>
                             <button class="primary" id="confirmAction">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create / stop staging database: pick how the test copy is built, then a preloader -->
+                <div class="modal" id="stagingDbModal">
+                    <div class="glass modal-card staging-modal-card">
+
+                        <!-- Step 1: choose how the test database is created -->
+                        <div id="stagingDbChoiceView">
+                            <div class="staging-choice-icon"><i class="fa fa-clone"/></div>
+                            <h2 style="margin:10px 0 6px;font-size:20px">Create Staging Database</h2>
+                            <p style="font-size:12.5px;color:var(--muted);margin:0 0 18px;line-height:1.6">
+                                Pick how
+                                <b class="restore-code" id="stagingDbModalName">…</b>
+                                should be created. Your live database is never modified.
+                            </p>
+                            <div class="staging-choice-grid">
+                                <button type="button" class="staging-choice" id="stagingChoiceDuplicate">
+                                    <i class="fa fa-clone"/>
+                                    <strong>Duplicate production</strong>
+                                    <small>Exact copy of your live data, attachments included — the safest way to test a change.</small>
+                                    <span class="staging-choice-tag">Recommended</span>
+                                </button>
+                                <button type="button" class="staging-choice" id="stagingChoiceEmpty">
+                                    <i class="fa fa-file-o"/>
+                                    <strong>Create new database</strong>
+                                    <small>A blank database you can restore a backup into or start from scratch.</small>
+                                </button>
+                            </div>
+                            <div class="modal-actions" style="justify-content:center;margin-top:18px">
+                                <button class="ghost" type="button" id="stagingChoiceCancel">Cancel</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: preloader while the server works -->
+                        <div id="stagingDbProgressView" style="display:none">
+                            <div class="saas-spinner-container" id="stagingModalSpinner" style="margin:0 auto 6px">
+                                <div class="saas-pulse-ring"></div>
+                                <div class="saas-spinner">
+                                    <div class="saas-spinner-inner">
+                                        <span class="saas-spinner-icon"><i class="fa fa-database"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h2 id="stagingModalTitle" style="margin:14px 0 6px;font-size:20px">Preparing your staging database</h2>
+                            <p id="stagingModalMessage" style="font-size:12.5px;color:var(--muted);margin:0 0 18px;line-height:1.6">
+                                Copying the database and the attachments on the server. Please keep this window open.
+                            </p>
+                            <div class="saas-progress-bar-wrap" style="margin:0 0 8px">
+                                <div class="saas-progress-bar-fill" id="stagingModalProgressFill" style="width:0%"></div>
+                            </div>
+                            <div id="stagingModalPct" class="mono" style="font-size:11px;color:var(--muted)">0%</div>
+                        </div>
+
+                        <!-- Step 3: result -->
+                        <div id="stagingDbResultView" style="display:none">
+                            <div id="stagingModalResultIcon" style="font-size:44px;line-height:1;margin:6px 0 0"></div>
+                            <h2 id="stagingResultTitle" style="margin:14px 0 6px;font-size:20px">Staging database ready</h2>
+                            <p id="stagingResultMessage" style="font-size:12.5px;color:var(--muted);margin:0 0 18px;line-height:1.6"></p>
+                            <div class="modal-actions" style="justify-content:center">
+                                <button class="primary" type="button" id="stagingModalClose">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preloader for the Overview action buttons (start / stop / restart / remove):
+                     stays on screen until the RPC finishes, then the page reloads so the
+                     status banner ("Your instance is suspended…") is always in sync. -->
+                <div class="saas-deployment-overlay" id="instanceActionOverlay" style="display:none">
+                    <div class="glass saas-deploying-card">
+                        <div class="saas-spinner-container">
+                            <div class="saas-pulse-ring"></div>
+                            <div class="saas-spinner">
+                                <div class="saas-spinner-inner">
+                                    <span class="saas-spinner-icon"><i class="fa fa-cogs"/></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="instanceActionTitle">Working on your instance…</h2>
+                        <p class="saas-deploy-subtitle" id="instanceActionMessage">
+                            Please keep this page open — it reloads by itself when the action is done.
+                        </p>
+                        <div class="saas-progress-bar-wrap" style="margin-top:18px">
+                            <div class="saas-progress-bar-fill" id="instanceActionProgressFill" style="width:8%"></div>
+                        </div>
+                        <div class="mono" id="instanceActionHint" style="font-size:10px;color:var(--muted)">
+                            This usually takes a few seconds.
                         </div>
                     </div>
                 </div>
@@ -2008,10 +2523,14 @@
                      t-att-data-storage-price-monthly-fmt="extra_storage_monthly_price_formatted or '220'"
                      t-att-data-storage-price-yearly-fmt="extra_storage_annual_price_formatted or '2,244'"
                      t-att-data-currency-symbol="currency_symbol"
-                     t-att-data-essential-monthly="essential_monthly_price or 14900"
-                     t-att-data-essential-annual="essential_annual_price or 151980"
+                     t-att-data-essential-monthly="essential_monthly_price or 36"
+                     t-att-data-essential-annual="essential_annual_price or 432"
                      t-att-data-current-workers="instance.workers_count or 1"
+                     t-att-data-max-workers="max_workers or 4"
                      t-att-data-current-storage="instance.storage_limit_gb or 5"
+                     t-att-data-upgrade-months="upgrade_months"
+                     t-att-data-upgrade-prorated="'true' if upgrade_prorated else 'false'"
+                     t-att-data-subscription-type="instance_subscription_type"
                      t-att-data-instance-id="instance.id">
                     <div class="glass modal-card" style="width:100%;max-width:540px;padding:26px">
                         <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:14px">
@@ -2020,6 +2539,16 @@
                                 <p style="margin:0;font-size:12px;color:var(--muted)">Select duration and configure instance resources.</p>
                             </div>
                             <button type="button" class="ghost" id="btnCloseRenewModal" style="padding:4px 8px;font-size:14px;line-height:1;border-radius:6px">✕</button>
+                        </div>
+
+                        <!-- Monthly plans can only be renewed: upgrades (extra workers & storage)
+                             are an annual-plan feature. Toggled by myodoo_portal.js. -->
+                        <div id="renewUpgradeAnnualOnlyNote" style="display:none;align-items:flex-start;gap:9px;margin-bottom:14px;padding:10px 12px;border:1px solid rgba(255,194,75,.45);border-radius:10px;background:rgba(255,194,75,.14)">
+                            <i class="fa fa-info-circle" style="color:#b47611;font-size:14px;margin-top:1px"></i>
+                            <div style="font-size:11px;line-height:1.5;color:var(--ink)">
+                                <b>Upgrades are allowed only on annual plans.</b><br/>
+                                Monthly plans can be renewed only. Switch to <b>Annual &amp;middot; billed yearly</b> to add workers or storage.
+                            </div>
                         </div>
 
                         <!-- Current resources owned by the instance -->
@@ -2032,7 +2561,7 @@
                                 </div>
                             </div>
                             <div style="font-size:11px;color:var(--muted);text-align:right;max-width:45%">
-                                Increase the values below to upgrade your instance.
+                                Increase the values below to upgrade your instance (annual plans only).
                             </div>
                         </div>
 
@@ -2042,7 +2571,7 @@
                             <input type="hidden" name="sub_domain" t-att-value="instance.name"/>
                             <input type="hidden" name="domain" t-att-value="instance.based_domain_id.id if instance.based_domain_id else ''"/>
                             <input type="hidden" name="buy_now_from_pricing" value="on"/>
-                            <input type="hidden" name="price_by" id="renewPriceBy" value="monthly"/>
+                            <input type="hidden" name="price_by" id="renewPriceBy" t-att-value="instance_subscription_type or 'yearly'"/>
                             <input type="hidden" name="plan" id="renewPlanName" value="Standard"/>
                             <input type="hidden" name="plan_product_id" id="renewPlanProductId" t-att-value="essential_product.id if essential_product else ''"/>
                             <!-- The visible storage field is the EXTRA GB to add; the form posts the resulting total. -->
@@ -2052,8 +2581,8 @@
                             <div class="field" style="margin-bottom:14px">
                                 <label>BILLING CYCLE</label>
                                 <div class="billing-toggle" style="margin:0;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-                                    <button type="button" class="active" id="renewBillingMonthly" data-renew-billing="monthly" style="text-align:center;padding:8px">Monthly</button>
-                                    <button type="button" id="renewBillingAnnual" data-renew-billing="annual" style="text-align:center;padding:8px">Annual &amp;middot; Save 15%</button>
+                                    <button type="button" t-attf-class="#{'active' if (instance_subscription_type or 'yearly') == 'monthly' else ''}" id="renewBillingMonthly" data-renew-billing="monthly" style="text-align:center;padding:8px">Monthly</button>
+                                    <button type="button" t-attf-class="#{'active' if (instance_subscription_type or 'yearly') == 'yearly' else ''}" id="renewBillingAnnual" data-renew-billing="annual" style="text-align:center;padding:8px">Annual &amp;middot; billed yearly</button>
                                 </div>
                             </div>
 
@@ -2062,55 +2591,62 @@
                                 <label>PLAN</label>
                                 <div class="renew-plan-card active" id="renewPlanCardEssential" data-plan="Standard"
                                      t-att-data-product-id="essential_product.id if essential_product else ''"
-                                     data-base-storage="5" style="padding:12px;border:2px solid var(--teal);border-radius:12px;background:rgba(15,168,160,0.06)">
+                                     data-base-storage="5"
+                                     data-base-workers="2" style="padding:12px;border:2px solid var(--teal);border-radius:12px;background:rgba(15,168,160,0.06)">
                                     <div style="display:flex;justify-content:space-between;align-items:center">
                                         <span style="font-size:13px;font-weight:800;color:var(--navy)">Standard</span>
                                         <span style="font-size:8px;font-weight:800;background:var(--teal);color:#fff;padding:2px 6px;border-radius:99px">PLAN</span>
                                     </div>
                                     <div style="font-size:16px;font-weight:800;color:var(--deep);margin:4px 0" id="renewEssPriceDisplay">
-                                        <t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/>
+                                        <t t-esc="essential_monthly_price_formatted or '36'"/> <t t-esc="currency_symbol"/>
                                     </div>
-                                    <div style="font-size:10px;color:var(--muted)">Includes 5 GB base storage &amp;middot; workers &amp; extra storage billed below</div>
+                                    <div style="font-size:10px;color:var(--muted)">Includes 2 workers &amp; 5 GB base storage &amp;middot; extra resources billed below</div>
+                                    <div id="renewRecurringBreakdown" style="font-size:11px;font-weight:800;color:var(--deep);margin-top:6px"></div>
                                 </div>
                             </div>
 
-                            <!-- Workers Stepper -->
+                            <!-- Workers Stepper: extra workers to ADD (0 = no upgrade) -->
                             <div class="field" style="margin-bottom:14px">
-                                <label>NUMBER OF WORKERS (TOTAL)</label>
+                                <label>EXTRA WORKERS TO ADD (MAX <t t-esc="max_workers or 4"/> TOTAL)</label>
                                 <div style="display:flex;align-items:center;gap:8px">
                                     <button type="button" class="ghost" id="renewBtnMinusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
                                     <input type="number" name="num_users" id="renewUsersCount"
-                                           t-att-min="instance.workers_count or 1"
-                                           t-att-max="max_workers or 4"
-                                           t-att-value="instance.workers_count or 1"
+                                           min="0"
+                                           t-att-max="max(0, (max_workers or 4) - (instance.workers_count or 1))"
+                                           value="0"
                                            style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                     <button type="button" class="ghost" id="renewBtnPlusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                     <span style="font-size:11px;color:var(--muted);margin-left:6px" id="renewUserPriceDisplay">
                                         <t t-esc="user_monthly_price_formatted or '100'"/> <t t-esc="currency_symbol"/> / worker / month
                                     </span>
                                 </div>
+                                <div style="font-size:10px;color:var(--muted);margin-top:5px" id="renewWorkersHint">
+                                    Currently <t t-esc="instance.workers_count or 1"/> worker(s) ·
+                                    <t t-esc="max(0, (max_workers or 4) - (instance.workers_count or 1))"/> more can be added ·
+                                    0 = no upgrade.
+                                </div>
                             </div>
 
                             <!-- Extra Storage Stepper: only the GB added on top are charged -->
                             <div class="field" style="margin-bottom:14px">
-                                <label>EXTRA STORAGE (GB)</label>
+                                <label>EXTRA STORAGE (GB) · MINIMUM 10 GB</label>
                                 <div style="display:flex;align-items:center;gap:8px">
                                     <button type="button" class="ghost" id="renewBtnMinusStorage" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
                                     <input type="number" name="extra_storage_gb" id="renewStorageGb"
                                            min="0"
                                            t-att-max="'%g' % (500 - (instance.storage_limit_gb or 5))"
-                                           value="1"
+                                           value="0"
                                            style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                     <button type="button" class="ghost" id="renewBtnPlusStorage" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                     <span style="font-size:11px;color:var(--muted);margin-left:6px" id="renewStoragePriceDisplay">
                                         <t t-esc="'%g' % (instance.storage_limit_gb or 5)"/> GB included · + <t t-esc="extra_storage_monthly_price_formatted or '220'"/> <t t-esc="currency_symbol"/> / extra GB
                                     </span>
                                 </div>
-                                <div style="font-size:10px;color:var(--muted);margin-top:5px" id="renewStorageTotalHint"/>
+                                <div style="font-size:10px;color:var(--muted);margin-top:5px" id="renewStorageTotalHint">0 = no extra storage · any storage upgrade starts at 10 GB.</div>
                             </div>
 
                             <!-- Upgrade add-ons summary (only extra workers/storage are charged) -->
-                            <div style="background:rgba(15,168,160,0.08);border:1px solid rgba(15,168,160,0.25);border-radius:12px;padding:14px;margin-bottom:18px">
+                            <div id="renewUpgradeSummary" style="background:rgba(15,168,160,0.08);border:1px solid rgba(15,168,160,0.25);border-radius:12px;padding:14px;margin-bottom:18px">
                                 <div style="display:flex;justify-content:space-between;align-items:center">
                                     <div>
                                         <div style="font-size:10px;font-weight:800;text-transform:uppercase;color:var(--muted);letter-spacing:.05em">Upgrade add-ons — due today</div>
@@ -2120,8 +2656,8 @@
                                         <div style="font-size:10px;color:var(--muted);margin-top:2px">Only the extra workers &amp; storage are charged.</div>
                                     </div>
                                     <div style="text-align:right">
-                                        <span class="state-pill" id="renewSummaryCycleBadge" style="background:rgba(15,168,160,0.15);color:var(--deep);font-weight:800">Monthly</span>
-                                        <div style="font-size:10px;color:var(--muted);margin-top:4px" id="renewSummaryNote">Upgrades apply instantly</div>
+                                        <span class="state-pill" id="renewSummaryCycleBadge" style="background:rgba(15,168,160,0.15);color:var(--deep);font-weight:800"><t t-esc="'Monthly' if (instance_subscription_type or 'yearly') == 'monthly' else 'Annual'"/></span>
+                                        <div style="font-size:10px;color:var(--muted);margin-top:4px" id="renewSummaryNote">Billed for the subscription period</div>
                                     </div>
                                 </div>
                             </div>
@@ -2336,14 +2872,17 @@
                     </div>
                 </div>
 
-                <!-- Upgrade Workers Modal -->
-                <div class="modal" id="workersUpgradeModal">
+                <!-- Upgrade Workers Modal (annual plans only: hidden for monthly, which can only be renewed) -->
+                <div class="modal" id="workersUpgradeModal" t-if="instance_subscription_type != 'monthly'">
                     <div class="glass modal-card" style="width:100%;max-width:520px;padding:26px"
                          t-att-data-worker-price-monthly="worker_monthly_price or 100"
                          t-att-data-worker-price-formatted="worker_monthly_price_formatted or '100'"
                          t-att-data-currency-symbol="currency_symbol"
                          t-att-data-instance-id="instance.id"
                          t-att-data-current-workers="instance.workers_count or 1"
+                         t-att-data-upgrade-months="upgrade_months"
+                         t-att-data-upgrade-prorated="'true' if upgrade_prorated else 'false'"
+                         t-att-data-subscription-type="instance_subscription_type"
                          t-att-data-max-workers="max_workers or 4">
                         <h2 style="font-size:22px;margin:0 0 4px;color:var(--navy)">Upgrade Workers</h2>
                         <p style="font-size:12px;color:var(--muted);margin:0 0 18px">
@@ -2358,11 +2897,11 @@
                         </div>
 
                         <div class="field" style="margin-bottom:14px">
-                            <label>ADD WORKERS</label>
+                            <label>WORKERS TO ADD (0 = NO UPGRADE)</label>
                             <div style="display:flex;align-items:center;gap:8px">
                                 <button type="button" class="ghost" id="workersBtnMinus" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
-                                <input type="number" id="workersAddCount" min="1" value="1"
-                                       t-att-max="max(1, (max_workers or 4) - (instance.workers_count or 1))"
+                                <input type="number" id="workersAddCount" min="0" value="0"
+                                       t-att-max="max(0, (max_workers or 4) - (instance.workers_count or 1))"
                                        style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                 <button type="button" class="ghost" id="workersBtnPlus" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                 <span id="workersPriceDisplay" style="font-size:11px;color:var(--muted);margin-left:6px">
@@ -2396,50 +2935,83 @@
                          t-att-data-order-id="pending_workers_order_id or 0" style="display:none"></div>
                 </t>
 
-                <!-- Install Python Library wizard (Overview control + Tools card) -->
+                <!-- Install Python & System Packages wizard (Overview control + Tools card) -->
                 <div class="modal" id="pythonLibsModal">
-                    <div class="glass modal-card" style="width:100%;max-width:580px;padding:26px"
+                    <div class="glass modal-card" style="width:100%;max-width:640px;padding:26px;max-height:90vh;overflow-y:auto"
                          t-att-data-instance-id="instance.id">
-                        <h2 style="font-size:22px;margin:0 0 4px;color:var(--navy)">Install Python Library</h2>
+                        <h2 style="font-size:22px;margin:0 0 4px;color:var(--navy)">Install Python &amp; System Packages</h2>
                         <p style="font-size:12px;color:var(--muted);margin:0 0 18px">
-                            Type the name of the Python package you need (a
-                            <b>pip</b> library) and press Install. It is installed inside your
-                            instance container with <b>pip --user</b>, so it stays available after
-                            a restart or a redeploy. Restart the instance if the library is used by a
-                            module that is already loaded.
+                            Add a <b>pip</b> library and/or <b>APT</b> system packages (for
+                            example <b>python3-xmlsec</b>). Both are baked into your instance's
+                            <b>Docker image</b>: the Dockerfile gets a <b>pip install</b> and/or
+                            <b>apt-get install</b> line, the image is rebuilt and the instance is
+                            recreated from it. That keeps the packages available after a restart,
+                            a redeploy and even a container recreate.
                         </p>
 
-                        <div class="field" style="margin-bottom:10px">
-                            <label>LIBRARY NAME</label>
-                            <div style="display:flex;gap:8px">
-                                <input type="text" id="pythonLibInput" autocomplete="off" spellcheck="false"
-                                       placeholder="pandas   ·   python-escpos==3.1   ·   pandas[excel]"
-                                       style="flex:1"/>
-                                <button class="primary" type="button" id="btnPythonLibInstall"
-                                        style="white-space:nowrap">Install</button>
-                            </div>
+                        <div class="restore-warning" style="margin:0 0 18px;padding:12px 14px;border-color:rgba(113,75,103,.45);background:rgba(113,75,103,.08)">
+                            <i class="fa fa-hdd-o" style="color:#714b67;margin-right:6px"/>
+                            <b>Python libraries and system packages use your own storage.</b>
+                            Every install rebuilds your private Docker image, and the size of
+                            that image is counted in your storage usage,
+                            exactly like your database and attachments.
+                            <span id="pythonLibImageSize" style="display:none;margin-top:7px;color:var(--deep);font-weight:800"></span>
+                        </div>
+
+                        <div class="field" style="margin-bottom:12px">
+                            <label>PYTHON PACKAGES (PIP)</label>
+                            <input type="text" id="pythonLibInput" autocomplete="off" spellcheck="false"
+                                   placeholder="pandas   ·   python-escpos==3.1   ·   pandas[excel]"
+                                   style="width:100%"/>
                             <div id="pythonLibHint" style="font-size:10px;color:var(--muted);margin-top:7px">
                                 Version is optional — when you leave it out, the exact version pip installs is
                                 pinned in requirements.txt.
                             </div>
                         </div>
 
+                        <div class="field" style="margin-bottom:10px">
+                            <label>SYSTEM PACKAGES (APT)</label>
+                            <textarea id="systemPkgInput" rows="3" autocomplete="off" spellcheck="false"
+                                      placeholder="python3-xmlsec&#10;libxml2-dev"
+                                      style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.75);color:var(--ink);font-family:monospace;font-size:12px;resize:vertical"></textarea>
+                            <div id="systemPkgHint" style="font-size:10px;color:var(--muted);margin-top:7px">
+                                One APT package per line. They are installed with
+                                <b>apt-get install</b> in the same Dockerfile, before the pip step.
+                            </div>
+                        </div>
+
+                        <div style="display:flex;justify-content:flex-end;margin-bottom:6px">
+                            <button class="primary" type="button" id="btnPythonLibInstall"
+                                    style="white-space:nowrap">Install</button>
+                        </div>
+
                         <div id="pythonLibProgress" style="display:none;align-items:center;gap:9px;font-size:11px;color:var(--deep);font-weight:700;margin:12px 0">
                             <span class="python-lib-spin">&#8635;</span>
-                            <span>Installing… pip is resolving and downloading the package, this can take up to a minute.</span>
+                            <span>Installing… rebuilding the instance Docker image with the packages, this can take a minute or two.</span>
                         </div>
 
                         <div id="pythonLibError" style="display:none;font-size:11px;line-height:1.55;color:#b91c1c;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.28);border-radius:10px;padding:10px 12px;margin:12px 0;white-space:pre-wrap"></div>
 
                         <div class="section-title" style="padding:14px 0 8px">
                             <h3 style="margin:0;font-family:Inter,sans-serif;font-size:13px;color:var(--navy)">
-                                Installed libraries
+                                Installed Python packages
                             </h3>
                             <span id="pythonLibCount" style="font-size:10px;color:var(--muted)"></span>
                         </div>
                         <div class="python-lib-list" id="pythonLibList"></div>
                         <div style="font-size:10px;color:var(--muted);margin-top:9px">
                             Manifest updated automatically: <b class="mono" id="pythonLibPath">/home/&lt;instance&gt;/requirements.txt</b>
+                        </div>
+
+                        <div class="section-title" style="padding:18px 0 8px">
+                            <h3 style="margin:0;font-family:Inter,sans-serif;font-size:13px;color:var(--navy)">
+                                Installed system packages
+                            </h3>
+                            <span id="systemPkgCount" style="font-size:10px;color:var(--muted)"></span>
+                        </div>
+                        <div class="python-lib-list" id="systemPkgList"></div>
+                        <div style="font-size:10px;color:var(--muted);margin-top:9px">
+                            Manifest updated automatically: <b class="mono" id="systemPkgPath">/home/&lt;instance&gt;/system-packages.txt</b>
                         </div>
 
                         <div class="modal-actions" style="margin-top:16px">
@@ -2587,7 +3159,7 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title">Billing — myodoo.nc</t>
+            <t t-set="title">Billing - My Odoo SH</t>
 
             <div class="myodoo-portal-root">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
@@ -2814,7 +3386,7 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title">Settings — myodoo.nc</t>
+            <t t-set="title">Settings - My Odoo SH</t>
 
             <div class="myodoo-portal-root">
                 <t t-call="s_odoo_saas_master.myodoo_topbar"/>
@@ -2887,7 +3459,7 @@
 
                             <section class="settings-pane" id="setting-hosting">
                                 <h2>Resources</h2>
-                                <p>Everything your hosting is running with right now. These resources come from your plan, so they are read-only — use the upgrade button to change them.</p>
+                                <p>Everything your hosting is running with right now. These resources come from your plan, so they are read-only — use the upgrade button to change them. <t t-if="instances and (instances[:1].subscription_type or 'yearly') == 'monthly'">Upgrades are allowed only on annual plans; this monthly subscription can be renewed only.</t></p>
                                 <t t-set="hosting" t-value="instances[:1]"/>
                                 <t t-set="ram_total" t-value="(hosting.workers_count or 1) * 2"/>
 
@@ -2912,17 +3484,17 @@
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <label>DATABASE (pgdata)</label>
+                                        <label>INSTANCE USAGE</label>
                                         <div style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.6);font-size:13px;font-weight:700;color:var(--navy)">
-                                            <t t-esc="'{:.2f}'.format(hosting.storage_database_gb or 0.0)"/> GB
-                                            <div class="sub" style="font-size:10px;font-weight:600;margin-top:3px">PostgreSQL</div>
+                                            <t t-esc="'{:.2f}'.format(hosting.storage_folder_gb or 0.0)"/> GB
+                                            <div class="sub" style="font-size:10px;font-weight:600;margin-top:3px">Database, attachments, addons &amp; backups</div>
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <label>FILESTORE (odoo-web-data)</label>
+                                        <label>DOCKER IMAGE (python libs &amp; packages)</label>
                                         <div style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.6);font-size:13px;font-weight:700;color:var(--navy)">
-                                            <t t-esc="'{:.2f}'.format(hosting.storage_odoo_data_gb or 0.0)"/> GB
-                                            <div class="sub" style="font-size:10px;font-weight:600;margin-top:3px">Attachments &amp; sessions</div>
+                                            <t t-esc="'{:.2f}'.format(hosting.storage_image_gb or 0.0)"/> GB
+                                            <div class="sub" style="font-size:10px;font-weight:600;margin-top:3px">Counted in your storage</div>
                                         </div>
                                     </div>
                                     <div class="field">
@@ -3106,10 +3678,104 @@
         <t t-call="portal.frontend_layout">
             <t t-set="no_header" t-value="True"/>
             <t t-set="no_footer" t-value="True"/>
-            <t t-set="title">Pricing — myodoo.nc</t>
+            <t t-set="title">Pricing - My Odoo SH</t>
 
-            <div class="myodoo-portal-root">
-                <t t-call="s_odoo_saas_master.myodoo_topbar"/>
+            <div class="myodoo-portal-root mo_pricing_page">
+                <style>
+                /* ===== MyOdoo.sh website theme applied to the public /pricing page ===== */
+                .mo_pricing_page.myodoo-portal-root{
+                  --teal:#714b67; --deep:#5a3c54; --navy:#2b2029; --sand:#faf7fb;
+                  --ink:#1c1720; --muted:#6b6470; --coral:#8a5f7f; --yellow:#22a06b;
+                  --green:#22a06b; --glass:rgba(255,255,255,.92); --line:#e6dee6;
+                  --shadow:0 16px 44px rgba(45,30,45,.08);
+                  font-family:'DM Sans',Arial,sans-serif;
+                  color:#1c1720;
+                  background:linear-gradient(180deg,#faf7fb,#f5f0f7) !important;
+                  min-height:0;
+                }
+                .mo_pricing_page .topbar{display:none !important}
+                .mo_pricing_page .page{max-width:1160px;margin:auto;padding:58px 24px 74px}
+                .mo_pricing_page h1,.mo_pricing_page h2,.mo_pricing_page h3{
+                  font-family:'Manrope',sans-serif !important;color:#1c1720;letter-spacing:-.03em;
+                }
+                .mo_pricing_page h1{font-size:clamp(30px,4vw,46px);line-height:1.05}
+                .mo_pricing_page .head{margin-bottom:24px}
+                .mo_pricing_page .sub{font-size:16px;color:#6b6470}
+                .mo_pricing_page .eyebrow{
+                  display:inline-block;text-transform:uppercase;letter-spacing:.13em;font-size:11px;
+                  font-weight:800;color:#714b67;background:rgba(113,75,103,.09);
+                  padding:7px 14px;border-radius:999px;
+                }
+                .mo_pricing_page .glass{
+                  background:#fff !important;border:1px solid #e6dee6 !important;border-radius:26px !important;
+                  box-shadow:0 16px 44px rgba(45,30,45,.08) !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;
+                }
+                .mo_pricing_page .plan{padding:36px 34px}
+                .mo_pricing_page .plan.featured{border:1.5px solid #cdb9d0 !important;box-shadow:0 30px 70px rgba(90,60,88,.16) !important;transform:none}
+                .mo_pricing_page .popular-badge{
+                  background:linear-gradient(135deg,#84587a,#714b67) !important;color:#fff !important;
+                  border-radius:999px !important;box-shadow:0 10px 24px rgba(113,75,103,.28) !important;
+                  letter-spacing:.07em;
+                }
+                .mo_pricing_page .plan h2{font-size:25px;margin-bottom:4px}
+                .mo_pricing_page .plan p{color:#6b6470;font-size:15px;line-height:1.6}
+                .mo_pricing_page .price{font-family:'Manrope',sans-serif !important;font-weight:800;color:#714b67;letter-spacing:-.04em}
+                .mo_pricing_page .price small{font-family:'DM Sans',sans-serif;color:#6b6470;font-weight:600}
+                .mo_pricing_page .plan ul{gap:13px}
+                .mo_pricing_page .plan li{font-size:14.5px}
+                .mo_pricing_page .plan li:before{color:#22a06b}
+                .mo_pricing_page .plan li strong{font-weight:800;color:#1c1720}
+                .mo_pricing_page .plan li small{color:#6b6470}
+                .mo_pricing_page .primary{
+                  background:linear-gradient(135deg,#84587a,#714b67) !important;color:#fff !important;border:0 !important;
+                  border-radius:14px !important;padding:15px 24px !important;font-weight:800 !important;font-size:15px;
+                  box-shadow:0 14px 34px rgba(113,75,103,.28);
+                }
+                .mo_pricing_page .primary:hover{transform:translateY(-2px)}
+                .mo_pricing_page .ghost{
+                  background:#fff !important;color:#1c1720 !important;border:1px solid #e6dee6 !important;
+                  border-radius:14px !important;padding:14px 22px !important;font-weight:800 !important;
+                  box-shadow:0 6px 18px rgba(45,30,45,.06);
+                }
+                .mo_pricing_page .ghost:hover{border-color:#cfc2d3 !important;transform:translateY(-2px)}
+                .mo_pricing_page .billing-toggle{
+                  background:rgba(255,255,255,.92) !important;border:1px solid #e6dee6 !important;
+                  box-shadow:0 12px 30px rgba(45,30,45,.08) !important;
+                }
+                .mo_pricing_page .billing-toggle button{color:#6b6470}
+                .mo_pricing_page .billing-toggle button.active{background:linear-gradient(135deg,#84587a,#714b67) !important;color:#fff !important}
+                .mo_pricing_page .annual-note{color:#22a06b;font-weight:800}
+                .mo_pricing_page .pricing-note{color:#6b6470;font-size:12.5px}
+                .mo_pricing_page .compare-head h2{margin:6px 0 8px}
+                .mo_pricing_page .compare-head p{color:#6b6470}
+                .mo_pricing_page .compare-wrap{overflow:hidden}
+                .mo_pricing_page .compare-table{width:100%;border-collapse:collapse}
+                .mo_pricing_page .compare-table thead th{
+                  background:#faf7fb !important;color:#1c1720;border-bottom:1px solid #e6dee6 !important;
+                  text-transform:none;letter-spacing:0;font-size:14px;padding:16px 14px;
+                }
+                .mo_pricing_page .compare-table th,.mo_pricing_page .compare-table td{border-color:#eee6ee !important;font-size:13px}
+                .mo_pricing_page .compare-table tbody th{color:#3a3440;font-weight:700;text-align:left}
+                .mo_pricing_page .compare-table tr.cmp-group td{
+                  background:rgba(113,75,103,.07) !important;color:#714b67 !important;font-weight:800;
+                  text-transform:uppercase;letter-spacing:.06em;font-size:11px;
+                }
+                .mo_pricing_page .cmp-yes{color:#1e8a5b;font-weight:700}
+                .mo_pricing_page .cmp-no{color:#b0a7b3}
+                .mo_pricing_page .cmp-muted{color:#8a8290}
+                .mo_pricing_page .cmp-plan{color:#714b67;font-weight:800}
+                .mo_pricing_page .cmp-price{color:#1c1720;font-family:'Manrope',sans-serif;font-weight:800}
+                .mo_pricing_page .modal{background:rgba(43,32,41,.5) !important}
+                .mo_pricing_page .modal-card{border-radius:26px !important;border:1px solid #e6dee6;background:#fff !important;box-shadow:0 30px 70px rgba(90,60,88,.24)}
+                .mo_pricing_page .modal-card h2{font-family:'Manrope',sans-serif}
+                .mo_pricing_page a{color:#714b67}
+                .mo_pricing_page .featured{position:relative}
+                @media (max-width:820px){
+                  .mo_pricing_page .page{padding:40px 18px 56px}
+                  .mo_pricing_page .plan{padding:26px 22px}
+                  .mo_pricing_page .plan.featured{transform:none}
+                }
+                </style>
 
                 <main class="page">
                     <div class="head" style="justify-content:center;text-align:center">
@@ -3122,7 +3788,7 @@
 
                     <div class="billing-toggle">
                         <button class="active" data-billing="monthly">Monthly</button>
-                        <button data-billing="annual">Annual &amp;middot; Save 15%</button>
+                        <button data-billing="annual">Annual &amp;middot; billed yearly</button>
                     </div>
 
                     <section class="plans">
@@ -3131,16 +3797,16 @@
                             <h2>Standard</h2>
                             <p>The complete Odoo hosting plan — everything you need to launch and grow, without the enterprise price tag.</p>
                             <div class="price">
-                                <span t-att-data-monthly="essential_monthly_price_formatted or '14,900'"
-                                      t-att-data-annual="essential_annual_price_formatted or '151,980'">
-                                    <t t-esc="essential_monthly_price_formatted or '14,900'"/>
+                                <span t-att-data-monthly="essential_monthly_price_formatted or '36'"
+                                      t-att-data-annual="essential_annual_price_formatted or '432'">
+                                    <t t-esc="essential_monthly_price_formatted or '36'"/>
                                 </span>
                                 <small t-att-data-period="(currency_symbol or '') + ' / month'"><t t-esc="currency_symbol"/> / month</small>
                             </div>
                             <div class="annual-note"></div>
                             <ul>
                                 <li><strong>5 GB NVMe SSD storage</strong><small>Blazing-fast disks. Add more anytime, pay only for what you use.</small></li>
-                                <li><strong>1 dedicated worker</strong><small>Isolated compute you can upgrade as your team grows.</small></li>
+                                <li><strong>2 dedicated workers</strong><small>A single worker cannot run Odoo reliably — two are included, upgrade anytime.</small></li>
                                 <li><strong>Unlimited users &amp; apps</strong><small>Zero per-user licence fees. Invite the whole team.</small></li>
                                 <li><strong>Free SSL + your own subdomain</strong><small>Company-branded URL with HTTPS, auto-renewed, live in minutes.</small></li>
                                 <li><strong>GitHub integration for custom addons</strong><small>Connect your repo, push your custom modules and deploy them in one click.</small></li>
@@ -3151,11 +3817,12 @@
                             <button type="button" class="primary"
                                     data-choose-plan="Standard"
                                     data-base-storage="5"
+                                    data-base-workers="2"
                                     t-att-data-product-id="essential_product.id if essential_product else ''"
-                                    t-att-data-monthly-price="essential_monthly_price_formatted or '14,900'"
-                                    t-att-data-annual-price="essential_annual_price_formatted or '151,980'"
-                                    t-att-data-monthly-raw="essential_monthly_price or 14900"
-                                    t-att-data-annual-raw="essential_annual_price or 151980"
+                                    t-att-data-monthly-price="essential_monthly_price_formatted or '36'"
+                                    t-att-data-annual-price="essential_annual_price_formatted or '432'"
+                                    t-att-data-monthly-raw="essential_monthly_price or 36"
+                                    t-att-data-annual-raw="essential_annual_price or 432"
                                     style="width:100%">Choose Standard</button>
                         </div>
 
@@ -3194,9 +3861,9 @@
                                         <th>
                                             <span class="cmp-plan">Standard</span>
                                             <span class="cmp-price">
-                                                <span t-att-data-monthly="essential_monthly_price_formatted or '14,900'"
-                                                      t-att-data-annual="essential_annual_price_formatted or '151,980'">
-                                                    <t t-esc="essential_monthly_price_formatted or '14,900'"/>
+                                                <span t-att-data-monthly="essential_monthly_price_formatted or '36'"
+                                                      t-att-data-annual="essential_annual_price_formatted or '432'">
+                                                    <t t-esc="essential_monthly_price_formatted or '36'"/>
                                                 </span>
                                                 <small t-att-data-period="(currency_symbol or '') + ' / month'"><t t-esc="currency_symbol"/> / month</small>
                                             </span>
@@ -3209,7 +3876,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="cmp-group"><td colspan="3">Infrastructure</td></tr>
-                                    <tr><th>Dedicated workers</th><td>1 worker (upgradable)</td><td>Unlimited workers</td></tr>
+                                    <tr><th>Dedicated workers</th><td>2 workers included (upgradable)</td><td>Unlimited workers</td></tr>
                                     <tr><th>NVMe SSD storage</th><td>5 GB included, expandable</td><td>Unlimited / custom</td></tr>
                                     <tr><th>Dedicated infrastructure</th><td class="cmp-muted">Optional add-on</td><td class="cmp-yes">Included</td></tr>
                                     <tr><th>Instances</th><td>1 production instance</td><td>Multiple (prod · staging · sandbox)</td></tr>
@@ -3316,13 +3983,13 @@
                             </div>
 
                             <div class="field" style="margin-bottom:14px">
-                                <label>NUMBER OF WORKERS</label>
+                                <label>NUMBER OF WORKERS (2 INCLUDED)</label>
                                 <div style="display:flex;align-items:center;gap:8px">
                                     <button type="button" class="ghost" id="btnMinusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">-</button>
-                                    <input type="number" name="num_users" id="planUsersCount" min="1" t-att-max="max_workers or 4" value="1" style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
+                                    <input type="number" name="num_users" id="planUsersCount" min="2" t-att-max="max_workers or 4" value="2" style="width:70px;text-align:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.75);color:var(--ink);font-weight:800"/>
                                     <button type="button" class="ghost" id="btnPlusUser" style="width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;border-radius:8px;cursor:pointer">+</button>
                                     <span style="font-size:11px;color:var(--muted);margin-left:6px" id="userPriceDisplay">
-                                        <t t-esc="user_monthly_price_formatted or '100'"/> <t t-esc="currency_symbol"/> / worker / month
+                                        Extra worker: <t t-esc="user_monthly_price_formatted or '100'"/> <t t-esc="currency_symbol"/> / month
                                     </span>
                                 </div>
                             </div>
@@ -3346,11 +4013,11 @@
                                         <div id="orderPlanSummary" style="display:grid;gap:4px;margin-bottom:8px">
                                             <div class="order-line" style="display:flex;justify-content:space-between;gap:12px;font-size:12px">
                                                 <span id="orderPlanLineLabel">Standard Plan</span>
-                                                <strong id="orderPlanLinePrice"><t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/> / month</strong>
+                                                <strong id="orderPlanLinePrice"><t t-esc="essential_monthly_price_formatted or '36'"/> <t t-esc="currency_symbol"/> / month</strong>
                                             </div>
                                             <div class="order-line" style="display:flex;justify-content:space-between;gap:12px;font-size:12px">
-                                                <span id="orderWorkerLineLabel">1 Worker</span>
-                                                <strong id="orderWorkerLinePrice"><t t-esc="user_monthly_price_formatted or '100'"/> <t t-esc="currency_symbol"/> / month</strong>
+                                                <span id="orderWorkerLineLabel">2 Workers included</span>
+                                                <strong id="orderWorkerLinePrice">Included</strong>
                                             </div>
                                             <div class="order-line" id="orderStorageLineRow" style="display:none;justify-content:space-between;gap:12px;font-size:12px">
                                                 <span id="orderStorageLineLabel">Extra storage</span>
@@ -3358,7 +4025,7 @@
                                             </div>
                                             <div class="order-line" style="display:flex;justify-content:space-between;gap:12px;font-size:13px;padding-top:6px;border-top:1px solid var(--line)">
                                                 <span>Total</span>
-                                                <strong id="orderGrandTotal"><t t-esc="essential_monthly_price_formatted or '14,900'"/> <t t-esc="currency_symbol"/> / month</strong>
+                                                <strong id="orderGrandTotal"><t t-esc="essential_monthly_price_formatted or '36'"/> <t t-esc="currency_symbol"/> / month</strong>
                                             </div>
                                         </div>
                                         <small id="orderCycleNote">Monthly subscription · Cancel or upgrade anytime</small>

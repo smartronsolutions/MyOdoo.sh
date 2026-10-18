@@ -118,6 +118,7 @@
     <nav class="navlinks" id="mo_navlinks">
       <a class="navlink" href="/">Home</a>
       <a class="navlink" href="/services">Services</a>
+      <a class="navlink" href="/mcp-odoo">MCP Odoo</a>
       <a class="navlink" href="/pricing">Pricing</a>
       <a class="navlink" href="/about">About</a>
       <a class="navlink" href="/contact-us">Contact Us</a>

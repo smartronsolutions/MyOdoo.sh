@@ -35,10 +35,10 @@ class Website(models.Model):
         partner = data.get('partner')
         sub_domain = data.get('sub_domain')
         domain_id = int(data.get('domain_id')) if data.get('domain_id') else False
-        # ``None``/empty means "default to 1 seat"; an explicit 0 means "plan only,
-        # no Workers line" (used by the plan-only renewal).
+        # ``None``/empty means "default to the 2 workers included in the plan"; an
+        # explicit 0 means "plan only, no Workers line" (used by the plan-only renewal).
         raw_users_count = data.get('users_count')
-        users_count = int(float(raw_users_count)) if raw_users_count not in (None, '') else 1
+        users_count = int(float(raw_users_count)) if raw_users_count not in (None, '') else 2
         plan_product_id = data.get('plan_product_id')
         plan_name = data.get('plan_name') or data.get('plan')
         app_ids = data.get('app_ids', [])
@@ -70,11 +70,16 @@ class Website(models.Model):
         order_line_vals = []
 
         is_annual = (subscription_type == 'yearly')
-        # The plan (and the apps) keep the 15% annual discount...
-        multiplier = (12 * 0.85) if is_annual else 1.0
-        # ...but extra workers and extra storage have ONE price: an annual order is
-        # charged the exact same amount as a monthly one (no x12, no discount).
-        addon_multiplier = 1.0
+        # The base container subscription is €36/month billed annually: €36 × 12 = €432
+        # (no annual discount on the base plan).
+        plan_multiplier = 12.0 if is_annual else 1.0
+        # Apps keep the historical 15% annual discount.
+        app_multiplier = (12 * 0.85) if is_annual else 1.0
+        # Worker and storage upgrades are billed monthly price × 12 on annual billing.
+        addon_multiplier = 12.0 if is_annual else 1.0
+        # The base subscription includes 2 workers: only the workers above the included
+        # ones are charged on top of the plan.
+        base_workers = 2
 
         Product = self.env['product.product'].sudo()
 
@@ -94,10 +99,10 @@ class Website(models.Model):
 
         if plan_product and plan_product.exists():
             plan_base_price = company._saas_convert_price(float(plan_product.list_price or 0.0))
-            plan_unit_price = round(plan_base_price * multiplier, 2)
+            plan_unit_price = round(plan_base_price * plan_multiplier, 2)
             order_line_vals.append((0, 0, {
                 'product_id': plan_product.id,
-                'name': f"{plan_product.name} ({'Annual - 15% OFF' if is_annual else 'Monthly'})",
+                'name': f"{plan_product.name} ({'Annual' if is_annual else 'Monthly'})",
                 'product_uom_qty': 1,
                 'product_uom': plan_product.uom_id.id,
                 'price_unit': plan_unit_price,
@@ -106,17 +111,21 @@ class Website(models.Model):
                 'tax_id': [(6, 0, plan_product.taxes_id.ids)],
             }))
 
-        # 2. Workers line (paid seat licence, auto-created if missing)
+        # 2. Workers line: only the workers ABOVE the two included in the base plan
+        #    are paid for.
         user_product = Product._get_saas_worker_product()
 
-        if user_product and user_product.exists() and users_count > 0:
-            user_base_price = company._saas_convert_price(float(user_product.list_price or 100.0))
-            # Same unit price as monthly, whatever the billing cycle.
+        workers_to_bill = max(0, users_count - base_workers)
+        if user_product and user_product.exists() and workers_to_bill > 0:
+            # Backend-configurable price wins; otherwise the Workers product price.
+            user_base_price = company.saas_worker_price_monthly or company._saas_convert_price(
+                float(user_product.list_price or 100.0))
+            # Annual upgrade = monthly price × 12.
             user_unit_price = round(user_base_price * addon_multiplier, 2)
             order_line_vals.append((0, 0, {
                 'product_id': user_product.id,
-                'name': f"{user_product.name} ({'Annual' if is_annual else 'Monthly'})",
-                'product_uom_qty': users_count,
+                'name': f"{user_product.name} (+{workers_to_bill} extra) ({'Annual' if is_annual else 'Monthly'})",
+                'product_uom_qty': workers_to_bill,
                 'product_uom': user_product.uom_id.id,
                 'price_unit': user_unit_price,
                 'technical_price_unit': user_unit_price,
@@ -143,7 +152,10 @@ class Website(models.Model):
                 storage_product = Product.search([('name', 'ilike', 'Extra Storage'), ('active', '=', True)], limit=1)
 
             storage_monthly_price = company._saas_convert_price(220.0)
-            if storage_product and storage_product.exists() and storage_product.list_price:
+            if company.saas_storage_price_per_gb:
+                # Backend-configurable price wins over the product price.
+                storage_monthly_price = float(company.saas_storage_price_per_gb)
+            elif storage_product and storage_product.exists() and storage_product.list_price:
                 storage_monthly_price = company._saas_convert_price(float(storage_product.list_price))
             else:
                 usd_currency = self.env['res.currency'].sudo().search([('name', '=', 'USD')], limit=1)
@@ -159,7 +171,7 @@ class Website(models.Model):
                 elif t_curr and t_curr.name == 'USD':
                     storage_monthly_price = 2.0
 
-            # Same unit price as monthly, whatever the billing cycle.
+            # Annual upgrade = monthly price × 12.
             storage_unit_price = round(storage_monthly_price * addon_multiplier, 2)
 
             if storage_product and storage_product.exists():
@@ -181,7 +193,7 @@ class Website(models.Model):
             app_product = Product.browse(app_id)
             if app_product and app_product.exists():
                 app_base_price = company._saas_convert_price(float(app_product.list_price or 0.0))
-                app_unit_price = round(app_base_price * multiplier, 2)
+                app_unit_price = round(app_base_price * app_multiplier, 2)
                 order_line_vals.append((0, 0, {
                     'product_id': app_id,
                     'product_uom_qty': 1,

@@ -1,5 +1,8 @@
+from urllib.parse import urlparse
+
 from odoo import fields, models, api, _
 from odoo.exceptions import UserError
+from odoo.tools import config as odoo_config
 
 
 class OdooInstanceDomainName(models.Model):
@@ -52,6 +55,18 @@ class OdooInstanceDomainName(models.Model):
             if r.state not in ('draft', 'cancel'):
                 raise UserError(_("You can not delete domain name %s. You must first cancel or set it to draft") % r.name)
 
+    def _get_master_connect_upstream(self):
+        """Where nginx must proxy ``/_saas_connect`` (the SaaS master Odoo)."""
+        upstream = self.env['ir.config_parameter'].sudo().get_param('saas.connect.upstream')
+        if not upstream:
+            upstream = '127.0.0.1:%s' % (odoo_config.get('http_port') or 8069)
+        return upstream.strip().rstrip('/')
+
+    def _get_master_host(self):
+        """Host header to use when proxying to the master (selects the master DB)."""
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url') or ''
+        return urlparse(base_url).netloc or 'myodoo.sh'
+
     def _get_nginx_file_content(self):
         # declaration
         file_content = ''
@@ -101,6 +116,21 @@ class OdooInstanceDomainName(models.Model):
         file_content += "\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"
         file_content += "\tproxy_set_header X-Forwarded-Proto $scheme;\n"
         file_content += "\tproxy_set_header X-Real-IP $remote_addr;\n"
+        file_content += '\n'
+        # One-time passwordless login hand-over: the SaaS master creates an
+        # authenticated session inside this container, then redirects the browser
+        # here. Proxying this exact location back to the master keeps the response
+        # on the instance origin, which is the only way to install the container's
+        # ``session_id`` cookie from the browser side.
+        file_content += '\tlocation = /_saas_connect {\n'
+        file_content += '\t\taccess_log off;\n'
+        file_content += '\t\tproxy_pass http://' + self._get_master_connect_upstream() + ';\n'
+        file_content += '\t\tproxy_set_header Host ' + self._get_master_host() + ';\n'
+        file_content += '\t\tproxy_set_header X-Saas-Host $host;\n'
+        file_content += '\t\tproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n'
+        file_content += '\t\tproxy_set_header X-Forwarded-Proto $scheme;\n'
+        file_content += '\t\tproxy_set_header X-Real-IP $remote_addr;\n'
+        file_content += '\t}\n'
         file_content += '\n'
         file_content += '\tlocation / {\n'
         file_content += '\t\tproxy_pass http://' + domain_nodot + ';\n'

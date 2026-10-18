@@ -43,6 +43,10 @@
                 		groups="sales_team.group_sale_salesman"
                 		invisible="state != 'deploy' or not partner_id or not expiration_date or not has_extra"/>
                 	<button string="Backup" type="object" name="action_backup" invisible="operation_state != 'run' or state != 'deploy'"/>
+                	<button string="Connect Odoo" type="object" name="action_connect_odoo" class="btn-primary"
+                		groups="base.group_system"
+                		invisible="state != 'deploy'"
+                		help="Open this container's backend as its administrator, without a password"/>
             		<button string="Duplicate" type="object" name="action_duplicate_wizard" class="btn-secondary"/>
             		<button string="Update/Install Module" type="object" name="action_open_upgrade_module_wizard" invisible="operation_state != 'run' or state != 'deploy'"/>
                 	<button string="Delete" type="object" name="action_cancel" invisible="state in ['draft', 'cancel']" class="btn-danger"/>
@@ -155,6 +159,8 @@
                     		<field name="technical_name"/>
                     		<field name="db_name"/>
                                     <field name="admin_pass" password="False"/>
+                            <field name="conf_staging_mode"
+                                   help="Comment db_name and dbfilter out of odoo.conf so /web/database/manager lists every database (test / staging restore)."/>
                             <field name="template_tag" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="is_template" invisible="1"/>
                             <field name="deploy_mail_template_id" invisible="1"/>

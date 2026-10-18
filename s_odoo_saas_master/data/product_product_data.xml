@@ -572,7 +572,10 @@
         <field name="default_code">Standard</field>
         <field name="can_be_user_app" eval="False"/>
         <field name="type">service</field>
-        <field name="list_price">14900.0</field>
+        <!-- Base container subscription: 36 / month, billed annually (36 × 12 = 432).
+             The plan includes 2 workers + 5 GB of NVMe storage (a single worker is not
+             enough for Odoo to run reliably). -->
+        <field name="list_price">36.0</field>
         <field name="is_published" eval="True"/>
     </record>
 
@@ -581,7 +584,9 @@
         <field name="default_code">Growth</field>
         <field name="can_be_user_app" eval="False"/>
         <field name="type">service</field>
-        <field name="list_price">39900.0</field>
+        <!-- Same base subscription as Standard: 36 / month, billed annually
+             (36 × 12 = 432). The plan includes 2 workers + 5 GB of storage. -->
+        <field name="list_price">36.0</field>
         <field name="is_published" eval="True"/>
     </record>
 

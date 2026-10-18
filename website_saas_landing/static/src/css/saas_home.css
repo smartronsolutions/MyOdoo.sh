@@ -3853,3 +3853,415 @@
   .mh.mh .cf-form { padding: 20px; }
   .mh.mh .cf-trust { font-size: 12px; }
 }
+
+/* ==========================================================================
+   MCP ODOO PAGE — AI bridge layout
+   --------------------------------------------------------------------------
+   Scoped to `.mo_mcp_page` so it never leaks into the other pages. Reuses the
+   `mh-` design tokens and the shared component classes; only the MCP-specific
+   pieces (bridge visual, provider cards, endpoint box, result tiles, 3-column
+   pricing grid) are defined here.
+   ========================================================================== */
+
+/* --- Hero: AI -> bridge -> Odoo panel ------------------------------------ */
+.mo_site.mo_mcp_page .mcp-bridge {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--mh-line);
+  border-radius: 26px;
+  box-shadow: 0 34px 90px rgba(45, 30, 45, .16);
+  overflow: hidden;
+  text-align: left;
+}
+
+.mo_site.mo_mcp_page .mcp-bridge-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--mh-line);
+  background: #faf7fb;
+}
+
+.mo_site.mo_mcp_page .mcp-bridge-url {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--mh-muted);
+}
+
+.mo_site.mo_mcp_page .mcp-bridge-tag {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--mh-plum);
+  background: var(--mh-lav);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+.mo_site.mo_mcp_page .mcp-bridge-body {
+  padding: clamp(16px, 2vw, 24px);
+}
+
+.mo_site.mo_mcp_page .mcp-node {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 16px;
+  border: 1px solid var(--mh-line);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(45, 30, 45, .05);
+}
+
+.mo_site.mo_mcp_page .mcp-node.is-hub {
+  border-color: #cdb9d0;
+  background: linear-gradient(135deg, #fbf7fb, #f1e8f2);
+}
+
+.mo_site.mo_mcp_page .mcp-node-ico {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--mh-lav);
+  color: var(--mh-plum);
+}
+
+.mo_site.mo_mcp_page .mcp-node-ico svg { width: 22px; height: 22px; }
+
+.mo_site.mo_mcp_page .mcp-node b {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15.5px;
+  color: var(--mh-ink);
+}
+
+.mo_site.mo_mcp_page .mcp-node small {
+  display: block;
+  color: var(--mh-muted);
+  font-size: 12.5px;
+  margin-top: 2px;
+}
+
+.mo_site.mo_mcp_page .mcp-link {
+  position: relative;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.mo_site.mo_mcp_page .mcp-link::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(#d9c6dd, #b790aa);
+}
+
+.mo_site.mo_mcp_page .mcp-link em {
+  position: absolute;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--mh-plum);
+  box-shadow: 0 0 0 5px rgba(113, 75, 103, .12);
+  animation: mcpPulse 1.8s ease-out infinite;
+}
+
+.mo_site.mo_mcp_page .mcp-link i {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--mh-muted);
+}
+
+@keyframes mcpPulse {
+  0% { box-shadow: 0 0 0 0 rgba(113, 75, 103, .38); }
+  100% { box-shadow: 0 0 0 12px rgba(113, 75, 103, 0); }
+}
+
+.mo_site.mo_mcp_page .mcp-bridge-log {
+  margin: 0 clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px);
+  padding: 12px 15px;
+  border-radius: 14px;
+  background: #f3f9f6;
+  border: 1px solid #d6ebe1;
+  color: #1d6b4a;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+/* --- AI provider cards --------------------------------------------------- */
+.mo_site.mo_mcp_page .mcp-providers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 22px);
+}
+
+.mo_site.mo_mcp_page .mcp-provider {
+  background: #fff;
+  border: 1px solid var(--mh-line);
+  border-radius: 22px;
+  padding: clamp(20px, 2.2vw, 26px);
+  box-shadow: 0 14px 40px rgba(45, 30, 45, .06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mo_site.mo_mcp_page .mcp-provider:hover {
+  transform: translateY(-4px);
+  border-color: #d9ccdc;
+  box-shadow: 0 24px 55px rgba(45, 30, 45, .11);
+}
+
+.mo_site.mo_mcp_page .mcp-provider-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.mo_site.mo_mcp_page .mcp-ava {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: .02em;
+  background: var(--mh-lav);
+  color: var(--mh-plum);
+}
+
+.mo_site.mo_mcp_page .mcp-ava.an { background: #f7ede5; color: #b4602f; }
+.mo_site.mo_mcp_page .mcp-ava.ai { background: #e8f4ee; color: #12795a; }
+.mo_site.mo_mcp_page .mcp-ava.ds { background: #eaedfb; color: #3a52c9; }
+.mo_site.mo_mcp_page .mcp-ava.gq { background: #fdeee9; color: #c2472a; }
+.mo_site.mo_mcp_page .mcp-ava.ol { background: #efedfa; color: #5c46b8; }
+.mo_site.mo_mcp_page .mcp-ava.mcp { background: var(--mh-lav); color: var(--mh-plum); }
+
+.mo_site.mo_mcp_page .mcp-provider h3 {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  color: var(--mh-ink);
+}
+
+.mo_site.mo_mcp_page .mcp-provider-tag {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--mh-muted);
+  background: #f4f1f5;
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
+.mo_site.mo_mcp_page .mcp-provider p {
+  margin: 0;
+  color: var(--mh-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* --- Setup: endpoint + tools -------------------------------------------- */
+.mo_site.mo_mcp_page .mcp-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(18px, 2.4vw, 34px);
+  align-items: start;
+}
+
+.mo_site.mo_mcp_page .mcp-panel {
+  background: #fff;
+  border: 1px solid var(--mh-line);
+  border-radius: 24px;
+  padding: clamp(22px, 2.6vw, 30px);
+  box-shadow: 0 16px 44px rgba(45, 30, 45, .07);
+}
+
+.mo_site.mo_mcp_page .mcp-panel-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(21px, 2.2vw, 26px) !important;
+  letter-spacing: -.02em !important;
+  margin: 14px 0 0 !important;
+  color: var(--mh-ink);
+}
+
+.mo_site.mo_mcp_page .mcp-endpoint {
+  margin: 16px 0 4px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #faf7fb;
+  border: 1px dashed #d9c6dd;
+  border-radius: 15px;
+  padding: 12px 14px;
+}
+
+.mo_site.mo_mcp_page .mcp-endpoint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--mh-plum);
+  word-break: break-all;
+}
+
+.mo_site.mo_mcp_page .mcp-copy {
+  margin-left: auto;
+  border: 1px solid var(--mh-line);
+  background: #fff;
+  border-radius: 11px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--mh-plum);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.mo_site.mo_mcp_page .mcp-copy:hover {
+  border-color: #cdb9d0;
+  background: var(--mh-lav);
+}
+
+.mo_site.mo_mcp_page .mcp-copy.is-done {
+  background: #e8f6ef;
+  border-color: #bfe3d2;
+  color: #17794f;
+}
+
+.mo_site.mo_mcp_page .mcp-steps {
+  list-style: none;
+  counter-reset: mcpstep;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 11px;
+}
+
+.mo_site.mo_mcp_page .mcp-steps li {
+  counter-increment: mcpstep;
+  position: relative;
+  padding-left: 38px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--mh-muted);
+}
+
+.mo_site.mo_mcp_page .mcp-steps li::before {
+  content: counter(mcpstep);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--mh-plum);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+/* --- Result tiles -------------------------------------------------------- */
+.mo_site.mo_mcp_page .mcp-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mo_site.mo_mcp_page .mcp-result {
+  background: #fff;
+  border: 1px solid var(--mh-line);
+  border-radius: 20px;
+  padding: clamp(18px, 2.2vw, 24px);
+  text-align: center;
+  box-shadow: 0 12px 34px rgba(45, 30, 45, .06);
+}
+
+.mo_site.mo_mcp_page .mcp-result b {
+  display: block;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(26px, 3vw, 34px);
+  letter-spacing: -1.5px;
+  color: var(--mh-plum);
+}
+
+.mo_site.mo_mcp_page .mcp-result small {
+  display: block;
+  margin-top: 4px;
+  color: var(--mh-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* --- Pricing (4 columns) ------------------------------------------------- */
+.mo_site.mo_mcp_page .mcp-pricing {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 22px);
+  align-items: start;
+}
+
+.mo_site.mo_mcp_page .mcp-price { margin: 8px 0 22px; }
+
+.mo_site.mo_mcp_page .mcp-price b {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 4vw, 46px);
+  letter-spacing: -2px;
+  color: var(--mh-ink);
+}
+
+.mo_site.mo_mcp_page .mcp-price span {
+  display: block;
+  margin-top: 2px;
+  color: var(--mh-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mo_site.mo_mcp_page .mcp-pricing .mh-plan {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(20px, 2.2vw, 28px);
+}
+
+.mo_site.mo_mcp_page .mcp-pricing .mh-feats { flex: 1 1 auto; }
+
+/* --- Responsive ---------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .mo_site.mo_mcp_page .mcp-pricing { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1024px) {
+  .mo_site.mo_mcp_page .mcp-providers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mo_site.mo_mcp_page .mcp-setup { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .mo_site.mo_mcp_page .mcp-providers,
+  .mo_site.mo_mcp_page .mcp-pricing,
+  .mo_site.mo_mcp_page .mcp-results { grid-template-columns: 1fr; }
+  .mo_site.mo_mcp_page .mcp-copy { margin-left: 0; width: 100%; }
+}
